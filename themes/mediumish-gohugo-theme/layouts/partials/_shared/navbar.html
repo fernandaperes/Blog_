@@ -1,0 +1,58 @@
+<!-- Begin Menu Navigation
+================================================== -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Begin Menu -->
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            {{ $currentPage := . }}
+            <ul class="navbar-nav ml-auto">
+                {{ range .Site.Menus.main }}
+                <li class="nav-item {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+                    <a class="nav-link" href="{{ .URL }}">{{ .Name | title }}</a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+        <!-- End Menu -->
+    </div>
+
+
+<div class = "menu">
+
+{{ with .Site.Params.social.github }}
+    <a href="https://github.com/{{.}}"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    {{ end }}
+    {{ with .Site.Params.social.linkedin }}
+    <a href="https://linkedin.com/in/{{.}}"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    {{ end }}
+    {{ with .Site.Params.social.instagram }}
+    <a href="https://www.instagram.com/{{.}}"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    {{ end }}
+    {{ with .Site.Params.social.youtube }}
+    <a href="https://www.youtube.com/{{.}}"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    {{ end }}
+
+</div>
+
+
+</nav>
+<!-- End Navigation
+================================================== -->

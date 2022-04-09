@@ -1,0 +1,64 @@
+baseURL = "https://fernandafperes.netlify.app/"
+languageCode = "pt-br"
+defaultContentLanguage = "pt-br"
+title = "Fernanda Peres | Estatística aplicada"
+theme = "mediumish-gohugo-theme"
+summaryLength = 25
+copyright = "Fernanda Fiel Peres - Todos os direitos reservados"
+enableEmoji = true
+publishDir = "docs"
+#disqusShortname = "your-shortname-here"
+#googleAnalytics = "UA-1XXXXXXX1-1"
+
+[params]
+  logo = "/images/favicon.ico"
+  description =""
+  customCss = ["css/purebasic.css"]
+  customJs = ["js/highlight.pack.js"]
+
+
+[params.author]
+  name = ""
+  thumbnail = ""
+  description = ""
+
+
+[params.index]
+  picture = "/images/author.png"
+  title = "Fernanda Fiel Peres"
+  subtitle = "Que loucura, não?"
+  mdtext = '''
+Currently trying to get this blog running, still don't know what the blog will be about!\
+**This textblock is a demonstration of the mdtext-param.**\
+### This is a markdown heading
+'''
+  alertbar = false
+
+[params.social]
+  github = "fernandaperes"
+  linkedin = "fernandafielperes"
+  instagram = "estatisticaaplicada"
+  youtube = "c/FernandaPeres"
+
+## Main Menu
+[[menu.main]]
+    name = "BLOG"
+    weight = 20
+    identifier = "blog"
+    title = "Blog"
+    url = "/blog"
+    description ="Blog"
+
+[[menu.main]]
+    name = "SOBRE"
+    identifier = "sobre"
+    title = "Sobre"
+    weight = 30
+    url = "/static/sobre"
+    description ="Sobre"
+
+[[menu.main]]
+    name = "PÁGINA INICIAL"
+    identifier = "pagina-inicial"
+    weight = 10
+    url = "/"

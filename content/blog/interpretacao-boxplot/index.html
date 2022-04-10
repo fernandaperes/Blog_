@@ -1,0 +1,143 @@
+---
+title: "Como interpretar (e construir) um gráfico boxplot?"
+author: Fernanda Fiel Peres
+date: '2022-03-29'
+slug: [interpretacao-boxplot]
+categories: ['Estatística teórica', 'Gráficos']
+tags: ['boxplot', 'ggplot2']
+comments: yes
+summary: 'O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.'
+output:
+  blogdown::html_page:
+    toc: false
+bibliography: references.bib
+csl: APA.csl
+---
+
+
+
+<p>Se você está na área de análise de dados ou na área acadêmica, é provável que você já tenha visto um gráfico com aparência um tanto peculiar, como o acima, inspirado no artigo de Schenk &amp; Steppan (2014).<br />
+Trata-se de um gráfico cujo nome em português é “diagrama de caixas,” mas que é muito mais conhecido pelo seu nome em inglês: boxplot.<br />
+Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e outliers. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.</p>
+<p>Trata-se de um gráfico cujo nome em português é “diagrama de caixas,” mas que é muito mais conhecido pelo seu nome em inglês: <em>boxplot</em>.<br />
+Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e <em>outliers</em>. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.</p>
+<img src="https://i.imgur.com/DHvdmia.png" width="350px" style="display: block; margin: auto;" />
+<center>
+<font size = '3'>Elementos que compõem um boxplot.</font>
+</center>
+<div id="os-quartis-e-a-mediana" class="section level3">
+<h3>Os quartis e a mediana</h3>
+<p>Os quartis são as medidas que delimitam a caixa em um boxplot (como você pode ver na figura acima). Mas, o que são quartis?<br />
+Eu acho mais fácil entender o conceito de quartis a partir do conceito de mediana. Então, vamos a ela.</p>
+<div id="a-mediana" class="section level4">
+<h4>A mediana</h4>
+<p>A mediana é o valor central de um conjunto de dados, quando esse conjunto está organizado de forma crescente. A mediana divide o conjunto em duas partes: 50% dos valores serão iguais ou inferiores a ela, e os outros 50% serão iguais ou superiores. Vejamos isso na prática. Observe que no conjunto de dados abaixo (já organizado de forma crescente) o valor <strong>30</strong> é o valor central: 50% dos dados estão abaixo e 50% estão acima dele.</p>
+<p><img src="https://i.imgur.com/VFCKOoC.png" width="220px" style="display: block; margin: auto;" /></p>
+<p>Se o conjunto de dados tiver uma quantidade par de valores, então a mediana será a média entre os dois valores centrais, como no caso abaixo, em que a mediana é <strong>28,5</strong>:</p>
+<p><img src="https://i.imgur.com/36uECE1.png" width="330px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="os-quartis" class="section level4">
+<h4>Os quartis</h4>
+<p>A lógica por trás dos quartis é muito semelhante à lógica da mediana. Mas, ao invés de dividir o conjunto de dados em duas partes iguais, como a mediana, os quartis dividem esse conjunto em quatro (daí vem o nome quartis), cada um contendo 25% (um quarto) dos dados. Veja no exemplo abaixo. Note que o quartil 2 corresponde à mediana.</p>
+<p><img src="https://i.imgur.com/c6riQIU.png" width="470px" style="display: block; margin: auto;" /></p>
+<p>Apesar da lógica ser sempre a mesma, há mais de uma forma de calcular os quartis. Por isso, os valores de quartis calculados por diferentes softwares estatísticos podem divergir – e, possivelmente, vão diferir do cálculo manual que vimos aqui. Se quiser ler a respeito, recomendo o artigo de <span class="citation"><a href="#ref-hyndman1996sample" role="doc-biblioref">Hyndman &amp; Fan</a> (<a href="#ref-hyndman1996sample" role="doc-biblioref">1996</a>)</span>.</p>
+<p>O segundo quartil (ou seja, a mediana) será a linha que corta a caixa do boxplot. Já o primeiro quartil (Q1) será a base da caixa e o terceiro quartil (Q3) o topo. Observe o gráfico boxplot abaixo, construído com os valores da tabela. Note que a base da caixa corresponde ao valor 25, o topo ao 32 e a linha central ao 28,5.</p>
+<p>Outro ponto interessante: a altura da caixa corresponde à diferença entre o terceiro e o primeiro quartil (Q1 - Q3). Essa diferença recebe o nome de <strong>amplitude interquartil</strong>, um termo que eu abreviarei aqui como AIQ, mas que também é comumente abreviada como IQR (que vem do termo em inglês, <em>interquartile range</em>). Note que no boxplot abaixo a AIQ, ou seja, a altura da caixa, é igual a 32 - 25 = 7.</p>
+<p><img src="https://i.imgur.com/wxWdpnk.png" width="200px" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="os-limites-superior-e-inferior" class="section level3">
+<h3>Os limites superior e inferior</h3>
+<p>Além dos quartis, um boxplot é composto pelos <strong>limites superior e inferior</strong>. Esses limites correspondem, respectivamente, ao <strong>maior e menor valor do conjunto de dados que não sejam <em>outliers</em></strong>. Um <em>outlier</em> é um valor que destoa do conjunto de dados, o que podemos chamar em português de “valor discrepante” - mas aqui, de novo, o termo em inglês é mais conhecido e usado.</p>
+<p>E como definir se um valor é outlier? Para isso, precisamos calcular os limites superior e inferior <strong>teóricos</strong>. Esses limites são definidos com base na amplitude interquartil (AIQ). Da seguinte forma:</p>
+<center>
+<blockquote>
+<p>Limite inferior teórico = <span class="math inline">\(Q1 - 1,5 \times AIQ\)</span><br />
+Limite superior teórico = <span class="math inline">\(Q3 + 1,5 \times AIQ\)</span></p>
+</blockquote>
+</center>
+<p>Na verdade, esse 1,5 pode variar. Mas, 1,5 é o <strong>valor padrão</strong> para o cálculo desses limites. Ao usarmos o valor de 1,5 estamos criando o <strong>boxplot de Tukey</strong> (que é o que sai por padrão nos softwares). Cerca de 0.7% dos valores serão considerados outliers se usarmos esse critério - se quiser se aprofundar, há uma discussão <a href="https://www.kaggle.com/general/129242">nesse link</a>.</p>
+<p>Bom, para isso fazer mais sentido, vamos calcular os limites para os nossos dados:</p>
+<center>
+<p>Limite inferior teórico = <span class="math inline">\(Q1 - 1,5 \times AIQ\)</span><br />
+Limite inferior teórico = <span class="math inline">\(25 - 1,5 \times 7\)</span><br />
+Limite inferior teórico = <span class="math inline">\(25 - 10,5\)</span><br />
+Limite inferior teórico = <span class="math inline">\(14,5\)</span></p>
+<p><br><br></p>
+<p>Limite superior teórico = <span class="math inline">\(Q3 + 1,5 \times AIQ\)</span><br />
+Limite superior teórico = <span class="math inline">\(32 + 1,5 \times 7\)</span><br />
+Limite superior teórico = <span class="math inline">\(32 + 10,5\)</span><br />
+Limite superior teórico = <span class="math inline">\(42,5\)</span></p>
+</center>
+<p>Agora o que faremos será comparar os nossos limites teóricos com os nossos dados.<br />
+Observe que não há no nosso banco valores abaixo do nosso limite inferior teórico. Logo, nosso limite inferior verdadeiro - que irá para o gráfico - será o menor valor do banco, o 24.<br />
+Por outro lado, há um valor que está acima do limite superior teórico, o valor 43. Esse valor será considerado um <em>outlier</em>. O limite inferior verdadeiro, que será plotado no gráfico, será, portanto, o maior valor do banco exceto o outlier. No caso, o valor 35. O 43, por ser um <em>outlier</em> será representado por um círculo (em geral, aberto) na altura do eixo y (vertical) correspondente ao 43.</p>
+<p><img src="https://i.imgur.com/kgLuOwG.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Veja como o gráfico traz exatamente essas informações:</p>
+<p><img src="https://i.imgur.com/6QB5LMV.png" width="200px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="boxplots-na-horizontal" class="section level3">
+<h3>Boxplots na horizontal</h3>
+<p>É possível (e até comum em algumas áreas) representar boxplots na horizontal, ou seja, com a variável de grupo no eixo y (vertical) e a variável numérica no eixo x (horizontal).<br />
+A interpretação será a mesma. Veja abaixo o mesmo boxplot que construímos, mas na horizontal:</p>
+<p><img src="https://i.imgur.com/sb7DZiV.png" width="330px" style="display: block; margin: auto;" /></p>
+<p>Eu confesso que sou tradicional e tendo a preferir os boxplots na vertical, mas é uma questão de estilo. Sinta-se livre para usar como preferir.</p>
+</div>
+<div id="e-os-boxplots-esquisitinhos" class="section level3">
+<h3>E os boxplots esquisitinhos?</h3>
+<p>Quando eu fiz um conteúdo no <a href="https://instagram.com/estatisticaaplicada">Instagram</a> explicando a construção e interpretação de boxplots, a pergunta que eu mais recebi foi: “tá, mas e aqueles boxplots com pedaços faltando?”<br />
+As pessoas se referiam a boxplots como o do grupo “Graduação” no gráfico abaixo, mostrado no início do post:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="https://i.imgur.com/4RzmF5r.png" alt="Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too." width="350px" />
+<p class="caption">
+Figura 1: Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation"><a href="#ref-schenk2014too" role="doc-biblioref">Schenk &amp; Steppan</a> (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+</p>
+</div>
+<p>Mas, não há muito segredo. Todos os elementos que vimos - limite inferior, Q1, Q2, Q3, limite inferior - sempre estarão no boxplot. Se você não está enxergando um deles, é porque seu valor coincide com outro, e haverá sobreposição no gráfico.<br />
+No caso do grupo “Graduação,” a mediana está sobreposta ao Q3 e ao limite superior - ou seja, para esse grupo a mediana, o Q3 e o limite superior são valores idênticos. É por isso que não estamos vendo o T se projetando para além do topo da caixa e é também por isso que o topo da caixa está representado por uma linha mais grossa que a base da caixa (indicando que a mediana está lá).</p>
+<p>Vejamos mais alguns exemplos.</p>
+<p>No gráfico abaixo, a mediana se sobrepõe ao Q1 (note que a base da caixa está representada por uma linha mais grossa):</p>
+<p><img src="https://i.imgur.com/ZeB6c1p.png" width="180px" style="display: block; margin: auto;" /></p>
+<p>Já nesse gráfico, a mediana se sobrepõe ao Q1 (a base da caixa está representada por uma linha mais grossa) e o limite superior está sobreposto ao Q3 (não há o clássico T se projetando paa além do limite superior):</p>
+<p><img src="https://i.imgur.com/fxRICIh.png" width="180px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="quando-usar-um-gráfico-boxplot" class="section level3">
+<h3>Quando usar um gráfico boxplot?</h3>
+<p>Em quais situações faz sentido usar um gráfico boxplot?<br />
+Trata-se de um gráfico usado quando queremos representar a distribuição de uma <strong>variável numérica ou, pelo menos, ordinal</strong>. No caso, representamos a distribuição da variável idade na nossa amostra.<br />
+Além da variável numérica/ ordinal, podemos <strong>incluir uma variável de grupo</strong>, como o boxplot do começo do post. Esse boxplot que mostra a distribuição da quantidade de páginas de artigos selecionados por alunos divididos em três grupos: graduação, pós-graduação e pós-doutorado. Basta uma rápida olhada para percebermos que a mediana de páginas do grupo “Graduação” é inferior às medianas dos demais grupos. Podemos também observar que o grupo com maior variação absoluta (ou seja, maior diferença entre o maior e menor valor) é o grupo “Pós-graduação.” Já o grupo “Pós-doutorado” apresenta a maior amplitude interquartil (ou seja, a caixa mais alta). Poderíamos também usar o boxplot para avaliar a simetria da distribuição, mas essa discussão fica para outro post.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
+<img src="https://i.imgur.com/3yvD9vb.png" alt="Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too." width="350px" />
+<p class="caption">
+Figura 2: Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation"><a href="#ref-schenk2014too" role="doc-biblioref">Schenk &amp; Steppan</a> (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+</p>
+</div>
+<p>Além disso, perceba que o boxplot não é baseado em média nem em medidas de dispersão derivadas da média (como desvio-padrão e variância). Portanto, é um gráfico excelente para <strong>distribuições que não são bem representadas pela média</strong>, sendo ótimo para distribuições não-normais.</p>
+<p>Mas, claro, não é um gráfico para todas as audiências. Veja quantos parágrafos eu gastei para explicá-lo nesse texto. O boxplot é excelente para uso pelo time de dados, para publicações acadêmicas, mas em geral péssimo para contextos como divulgação científica e matérias jornalísticas.</p>
+</div>
+<div id="como-fazer-um-boxplot" class="section level3">
+<h3>Como fazer um boxplot?</h3>
+<p>Nas suas últimas versões, o Excel implementou o boxplot. <a href="https://youtu.be/DWs98A0yCMQ">Nesse vídeo</a> eu explico como fazê-lo.</p>
+<p>Se você for um amante do R (como eu), minha sugestão é montar o boxplot pelo pacote <code>ggplot2</code>. Eu tenho um vídeo bem detalhado sobre <a href="https://youtu.be/-XQPlOG12vc">boxplot no ggplot2</a>.<br />
+Se ggplot2 é algo que te angustia (socorro, por que tantas linhas para gerar um único gráfico?), eu tenho uma playlist com vários vídeos ensinando a construir <a href="https://youtube.com/playlist?list=PLOw62cBQ5j9X5eOavzeu9CaHMO6TFsPkY">gráficos no ggplot2 do zero</a>. Efeitos colaterais de aprender a mexer no ggplot2: amor incondicional e não querer fazer sequer um gráfico de barras em outro software, haha!</p>
+<p>Mas, vou deixar um código simples, para você usar como base. Partindo de um <code>data frame</code> chamado <code>dados</code> contendo os grupos em uma coluna e a quantidade de páginas em outra, temos:</p>
+<pre class="r"><code>ggplot(dados, aes(x = Grupo, y = Páginas)) +
+  geom_errorbar(stat = &quot;boxplot&quot;, width = 0.3) +
+  geom_boxplot(outlier.shape = 1, fill = &quot;grey95&quot;) +
+  labs(y = &quot;Quantidade de páginas&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://i.imgur.com/fI4NX4L.png" width="400px" style="display: block; margin: auto;" /></p>
+<p><br><br></p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências:</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-hyndman1996sample" class="csl-entry">
+Hyndman, R. J., &amp; Fan, Y. (1996). Sample quantiles in statistical packages. <em>The American Statistician</em>, <em>50</em>(4), 361–365.
+</div>
+<div id="ref-schenk2014too" class="csl-entry">
+Schenk, J. J., &amp; Steppan, S. J. (2014). Too long to read: Assessing the motivation behind graduate student attendance in reading groups. <em>Journal of College Science Teaching</em>, <em>44</em>(2), 40–45.
+</div>
+</div>
+</div>

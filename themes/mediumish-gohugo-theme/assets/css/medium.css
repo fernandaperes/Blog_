@@ -445,6 +445,7 @@ span.post-read-more a:hover {
     font-size: 16px;
     line-height: 1.6;
     color: rgba(0, 0, 0, .8);
+    text-align: justify;
 }
 
 blockquote {
@@ -847,7 +848,8 @@ h6 {
 .article-post h5,
 .article-post h6 {
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 3.5rem;
     font-family: 'IsidoraSans-Bold';
     text-align: center;
 }
@@ -1098,6 +1100,13 @@ iframe {
 }
 
 
+.after-post a {
+  color: #000;
+}
+
+.after-post a:hover {
+  color: #2794A0;
+}
 
 a.button {
     -webkit-appearance: button;

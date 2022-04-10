@@ -1,0 +1,109 @@
+---
+title: "Um doutora toma chá"
+author: Fernanda Fiel Peres
+date: '2021-06-05'
+slug: [probabilidade-positivo-verdadeiro]
+categories: ['Estatística teórica', 'Valor de p']
+tags: ['valor de p', 'teste de hipóteses']
+comments: yes
+summary: 'Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento "uma senhora toma chá".'
+output:
+  blogdown::html_page:
+    toc: false
+---
+
+
+
+<div id="afinal-o-que-o-valor-de-p-essa-medida-tão-famosa-e-tão-controversa-indica" class="section level3">
+<h3>Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica?</h3>
+<p>Na minha opinião, os conceitos de valor de p e nível de significância estão entre os mais confusos e desafiadores de explicar quando se trata de estatística. Eu comecei a usar a estatística como ferramenta para analisar os meus dados em 2010, mas considero que só fui entender de fato esses dois conceitos sete anos depois, em um curso dado pelo professor Marcus Vinícius C. Baldo no congresso da SBNeC (Sociedade Brasileira de Neurociências e Comportamento).<br />
+A proposta desse post é explicar esses conceitos através da história da criação do teste de hipóteses, conhecida como “Uma senhora toma chá” (em inglês, <em>Lady tasting tea</em>).</p>
+<blockquote>
+<p>Esse post é inspirado em um vídeo publicado no meu canal do YouTube, que se tornou muito popular. Então, se você prefere consumir esse tipo de conteúdo em vídeo, clique <a href="https://www.youtube.com/watch?v=kOUZw-wMmXU">aqui</a>.</p>
+</blockquote>
+</div>
+<div id="o-problema" class="section level3">
+<h3>O problema</h3>
+<p>Diz a lenda (e a biografia de Ronald Fisher) que, em uma tarde no final da década de 1920, três pesquisadores – dois homens e uma mulher – que trabalhavam na Estação experimental agrícola de Rothamsted, na Inglaterra, fizeram uma pausa para tomar chá. Como bons ingleses, esses três pesquisadores tomavam o seu chá com leite.</p>
+<img src="https://i.imgur.com/97E9BDk.png" width="450px" style="display: block; margin: auto;" />
+<center>
+<font size = '3'>Estação experimental agrícola de Rothamsted</font>
+</center>
+<p><br><br></p>
+<p>Um dos homens adicionou leite à xícara, complementou-a com chá, mexeu o conteúdo e serviu-a à mulher. Ela educadamente recusou, dizendo que preferia quando o chá era adicionado antes do leite. Ele protestou, dizendo que a ordem não fazia diferença. Ela continuou insistindo que sentia diferença, e preferia quando o chá era adicionado antes.</p>
+<p><img src="https://i.imgur.com/cjyXhYj.png" width="150px" style="display: block; margin: auto;" /></p>
+<p>Se as pessoas envolvidas nessa história fossem outras, ela provavelmente teria acabado aqui. Mas, o homem em questão era Ronald Fisher, um estatístico e geneticista, que anos depois ganharia o título de Sir. Já a pesquisadora era Blanche Muriel Bristol, uma algologista que na época já possuía os títulos de mestre e doutora. Infelizmente, muitas informações sobre a Dra. Muriel se perderam com o tempo, mas sabe-se que uma espécie de alga recebeu o nome de C. <em>muriella</em> em homenagem a ela, indicando que ela contribuiu de forma significativa com a sua área.</p>
+<p><img src="https://i.imgur.com/3GBT1P0.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Ronald Fisher, sem acreditar que a Dra. Muriel seria capaz de diferenciar uma xícara com chá adicionado antes do leite de uma com o chá adicionado depois, propôs um experimento para testá-la.</p>
+</div>
+<div id="as-hipóteses" class="section level3">
+<h3>As hipóteses</h3>
+<p>Podemos pensar que o experimento permitia contrapor duas hipóteses:
+* Hipótese 1: a Dra. Muriel, na realidade, <strong>não era capaz de diferenciar</strong> as preparações;
+* Hipótese 2: a Dra. Muriel, na realidade, <strong>era capaz de diferenciar</strong> as preparações.</p>
+<p>Para usar a terminologia que usamos hoje e facilitar o raciocínio, vamos chamar a primeira hipótese de “Hipótese nula (H<sub>0</sub>)” e a segunda hipótese, que se contrapõe à H<sub>0</sub> de “Hipótese alternativa (H<sub>1</sub>)”:</p>
+<p><img src="https://i.imgur.com/MWYUf74.png" width="450px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ok-mas-e-como-testá-la" class="section level3">
+<h3>Ok, mas… E como testá-la?</h3>
+<p>Fisher poderia apresentar à Dra. Muriel apenas uma xícara, e pedir para que ela identificasse se o chá havia sido colocado antes ou após o leite. Mas, nesse caso, a probabilidade de ela acertar – ainda que não fosse capaz de diferenciar as preparações – seria de 50%. A mesma probabilidade valeria para caso a Dra. Muriel fosse apresentada a duas xícaras, sabendo que havia uma de cada tipo de preparação.</p>
+<p><img src="https://i.imgur.com/XcJqd4E.png" width="150px" style="display: block; margin: auto;" /></p>
+<p>Fisher acabou propondo um experimento no qual 8 xícaras seriam apresentadas à Dra. Muriel: 4 com o chá adicionado antes e 4 com o chá adicionado depois do leite. A ordem de apresentação dessas xícaras seria determinada de forma verdadeiramente aleatória, definida por uma moeda, de forma que não fosse possível prevê-la.<br />
+Ao final, a Dra. Muriel – que tinha conhecimento de como o experimento havia sido delineado – teria que identificar quais quatro xícaras pertenciam a um mesmo tipo de preparação. Note que, se ela identificasse corretamente essas 4, isso significaria que ela acertou como foram preparadas todas as 8 xícaras.</p>
+<p><img src="https://i.imgur.com/lho5f92.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Com experimento sendo delineado dessa forma, a probabilidade de a Dra. Muriel selecionar corretamente as quatro xícaras seria de 1 em 70, o que corresponde a:
+<span class="math display">\[\frac{1}{70} = 1,43%\]</span></p>
+<blockquote>
+<p>Entender como esse cálculo foi feito é totalmente dispensável à compreensão dos conceitos de valor de p e nível de significância, ok? Mas, se ficou curiosa(o), acompanhe o meu raciocínio abaixo. Se preferir, pode pular esse quadro e seguir a leitura.
+De onde vêm os 70, do denominador da fração? Ele corresponde às possibilidades de selecionarmos um conjunto de 4 xícaras dentre as 8. Para calcular a quantidade de possibilidades, devemos usar a fórmula da combinação (aquela mesma, que você aprendeu no ensino médio):<br />
+<span class="math display">\[C_{(8, 4)} = \binom{8}{4} = \frac{8!}{4! \times 4!} = \frac{8 \times 7 \times 6 \times 5}{4 \times 3 \times 2 \times 1} = 70\]</span>
+Dentre todas essas combinações, há uma única que corresponde a acertar todas as xícaras. Logo, a probabilidade de uma pessoa selecionar corretamente as 4 xícaras com a mesma preparação é de 1 em 70.</p>
+</blockquote>
+<p>Agora vem a grande questão: se a Dra. Muriel acertasse todas as xícaras, você acreditaria que ela tem a capacidade de diferenciar as preparações? Considere que a probabilidade de isso acontecer sem que ela tivesse essa capacidade é de apenas 1,43%. Eu acreditaria nela, imagino que você também.</p>
+<p>Mas, ainda que ela consiga diferenciar as preparações, é possível que ela erre uma das 4 xícaras selecionadas, concorda? Uma pode não ter sido mexida adequadamente, ou pode estar com uma proporção diferente de chá e leite…</p>
+<p><img src="https://i.imgur.com/BR8F7hD.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>E nesse caso, você acreditaria nela? Vamos novamente calcular as probabilidades. A probabilidade de ela acertar pelo menos 3 xícaras (ou seja, acertar 3 ou acertar 4) é de 17 em 70, o que corresponde a:
+<span class="math display">\[\frac{17}{70} = 24,29%\]</span></p>
+<blockquote>
+<p>Novamente, se quiser saber como esse cálculo foi feito, acompanhe o raciocínio abaixo. Caso isso não seja do seu interesse, pule esse quadro.
+Já sabemos que há 70 combinações possíveis de 4 xícaras em 8. Dessas, apenas um corresponde ao acerto de todas as xícaras. Vamos agora calcular quantas das 70 possibilidades correspondem a um acerto de 3 xícaras, das 4 selecionadas. Para isso, devemos fazer uma combinação de 3, 4 a 4 (ou seja, selecionar 3 xícaras dentre as 4 corretas) e uma combinação de 1, 4 a 4 (ou seja, selecionar uma xícara dentre as 4 incorretas). Como queremos selecionar 3 corretas <strong>e</strong> uma incorreta, devemos multiplicar esses resultados:
+<span class="math display">\[C_{(4, 3)} \times C_{(4, 1)}\]</span>
+<span class="math display">\[\binom{4}{3} \times \binom{4}{1}\]</span>
+<span class="math display">\[\frac{4!}{3! \times 1!} \times \frac{4!}{1! \times 3!}\]</span>
+<span class="math display">\[4 \times 4 = 16\]</span>
+Logo, a probabilidade de acertar pelo menos 3 xícaras é de 17 (16 + 1) em 70.</p>
+</blockquote>
+<p>Sabendo que a probabilidade de a Dra. Muriel acertar pelo menos 3 xícaras das selecionadas (ou seja, pelo menos 6 xícaras no total), sem saber diferenciar as preparações, é de 24,29%, você acreditaria na capacidade dela de diferenciação, caso ela acertasse seis xícaras? Imagino que a sua resposta tenha sido: “não!”. A minha também seria.</p>
+<p>Nessa história, usamos os conceitos de valor de p e nível de significância, sem que tenhamos dado nome a eles. Vamos então defini-los, fazendo a relação com a história.</p>
+</div>
+<div id="o-valor-de-p" class="section level3">
+<h3>O valor de p</h3>
+<p>O valor de p corresponde à probabilidade de termos obtido aquele resultado, ou um resultado ainda mais extremo, dado que a hipótese nula é verdadeira.</p>
+<p>É uma definição confusa, mas que faz mais sentido quando pensamos na história.
+No caso, a nossa hipótese nula era a de que a Dra. Muriel, na realidade, <strong>não era capaz de diferenciar</strong> as preparações. Então, nós calculamos a probabilidade de ela acertar as 8 xícaras, considerando a hipótese nula verdadeira. O valor de probabilidade calculado (1,43%) corresponde ao nosso valor de p.<br />
+Da mesma forma, calculamos a probabilidade de outro resultado, de ela acertar pelo menos 6 xícaras, novamente considerando que a hipótese nula era verdadeira. Obtivemos, então, outro valor de p, o de 24,29%.</p>
+</div>
+<div id="e-o-nível-de-significância" class="section level3">
+<h3>E o nível de significância?</h3>
+<p>O nível de significância é o “ponto de corte” que nós estabelecemos para a rejeição da hipótese nula.</p>
+<p>Eu te perguntei se você acreditaria na capacidade de diferenciação da Dra. Muriel, caso ela acertasse 8 xícaras. Sabendo que a probabilidade de ela acertar, sem ser capaz de diferenciar as preparações era de 1,43%, você me respondeu (eu imagino) que sim. Mas, quando eu te perguntei se você acreditaria nela caso ela tivesse acertado 6 xícaras – sabendo que a probabilidade desse resultado era de 24,29% - você optou por não acreditar.</p>
+<p>Veja que para dar essas respostas, você estabeleceu um ponto de corte entre 1,43% e 24,29%, considerando que 1,43% era uma probabilidade baixa o suficiente para te convencer a rejeitar a hipótese nula, mas 24,29%, não. Esse ponto de corte corresponde ao seu nível de significância.</p>
+<p>O padrão, na maior parte das áreas, é um nível de significância () de 5%.</p>
+<p>Você também pode ser mais rígido, e estabelecer um nível de significância de 1%, por exemplo. Mas, nesse cenário, seria necessário delinear um experimento que incluísse mais xícaras, já que com 8 xícaras, ainda que a Dra. Muriel acertasse todas, ainda não teríamos evidências suficientes para rejeitar a hipótese nula.</p>
+</div>
+<div id="tá-mas-ela-acertou" class="section level3">
+<h3>Tá, mas… Ela acertou?</h3>
+<p>Ronald Fisher publicou esse delineamento no seu livro “The design of experiments”, de 1935, sob o nome que o tornou famoso, “Lady tasting tea”. No livro, Fisher descreve o experimento como algo hipotético.</p>
+<p>Mas, há evidências de que isso realmente aconteceu, e a Dra. Muriel acertou todas as xícaras. Parece, de fato, haver uma diferença no sabor do chá, uma vez que o chá é adicionado à preparação quente, enquanto que o leite é adicionado a temperatura ambiente. De acordo com uma declaração de 2008 feita pela “Royal Society of Chemists”, há mais desnaturação das proteínas do leite quando esse é adicionado após o chá, o que altera o sabor. Relatos – infelizmente muito difíceis de comprovar – sugerem que a própria Muriel havia explicado ao Fisher que haveria diferenças na desnaturação proteica.</p>
+<p>Essa história é também contada no famoso livro “Uma senhora toma chá”, de autoria de David Salsburg. No entanto, David se refere à mulher como “uma esposa de um professor universitário”. Uma falha imperdoável para um livro cujo título se baseia nesse episódio. Dra. Muriel, uma mulher com uma carreira científica notável, ainda mais para a sua época, não pode ser apagada dessa história.</p>
+<p><br></p>
+<hr>
+</div>
+<div id="referências" class="section level3">
+<h3>Referências:</h3>
+<ul>
+<li>Senn, S. (2012). Tea for three: of infusions and inferences and milk in first. Significance, 9(6), 30-33. <a href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/j.1740-9713.2012.00620.x">Acesso</a></li>
+<li>Salsburg, D. S. (2009). Uma senhora toma chá… como a estatística revolucionou a ciência no século XX. Rio de Janeiro: Zahar.</li>
+</ul>
+<p><br><b><br></p>
+</div>

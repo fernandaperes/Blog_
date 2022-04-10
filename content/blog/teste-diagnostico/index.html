@@ -1,0 +1,180 @@
+---
+title: "Seu teste diagnóstico foi positivo. Qual a probabilidade de ser um positivo verdadeiro?"
+author: Fernanda Fiel Peres
+date: '2020-12-28'
+slug: [probabilidade-positivo-verdadeiro]
+categories: ['Bioestatística', 'Estatística teórica']
+tags: ['como mentir com estatística', 'teorema de Bayes']
+comments: yes
+summary: 'Já se perguntou qual a probabilidade do seu teste diagnóstico ser um positivo verdadeiro? Neste post, discuto essa resposta. E ela não é nada intuitiva: depende de quem você é.'
+output:
+  blogdown::html_page:
+    toc: false
+---
+
+
+
+<p>Imagine que você fez um teste rápido de HIV e o resultado deu positivo. Qual a probabilidade de você, de fato, ter uma infecção por HIV?</p>
+<p>Para analisar essa questão, precisamos antes entender que os testes diagnósticos podem falhar. Essas falhas são o que chamamos de falsos positivos e falsos negativos.
+Quando o teste tem um resultado positivo, mas na realidade o paciente não tem a doença/ condição, trata-se de um <strong>falso positivo</strong>. Já quando o teste apresenta um resultado negativo, mas na realidade o paciente tem a doença/ condição, temos em mãos um <strong>falso negativo</strong>. Podemos esquematizar todas as possibilidades da seguinte forma:</p>
+<p><img src="https://i.imgur.com/T9PrUaE.png" width="350px" style="display: block; margin: auto;" /></p>
+<p>Você pode estar se perguntando: mas como é definido se na realidade a pessoa tem ou não a doença? Isso é definido com base no método de diagnóstico considerado o “padrão-ouro”. O padrão-ouro sempre será o método com maior acurácia - ou seja, com menor taxa de falsos positivos e falsos negativos. Esse padrão-ouro pode ser um teste diagnóstico ou um critério clínico.
+Já que o padrão-ouro é o método mais acurado, por que não utilizá-lo? Bom, porque muitas vezes trata-se de um método que não é o mais adequado à prática clínica. Por exemplo, pode ser um método muito invasivo.</p>
+<p>Tendo entendido os conceitos de falso positivo (FP), falso negativo (FN), verdadeiro positivo (VP) e verdadeiro negativo (VN), conseguimos discutir a definição de: <strong>sensibilidade e especificidade.</strong></p>
+<div id="sensibilidade" class="section level3">
+<h3>Sensibilidade</h3>
+<p>A sensibilidade é calculada dividindo-se os verdadeiros positivos pelo total de pessoas com a doença/ condição (ou seja, a soma dos verdadeiros positivos e os falsos negativos).</p>
+<p><span class="math display">\[
+Sensibilidade = \frac{VP}{VP + FN}
+\]</span></p>
+<p>A sensibilidade, portanto, se refere à probabilidade do teste ser positivo, dado que o paciente tem a doença.</p>
+</div>
+<div id="especificidade" class="section level3">
+<h3>Especificidade</h3>
+<p>Já a especificidade corresponde à divisão entre os verdadeiros negativos e o total de pessoas sem a doença/ condição (ou seja, a soma entre verdadeiros negativos e falsos positivos).</p>
+<p><span class="math display">\[
+Especificidade = \frac{VN}{VN + FP}
+\]</span></p>
+<p>Ou seja, a especificidade se refere à probabilidade do teste ser negativo, dado que o paciente não tem a doença.</p>
+</div>
+<div id="sensibilidade-x-especificidade" class="section level3">
+<h3>Sensibilidade x Especificidade</h3>
+<p>Talvez faça mais sentido pensar assim: um teste com alta sensibilidade vai apresentar poucos falsos negativos. Se a sensibilidade for 100%, significa que não haverá falsos negativos.
+Seguindo o mesmo raciocínio, um teste com alta especificidade, vai apresentar poucos falsos positivos. Um teste com especificidade de 100% não apresentará falsos positivos.</p>
+<p>Raramente na prática teremos um teste com 100% de sensibilidade e 100% de especificidade – um teste que, portanto, não terá resultados falsos. Em geral, se há aumento na sensibilidade do teste, há redução na especificidade.</p>
+<p>Em bancos de sangue, por exemplo, geralmente são usados testes com 100% de sensibilidade, ainda que isso implique em uma especificidade mais baixa. Nessa situação, não podemos correr o risco de ter falsos negativos.</p>
+</div>
+<div id="voltando-ao-exemplo-do-teste-de-hiv" class="section level3">
+<h3>Voltando ao exemplo do teste de HIV…</h3>
+<p>Vamos considerar que o teste rápido para o HIV apresenta uma <strong>sensibilidade de 99,8%</strong> e uma <strong>especificidade de 99,5%</strong>. Se o seu resultado foi positivo, qual a probabilidade de você, de fato, estar infectado?</p>
+<p>Você pode ficar tentado a pensar que a probabilidade é 99,8% ou 99,5%. Ou seja, uma probabilidade bem alta. Mas, na verdade, a probabilidade de um resultado positivo ser um verdadeiro positivo é dada por um valor chamado <strong>“Valor Preditivo Positivo” (VPP)</strong>, o qual depende da sensibilidade e da especificidade do teste, mas também da <strong>prevalência da doença na população</strong>.</p>
+<p>Assim como há o VPP, há o <strong>VPN (Valor Preditivo Negativo)</strong> que se refere à probabilidade de um teste negativo ser um verdadeiro negativo. Da mesma forma que o VPP, o VPN depende da sensibilidade, da especificidade e da prevalência da doença na população.</p>
+<p>Há fórmulas para calcular o VPP e o VPN, mas, para simplificar, vamos primeiramente calculá-los com base em um exemplo.</p>
+<p>Imagine que a pessoa que teve o resultado positivo é uma mulher heterossexual, sem comportamentos de risco. A prevalência da infecção por HIV nessa população é de aproximadamente 0,4%.</p>
+<p>Essa prevalência indica que em 100 mil mulheres dessa população, teremos aproximadamente:</p>
+<ul>
+<li>100.000 x 0,4% = 400 mulheres com HIV</li>
+<li>100.000 – 400 = 99600 mulheres sem HIV</li>
+</ul>
+<p>Vamos adicionar essas informações à tabela:</p>
+<p><img src="https://i.imgur.com/wD04YYl.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Agora vamos pensar: se todas essas mulheres fizessem o teste, quantas das 400 mulheres com HIV teriam um teste positivo?
+Podemos calcular a quantidade de verdadeiros positivos multiplicando o total de mulheres com a infecção pela sensibilidade do teste:</p>
+<p><span class="math display">\[
+Sensibilidade = \frac{VP}{VP + FN}
+\]</span></p>
+<p><span class="math display">\[
+VP = Sensibilidade \times (VP + FN)
+\]</span>
+<span class="math display">\[
+VP = 99,8\% \times 400
+\]</span>
+<span class="math display">\[
+VP = 399,2
+\]</span>
+Arredondando esse valor, isso significa que o teste será positivo em 399 dessas mulheres e, portanto, negativo em uma (um falso negativo).</p>
+<p><img src="https://i.imgur.com/gDwOjBF.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Ok, e das 99600 mulheres sem HIV, quantas terão resultados corretos? Ou seja: verdadeiros negativos?
+Para esse cálculo, multiplicamos o total de mulheres sem infecção pela especificidade do teste:</p>
+<p><span class="math display">\[
+Especificidade = \frac{VN}{VN + FP}
+\]</span></p>
+<p><span class="math display">\[
+VN = Especificidade \times (VN + FP)
+\]</span></p>
+<p><span class="math display">\[
+VP = 99,5\% \times 99600
+\]</span></p>
+<p><span class="math display">\[
+VP = 99102
+\]</span>
+Ou seja, das 99600 mulheres não infectadas, 99102 terão um teste negativo, mas as outras 498 terão um teste positivo (ou seja, falsos positivos).
+Então, vamos atualizar a tabela para responder à pergunta inicial…</p>
+<p><img src="https://i.imgur.com/p5hZbLK.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Portanto, se uma mulher dessa população tem um resultado positivo, qual a probabilidade de ser um positivo verdadeiro (VPP)?
+Podemos calcular isso dividindo o total de positivos verdadeiros (399) pelo total de resultados positivos (897):</p>
+<p><span class="math display">\[
+VPP = \frac{399}{897}
+\]</span>
+<span class="math display">\[
+VPP = 44,8\%
+\]</span></p>
+<p>Ou seja, há uma probabilidade de <strong>apenas 44,48%</strong> de o resultado ser um verdadeiro positivo!</p>
+<p>Podemos também aplicar esse raciocínio aos resultados negativos: se um resultado for negativo, a probabilidade de que ele seja um negativo verdadeiro (VPN) pode ser calculada através da divisão entre a quantidade de negativos verdadeiros (99102) e o total de resultados negativos (99103):</p>
+<p><span class="math display">\[
+VPN = \frac{99102}{99103}
+\]</span></p>
+<p><span class="math display">\[
+VPN = 99,99\%
+\]</span></p>
+<p>Portanto, existe uma probabilidade de 99,99% de que um resultado negativo nessa população seja um negativo verdadeiro. Bem mais confiável, né?</p>
+<p>E o menos intuitivo é que essas probabilidades <strong>variam de acordo com a prevalência da doença na população testada</strong>. Se fizermos o mesmo raciocínio, mas agora para uma mulher heterossexual que é usuária de droga injetável, os valores de VPP e VPN se alteram. Nessa população, estima-se que a prevalência de HIV seja de 5,9%. Logo, a tabela para 100 mil mulheres seria:</p>
+<p><img src="https://i.imgur.com/MB8zSs3.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Realizando os mesmos cálculos que fizemos anteriormente:</p>
+<p><span class="math display">\[
+VPP = \frac{VP}{VP + FP} = \frac{5888}{6358} = 92,6\%
+\]</span></p>
+<p><span class="math display">\[
+VPN = \frac{VN}{VN + FN} = \frac{93630}{93642} = 99,99\%
+\]</span></p>
+<p>Portanto, um resultado positivo em uma mulher que pertencesse a uma população com essa prevalência de HIV teria uma probabilidade de 92,6% de ser um verdadeiro positivo.</p>
+<p>Observe que, ainda que estejamos utilizando o mesmo teste - portanto, com os mesmos valores de sensibilidade e especificidade - os valores de VPP e VPN mudam quando a prevalência da infecção na população se altera.</p>
+<p>Muito contraintuitivo, não?</p>
+<blockquote>
+<p>Se você queria entender como analisar a probabilidade de um resultado positivo ser um falso positivo, você pode parar a leitura por aqui. Mas, caso queira aprofundar na matemática por trás dessas probabilidades, te convido a continuar lendo.</p>
+</blockquote>
+</div>
+<div id="e-quais-as-fórmulas-para-o-cálculo-do-vpp-e-do-vpn" class="section level3">
+<h3>E quais as fórmulas para o cálculo do VPP e do VPN?</h3>
+<p>O VPP e o VPN podem ser calculados usando o raciocínio que utilizamos acima, ou através das fórmulas abaixo. Os resultados dessas duas formas de calcular serão idênticos.</p>
+<p><span class="math display">\[
+VPP = \frac{Sensibilidade \times Prevalência}
+{Sensibilidade \times Prevalência + (1 - Especificidade) \times (1 - Prevalência)}
+\]</span>
+<br><br>
+<span class="math display">\[
+VPN = \frac{Especificidade \times (1 - Prevalência)}
+{Especificidade \times (1 - Prevalência) + (1 - Sensibilidade) \times Prevalência}
+\]</span></p>
+<p>O cálculo parece bem mais complexo do que o que fizemos anteriormente, mas está utilizando exatamente a mesma lógica.</p>
+</div>
+<div id="teorema-de-bayes" class="section level3">
+<h3>Teorema de Bayes</h3>
+<p>Os conceitos de VPP e VPN seguem um famoso teorema, o <strong>Teorema de Bayes</strong>. O foco desse teorema é a probabilidade condicional: a probabilidade de um determinado evento ocorrer, dado que outro evento já ocorreu.</p>
+<p>Talvez você se recorde de ter aprendido o cálculo de probabilidades condicionais no Ensino Médio. Representamos uma probabilidade condicional como P(A|B), sendo A o evento cuja probabilidade será calculada e B o evento que já aconteceu. De acordo com o teorema, essa probabilidade pode ser calculada da seguinte forma:</p>
+<p><span class="math display">\[
+P(A|B) = \frac{P(B|A) \times P(A)}{P(B)}
+\]</span></p>
+<p>Cabe um post inteiro para discutirmos apenas esse teorema. Mas, em termos práticos, ele permite ajustar o cálculo da probabilidade de um evento, com base em um conhecimento <em>a priori</em> sobre outro evento relacionado.
+É isso que estamos fazendo no caso do teste de HIV: ajustando a probabilidade de ser um positivo verdadeiro com base no conhecimento que já temos sobre aquela população (no caso, a prevalência da doença).</p>
+</div>
+<div id="um-comentário-sobre-probabilidades-pré-teste-e-pós-teste" class="section level3">
+<h3>Um comentário sobre probabilidades pré-teste e pós-teste</h3>
+<p>Os valores de VPP e VPN podem também ser chamados de <strong>probabilidades pós-teste</strong>. Isso porque se referem à probabilidade de o paciente ter a doença/ condição, considerando-se o resultado do seu teste diagnóstico.</p>
+<p>A <strong>probabilidade pré-teste</strong> se refere ao conhecimento que se tem <em>a priori</em> (ou seja, antes do teste diagnóstico ser realizado) sobre a probabilidade de aquele paciente ter a doença/ condição.</p>
+<p>Essa probabilidade pré-teste pode ser apenas a prevalência, como usamos no exemplo deste post. Mas, pode também ser uma probabilidade estimada pelo clínico ao considerar a prevalência, os exames físicos e os fatores de risco do paciente.</p>
+</div>
+<div id="analisando-essas-informações-no-contexto-da-pandemia-por-covid-19" class="section level3">
+<h3>Analisando essas informações no contexto da pandemia por COVID-19</h3>
+<p>Enquanto eu escrevo esse post, em dezembro de 2020, nós estamos enfrentando a pandemia provocada pelo Sars-Cov-2. Os valores de sensibilidade e especificidade variam muito entre os testes diagnósticos para COVID-19 produzidos por indústrias diferentes. No entanto, estima-se que os testes de RT-PCR apresentem, em média, uma sensibilidade de 87% e uma especificidade de 97%.</p>
+<p>Com base nesses valores, vamos imaginar um cenário: uma pessoa apresenta vários sintomas de infecção por COVID-19 (febre, tosse seca, perda de olfato, diarreias). Com base nesses sintomas e na prevalência da infecção por COVID-19 na cidade em que essa pessoa reside, o clínico estima uma probabilidade pré-teste de 80%. O resultado do exame de RT-PCR dá negativo. Qual a probabilidade desse resultado corresponder a um negativo verdadeiro?
+Essa probabilidade será dada pelo VPN (calculado da mesma forma que vimos acima): 65,1%. Ou seja, há uma probabilidade de apenas 65% de esse resultado negativo ser verdadeiro. Portanto, ainda que o resultado seja negativo, o mais adequado seria essa pessoa cumprir os 14 dias de quarentena.</p>
+<p>Da mesma forma, vamos imaginar outra situação: uma pessoa faz um teste RT-PCR sem ter nenhum sintoma, apenas para checar se está infectada, e obtém um resultado positivo. Vamos estimar que a probabilidade pré-teste para ela é de 5% (o que corresponde à prevalência em várias cidades). Qual a probabilidade de esse resultado positivo ser verdadeiro? Como vimos, isso é dado pelo VPP, que nesse caso é de 60,41%. Ou seja, há uma probabilidade de apenas 60% de o resultado do teste estar correto. Claro, nesse caso o apropriado é seguir com a quarentena de qualquer forma. Mas, o risco em acreditar completamente no teste diagnóstico vem após o período de confinamento: essa pessoa provavelmente passará a ter mais comportamentos de risco, já que se considera imunizada.</p>
+<p>Conhecer essas limitações matemáticas e estatísticas é algo fundamental à tomada de decisões no nosso cotidiano.</p>
+<br>
+<hr>
+<p><br></p>
+</div>
+<div id="referências" class="section level3">
+<h3>Referências:</h3>
+<ul>
+<li>Mlodinow, L. (2009). O andar do bêbado: como o acaso determina nossas vidas. Editora Schwarcz-Companhia das Letras.</li>
+<li>Boletim epidemiológico. Aids no Brasil: epidemia concentrada e estabilizada em populações de maior vulnerabilidade. Secretaria de Vigilância em Saúde – Ministério da Saúde – Brasil. Volume 43 – 2012.</li>
+<li>Bastos, F. I. P. M. (2000). A feminização da epidemia de AIDS no Brasil: determinantes estruturais e alternativas de enfrentamento.</li>
+<li>Taquette, S. (2009). Feminização da Aids e adolescência. Adolescencia e Saude, 6(1), 33-40.</li>
+<li>Reis, E., &amp; Reis, I. (2002). Avaliação de Testes Diagnósticos. Técnico do Departamento de Estatística da Universidade Federal de Minas Gerais.</li>
+<li>Kawamura, T. (2002). Interpretação de um teste sob a visão epidemiológica: eficiência de um teste. Arquivos Brasileiros de Cardiologia, 79(4), 437-441.</li>
+<li>DGITIS/SCTIE (2020). Acurácia dos testes diagnósticos registrados na ANVISA para a COVID-19. <a href="https://portalarquivos2.saude.gov.br/images/pdf/2020/June/02/AcuraciaDiagnostico-COVID19-atualizacaoC.pdf">Acesso</a>.</li>
+</ul>
+<p><br><br><br></p>
+</div>

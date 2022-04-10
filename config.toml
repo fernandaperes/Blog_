@@ -7,6 +7,7 @@ summaryLength = 25
 copyright = "Fernanda Fiel Peres - Todos os direitos reservados"
 enableEmoji = true
 publishDir = "docs"
+ignoreFiles = ['_bookdown.yml']
 # disqusShortname = fernandafperes"
 #googleAnalytics = "UA-1XXXXXXX1-1"
 

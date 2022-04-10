@@ -1,0 +1,327 @@
+---
+title: "Explorando os dados dos artigos da NBER #TidyTuesday"
+author: Fernanda Fiel Peres
+date: '2021-09-20'
+slug: [probabilidade-positivo-verdadeiro]
+categories: ['TidyTuesday', 'Gráficos']
+tags: ['#tidytuesday', 'ggplot2']
+comments: yes
+summary: 'Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.'
+output:
+  blogdown::html_page:
+    toc: false
+---
+
+
+
+<div id="os-dados-analisados" class="section level3">
+<h3>Os dados analisados</h3>
+<p>O post de hoje explora os dados dos artigos publicados pela National Bureau of Economic Research (NBER), que fazem parte da semana 40 do projeto <a href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday</a>. Os dados estão disponíveis no <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-09-28/readme.md">repositório oficial do projeto</a>.</p>
+<blockquote>
+<p>National Bureau of Economic Research (NBER) é uma organização sem fins lucrativos norte-americana voltada para pesquisa e “comprometida em realizar e disseminar pesquisas econômicas imparciais entre formuladores de políticas públicas, profissionais de negócios e a comunidade acadêmica”.<br />
+Fonte: <a href="https://pt.wikipedia.org/wiki/National_Bureau_of_Economic_Research">Wikipedia</a></p>
+</blockquote>
+<p>Essa é a minha segunda participação no #TidyTuesday e tem sido super proveitoso participar, porque acabo aprendendo novas funções de pacotes que eu uso e amo, como o <code>dplyr</code> e o <code>ggplot2</code>, e também acabo explorando outros pacotes. Essa semana, além do <code>ggtext</code> que eu conheci semana passada, também usei o pacote <code>gender</code>, que há um tempo eu tinha vontade de usar, mas ainda não tinha tido coragem de explorar.<br />
+Ah, se você não sabe o que é a #TidyTuesday, eu explico melhor no meu <a href="https://fernandafperes.com.br/tidytuesday-emmy/">post anterior</a>.</p>
+</div>
+<div id="leitura-do-banco-de-dados-e-carregamento-dos-pacotes" class="section level3">
+<h3>Leitura do banco de dados e carregamento dos pacotes</h3>
+<p>Como comentei, eu usei os pacotes <code>gender</code>, <code>ggtext</code> e o <code>tidyverse</code>. No primeiro uso do pacote <code>gender</code> também é necessário instalar o <code>genderdata</code>, que eu só consegui instalar usando o código comentado abaixo - por alguma razão, não instalou automaticamente no meu computador.</p>
+<pre class="r"><code>pacman::p_load(tidyverse, ggtext, gender)
+# devtools::install_github(&quot;ropensci/genderdata&quot;)</code></pre>
+<p>Para ler o banco de dados, usei o código fornecido no repositório do #TiduTuesday, que une vários bancos diferentes com a função <code>left_join</code>:</p>
+<pre class="r"><code>papers &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv&#39;)
+authors &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv&#39;)
+programs &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv&#39;)
+paper_authors &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv&#39;)
+paper_programs &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv&#39;)
+
+
+joined_df &lt;- left_join(papers, paper_authors) %&gt;% 
+  left_join(authors) %&gt;% 
+  left_join(paper_programs) %&gt;% 
+  left_join(programs)%&gt;% 
+  mutate(
+    catalogue_group = str_sub(paper, 1, 1),
+    catalogue_group = case_when(
+      catalogue_group == &quot;h&quot; ~ &quot;Historical&quot;,
+      catalogue_group == &quot;t&quot; ~ &quot;Technical&quot;,
+      catalogue_group == &quot;w&quot; ~ &quot;General&quot;
+    ),
+    .after = paper
+  )</code></pre>
+<pre class="r"><code>sample_n(joined_df, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 12
+##    paper  catalogue_group  year month title    author name  user_nber user_repec
+##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
+##  1 w23149 General          2017     2 Interna… w2233… Yusu… yusuf_ba… pba563    
+##  2 w5159  General          1995     6 Race an… w5017… Mich… &lt;NA&gt;      &lt;NA&gt;      
+##  3 w13134 General          2007     5 Instrum… w1313… Stan… stanisla… pan48     
+##  4 w24595 General          2018     5 Missing… w1849… Josh… joshua_k… &lt;NA&gt;      
+##  5 t0229  Technical        1998     3 Instrum… t0117… Guid… guido_im… pim4      
+##  6 t0219  Technical        1998     2 Anchori… w0204… Mich… michael_… phu137    
+##  7 w13219 General          2007     7 What De… w6220… Erzo… erzo_lut… plu27     
+##  8 w19915 General          2014     2 The Dyn… w1991… Hugh… hugh_mac… &lt;NA&gt;      
+##  9 w13949 General          2008     4 Nonpara… w1210… Chri… christop… &lt;NA&gt;      
+## 10 w26594 General          2019    12 Railroa… w2659… Mart… martin_r… &lt;NA&gt;      
+## # … with 3 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
+## #   program_category &lt;chr&gt;</code></pre>
+<p>O banco incluí uma lista de artigos da NBER acompanhados da data de publicação, nome dos autores e programa ao qual o artigo pertence. O banco inclui artigos do período de 1973 a 2021.</p>
+</div>
+<div id="identificando-o-gênero-dos-autores" class="section level3">
+<h3>Identificando o gênero dos autores</h3>
+<p>Há um tempo eu ouço falar no pacote <code>gender</code>, mas nunca o havia utilizado. Esse pacote permite identificar o gênero da pessoa com base no primeiro nome e no seu ano de nascimento. Por exemplo, de todos as pessoas chamadas Steve que nasceram em 1983, 99,4% eram homens e 0,6% eram mulheres. Logo, o pacote classificará um Steve nascido nesse ano como alguém do gênero masculino.<br />
+Vale dizer que é um pacote que usa um banco de dados com nomes em inglês, então seu funcionamento é limitado esse tipo de dado. Para os autores dos artigos da NBER, o pacote foi capaz de identificar o gênero de mais de 80% dos autores, então segui com a análise.<br />
+As análises que eu conduzi aqui foram baseadas no artigo <a href="https://bldavies.com/blog/female-representation-collaboration-nber/">Female representation and collaboration at the NBER</a>, escrito por Ben Davies. Eu tentei criar meu próprio script, sem “colar” do dele para me desafiar (e porque, para ser honesta, eu demorei para perceber que o post tinha um link para o script, haha!). Mas, eventualmente, o <a href="https://github.com/bldavies/bldavies.com/tree/master/content/blog/2021-03-29-female-representation-collaboration-nber/">script do Ben Davies</a> foi consultado.</p>
+<p>O meu primeiro passo foi criar duas colunas: uma coluna com o primeiro nome de cada autor (coluna <code>first_name</code>) e uma coluna com a data de nascimento estimada para cada autor (coluna <code>birth_year</code>). Estimei como ano de nascimento a data de publicação do artigo menos 35 anos - uma estratégia que não é à prova de falhas, mas que eu considerei uma estimativa válida.</p>
+<pre class="r"><code>joined_df$first_name &lt;- sapply(strsplit(joined_df$name, &quot; &quot;), `[`, 1)
+joined_df$birth_year &lt;- joined_df$year - 35</code></pre>
+<p>O próximo passo foi aplicar a função <code>gender_df</code> ao <em>data frame</em> para estimar os gêneros dos autores.</p>
+<pre class="r"><code>df_gender &lt;- gender::gender_df(joined_df,
+                               name_col = &quot;first_name&quot;,
+                               year_col = &quot;birth_year&quot;,
+                               method = &quot;ssa&quot;)</code></pre>
+<pre><code>## Warning: The `.dots` argument of `group_by()` is deprecated as of dplyr 1.0.0.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<p>Isso resultou no seguinte banco de dados:</p>
+<pre class="r"><code>sample_n(df_gender, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 6
+##    name        proportion_male proportion_female gender year_min year_max
+##    &lt;chr&gt;                 &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 Lu                    0                1      female     1972     1972
+##  2 Clement               1                0      male       1984     1984
+##  3 Christopher           0.992            0.0077 male       1982     1982
+##  4 Ryan                  0.977            0.0234 male       1982     1982
+##  5 Jonathan              0.992            0.008  male       1985     1985
+##  6 Jeffrey               0.994            0.0065 male       1982     1982
+##  7 Solomon               1                0      male       1983     1983
+##  8 Ashish                1                0      male       1975     1975
+##  9 Lawrence              0.998            0.0023 male       1949     1949
+## 10 Michael               0.994            0.0061 male       1940     1940</code></pre>
+<p>O próximo passo foi unir o banco de dados com os artigos, o <code>joined_df</code>, ao banco com os gêneros, o <code>df_gender</code>. Para isso, eu inicialmente tive que filtrar o banco <code>df_gender</code> para incluir apenas os casos não repetidos de nome e ano de nascimento, além de renomear algumas colunas para possibilitar o <code>left_join</code>. Ao final, fiquei com um <em>data frame</em> chamado <code>df</code>.</p>
+<pre class="r"><code>df_gender &lt;- df_gender %&gt;% rename(first_name = name,
+                                  birth_year = year_min) %&gt;%
+  select(first_name, birth_year, gender) %&gt;% distinct()
+
+df &lt;- left_join(joined_df, df_gender)</code></pre>
+<pre><code>## Joining, by = c(&quot;first_name&quot;, &quot;birth_year&quot;)</code></pre>
+<pre class="r"><code>sample_n(df, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 15
+##    paper  catalogue_group  year month title    author name  user_nber user_repec
+##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
+##  1 w8103  General          2001     1 An Inte… w3557… Jona… jonathan… pgr20     
+##  2 w13005 General          2007     4 Bank Si… w1300… Hiro… hirofumi… puc3      
+##  3 w17121 General          2011     6 Global … w7426… Mich… michael_… peh4      
+##  4 w19926 General          2014     2 The Gro… h0037… Kevi… kevin_or… por7      
+##  5 w24256 General          2018     1 Demogra… w6617… John… john_don… &lt;NA&gt;      
+##  6 w18772 General          2013     2 Long-Te… w1605… Lisa… lisa_gen… &lt;NA&gt;      
+##  7 w7869  General          2000     9 Can Sti… w4443… Vara… varadara… pch40     
+##  8 w26467 General          2019    11 Selecti… w2550… Chua… chuan_yu  &lt;NA&gt;      
+##  9 w15242 General          2009     8 Screeni… w1270… Kell… kelly_sh… &lt;NA&gt;      
+## 10 w26732 General          2020     2 Not Pla… w2132… Rebe… rebecca_… &lt;NA&gt;      
+## # … with 6 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
+## #   program_category &lt;chr&gt;, first_name &lt;chr&gt;, birth_year &lt;dbl&gt;, gender &lt;chr&gt;</code></pre>
+</div>
+<div id="proporção-de-mulheres-autoras-ou-co-autoras-de-artigos-da-nber-por-década" class="section level3">
+<h3>Proporção de mulheres autoras ou co-autoras de artigos da NBER por década</h3>
+<p>O próximo passo foi criar uma variável que correspondesse à década de publicação do artigo, chamada de <code>decade</code>. Eu incluí as décadas de 1980 a 2010 em um objeto ( <code>decades</code>), para filtrar o banco posteriormente. Essas décadas foram escolhidas por serem as com dados completos, referentes aos 10 anos.</p>
+<pre class="r"><code>df &lt;- df %&gt;% mutate(decade = factor(paste0((floor(year / 10) * 10),&quot;s&quot;)))
+
+decades &lt;- c(&quot;1980s&quot;, &quot;1990s&quot;, &quot;2000s&quot;, &quot;2010s&quot;)</code></pre>
+<p>A tabela abaixo resume a proporção de mulheres autoras/ co-autoras por década, bem como a proporção de autores em cada década cujo gênero não pode ser identificado.</p>
+<pre class="r"><code>tbl_sum &lt;- df %&gt;% filter(decade %in% decades) %&gt;%
+  group_by(decade, gender) %&gt;% 
+  count() %&gt;% 
+  spread(gender, n) %&gt;% 
+  rename(NI = &quot;&lt;NA&gt;&quot;) %&gt;% 
+  mutate(total = female + male,
+         prop.f = round(100*female/total,2),
+         prop.m = round(100*male/total,2),
+         estimated.sex = 100-round(100*NI/(female+male+NI),2))
+
+tbl_cont &lt;- df %&gt;% filter(!is.na(gender),
+                          decade %in% decades) %&gt;%
+  group_by(decade, gender) %&gt;% 
+  count()</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+Década
+</th>
+<th style="text-align:center;">
+Autoras/ Co-autoras mulheres
+</th>
+<th style="text-align:center;">
+Autores/ Co-autores homens
+</th>
+<th style="text-align:center;">
+Proporção de autoras mulheres (%)
+</th>
+<th style="text-align:center;">
+Proporção de autores com gênero identificado (%)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1980s
+</td>
+<td style="text-align:center;">
+401
+</td>
+<td style="text-align:center;">
+4.956
+</td>
+<td style="text-align:center;">
+7,49
+</td>
+<td style="text-align:center;">
+85,75
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1990s
+</td>
+<td style="text-align:center;">
+1.380
+</td>
+<td style="text-align:center;">
+8.191
+</td>
+<td style="text-align:center;">
+14,42
+</td>
+<td style="text-align:center;">
+85,22
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2000s
+</td>
+<td style="text-align:center;">
+4.877
+</td>
+<td style="text-align:center;">
+20.975
+</td>
+<td style="text-align:center;">
+18,87
+</td>
+<td style="text-align:center;">
+82,32
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2010s
+</td>
+<td style="text-align:center;">
+10.990
+</td>
+<td style="text-align:center;">
+38.964
+</td>
+<td style="text-align:center;">
+22,00
+</td>
+<td style="text-align:center;">
+80,00
+</td>
+</tr>
+</tbody>
+</table>
+<p>Então, eu optei por criar um gráfico de linhas para mostrar a evolução da quantidade de autores/ co-autores de ambos os gêneros ao longo das décadas. Além disso, incluí no gráfico um rótulo indicando a proporção de mulheres. Usei para isso a camada <code>geom_label</code>, que por alguma razão eu sempre evito, tanto que essa foi a primeira vez que usei essa camada na vida, haha.</p>
+<pre class="r"><code>ggplot() +
+  geom_line(data = tbl_cont,
+            aes(x = decade, y = n,
+                group = gender, color = gender),
+            size = 1) +
+  geom_label(data = tbl_sum, aes(x = decade, y = (female+2100),
+                                 label = scales::number(prop.f,
+                                                        decimal.mark = &quot;,&quot;,
+                                                        suffix = &quot;%&quot;)),
+             size = 2.8) +
+  labs(x = &quot;Década&quot;, color = &quot;Gênero do autor&quot;,
+       title = &quot;&lt;b style=&#39;color:#B8D8D8&#39;&gt;Homens&lt;/b&gt; e &lt;b style=&#39;color:#7A9E9F&#39;&gt;mulheres&lt;/b&gt; autores ou co-autores de&lt;br&gt;
+       artigos da NBER por década&quot;,
+       subtitle = &quot;A proporção de autoras/ co-autoras mulheres aumentou ao longo das décadas\nmas mulheres ainda representam menos de 25% dos autores/ co-autores&quot;) +
+  scale_color_manual(values = c(&quot;#7A9E9F&quot;, &quot;#B8D8D8&quot;)) +
+  theme_classic() +
+  theme(axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        panel.grid.major.y = element_line(color = &quot;grey90&quot;,
+                                          size = 0.3),
+        axis.title.y = element_blank(),
+        legend.position = &quot;none&quot;,
+        plot.title = element_markdown())</code></pre>
+<p><img src="graf1.png" width="700px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="proporção-de-mulheres-autoras-ou-co-autoras-de-artigos-da-nber-por-programa-no-período-de-2000-a-2019" class="section level3">
+<h3>Proporção de mulheres autoras ou co-autoras de artigos da NBER por programa, no período de 2000 a 2019</h3>
+<p>Como próximo passo, eu tentei reproduzir o gráfico gerado pelo Ben Davies no artigo <a href="https://bldavies.com/blog/female-representation-collaboration-nber/">Female representation and collaboration at the NBER</a>, o qual representa a proporção de mulheres de acordo com o programa no qual o artigo foi publicado.<br />
+Para isso, selecionei os 10 programas com mais publicações e agrupei os demais em “outros”. Calculei a proporção de mulheres em cada um desses programas, bem como a proporção de mulheres no geral. Ah, eu selecionei como período de interesse apenas as décadas de 2000 e 2010.</p>
+<pre class="r"><code>top_20 &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&quot;)) %&gt;% 
+  mutate(program = factor(program)) %&gt;% 
+  group_by(program) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  arrange(-n) %&gt;%
+  slice_max(n, n = 20) %&gt;% 
+  pull(program)
+
+df &lt;- df %&gt;% mutate(program_top = factor(case_when(program %in% top_20 ~ program,
+                                                   TRUE ~ &quot;Other&quot;)))
+
+df_prog &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&quot;),
+                         !is.na(gender), !is.na(program)) %&gt;%
+  group_by(program, program_desc, program_category, gender) %&gt;% 
+  count() %&gt;% 
+  spread(gender, n) %&gt;%
+  mutate(total = female + male,
+         prop.f = round(100*female/total,2),
+         program = factor(program))
+
+
+prop.f.all &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&quot;),
+                            !is.na(gender), !is.na(program)) %&gt;%
+  group_by(gender) %&gt;% 
+  count() %&gt;% 
+  spread(gender, n) %&gt;%
+  mutate(total = female + male,
+         prop.f = round(100*female/total,2)) %&gt;% 
+  pull(prop.f)</code></pre>
+<p>O gráfico, no final, ficou assim:</p>
+<pre class="r"><code>ggplot(df_prog) +
+  geom_bar(aes(x = fct_reorder(program,
+                               prop.f),
+               y = prop.f, fill = program_category), stat = &quot;identity&quot;) +
+  geom_hline(yintercept = prop.f.all,
+             color = &quot;grey50&quot;,
+             lty = &quot;dashed&quot;) +
+  geom_text(aes(label = program_desc, x = program, y = (prop.f/2)),
+            size = 3) +
+  scale_y_continuous(expand = expansion(add = c(0,3))) +
+  scale_fill_manual(values = c(&quot;#7A9E9F&quot;, &quot;#C09BA2&quot;,&quot;#B8D8D8&quot;),
+                    na.value = &quot;grey80&quot;) +
+  labs(y = &quot;% de mulheres como autoras ou co-autoras&quot;,
+       title = &quot;Proporção de autorias ou co-autorias de mulheres\nem artigos da NBER durante o período de 2000 a 2019&quot;,
+       subtitle = &quot;A linha pontilhada indica essa proporção considerando-se todos os programas&quot;,
+       fill = &quot;Categoria do programa&quot;) +
+  coord_flip() +
+  theme_classic() +
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        axis.line.x = element_line(color = &quot;grey50&quot;, size = 0.3),
+        axis.title.x = element_text(margin = margin(10,10,15,10)),
+        legend.position = &quot;bottom&quot;,
+        legend.title = element_text(size = 10)) +
+  guides(fill = guide_legend(title.position = &quot;top&quot;, title.hjust = 0.5))</code></pre>
+<p><img src="graf2.png" width="700px" style="display: block; margin: auto;" /></p>
+<p><br><br><br></p>
+</div>

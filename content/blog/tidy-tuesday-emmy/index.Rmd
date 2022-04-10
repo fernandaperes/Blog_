@@ -4,7 +4,7 @@ author: Fernanda Fiel Peres
 date: '2021-09-20'
 slug: [probabilidade-positivo-verdadeiro]
 categories: ['TidyTuesday', 'Gráficos']
-tags: ['#tidytuesday', 'ggplot2']
+tags: ['tidytuesday', 'ggplot2']
 comments: yes
 summary: 'Análise exploratória dos dados dos Emmy Awards, com foco em gênero. Essa análise de dados faz parte do projeto #TidyTuesday.'
 output:

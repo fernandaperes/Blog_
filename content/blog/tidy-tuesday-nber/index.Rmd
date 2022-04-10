@@ -4,7 +4,7 @@ author: Fernanda Fiel Peres
 date: '2021-09-20'
 slug: [probabilidade-positivo-verdadeiro]
 categories: ['TidyTuesday', 'Gráficos']
-tags: ['#tidytuesday', 'ggplot2']
+tags: ['tidytuesday', 'ggplot2']
 comments: yes
 summary: 'Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.'
 output:

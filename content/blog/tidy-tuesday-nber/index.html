@@ -4,7 +4,7 @@ author: Fernanda Fiel Peres
 date: '2021-09-20'
 slug: [probabilidade-positivo-verdadeiro]
 categories: ['TidyTuesday', 'Gráficos']
-tags: ['#tidytuesday', 'ggplot2']
+tags: ['tidytuesday', 'ggplot2']
 comments: yes
 summary: 'Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.'
 output:
@@ -54,16 +54,16 @@ joined_df &lt;- left_join(papers, paper_authors) %&gt;%
 <pre><code>## # A tibble: 10 × 12
 ##    paper  catalogue_group  year month title    author name  user_nber user_repec
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
-##  1 w23149 General          2017     2 Interna… w2233… Yusu… yusuf_ba… pba563    
-##  2 w5159  General          1995     6 Race an… w5017… Mich… &lt;NA&gt;      &lt;NA&gt;      
-##  3 w13134 General          2007     5 Instrum… w1313… Stan… stanisla… pan48     
-##  4 w24595 General          2018     5 Missing… w1849… Josh… joshua_k… &lt;NA&gt;      
-##  5 t0229  Technical        1998     3 Instrum… t0117… Guid… guido_im… pim4      
-##  6 t0219  Technical        1998     2 Anchori… w0204… Mich… michael_… phu137    
-##  7 w13219 General          2007     7 What De… w6220… Erzo… erzo_lut… plu27     
-##  8 w19915 General          2014     2 The Dyn… w1991… Hugh… hugh_mac… &lt;NA&gt;      
-##  9 w13949 General          2008     4 Nonpara… w1210… Chri… christop… &lt;NA&gt;      
-## 10 w26594 General          2019    12 Railroa… w2659… Mart… martin_r… &lt;NA&gt;      
+##  1 w15160 General          2009     7 Dynamic… w1516… Nora… nora_tra… ptr159    
+##  2 w22406 General          2016     7 The Pol… w1011… Marc… marco_ba… pba170    
+##  3 w23688 General          2017     8 The Emp… w1734… Russ… russell_… pco940    
+##  4 w13693 General          2007    12 Net Wor… w8314… Nich… nicholas… pso104    
+##  5 w20074 General          2014     4 Market … w8551… Raym… raymond_… pfi257    
+##  6 w10549 General          2004     6 Welfare… w8784… Jona… jonah_ge… pge238    
+##  7 w17754 General          2012     1 Shangha… w6065… Wolf… wolfgang… pke8      
+##  8 w24477 General          2018     4 On Heck… w1574… Chri… christop… &lt;NA&gt;      
+##  9 w20086 General          2014     5 Segrega… w2008… Weer… weeracha… pki258    
+## 10 w5319  General          1995    10 The Imp… w5012… Henr… henry_we… &lt;NA&gt;      
 ## # … with 3 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
 ## #   program_category &lt;chr&gt;</code></pre>
 <p>O banco incluí uma lista de artigos da NBER acompanhados da data de publicação, nome dos autores e programa ao qual o artigo pertence. O banco inclui artigos do período de 1973 a 2021.</p>
@@ -87,18 +87,18 @@ joined_df$birth_year &lt;- joined_df$year - 35</code></pre>
 <p>Isso resultou no seguinte banco de dados:</p>
 <pre class="r"><code>sample_n(df_gender, 10)</code></pre>
 <pre><code>## # A tibble: 10 × 6
-##    name        proportion_male proportion_female gender year_min year_max
-##    &lt;chr&gt;                 &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-##  1 Lu                    0                1      female     1972     1972
-##  2 Clement               1                0      male       1984     1984
-##  3 Christopher           0.992            0.0077 male       1982     1982
-##  4 Ryan                  0.977            0.0234 male       1982     1982
-##  5 Jonathan              0.992            0.008  male       1985     1985
-##  6 Jeffrey               0.994            0.0065 male       1982     1982
-##  7 Solomon               1                0      male       1983     1983
-##  8 Ashish                1                0      male       1975     1975
-##  9 Lawrence              0.998            0.0023 male       1949     1949
-## 10 Michael               0.994            0.0061 male       1940     1940</code></pre>
+##    name    proportion_male proportion_female gender year_min year_max
+##    &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 George           0.991             0.0093 male       1974     1974
+##  2 Avi              1                 0      male       1978     1978
+##  3 Rene             0.432             0.568  female     1959     1959
+##  4 Elliott          0.982             0.018  male       1981     1981
+##  5 Andrea           0.0128            0.987  female     1980     1980
+##  6 Monica           0.0052            0.995  female     1985     1985
+##  7 Henry            0.986             0.0141 male       1974     1974
+##  8 Ina              0.104             0.896  female     1981     1981
+##  9 Erica            0.0054            0.995  female     1984     1984
+## 10 Judith           0                 1      female     1978     1978</code></pre>
 <p>O próximo passo foi unir o banco de dados com os artigos, o <code>joined_df</code>, ao banco com os gêneros, o <code>df_gender</code>. Para isso, eu inicialmente tive que filtrar o banco <code>df_gender</code> para incluir apenas os casos não repetidos de nome e ano de nascimento, além de renomear algumas colunas para possibilitar o <code>left_join</code>. Ao final, fiquei com um <em>data frame</em> chamado <code>df</code>.</p>
 <pre class="r"><code>df_gender &lt;- df_gender %&gt;% rename(first_name = name,
                                   birth_year = year_min) %&gt;%
@@ -110,16 +110,16 @@ df &lt;- left_join(joined_df, df_gender)</code></pre>
 <pre><code>## # A tibble: 10 × 15
 ##    paper  catalogue_group  year month title    author name  user_nber user_repec
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
-##  1 w8103  General          2001     1 An Inte… w3557… Jona… jonathan… pgr20     
-##  2 w13005 General          2007     4 Bank Si… w1300… Hiro… hirofumi… puc3      
-##  3 w17121 General          2011     6 Global … w7426… Mich… michael_… peh4      
-##  4 w19926 General          2014     2 The Gro… h0037… Kevi… kevin_or… por7      
-##  5 w24256 General          2018     1 Demogra… w6617… John… john_don… &lt;NA&gt;      
-##  6 w18772 General          2013     2 Long-Te… w1605… Lisa… lisa_gen… &lt;NA&gt;      
-##  7 w7869  General          2000     9 Can Sti… w4443… Vara… varadara… pch40     
-##  8 w26467 General          2019    11 Selecti… w2550… Chua… chuan_yu  &lt;NA&gt;      
-##  9 w15242 General          2009     8 Screeni… w1270… Kell… kelly_sh… &lt;NA&gt;      
-## 10 w26732 General          2020     2 Not Pla… w2132… Rebe… rebecca_… &lt;NA&gt;      
+##  1 w28907 General          2021     6 Central… w5882… Hele… helene_r… pre8      
+##  2 t0152  Technical        1994     1 The Pre… t0128… Dong… dongchul… &lt;NA&gt;      
+##  3 w11271 General          2005     4 Betting… w0772… Oliv… olivia_m… pmi73     
+##  4 w21895 General          2016     1 Can Sta… w2021… Josh… joshua_g… pgo281    
+##  5 w11035 General          2005     1 Drinkin… w1103… Amy … amy_wola… &lt;NA&gt;      
+##  6 w14529 General          2008    12 Busines… w1452… Lucr… lucrezia… pre102    
+##  7 w26948 General          2020     4 How Man… w1604… Bren… brent_ne… pne85     
+##  8 w24524 General          2018     4 The Pro… w9076… Chon… chong_xi… pxi42     
+##  9 w10081 General          2003    11 Zvi Gri… w0013… Reub… reuben_g… pgr333    
+## 10 w23676 General          2017     8 Short a… w2367… Ian … ian_wrig… &lt;NA&gt;      
 ## # … with 6 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
 ## #   program_category &lt;chr&gt;, first_name &lt;chr&gt;, birth_year &lt;dbl&gt;, gender &lt;chr&gt;</code></pre>
 </div>

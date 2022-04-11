@@ -996,6 +996,19 @@ iframe {
     top: 80px;
 }
 
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#6E6E6E;
+  height: 1px;
+}
+
+
+.sobre {
+  text-align: left;
+}
 
 .sobre .column1 {
   float: left;
@@ -1016,6 +1029,8 @@ iframe {
 
 .sobre h3 {
   text-align: left;
+  margin-bottom: 20px;
+  margin-top: 0;
 }
 
 .sobre .column3 h4 {
@@ -1125,7 +1140,7 @@ a:hover.button {
     appearance: button;
     text-decoration: none;
     color: #fff;
-    background: #3C3744;
+    background: #2794A0;
     font-family: 'IsidoraSans-Bold';
     padding: 7px 12px;
 }

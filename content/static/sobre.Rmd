@@ -26,10 +26,7 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 <br>
 </div>
 
-
-***
-
-<br><br>
+<hr>
 
 <div class = "column3">
 

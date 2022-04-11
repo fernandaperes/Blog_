@@ -138,7 +138,6 @@ section.recent-posts {
 
 .section-title h2 {
     border-bottom: 1px solid rgba(0, 0, 0, .125);
-    margin-bottom: 25px;
     font-weight: 700;
     font-size: 1.4rem;
     margin-bottom: 27px;
@@ -157,6 +156,20 @@ section.recent-posts {
     font-family: 'IsidoraSans-Bold';
     text-transform: uppercase;
 }
+
+@media (max-width:991px) {
+.section-title2 h2 {
+    border-bottom: 4px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    margin-right: 10%;
+    margin-left: 10%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    font-family: 'IsidoraSans-Bold';
+    text-transform: uppercase;
+}}
 
 .section-title span {
     border-bottom: 3px solid #000;

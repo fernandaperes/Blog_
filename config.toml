@@ -1,4 +1,4 @@
-baseURL = "https://fernandafperes.com.br/"
+baseURL = ["https://fernandafperes.com.br/", "https://fernandafperes.netlify.app/"]
 languageCode = "pt-br"
 defaultContentLanguage = "pt-br"
 title = "Fernanda Peres | Estatística aplicada"

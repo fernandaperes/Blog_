@@ -13,9 +13,7 @@ License: https://www.wowthemes.net/freebies-license/
         url('/static/fonts/IsidoraSans-Bold.woff') format('woff'),
         url('/static/fonts/IsidoraSans-Bold.ttf') format('truetype'),
         url('/static/fonts/IsidoraSans-Bold.svg#IsidoraSans-Bold') format('svg');
-    font-weight: bold;
     font-style: normal;
-    font-display: swap;
 }
 
 .mainheading {

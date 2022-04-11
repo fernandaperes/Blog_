@@ -54,7 +54,7 @@ Se você já teve contato com algum artigo científico, é provável que você t
 knitr::include_graphics("g1.png")
 ```
   
-No entanto, apesar de muito utilizado - principalmente em contextos acadêmicos - esse tipo de gráfico é alvo de críticas, algumas vezes fervorosas, e tem sido chamado pejorativamente de **gráfico dinamite**. O nome é uma brincadeira com a semelhança desse tipo de gráfico com um detonador de dinamote antigo, aqueles que aparecem em desenhos animados.  
+No entanto, apesar de muito utilizado - principalmente em contextos acadêmicos - esse tipo de gráfico é alvo de críticas, algumas vezes fervorosas, e tem sido chamado pejorativamente de **gráfico dinamite**. O nome é uma brincadeira com a semelhança desse tipo de gráfico com um detonador de dinamite antigo, aqueles que aparecem em desenhos animados.  
   
 <br>
 ```{r, echo=FALSE, fig.align='center', out.width='300px'}
@@ -73,7 +73,7 @@ Uma das principais críticas é que esse tipo gráfico resume o conjunto de dado
   
 O gráfico de barras também **não** permite a visualização dos **dados brutos** – ao olharmos um gráfico de barras, não sabemos o tamanho de cada grupo, se há *outliers* (valores discrepantes) ou se a distribuição tem mais de uma moda.  
   
-Além disso, é importante lembrar que esses gráficos representam a **média** e medidas de dispersão baseadas nela. Mas, há dados que **não são adequadamente representados** pela média. Isso acomtece quando temos distribuições assimétricas, ou conjuntos de dados com *outliers*. Nesses casos, a **mediana** será uma medida mais apropriada e devemos usar gráficos que se baseiem nela (os quais discutiremos a seguir).  
+Além disso, é importante lembrar que esses gráficos representam a **média** e medidas de dispersão baseadas nela. Mas, há dados que **não são adequadamente representados** pela média. Isso acontece quando temos distribuições assimétricas, ou conjuntos de dados com *outliers*. Nesses casos, a **mediana** será uma medida mais apropriada e devemos usar gráficos que se baseiem nela (os quais discutiremos a seguir).  
   
   
 ### Quais as alternativas ao gráfico de dinamite?  
@@ -86,7 +86,7 @@ Para discutir as alternativas, vamos construir diferentes gráficos utilizando u
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g3.png")
 ```
-<center><font size ='3'>Gráfico de barras ("gráfico dinamite") representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center><font size ='2'>Gráfico de barras ("gráfico dinamite") representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
   
   
 #### Gráficos dot plot  
@@ -98,10 +98,10 @@ Além disso, é comum sobrepor a esses pontos uma linha horizontal representando
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g4.png")
 ```
-<center><font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center><font size ='2'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
   
   
-Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os demais, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).  
+Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os outros dois, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).  
   
 O que eu vejo como vantagens do dot plot? Além de ser um gráfico que nos permite visualizar os dados brutos, é um gráfico baseado em média. Se usamos um teste paramétrico para comparar os grupos, como o teste-t ou a ANOVA, a análise será baseada na média e em medidas de dispersão baseadas na média. Portanto, eu gosto de poder visualizar essas medidas no gráfico.  
   
@@ -149,10 +149,10 @@ ggplot(dados, aes(x = Grupo, y = Escores)) +
   
 Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no [último post aqui do blog](https://fernandafperes.com.br/interpretacao-boxplot/). O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).  
   
-```{r, echo=FALSE, fig.align='center', out.width='320px'}
+```{r, echo=FALSE, fig.align='center', out.width='450px'}
 knitr::include_graphics("g5.png")
 ```
-<center><font size ='3'>Estrutura básica de um gráfico boxplot.</font></center><br><br>
+<center><font size ='2'>Estrutura básica de um gráfico boxplot.</font></center><br><br>
   
 Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente conseguimos detectar que o grupo B apresenta dois valores outliers acima do limite superior:
 
@@ -160,11 +160,11 @@ Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente c
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g6.png")
 ```
-<center><font size ='3'>Gráfico boxplot para três grupos: A, B e C.</font></center><br><br>
+<center><font size ='2'>Gráfico boxplot para três grupos: A, B e C.</font></center><br><br>
   
 Assim como o dot plot, o boxplot mostra muito mais informações que o gráfico de barras: cinco medidas de posição + *outliers*. Além disso, conseguimos avaliar a dispersão dos dados através da altura da caixa (que representa a amplitude interquartil) e da distância entre o limite inferior e o superior.  
   
-Porém, é importante entender que as medidas representadas em um boxplot **não são aquelas usadas em testes paramétricos** - o que significa que esse pode não ser o gráfico ideal para representar dados analisados por esses testes. Além disso, o boxplot só pode ser usado em **amostras maiores**. O n mínimo para estimar as 5 medidas é n = 5, mas o ideal mesmo é usar em amostras superiores a isso (ainda que não haja na literatura um consenso de qual seria esse n ideal).  
+Porém, é importante entender que as medidas representadas em um boxplot **não são aquelas usadas em testes paramétricos** - o que significa que esse pode não ser o gráfico ideal para representar dados analisados por esses testes. Além disso, o boxplot só pode ser usado em **amostras maiores**. O n mínimo para estimar as 5 medidas é n = 5, mas o ideal mesmo é usá-lo em amostras superiores a isso (ainda que não haja na literatura um consenso de qual seria esse n ideal).  
   
 E, assim como o gráfico de barras, o boxplot **não** mostra os **dados brutos**. Ao olharmos para o boxplot não temos como saber o tamanho dos grupos ou se a distribuição tem mais de uma moda.  
   
@@ -193,7 +193,7 @@ Ah, dada essa limitação do boxplot não mostrar os dados brutos, sugere-se que
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g7.png")
 ```
-<center><font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center><font size ='2'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
   
   
 ##### Como fazer um boxplot com dot plot sobreposto no R?  
@@ -264,7 +264,7 @@ ggplot(dados, aes(x = Grupo, y = Escores)) +
   
 Uma desvantagem que se aplica a todas as alternativas ao gráfico de barras, na minha opinião, é: são gráficos muito menos difundidos e, por isso, uma audiência não-técnica terá dificuldade em interpretá-los. Acho esses gráficos incríveis para artigos científicos, para uso pelo time de análise de dados em uma empresa? Com certeza. Acho que são gráficos adequados para matérias jornalísticas ou para divulgação científica? Não. Nesses últimos cenários, mesmo com todas as críticas (válidas) ao gráfico de barras, eu tendo a preferi-lo. Afinal, um gráfico só é bom quando ele comunica com a sua audiência.  
   
-O gráfico mais adequado vai depender: do teste estatístico que foi feito, do tamanho dos grupos, da sua audiência.  
+O gráfico mais adequado vai depender: do teste estatístico que foi feito, do tamanho dos grupos, do seu público.  
   
 Se gráficos são um assunto que te interessa, recomendo um livro que ganhou meu coração: o livro [Storytelling com dados](https://amzn.to/3qKr4Xf), escrito pela Cole Nussbaumer Knaflic.  
    

@@ -30,8 +30,9 @@
                         {{end}}
                         {{end}}
                         <!-- Post Title -->
-                        <h1 class="posttitle">{{ .Title }}</h1>
-                    </div>
+
+<h1 class="posttitle">{{ .Title }}</h1>
+</div>
 
 <center><span class="author-description">
     {{ dateFormat "2 Jan, 2006" .PublishDate }}
@@ -56,7 +57,7 @@
                     <!-- Post Featured Image -->
                     {{$images := .Resources.ByType "image"}}
                     {{with $images.GetMatch "*cover*" }}
-                        <center><img class="featured-image img-fluid" src="{{ .Permalink }}" alt="thumbnail for this post" style="width:480px;"></center>
+                        <center><img class="featured-image img-fluid" src="{{ .Permalink }}" alt="thumbnail for this post" style="width:350px;"></center>
                     {{end}}
                     <!-- End Featured Image -->
 

@@ -11,7 +11,12 @@
         <div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="mainheading">
-				<h1 class="posttitle">{{ .Title }}</h1> 
+
+
+{{ if not .Params.hidetitle }}
+<h1 class="posttitle">{{ .Title }}</h1>
+{{ end }}
+
             </div>
 			<div class="article-post">
 				{{ .Content }}

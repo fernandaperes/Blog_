@@ -7,7 +7,7 @@ License: https://www.wowthemes.net/freebies-license/
 
 @font-face {
   font-family: 'IsidoraSans-Bold';
-  src: url('IsidoraSans-Bold.ttf') format('truetype');
+  src: url('/static/fonts/IsidoraSans-Bold.ttf') format('truetype');
 }
 
 .mainheading {

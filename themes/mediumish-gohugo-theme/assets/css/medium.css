@@ -7,12 +7,12 @@ License: https://www.wowthemes.net/freebies-license/
 
 @font-face {
     font-family: 'Isidora Sans';
-    src: url('../../../../static/fonts/IsidoraSans-Bold.eot');
-    src: url('../../../../static/fonts/'IsidoraSans-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../../../../static/fonts/IsidoraSans-Bold.woff2') format('woff2'),
-        url('../../../../static/fonts/IsidoraSans-Bold.woff') format('woff'),
-        url('../../../../static/fonts/IsidoraSans-Bold.ttf') format('truetype'),
-        url('../../../../static/fonts/IsidoraSans-Bold.svg#IsidoraSans-Bold') format('svg');
+    src: url('/static/fonts/IsidoraSans-Bold.eot');
+    src: url('/static/fonts/'IsidoraSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/IsidoraSans-Bold.woff2') format('woff2'),
+        url('/static/fonts/IsidoraSans-Bold.woff') format('woff'),
+        url('/static/fonts/IsidoraSans-Bold.ttf') format('truetype'),
+        url('/static/fonts/IsidoraSans-Bold.svg#IsidoraSans-Bold') format('svg');
     font-style: normal;
 }
 

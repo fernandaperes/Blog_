@@ -6,8 +6,7 @@ License: https://www.wowthemes.net/freebies-license/
 
 @font-face {
   font-family: 'IsidoraSans-Bold';
-  src: local('IsidoraSans-Bold'),
-  url('IsidoraSans-Bold.eot'),
+  src: url('IsidoraSans-Bold.eot'),
   url('IsidoraSans-Bold.ttf') format('truetype'),
   url('IsidoraSans-Bold.woff2') format('woff2'),
   url('IsidoraSans-Bold.woff') format('woff'),

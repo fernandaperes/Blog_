@@ -6,11 +6,11 @@ License: https://www.wowthemes.net/freebies-license/
 
 @font-face {
   font-family: 'IsidoraSans-Bold';
-  src: url('.../fonts/IsidoraSans-Bold.eot'),
-  url('.../fonts/IsidoraSans-Bold.ttf') format('truetype'),
-  url('.../fonts/IsidoraSans-Bold.woff2') format('woff2'),
-  url('.../fonts/IsidoraSans-Bold.woff') format('woff'),
-  url('.../fonts/IsidoraSans-Bold.svg#IsidoraSans-Bold') format('svg');
+  src: url('../fonts/IsidoraSans-Bold.eot'),
+  url('../fonts/IsidoraSans-Bold.ttf') format('truetype'),
+  url('../fonts/IsidoraSans-Bold.woff2') format('woff2'),
+  url('../fonts/IsidoraSans-Bold.woff') format('woff'),
+  url('../fonts/IsidoraSans-Bold.svg#IsidoraSans-Bold') format('svg');
   font-style: normal;
 }
     

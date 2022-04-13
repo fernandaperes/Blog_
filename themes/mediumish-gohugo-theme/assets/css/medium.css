@@ -1034,6 +1034,7 @@ hr {
   text-align: left;
 }
 
+@media (min-width:770px) {
 .sobre .column1 {
   float: left;
   width: 65%;
@@ -1044,11 +1045,18 @@ hr {
   padding-left: 50px;
   width: 35%;
 }
+}
 
 .sobre .column3 {
   float: right;
   width: 45%;
   margin-right: 35px;
+}
+
+.sobre .column4 {
+  float: left;
+  width: 45%;
+  margin-left: 35px;
 }
 
 .sobre h3 {
@@ -1075,13 +1083,6 @@ hr {
 .sobre .column3 p {
   margin-top: -25px;
   line-height: 1.3em;
-}
-
-
-.sobre .column4 {
-  float: left;
-  width: 45%;
-  margin-left: 35px;
 }
 
 .sobre .column4 h4 {

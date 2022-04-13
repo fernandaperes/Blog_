@@ -4,7 +4,6 @@ hidetitle: true
 ---
 
 <div class="sobre row">
-
   
 <div class = "column1">
 

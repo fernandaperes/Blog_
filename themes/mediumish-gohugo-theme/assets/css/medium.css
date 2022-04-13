@@ -76,15 +76,6 @@ sup {
   font-size: smaller;
 }
 
-@media only screen and (max-width: 992px) {
-  .mediumnavigation {
-    background: rgba(255, 255, 255, .97);
-    margin-right: 4%;
-    margin-left: 4%;
-    transition: top 0.2s ease-in-out;
-}
-}
-
 .mediumnavigation {
     background: rgba(255, 255, 255, .97);
     margin-right: 10%;

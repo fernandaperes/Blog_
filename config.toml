@@ -11,11 +11,12 @@ ignoreFiles = ['_bookdown.yml']
 disqusShortname = "fernandafperes"
 googleAnalytics = "G-ZBDS4LT6P0"
 
+
 [params]
   logo = "/images/favicon.ico"
   description =""
-  customCss = ["css/purebasic.css"]
-  customJs = ["js/highlight.pack.js"]
+  customCss = ["css/purebasic.css", "css/applause-button.css"]
+  customJs = ["js/highlight.pack.js", "js/applause-button.js"]
 
 
 [params.author]

@@ -87,18 +87,42 @@ sup {
   color: #000;
 }
 
+
 @media only screen and (min-width: 992px) {
   .navbar .logo {
     border-bottom: 4px solid #000;
-    width: 90%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
   .navbar .logo img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+  }
+  .navbar .nav-item {
+    padding: 0.5em 1em;
+  }
+  .navbar .social {
+  text-align: left;
+  margin-left: 5%;
+  margin-right: auto;
+  margin-top: -20px;
+  }
+  .navbar .menu {
+  text-align: right;
+  margin-right: 6%;
+  margin-left: auto;
+  margin-top: -15px;
+  }
+}
+
+
+
+@media only screen and (max-width: 992px) {
+  .navbar .logo {
+    width: 100%;
+  }
+  .navbar .logo img {
+    display: block;
+    margin: 0 auto;
   }
   .navbar .nav-item {
     padding: 0.5em 1em;

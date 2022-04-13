@@ -1032,6 +1032,7 @@ hr {
 
 .sobre {
   text-align: left;
+  display: inline-block;
 }
 
 @media (min-width:770px) {
@@ -1045,19 +1046,44 @@ hr {
   padding-left: 50px;
   width: 35%;
 }
+.sobre .column3 {
+  float: left;
+  width: 45%;
+  margin-left: 0 auto;
+}
+
+.sobre .column4 {
+  float: right;
+  width: 45%;
+  margin-right: 0 auto;
+}
+}
+
+@media (max-width:770px) {
+.sobre .column1 {
+  float: left;
+  width: 100%;
+}
+
+.sobre .column2 {
+  width: 230px;
+  margin: 0 auto;
 }
 
 .sobre .column3 {
   float: right;
-  width: 45%;
-  margin-right: 35px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .sobre .column4 {
   float: left;
-  width: 45%;
-  margin-left: 35px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
+}
+
 
 .sobre h3 {
   text-align: left;

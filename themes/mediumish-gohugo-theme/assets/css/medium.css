@@ -76,7 +76,7 @@ sup {
   font-size: smaller;
 }
 
-@media (max-width: 992px){
+@media only screen and (max-width: 992px) {
   .mediumnavigation {
     background: rgba(255, 255, 255, .97);
     margin-right: 4%;

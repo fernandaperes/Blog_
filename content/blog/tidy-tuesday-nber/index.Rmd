@@ -138,14 +138,17 @@ tbl_cont <- df %>% filter(!is.na(gender),
   
   
 ```{r, echo = FALSE}
-knitr::kable(tbl_sum %>% select(decade, female, male, prop.f, estimated.sex) %>% 
+tabela <- tbl_sum %>% select(decade, female, male, prop.f, estimated.sex) %>% 
   rename(Década = decade,
          `Autoras/ Co-autoras mulheres` = female,
          `Autores/ Co-autores homens` = male,
          `Proporção de autoras mulheres (%)` = prop.f,
-         `Proporção de autores com gênero identificado (%)` = estimated.sex),
-  format.args = list(decimal.mark = ",", big.mark = "."),
-  align=rep('c', 5), format = "html")
+         `Proporção de autores com gênero identificado (%)` = estimated.sex)
+
+tabela %>% flextable::regulartable() %>%
+  flextable::align(align = "center", part = 'all') %>% 
+  flextable::colformat_num(big.mark = "", decimal.mark = ",") %>% 
+  flextable::width(j = 2:5, width = 1.4)
 ```
   
 Então, eu optei por criar um gráfico de linhas para mostrar a evolução da quantidade de autores/ co-autores de ambos os gêneros ao longo das décadas. Além disso, incluí no gráfico um rótulo indicando a proporção de mulheres. Usei para isso a camada `geom_label`, que por alguma razão eu sempre evito, tanto que essa foi a primeira vez que usei essa camada na vida, haha.  

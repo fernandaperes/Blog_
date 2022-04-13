@@ -3,8 +3,8 @@ title: "Como interpretar (e construir) um gráfico boxplot?"
 author: Fernanda Fiel Peres
 date: '2022-03-29'
 slug: [interpretacao-boxplot]
-categories: ['Estatística teórica', 'Gráficos']
-tags: ['boxplot', 'ggplot2']
+categories: []
+tags: ['Estatística teórica', 'Gráficos', 'ggplot2']
 comments: yes
 summary: 'O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.'
 output:
@@ -28,7 +28,8 @@ Trata-se de um gráfico cujo nome em português é “diagrama de caixas,” mas
 Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e outliers. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.  
   
   
-```{r, echo=FALSE, fig.align='center', out.width = '450px', fig.cap=paste0('Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too.')}
+<center>
+```{r, echo=FALSE, fig.align='center', out.width = '450px'}
 Páginas <- c(4, 5, 6, 6, 11, 1, 4, 6, 13, 15, 15, 18, 19,
              32, 2, 4, 6, 13, 18, 18, 21, 21, 25)
 Grupo <- c(rep("Graduação", 5), rep("Pós-graduação", 9), rep("Pós-doutorado", 9))
@@ -47,6 +48,8 @@ g1 <- ggplot(dados, aes(x = Grupo, y = Páginas)) +
 
 ggsave(plot = g1, "g1.png", width = 3.4, height = 2.8, dpi = 400)
 ```
+Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too.<br>
+</center>
   
 Trata-se de um gráfico cujo nome em português é "diagrama de caixas", mas que é muito mais conhecido pelo seu nome em inglês: *boxplot*.  
 Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e *outliers*. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.  
@@ -212,9 +215,11 @@ Trata-se de um gráfico usado quando queremos representar a distribuição de um
 Além da variável numérica/ ordinal, podemos **incluir uma variável de grupo**, como o boxplot do começo do post. Esse boxplot que mostra a distribuição da quantidade de páginas de artigos selecionados por alunos divididos em três grupos: graduação, pós-graduação e pós-doutorado. Basta uma rápida olhada para percebermos que a mediana de páginas do grupo “Graduação” é inferior às medianas dos demais grupos. Podemos também observar que o grupo com maior variação absoluta (ou seja, maior diferença entre o maior e menor valor) é o grupo "Pós-graduação". Já o grupo "Pós-doutorado" apresenta a maior amplitude interquartil (ou seja, a caixa mais alta). Poderíamos também usar o boxplot para avaliar a simetria da distribuição, mas essa discussão fica para outro post.  
   
   
-```{r, echo=FALSE, fig.align='center', out.width = '350px', fig.cap=paste0('Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too.')}
+```{r, echo=FALSE, fig.align='center', out.width = '350px'}
 knitr::include_graphics("g1.png")
 ```
+<center>Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too.</center><br>
+  
   
 Além disso, perceba que o boxplot não é baseado em média nem em medidas de dispersão derivadas da média (como desvio-padrão e variância). Portanto, é um gráfico excelente para **distribuições que não são bem representadas pela média**, sendo ótimo para distribuições não-normais.  
   
@@ -253,8 +258,7 @@ knitr::include_graphics("g11.png")
 ```
 
 
-  
-<br><br>
+
   
 ***
   

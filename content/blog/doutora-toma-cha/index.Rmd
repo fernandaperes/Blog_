@@ -2,9 +2,8 @@
 title: "Um doutora toma chá"
 author: Fernanda Fiel Peres
 date: '2021-06-05'
-slug: [probabilidade-positivo-verdadeiro]
-categories: ['Estatística teórica', 'Valor de p']
-tags: ['valor de p', 'teste de hipóteses']
+categories: []
+tags: ['Estatística teórica', 'Valor de p']
 comments: yes
 summary: 'Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento "uma senhora toma chá".'
 output:

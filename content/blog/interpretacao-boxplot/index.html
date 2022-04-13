@@ -3,8 +3,8 @@ title: "Como interpretar (e construir) um gráfico boxplot?"
 author: Fernanda Fiel Peres
 date: '2022-03-29'
 slug: [interpretacao-boxplot]
-categories: ['Estatística teórica', 'Gráficos']
-tags: ['boxplot', 'ggplot2']
+categories: []
+tags: ['Estatística teórica', 'Gráficos', 'ggplot2']
 comments: yes
 summary: 'O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.'
 output:
@@ -19,6 +19,9 @@ csl: APA.csl
 <p>Se você está na área de análise de dados ou na área acadêmica, é provável que você já tenha visto um gráfico com aparência um tanto peculiar, como o acima, inspirado no artigo de Schenk &amp; Steppan (2014).<br />
 Trata-se de um gráfico cujo nome em português é “diagrama de caixas,” mas que é muito mais conhecido pelo seu nome em inglês: boxplot.<br />
 Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e outliers. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.</p>
+<center>
+Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation"><a href="#ref-schenk2014too" role="doc-biblioref">Schenk &amp; Steppan</a> (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.<br>
+</center>
 <p>Trata-se de um gráfico cujo nome em português é “diagrama de caixas,” mas que é muito mais conhecido pelo seu nome em inglês: <em>boxplot</em>.<br />
 Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e <em>outliers</em>. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.</p>
 <img src="https://i.imgur.com/DHvdmia.png" width="350px" style="display: block; margin: auto;" />
@@ -106,12 +109,11 @@ No caso do grupo “Graduação,” a mediana está sobreposta ao Q3 e ao limite
 <p>Em quais situações faz sentido usar um gráfico boxplot?<br />
 Trata-se de um gráfico usado quando queremos representar a distribuição de uma <strong>variável numérica ou, pelo menos, ordinal</strong>. No caso, representamos a distribuição da variável idade na nossa amostra.<br />
 Além da variável numérica/ ordinal, podemos <strong>incluir uma variável de grupo</strong>, como o boxplot do começo do post. Esse boxplot que mostra a distribuição da quantidade de páginas de artigos selecionados por alunos divididos em três grupos: graduação, pós-graduação e pós-doutorado. Basta uma rápida olhada para percebermos que a mediana de páginas do grupo “Graduação” é inferior às medianas dos demais grupos. Podemos também observar que o grupo com maior variação absoluta (ou seja, maior diferença entre o maior e menor valor) é o grupo “Pós-graduação.” Já o grupo “Pós-doutorado” apresenta a maior amplitude interquartil (ou seja, a caixa mais alta). Poderíamos também usar o boxplot para avaliar a simetria da distribuição, mas essa discussão fica para outro post.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-14"></span>
-<img src="https://i.imgur.com/3yvD9vb.png" alt="Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too." width="350px" />
-<p class="caption">
-Figura 2: Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation"><a href="#ref-schenk2014too" role="doc-biblioref">Schenk &amp; Steppan</a> (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
-</p>
-</div>
+<img src="https://i.imgur.com/zAIThVR.png" width="350px" style="display: block; margin: auto;" />
+<center>
+Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation"><a href="#ref-schenk2014too" role="doc-biblioref">Schenk &amp; Steppan</a> (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+</center>
+<p><br></p>
 <p>Além disso, perceba que o boxplot não é baseado em média nem em medidas de dispersão derivadas da média (como desvio-padrão e variância). Portanto, é um gráfico excelente para <strong>distribuições que não são bem representadas pela média</strong>, sendo ótimo para distribuições não-normais.</p>
 <p>Mas, claro, não é um gráfico para todas as audiências. Veja quantos parágrafos eu gastei para explicá-lo nesse texto. O boxplot é excelente para uso pelo time de dados, para publicações acadêmicas, mas em geral péssimo para contextos como divulgação científica e matérias jornalísticas.</p>
 </div>
@@ -127,7 +129,6 @@ Se ggplot2 é algo que te angustia (socorro, por que tantas linhas para gerar um
   labs(y = &quot;Quantidade de páginas&quot;) +
   theme_classic()</code></pre>
 <p><img src="https://i.imgur.com/fI4NX4L.png" width="400px" style="display: block; margin: auto;" /></p>
-<p><br><br></p>
 <hr />
 </div>
 <div id="referências" class="section level3 unnumbered">

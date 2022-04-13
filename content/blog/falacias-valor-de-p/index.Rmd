@@ -3,8 +3,8 @@ title: "As falácias do valor de p"
 author: Fernanda Fiel Peres
 date: '2021-08-30'
 slug: [falacias-valor-de-p]
-categories: ['Estatística teórica']
-tags: ['valor de p', 'nível de significância']
+categories: []
+tags: ['Estatística teórica', 'Valor de p']
 comments: yes
 summary: 'O valor de p está entre os conceitos mais complexos de estatística - e também entre os mais mal interpretados. A maior parte dos livros didáticos de estatística definem incorretamente o valor de p. Neste post, vamos discutir as interpretações incorretas mais comuns.'
 output:
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
   
 O valor de p está entre os conceitos de estatística mais difíceis de interpretar corretamente, na minha opinião. Mas, uma vez que tomamos decisões baseadas nele diariamente, não dá para fugir de entender exatamente o que ele significa e quais as suas limitações.  
   
-Em dois posts anteriores, discuti a definição e interpretação corretas do valor de p. Para ler o post no qual eu defino valor de p e nível de significância no contexto do experimento "Uma senhora toma chá", clique [aqui](https://fernandafperes.com.br/uma-doutora-toma-cha/). Para ler a explicação do cálculo do valor de p quando realizamos um teste estatístico, como o teste-t para amostras independentes, clique [aqui](https://fernandafperes.com.br/valor-de-p-calculo/).  
+Em dois posts anteriores, discuti a definição e interpretação corretas do valor de p. Para ler o post no qual eu defino valor de p e nível de significância no contexto do experimento "Uma senhora toma chá", clique [aqui](https://fernandafperes.com.br/blog/doutora-toma-cha/). Para ler a explicação do cálculo do valor de p quando realizamos um teste estatístico, como o teste-t para amostras independentes, clique [aqui](https://fernandafperes.com.br/blog/valor-de-p-calculo/).  
   
 O objetivo desse post é discutir tudo aquilo que o valor de p **não** é: todas as interpretações equivocadas - mas muito comuns - associadas a ele.  
   
@@ -69,7 +69,7 @@ $$\frac{1}{1024} = 0,000976 = 0,098\%$$
   
 O valor de p corresponde a essa probabilidade: a probabilidade de termos obtido aquele resultado (10 caras em 10 lançamentos) considerando a hipótese nula verdadeira (ou seja, assumindo que a moeda em questão é honesta).  
   
-> Se o conceito de valor de p ainda não está muito claro para você, recomendo a leitura de outros exemplos [aqui](https://fernandafperes.com.br/uma-doutora-toma-cha/) e [aqui](https://fernandafperes.com.br/valor-de-p-calculo/).  
+> Se o conceito de valor de p ainda não está muito claro para você, recomendo a leitura de outros exemplos [aqui](https://fernandafperes.com.br/blog/doutora-toma-cha/) e [aqui](https://fernandafperes.com.br/blog/valor-de-p-calculo/).  
   
 ### As falácias  
   
@@ -102,7 +102,7 @@ Uma probabilidade bem alta, concorda? Eu diria que muito próxima a 100%, já qu
 Vamos agora inverter essa probabilidade condicional: qual a probabilidade de uma pessoa ler esse post, dado que ela fala português?  
 Bom, agora estamos falando de uma probabilidade bem baixa. De todos os falantes de português, podemos imaginar que poucos se interessam por um tema tão específico como "falácias do valor de p".  
   
-Portanto, o valor de p **não indica** a probabilidade de a hipótese nula ser verdadeira. Seria ótimo termos acesso a essa probabilidade, mas infelizmente não temos.  
+Portanto, o valor de p **não indica** a probabilidade de a hipótese nula ser verdadeira. Seria ótimo termos acesso a essa probabilidade, mas, infelizmente, não temos.  
   
 O artigo de Cassidy e colaboradores resume o problema com essa falácia na seguinte frase: *"if the null is assumed to be true, there is no likelihood of it being true; it is a given"*. Em tradução livre: "se estamos assumindo que a hipótese nula é verdadeira, não há a probabilidade de ela ser verdadeira; trata-se de um fato".
   
@@ -110,7 +110,7 @@ O artigo de Cassidy e colaboradores resume o problema com essa falácia na segui
 #### Falácia 2. A falácia do erro do tipo I (*local type I error*)  
   
 Antes de explicar essa falácia, vale a pena lembrar o que é o erro do tipo I.  
-Tomamos a decisão de rejeitar ou não a H<sub>0</sub> ao compararmos o valor de p ao nível de significância ($\alpha$):  
+Tomamos a decisão de rejeitar ou não a H<sub>0</sub> ao compararmos o valor de p ao nível de significância  ($\alpha$):  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '400px'}
 knitr::include_graphics("Imagem2.png")
@@ -145,7 +145,7 @@ Vamos voltar ao exemplo do lançamento da moeda. Ao lançarmos uma moeda 10 veze
 Quando calculamos o valor de p, estamos considerando que a H<sub>0</sub> é verdadeira e que, portanto, **todos** terão sua ocorrência determinada pelo acaso. Em outras palavras, já estamos partindo do pressuposto de que a probabilidade de o resultado ser dado pelo acaso é 100%.  
   
 Como resumem Cassidy e colaboradores: *"(...) failure to recognize that the null hypothesis is always assumed to be true is responsible for the odds-against-chance and inverse-probability fallacies. Specifically, because the null is assumed to be true, random sampling (i.e., chance) is the only explanation for any result"*.  
-Em tradução livre: "A falha em compreender que a hipótese nula é sempre considerada verdadeira é responsável pelas falácias da probabilidade do acaso e da probabilidade inversa. Especificamente, como assume-se que a hipótese nula verdadeira, a amostragem aleatória (ou seja, o acaso) é a única explicação para qualquer resultado".
+Em tradução livre: "A falha em compreender que a hipótese nula é sempre considerada verdadeira é responsável pelas falácias da probabilidade do acaso e da probabilidade inversa. Especificamente, como assume-se que a hipótese nula é verdadeira, a amostragem aleatória (ou seja, o acaso) é a única explicação para qualquer resultado".
   
   
 #### Falácia 4. A falácia da validade (*validity fallacy*)
@@ -166,7 +166,9 @@ A falácia da replicabilidade consiste em fazer a seguinte interpretação em ci
 Para essa falácia fazer mais sentido, um exemplo de raciocínio incorreto em cima dela seria: "se p = 2%, então a probabilidade de eu chegar à mesma conclusão ao repetir o estudo com outras amostras é de 98%".  
   
 Qual o erro nessa interpretação? O valor de p traz informações apenas sobre a amostra a partir da qual foi calculado. Ou seja, o seu resultado não pode ser extrapolado para outras amostras.  
-Você encontra uma ótima discussão sobre a replicabilidade do valor de p nesse artigo do Cummings[efn_note]Cumming, G. (2008). Replication and p intervals: p values predict the future only vaguely, but confidence intervals do much better. Perspectives on psychological science, 3(4), 286-300.[/efn_note]. Spoiler: a replicabilidade do valor de p é **bem baixa**.  
+Você encontra uma ótima discussão sobre a replicabilidade do valor de p nesse artigo do Cummings[^5]. Spoiler: a replicabilidade do valor de p é **bem baixa**. 
+
+[^5]: Cumming, G. (2008). Replication and p intervals: p values predict the future only vaguely, but confidence intervals do much better. Perspectives on psychological science, 3(4), 286-300.
   
   
 #### Falácia 6. A falácia da magnitude (*magnitude fallacy*)  
@@ -241,7 +243,7 @@ Uma probabilidade de 4,9% não é muito diferente de uma de 5,1%. O ponto de cor
 Isso enfatiza a importância de não analisarmos o valor de p isoladamente, e sim em conjunto com outras informações relevantes como o tamanho de efeito.  
   
 
-<br><br><br>
+<br><br>
   
 ***
 <br><br>

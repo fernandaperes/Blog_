@@ -60,7 +60,8 @@ pre {
     overflow: auto;
     border-radius: 5px;
     line-height: 1.6;
-    margin-bottom: -rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 code {
@@ -280,9 +281,9 @@ section.recent-posts {
 
 .listfeaturedtag h2.card-title,
 .listrecent h2.card-title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1;
 }
 
 .listfeaturedtag h4.card-text,
@@ -459,6 +460,7 @@ span.post-read-more a:hover {
     margin-bottom: 1rem;
     font-family: 'IsidoraSans-Bold';
     text-align: center;
+    font-size: 32px;
 }
 
 .footer {
@@ -498,7 +500,7 @@ blockquote {
     border-left: 4px solid #2794A0;
     padding-left: 15px;
     padding-top: 10px;
-    padding-bottom: 0.1px;
+    padding-bottom: 1px;
     padding-right: 20px;
     background-color: #F8F8F8;
     margin-top: 40px;
@@ -997,10 +999,10 @@ iframe {
     padding: 1px 7px 3px;
     margin-right: 8px;
     margin-left: 8px;
-    background: #000;
-    color: #fff;
+    background: rgba(0, 0, 0, .05);
+    color: rgba(0, 0, 0, .6);
     font-weight: 500;
-    text-transform: lowercase;
+    border-radius: 5px;
     font-size: 0.95rem;
     display: inline-block;
 }

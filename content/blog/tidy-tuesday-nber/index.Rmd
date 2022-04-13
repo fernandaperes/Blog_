@@ -2,9 +2,8 @@
 title: "Explorando os dados dos artigos da NBER #TidyTuesday"
 author: Fernanda Fiel Peres
 date: '2021-09-20'
-slug: [probabilidade-positivo-verdadeiro]
-categories: ['TidyTuesday', 'Gráficos']
-tags: ['tidytuesday', 'ggplot2']
+categories: []
+tags: ['TidyTuesday', 'Gráficos', 'ggplot2']
 comments: yes
 summary: 'Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.'
 output:
@@ -21,7 +20,7 @@ O post de hoje explora os dados dos artigos publicados pela National Bureau of E
 Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/National_Bureau_of_Economic_Research)
   
 Essa é a minha segunda participação no #TidyTuesday e tem sido super proveitoso participar, porque acabo aprendendo novas funções de pacotes que eu uso e amo, como o `dplyr` e o `ggplot2`, e também acabo explorando outros pacotes. Essa semana, além do `ggtext` que eu conheci semana passada, também usei o pacote `gender`, que há um tempo eu tinha vontade de usar, mas ainda não tinha tido coragem de explorar.  
-Ah, se você não sabe o que é a #TidyTuesday, eu explico melhor no meu [post anterior](https://fernandafperes.com.br/tidytuesday-emmy/).  
+Ah, se você não sabe o que é a #TidyTuesday, eu explico melhor no meu [post anterior](https://fernandafperes.com.br/blog/tidy-tuesday-emmy/).  
   
   
 ### Leitura do banco de dados e carregamento dos pacotes  
@@ -257,4 +256,3 @@ ggplot(df_prog) +
 knitr::include_graphics("graf2.png")
 ```
   
-<br><br><br>

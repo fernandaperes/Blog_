@@ -2,9 +2,8 @@
 title: "Explorando os dados dos artigos da NBER #TidyTuesday"
 author: Fernanda Fiel Peres
 date: '2021-09-20'
-slug: [probabilidade-positivo-verdadeiro]
-categories: ['TidyTuesday', 'Gráficos']
-tags: ['tidytuesday', 'ggplot2']
+categories: []
+tags: ['TidyTuesday', 'Gráficos', 'ggplot2']
 comments: yes
 summary: 'Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.'
 output:
@@ -23,7 +22,7 @@ output:
 Fonte: <a href="https://pt.wikipedia.org/wiki/National_Bureau_of_Economic_Research">Wikipedia</a></p>
 </blockquote>
 <p>Essa é a minha segunda participação no #TidyTuesday e tem sido super proveitoso participar, porque acabo aprendendo novas funções de pacotes que eu uso e amo, como o <code>dplyr</code> e o <code>ggplot2</code>, e também acabo explorando outros pacotes. Essa semana, além do <code>ggtext</code> que eu conheci semana passada, também usei o pacote <code>gender</code>, que há um tempo eu tinha vontade de usar, mas ainda não tinha tido coragem de explorar.<br />
-Ah, se você não sabe o que é a #TidyTuesday, eu explico melhor no meu <a href="https://fernandafperes.com.br/tidytuesday-emmy/">post anterior</a>.</p>
+Ah, se você não sabe o que é a #TidyTuesday, eu explico melhor no meu <a href="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/">post anterior</a>.</p>
 </div>
 <div id="leitura-do-banco-de-dados-e-carregamento-dos-pacotes" class="section level3">
 <h3>Leitura do banco de dados e carregamento dos pacotes</h3>
@@ -55,16 +54,16 @@ joined_df &lt;- left_join(papers, paper_authors) %&gt;%
 <pre><code>## # A tibble: 10 × 12
 ##    paper  catalogue_group  year month title    author name  user_nber user_repec
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
-##  1 w26855 General          2020     3 Redrawi… w1884… Matt… matteo_m… pma2176   
-##  2 w13175 General          2007     6 Diffusi… w1206… Albe… albert_l… pli226    
-##  3 w14504 General          2008    11 Sacred … w1442… Mere… meredith… &lt;NA&gt;      
-##  4 w8099  General          2001     1 Relativ… w1910… Angu… angus_de… pde30     
-##  5 w25083 General          2018     9 Macropr… w7267… Kris… kristin_… pfo1      
-##  6 w19433 General          2013     9 Privacy… w1943… Katr… katrina_… &lt;NA&gt;      
-##  7 w12180 General          2006     5 Peer Ef… w1218… Andr… andreas_… &lt;NA&gt;      
-##  8 w5591  General          1996     5 Public … w2418… Davi… david_cu… pcu64     
-##  9 w28613 General          2021     3 Financi… w9959… Hann… hanno_lu… plu17     
-## 10 w12429 General          2006     8 Health … w4221… Alan… alan_mon… &lt;NA&gt;      
+##  1 w12852 General          2007     1 Capital… w1063… Seba… sebastia… ped3      
+##  2 w22533 General          2016     8 The I T… w1061… Yuli… yuliy_sa… &lt;NA&gt;      
+##  3 w18623 General          2012    12 The Imp… w1862… Mahe… maheshwo… &lt;NA&gt;      
+##  4 w15639 General          2010     1 Growth … w0855… Kenn… kenneth_… pro164    
+##  5 w10158 General          2003    12 Governa… w8386… Luc … luc_laev… pla174    
+##  6 w25270 General          2018    11 Non-Ran… w2527… Stan… stanley_… &lt;NA&gt;      
+##  7 w28243 General          2020    12 Transhu… w2305… Eoin… eoinmcgu… pmc163    
+##  8 w25728 General          2019     4 The Imp… w2402… Akir… akira_sa… &lt;NA&gt;      
+##  9 w2522  General          1988     2 Sectora… w2514… Robe… robert_s… pst85     
+## 10 w2412  General          1987    10 The Equ… w2171… Davi… david_ro… pro406    
 ## # … with 3 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
 ## #   program_category &lt;chr&gt;</code></pre>
 <p>O banco incluí uma lista de artigos da NBER acompanhados da data de publicação, nome dos autores e programa ao qual o artigo pertence. O banco inclui artigos do período de 1973 a 2021.</p>
@@ -88,18 +87,18 @@ joined_df$birth_year &lt;- joined_df$year - 35</code></pre>
 <p>Isso resultou no seguinte banco de dados:</p>
 <pre class="r"><code>sample_n(df_gender, 10)</code></pre>
 <pre><code>## # A tibble: 10 × 6
-##    name        proportion_male proportion_female gender year_min year_max
-##    &lt;chr&gt;                 &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-##  1 Robert                0.997            0.0029 male       1955     1955
-##  2 Robert                0.992            0.0077 male       1984     1984
-##  3 Andrew                0.996            0.0039 male       1964     1964
-##  4 James                 0.993            0.007  male       1976     1976
-##  5 Marc                  0.989            0.0111 male       1984     1984
-##  6 Constantine           1                0      male       1985     1985
-##  7 Richard               0.996            0.0036 male       1964     1964
-##  8 Thomas                0.993            0.0069 male       1981     1981
-##  9 Guido                 1                0      male       1964     1964
-## 10 Douglas               0.994            0.0064 male       1975     1975</code></pre>
+##    name    proportion_male proportion_female gender year_min year_max
+##    &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 James             0.997            0.0031 male       1955     1955
+##  2 David             0.992            0.0081 male       1985     1985
+##  3 Matthew           0.999            0.0014 male       1962     1962
+##  4 Kirsten           0                1      female     1975     1975
+##  5 Douglas           0.996            0.0044 male       1970     1970
+##  6 Gene              0.972            0.0277 male       1980     1980
+##  7 Ricardo           0.993            0.0073 male       1980     1980
+##  8 Todd              0.996            0.0035 male       1970     1970
+##  9 Adam              0.995            0.0052 male       1978     1978
+## 10 Stephen           0.992            0.0075 male       1973     1973</code></pre>
 <p>O próximo passo foi unir o banco de dados com os artigos, o <code>joined_df</code>, ao banco com os gêneros, o <code>df_gender</code>. Para isso, eu inicialmente tive que filtrar o banco <code>df_gender</code> para incluir apenas os casos não repetidos de nome e ano de nascimento, além de renomear algumas colunas para possibilitar o <code>left_join</code>. Ao final, fiquei com um <em>data frame</em> chamado <code>df</code>.</p>
 <pre class="r"><code>df_gender &lt;- df_gender %&gt;% rename(first_name = name,
                                   birth_year = year_min) %&gt;%
@@ -111,16 +110,16 @@ df &lt;- left_join(joined_df, df_gender)</code></pre>
 <pre><code>## # A tibble: 10 × 15
 ##    paper  catalogue_group  year month title    author name  user_nber user_repec
 ##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
-##  1 w18866 General          2013     3 On Retu… w1234… Char… charles_… pth302    
-##  2 w21656 General          2015    10 Do Stud… w5750… Dahl… dahlia_r… &lt;NA&gt;      
-##  3 w6042  General          1997     5 The Fut… w5216… Toma… tomas_ph… pph37     
-##  4 w23018 General          2017     1 Proximi… w7994… Juli… julia_la… pla36     
-##  5 w22637 General          2016     9 Importi… w2104… Kave… kaveh     pma1731   
-##  6 w22298 General          2016     6 Reverse… w1969… Luig… luigi_bo… pbo852    
-##  7 w17390 General          2011     9 Cleanin… w8620… Chri… christop… pkn5      
-##  8 w27229 General          2020     5 Were Ur… w1692… Jose… joseph_s… &lt;NA&gt;      
-##  9 w13934 General          2008     4 Econome… w0034… Jame… james_he… phe22     
-## 10 w24580 General          2018     5 Job Vac… w0143… Geor… george_b… pbo44     
+##  1 w24211 General          2018     1 &quot;The Di… w2421… Eric… erica_my… pmy46     
+##  2 w22015 General          2016     2 &quot;Social… w2201… Patr… patricia… &lt;NA&gt;      
+##  3 w25323 General          2018    12 &quot;Invest… w2532… Sand… sandeep_… &lt;NA&gt;      
+##  4 w14919 General          2009     4 &quot;Reply … w1036… Troy… troy_dav… pda131    
+##  5 w24423 General          2018     3 &quot;Are Re… w8541… Neer… neeraj_k… pka320    
+##  6 w11456 General          2005     7 &quot;Mexica… w8344… Darr… darren_l… plu41     
+##  7 w28162 General          2020    12 &quot;Why is… w2816… Salo… salomon_… &lt;NA&gt;      
+##  8 w28151 General          2020    11 &quot;Revenu… w9146… Anto… antoinet… psc180    
+##  9 w7296  General          1999     8 &quot;The Go… w1006… Henr… henry_fa… &lt;NA&gt;      
+## 10 w7584  General          2000     3 &quot;A Dyna… w7584… Step… &lt;NA&gt;      &lt;NA&gt;      
 ## # … with 6 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
 ## #   program_category &lt;chr&gt;, first_name &lt;chr&gt;, birth_year &lt;dbl&gt;, gender &lt;chr&gt;</code></pre>
 </div>
@@ -145,7 +144,7 @@ tbl_cont &lt;- df %&gt;% filter(!is.na(gender),
                           decade %in% decades) %&gt;%
   group_by(decade, gender) %&gt;% 
   count()</code></pre>
-<template id="cd0138d4-f120-4e05-840e-b1874a42a8ce"><style>
+<template id="0d7c5636-b24c-42df-8937-30d6e3d29090"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -179,12 +178,12 @@ tbl_cont &lt;- df %&gt;% filter(!is.na(gender),
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-70717b6a{}.cl-706caea0{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-706cb7ba{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-706ccef8{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-706ccef9{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-706ccf02{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-706ccf0c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-706ccf0d{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-706ccf16{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-70717b6a'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-706ccf16"><p class="cl-706cb7ba"><span class="cl-706caea0">Década</span></p></td><td class="cl-706ccf0d"><p class="cl-706cb7ba"><span class="cl-706caea0">Autoras/ Co-autoras mulheres</span></p></td><td class="cl-706ccf0d"><p class="cl-706cb7ba"><span class="cl-706caea0">Autores/ Co-autores homens</span></p></td><td class="cl-706ccf0d"><p class="cl-706cb7ba"><span class="cl-706caea0">Proporção de autoras mulheres (%)</span></p></td><td class="cl-706ccf0d"><p class="cl-706cb7ba"><span class="cl-706caea0">Proporção de autores com gênero identificado (%)</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-706ccef9"><p class="cl-706cb7ba"><span class="cl-706caea0">1980s</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">401</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">4956</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">7,49</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">85,75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-706ccef9"><p class="cl-706cb7ba"><span class="cl-706caea0">1990s</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">1380</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">8191</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">14,42</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">85,22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-706ccef9"><p class="cl-706cb7ba"><span class="cl-706caea0">2000s</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">4877</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">20975</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">18,87</span></p></td><td class="cl-706ccef8"><p class="cl-706cb7ba"><span class="cl-706caea0">82,32</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-706ccf0c"><p class="cl-706cb7ba"><span class="cl-706caea0">2010s</span></p></td><td class="cl-706ccf02"><p class="cl-706cb7ba"><span class="cl-706caea0">10990</span></p></td><td class="cl-706ccf02"><p class="cl-706cb7ba"><span class="cl-706caea0">38964</span></p></td><td class="cl-706ccf02"><p class="cl-706cb7ba"><span class="cl-706caea0">22,00</span></p></td><td class="cl-706ccf02"><p class="cl-706cb7ba"><span class="cl-706caea0">80,00</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="3c29724d-ccb3-4432-89e0-54d5a67b8ef2"></div>
+</style><div class="tabwid"><style>.cl-332b57a6{}.cl-33265616{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-33265fd0{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-33267772{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3326777c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33267786{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33267787{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33267790{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3326779a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-332b57a6'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-3326779a"><p class="cl-33265fd0"><span class="cl-33265616">Década</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Autoras/ Co-autoras mulheres</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Autores/ Co-autores homens</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Proporção de autoras mulheres (%)</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Proporção de autores com gênero identificado (%)</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-3326777c"><p class="cl-33265fd0"><span class="cl-33265616">1980s</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">401</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">4956</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">7,49</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">85,75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3326777c"><p class="cl-33265fd0"><span class="cl-33265616">1990s</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">1380</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">8191</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">14,42</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">85,22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3326777c"><p class="cl-33265fd0"><span class="cl-33265616">2000s</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">4877</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">20975</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">18,87</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">82,32</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33267787"><p class="cl-33265fd0"><span class="cl-33265616">2010s</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">10990</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">38964</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">22,00</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">80,00</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="4ec6d2dc-de35-4e6f-9760-1e9bfa88d8c1"></div>
 <script>
-var dest = document.getElementById("3c29724d-ccb3-4432-89e0-54d5a67b8ef2");
-var template = document.getElementById("cd0138d4-f120-4e05-840e-b1874a42a8ce");
+var dest = document.getElementById("4ec6d2dc-de35-4e6f-9760-1e9bfa88d8c1");
+var template = document.getElementById("0d7c5636-b24c-42df-8937-30d6e3d29090");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -285,5 +284,4 @@ prop.f.all &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&q
         legend.title = element_text(size = 10)) +
   guides(fill = guide_legend(title.position = &quot;top&quot;, title.hjust = 0.5))</code></pre>
 <p><img src="graf2.png" width="700px" style="display: block; margin: auto;" /></p>
-<p><br><br><br></p>
 </div>

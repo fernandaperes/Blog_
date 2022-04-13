@@ -18,9 +18,15 @@ output:
 <p><img src="https://i.imgur.com/Q4pGVqz.png" width="600px" style="display: block; margin: auto;" /></p>
 <p>Nesse post, falaremos sobre como fazer o teste-t independente, usando o software R.</p>
 <blockquote>
-<p>Algumas informações importantes:<br />
-* Se você prefere consumir esse conteúdo na forma de vídeo, você encontra um <a href="https://youtu.be/62YSVhzDjo8">tutorial</a> muito semelhante no meu canal do YouTube.<br />
-* Esse tutorial assume que você tem alguns conhecimentos básicos de R, como instalação e carregamento de pacotes. Caso queira aprender essa parte básica, incluindo como instalar os softwares R e RStudio, sugiro os primeiros vídeos desta <a href="https://www.youtube.com/watch?v=WVogdSlk7gY&amp;list=PLOw62cBQ5j9VE9X4cCCfFMjW_hhEAJUhU">playlist</a>.</p>
+Algumas informações importantes:<br />
+
+<li>
+Se você prefere consumir esse conteúdo na forma de vídeo, você encontra um <a href="https://youtu.be/62YSVhzDjo8">tutorial</a> muito semelhante no meu canal do YouTube.
+</li>
+<li>
+Esse tutorial assume que você tem alguns conhecimentos básicos de R, como instalação e carregamento de pacotes. Caso queira aprender essa parte básica, incluindo como instalar os softwares R e RStudio, sugiro os primeiros vídeos desta <a href="https://www.youtube.com/watch?v=WVogdSlk7gY&amp;list=PLOw62cBQ5j9VE9X4cCCfFMjW_hhEAJUhU">playlist</a>.
+</li>
+<p><br></p>
 </blockquote>
 <div id="quando-usar-o-teste-t-independente-quais-as-suas-hipóteses" class="section level3">
 <h3>Quando usar o teste-t independente? Quais as suas hipóteses?</h3>
@@ -89,7 +95,7 @@ Adicionamos também o atributo <code>stringsAsFactors = TRUE</code> para estabel
 <li>Nota de história, que varia de 0 a 10</li>
 <li>Nota de física, que varia de 0 a 10</li>
 </ul>
-<p>A pergunta experimental é se a posição na sala tem efeito sobre as notas de biologia e história. Logo, usaremos no nosso modelo as variáveis relacionadas a essas notas e a variável “posição na sala”.</p>
+<p>A <strong>pergunta experimental</strong> é se a posição na sala tem efeito sobre as notas de biologia e história. Logo, usaremos no nosso modelo as variáveis relacionadas a essas notas e a variável “posição na sala”.</p>
 <p>Faremos um teste-t para a nota de biologia e um para a nota de história.</p>
 </div>
 <div id="passo-3.-checagem-dos-pressupostos" class="section level4">
@@ -164,7 +170,7 @@ Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>
 </ul>
 <p>Como p &lt; 0,05, vamos rejeitar a H<sub>0</sub> e considerar que os dois grupos apresentam notas de biologia que são, em média, estatisticamente diferentes.</p>
 <p>Note que o R ainda libera, por escrito, a hipótese alternativa: “a diferença entre as médias é diferente zero”, o que equivale a dizer que os grupos apresentam médias diferentes.</p>
-<p>Além disso, o R também libera por padrão o intervalo de confiança 95% (IC 95%) para a diferença entre as médias. Essa é uma informação complementar ao valor de p. Nesse caso, o intervalo de confiança 95% foi de [1,41; 3,66]. Observe que o valor zero não está incluído nesse intervalo, o que - da mesma forma que o valor de p - indica que os grupos são diferentes.</p>
+<p>Além disso, o R também libera por padrão o intervalo de confiança 95% (IC 95%) para a diferença entre as médias. Essa é uma informação complementar ao valor de p. Nesse caso, o intervalo de confiança 95% foi de [1,41; 3,66]. Observe que o valor zero não está incluído nesse intervalo, o que - da mesma forma que o valor de p - indica que os grupos são estatisticamente diferentes.</p>
 <p>Sabendo que as médias são estatisticamente diferentes, podemos analisar qual dos grupos apresenta notas de biologia que são, em média, maiores. Para isso, basta olharmos as médias. A saída do R mostra que o grupo Frente apresenta uma média de 6,52, enquanto que o grupo Fundos uma média de 3,98. Logo, os alunos do grupo Frente apresentam, em média, um desempenho superior em biologia.</p>
 <p><strong>Teste-t para a nota de história:</strong></p>
 <pre class="r"><code>t.test(Nota_Hist ~ Posicao_Sala, dados, var.equal=FALSE)</code></pre>

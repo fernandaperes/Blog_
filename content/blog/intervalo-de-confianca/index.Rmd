@@ -3,8 +3,8 @@ title: "Como interpretar o intervalo de confiança?"
 author: Fernanda Fiel Peres
 date: '2021-06-08'
 slug: [probabilidade-positivo-verdadeiro]
-categories: ['Estatística teórica']
-tags: ['intervalo de confiança', 'margem de erro', 'nível de significância']
+categories: []
+tags: ['Estatística teórica']
 comments: yes
 summary: 'O que significa o intervalo de confiança? Qual a sua relação com a margem de erro? E com o nível de significância? Neste post discutimos, com exemplos, esse conceito tão importante da estatística inferencial.'
 output:

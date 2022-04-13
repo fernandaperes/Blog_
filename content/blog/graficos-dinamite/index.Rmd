@@ -86,7 +86,7 @@ Para discutir as alternativas, vamos construir diferentes gráficos utilizando u
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g3.png")
 ```
-<center><font size ='2'>Gráfico de barras ("gráfico dinamite") representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center><font size ='3'>Gráfico de barras ("gráfico dinamite") representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
   
   
 #### Gráficos dot plot  
@@ -98,7 +98,7 @@ Além disso, é comum sobrepor a esses pontos uma linha horizontal representando
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g4.png")
 ```
-<center><font size ='2'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center><font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
   
   
 Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os outros dois, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).  
@@ -147,12 +147,12 @@ ggplot(dados, aes(x = Grupo, y = Escores)) +
 
 #### Gráficos boxplot 
   
-Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no [último post aqui do blog](https://fernandafperes.com.br/interpretacao-boxplot/). O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).  
+Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no [último post aqui do blog](https://fernandafperes.com.br/blog/interpretacao-boxplot/). O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).  
   
 ```{r, echo=FALSE, fig.align='center', out.width='450px'}
 knitr::include_graphics("g5.png")
 ```
-<center><font size ='2'>Estrutura básica de um gráfico boxplot.</font></center><br><br>
+<center><font size ='3'>Estrutura básica de um gráfico boxplot.</font></center><br><br>
   
 Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente conseguimos detectar que o grupo B apresenta dois valores outliers acima do limite superior:
 
@@ -160,7 +160,7 @@ Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente c
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g6.png")
 ```
-<center><font size ='2'>Gráfico boxplot para três grupos: A, B e C.</font></center><br><br>
+<center><font size ='3'>Gráfico boxplot para três grupos: A, B e C.</font></center><br><br>
   
 Assim como o dot plot, o boxplot mostra muito mais informações que o gráfico de barras: cinco medidas de posição + *outliers*. Além disso, conseguimos avaliar a dispersão dos dados através da altura da caixa (que representa a amplitude interquartil) e da distância entre o limite inferior e o superior.  
   
@@ -271,7 +271,6 @@ Se gráficos são um assunto que te interessa, recomendo um livro que ganhou meu
 Recomendo também a leitura do artigo de @weissgerber2019reveal, que resume as informações discutidas aqui.  
 
   
-<br><br>
   
 ***
   

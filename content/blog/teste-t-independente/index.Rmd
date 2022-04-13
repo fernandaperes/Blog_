@@ -27,8 +27,8 @@ knitr::include_graphics("Fig1.png")
 Nesse post, falaremos sobre como fazer o teste-t independente, usando o software R.
 
 > Algumas informações importantes:  
-* Se você prefere consumir esse conteúdo na forma de vídeo, você encontra um [tutorial](https://youtu.be/62YSVhzDjo8) muito semelhante no meu canal do YouTube.  
-* Esse tutorial assume que você tem alguns conhecimentos básicos de R, como instalação e carregamento de pacotes. Caso queira aprender essa parte básica, incluindo como instalar os softwares R e RStudio, sugiro os primeiros vídeos desta [playlist](https://www.youtube.com/watch?v=WVogdSlk7gY&list=PLOw62cBQ5j9VE9X4cCCfFMjW_hhEAJUhU).
+<li>Se você prefere consumir esse conteúdo na forma de vídeo, você encontra um [tutorial](https://youtu.be/62YSVhzDjo8) muito semelhante no meu canal do YouTube.</li>  
+<li>Esse tutorial assume que você tem alguns conhecimentos básicos de R, como instalação e carregamento de pacotes. Caso queira aprender essa parte básica, incluindo como instalar os softwares R e RStudio, sugiro os primeiros vídeos desta [playlist](https://www.youtube.com/watch?v=WVogdSlk7gY&list=PLOw62cBQ5j9VE9X4cCCfFMjW_hhEAJUhU).</li><br>
 
 
 ### Quando usar o teste-t independente? Quais as suas hipóteses?
@@ -104,7 +104,7 @@ Observe que temos no banco 7 variáveis:
 * Nota de história, que varia de 0 a 10
 * Nota de física, que varia de 0 a 10
   
-A pergunta experimental é se a posição na sala tem efeito sobre as notas de biologia e história. Logo, usaremos no nosso modelo as variáveis relacionadas a essas notas e a variável "posição na sala".  
+A **pergunta experimental** é se a posição na sala tem efeito sobre as notas de biologia e história. Logo, usaremos no nosso modelo as variáveis relacionadas a essas notas e a variável "posição na sala".  
 
 Faremos um teste-t para a nota de biologia e um para a nota de história.
   
@@ -179,7 +179,7 @@ Como p < 0,05, vamos rejeitar a H<sub>0</sub> e considerar que os dois grupos ap
   
 Note que o R ainda libera, por escrito, a hipótese alternativa: "a diferença entre as médias é diferente zero", o que equivale a dizer que os grupos apresentam médias diferentes.  
   
-Além disso, o R também libera por padrão o intervalo de confiança 95% (IC 95%) para a diferença entre as médias. Essa é uma informação complementar ao valor de p. Nesse caso, o intervalo de confiança 95% foi de [1,41; 3,66]. Observe que o valor zero não está incluído nesse intervalo, o que - da mesma forma que o valor de p - indica que os grupos são diferentes.  
+Além disso, o R também libera por padrão o intervalo de confiança 95% (IC 95%) para a diferença entre as médias. Essa é uma informação complementar ao valor de p. Nesse caso, o intervalo de confiança 95% foi de [1,41; 3,66]. Observe que o valor zero não está incluído nesse intervalo, o que - da mesma forma que o valor de p - indica que os grupos são estatisticamente diferentes.  
   
 Sabendo que as médias são estatisticamente diferentes, podemos analisar qual dos grupos apresenta notas de biologia que são, em média, maiores. Para isso, basta olharmos as médias. A saída do R mostra que o grupo Frente apresenta uma média de 6,52, enquanto que o grupo Fundos uma média de 3,98. Logo, os alunos do grupo Frente apresentam, em média, um desempenho superior em biologia.
   

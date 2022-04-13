@@ -2,9 +2,8 @@
 title: "Explorando os dados dos Emmy Awards #TidyTuesday"
 author: Fernanda Fiel Peres
 date: '2021-09-20'
-slug: [probabilidade-positivo-verdadeiro]
-categories: ['TidyTuesday', 'Gráficos']
-tags: ['tidytuesday', 'ggplot2']
+categories: []
+tags: ['TidyTuesday', 'Gráficos', 'ggplot2']
 comments: yes
 summary: 'Análise exploratória dos dados dos Emmy Awards, com foco em gênero. Essa análise de dados faz parte do projeto #TidyTuesday.'
 output:
@@ -22,10 +21,12 @@ Eu estava meio resistente a participar, porque: 1) eu não sou lá muito *expert
 Essa é então a minha primeira participação no #TidyTuesday. Eu aprendi **tanta** coisa organizando esses dados e montando esses gráficos que, com certeza, valeu a pena :)  
   
   
-```{r, echo=FALSE, fig.align='center', out.width = '300px', fig.cap="Eu mesma, nesse último mês"}
+<center>
+```{r, echo=FALSE, fig.align='center', out.width = '300px'}
 knitr::include_graphics("Memeggplot.png")
 ```
-
+<font size='3'>Eu mesma, nesse último mês</font>
+</center><br>
   
 Ah, eu participei atrasada - comecei a mexer nesses dados na quarta-feira - e, como é a minha primeira participação, eu me dei a colher de chá de me inspirar em trabalhos de outros participantes. Os gráficos criados foram em parte inspirados no trabalho do @[thomas_mock](https://twitter.com/thomas_mock/status/1440352188102942721?s=20) e do @[leeolney](https://twitter.com/leeolney3/status/1440163856949547015?s=20).
   
@@ -204,7 +205,7 @@ razao_genero <- df_genero %>%
 head(razao_genero, 10)
 ```
   
-Portanto, valores acima de 1 indicam que, naquela distribuidora, mais mulheres foram indicadas a categorias de atuação que homens. Valores abaixo de 1, significam que mais homens foram indicados. A distribuidora Hulu se destaca com a maior proporção de mulheres indicadas, em relação aos homens - o que provavelmente se deve a The Handmaid's Tale. Já a Showtime é a distribuidora com a maior proporção de homens indicados, em relação a mulheres.
+Portanto, valores acima de 1 indicam que, naquela distribuidora, mais mulheres foram indicadas a categorias de atuação que homens. Valores abaixo de 1, significam que mais homens foram indicados. A distribuidora Hulu se destaca com a maior proporção de mulheres indicadas, em relação aos homens - o que provavelmente se deve a The Handmaid's Tale. Já a Showtime é a distribuidora com a maior proporção de homens indicados em relação a mulheres - curiosamente, é a distribuidora de The L Word Generation Q, uma série focada em mulheres e com um elenco quase em sua totalidade feminino.
   
 O próximo passo foi unir esses dois *data frames* e criar a variável `distributortxt` para incluir como rótulo do eixo y tanto a distribuidora como a razão entre os gêneros.
   
@@ -264,4 +265,3 @@ Nesse, a minha maior dificuldade foi decidir cores que ficassem coordenadas, mas
   
 Eu definitivamente me diverti e aprendi muita coisa nova com essa #TidyTuesday. Pretendo participar das próximas, e vou postando por aqui, para quem quiser acompanhar :)  
   
-<br><br><br>

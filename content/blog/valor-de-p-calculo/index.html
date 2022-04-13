@@ -2,9 +2,8 @@
 title: "Valor de p, nível de significância e testes uni vs. bicaudais"
 author: Fernanda Fiel Peres
 date: '2021-06-10'
-slug: [probabilidade-positivo-verdadeiro]
-categories: ['Estatística teórica', 'Valor de p']
-tags: ['valor de p', 'teste de hipóteses']
+categories: []
+tags: ['Estatística teórica', 'Valor de p']
 comments: yes
 summary: 'Como é calculado o valor de p em um teste estatístico? Qual a diferença entre um teste de hipóteses unicaudal e um bicaudal? Neste post, discutiremos essas questões com base em um exemplo.'
 output:
@@ -14,7 +13,7 @@ output:
 
 
 
-<p>Em um <a href="https://fernandafperes.com.br/uma-doutora-toma-cha/">post anterior</a>, discutimos os conceitos de teste de hipóteses, nível de significância e valor de p, com base no experimento “Uma senhora toma chá”, descrito por Ronald Fisher no seu livro “The design of experiments”. A proposta desse post é explicar como o valor de p é calculado em um teste estatístico, mais especificamente o teste-t independente. Também discutiremos a diferença entre testes uni e bicaudais (e qual deles é o mais adequado à sua pergunta experimental).</p>
+<p>Em um <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">post anterior</a>, discutimos os conceitos de teste de hipóteses, nível de significância e valor de p, com base no experimento “Uma senhora toma chá”, descrito por Ronald Fisher no seu livro “The design of experiments”. A proposta desse post é explicar como o valor de p é calculado em um teste estatístico, mais especificamente o teste-t independente. Também discutiremos a diferença entre testes uni e bicaudais (e qual deles é o mais adequado à sua pergunta experimental).</p>
 <blockquote>
 <p>Esse também é um post baseado em um vídeo do meu canal. Então, se você prefere consumir esse conteúdo em vídeo, clique <a href="https://youtu.be/bYbW-2BnMk4">aqui</a>.</p>
 </blockquote>
@@ -34,7 +33,7 @@ Imagine que sorteamos uma amostra e obtivemos os seguintes valores de glicemia d
 <p>Note que há uma diferença de 11 mg/dl entre os grupos. Mas, essa diferença é <strong>estatisticamente significativa</strong>?<br />
 É importante entender que estamos trabalhando com uma <strong>amostra</strong> de pessoas. Logo, os valores de glicemia reais (da população) de pessoas que praticam exercícios e são sedentárias provavelmente serão diferentes dos que obtivemos aqui. Podemos, então, usar a inferência estatística para extrapolar esses resultados e avaliar se na população os valores de glicemia difeririam entre esses grupos. É aí que entram os testes estatísticos. Nesse caso, mais especificamente, o teste-t.</p>
 <blockquote>
-<p>Se os conceitos de população, amostra e inferência estatística não estão muito claros para você, recomendo a leitura desse <a href="https://fernandafperes.com.br/intervalo-de-confianca/">texto</a>.</p>
+<p>Se os conceitos de população, amostra e inferência estatística não estão muito claros para você, recomendo a leitura desse <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">texto</a>.</p>
 </blockquote>
 </div>
 <div id="as-hipóteses-do-teste-t" class="section level3">
@@ -51,10 +50,10 @@ E a hipótese alternativa? Bom, discutiremos mais a frente que há mais de uma p
 <p>O teste-t vai comparar as médias desses dois grupos, levando em consideração também os seus tamanhos e desvios-padrão. Os grupos apresentam um tamanho (n) de 6. Já o desvio-padrão pode ser calculadoEsse <a href="https://youtu.be/A-N-eEB1owQ">vídeo</a> explica como o cálculo do desvio-padrão é realizado, obtendo-se:</p>
 <p><img src="Img3.png" width="285px" style="display: block; margin: auto;" /></p>
 <p>Há algumas fórmulas para o cálculo do <strong>valor de t</strong>, do teste-t. A fórmula abaixo é uma das mais usadas, pois permite que os grupos apresentem variâncias e tamanhos diferentes:</p>
-<p><code>$$t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}$$</code></p>
+<p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
 <p>Sendo A e B os dois grupos independentes, DP os seus desvios-padrão e n os seus tamanhos.<br />
 Substituindo os valores da fórmula pelos que calculamos, teremos:</p>
-<p><span class="math display">\[`t = \frac{98,8 - 109,8}{\sqrt{\frac{(7,4)^2}{6}+\frac{(12,1)^2}{6}}}`\]</span></p>
+<p><span class="math display">\[t = \frac{98,8 - 109,8}{\sqrt{\frac{(7,4)^2}{6}+\frac{(12,1)^2}{6}}}\]</span></p>
 <p>Resolvendo, teremos:</p>
 <p><span class="math display">\[t = \frac{-11}{\sqrt{\frac{54,8}{6}+\frac{146,4}{6}}}\]</span></p>
 <p><span class="math display">\[t = \frac{-11}{\sqrt{9,1+24,4}}\]</span></p>
@@ -66,20 +65,20 @@ Substituindo os valores da fórmula pelos que calculamos, teremos:</p>
 </div>
 <div id="o-cálculo-do-valor-de-p-a-partir-do-valor-de-t" class="section level3">
 <h3>O cálculo do valor de p a partir do valor de t</h3>
-<p>O valor de p (valor de probabilidade, discutido <a href="https://fernandafperes.com.br/uma-doutora-toma-cha/">aqui</a>) pode ser calculado a partir do valor de p. Como?<br />
+<p>O valor de p (valor de probabilidade, discutido <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">aqui</a>) pode ser calculado a partir do valor de p. Como?<br />
 Para isso usamos uma distribuição de probabilidade para valores de t, que <strong>assume que a hipótese nula (H<sub>0</sub>) é verdadeira</strong>. Ou seja, trata-se de uma distribuição dos valores de t em um cenário em que as médias dos dois grupos sejam iguais.<br />
 É uma distribuição simétrica cujo <strong>centro é o t = 0</strong>. Analisando a fórmula do t, percebemos que o t = 0 é obtido quando as médias dos grupos A e B são idênticas (logo, média A - média B = 0). Portanto, uma vez que essa distribuição assume a hipótese nula como verdadeira, os valores mais prováveis serão os valores de t próximos a zero.</p>
 <p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
 <p>A distribuição t tem o seguinte formato:</p>
 <p><img src="Img5.png" width="450px" style="display: block; margin: auto;" /></p>
 <p>A <strong>probabilidade de obtermos um determinado valor de t</strong>, ou um valor ainda mais extremo que aquele, <strong>considerando-se a hipótese nula verdadeira</strong>, é dado pela área sob a curva dessa distribuição. Note que essa probabilidade é o nosso famigerado valor de p.<br />
-Por mais extremo, devemos entender o seguinte: caso t seja positivo (como na figura abaixo), o valor de p corresponde à probabilidade de obtermos um valor de t igual àquele ou ainda superior; caso t seja negativo, o valor de p será a proabilidade de obtermos um valor de t igual àquele ou ainda menor (“mais negativo”).</p>
+Por mais extremo, devemos entender o seguinte: caso t seja positivo (como na figura abaixo), o valor de p corresponde à probabilidade de obtermos um valor de t igual àquele ou ainda superior; caso t seja negativo, o valor de p será a probabilidade de obtermos um valor de t igual àquele ou ainda menor (“mais negativo”).</p>
 <p><img src="Img4.png" width="450px" style="display: block; margin: auto;" /></p>
 <p>Há ainda mais um fator que precisamos considerar antes de calcularmos o valor de p para o valor de t do nosso exemplo (t = -1,89). O formato da distribuição t – e, portanto, também as áreas sob a curva – variam de acordo com os graus de liberdade (gl). Portanto, o cálculo deve considerá-los.</p>
 <p><img src="Img6.png" width="380px" style="display: block; margin: auto;" /></p>
 <blockquote>
 <strong>O que são, afinal, os graus de liberdade?</strong><br />
-Está aí um dos conceitos de estatística mais difíceis de definir, na minha opinião. Então, uma explicação detalhada está fora do escopo desse post.<br />
+Está aí um dos conceitos de estatística mais difíceis de definir, na minha opinião. Uma explicação detalhada está fora do escopo desse post.<br />
 Mas, os graus de liberdade dependem da quantidade de informações dispoíveis (e, portanto, do n) e da quantidade de parâmetros que serão estimados no teste.<br />
 No caso do teste-t independente, os graus de liberdade (gl) correspondem ao n total menos 2. Para o exemplo, temos:<br />
 
@@ -87,6 +86,7 @@ No caso do teste-t independente, os graus de liberdade (gl) correspondem ao n to
 gl = 12 - 2<br />
 gl = 10
 </center>
+<p><br></p>
 </blockquote>
 <p>Agora, sim, podemos calcular o valor de p para o nosso exemplo. Esse valor corresponderá à área sob a curva a partir do valor de t calculado (t = -1,98) até o extremo mais próximo, o extremo negativo (esquerdo):</p>
 <p><img src="Img7.png" width="380px" style="display: block; margin: auto;" /></p>
@@ -116,7 +116,7 @@ A resposta a essas perguntas é um sonoro: <strong>depende</strong>.</p>
 </div>
 <div id="o-nível-de-significância-alpha" class="section level3">
 <h3>O nível de significância (<span class="math inline">\(\alpha\)</span>)</h3>
-<p>Como já discutimos no post <a href="https://fernandafperes.com.br/uma-doutora-toma-cha">Uma doutora toma chá</a>, o nível de significância (<span class="math inline">\(\alpha\)</span>) é o nosso ponto de corte para o valor de p. Esse ponto de corte deve ser definido <em>a priori</em>, ou seja, antes das análises dos dados iniciarem.<br />
+<p>Como já discutimos no post <a href="https://fernandafperes.com.br/blog/doutora-toma-cha">Uma doutora toma chá</a>, o nível de significância (<span class="math inline">\(\alpha\)</span>) é o nosso ponto de corte para o valor de p. Esse ponto de corte deve ser definido <em>a priori</em>, ou seja, antes das análises dos dados iniciarem.<br />
 É <strong>padrão</strong> na maior parte das áreas usar um <strong>nível de significância de 5% (0,05)</strong>. Mas, é possível estabelecer outros valores, como 1% ou ainda 0,1%.</p>
 <p>Ao estabelecermos um nível de significância de 5% estamos dizendo que só rejeitaremos a hipótese nula caso a probabilidade de obter aquele determinado valor de p, sendo a hipótese nula verdadeira, seja inferior a 5%.</p>
 <p>Vamos adaptar a frase acima ao nosso exemplo. Lembre-se que a nossa hipótese nula é a de que <strong>os dois grupos apresentam médias de glicemia iguais</strong>. E não se esqueça que a distribuição t, a partir da qual calculamos o valor de p, está assumindo que a hipótese nula é verdadeira.<br />
@@ -162,7 +162,7 @@ Os testes <strong>unicaudais</strong> consideram a área de <strong>apenas um la
 <p><img src="Img10.png" width="700px" style="display: block; margin: auto;" /></p>
 <p>Voltando ao nosso exemplo, vamos optar por um <strong>teste bicaudal</strong>. Portanto, para obter o valor de p para o nosso teste devemos multiplicar o valor calculado, que considerava apenas uma cauda, por dois:</p>
 <center>
-p = 0,044 * 2<br />
+p = 0,044 <span class="math inline">\(\times\)</span> 2<br />
 p = 0,088
 </center>
 </div>
@@ -187,5 +187,4 @@ Podemos escrever nossas hipóteses como:</p>
 <p>Ah, uma última observação: note que, caso tivéssemos optado por um teste unicaudal, o nosso valor de p seria 0,044 e rejeitaríamos a hipótese nula. Passaríamos a considerar que os grupos apresentam médias estatisticamente diferentes.<br />
 É por isso que é tão fundamental decidir, antes da análise dos dados, se o teste será considerado unicaudal ou bicaudal. É uma forma de evitar posturas antiéticas, que forcem um resultado mais conveniente.</p>
 </blockquote>
-<p><br><br><br></p>
 </div>

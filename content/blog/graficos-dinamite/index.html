@@ -37,7 +37,7 @@ csl: APA.csl
 <p>Para discutir as alternativas, vamos construir diferentes gráficos utilizando um mesmo banco de dados. Abaixo, temos um gráfico de barras com a altura da coluna representando a média e a barra de erros representando o desvio-padrão. Observe como os grupos A e C apresentam barras idênticas:</p>
 <img src="g3.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='2'>Gráfico de barras (“gráfico dinamite”) representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+<font size ='3'>Gráfico de barras (“gráfico dinamite”) representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
 </center>
 <p><br><br></p>
 <div id="gráficos-dot-plot" class="section level4">
@@ -46,7 +46,7 @@ csl: APA.csl
 <p>Além disso, é comum sobrepor a esses pontos uma linha horizontal representando a média e uma barra de erros indicando uma medida de dispersão (que, assim como no gráfico de barras, pode ser o desvio-padrão, o erro-padrão da média ou o intervalo de confiança para a média).</p>
 <img src="g4.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='2'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+<font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
 </center>
 <p><br><br></p>
 <p>Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os outros dois, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).</p>
@@ -85,16 +85,16 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 </div>
 <div id="gráficos-boxplot" class="section level4">
 <h4>Gráficos boxplot</h4>
-<p>Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no <a href="https://fernandafperes.com.br/interpretacao-boxplot/">último post aqui do blog</a>. O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).</p>
+<p>Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">último post aqui do blog</a>. O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).</p>
 <img src="g5.png" width="450px" style="display: block; margin: auto;" />
 <center>
-<font size ='2'>Estrutura básica de um gráfico boxplot.</font>
+<font size ='3'>Estrutura básica de um gráfico boxplot.</font>
 </center>
 <p><br><br></p>
 <p>Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente conseguimos detectar que o grupo B apresenta dois valores outliers acima do limite superior:</p>
 <img src="g6.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='2'>Gráfico boxplot para três grupos: A, B e C.</font>
+<font size ='3'>Gráfico boxplot para três grupos: A, B e C.</font>
 </center>
 <p><br><br></p>
 <p>Assim como o dot plot, o boxplot mostra muito mais informações que o gráfico de barras: cinco medidas de posição + <em>outliers</em>. Além disso, conseguimos avaliar a dispersão dos dados através da altura da caixa (que representa a amplitude interquartil) e da distância entre o limite inferior e o superior.</p>
@@ -180,7 +180,6 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 <p>O gráfico mais adequado vai depender: do teste estatístico que foi feito, do tamanho dos grupos, do seu público.</p>
 <p>Se gráficos são um assunto que te interessa, recomendo um livro que ganhou meu coração: o livro <a href="https://amzn.to/3qKr4Xf">Storytelling com dados</a>, escrito pela Cole Nussbaumer Knaflic.</p>
 <p>Recomendo também a leitura do artigo de <span class="citation"><a href="#ref-weissgerber2019reveal" role="doc-biblioref">Weissgerber et al.</a> (<a href="#ref-weissgerber2019reveal" role="doc-biblioref">2019</a>)</span>, que resume as informações discutidas aqui.</p>
-<p><br><br></p>
 <hr />
 </div>
 <div id="referências" class="section level3 unnumbered">

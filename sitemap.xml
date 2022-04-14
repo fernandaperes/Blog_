@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://fernandafperes.com.br/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/static/sobre/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/graficos-dinamite/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/interpretacao-boxplot/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/tidy-tuesday-nber/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/bioestat%C3%ADstica/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/ggplot2/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/r/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/tidytuesday/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/tutorial/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/valor-de-p/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/tidy-tuesday-emmy/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/falacias-valor-de-p/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/valor-de-p-calculo/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/page/2/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/teste-diagnostico/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/intervalo-de-confianca/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/doutora-toma-cha/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/teste-t-independente/</loc>
+  <lastmod>2022-04-14T18:45:30+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

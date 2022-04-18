@@ -14,10 +14,12 @@ bibliography: references.bib
 csl: APA.csl
 ---
 
+```{r}
+applause::button()
+```
+
  
 ```{r, include=FALSE}
-# hugodown::md_document
-knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
 library(tidyverse)
 ```

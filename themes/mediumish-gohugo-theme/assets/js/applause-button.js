@@ -57,7 +57,7 @@ class HTMLCustomElement extends HTMLElement {
   init() {}
 }
 
-const MAX_MULTI_CLAP = 10;
+const MAX_MULTI_CLAP = 100;
 
 class ApplauseButton extends HTMLCustomElement {
   connectedCallback() {

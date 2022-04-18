@@ -14,7 +14,7 @@ googleAnalytics = "G-ZBDS4LT6P0"
 
 [params]
   logo = "/images/favicon.ico"
-  description =""
+  description = "Posts sobre estatística teórica, gráficos e estatística aplicada a problemas do dia-a-dia."
   customCSS = ["css/purebasic.css", "css/applause-button.css"]
   customJS = ["js/highlight.pack.js", "js/applause-button.js"]
 

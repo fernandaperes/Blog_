@@ -14,15 +14,17 @@ bibliography: references.bib
 csl: APA.csl
 ---
 
-```{r}
-applause::button()
-```
 
  
 ```{r, include=FALSE}
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
 library(tidyverse)
 ```
+
+```{r echo=FALSE}
+applause::button()
+```
+
 
   
 Se você está na área de análise de dados ou na área acadêmica, é provável que você já tenha visto um gráfico com aparência um tanto peculiar, como o acima, inspirado no artigo de Schenk & Steppan (2014).  

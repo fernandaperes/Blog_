@@ -8,10 +8,13 @@ hidedate: true
 <div class="flex-container">
 
   <div class="flex-child">
+  
   <a href="https://youtube.com/c/FernandaPeres/">
   <img width="230" src="/static/sobre_files/author.png" alt="" loading="lazy">
   </a>
-  <font>Teste</font>
+  
+  Texto
+  
   </div>
   
   <div class="flex-child">

@@ -56,7 +56,7 @@ Currently trying to get this blog running, still don't know what the blog will b
     identifier = "sobre"
     title = "Sobre"
     weight = 30
-    url = "/sobre"
+    url = "/static/sobre"
     description = "Sobre"
 
 [[menu.main]]

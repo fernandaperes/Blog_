@@ -120,7 +120,7 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 <p>Ah, dada essa limitação do boxplot não mostrar os dados brutos, sugere-se que um dotplot seja sobreposto a ele (o que não conseguiremos fazer no Excel), como no gráfico abaixo:</p>
 <img src="g7.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='2'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+<font size ='3'>Gráfico boxplot com dot plot sobreposto representando três grupos: A, B e C.</font>
 </center>
 <p><br><br></p>
 <div id="como-fazer-um-boxplot-com-dot-plot-sobreposto-no-r" class="section level5">
@@ -129,7 +129,6 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 <pre class="r"><code>ggplot(dados, aes(x = Grupo, y = Escores)) +
   geom_errorbar(stat = &quot;boxplot&quot;, width = 0.2) +
   geom_boxplot(fill = &quot;white&quot;, outlier.alpha = 0) +
-  #geom_point(stat = &quot;summary&quot;, fun = &quot;mean&quot;, shape = 4, size = 2) +
   geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, alpha = 0.3,
                dotsize = 1, binwidth = 1.6, stackratio = 1.4,
                position = position_dodge(width = 0.9), show.legend = F) +

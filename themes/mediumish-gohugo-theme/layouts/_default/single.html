@@ -31,9 +31,12 @@
                         {{end}}
                         <!-- Post Title -->
 
+{{ if not .Params.hidetitle }}
 <h1 class="posttitle">{{ .Title }}</h1>
+{{ end }}
 </div>
 
+{{ if not .Params.hidedate }}
 <center><span class="author-description">
     {{ dateFormat "2 Jan, 2006" .PublishDate }}
 
@@ -41,6 +44,7 @@
     {{ .ReadingTime }} min de leitura
     </span>
 </center><br>
+{{ end }}
 
                     <!-- Post Categories -->
                     <div class="after-post-tags">

@@ -12,8 +12,7 @@ hidedate: true
   <a href="https://youtube.com/c/FernandaPeres/">
   <img width="230" src="/static/sobre_files/author.png" alt="" loading="lazy">
   </a>
-  
-  Texto
+  <p>Texto</p>
   
   </div>
   

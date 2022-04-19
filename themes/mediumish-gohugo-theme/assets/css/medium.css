@@ -148,11 +148,20 @@ sup {
   }
 }
 
+@media only screen and (min-width: 992px) {
 .main-content {
     min-height: 300px;
     margin-right: 5%;
     margin-left: auto;
     width: 90%
+}
+}
+
+.main-content {
+    min-height: 300px;
+    margin-right: 0;
+    margin-left: auto;
+    width: 100%
 }
 
 .site-content {
@@ -168,6 +177,9 @@ section {
 
 section.recent-posts {
     margin-bottom: 0;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .section-title h2 {
@@ -606,7 +618,7 @@ blockquote {
     }
 
     .jumbotron.fortags {
-        margin-bottom: 0 !Important;
+        margin-bottom: 10%;
     }
 
     .alertbar form {
@@ -974,7 +986,7 @@ iframe {
 }
 
 .jumbotron.fortags {
-        margin-top: 3rem;
+        margin-top: 2rem;
         padding: 0;
         border-radius: 0;
         background: #fff;
@@ -990,7 +1002,7 @@ iframe {
     }
 
 .jumbotron.fortags {
-    margin-top: 3rem;
+    margin-top: 1rem;
     padding: 0;
     border-radius: 0;
 }
@@ -1065,6 +1077,9 @@ hr {
 .sobre {
   text-align: left;
   display: inline-block;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width:770px) {
@@ -1274,7 +1289,13 @@ a:hover.button {
     text-align: center;
 } 
 
-.site-links a, a:hover {
+.site-links a {
+    color: #9A9A9A;
+    font-weight: 700;
+    font-family: Nunito;
+} 
+
+.site-links a:hover {
     color: #9A9A9A;
     font-weight: 700;
     font-family: Nunito;

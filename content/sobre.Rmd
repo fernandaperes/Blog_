@@ -2,6 +2,7 @@
 title: "Sobre"
 hidetitle: true
 hidedate: true
+hideshare: true
 ---
 
 <div class="sobre row">

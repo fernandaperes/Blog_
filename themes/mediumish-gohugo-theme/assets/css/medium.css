@@ -1237,3 +1237,21 @@ a:hover.button {
     font-family: 'IsidoraSans-Bold';
     padding: 7px 12px;
 }
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    text-align: center;
+    color: #000;
+}  
+
+.flex-child:first-child {
+    margin-right: 20px;
+    text-align: center;
+    color: #000;
+} 
+
+

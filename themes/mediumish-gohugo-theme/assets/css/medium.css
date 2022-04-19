@@ -1252,7 +1252,7 @@ a:hover.button {
 .flex-child p {
     margin-top: 10px;
     line-height: 1.1rem;
-    width: 180px;
+    width: 150px;
     margin-right: 0;
     margin-left: 0;
     
@@ -1265,7 +1265,7 @@ a:hover.button {
 }  
 
 .flex-child:first-child {
-    margin-right: 40px;
+    margin-right: 10%;
     text-align: center;
     color: #000;
 } 

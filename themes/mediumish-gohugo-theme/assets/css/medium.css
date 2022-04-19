@@ -90,6 +90,15 @@ sup {
     transition: top 0.2s ease-in-out;
 }
 
+@media only screen and (max-width: 991px) {
+.mediumnavigation {
+    background: rgba(255, 255, 255, .97);
+    margin-right: 2%;
+    margin-left: 2%;
+    transition: top 0.2s ease-in-out;
+}
+}
+
 .mediumnavigation .social-icon {
   color: #000;
 }
@@ -132,7 +141,8 @@ sup {
     margin: 0 auto;
   }
   .navbar .nav-item {
-    padding: 0.5em 1em;
+    padding-left: 0;
+    padding-top: 0.5rem;
   }
   .navbar .social {
   text-align: left;
@@ -253,6 +263,13 @@ section.recent-posts {
         font-size: 20px;
         color: #000000;
     }
+}
+
+@media (max-width:991px) {
+  .nav-link {
+    padding: 0;
+    font-size: 1rem;
+  }
 }
 
 .listfeaturedtag {

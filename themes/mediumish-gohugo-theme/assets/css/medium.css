@@ -1242,6 +1242,10 @@ a:hover.button {
     display: flex;
 }
 
+.flex-container p {
+    margin-top: -10px;
+}
+
 .flex-child {
     flex: 1;
     text-align: center;

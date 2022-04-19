@@ -1240,10 +1240,22 @@ a:hover.button {
 
 .flex-container {
     display: flex;
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 8%;
+    text-align: center;
+    justify-content: space-around;
+    font-family: Nunito;
+    font-weight: 700;
 }
 
-.flex-container p {
-    margin-top: -10px;
+.flex-child p {
+    margin-top: 10px;
+    line-height: 1.1rem;
+    width: 180px;
+    margin-right: 0;
+    margin-left: 0;
+    
 }
 
 .flex-child {
@@ -1253,9 +1265,17 @@ a:hover.button {
 }  
 
 .flex-child:first-child {
-    margin-right: 20px;
+    margin-right: 40px;
     text-align: center;
     color: #000;
 } 
 
+.site-links {
+    text-align: center;
+} 
 
+.site-links a, a:hover {
+    color: #9A9A9A;
+    font-weight: 700;
+    font-family: Nunito;
+} 

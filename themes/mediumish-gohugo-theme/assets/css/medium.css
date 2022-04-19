@@ -602,6 +602,10 @@ blockquote {
   list-style-type: square;
 }
 
+ul, li {
+  list-style-type: square;
+}
+
 
 .svgIcon {
     vertical-align: middle;

@@ -10,13 +10,11 @@
         <div class="container">
             <div class="row">
                 <!-- Post Share -->
+                {{ if not .Params.hideshare }}
                 <div class="col-md-2 pl-0">
-                    
-                    {{ if not .Params.hideshare }}
                     {{- partial "single-partials/share.html" . -}}
+                    </div>
                     {{ end }}
-                    
-                </div>
                 <!-- Post -->
                 <div class="col-md-9 flex-first flex-md-unordered">
                     <div class="mainheading">

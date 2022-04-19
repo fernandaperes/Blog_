@@ -4,7 +4,7 @@ hidetitle: true
 hidedate: true
 hideshare: true
 ---
-<center>
+
 <div class="sobre row">
   
 <div class = "column1">
@@ -138,5 +138,4 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 </div>
 
 </div>
-</center>
 

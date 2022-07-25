@@ -107,7 +107,7 @@ knitr::include_graphics("g6.png")
   
 Além dos quartis, um boxplot é composto pelos **limites superior e inferior**. Esses limites correspondem, respectivamente, ao **maior e menor valor do conjunto de dados que não sejam *outliers***. Um *outlier* é um valor que destoa do conjunto de dados, o que podemos chamar em português de "valor discrepante" - mas aqui, de novo, o termo em inglês é mais conhecido e usado.  
   
-E como definir se um valor é outlier? Para isso, precisamos calcular os limites superior e inferior **teóricos**. Esses limites são definidos com base na amplitude interquartil (AIQ). Da seguinte forma:  
+E como definir se um valor é *outlier*? Para isso, precisamos calcular os limites superior e inferior **teóricos**. Esses limites são definidos com base na amplitude interquartil (AIQ). Da seguinte forma:  
   
 <center>
 > Limite inferior teórico = $Q1 - 1,5 \times AIQ$  

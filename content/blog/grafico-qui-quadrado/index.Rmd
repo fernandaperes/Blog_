@@ -197,6 +197,9 @@ fstat::graf_obs_esp_ind_3(dados, Classe, Sobreviveu, cor = "cadetblue",
   labs(caption = "As barras preenchidas correspondem às frequências\nobservadas e as barras vazadas, às frequências esperadas.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.")
 ```
   
+Eu gosto dessa solução para situações com múltiplas categorias. Mas, acho também que o gráfico, dessa forma, é menos intuitivo que os anteriores.  
+  
+  
 <br>
   
 ***  

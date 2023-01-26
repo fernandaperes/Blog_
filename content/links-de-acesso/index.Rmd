@@ -19,7 +19,7 @@ type: "links-de-acesso"
   <a href="mailto:fernandafperes@hotmail.com">
   <img width="120" src="images/contato.png" alt="" loading="lazy">
   </a>
-  <center><p>Contato para aulas particulares ou consultorias científicas</p><center>
+  <center><p>Contato para contratação de consultorias científicas e análises de dados</p><center>
   
   </div>
   

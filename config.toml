@@ -28,7 +28,7 @@ googleAnalytics = "G-ZBDS4LT6P0"
 [params.index]
   picture = "/images/author.png"
   title = "Fernanda Fiel Peres"
-  subtitle = "Que loucura, não?"
+  subtitle = ""
   mdtext = '''
 Currently trying to get this blog running, still don't know what the blog will be about!\
 **This textblock is a demonstration of the mdtext-param.**\

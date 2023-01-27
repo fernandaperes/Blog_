@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>As falácias do valor de p | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/falacias-valor-de-p/cover.png"/>
+<meta name="twitter:title" content="As falácias do valor de p"/>
+<meta name="twitter:description" content="O valor de p está entre os conceitos mais complexos de estatística - e também entre os mais mal interpretados. A maior parte dos livros didáticos de estatística definem incorretamente o valor de p. Neste post, vamos discutir as interpretações incorretas mais comuns."/>
+
+	<meta property="og:title" content="As falácias do valor de p" />
+<meta property="og:description" content="O valor de p está entre os conceitos mais complexos de estatística - e também entre os mais mal interpretados. A maior parte dos livros didáticos de estatística definem incorretamente o valor de p. Neste post, vamos discutir as interpretações incorretas mais comuns." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/falacias-valor-de-p/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/falacias-valor-de-p/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-08-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-30T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.1ebce77c5767f4abffa5a3ab1cc4f3633495278c5d2b1534905ec6f2dd9465a2.css" integrity="sha256-HrznfFdn9Kv/paOrHMTzYzSVJ4xdKxU0kF7G8t2UZaI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/falacias-valor-de-p/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=As%20fal%c3%a1cias%20do%20valor%20de%20p&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ffalacias-valor-de-p%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2ffalacias-valor-de-p%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2ffalacias-valor-de-p%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ffalacias-valor-de-p%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">As falácias do valor de p</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    30 ago., 2021
+
+    <i class="far fa-clock clock"></i>
+    16 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/valor-de-p">Valor de p</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/falacias-valor-de-p/cover.png" alt="thumbnail for this post" style="width:350px;"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>O valor de p está entre os conceitos de estatística mais difíceis de interpretar corretamente, na minha opinião. Mas, uma vez que tomamos decisões baseadas nele diariamente, não dá para fugir de entender exatamente o que ele significa e quais as suas limitações.</p>
+<p>Em dois posts anteriores, discuti a definição e interpretação corretas do valor de p. Para ler o post no qual eu defino valor de p e nível de significância no contexto do experimento “Uma senhora toma chá”, clique <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">aqui</a>. Para ler a explicação do cálculo do valor de p quando realizamos um teste estatístico, como o teste-t para amostras independentes, clique <a href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">aqui</a>.</p>
+<p>O objetivo desse post é discutir tudo aquilo que o valor de p <strong>não</strong> é: todas as interpretações equivocadas - mas muito comuns - associadas a ele.</p>
+<blockquote>
+<p>Esse também é um conteúdo que eu já produzi em vídeo, no meu <a href="https://youtube.com/c/FernandaPeres">canal no YouTube</a>.<br />
+Se prefere consumir esse tipo de conteúdo em vídeo, clique <a href="https://youtu.be/lNLKfi51eEk">aqui</a>.</p>
+</blockquote>
+<p>Nesse post, então, iremos discutir as <strong>falácias</strong> associadas ao valor de p. </p>
+<blockquote>
+<p><strong>Falácia:</strong><br />
+Qualquer enunciado ou raciocínio falso que aparente ser verdadeiro.<br />
+Um raciocínio verossímil, porém inverídico.</p>
+</blockquote>
+<p>Ah, um aviso importante: eu não cunhei nenhuma dessas falácias. Todo o conteúdo discutido aqui é baseado no trabalho do Rex Kline<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> e em um curso de curta duração ministrado pelo Prof. Marcus Vinícius C. Baldo na reunião da SBNeC de 2018 <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
+<p>Um artigo publicado em 2019<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> investigou a forma como os principais livros-texto de introdução à psicologia explicam o conceito de valor de p. Os autores observaram que 89% desses livros traziam uma definição incorreta, fazendo uso de alguma falácia.</p>
+<p><img src="https://i.imgur.com/PzhsQrG.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Sendo elas tão comuns - mesmo em materiais didáticos - é fundamental entendê-las.</p>
+<div id="o-que-o-valor-de-p-representa-afinal" class="section level3">
+<h3>O que o valor de p representa, afinal?</h3>
+<p>Antes de falarmos sobre as falácias do p, vale a pena relembrar o que esse valor significa. O valor de p é calculado em testes de hipóteses, nos quais temos uma hipótese nula (H<sub>0</sub>) e uma hipótese que contraria a hipótese nula, chamada de hipótese alternativa (H<sub>1</sub> ou H<sub>a</sub>). <strong>O valor de p corresponde à probabilidade de termos obtido aqueles resultados, ou resultados ainda mais extremos, considerando-se que a H<sub>0</sub> é verdadeira</strong>.</p>
+<p>Para isso ficar mais palpável, vamos trabalhar com um exemplo. Imagine que temos em mãos uma moeda e queremos saber se ela é honesta ou viciada. Para avaliar essa honestidade, podemos jogar a moeda algumas vezes e analisar o resultado. Nesse caso, nossas hipóteses serão:</p>
+<ul>
+<li>H<sub>0</sub>: a moeda é honesta</li>
+<li>H<sub>1</sub>: a moeda <strong>não</strong> é honesta</li>
+</ul>
+<p>Vamos imaginar que jogamos a moeda 10 vezes e em todas as vezes obtivemos cara. O que isso indica?<br />
+É importante entender que esse resultado poderia ser observado mesmo que tivéssemos uma moeda honesta, cuja probabilidade de sair cara ou coroa é idêntica. Esse seria um resultado improvável, mas possível.</p>
+<p>Vamos calcular a probabilidade de obtermos 10 resultados cara jogando uma moeda honesta (probabilidade do resultado cara = <span class="math inline">\(\frac{1}{2}\)</span>).<br />
+Ao jogarmos uma moeda, temos 2 resultados possíveis. A quantidade de sequências diferentes que podem ser obtidas ao jogarmos a moeda 10 vezes será: <span class="math inline">\(2^{10} = 1024\)</span>.
+Dessas 1024 possibilidades, apenas uma corresponde a 10 resultados cara. Logo, a probabilidade de obtermos 10 resultados cara é dada por:<br />
+<span class="math display">\[\frac{1}{1024} = 0,000976 = 0,098\%\]</span></p>
+<p>O valor de p corresponde a essa probabilidade: a probabilidade de termos obtido aquele resultado (10 caras em 10 lançamentos) considerando a hipótese nula verdadeira (ou seja, assumindo que a moeda em questão é honesta).</p>
+<blockquote>
+<p>Se o conceito de valor de p ainda não está muito claro para você, recomendo a leitura de outros exemplos <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">aqui</a> e <a href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">aqui</a>.</p>
+</blockquote>
+</div>
+<div id="as-falácias" class="section level3">
+<h3>As falácias</h3>
+<p>Eu numerei as falácias apenas para facilitar a explicação. Elas estão em uma ordem que eu considerei mais didática. Mas esses números são arbitrários, ok? Você não vai encontrar “falácia 6” na literatura.</p>
+<div id="falácia-1.-a-falácia-da-probabilidade-inversa-inverse-probability-fallacy" class="section level4">
+<h4>Falácia 1. A falácia da probabilidade inversa (<em>inverse probability fallacy</em>)</h4>
+<blockquote>
+<p>Falácia: “O valor de p corresponde à probabilidade de a H<sub>0</sub> ser verdadeira, dado que obtivemos esses resultados”.</p>
+</blockquote>
+<p>Essa é, para mim, uma das principais falácias. Tive contato com ela em mais de um curso/ disciplina de estatística. E qual o <strong>erro</strong> nesse raciocínio?<br />
+O problema nessa frase é que ela inverte uma probabilidade condicional. Como assim? Vamos resgatar a <strong>definição correta</strong> de valor de p:</p>
+<blockquote>
+<p>Definição correta: “O valor de p é a probabilidade de termos obtido aqueles resultados, ou resultados ainda mais extremos, dado que a H<sub>0</sub> é verdadeira.”</p>
+</blockquote>
+<p>Trata-se de uma probabilidade condicional - uma probabilidade que está atrelada a uma condição (no caso, a H<sub>0</sub> ser verdadeira). Probabilidades condicionais podem ser escritas na forma de: P(A|B), probabilidade de A, dado B.</p>
+Usando essa nomenclatura, podemos resumir a definição <strong>correta</strong> de valor de p como:<br />
+
+<center>
+P(resultados | H<sub>0</sub> é verdadeira)<br />
+
+<p class="caption">
+Definição correta do valor de p
+</p>
+</center>
+O que a frase <strong>falaciosa</strong> diz é o inverso:<br />
+
+<center>
+P(H<sub>0</sub> é verdadeira | resultados)<br />
+
+<p class="caption">
+Definição falaciosa do valor de p
+</p>
+</center>
+<p>À primeira vista, pode parecer que essas probabilidades são equivalentes, mas isso não é verdade. Probabilidades condicionais não podem ser invertidas dessa forma.<br />
+Para isso fazer mais sentido, vejamos um exemplo.<br />
+Pense na seguinte situação: qual a probabilidade de uma pessoa falar português, dado que está lendo esse post?<br />
+Uma probabilidade bem alta, concorda? Eu diria que muito próxima a 100%, já que se trata de um post escrito em português.<br />
+Vamos agora inverter essa probabilidade condicional: qual a probabilidade de uma pessoa ler esse post, dado que ela fala português?<br />
+Bom, agora estamos falando de uma probabilidade bem baixa. De todos os falantes de português, podemos imaginar que poucos se interessam por um tema tão específico como “falácias do valor de p”.</p>
+<p>Portanto, o valor de p <strong>não indica</strong> a probabilidade de a hipótese nula ser verdadeira. Seria ótimo termos acesso a essa probabilidade, mas, infelizmente, não temos.</p>
+<p>O artigo de Cassidy e colaboradores resume o problema com essa falácia na seguinte frase: <em>“if the null is assumed to be true, there is no likelihood of it being true; it is a given”</em>. Em tradução livre: “se estamos assumindo que a hipótese nula é verdadeira, não há a probabilidade de ela ser verdadeira; trata-se de um fato”.</p>
+</div>
+<div id="falácia-2.-a-falácia-do-erro-do-tipo-i-local-type-i-error" class="section level4">
+<h4>Falácia 2. A falácia do erro do tipo I (<em>local type I error</em>)</h4>
+<p>Antes de explicar essa falácia, vale a pena lembrar o que é o erro do tipo I.<br />
+Tomamos a decisão de rejeitar ou não a H<sub>0</sub> ao compararmos o valor de p ao nível de significância (<span class="math inline">\(\alpha\)</span>):</p>
+<p><img src="https://i.imgur.com/vj1q0MP.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Tomamos essa decisão com base nos dados que temos à nossa disposição. Mas, sempre podemos estar cometendo um erro. Uma comparação que eu gosto é que essa tomada de decisão - rejeitar ou não a H<sub>0</sub> é semelhante ao trabalho de uma juíza. Com base nas informações disponíveis, a juíza tomará a decisão de inocentar ou condenar o réu. Mas, a juíza - assim como nós - não tem acesso à realidade, e pode cometer um de dois erros: inocentar uma pessoa culpada ou condenar uma pessoa inocente. E perceba que ela não tem como saber se a decisão tomada está coreta ou foi um erro.
+Nossos possíveis erros ao tomar a decisão de rejeitar ou não a H<sub>0</sub> podem ser resumidos como:</p>
+<p><img src="https://i.imgur.com/bz65zgB.png" width="480px" style="display: block; margin: auto;" /></p>
+<p>Ou seja, caso a gente rejeite a H<sub>0</sub>, mas na realidade a H<sub>0</sub> era verdadeira, estamos cometendo o chamado <strong>erro do tipo I</strong>. Caso a gente opte por não rejeitar a H<sub>0</sub>, mas na realidade a H<sub>0</sub> era falsa, estamos cometendo o erro denominado <strong>erro do tipo II</strong>.<br />
+Por sorte, ao contrário da juíza, nós temos como controlar a nossa probabilidade de erro. A probabilidade de cometermos um erro do tipo I é dada pelo nível de significância (<span class="math inline">\(\alpha\)</span>). Como normalmente é usado um valor de <span class="math inline">\(\alpha\)</span> de 5%, estamos aceitando uma probabilidade de 5% de cometermos esse erro (rejeitar a H<sub>0</sub> quando, na realidade, ela é verdadeira).</p>
+<p>Voltando à falácia, a falácia do erro do tipo I corresponde à seguinte interpretação:</p>
+<blockquote>
+<p>Falácia: “O valor de p corresponde à probabilidade de cometermos um erro ao rejeitarmos a hipótese nula (erro do tipo I)”.</p>
+</blockquote>
+<p>Portanto, o erro nessa frase está em confundir os conceitos de nível de significância (<span class="math inline">\(\alpha\)</span>) e valor de p. A probabilidade de cometermos um erro do tipo I é dada pelo valor de <span class="math inline">\(\alpha\)</span>, um valor fixo, definido antes da análise dos dados, e não pelo valor de p. </p>
+</div>
+<div id="falácia-3.-a-falácia-da-probabilidade-do-acaso-odds-against-chance-fallacy" class="section level4">
+<h4>Falácia 3. A falácia da probabilidade do acaso (<em>odds against chance fallacy</em>)</h4>
+<p>Essa é, provavelmente, a falácia mais comum. O artigo que investigou essas falácias em livros-texto de psicologia identificou que, de todos os livros que continham definições erradas de valor de p, mais de 80% continham a falácia da probabilidade do acaso.<br />
+A falácia da probilidade do acaso corresponde à seguinte interpretação:</p>
+<blockquote>
+<p>Falácia: “O valor de p corresponde à probabilidade de o resultado ter acontecido por acaso.”</p>
+</blockquote>
+<p>Qual a falha nesse raciocínio?<br />
+Vamos voltar ao exemplo do lançamento da moeda. Ao lançarmos uma moeda 10 vezes, há 1024 sequências de resultados (cara/ coroa) possíveis. Note que <strong>todos esses resultados são consequência do acaso</strong>.<br />
+Quando calculamos o valor de p, estamos considerando que a H<sub>0</sub> é verdadeira e que, portanto, <strong>todos</strong> terão sua ocorrência determinada pelo acaso. Em outras palavras, já estamos partindo do pressuposto de que a probabilidade de o resultado ser dado pelo acaso é 100%.</p>
+<p>Como resumem Cassidy e colaboradores: <em>“(…) failure to recognize that the null hypothesis is always assumed to be true is responsible for the odds-against-chance and inverse-probability fallacies. Specifically, because the null is assumed to be true, random sampling (i.e., chance) is the only explanation for any result”</em>.<br />
+Em tradução livre: “A falha em compreender que a hipótese nula é sempre considerada verdadeira é responsável pelas falácias da probabilidade do acaso e da probabilidade inversa. Especificamente, como assume-se que a hipótese nula é verdadeira, a amostragem aleatória (ou seja, o acaso) é a única explicação para qualquer resultado”.</p>
+</div>
+<div id="falácia-4.-a-falácia-da-validade-validity-fallacy" class="section level4">
+<h4>Falácia 4. A falácia da validade (<em>validity fallacy</em>)</h4>
+<p>A falácia da validade é de alguma forma semelhante à da probabilidade inversa. A falácia da validade diz que:</p>
+<blockquote>
+<p>Falácia: “Se rejeitamos a hipótese nula (o valor de p obtido foi menor que nível de significância), a probabilidade da hipótese alternativa ser verdadeira é dada por (1 – p)”.</p>
+</blockquote>
+<p>Qual a falha de raciocínio dessa falácia? O valor de p não traz informações sobre as probabilidades de nenhuma das hipóteses, seja a nula ou a alternativa. O cálculo das probabilidades das hipóteses não é possível quando usamos a estatística frequencista.</p>
+</div>
+<div id="falácia-5.-a-falácia-da-replicabilidade-replication-fallacy" class="section level4">
+<h4>Falácia 5. A falácia da replicabilidade (<em>replication fallacy</em>)</h4>
+<p>A falácia da replicabilidade consiste em fazer a seguinte interpretação em cima do valor de p:</p>
+<blockquote>
+<p>Falácia: “Se rejeitamos a hipótese nula (o valor de p obtido foi menor que 0,05), a probabilidade de encontrar o mesmo resultado em uma replicação é dada por (1 – p)”.</p>
+</blockquote>
+<p>Para essa falácia fazer mais sentido, um exemplo de raciocínio incorreto em cima dela seria: “se p = 2%, então a probabilidade de eu chegar à mesma conclusão ao repetir o estudo com outras amostras é de 98%”.</p>
+<p>Qual o erro nessa interpretação? O valor de p traz informações apenas sobre a amostra a partir da qual foi calculado. Ou seja, o seu resultado não pode ser extrapolado para outras amostras.<br />
+Você encontra uma ótima discussão sobre a replicabilidade do valor de p nesse artigo do Cummings<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Spoiler: a replicabilidade do valor de p é <strong>bem baixa</strong>.</p>
+</div>
+<div id="falácia-6.-a-falácia-da-magnitude-magnitude-fallacy" class="section level4">
+<h4>Falácia 6. A falácia da magnitude (<em>magnitude fallacy</em>)</h4>
+<blockquote>
+<p>Falácia: “Quanto menor o valor de p, maior o efeito observado”.</p>
+</blockquote>
+<p>O que está errado com o raciocínio acima?<br />
+Primeiramente, é importante entender que o valor de p é de fato influenciado pela <strong>magnitude (tamanho) do efeito</strong>. No entanto, o <strong>tamanho da amostra</strong> também tem impacto sobre o valor de p. </p>
+<p>Vamos nos basear em um exemplo para isso fazer sentido. Imagine que queremos comparar as médias de glicemia de dois grupos: um composto por pessoas sedentárias e outro por pessoas que praticam exercícios físicos.</p>
+<p><img src="https://i.imgur.com/bTexzAq.png" width="280px" style="display: block; margin: auto;" /></p>
+<p>Observe que as médias de glicemia foram 104,5 mg/dl (para o grupo sedentário) e 99,3 mg/dl (para o grupo exercício físico). Logo, obtivemos uma diferença entre os grupos de 5,2 mg/dl.<br />
+Podemos testar se essa diferença é <strong>estatisticamente significativa</strong>. Vamos supor que obtivemos, em cada grupo, um desvio-padrão de 10 mg/dl. Uma vez que cada grupo era composto por 10 participantes, ao fazermos um teste estatístico - nesse caso, um teste-t independente - obtemos:</p>
+<center>
+p = 0,26
+</center>
+<p>Ou seja, considerando um nível de significância (<span class="math inline">\(\alpha\)</span>) de 5%, não rejeitaríamos a H<sub>0</sub>. Ou ainda: não consideraríamos que as médias dos grupos são diferentes.</p>
+<p>Mas, e se ampliássemos a nossa amostra? Vamos agora considerar que cada grupo é composto por 50 pessoas (n total = 100). O que mudaria?</p>
+<p><img src="https://i.imgur.com/gybKG3D.png" width="280px" style="display: block; margin: auto;" /></p>
+<p>Ainda que a diferença entre as médias seja a mesma, o valor de p seria muito diferente:</p>
+<center>
+p = 0,01
+</center>
+<p>Observe que, ao incluirmos 50 pessoas em cada grupo, chegaríamos a um valor de p inferior ao nível de significância (<span class="math inline">\(\alpha\)</span>) de 5%. Isso significa que, nesse experimento, rejeitaríamos a H<sub>0</sub>. Ou seja, chegaríamos a uma conclusão diferente da qual chegamos no experimento com 10 pessoas por grupo.</p>
+<p>Observe que nessas duas situações temos os mesmos tamanhos de efeito - nesse caso, a diferença entre as médias dos grupos. Mas, os valores de p são muito diferentes. O valor de p, portanto, <strong>não pode</strong> ser pensado como uma <strong>medida da magnitude do efeito</strong> observado. É por isso que se recomenda que, além do valor de p, sejam reportadas em artigos medidas de tamanho de efeito.<br />
+A própria diferença entre as médias, 5,2 mg/dl, é um tamanho de efeito. Trata-se de um tamanho de efeito <em>não-padronizado</em>, porque está na unidade de medida da variável glicemia. É possível também calcular tamanhos de efeito padronizados, sem unidade de medida, como o d de Cohen.</p>
+</div>
+<div id="falácia-7.-a-falácia-da-significância-significance-fallacy" class="section level4">
+<h4>Falácia 7. A falácia da significância (<em>significance fallacy</em>)</h4>
+<blockquote>
+<p>Falácia: “Se um efeito é estatisticamente significativo, então ele também é significativo clinicamente/ na prática”.</p>
+</blockquote>
+<p>Como vimos na discussão da falácia anterior, o valor de p - no qual baseamos a significância estatística - não representa adequadamente a magnitude do efeito. Logo, também não poderemos usá-lo para inferir a significância clínica do efeito detectado.<br />
+Como assim? Vamos voltar ao nosso exemplo da comparação das médias de glicemia dos dois grupos. Ao usarmos uma amostra de 100 pessoas, chegamos a uma diferença estatisticamente significativa. Mas, isso não significa que a diferença observada é clinicamente relevante. Uma diferença de 5,2 mg/dl na glicemia provavelmente não é grande o suficiente para justificar a implementação de alguma intervenção. Ou seja, não é relevante na prática.</p>
+<p>A falácia da significância também pode ser descrita como a crença de que <em>rejeitar a hipótese nula implica em confirmar a hipótese alternativa</em>. Isso também <strong>não é verdade</strong>. Nós estamos sempre trabalhando com probabilidades, não com certezas. A análise estatística é capaz de reduzir a incerteza, mas não eliminá-la.</p>
+</div>
+<div id="falácia-8.-a-falácia-da-insignificância-nullification-fallacy" class="section level4">
+<h4>Falácia 8. A falácia da insignificância (<em>nullification fallacy</em>)</h4>
+<p>A falácia da insignificância consiste em acreditar no seguinte raciocínio:</p>
+<blockquote>
+<p>Falácia: “A não rejeição da hipótese nula implica em sua confirmação, ou seja, significa que não há efeito”.</p>
+</blockquote>
+<p>Ou ainda poderíamos descrever essa falácia como “determinado efeito não foi estatisticamente significativo, então não há efeito”.</p>
+<p>Qual a falha nesse raciocínio?<br />
+Lembre-se que, na estatística, estamos trabalhando com probabilidades, não com certezas. Logo, a não rejeição da H<sub>0</sub> não significa que ela seja obrigatoriamente verdadeira.<br />
+Vale lembrar que o valor de p é muito influenciado pelo tamanho da amostra. Por isso, um efeito - como uma diferença entre médias - não ser estatisticamente significativo não significa que se trata de uma diferença clinicamente irrelevante. A não-rejeição da H<sub>0</sub> pode ser consequência de um baixo poder estatístico - ou seja, estarmos usando uma amostra de tamanho insuficiente para o tamanho de efeito que desejamos detectar.</p>
+<p>Importante lembrar que: <em>ausência de evidência não significa evidência de ausência</em>.</p>
+</div>
+<div id="falácia-9.-a-falácia-da-santificação-sanctification-fallacy" class="section level4">
+<h4>Falácia 9. A falácia da santificação (<em>sanctification fallacy</em>)</h4>
+<p>A falácia da santificação consiste no seguinte pensamento:</p>
+<blockquote>
+<p>Falácia: “Se p = 0,049, tenho um efeito significativo; se p = 0,051, não tenho”.</p>
+</blockquote>
+<p>O problema que dessa falácia é o pensamento dicotômico para um valor contínuo, como o valor de p.<br />
+Uma probabilidade de 4,9% não é muito diferente de uma de 5,1%. O ponto de corte de 5% (0,05), nosso nível de significância (<span class="math inline">\(\alpha\)</span>), é arbitrário.<br />
+Isso enfatiza a importância de não analisarmos o valor de p isoladamente, e sim em conjunto com outras informações relevantes como o tamanho de efeito.</p>
+<p><br><br></p>
+<hr />
+<p><br><br></p>
+<p>E aí, você já tinha ouvido falar em alguma dessas falácias? Cometia algum desses erros de interpretação?</p>
+<p>Uma coisa que eu percebo quando produzo conteúdo sobre esse tema, é que ele tende a deixar as pessoas na defensiva. E, acho importante deixar claro que: tá tudo bem você ter interpretado errado o valor de p, e agora ter aprendido algo novo. Aprender coisas novas, mudar de opinião, faz parte da vida de um cientista. Como já comentei por aqui, eu mesma sinto que aprendi de verdade valor de p nesse curso que fiz em 2018. Nessa época eu já tinha até canal no YouTube!</p>
+<p>Eu também acho importante dizer que eu não estou jogando embaixo do ônibus professores que usam algumas falácias para explicar valor de p. Eu mesma já tentei ensinar valor de p para uma turma de graduação usando a definição correta, com a história “uma doutora toma chá”, e não funcionou. Os alunos ficaram super confusos. Eu acho que principalmente quando aquele é o primeiro contato do aluno com os conceitos teste de hipóteses e valor de p, definições não tão precisas podem ter um papel didático importante.<br />
+Mas, acho que quando a análise de dados faz de fato parte do nosso cotidiano, precisamos entender o que o valor de p de fato significa - e, mais importante, tudo aquilo que ele não significa. Isso é fundamental para uma análise mais crítica dos nossos resultados e uma ciência com mais qualidade.</p>
+<p>Abaixo você encontra outras referências, além das já citadas no texto, para caso tenha interesse em se aprofundar no assunto.</p>
+<p><br><br></p>
+<hr />
+</div>
+</div>
+<div id="referências" class="section level3">
+<h3>Referências:</h3>
+<ul>
+<li>Greenland, S., Senn, S. J., Rothman, K. J., Carlin, J. B., Poole, C., Goodman, S. N., &amp; Altman, D. G. (2016). Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations. European journal of epidemiology, 31(4), 337-350.<br />
+</li>
+<li>Kühberger, A., Fritz, A., Lermer, E., &amp; Scherndl, T. (2015). The significance fallacy in inferential statistics. BMC Research Notes, 8(1), 1-9.<br />
+</li>
+<li>Sterne, J. A., &amp; Smith, G. D. (2001). Sifting the evidence—what’s wrong with significance tests?. Physical therapy, 81(8), 1464-1469.<br />
+</li>
+<li>Wasserstein, R. L., Schirm, A. L., &amp; Lazar, N. A. (2019). Moving to a world beyond “p&lt; 0.05”.</li>
+</ul>
+<p><br><br><br></p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Kline, R. B. (2015). Principles and practice of structural equation modeling. Guilford publications.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Kline, R. B. (2008). Becoming a behavioral science researcher: A guide to producing research that matters. Guilford Press.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>Curso “A abolição do valor de p: a hora e a vez de uma “nova estatística”?”, ministrado por Marcus Vinícius C. Baldo na XLI Reunião Anual da Sociedade Brasileira de Neurociências e Comportamento (SBNeC), 2018.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Cassidy, S. A., Dimova, R., Giguère, B., Spence, J. R., &amp; Stanley, D. J. (2019). Failing grade: 89% of introduction-to-psychology textbooks that define or explain statistical significance do so incorrectly. Advances in Methods and Practices in Psychological Science, 2(3), 233-239.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Cumming, G. (2008). Replication and p intervals: p values predict the future only vaguely, but confidence intervals do much better. Perspectives on psychological science, 3(4), 286-300.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/"> &laquo; Explorando os dados dos Emmy Awards #TidyTuesday</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">Valor de p, nível de significância e testes uni vs. bicaudais &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

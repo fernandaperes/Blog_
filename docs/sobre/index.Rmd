@@ -1,0 +1,140 @@
+---
+title: "Sobre"
+hidetitle: true
+type: "static"
+---
+
+<div class="sobre row">
+  
+<div class = "column1">
+
+### Oi! Eu sou a Fernanda Fiel Peres
+
+Sou **bacharel** em Ciências Biológicas – Modalidade Médica pela Universidade Federal de São Paulo (UNIFESP), **mestre e doutora** em Farmacologia (UNIFESP) e possuo uma **especialização** em Estatística Aplicada (Unicsul). Trabalho com pesquisa e análise de dados há 11 anos, desde quando ingressei na iniciação científica.  
+  
+Apesar de ter escolhido uma graduação na área de biológicas, eu sempre amei disciplinas de exatas. Em 2011, durante a minha graduação, comecei a dar aulas de matemática no cursinho universitário da UNIFESP. Atuo como **professora** desde então, tendo experiência em cursos técnicos, de graduação e de pós-graduação.  
+  
+Me interessar por estatística foi inevitável. Comecei estudar mais a fundo o assunto na graduação, durante as análises dos dados do meu projeto de iniciação científica. Ao longo da minha trajetória acadêmica, fiz vários cursos livres e disciplinas relacionadas a estatística e, mais recentemente, concluí a especialização na área.  
+  
+Em 2017, dei aulas de estatística aplicada a alguns calouros meus, futuros biomédicos. As aulas práticas deste curso foram publicadas no YouTube e se transformaram em um [canal de estatística aplicada](https://youtube.com/c/FernandaPeres). Atualmente, somos uma comunidade com mais de 25 mil inscritos e o canal traz vídeos teóricos bem como de estatística aplicada utilizando os programas SPSS, R e Excel.  
+  
+Você encontra o meu currículo e histórico profissional detalhados, bem como o link para o meu currículo Lattes, abaixo.  
+
+<br>
+</div>
+
+<div class="column2">
+<img width="230" src="/static/sobre_files/author.png" alt="" loading="lazy">
+<br>
+</div>
+
+<hr>
+
+<div class = "column3">
+
+#### Formação acadêmica
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<br>
+
+<ul>
+
+<li>
+<p>2016 - 2021</p>
+<p>Doutorado em Farmacologia</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li>
+<p>2018 - 2020</p>
+<p>Especialização em estatística aplicada</p>
+<p><i>Universidade Cruzeiro do Sul</i></p>
+</li>
+
+<li>
+<p>2013 - 2015</p>
+<p>Mestrado em Farmacologia</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li>
+<p>2009 - 2012</p>
+<p>Graduação em Ciências Biológicas - Modalidade Médica</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+</ul>
+
+<br><br>
+
+<center>
+<a href="http://lattes.cnpq.br/7696717599003359" class="button">Currículo Completo (Lattes)</a>
+</center>
+
+</div>
+
+
+<div class = "column4">
+
+#### Histórico Profissional
+
+<br>
+
+<ul>
+
+<li class = "g">
+<p>2018 - atual</p>
+<p>Consultorias científicas e aulas particulares de bioestatística</p>
+</li>
+
+<li class = "t">
+<p>2021 - atual</p>
+<p>Professora dos Cursos de Data Science e Data Analytics</p>
+<p><i>Tera</i></p>
+</li>
+
+<li class = "t">
+<p>2019 - atual</p>
+<p>Professora de Psicofarmacologia do curso de Especialização em Neurociências</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li class = "t">
+<p>2016 - atual</p>
+<p>Professora dos cursos técnico em Farmácia e graduação em Biomedicina</p>
+<p><i>Faculdade Método de São Paulo (Famesp)</i></p>
+</li>
+
+<li class = "t">
+<p>2022</p>
+<p>Professora de Bioestatística do curso de Especialização em Fisiopatologia</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li class = "t">
+<p>2020</p>
+<p>Professora do curso de graduação em Biomedicina</p>
+<p><i>Universidade Paulista (UNIP)</i></p>
+</li>
+
+
+<li class = "t">
+<p>2019</p>
+<p>Professora de Bioestatística do Programa de Pós Graduação do Departamento de Diagnóstico por Imagem</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li class = "t">
+<p>2011 - 2016</p>
+<p>Professora e coordenadora da disciplina de Matemática</p>
+<p><i>Cursinho Universitário Jeannine Aboulafia (CUJA)</i></p>
+<p><i>Projeto de Extensão da Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+</ul>
+  
+</div>
+
+</div>
+

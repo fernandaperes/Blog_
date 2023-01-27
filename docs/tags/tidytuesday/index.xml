@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TidyTuesday on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/tidytuesday/</link>
+    <description>Recent content in TidyTuesday on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Mon, 20 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/tidytuesday/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Explorando os dados dos artigos da NBER #TidyTuesday</title>
+      <link>https://fernandafperes.com.br/blog/tidy-tuesday-nber/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/tidy-tuesday-nber/</guid>
+      <description>Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.</description>
+    </item>
+    
+    <item>
+      <title>Explorando os dados dos Emmy Awards #TidyTuesday</title>
+      <link>https://fernandafperes.com.br/blog/tidy-tuesday-emmy/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/tidy-tuesday-emmy/</guid>
+      <description>Análise exploratória dos dados dos Emmy Awards, com foco em gênero. Essa análise de dados faz parte do projeto #TidyTuesday.</description>
+    </item>
+    
+  </channel>
+</rss>

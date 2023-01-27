@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bioestatística on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/bioestat%C3%ADstica/</link>
+    <description>Recent content in Bioestatística on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/bioestat%C3%ADstica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Seu teste diagnóstico foi positivo. Qual a probabilidade de ser um positivo verdadeiro?</title>
+      <link>https://fernandafperes.com.br/blog/teste-diagnostico/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/teste-diagnostico/</guid>
+      <description>Já se perguntou qual a probabilidade do seu teste diagnóstico ser um positivo verdadeiro? Neste post, discuto essa resposta. E ela não é nada intuitiva: depende de quem você é.</description>
+    </item>
+    
+  </channel>
+</rss>

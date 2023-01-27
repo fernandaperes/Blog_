@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Valor de p on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/valor-de-p/</link>
+    <description>Recent content in Valor de p on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Mon, 30 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/valor-de-p/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>As falácias do valor de p</title>
+      <link>https://fernandafperes.com.br/blog/falacias-valor-de-p/</link>
+      <pubDate>Mon, 30 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/falacias-valor-de-p/</guid>
+      <description>O valor de p está entre os conceitos mais complexos de estatística - e também entre os mais mal interpretados. A maior parte dos livros didáticos de estatística definem incorretamente o valor de p. Neste post, vamos discutir as interpretações incorretas mais comuns.</description>
+    </item>
+    
+    <item>
+      <title>Valor de p, nível de significância e testes uni vs. bicaudais</title>
+      <link>https://fernandafperes.com.br/blog/valor-de-p-calculo/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/valor-de-p-calculo/</guid>
+      <description>Como é calculado o valor de p em um teste estatístico? Qual a diferença entre um teste de hipóteses unicaudal e um bicaudal? Neste post, discutiremos essas questões com base em um exemplo.</description>
+    </item>
+    
+    <item>
+      <title>Uma doutora toma chá</title>
+      <link>https://fernandafperes.com.br/blog/doutora-toma-cha/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/doutora-toma-cha/</guid>
+      <description>Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento &amp;ldquo;uma senhora toma chá&amp;rdquo;.</description>
+    </item>
+    
+  </channel>
+</rss>

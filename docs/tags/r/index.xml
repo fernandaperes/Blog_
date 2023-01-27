@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/r/</link>
+    <description>Recent content in R on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorial: Teste-t para amostras independentes no R</title>
+      <link>https://fernandafperes.com.br/blog/teste-t-independente/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/teste-t-independente/</guid>
+      <description>O teste-t independente é um teste estatístico que permite comparar as médias de dois grupos não relacionados. Neste post, veremos como realizá-lo no R.</description>
+    </item>
+    
+  </channel>
+</rss>

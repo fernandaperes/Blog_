@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/</link>
+    <description>Recent content in Tags on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ggplot2</title>
+      <link>https://fernandafperes.com.br/tags/ggplot2/</link>
+      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/ggplot2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gráficos</title>
+      <link>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</link>
+      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Estatística teórica</title>
+      <link>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</link>
+      <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TidyTuesday</title>
+      <link>https://fernandafperes.com.br/tags/tidytuesday/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/tidytuesday/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Valor de p</title>
+      <link>https://fernandafperes.com.br/tags/valor-de-p/</link>
+      <pubDate>Mon, 30 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/valor-de-p/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R</title>
+      <link>https://fernandafperes.com.br/tags/r/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://fernandafperes.com.br/tags/tutorial/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bioestatística</title>
+      <link>https://fernandafperes.com.br/tags/bioestat%C3%ADstica/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/bioestat%C3%ADstica/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/categories/</link>
+    <description>Recent content in Categories on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estatística teórica</title>
+      <link>https://fernandafperes.com.br/categories/estat%C3%ADstica-te%C3%B3rica/</link>
+      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/categories/estat%C3%ADstica-te%C3%B3rica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gráficos</title>
+      <link>https://fernandafperes.com.br/categories/gr%C3%A1ficos/</link>
+      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/categories/gr%C3%A1ficos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Estatística aplicada</title>
+      <link>https://fernandafperes.com.br/categories/estat%C3%ADstica-aplicada/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/categories/estat%C3%ADstica-aplicada/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>https://fernandafperes.com.br/categories/tutorial/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

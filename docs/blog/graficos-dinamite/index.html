@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Gráficos dinamite: usá-los ou não, eis a questão | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/graficos-dinamite/cover.png"/>
+<meta name="twitter:title" content="Gráficos dinamite: usá-los ou não, eis a questão"/>
+<meta name="twitter:description" content="Você já usou um gráfico de barras para representar variáveis numéricas (como peso, idade)? Sabia que essa é uma escolha controversa? Neste post te explico as críticas e sugiro alternativas a esse uso do gráfico de barras."/>
+
+	<meta property="og:title" content="Gráficos dinamite: usá-los ou não, eis a questão" />
+<meta property="og:description" content="Você já usou um gráfico de barras para representar variáveis numéricas (como peso, idade)? Sabia que essa é uma escolha controversa? Neste post te explico as críticas e sugiro alternativas a esse uso do gráfico de barras." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/graficos-dinamite/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/graficos-dinamite/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-04-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-08T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.1ebce77c5767f4abffa5a3ab1cc4f3633495278c5d2b1534905ec6f2dd9465a2.css" integrity="sha256-HrznfFdn9Kv/paOrHMTzYzSVJ4xdKxU0kF7G8t2UZaI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/graficos-dinamite/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Gr%c3%a1ficos%20dinamite%3a%20us%c3%a1-los%20ou%20n%c3%a3o%2c%20eis%20a%20quest%c3%a3o&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-dinamite%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-dinamite%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-dinamite%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-dinamite%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Gráficos dinamite: usá-los ou não, eis a questão</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    8 abr., 2022
+
+    <i class="far fa-clock clock"></i>
+    10 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">gráficos</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/graficos-dinamite/cover.png" alt="thumbnail for this post" style="width:350px;"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>Se você já teve contato com algum artigo científico, é provável que você tenha visto um gráfico como o acima. Trata-se de um gráfico de barras usado para representar <strong>medidas numéricas</strong> em diferentes grupos. Nesses gráficos, a <strong>altura</strong> da barra é determinada pela <strong>média</strong> do grupo e o <strong>T</strong> que se projeta para além da barra representa uma <strong>medida de dispersão baseada na média</strong>, como o desvio-padrão, o erro-padrão da média ou o intervalo de confiança para essa média.</p>
+<p><br>
+<img src="g1.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>No entanto, apesar de muito utilizado - principalmente em contextos acadêmicos - esse tipo de gráfico é alvo de críticas, algumas vezes fervorosas, e tem sido chamado pejorativamente de <strong>gráfico dinamite</strong>. O nome é uma brincadeira com a semelhança desse tipo de gráfico com um detonador de dinamite antigo, aqueles que aparecem em desenhos animados.</p>
+<p><br>
+<img src="g2.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Uma breve busca pelo termo em inglês, <em>dynamite plots</em>, traz textos com títulos como <a href="https://hausetutorials.netlify.app/posts/2019-02-22-why-we-should-never-use-barplots-use-geomquasirandom-instead/">Por que gráficos dinamite são péssimos</a>, <a href="http://emdbolker.wikidot.com/blog:dynamite">Gráficos dinamite: um mal absoluto?</a> e até uma <em>open letter</em> intitulada <a href="https://simplystatistics.org/posts/2019-02-21-dynamite-plots-must-die/">Gráficos dinamite têm que morrer</a>.</p>
+<p>O que eu sinto é que essa discussão é ainda bem rara aqui no Brasil. E mesmo publicando em revistas internacionais, apenas uma vez ouvimos da editora: “os gráficos têm que ser refeitos porque eu não publico gráficos de barras.” E nós ficamos meio perdidas: como representar os dados, então? Curiosamente, pesquisar outros artigos da mesma revista não ajudou muito porque, adivinhem, só tinha gráfico de barras, rs. Mas no fim deu tudo certo.</p>
+<p>A proposta do post é: explicar quais as críticas aos “gráficos dinamite” e discutir quais as alternativas e esse tipo de gráfico (explicando como fazê-las).</p>
+<div id="por-que-gráficos-de-barra-não-são-ideais-para-representar-variáveis-numéricas" class="section level3">
+<h3>Por que gráficos de barra não são ideais para representar variáveis numéricas?</h3>
+<p>Uma das principais críticas é que esse tipo gráfico resume o conjunto de dados a <strong>apenas duas informações</strong>: a média e a medida de variação. Dada essa simplificação, mesmo conjuntos de dados com <strong>distribuições bem diferentes</strong> podem dar origem ao <strong>mesmo gráfico</strong> de barras – desde que apresentem a mesma média e desvio-padrão, por exemplo.</p>
+<p>O gráfico de barras também <strong>não</strong> permite a visualização dos <strong>dados brutos</strong> – ao olharmos um gráfico de barras, não sabemos o tamanho de cada grupo, se há <em>outliers</em> (valores discrepantes) ou se a distribuição tem mais de uma moda.</p>
+<p>Além disso, é importante lembrar que esses gráficos representam a <strong>média</strong> e medidas de dispersão baseadas nela. Mas, há dados que <strong>não são adequadamente representados</strong> pela média. Isso acontece quando temos distribuições assimétricas, ou conjuntos de dados com <em>outliers</em>. Nesses casos, a <strong>mediana</strong> será uma medida mais apropriada e devemos usar gráficos que se baseiem nela (os quais discutiremos a seguir).</p>
+</div>
+<div id="quais-as-alternativas-ao-gráfico-de-dinamite" class="section level3">
+<h3>Quais as alternativas ao gráfico de dinamite?</h3>
+<p>Fazer gráfico de barras para variáveis numéricas é <strong>errado</strong>? Não. Por mais que você vá encontrar pessoas que digam que sim - mas, veja, isso é a opinião delas, não um fato ou um consenso. O que é um fato é que esse tipo gráfico não será a escolha mais adequada para representar dados numéricos em muitas situações. Então, vejamos as alternativas ao gráfico de barras, com seus prós e contras.</p>
+<p>Para discutir as alternativas, vamos construir diferentes gráficos utilizando um mesmo banco de dados. Abaixo, temos um gráfico de barras com a altura da coluna representando a média e a barra de erros representando o desvio-padrão. Observe como os grupos A e C apresentam barras idênticas:</p>
+<img src="g3.png" width="280px" style="display: block; margin: auto;" />
+<center>
+<font size ='3'>Gráfico de barras (“gráfico dinamite”) representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+</center>
+<p><br><br></p>
+<div id="gráficos-dot-plot" class="section level4">
+<h4>Gráficos dot plot</h4>
+<p>Uma alternativa ao gráfico dinamite é o dotplot. Nesse gráfico, cada sujeito é representado por um ponto – ou seja, estamos visualizando os dados brutos.</p>
+<p>Além disso, é comum sobrepor a esses pontos uma linha horizontal representando a média e uma barra de erros indicando uma medida de dispersão (que, assim como no gráfico de barras, pode ser o desvio-padrão, o erro-padrão da média ou o intervalo de confiança para a média).</p>
+<img src="g4.png" width="280px" style="display: block; margin: auto;" />
+<center>
+<font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+</center>
+<p><br><br></p>
+<p>Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os outros dois, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).</p>
+<p>O que eu vejo como vantagens do dot plot? Além de ser um gráfico que nos permite visualizar os dados brutos, é um gráfico baseado em média. Se usamos um teste paramétrico para comparar os grupos, como o teste-t ou a ANOVA, a análise será baseada na média e em medidas de dispersão baseadas na média. Portanto, eu gosto de poder visualizar essas medidas no gráfico.</p>
+<p>Por outro lado, é um gráfico que não mostra diretamente quais pontos são <em>outliers</em> (ao contrário do boxplot, que discutiremos a seguir). Além disso, se estivermos trabalhando com amostras muito grandes, teremos <strong>muitos pontos</strong> no gráfico e a visualização ficará comprometida.</p>
+<p>Ah, outra desvantagem, na minha opinião, é que não conseguimos fazer um gráfico como esse no Excel, o software usado pela maior parte das pessoas para construção de gráficos. Para fazê-lo, precisamos partir para softwares mais específicos, como o Graphpad Prism (que eu considero bem limitado para análise estatística, mas ótimo para construção de gráficos), o SPSS ou o R.</p>
+<p>Em resumo:</p>
+<p><strong>Vantagens do dotplot:</strong></p>
+<ul>
+<li>Permite visualizar dos dados brutos<br />
+</li>
+<li>Inclui a média e uma medida de dispersão baseada na média - medidas utilizadas pelos testes paramétricos em seus cálculos</li>
+</ul>
+<p><br>
+<strong>Desvantagens do dotplot:</strong></p>
+<ul>
+<li>Não mostra diretamente os outliers<br />
+</li>
+<li>É de difícil visualização quando os grupos são grandes – deve ser usado preferencialmente em amostras menores</li>
+</ul>
+<div id="como-fazer-um-dot-plot-no-r" class="section level5">
+<h5>Como fazer um dot plot no R?</h5>
+<p>Segue o código usado para gerar o dot plot acima, usando o <code>ggplot2</code>.<br />
+Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pode parecer assustador. Mas, ele é razoavelmente simples quando se entende a lógica de funcionamento do <code>ggplot2</code>. Se tiver interesse no pacote, recomendo minha playlist explicando <a href="https://youtube.com/playlist?list=PLOw62cBQ5j9X5eOavzeu9CaHMO6TFsPkY">como construir gráficos no ggplot2 do zero</a>.</p>
+<pre class="r"><code>ggplot(dados, aes(x = Grupo, y = Escores)) +
+  geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, alpha = 0.3,
+               dotsize = 1, binwidth = 2, stackratio = 1.4,
+               position = position_dodge(width = 0.9), show.legend = F) +
+  geom_errorbar(stat = &quot;summary&quot;, fun.data = mean_cl_normal,
+                position = position_dodge(width = 0.9), width = 0.15) +
+  geom_crossbar(stat = &quot;summary&quot;, fun = &quot;mean&quot;, aes(ymin = ..y.., ymax = ..y..),
+                fatten = 0.2, width = 0.5, position = position_dodge(width = 0.9),
+                show.legend = F) +
+  theme_classic()</code></pre>
+</div>
+</div>
+<div id="gráficos-boxplot" class="section level4">
+<h4>Gráficos boxplot</h4>
+<p>Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">último post aqui do blog</a>. O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).</p>
+<img src="g5.png" width="450px" style="display: block; margin: auto;" />
+<center>
+<font size ='3'>Estrutura básica de um gráfico boxplot.</font>
+</center>
+<p><br><br></p>
+<p>Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente conseguimos detectar que o grupo B apresenta dois valores outliers acima do limite superior:</p>
+<img src="g6.png" width="280px" style="display: block; margin: auto;" />
+<center>
+<font size ='3'>Gráfico boxplot para três grupos: A, B e C.</font>
+</center>
+<p><br><br></p>
+<p>Assim como o dot plot, o boxplot mostra muito mais informações que o gráfico de barras: cinco medidas de posição + <em>outliers</em>. Além disso, conseguimos avaliar a dispersão dos dados através da altura da caixa (que representa a amplitude interquartil) e da distância entre o limite inferior e o superior.</p>
+<p>Porém, é importante entender que as medidas representadas em um boxplot <strong>não são aquelas usadas em testes paramétricos</strong> - o que significa que esse pode não ser o gráfico ideal para representar dados analisados por esses testes. Além disso, o boxplot só pode ser usado em <strong>amostras maiores</strong>. O n mínimo para estimar as 5 medidas é n = 5, mas o ideal mesmo é usá-lo em amostras superiores a isso (ainda que não haja na literatura um consenso de qual seria esse n ideal).</p>
+<p>E, assim como o gráfico de barras, o boxplot <strong>não</strong> mostra os <strong>dados brutos</strong>. Ao olharmos para o boxplot não temos como saber o tamanho dos grupos ou se a distribuição tem mais de uma moda.</p>
+<p>Uma vantagem do boxplot em relação ao dot plot é que ele pode ser <a href="https://youtu.be/DWs98A0yCMQ">feito no Excel</a>. Mas, eu tendo a preferir fazê-lo <a href="https://youtu.be/-XQPlOG12vc">no R com o pacote <code>ggplot2</code></a>.</p>
+<p>Em resumo:</p>
+<p><strong>Vantagens do boxplot:</strong></p>
+<ul>
+<li>Inclui cinco medidas de posição<br />
+</li>
+<li>Mostra os valores que são outliers</li>
+</ul>
+<p><br>
+<strong>Desvantagens do boxplot:</strong></p>
+<ul>
+<li>Não mostra os dados brutos<br />
+</li>
+<li>Não deve ser usado quando o tamanho do grupo é pequeno (n &lt; 5)<br />
+</li>
+<li>Não mostra as medidas avaliadas por testes paramétricos</li>
+</ul>
+<p>Ah, dada essa limitação do boxplot não mostrar os dados brutos, sugere-se que um dotplot seja sobreposto a ele (o que não conseguiremos fazer no Excel), como no gráfico abaixo:</p>
+<img src="g7.png" width="280px" style="display: block; margin: auto;" />
+<center>
+<font size ='3'>Gráfico boxplot com dot plot sobreposto representando três grupos: A, B e C.</font>
+</center>
+<p><br><br></p>
+<div id="como-fazer-um-boxplot-com-dot-plot-sobreposto-no-r" class="section level5">
+<h5>Como fazer um boxplot com dot plot sobreposto no R?</h5>
+<p>Segue o código usado para gerar o boxplot acima, usando o <code>ggplot2</code>.</p>
+<pre class="r"><code>ggplot(dados, aes(x = Grupo, y = Escores)) +
+  geom_errorbar(stat = &quot;boxplot&quot;, width = 0.2) +
+  geom_boxplot(fill = &quot;white&quot;, outlier.alpha = 0) +
+  geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;, alpha = 0.3,
+               dotsize = 1, binwidth = 1.6, stackratio = 1.4,
+               position = position_dodge(width = 0.9), show.legend = F) +
+  theme_classic()</code></pre>
+</div>
+</div>
+<div id="gráficos-violino-violin-plot" class="section level4">
+<h4>Gráficos violino (<em>violin plot</em>)</h4>
+<p>A terceira alternativa é o gráfico violino, em inglês <em>violin plot</em>. O gráfico violino é um gráfico que mostra a distribuição dos dados através de uma curva de densidade. Além disso, esse gráfico pode incluir em seu interior um boxplot. Eu ainda pretendo fazer um post detalhado sobre gráfico violino por aqui, mas neste post focaremos em uma interpretação mais geral, combinado?</p>
+<p>Aplicando aos nossos dados, obtemos o gráfico a seguir:</p>
+<img src="g8.png" width="280px" style="display: block; margin: auto;" />
+<center>
+<font size ='3'>Gráfico de violino representando as distribuições de três grupos: A, B e C.</font>
+</center>
+<p><br><br></p>
+<p>O gráfico nos permite observar que, apesar de terem a mesma média e desvio-padrão, os grupos A e C apresentam distribuições diferentes. Além disso, o grupo C apresenta uma distribuição bimodal (há dois picos).</p>
+<p>Por ter um boxplot em seu interior, o gráfico violino apresentará muitas das mesmas vantagens e desvantagens. Além disso, o n exigido para um gráfico de violino é superior ao n necessário para um boxplot. O gráfico violino <strong>não</strong> deve ser usado quando o tamanho do grupo é <strong>pequeno</strong>, já que nesses casos não será possível determinar corretamente a distribuição.</p>
+<p>Outras duas desvantagens são: trata-se de um gráfico recente e muito pouco conhecido (poucas pessoas declaram saber interpretá-lo) e não pode ser feito no Excel - temos que recorrer a outros programas, em particular o R.</p>
+<p>Em resumo:</p>
+<p><strong>Vantagens do gráfico de violino:</strong></p>
+<ul>
+<li>Permite visualizar a distribuição dos dados<br />
+</li>
+<li>Se incluir um boxplot em seu interior, mostra cinco medidas de posição</li>
+</ul>
+<p><br>
+<strong>Desvantagens do gráfico de violino:</strong></p>
+<ul>
+<li>Não deve ser usado quando o tamanho do grupo é pequeno – nesses casos, não será possível determinar corretamente a distribuição<br />
+</li>
+<li>Não mostra as medidas avaliadas por testes paramétricos<br />
+</li>
+<li>Não mostra os dados brutos</li>
+</ul>
+<div id="como-fazer-um-gráfico-violino-no-r" class="section level5">
+<h5>Como fazer um gráfico violino no R?</h5>
+<p>Segue o código usado para gerar o gráfico violino acima, usando o <code>ggplot2</code>.</p>
+<pre class="r"><code>ggplot(dados, aes(x = Grupo, y = Escores)) +
+  geom_violin(fill = &quot;grey90&quot;, trim = F) +
+  geom_boxplot(width = 0.1, outlier.shape = 1) +
+  theme_classic()</code></pre>
+</div>
+</div>
+</div>
+<div id="afinal-usar-ou-não-o-gráfico-de-barras-para-variáveis-numéricas" class="section level3">
+<h3>Afinal, usar ou não o gráfico de barras para variáveis numéricas?</h3>
+<p>Uma desvantagem que se aplica a todas as alternativas ao gráfico de barras, na minha opinião, é: são gráficos muito menos difundidos e, por isso, uma audiência não-técnica terá dificuldade em interpretá-los. Acho esses gráficos incríveis para artigos científicos, para uso pelo time de análise de dados em uma empresa? Com certeza. Acho que são gráficos adequados para matérias jornalísticas ou para divulgação científica? Não. Nesses últimos cenários, mesmo com todas as críticas (válidas) ao gráfico de barras, eu tendo a preferi-lo. Afinal, um gráfico só é bom quando ele comunica com a sua audiência.</p>
+<p>O gráfico mais adequado vai depender: do teste estatístico que foi feito, do tamanho dos grupos, do seu público.</p>
+<p>Se gráficos são um assunto que te interessa, recomendo um livro que ganhou meu coração: o livro <a href="https://amzn.to/3qKr4Xf">Storytelling com dados</a>, escrito pela Cole Nussbaumer Knaflic.</p>
+<p>Recomendo também a leitura do artigo de <span class="citation"><a href="#ref-weissgerber2019reveal" role="doc-biblioref">Weissgerber et al.</a> (<a href="#ref-weissgerber2019reveal" role="doc-biblioref">2019</a>)</span>, que resume as informações discutidas aqui.</p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências:</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-weissgerber2019reveal" class="csl-entry">
+Weissgerber, T. L., Winham, S. J., Heinzen, E. P., Milin-Lazovic, J. S., Garcia-Valencia, O., Bukumiric, Z., Savic, M. D., Garovic, V. D., &amp; Milic, N. M. (2019). Reveal, don’t conceal: Transforming data visualization to improve transparency. <em>Circulation</em>, <em>140</em>(18), 1506–1518.
+</div>
+</div>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/grafico-qui-quadrado/"> &laquo; Como representar os resultados do qui-quadrado em um gráfico?</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">Como interpretar (e construir) um gráfico boxplot? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

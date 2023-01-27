@@ -1,0 +1,57 @@
+---
+title: "Links de acesso"
+hidetitle: true
+type: "links-de-acesso"
+---
+
+
+<div class="flex-container">
+
+  <div class="flex-child">
+  
+  <a href="https://youtube.com/c/FernandaPeres/">
+  <img width="120" src="images/canal.png" alt="" loading="lazy">
+  </a>
+  <center><p>Canal no YouTube</p><center>
+  
+  <br>
+  
+  <a href="mailto:fernandafperes@hotmail.com">
+  <img width="120" src="images/contato.png" alt="" loading="lazy">
+  </a>
+  <center><p>Contato para aulas particulares ou consultorias científicas</p><center>
+  
+  </div>
+  
+  <div class="flex-child">
+
+  <a href="https://fernandafperes.com.br/blog/">
+  <img width="120" src="images/blog.png" alt="" loading="lazy">
+  </a>
+  <center><p>Textos no blog</p><center>
+  
+  <br>
+  
+  <a href="https://youtu.be/EtV3_3aN884">
+  <img width="120" src="images/como-escolher.png" alt="" loading="lazy">
+  </a>
+  <center><p>Vídeo: como escolher o teste estatístico?</p><center>
+
+  </div>
+  
+  <br><br>
+  
+</div>
+
+
+<div class="site-links">
+
+<br><br>
+  <a href="https://fernandafperes.com.br/">
+  fernandafperes.com.br
+  </a>
+
+<br><br>
+
+</div>
+

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Uma doutora toma chá | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/doutora-toma-cha/cover.jpeg"/>
+<meta name="twitter:title" content="Uma doutora toma chá"/>
+<meta name="twitter:description" content="Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento &ldquo;uma senhora toma chá&rdquo;."/>
+
+	<meta property="og:title" content="Uma doutora toma chá" />
+<meta property="og:description" content="Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento &ldquo;uma senhora toma chá&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/doutora-toma-cha/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/doutora-toma-cha/cover.jpeg"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-06-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-05T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.1ebce77c5767f4abffa5a3ab1cc4f3633495278c5d2b1534905ec6f2dd9465a2.css" integrity="sha256-HrznfFdn9Kv/paOrHMTzYzSVJ4xdKxU0kF7G8t2UZaI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/doutora-toma-cha/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Uma%20doutora%20toma%20ch%c3%a1&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fdoutora-toma-cha%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fdoutora-toma-cha%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fdoutora-toma-cha%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fdoutora-toma-cha%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Uma doutora toma chá</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    5 jun., 2021
+
+    <i class="far fa-clock clock"></i>
+    9 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/valor-de-p">Valor de p</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/doutora-toma-cha/cover.jpeg" alt="thumbnail for this post" style="width:350px;"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<div id="afinal-o-que-o-valor-de-p-essa-medida-tão-famosa-e-tão-controversa-indica" class="section level3">
+<h3>Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica?</h3>
+<p>Na minha opinião, os conceitos de valor de p e nível de significância estão entre os mais confusos e desafiadores de explicar quando se trata de estatística. Eu comecei a usar a estatística como ferramenta para analisar os meus dados em 2010, mas considero que só fui entender de fato esses dois conceitos sete anos depois, em um curso dado pelo professor Marcus Vinícius C. Baldo no congresso da SBNeC (Sociedade Brasileira de Neurociências e Comportamento).<br />
+A proposta desse post é explicar esses conceitos através da história da criação do teste de hipóteses, conhecida como “Uma senhora toma chá” (em inglês, <em>Lady tasting tea</em>).</p>
+<blockquote>
+<p>Esse post é inspirado em um vídeo publicado no meu canal do YouTube, que se tornou muito popular. Então, se você prefere consumir esse tipo de conteúdo em vídeo, clique <a href="https://www.youtube.com/watch?v=kOUZw-wMmXU">aqui</a>.</p>
+</blockquote>
+</div>
+<div id="o-problema" class="section level3">
+<h3>O problema</h3>
+<p>Diz a lenda (e a biografia de Ronald Fisher) que, em uma tarde no final da década de 1920, três pesquisadores – dois homens e uma mulher – que trabalhavam na Estação experimental agrícola de Rothamsted, na Inglaterra, fizeram uma pausa para tomar chá. Como bons ingleses, esses três pesquisadores tomavam o seu chá com leite.</p>
+<img src="https://i.imgur.com/97E9BDk.png" width="450px" style="display: block; margin: auto;" />
+<center>
+<font size = '3'>Estação experimental agrícola de Rothamsted</font>
+</center>
+<p><br><br></p>
+<p>Um dos homens adicionou leite à xícara, complementou-a com chá, mexeu o conteúdo e serviu-a à mulher. Ela educadamente recusou, dizendo que preferia quando o chá era adicionado antes do leite. Ele protestou, dizendo que a ordem não fazia diferença. Ela continuou insistindo que sentia diferença, e preferia quando o chá era adicionado antes.</p>
+<p><img src="https://i.imgur.com/cjyXhYj.png" width="150px" style="display: block; margin: auto;" /></p>
+<p>Se as pessoas envolvidas nessa história fossem outras, ela provavelmente teria acabado aqui. Mas, o homem em questão era Ronald Fisher, um estatístico e geneticista, que anos depois ganharia o título de Sir. Já a pesquisadora era Blanche Muriel Bristol, uma algologista que na época já possuía os títulos de mestre e doutora. Infelizmente, muitas informações sobre a Dra. Muriel se perderam com o tempo, mas sabe-se que uma espécie de alga recebeu o nome de C. <em>muriella</em> em homenagem a ela, indicando que ela contribuiu de forma significativa com a sua área.</p>
+<p><img src="https://i.imgur.com/3GBT1P0.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Ronald Fisher, sem acreditar que a Dra. Muriel seria capaz de diferenciar uma xícara com chá adicionado antes do leite de uma com o chá adicionado depois, propôs um experimento para testá-la.</p>
+</div>
+<div id="as-hipóteses" class="section level3">
+<h3>As hipóteses</h3>
+<p>Podemos pensar que o experimento permitia contrapor duas hipóteses:
+* Hipótese 1: a Dra. Muriel, na realidade, <strong>não era capaz de diferenciar</strong> as preparações;
+* Hipótese 2: a Dra. Muriel, na realidade, <strong>era capaz de diferenciar</strong> as preparações.</p>
+<p>Para usar a terminologia que usamos hoje e facilitar o raciocínio, vamos chamar a primeira hipótese de “Hipótese nula (H<sub>0</sub>)” e a segunda hipótese, que se contrapõe à H<sub>0</sub> de “Hipótese alternativa (H<sub>1</sub>)”:</p>
+<p><img src="https://i.imgur.com/MWYUf74.png" width="450px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ok-mas-e-como-testá-la" class="section level3">
+<h3>Ok, mas… E como testá-la?</h3>
+<p>Fisher poderia apresentar à Dra. Muriel apenas uma xícara, e pedir para que ela identificasse se o chá havia sido colocado antes ou após o leite. Mas, nesse caso, a probabilidade de ela acertar – ainda que não fosse capaz de diferenciar as preparações – seria de 50%. A mesma probabilidade valeria para caso a Dra. Muriel fosse apresentada a duas xícaras, sabendo que havia uma de cada tipo de preparação.</p>
+<p><img src="https://i.imgur.com/XcJqd4E.png" width="150px" style="display: block; margin: auto;" /></p>
+<p>Fisher acabou propondo um experimento no qual 8 xícaras seriam apresentadas à Dra. Muriel: 4 com o chá adicionado antes e 4 com o chá adicionado depois do leite. A ordem de apresentação dessas xícaras seria determinada de forma verdadeiramente aleatória, definida por uma moeda, de forma que não fosse possível prevê-la.<br />
+Ao final, a Dra. Muriel – que tinha conhecimento de como o experimento havia sido delineado – teria que identificar quais quatro xícaras pertenciam a um mesmo tipo de preparação. Note que, se ela identificasse corretamente essas 4, isso significaria que ela acertou como foram preparadas todas as 8 xícaras.</p>
+<p><img src="https://i.imgur.com/lho5f92.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Com experimento sendo delineado dessa forma, a probabilidade de a Dra. Muriel selecionar corretamente as quatro xícaras seria de 1 em 70, o que corresponde a:
+<span class="math display">\[\frac{1}{70} = 1,43%\]</span></p>
+<blockquote>
+<p>Entender como esse cálculo foi feito é totalmente dispensável à compreensão dos conceitos de valor de p e nível de significância, ok? Mas, se ficou curiosa(o), acompanhe o meu raciocínio abaixo. Se preferir, pode pular esse quadro e seguir a leitura.
+De onde vêm os 70, do denominador da fração? Ele corresponde às possibilidades de selecionarmos um conjunto de 4 xícaras dentre as 8. Para calcular a quantidade de possibilidades, devemos usar a fórmula da combinação (aquela mesma, que você aprendeu no ensino médio):<br />
+<span class="math display">\[C_{(8, 4)} = \binom{8}{4} = \frac{8!}{4! \times 4!} = \frac{8 \times 7 \times 6 \times 5}{4 \times 3 \times 2 \times 1} = 70\]</span>
+Dentre todas essas combinações, há uma única que corresponde a acertar todas as xícaras. Logo, a probabilidade de uma pessoa selecionar corretamente as 4 xícaras com a mesma preparação é de 1 em 70.</p>
+</blockquote>
+<p>Agora vem a grande questão: se a Dra. Muriel acertasse todas as xícaras, você acreditaria que ela tem a capacidade de diferenciar as preparações? Considere que a probabilidade de isso acontecer sem que ela tivesse essa capacidade é de apenas 1,43%. Eu acreditaria nela, imagino que você também.</p>
+<p>Mas, ainda que ela consiga diferenciar as preparações, é possível que ela erre uma das 4 xícaras selecionadas, concorda? Uma pode não ter sido mexida adequadamente, ou pode estar com uma proporção diferente de chá e leite…</p>
+<p><img src="https://i.imgur.com/BR8F7hD.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>E nesse caso, você acreditaria nela? Vamos novamente calcular as probabilidades. A probabilidade de ela acertar pelo menos 3 xícaras (ou seja, acertar 3 ou acertar 4) é de 17 em 70, o que corresponde a:
+<span class="math display">\[\frac{17}{70} = 24,29%\]</span></p>
+<blockquote>
+<p>Novamente, se quiser saber como esse cálculo foi feito, acompanhe o raciocínio abaixo. Caso isso não seja do seu interesse, pule esse quadro.
+Já sabemos que há 70 combinações possíveis de 4 xícaras em 8. Dessas, apenas um corresponde ao acerto de todas as xícaras. Vamos agora calcular quantas das 70 possibilidades correspondem a um acerto de 3 xícaras, das 4 selecionadas. Para isso, devemos fazer uma combinação de 3, 4 a 4 (ou seja, selecionar 3 xícaras dentre as 4 corretas) e uma combinação de 1, 4 a 4 (ou seja, selecionar uma xícara dentre as 4 incorretas). Como queremos selecionar 3 corretas <strong>e</strong> uma incorreta, devemos multiplicar esses resultados:
+<span class="math display">\[C_{(4, 3)} \times C_{(4, 1)}\]</span>
+<span class="math display">\[\binom{4}{3} \times \binom{4}{1}\]</span>
+<span class="math display">\[\frac{4!}{3! \times 1!} \times \frac{4!}{1! \times 3!}\]</span>
+<span class="math display">\[4 \times 4 = 16\]</span>
+Logo, a probabilidade de acertar pelo menos 3 xícaras é de 17 (16 + 1) em 70.</p>
+</blockquote>
+<p>Sabendo que a probabilidade de a Dra. Muriel acertar pelo menos 3 xícaras das selecionadas (ou seja, pelo menos 6 xícaras no total), sem saber diferenciar as preparações, é de 24,29%, você acreditaria na capacidade dela de diferenciação, caso ela acertasse seis xícaras? Imagino que a sua resposta tenha sido: “não!”. A minha também seria.</p>
+<p>Nessa história, usamos os conceitos de valor de p e nível de significância, sem que tenhamos dado nome a eles. Vamos então defini-los, fazendo a relação com a história.</p>
+</div>
+<div id="o-valor-de-p" class="section level3">
+<h3>O valor de p</h3>
+<p>O valor de p corresponde à probabilidade de termos obtido aquele resultado, ou um resultado ainda mais extremo, dado que a hipótese nula é verdadeira.</p>
+<p>É uma definição confusa, mas que faz mais sentido quando pensamos na história.
+No caso, a nossa hipótese nula era a de que a Dra. Muriel, na realidade, <strong>não era capaz de diferenciar</strong> as preparações. Então, nós calculamos a probabilidade de ela acertar as 8 xícaras, considerando a hipótese nula verdadeira. O valor de probabilidade calculado (1,43%) corresponde ao nosso valor de p.<br />
+Da mesma forma, calculamos a probabilidade de outro resultado, de ela acertar pelo menos 6 xícaras, novamente considerando que a hipótese nula era verdadeira. Obtivemos, então, outro valor de p, o de 24,29%.</p>
+</div>
+<div id="e-o-nível-de-significância" class="section level3">
+<h3>E o nível de significância?</h3>
+<p>O nível de significância é o “ponto de corte” que nós estabelecemos para a rejeição da hipótese nula.</p>
+<p>Eu te perguntei se você acreditaria na capacidade de diferenciação da Dra. Muriel, caso ela acertasse 8 xícaras. Sabendo que a probabilidade de ela acertar, sem ser capaz de diferenciar as preparações era de 1,43%, você me respondeu (eu imagino) que sim. Mas, quando eu te perguntei se você acreditaria nela caso ela tivesse acertado 6 xícaras – sabendo que a probabilidade desse resultado era de 24,29% - você optou por não acreditar.</p>
+<p>Veja que para dar essas respostas, você estabeleceu um ponto de corte entre 1,43% e 24,29%, considerando que 1,43% era uma probabilidade baixa o suficiente para te convencer a rejeitar a hipótese nula, mas 24,29%, não. Esse ponto de corte corresponde ao seu nível de significância.</p>
+<p>O padrão, na maior parte das áreas, é um nível de significância () de 5%.</p>
+<p>Você também pode ser mais rígido, e estabelecer um nível de significância de 1%, por exemplo. Mas, nesse cenário, seria necessário delinear um experimento que incluísse mais xícaras, já que com 8 xícaras, ainda que a Dra. Muriel acertasse todas, ainda não teríamos evidências suficientes para rejeitar a hipótese nula.</p>
+</div>
+<div id="tá-mas-ela-acertou" class="section level3">
+<h3>Tá, mas… Ela acertou?</h3>
+<p>Ronald Fisher publicou esse delineamento no seu livro “The design of experiments”, de 1935, sob o nome que o tornou famoso, “Lady tasting tea”. No livro, Fisher descreve o experimento como algo hipotético.</p>
+<p>Mas, há evidências de que isso realmente aconteceu, e a Dra. Muriel acertou todas as xícaras. Parece, de fato, haver uma diferença no sabor do chá, uma vez que o chá é adicionado à preparação quente, enquanto que o leite é adicionado a temperatura ambiente. De acordo com uma declaração de 2008 feita pela “Royal Society of Chemists”, há mais desnaturação das proteínas do leite quando esse é adicionado após o chá, o que altera o sabor. Relatos – infelizmente muito difíceis de comprovar – sugerem que a própria Muriel havia explicado ao Fisher que haveria diferenças na desnaturação proteica.</p>
+<p>Essa história é também contada no famoso livro “Uma senhora toma chá”, de autoria de David Salsburg. No entanto, David se refere à mulher como “uma esposa de um professor universitário”. Uma falha imperdoável para um livro cujo título se baseia nesse episódio. Dra. Muriel, uma mulher com uma carreira científica notável, ainda mais para a sua época, não pode ser apagada dessa história.</p>
+<p><br></p>
+<hr>
+</div>
+<div id="referências" class="section level3">
+<h3>Referências:</h3>
+<ul>
+<li>Senn, S. (2012). Tea for three: of infusions and inferences and milk in first. Significance, 9(6), 30-33. <a href="https://rss.onlinelibrary.wiley.com/doi/full/10.1111/j.1740-9713.2012.00620.x">Acesso</a></li>
+<li>Salsburg, D. S. (2009). Uma senhora toma chá… como a estatística revolucionou a ciência no século XX. Rio de Janeiro: Zahar.</li>
+</ul>
+<p><br><b><br></p>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/intervalo-de-confianca/"> &laquo; Como interpretar o intervalo de confiança?</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/teste-t-independente/">Tutorial: Teste-t para amostras independentes no R &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

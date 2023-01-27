@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Tutorial: Teste-t para amostras independentes no R | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/teste-t-independente/cover.jpeg"/>
+<meta name="twitter:title" content="Tutorial: Teste-t para amostras independentes no R"/>
+<meta name="twitter:description" content="O teste-t independente é um teste estatístico que permite comparar as médias de dois grupos não relacionados. Neste post, veremos como realizá-lo no R."/>
+
+	<meta property="og:title" content="Tutorial: Teste-t para amostras independentes no R" />
+<meta property="og:description" content="O teste-t independente é um teste estatístico que permite comparar as médias de dois grupos não relacionados. Neste post, veremos como realizá-lo no R." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/teste-t-independente/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/teste-t-independente/cover.jpeg"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2020-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-29T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.1ebce77c5767f4abffa5a3ab1cc4f3633495278c5d2b1534905ec6f2dd9465a2.css" integrity="sha256-HrznfFdn9Kv/paOrHMTzYzSVJ4xdKxU0kF7G8t2UZaI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/teste-t-independente/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Tutorial%3a%20Teste-t%20para%20amostras%20independentes%20no%20R&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fteste-t-independente%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fteste-t-independente%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fteste-t-independente%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fteste-t-independente%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Tutorial: Teste-t para amostras independentes no R</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    29 dez., 2020
+
+    <i class="far fa-clock clock"></i>
+    11 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/tutorial">tutorial</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/r">R</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/teste-t-independente/cover.jpeg" alt="thumbnail for this post" style="width:350px;"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>Há três principais tipos de testes-t: o teste-t para uma amostra, o teste-t para duas amostras independentes (ou apenas teste-t independente) e o teste-t para duas amostras pareadas (ou teste-t pareado).</p>
+<p><img src="https://i.imgur.com/Q4pGVqz.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Nesse post, falaremos sobre como fazer o teste-t independente, usando o software R.</p>
+<blockquote>
+Algumas informações importantes:<br />
+
+<li>
+Se você prefere consumir esse conteúdo na forma de vídeo, você encontra um <a href="https://youtu.be/62YSVhzDjo8">tutorial</a> muito semelhante no meu canal do YouTube.
+</li>
+<li>
+Esse tutorial assume que você tem alguns conhecimentos básicos de R, como instalação e carregamento de pacotes. Caso queira aprender essa parte básica, incluindo como instalar os softwares R e RStudio, sugiro os primeiros vídeos desta <a href="https://www.youtube.com/watch?v=WVogdSlk7gY&amp;list=PLOw62cBQ5j9VE9X4cCCfFMjW_hhEAJUhU">playlist</a>.
+</li>
+<p><br></p>
+</blockquote>
+<div id="quando-usar-o-teste-t-independente-quais-as-suas-hipóteses" class="section level3">
+<h3>Quando usar o teste-t independente? Quais as suas hipóteses?</h3>
+<p>O teste-t independente é usado para comparar as médias de <strong>dois grupos independentes</strong>.</p>
+<p>O que significa dizer que dois grupos são independentes? Significa que os valores obtidos em um dos grupos não dependem dos valores obtidos no outro. Na prática, dizemos que os grupos são independentes quando são compostos por sujeitos experimentais diferentes. No exemplo que faremos hoje, compararemos as notas de dois grupos de alunos: os alunos que sentam nas primeiras fileiras da sala e os alunos que sentam nos fundos (a galera do fundão). Note que são grupos independentes, uma vez que são compostos por alunos diferentes.</p>
+<p>Você pode estar se perguntando: mas, <strong>e se eu tiver mais de dois grupos?</strong> Bom, aí o teste-t não será o teste adequado a você. Você provavelmente terá que usar um teste chamado ANOVA (Análise de Variância).</p>
+<div id="hipóteses-nula-e-alternativa" class="section level4">
+<h4>Hipóteses nula e alternativa</h4>
+<p>O teste-t independente é um teste de hipóteses. Isso significa que ele apresenta uma hipótese nula e uma hipótese alternativa, que se contradizem.<br />
+Escolhemos a hipótese mais apropriada com base no valor de p do teste, ao comparar esse valor de p com o nível de significância (alfa). O nível de significância mais comumente utilizado (e que usaremos aqui) é o de 5% (0,05).<br />
+Caso o valor de p seja superior a 0,05, não rejeitamos a hipótese nula (H<sub>0</sub>). Caso seja igual ou inferior, rejeitamos a H<sub>0</sub> e aceitamos a hipótese alternativa (H<sub>1</sub>).</p>
+<p>Vamos denominar os dois grupos independentes de A e B. As hipóteses por trás de todos os testes-t independente são:</p>
+<ul>
+<li>H<sub>0</sub>: média do grupo A <span class="math inline">\(=\)</span> média do grupo B</li>
+<li>H<sub>1</sub>: média do grupo A <span class="math inline">\(\neq\)</span> média do grupo B</li>
+</ul>
+</div>
+</div>
+<div id="a-pergunta-experimental" class="section level3">
+<h3>A pergunta experimental</h3>
+<p>O banco de dados “Banco de Dados 3.csv” contém informações de 32 alunos da rede pública e privada. Há efeito da posição que o aluno ocupa na sala (se “Frente” ou “Fundo”) sobre as suas notas de Biologia ou História?</p>
+<p>Para responder a essa pergunta, usaremos o teste-t independente. Note que queremos comparar as notas (variáveis numéricas) de dois grupos independentes de alunos (Frente x Fundos).</p>
+</div>
+<div id="análise-estatística" class="section level3">
+<h3>Análise estatística</h3>
+<div id="passo-1.-instalação-carregamento-dos-pacotes-que-serão-utilizados" class="section level4">
+<h4>Passo 1. Instalação + carregamento dos pacotes que serão utilizados</h4>
+<pre class="r"><code>if(!require(dplyr)) install.packages(&quot;dplyr&quot;)
+library(dplyr)
+
+if(!require(rstatix)) install.packages(&quot;rstatix&quot;)
+library(rstatix)
+
+if(!require(car)) install.packages(&quot;car&quot;)
+library(car) 
+
+if(!require(ggplot2)) install.packages(&quot;ggplot2&quot;)
+library(ggplot2) </code></pre>
+<p>Vamos usar os pacotes <code>dplyr</code>, <code>rstatix</code>, <code>car</code> e <code>ggplot2</code>. O código acima está instruindo que os pacotes sejam instalados caso ainda não tenham sido e, caso já estejam instalados, que sejam carregados.</p>
+</div>
+<div id="passo-2.-carregamento-e-visualização-do-banco-de-dados" class="section level4">
+<h4>Passo 2. Carregamento e visualização do banco de dados</h4>
+<p>Para esse tutorial, vamos usar o banco de dados chamado “Banco de Dados 3”, que está no formato .csv brasileiro (com vírgulas como separador de decimal e ponto-vírgula como separador de colunas). Todos os dados são fictícios. Para aumentar a reprodutibilidade, hospedei esse banco no meu GitHub, então basta colocar o endereço para que o carregamento aconteça.</p>
+<pre class="r"><code>dados &lt;- read.csv2(&quot;https://raw.githubusercontent.com/fernandaperes/bancosdedados/main/Bancos%20em%20csv/Banco%20de%20Dados%203.csv&quot;, stringsAsFactors = TRUE)</code></pre>
+<p>A função <code>read.csv2</code> é a adequada ao formato .csv brasileiro. Atribuímos no código acima a denominação <code>dados</code> ao nosso banco.
+Adicionamos também o atributo <code>stringsAsFactors = TRUE</code> para estabelecer que os textos do banco de dados correspondem a fatores.</p>
+<pre class="r"><code>head(dados, 10)</code></pre>
+<pre><code>##    Sujeito Genero  Escola Posicao_Sala Nota_Biol Nota_Fis Nota_Hist
+## 1        1      M Privada       Fundos       8.1      4.6       2.9
+## 2        2      F Privada       Fundos       5.3      4.9       6.4
+## 3        3      M Publica       Fundos       2.9      3.7       3.1
+## 4        4      M Publica       Fundos       3.7      3.8       4.9
+## 5        5      F Publica       Fundos       4.4      4.2       4.9
+## 6        6      F Publica       Fundos       4.7      4.9       5.5
+## 7        7      M Privada       Frente       5.4      6.4       7.4
+## 8        8      M Privada       Frente       5.8      6.8       8.1
+## 9        9      M Publica       Fundos       3.1      4.1       3.3
+## 10      10      M Privada       Frente       6.0      6.9       8.3</code></pre>
+<p>Observe que temos no banco 7 variáveis:</p>
+<ul>
+<li>Sujeito, que corresponde a um ID do aluno</li>
+<li>Gênero, classificado como M ou F</li>
+<li>Escola, classificada como Pública ou Privada</li>
+<li>Posição na sala, classificada como Fundos ou Frente</li>
+<li>Nota de biologia, que varia de 0 a 10</li>
+<li>Nota de história, que varia de 0 a 10</li>
+<li>Nota de física, que varia de 0 a 10</li>
+</ul>
+<p>A <strong>pergunta experimental</strong> é se a posição na sala tem efeito sobre as notas de biologia e história. Logo, usaremos no nosso modelo as variáveis relacionadas a essas notas e a variável “posição na sala”.</p>
+<p>Faremos um teste-t para a nota de biologia e um para a nota de história.</p>
+</div>
+<div id="passo-3.-checagem-dos-pressupostos" class="section level4">
+<h4>Passo 3. Checagem dos pressupostos</h4>
+<p>O teste-t independente apresenta dois pressupostos:</p>
+<ul>
+<li>Normalidade da variável dependente em cada grupo</li>
+<li>Homogeneidade de variâncias (ou seja, grupos com variâncias homogêneas)</li>
+</ul>
+<p>Para <strong>checar a normalidade</strong> podemos usar o <strong>teste de Shapiro-Wilk</strong>, aplicado a cada grupo. Usaremos para isso o pacote <code>dplyr</code>, para separação dos grupos, e o pacote <code>rstatix</code> para aplicar o teste de Shapiro (função <code>shapiro_test</code>) a cada grupo e nota.</p>
+<pre class="r"><code>dados %&gt;% group_by(Posicao_Sala) %&gt;% shapiro_test(Nota_Biol, Nota_Hist)</code></pre>
+<pre><code>## # A tibble: 4 × 4
+##   Posicao_Sala variable  statistic      p
+##   &lt;fct&gt;        &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Frente       Nota_Biol     0.985 0.993 
+## 2 Frente       Nota_Hist     0.894 0.0759
+## 3 Fundos       Nota_Biol     0.900 0.0686
+## 4 Fundos       Nota_Hist     0.917 0.131</code></pre>
+<p>O teste de Shapiro-Wilk tem como hipóteses:
+H<sub>0</sub>: os dados seguem a distribuição normal
+H<sub>1</sub>: os dados <strong>não</strong> seguem a distribuição normal</p>
+<p>Como todos os valores de p foram superiores a 0,05, não vamos rejeitar a H<sub>0</sub> em nenhum dos grupos. Logo, vamos considerar que todos apresentam distribuição normal.</p>
+<p><img src="https://i.imgur.com/WUvW5Vv.png" width="350px" style="display: block; margin: auto;" /></p>
+<p>O segundo pressuposto a ser checado é a homogeneidade de variâncias, que pode ser avaliada pelo teste de Levene (pacote <code>car</code>):</p>
+<p><strong>Para a nota de biologia:</strong></p>
+<pre class="r"><code>leveneTest(Nota_Biol ~ Posicao_Sala, data = dados, center = mean)</code></pre>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = mean)
+##       Df F value Pr(&gt;F)
+## group  1  1.0359 0.3169
+##       30</code></pre>
+<p><strong>Para a nota de história:</strong></p>
+<pre class="r"><code>leveneTest(Nota_Hist ~ Posicao_Sala, data = dados, center = mean)</code></pre>
+<pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = mean)
+##       Df F value    Pr(&gt;F)    
+## group  1  14.292 0.0006954 ***
+##       30                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>O teste de Levene tem como hipóteses:
+H<sub>0</sub>: os grupos apresentam variâncias homogêneas
+H<sub>1</sub>: os grupos <strong>não</strong> apresentam variâncias homogêneas</p>
+<p>Para as notas de biologia, p foi maior que 0,05. Portanto, não rejeitaremos H<sub>0</sub> e consideraremos que os grupos apresentam variâncias homogêneas.<br />
+Já para as notas de história, p foi menor que 0,05, indicando que devemos rejeitar H<sub>0</sub> e, portanto, considerar que o pressuposto da homogeneidade de variâncias foi violado. Nós poderemos seguir com o teste-t, mas deveremos usar um teste-t com correção para essa violação da homogeneidade, a correção de Welch.</p>
+</div>
+<div id="passo-4.-realização-do-teste-t-independente" class="section level4">
+<h4>Passo 4. Realização do teste-t independente</h4>
+<p>Para as notas de biologia vamos programar com <code>var.equal=TRUE</code>, uma vez que o pressuposto da homogeneidade de variâncias foi atendido para essa nota. Para as notas de história, colocaremos <code>var.equal=FALSE</code>.</p>
+<p><strong>Teste-t para a nota de biologia:</strong></p>
+<pre class="r"><code>t.test(Nota_Biol ~ Posicao_Sala, dados, var.equal=TRUE)</code></pre>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  Nota_Biol by Posicao_Sala
+## t = 4.6027, df = 30, p-value = 7.136e-05
+## alternative hypothesis: true difference in means between group Frente and group Fundos is not equal to 0
+## 95 percent confidence interval:
+##  1.411664 3.663630
+## sample estimates:
+## mean in group Frente mean in group Fundos 
+##             6.520000             3.982353</code></pre>
+<p>O teste resulta em um valor de t (no caso, t = 4,60) e um valor de p (p-value) que é calculado com base nesse valor de t e nos graus de liberdade (df, do inglês <em>degrees of freedom</em>).<br />
+Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>. Ou seja, p = 0,00007136, um valor inferior ao nível de significância 0,05.</p>
+<p>Para interpretá-lo adequadamente, precisamos relembrar as hipóteses nula e alternativa do teste-t independente:</p>
+<ul>
+<li>H<sub>0</sub>: média do grupo A <span class="math inline">\(=\)</span> média do grupo B</li>
+<li>H<sub>1</sub>: média do grupo A <span class="math inline">\(\neq\)</span> média do grupo B</li>
+</ul>
+<p>Adaptando para essa situação, teremos:</p>
+<ul>
+<li>H<sub>0</sub>: média das notas de biologia do grupo Frente <span class="math inline">\(=\)</span> média das notas de biologia do grupo Fundos</li>
+<li>H<sub>1</sub>: média das notas de biologia do grupo Frente <span class="math inline">\(\neq\)</span> média das notas de biologia do grupo Fundos</li>
+</ul>
+<p>Como p &lt; 0,05, vamos rejeitar a H<sub>0</sub> e considerar que os dois grupos apresentam notas de biologia que são, em média, estatisticamente diferentes.</p>
+<p>Note que o R ainda libera, por escrito, a hipótese alternativa: “a diferença entre as médias é diferente zero”, o que equivale a dizer que os grupos apresentam médias diferentes.</p>
+<p>Além disso, o R também libera por padrão o intervalo de confiança 95% (IC 95%) para a diferença entre as médias. Essa é uma informação complementar ao valor de p. Nesse caso, o intervalo de confiança 95% foi de [1,41; 3,66]. Observe que o valor zero não está incluído nesse intervalo, o que - da mesma forma que o valor de p - indica que os grupos são estatisticamente diferentes.</p>
+<p>Sabendo que as médias são estatisticamente diferentes, podemos analisar qual dos grupos apresenta notas de biologia que são, em média, maiores. Para isso, basta olharmos as médias. A saída do R mostra que o grupo Frente apresenta uma média de 6,52, enquanto que o grupo Fundos uma média de 3,98. Logo, os alunos do grupo Frente apresentam, em média, um desempenho superior em biologia.</p>
+<p><strong>Teste-t para a nota de história:</strong></p>
+<pre class="r"><code>t.test(Nota_Hist ~ Posicao_Sala, dados, var.equal=FALSE)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Nota_Hist by Posicao_Sala
+## t = 1.5737, df = 19.909, p-value = 0.1313
+## alternative hypothesis: true difference in means between group Frente and group Fundos is not equal to 0
+## 95 percent confidence interval:
+##  -0.3860238  2.7546513
+## sample estimates:
+## mean in group Frente mean in group Fundos 
+##             5.466667             4.282353</code></pre>
+<p>Aplicaremos exatamente o mesmo raciocínio para as notas de história.</p>
+<p>Para as notas de história, o valor de t foi de 1,57, com 19,909 graus de liberdade (não estranhe o valor quebrado, isso se deve à correção de Welch que usamos) e um valor de p de 0,1313. Para esse teste, temos como hipóteses:</p>
+<ul>
+<li>H<sub>0</sub>: média das notas de história do grupo Frente <span class="math inline">\(=\)</span> média das notas de história do grupo Fundos</li>
+<li>H<sub>1</sub>: média das notas de história do grupo Frente <span class="math inline">\(\neq\)</span> média das notas de história do grupo Fundos</li>
+</ul>
+<p>Note que o valor de p é maior que 0,05. Logo, não devemos rejeitar a H<sub>0</sub>. Isso significa não temos evidências para afirmar que as médias dos grupos Frente e Fundos são estatisticamente diferentes.</p>
+<p>De acordo, observe que o IC 95% para a diferença entre médias inclui o zero: [-0,39; 2,76].</p>
+</div>
+<div id="passo-5.-análise-descritiva" class="section level4">
+<h4>Passo 5. Análise descritiva</h4>
+<p>Para uma análise descritiva mais completa, vamos primeiramente calcular os valores de média e desvio-padrão para os dois grupos.</p>
+<pre class="r"><code>dados %&gt;% group_by(Posicao_Sala) %&gt;% get_summary_stats(c(Nota_Biol, Nota_Hist), type = &quot;mean_sd&quot;)</code></pre>
+<pre><code>## # A tibble: 4 × 5
+##   Posicao_Sala variable      n  mean    sd
+##   &lt;fct&gt;        &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Frente       Nota_Biol    15  6.52  1.70
+## 2 Frente       Nota_Hist    15  5.47  2.64
+## 3 Fundos       Nota_Biol    17  3.98  1.42
+## 4 Fundos       Nota_Hist    17  4.28  1.31</code></pre>
+<p>É bem útil também fazermos um gráfico para visualizarmos e representarmos essa diferença.</p>
+<p><strong>Gráfico de dispersão (dot-plot) para as notas de biologia</strong></p>
+<pre class="r"><code>ggplot(data = dados,
+       mapping = aes(x = Posicao_Sala, y = Nota_Biol)) +
+  geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;,
+               fill=&quot;#D8D8D8&quot;, color=&quot;#D8D8D8&quot;, dotsize = 0.8) +
+  geom_point(stat = &quot;summary&quot;, fun = &quot;mean&quot;, size = 2) +
+  geom_errorbar(stat = &quot;summary&quot;, fun.data = &quot;mean_se&quot;, width = 0.1) +
+  ylab(&quot;Notas de biologia&quot;) +
+  xlab(&quot;Posição na sala&quot;) +
+  scale_y_continuous(limits=c(0,10), expand = c(0,0)) +
+  theme_classic(base_size=12)</code></pre>
+<p><img src="https://i.imgur.com/ljEhLbf.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><strong>Gráfico de dispersão (dot-plot) para as notas de história</strong></p>
+<pre class="r"><code>ggplot(data = dados,
+       mapping = aes(x = Posicao_Sala, y = Nota_Hist)) +
+  geom_dotplot(binaxis = &quot;y&quot;, stackdir = &quot;center&quot;,
+               fill=&quot;#D8D8D8&quot;, color=&quot;#D8D8D8&quot;, dotsize = 0.8) +
+  geom_point(stat = &quot;summary&quot;, fun = &quot;mean&quot;, size = 2) +
+  geom_errorbar(stat = &quot;summary&quot;, fun.data = &quot;mean_se&quot;, width = 0.1) +
+  ylab(&quot;Notas de história&quot;) +
+  xlab(&quot;Posição na sala&quot;) +
+  scale_y_continuous(limits=c(0,10), expand = c(0,0)) +
+  theme_classic(base_size = 12)</code></pre>
+<p><img src="https://i.imgur.com/8q8kUvn.png" width="450px" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="descrevendo-os-resultados" class="section level3">
+<h3>Descrevendo os resultados</h3>
+<p>O teste-t para duas amostras independentes mostrou que há efeito da posição na sala sobre as notas de biologia (t<sub>(30)</sub> = 4,60; p &lt; 0,001), mas não sobre as de história (t<sub>(19,91)</sub> = 1,57; p = 0,131). O grupo que senta na frente da sala apresentou, em média, notas de biologia superiores às do grupo que senta nos fundos da sala.</p>
+<p><br><br><br></p>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/doutora-toma-cha/"> &laquo; Uma doutora toma chá</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/teste-diagnostico/">Seu teste diagnóstico foi positivo. Qual a probabilidade de ser um positivo verdadeiro? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+    <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">              
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,97 @@
+---
+title: "Serviços"
+hidetitle: true
+type: "static"
+---
+
+<div class = "sobre row">
+  
+<center>
+<h4>Como eles funcionam os serviços de  
+consultoria científica e aula particular/ mentoria?</h4>
+</center>
+
+
+<div class = "column5">
+
+#### A consultoria científica
+
+##### Para quem é o serviço de consultoria?
+A consultoria científica é para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.  
+
+##### O que está incluído neste serviço?
+Ao contratar a consultoria, você me envia o seu banco, eu defino as análises mais adequadas aos seus dados e à sua pergunta experimental e realizo essas análises. Ao final, te entrego um relatório completo: com descrição detalhada da metodologia, dos resultados (descritos em textos, gráficos e tabelas) e com toda a bibliografia utilizada.  
+Depois da entrega do relatório, temos uma hora de devolutiva (online, via Google Meet), para que você possa tirar todas as suas dúvidas.  
+
+##### Quanto custa esse serviço?
+O custo do serviço de consultoria depende da extensão e complexidade da análise.  
+Por isso, para te passar um orçamento, eu preciso de uma descrição detalhada: da sua pergunta experimental, de quais dados você coletou e de como está o seu banco de dados.  
+**Todo o processo de orçamento e planejamento das análises é feito por e-mail**.  
+  
+<br>
+
+<center>
+<a href="https://forms.gle/FaYCjcVZpToX7Wo5A" class="button" target="_blank">
+QUERO UM ORÇAMENTO
+</a>
+</center>
+
+<br>
+  
+##### Quem fará as análises?
+Todas as análises serão feitas por mim, Fernanda. Sou bacharel em biomedicina, especialista em estatística aplicada e mestre e doutora em ciências ([acesso ao currículo completo](http://lattes.cnpq.br/7696717599003359)).  
+Um diferencial do serviço é que ele será realizado por alguém com experiência na redação de TCC, dissertação, tese e artigos científicos. O relatório que você recebe na consultoria é redigido com uma linguagem adequada a esse tipo de documento e inclui todas as informações necessárias.  
+  
+##### Qual o prazo para entrega da consultoria?
+Assim como o orçamento, o prazo de entrega vai **depender da complexidade da sua análise**.  
+Mas, a maior parte dos relatórios são entregues dentro de 15 dias.  
+Não deixe para a última hora. O momento ideal de contratar o serviço de consultoria é uns bons meses antes da sua qualificação/ defesa.  
+  
+
+</div>
+
+
+<div class = "column6">
+
+#### A mentoria/ aula particular
+
+##### Para quem é o serviço de aula particular/ mentoria?
+Esse serviço é para:  
+
+* Você, que ainda não coletou os seus dados e gostaria de conversar sobre o delineamento do seu experimento e sobre essa coleta  
+
+* Você, que já coletou os seus dados e quer discutir quais análises são adequadas a eles e como fazê-las/ reportá-las  
+
+* Você, que quer contratar um serviço de consultoria, mas está com dificuldade em definir suas perguntas experimentais e variáveis de interesse  
+* Você, que precisa de aulas teóricas de bioestatística (por exemplo, sobre medidas descritivas, testes de hipóteses)  
+
+Se você gosta da forma como eu explico os conteúdos no YouTube, provavelmente vai gostar das aulas particulares/ sessões de mentoria.
+
+##### O que inclui o serviço de aula particular/ mentoria?
+As aulas particulares/ sessões de mentoria são realizadas **online** (via Google Meet) e a aula/ mentoria será estruturada de acordo com a sua necessidade.  
+Por exemplo, caso a sua demanda seja rodarmos as suas análises juntos, vou te pedir para me enviar seus dados/ script com antecedência. Na aula, faremos as análises - que eu já terei rodado antes, ao montar a aula - e discutiremos seus resultados, soluções de possíveis problemas, e como descrevê-los no seu trabalho.  
+Uma hora de aula/ mentoria rende muito, porque eu já chego no nosso encontro ao vivo com tudo bem estruturado. Para a maior parte dos alunos, uma ou duas horas são suficientes.
+Ah, para as aulas práticas, **as opções de programa estatístico são SPSS e R**, ok?
+
+##### Quanto custa esse serviço?
+O valor da hora de aula é R$ 200.  
+O pagamento desse valor pode ser realizado via Pix ou boleto bancário.
+
+##### Para quando eu consigo agendar a aula?
+As aulas serão agendadas de acordo com a nossa disponibilidade (minha e sua). Então, não deixe para a última hora, porque pode levar mais de uma semana para conseguirmos uma data adequada.
+Ah, **vamos conversar por e-mail antes de fecharmos uma data**, porque eu preciso entender a sua demanda para conseguir montar a aula e também para avaliar se o tema está dentro da minha área de conhecimento.  
+  
+<br>
+
+<center>
+<a href="https://forms.gle/1eAjTtdprsBMtwGo6" class="button" target="_blank">
+QUERO AGENDAR UMA AULA PARTICULAR
+</a>
+</center>
+
+<br>
+  
+</div>
+
+</div>
+

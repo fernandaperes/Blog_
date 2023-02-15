@@ -16,7 +16,7 @@ type: "links-de-acesso"
   
   <br>
   
-  <a href="https://fernandafperes.com.br/servicos/">
+  <a href="https://fernandafperes.com.br/qual-servico/">
   <img width="120" src="images/servicos.png" alt="" loading="lazy">
   </a>
   <center><p>Como funcionam os serviços de consultoria científica e análise de dados?</p><center>

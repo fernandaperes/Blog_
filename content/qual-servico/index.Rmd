@@ -1,0 +1,62 @@
+---
+title: "Qual serviço se adequa a você?"
+hidetitle: true
+type: "static"
+---
+
+<div class = "sobre row">
+  
+<center>
+<h3>Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados!
+<br>
+Para eu te explicar o serviço mais indicado para você, por favor, selecione abaixo a situação que mais se adequa à sua demanda:</h3>
+</center>
+
+<br><br>
+
+<center>
+<a href="https://fernandafperes.com.br/analise-dados" class="button" target="_blank">
+Já coletei os meus dados e quero contratar alguém que os analise e me entregue um relatório completo com os resultados descritos em texto, gráficos e tabelas.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/consultoria" class="button" target="_blank">
+Já coletei os meus dados e quero eu mesmo(a) realizar a análise. No entanto, estou com dúvidas no processo de análise/ de interpretação dos resultados.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/consultoria" class="button" target="_blank">
+Ainda não coletei os meus dados e gostaria de tirar dúvidas sobre: como realizar a coleta, o que escrever na seção de análise estatística do meu projeto, entre outras questões de delineamento experimental.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/analise-dados" class="button" target="_blank">
+Ainda não coletei os meus dados e gostaria de contratar um serviço de cálculo amostral.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/servicos" class="button" target="_blank">
+Não me encaixo em nenhuma situação acima. Quero entender quais são os serviços que você oferece e como eles funcionam.
+</a>
+</center>
+
+
+
+</div>
+

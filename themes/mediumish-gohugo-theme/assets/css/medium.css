@@ -1356,17 +1356,6 @@ a.button {
     padding: 7px 12px;
 }
 
-.button {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    text-decoration: none;
-    color: #fff;
-    background: #000;
-    font-family: 'IsidoraSans-Bold';
-    padding: 7px 12px;
-}
-
 a:hover.button {
     -webkit-appearance: button;
     -moz-appearance: button;

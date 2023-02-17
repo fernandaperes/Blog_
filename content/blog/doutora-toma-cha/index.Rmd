@@ -1,5 +1,5 @@
 ---
-title: "Uma doutora toma chá"
+title: "O que é e como interpretar o valor de p?"
 author: Fernanda Fiel Peres
 date: '2021-06-05'
 categories: []
@@ -16,6 +16,8 @@ knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
 ```
   
+## Uma doutora toma chá
+
 ### Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica?
   
 Na minha opinião, os conceitos de valor de p e nível de significância estão entre os mais confusos e desafiadores de explicar quando se trata de estatística. Eu comecei a usar a estatística como ferramenta para analisar os meus dados em 2010, mas considero que só fui entender de fato esses dois conceitos sete anos depois, em um curso dado pelo professor Marcus Vinícius C. Baldo no congresso da SBNeC (Sociedade Brasileira de Neurociências e Comportamento).  

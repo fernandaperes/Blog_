@@ -7,7 +7,7 @@ type: "static"
 <div class = "sobre row">
   
 <center>
-<h4>Como eles funcionam os serviços de  
+<h4>Como funcionam os serviços de  
 consultoria científica e análise de dados?</h4>
 </center>
 

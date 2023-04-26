@@ -39,9 +39,11 @@ A proposta desse post é explicar esses conceitos através da história da cria�
 </div>
 <div id="as-hipóteses" class="section level3">
 <h3>As hipóteses</h3>
-<p>Podemos pensar que o experimento permitia contrapor duas hipóteses:
-* Hipótese 1: a Dra. Muriel, na realidade, <strong>não era capaz de diferenciar</strong> as preparações;
-* Hipótese 2: a Dra. Muriel, na realidade, <strong>era capaz de diferenciar</strong> as preparações.</p>
+<p>Podemos pensar que o experimento permitia contrapor duas hipóteses:</p>
+<ul>
+<li><p>Hipótese 1: a Dra. Muriel, na realidade, <strong>não era capaz de diferenciar</strong> as preparações;</p></li>
+<li><p>Hipótese 2: a Dra. Muriel, na realidade, <strong>era capaz de diferenciar</strong> as preparações.</p></li>
+</ul>
 <p>Para usar a terminologia que usamos hoje e facilitar o raciocínio, vamos chamar a primeira hipótese de “Hipótese nula (H<sub>0</sub>)” e a segunda hipótese, que se contrapõe à H<sub>0</sub> de “Hipótese alternativa (H<sub>1</sub>)”:</p>
 <p><img src="https://i.imgur.com/MWYUf74.png" width="450px" style="display: block; margin: auto;" /></p>
 </div>
@@ -53,7 +55,7 @@ A proposta desse post é explicar esses conceitos através da história da cria�
 Ao final, a Dra. Muriel – que tinha conhecimento de como o experimento havia sido delineado – teria que identificar quais quatro xícaras pertenciam a um mesmo tipo de preparação. Note que, se ela identificasse corretamente essas 4, isso significaria que ela acertou como foram preparadas todas as 8 xícaras.</p>
 <p><img src="https://i.imgur.com/lho5f92.png" width="600px" style="display: block; margin: auto;" /></p>
 <p>Com experimento sendo delineado dessa forma, a probabilidade de a Dra. Muriel selecionar corretamente as quatro xícaras seria de 1 em 70, o que corresponde a:
-<span class="math display">\[\frac{1}{70} = 1,43%\]</span></p>
+<span class="math display">\[\frac{1}{70} \times 100 = 1,43\%\]</span></p>
 <blockquote>
 <p>Entender como esse cálculo foi feito é totalmente dispensável à compreensão dos conceitos de valor de p e nível de significância, ok? Mas, se ficou curiosa(o), acompanhe o meu raciocínio abaixo. Se preferir, pode pular esse quadro e seguir a leitura.
 De onde vêm os 70, do denominador da fração? Ele corresponde às possibilidades de selecionarmos um conjunto de 4 xícaras dentre as 8. Para calcular a quantidade de possibilidades, devemos usar a fórmula da combinação (aquela mesma, que você aprendeu no ensino médio):<br />
@@ -89,7 +91,7 @@ Da mesma forma, calculamos a probabilidade de outro resultado, de ela acertar pe
 <p>O nível de significância é o “ponto de corte” que nós estabelecemos para a rejeição da hipótese nula.</p>
 <p>Eu te perguntei se você acreditaria na capacidade de diferenciação da Dra. Muriel, caso ela acertasse 8 xícaras. Sabendo que a probabilidade de ela acertar, sem ser capaz de diferenciar as preparações era de 1,43%, você me respondeu (eu imagino) que sim. Mas, quando eu te perguntei se você acreditaria nela caso ela tivesse acertado 6 xícaras – sabendo que a probabilidade desse resultado era de 24,29% - você optou por não acreditar.</p>
 <p>Veja que para dar essas respostas, você estabeleceu um ponto de corte entre 1,43% e 24,29%, considerando que 1,43% era uma probabilidade baixa o suficiente para te convencer a rejeitar a hipótese nula, mas 24,29%, não. Esse ponto de corte corresponde ao seu nível de significância.</p>
-<p>O padrão, na maior parte das áreas, é um nível de significância () de 5%.</p>
+<p>O padrão, na maior parte das áreas, é um nível de significância (<span class="math inline">\(\alpha\)</span>) de 5%.</p>
 <p>Você também pode ser mais rígido, e estabelecer um nível de significância de 1%, por exemplo. Mas, nesse cenário, seria necessário delinear um experimento que incluísse mais xícaras, já que com 8 xícaras, ainda que a Dra. Muriel acertasse todas, ainda não teríamos evidências suficientes para rejeitar a hipótese nula.</p>
 </div>
 <div id="tá-mas-ela-acertou" class="section level3">

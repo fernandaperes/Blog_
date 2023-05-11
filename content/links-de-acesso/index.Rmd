@@ -19,7 +19,7 @@ type: "links-de-acesso"
   <a href="https://fernandafperes.com.br/qual-servico/">
   <img width="120" src="images/servicos.png" alt="" loading="lazy">
   </a>
-  <center><p>Contratar uma consultoria científica ou um serviço de análise de dados</p><center>
+  <center><p>Informações sobre os serviços de consultoria científica e análise de dados</p><center>
   
   </div>
   

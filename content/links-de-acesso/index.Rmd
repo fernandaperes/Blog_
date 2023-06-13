@@ -47,6 +47,13 @@ type: "links-de-acesso"
 <div class="site-links">
 
 <br><br>
+
+<center>
+  <a href="mailto:contato@fernandafperes.com.br?subject=Consultoria"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+</center>
+
+<br><br>
+    
   <a href="https://fernandafperes.com.br/">
   fernandafperes.com.br
   </a>

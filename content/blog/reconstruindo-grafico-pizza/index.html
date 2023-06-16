@@ -1,0 +1,179 @@
+---
+title: "O que não fazer em gráficos de pizza"
+author: Fernanda Fiel Peres
+date: '2023-06-15'
+slug: [reconstruindo-grafico-pizza]
+categories: []
+tags: ['Estatística teórica', 'Gráficos', 'ggplot2']
+comments: yes
+summary: 'O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.'
+output:
+  blogdown::html_page:
+    toc: false
+---
+
+
+
+<p>Essa semana a <a href="https://instagram.com/proffernandamaciel">professora Fernanda Maciel</a> publicou em seu instagram o gráfico abaixo (que também ilustra o post), que aparecia em uma <a href="https://ge.globo.com/futebol/times/flamengo/noticia/2023/06/09/elenco-atual-do-flamengo-passa-dos-500-gols-pelo-clube-veja-numeros-dos-times-da-serie-a.ghtml">reportagem do Globo Esporte</a> sobre os gols marcados pela equipe atual do Flamengo.</p>
+<p><img src="g1.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Antes de começarmos essa conversa, preciso te explicar que as pessoas que trabalham com análise de dados se dividem em dois grupos: 1) as que não gostam de gráficos de pizza e acham que sempre há uma forma mais adequada que essa de representar os dados; 2) as que defendem que há, sim, espaço para gráficos de pizza, contanto que eles sejam bem construídos. Eu confesso que faço parte do primeiro grupo, principalmente depois de ler o livro <strong>fantástico</strong> da Cole Nussbaumer Knaflic, o <a href="https://www.amazon.com.br/Storytelling-com-Dados-Visualiza%C3%A7%C3%A3o-Profissionais/dp/8550804681">Storytelling com dados</a>.</p>
+<p>Mas, com relação ao gráfico acima, te garanto que os dois grupos entram em um consenso: trata-se de um gráfico inadequado. Vamos nesse post discutir: em quais contextos faz sentido usar o gráfico de pizza e quais as alternativas a ele (vou reconstruir, em R, o gráfico do Globo Esporte).</p>
+<div id="como-construir-um-bom-gráfico-de-pizza" class="section level3">
+<h3>Como construir um bom gráfico de pizza?</h3>
+<p>Para um gráfico ser bom, ele deve ser entendido pelo público-alvo sem requerer grandes esforços. Deveríamos ser capazes de bater o olho e entender o que o gráfico está representando.</p>
+<p>No caso do gráfico de pizza, isso só é possível quando:</p>
+<ul>
+<li>Há poucas categorias (caso contrário, vai ser muito difícil diferenciar as fatias) - recomenda-se no máximo 4 ou 5, mas preferencialmente, ainda menos</li>
+<li>Não há categorias muito pouco frequentes, ou seja, fatias muito pequenas (que serão muito difíceis de visualizar em um gráfico como esse)</li>
+<li>As fatias são de cores facilmente distinguíveis - quanto mais diferentes forem as cores, mais rapidamente o leitor vai conseguir identificar a qual categoria cada fatia pertence</li>
+</ul>
+<p>Veja que o gráfico da matéria do Globo Esporte peca nesses três pontos:</p>
+<ul>
+<li>Há fatias <strong>muito</strong> pequenas, que praticamente se aglomeram em um borrão branco</li>
+<li>Há muitas fatias, o que torna difícil compará-las</li>
+<li>As cores das principais fatias são <strong>muito</strong> parecidas - eu duvido que você consiga diferenciar o vermelho-escuro do vermelho-não-tão-escuro, ou o preto do… outro preto</li>
+</ul>
+<p><img src="g1.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>E, sim, eu entendo que a proposta foi criar um gráfico com as cores do Flamengo. Mas, não funcionou. Perceba que a legenda é mais explicativa que o gráfico em si. Ou seja, o gráfico não está acrescentando informação, não tem utilidade.</p>
+<blockquote>
+<p>Ah, acho fundamental dizer que essa é uma crítica ao gráfico, com uma proposta de discutir boas práticas na confecção desse tipo de material. Não é uma crítica ao autor. Eu já fiz gráficos horríveis na vida, faz parte. A ideia é aprendermos, a proposta é que nossos gráficos de amanhã sejam melhores que os de hoje.</p>
+</blockquote>
+<p>Um gráfico de setores que atende a esses requisitos, por exemplo, é esse abaixo, criado com dados fictícios.</p>
+<p><img src="g3.png" width="250px" style="display: block; margin: auto;" /></p>
+<p>Mas, ainda um gráfico de setores bem construído está aberto a críticas. Estudos indicam que ao ler um gráfico de setores, as pessoas focam nas áreas das fatias. No entanto, seres humanos são péssimos avaliadores de áreas. Em geral, temos dificuldade de comparar as áreas de fatias. Por isso, gráficos de barras seriam preferíveis - já que esse tipo de gráfico requer que analisemos o comprimento, algo que somos muito bons fazendo.</p>
+<p>A Cole, autora do Storytelling com dados, tem um ótimo blog sobre visualização de dados. Em um dos <a href="https://www.storytellingwithdata.com/blog/2020/5/14/what-is-a-pie-chart">posts</a> ela destrincha essas críticas ao gráfico de pizza (em inglês, <em>pie chart</em>). Recomendo também <a href="https://medium.com/@hypsypops/pie-chart-vs-donut-chart-showdown-in-the-ring-5d24fd86a9ce">esse texto</a> que compara os gráficos de pizza e os de donuts (que são, basicamente, os gráficos de pizza com um círculo branco no meio).</p>
+</div>
+<div id="tá-mas-como-eu-representaria-os-dados-dos-gols-do-flamengo" class="section level3">
+<h3>Tá, mas como eu representaria os dados dos gols do Flamengo?</h3>
+<p>Eu faria um gráfico de barras, com barras na horizontal para facilitar a leitura dos nomes dos jogadores. Já que a identidade visual do Flamengo parece ser importante no contexto, eu deixaria as barras na cor vermelha do time:</p>
+<blockquote>
+<p>Ah, vou deixar o banco de dados no próprio código, para você poder construir a sua própria versão do gráfico se desejar.</p>
+</blockquote>
+<pre class="r"><code>library(tidyverse)
+library(ggtext)
+
+dados &lt;- as.data.frame(list(Jogador = c(&quot;Gabriel&quot;, &quot;Pedro&quot;, &quot;Bruno Henrique&quot;, 
+&quot;Arrascaeta&quot;, &quot;Everton Ribeiro&quot;, &quot;Gérson&quot;, &quot;Matheus França&quot;, 
+&quot;Ayrton Lucas&quot;, &quot;Léo Pereira&quot;, &quot;Marinho&quot;, &quot;Rodrigo Caio&quot;, &quot;Everton Cebolinha&quot;, 
+&quot;Fabrício Bruno&quot;, &quot;Filipe Luís&quot;, &quot;Matheuzinho&quot;, &quot;Thiago Maia&quot;, 
+&quot;Victor Hugo&quot;, &quot;Matheus Gonçalves&quot;, &quot;Vidal&quot;, &quot;André Luiz&quot;, 
+&quot;David Luiz&quot;, &quot;Erick Pulgar&quot;, &quot;Lorran&quot;, &quot;Werton&quot;, &quot;Wesley&quot;),
+Gols = c(149, 93, 79, 55, 44, 10, 9, 8, 6, 6, 6, 5, 5, 4,
+          4, 4, 4, 2, 2, 1, 1, 1, 1, 1, 1)))
+
+dados |&gt;
+  mutate(porc = Gols/sum(Gols),
+         label = paste0(Gols, &quot; (&quot;, fstatix::arred(100*porc, 1), &quot;%)&quot;)) |&gt; 
+  ggplot(aes(y = fct_reorder(Jogador, Gols), x = Gols)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;#8C0303&quot;) +
+  geom_text(aes(label = label), size = 2.8, color = &quot;black&quot;,
+            hjust = -0.1) +
+  coord_cartesian(clip = &quot;off&quot;) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  labs(y = NULL,
+       title = &quot;Distribuição dos 501 gols do&lt;br&gt;elenco atual pelo &lt;b style=&#39;color:#8C0303&#39;&gt;Flamengo&lt;/b&gt;&lt;br&gt;por jogador&quot;,
+       x = &quot;Gols marcados&quot;) +
+  theme_minimal() +
+  theme(plot.margin = margin(5, 40, 5, 5),
+        plot.title = element_markdown(margin = margin(0,0,2,0), size = 11),
+        plot.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(color = &quot;grey80&quot;))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Uma outra opção seria agrupar os jogadores com menos gols marcados (no exemplo, excolhi aqueles que marcaram 4 gols ou menos) e agrupá-los em uma categoria “Outros”, para dar destaque aos jogadores com mais gols.</p>
+<pre class="r"><code>dados |&gt;
+  mutate(Jogador_unido = ifelse(Gols &lt;= 4, &quot;Outros&quot;, Jogador)) |&gt; 
+  group_by(Jogador_unido) |&gt; 
+  mutate(Gols = sum(Gols)) |&gt; 
+  select(-Jogador) |&gt; 
+  distinct() |&gt; 
+  ungroup() |&gt; 
+  mutate(porc = Gols/sum(Gols),
+         label = paste0(Gols, &quot; (&quot;, fstatix::arred(100*porc, 1), &quot;%)&quot;)) |&gt; 
+  ggplot(aes(y = fct_inorder(Jogador_unido), x = Gols)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;#8C0303&quot;) +
+  geom_text(aes(label = label), size = 2.8, color = &quot;black&quot;,
+            hjust = -0.1) +
+  scale_y_discrete(limits = rev) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  coord_cartesian(clip = &quot;off&quot;) +
+  labs(y = NULL,
+       title = &quot;Distribuição dos 501 gols do&lt;br&gt;elenco atual pelo &lt;b style=&#39;color:#8C0303&#39;&gt;Flamengo&lt;/b&gt;&lt;br&gt;por jogador&quot;,
+       x = &quot;Gols marcados&quot;) +
+  theme_minimal() +
+  theme(plot.margin = margin(5, 40, 5, 5),
+        plot.title = element_markdown(margin = margin(0,0,2,0), size = 11),
+        plot.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(color = &quot;grey80&quot;))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Inclusive, dá para deixar esse gráfico ainda melhor, destacando algumas categorias, investindo no storytelling com anotações… O pacote <code>ggplot2</code> e outros pacotes associados, como o <code>ggtext</code> nos dão essas possibilidades. Se tiver curiosidade, recomendo pesquisar por #TidyTuesday e ver os gráficos incríveis que as pessoas produzem, tudo no R :)</p>
+</div>
+<div id="uma-conversa-sobre-cores" class="section level3">
+<h3>Uma conversa sobre cores</h3>
+<p>Na <a href="https://ge.globo.com/futebol/times/flamengo/noticia/2023/06/09/elenco-atual-do-flamengo-passa-dos-500-gols-pelo-clube-veja-numeros-dos-times-da-serie-a.ghtml">mesma matéria</a>, há o gráfico de barras abaixo:</p>
+<p><img src="g2.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Apesar de eu concordar com a escolha do gráfico de barras, eu discordo da escolha das cores. E, sim, eu entendi que a proposta foi construir barras com as cores dos times. Mas, perceba que não funcionou: as cores foram acabando e Corinthians virou amarelo, Santos virou verde…</p>
+<p>Mesmo que as cores não tivessem “acabado”, discute-se que em um bom gráfico as cores devem ter um propósito. Caso contrário, só confudem o leitor. Veja que a informação contida nesse gráfico não seria em nada modificada caso as barras fossem todas preenchidas com a mesma cor.</p>
+<p>Outra recomendação na construção de gráficos é não deixar os textos inclinados (como no gráfico acima). Isso dificulta a leitura. Quando o texto que acompanha as categorias é grande, a recomendação é deixar as barras na horizontal, o que torna a leitura mais fluida.</p>
+<p>Como eu reconstruiria o gráfico acima? Com barras na horizontal, todas na mesma cor. Decidi manter a cor do Flamengo, já que o gráfico se refere a gols marcados pelo Flamengo contra os outros times. Além disso, já que uma infomação visual sobre o time parece ser importante, eu adicionei os escudos do time junto ao nome deles. E, sim, tudo feito no R:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Ok, mas como fazer isso no R? Para isso, precisamos do pacote <code>ggtext</code>, que já na sua <a href="https://cran.r-project.org/web/packages/ggtext/readme/README.html">documentação</a> traz exemplos de como inserir imagens como rótulos das categorias.</p>
+<p>Para incluir os escudos no gráfico eu busquei por essas imagens em sites. No <a href="https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro-serie-a/2023">site da CBF</a> há o escudo de todos os times. Ao clicar em um escudo com o botão direito do mouse você tem a opção “Copiar endereço da imagem”). E, pronto! Está copiado o endereço de que precisamos. Montei uma lista com todos eles, na ordem que apareciam no banco:</p>
+<pre class="r"><code>imagens &lt;- c(&quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00004pr.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/60646rj.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00009rj.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00005ba.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00021sp.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00009go.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/60175rj.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00019sp.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00008rs.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00018sp.jpg&quot;)</code></pre>
+<p>Para inserir como imagem, precisamos que o rótulo tenha a seguinte estrutura:</p>
+<center>
+<code>&lt;img src='https://conteudo.cbf.com.br/cdn/imagens/escudos/00004pr.jpg' width='20' /&gt;</code>
+</center>
+<p><br></p>
+<p>Na verdade, o <code>width</code> é dispensável, mas eu o adicionei para controlar o tamanho da imagem. Além da imagem em si, eu queria que aparecesse o nome do time embaixo. Por isso, adicionei ao final da imagem um <code>&lt;br&gt;</code>, que corresponde à quebra de linha em <code>html</code> e na sequência adicionei o nome. A estrutura completa ficou como abaixo:</p>
+<pre class="r"><code>dados2 &lt;- as.data.frame(list(Time = c(&quot;Athletico-PR&quot;, &quot;Vasco&quot;, &quot;Fluminense&quot;, 
+&quot;Bahia&quot;, &quot;Corinthians&quot;, &quot;Goiás&quot;, &quot;Botafogo&quot;, &quot;Palmeiras&quot;, &quot;Grêmio&quot;, 
+&quot;Santos&quot;), Gols = c(29, 28, 27, 17, 17, 17, 16, 16, 15, 15)))
+
+imagens &lt;- c(&quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00004pr.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/60646rj.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00009rj.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00005ba.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00021sp.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00009go.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/60175rj.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00019sp.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00008rs.jpg&quot;,
+             &quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00018sp.jpg&quot;)
+
+
+dados2$labels &lt;- setNames(
+  paste0(&quot;&lt;img src=&#39;&quot;, imagens, &quot;&#39; width=&#39;20&#39; /&gt;&lt;br&gt;&quot;, dados2$Time),
+  dados2$Time
+)
+
+
+ggplot(dados2, aes(y = fct_inorder(Time), x = Gols)) +
+  geom_bar(stat = &quot;identity&quot;, fill = &quot;#8C0303&quot;, width = 0.6) +
+  scale_y_discrete(labels = rev(dados2$labels), limits = rev) +
+  geom_text(aes(label = Gols), size = 2.8, color = &quot;white&quot;,
+            hjust = 1.3, fontface = &quot;bold&quot;) +
+  coord_cartesian(clip = &quot;off&quot;) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.05))) +
+  labs(y = NULL,
+       title = &quot;Times que mais levaram gols do&lt;br&gt;elenco atual do &lt;b style=&#39;color:#8C0303&#39;&gt;Flamengo&lt;/b&gt;&quot;,
+       x = &quot;Gols sofridos&quot;) +
+  theme_minimal() +
+  theme(axis.text.y  = element_markdown(color = &quot;black&quot;, size = 7),
+        plot.margin = margin(5, 10, 5, 5),
+        plot.title = element_markdown(margin = margin(0,0,2,0)),
+        plot.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(color = &quot;grey80&quot;))</code></pre>
+<hr />
+</div>

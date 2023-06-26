@@ -124,16 +124,19 @@ QUERO AGENDAR UMA CONSULTORIA
 <div style="width:350px">
   
 <center>
-<h4>
+<h5>
 Oi! Tudo bem?<br>
 A agenda para consultorias e análises de dados está temporariamente fechada.<br>
 Caso possa esperar, a agenda será reaberta `r reabertura`.<br>
 Abaixo você encontra a explicação do funcionamento dos dois serviços.<br>
-</h4>
+</h5>
 </center>
+<br>
 
 </div>
 
+<br>
+<br>
 
 <div class = "column5">
 

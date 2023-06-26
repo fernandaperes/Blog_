@@ -4,6 +4,12 @@ hidetitle: true
 type: "links-de-acesso"
 ---
 
+```{r, include = F}
+mostrar_email <- F
+
+inicio_email <- ifelse(isFALSE(mostrar_email), "<!--", "")
+fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
+```
 
 <div class="flex-container">
 
@@ -48,12 +54,14 @@ type: "links-de-acesso"
 
 <br><br>
 
+`r inicio_email`
 <center>
 <a href="mailto:contato@fernandafperes.com.br?subject=Consultoria"><i class="fa fa-solid fa-envelope fa-2x" aria-hidden="true"></i></a>
 
 </center>
 
 <br>
+`r fim_email`
     
   <a href="https://fernandafperes.com.br/">
   fernandafperes.com.br

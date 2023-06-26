@@ -120,20 +120,20 @@ QUERO AGENDAR UMA CONSULTORIA
 
 `r inicio_fechada`
 <div class = "sobre row">
-
-<div style="width:350px">
   
 <center>
+
+<div style="width:350px">
 <h5>
 Oi! Tudo bem?<br>
 A agenda para consultorias e análises de dados está temporariamente fechada.<br>
 Caso possa esperar, a agenda será reaberta `r reabertura`.<br>
 Abaixo você encontra a explicação do funcionamento dos dois serviços.<br>
 </h5>
-</center>
-<br>
 
 </div>
+</center>
+<br>
 
 <br>
 <br>

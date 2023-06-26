@@ -122,16 +122,10 @@ QUERO AGENDAR UMA CONSULTORIA
 <div class = "sobre row">
   
 <center>
-
-<div style="width:400px">
-<h5>
 Oi! Tudo bem?<br>
-A agenda para consultorias e análises de dados está temporariamente fechada.<br>
-Caso possa esperar, a agenda será reaberta `r reabertura`.<br>
+A agenda para consultorias e análises de dados está **temporariamente fechada**.<br>
+Caso possa esperar, a agenda será **reaberta `r reabertura`**.<br>
 Abaixo você encontra a explicação do funcionamento dos dois serviços.<br>
-</h5>
-
-</div>
 </center>
 
 <br>

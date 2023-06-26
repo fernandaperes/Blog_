@@ -120,6 +120,8 @@ QUERO AGENDAR UMA CONSULTORIA
 
 `r inicio_fechada`
 <div class = "sobre row">
+
+<div style="width:350px">
   
 <center>
 <h4>
@@ -129,6 +131,8 @@ Caso possa esperar, a agenda será reaberta `r reabertura`.<br>
 Abaixo você encontra a explicação do funcionamento dos dois serviços.<br>
 </h4>
 </center>
+
+</div>
 
 
 <div class = "column5">

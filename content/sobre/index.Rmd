@@ -90,6 +90,12 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 </li>
 
 <li class = "t">
+<p>2022 - atual</p>
+<p>Professora de Bioestatística do curso de Especialização em Fisiopatologia</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li class = "t">
 <p>2021 - atual</p>
 <p>Professora dos Cursos de Data Science e Data Analytics</p>
 <p><i>Tera</i></p>
@@ -107,18 +113,13 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 <p><i>Faculdade Método de São Paulo (Famesp)</i></p>
 </li>
 
-<li class = "t">
-<p>2022</p>
-<p>Professora de Bioestatística do curso de Especialização em Fisiopatologia</p>
-<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
-</li>
-
+<!--
 <li class = "t">
 <p>2020</p>
 <p>Professora do curso de graduação em Biomedicina</p>
 <p><i>Universidade Paulista (UNIP)</i></p>
 </li>
-
+-->
 
 <li class = "t">
 <p>2019</p>

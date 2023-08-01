@@ -5,7 +5,7 @@ type: "static"
 ---
 
 ```{r, include = F}
-agenda_aberta <- F
+agenda_aberta <- T
 reabertura <- "dia primeiro de agosto (01/08/2023)"
 
 inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")

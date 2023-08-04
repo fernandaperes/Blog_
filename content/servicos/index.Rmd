@@ -37,7 +37,9 @@ Para você que já coletou os seus dados e quer contratar uma especialista para 
 Ao contratar a análise, você me envia o seu banco, eu defino as análises mais adequadas aos seus dados e à sua pergunta experimental e realizo essas análises. Ao final, te entrego um relatório completo: com descrição detalhada da metodologia, dos resultados (descritos em textos, gráficos e tabelas) e com toda a bibliografia utilizada.  
 <br>
 Depois da entrega do relatório, temos uma reunião de devolutiva (online, via Google Meet), para que você possa tirar todas as suas dúvidas.  
-
+<br>
+Nesse serviço, as análises são realizadas exclusivamente no software <a href="https://www.r-project.org/" target="_blank">R</a>.  
+  
 ##### Quanto custa esse serviço?
 O custo depende da extensão e complexidade da análise de dados.  
 Por isso, para te passar um orçamento, eu preciso de uma descrição detalhada: da sua pergunta experimental, de quais dados você coletou e de como está o seu banco de dados.  
@@ -142,6 +144,8 @@ Para você que já coletou os seus dados e quer contratar uma especialista para 
 Ao contratar a análise, você me envia o seu banco, eu defino as análises mais adequadas aos seus dados e à sua pergunta experimental e realizo essas análises. Ao final, te entrego um relatório completo: com descrição detalhada da metodologia, dos resultados (descritos em textos, gráficos e tabelas) e com toda a bibliografia utilizada.  
 <br>
 Depois da entrega do relatório, temos uma reunião de devolutiva (online, via Google Meet), para que você possa tirar todas as suas dúvidas.  
+<br>
+Nesse serviço, as análises são realizadas exclusivamente no software <a href="https://www.r-project.org/" target="_blank">R</a>.  
 
 ##### Quanto custa esse serviço?
 O custo depende da extensão e complexidade da análise de dados.  

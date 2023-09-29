@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/gr%C3%A1ficos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/gr%C3%A1ficos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>O que não fazer em gráficos de pizza</title>
+      <link>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</guid>
+      <description>O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
+    </item>
+    
     <item>
       <title>Como representar os resultados do qui-quadrado em um gráfico?</title>
       <link>https://fernandafperes.com.br/blog/grafico-qui-quadrado/</link>

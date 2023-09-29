@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estatística teórica</title>
+      <link>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>ggplot2</title>
       <link>https://fernandafperes.com.br/tags/ggplot2/</link>
-      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/tags/ggplot2/</guid>
       <description></description>
@@ -20,18 +29,9 @@
     <item>
       <title>gráficos</title>
       <link>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</link>
-      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Estatística teórica</title>
-      <link>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</link>
-      <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</guid>
       <description></description>
     </item>
     

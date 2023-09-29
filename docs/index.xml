@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>O que não fazer em gráficos de pizza</title>
+      <link>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</guid>
+      <description>O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
+    </item>
+    
     <item>
       <title>Como representar os resultados do qui-quadrado em um gráfico?</title>
       <link>https://fernandafperes.com.br/blog/grafico-qui-quadrado/</link>
@@ -81,7 +90,7 @@
     </item>
     
     <item>
-      <title>Uma doutora toma chá</title>
+      <title>O que é e como interpretar o valor de p?</title>
       <link>https://fernandafperes.com.br/blog/doutora-toma-cha/</link>
       <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
       
@@ -114,7 +123,35 @@
       
       <guid>https://fernandafperes.com.br/links-de-acesso/</guid>
       <description>Canal no YouTube  
-   Contato para aulas particulares ou consultorias científicas      Textos no blog</description>
+   Informações sobre os serviços de consultoria científica e análise de dados      Textos no blog</description>
+    </item>
+    
+    <item>
+      <title>O serviço de análise de dados</title>
+      <link>https://fernandafperes.com.br/analise-dados/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/analise-dados/</guid>
+      <description>A análise de dados Para quem é o serviço de análise de dados? Para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.</description>
+    </item>
+    
+    <item>
+      <title>O serviço de consultoria</title>
+      <link>https://fernandafperes.com.br/consultoria/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/consultoria/</guid>
+      <description>A consultoria científica Para quem é o serviço de consultoria científica? Esse serviço é para:
+ Você, que ainda não coletou os seus dados e gostaria de conversar sobre o delineamento do seu experimento e sobre essa coleta</description>
+    </item>
+    
+    <item>
+      <title>Qual serviço se adequa a você?</title>
+      <link>https://fernandafperes.com.br/qual-servico/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/qual-servico/</guid>
+      <description>Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados! Para eu te explicar o serviço mais indicado para você, por favor, selecione abaixo a situação que mais se adequa à sua demanda:</description>
     </item>
     
     <item>
@@ -123,8 +160,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/servicos/</guid>
-      <description>Como eles funcionam os serviços de
-consultoria científica e aula particular/ mentoria?   A consultoria científica Para quem é o serviço de consultoria?</description>
+      <description>Como funcionam os serviços de
+consultoria científica e análise de dados?   A análise de dados Para quem é o serviço de análise de dados?</description>
     </item>
     
     <item>

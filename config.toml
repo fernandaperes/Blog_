@@ -43,6 +43,13 @@ Currently trying to get this blog running, still don't know what the blog will b
   youtube = "c/FernandaPeres"
 
 ## Main Menu
+
+[[menu.main]]
+    name = "EN"
+    identifier = "english"
+    weight = 5
+    url = "https://en.fernandafperes.com.br"
+
 [[menu.main]]
     name = "BLOG"
     weight = 20

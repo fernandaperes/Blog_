@@ -1,5 +1,5 @@
 ---
-title: "Uma doutora toma chá"
+title: "O que é e como interpretar o valor de p?"
 author: Fernanda Fiel Peres
 date: '2021-06-05'
 categories: []
@@ -16,6 +16,8 @@ knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
 ```
   
+## Uma doutora toma chá
+
 ### Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica?
   
 Na minha opinião, os conceitos de valor de p e nível de significância estão entre os mais confusos e desafiadores de explicar quando se trata de estatística. Eu comecei a usar a estatística como ferramenta para analisar os meus dados em 2010, mas considero que só fui entender de fato esses dois conceitos sete anos depois, em um curso dado pelo professor Marcus Vinícius C. Baldo no congresso da SBNeC (Sociedade Brasileira de Neurociências e Comportamento).  
@@ -50,9 +52,11 @@ Ronald Fisher, sem acreditar que a Dra. Muriel seria capaz de diferenciar uma x�
 
 ### As hipóteses
 
-Podemos pensar que o experimento permitia contrapor duas hipóteses:
-* Hipótese 1: a Dra. Muriel, na realidade, **não era capaz de diferenciar** as preparações;
-* Hipótese 2: a Dra. Muriel, na realidade, **era capaz de diferenciar** as preparações.
+Podemos pensar que o experimento permitia contrapor duas hipóteses:  
+  
+* Hipótese 1: a Dra. Muriel, na realidade, **não era capaz de diferenciar** as preparações;  
+
+* Hipótese 2: a Dra. Muriel, na realidade, **era capaz de diferenciar** as preparações.  
 
 Para usar a terminologia que usamos hoje e facilitar o raciocínio, vamos chamar a primeira hipótese de “Hipótese nula (H<sub>0</sub>)” e a segunda hipótese, que se contrapõe à H<sub>0</sub> de “Hipótese alternativa (H<sub>1</sub>)”:
   
@@ -76,7 +80,7 @@ knitr::include_graphics("img6.png")
 ```
   
 Com experimento sendo delineado dessa forma, a probabilidade de a Dra. Muriel selecionar corretamente as quatro xícaras seria de 1 em 70, o que corresponde a:
-$$\frac{1}{70} = 1,43%$$
+$$\frac{1}{70} \times 100 = 1,43\%$$
   
 > Entender como esse cálculo foi feito é totalmente dispensável à compreensão dos conceitos de valor de p e nível de significância, ok? Mas, se ficou curiosa(o), acompanhe o meu raciocínio abaixo. Se preferir, pode pular esse quadro e seguir a leitura.
 De onde vêm os 70, do denominador da fração? Ele corresponde às possibilidades de selecionarmos um conjunto de 4 xícaras dentre as 8. Para calcular a quantidade de possibilidades, devemos usar a fórmula da combinação (aquela mesma, que você aprendeu no ensino médio):  
@@ -122,7 +126,7 @@ Eu te perguntei se você acreditaria na capacidade de diferenciação da Dra. Mu
   
 Veja que para dar essas respostas, você estabeleceu um ponto de corte entre 1,43% e 24,29%, considerando que 1,43% era uma probabilidade baixa o suficiente para te convencer a rejeitar a hipótese nula, mas 24,29%, não. Esse ponto de corte corresponde ao seu nível de significância.
   
-O padrão, na maior parte das áreas, é um nível de significância () de 5%.
+O padrão, na maior parte das áreas, é um nível de significância ($\alpha$) de 5%.
   
 Você também pode ser mais rígido, e estabelecer um nível de significância de 1%, por exemplo. Mas, nesse cenário, seria necessário delinear um experimento que incluísse mais xícaras, já que com 8 xícaras, ainda que a Dra. Muriel acertasse todas, ainda não teríamos evidências suficientes para rejeitar a hipótese nula.
   

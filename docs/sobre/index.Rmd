@@ -16,7 +16,7 @@ Apesar de ter escolhido uma graduação na área de biológicas, eu sempre amei 
   
 Me interessar por estatística foi inevitável. Comecei estudar mais a fundo o assunto na graduação, durante as análises dos dados do meu projeto de iniciação científica. Ao longo da minha trajetória acadêmica, fiz vários cursos livres e disciplinas relacionadas a estatística e, mais recentemente, concluí a especialização na área.  
   
-Em 2017, dei aulas de estatística aplicada a alguns calouros meus, futuros biomédicos. As aulas práticas deste curso foram publicadas no YouTube e se transformaram em um [canal de estatística aplicada](https://youtube.com/c/FernandaPeres). Atualmente, somos uma comunidade com mais de 25 mil inscritos e o canal traz vídeos teóricos bem como de estatística aplicada utilizando os programas SPSS, R e Excel.  
+Em 2017, dei aulas de estatística aplicada a alguns calouros meus, futuros biomédicos. As aulas práticas deste curso foram publicadas no YouTube e se transformaram em um [canal de estatística aplicada](https://youtube.com/c/FernandaPeres). Atualmente, somos uma comunidade com mais de 30 mil inscritos e o canal traz vídeos teóricos bem como de estatística aplicada utilizando os programas SPSS, R e Excel.  
   
 Você encontra o meu currículo e histórico profissional detalhados, bem como o link para o meu currículo Lattes, abaixo.  
 
@@ -85,7 +85,14 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 
 <li class = "g">
 <p>2018 - atual</p>
-<p>Consultorias científicas e aulas particulares de bioestatística</p>
+<p>Consultora científica e analista de dados</p>
+<p><i>Serviços destinados a pesquisadores</i></p>
+</li>
+
+<li class = "t">
+<p>2022 - atual</p>
+<p>Professora de Bioestatística do curso de Especialização em Fisiopatologia</p>
+<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
 </li>
 
 <li class = "t">
@@ -106,18 +113,13 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 <p><i>Faculdade Método de São Paulo (Famesp)</i></p>
 </li>
 
-<li class = "t">
-<p>2022</p>
-<p>Professora de Bioestatística do curso de Especialização em Fisiopatologia</p>
-<p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
-</li>
-
+<!--
 <li class = "t">
 <p>2020</p>
 <p>Professora do curso de graduação em Biomedicina</p>
 <p><i>Universidade Paulista (UNIP)</i></p>
 </li>
-
+-->
 
 <li class = "t">
 <p>2019</p>

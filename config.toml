@@ -45,7 +45,7 @@ Currently trying to get this blog running, still don't know what the blog will b
 ## Main Menu
 
 [[menu.main]]
-    name = "EN"
+    name = "ENGLISH"
     identifier = "english"
     weight = 5
     url = "https://en.fernandafperes.com.br"

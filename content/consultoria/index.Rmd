@@ -16,7 +16,7 @@ Esse serviço é para:
 * Você, que já coletou os seus dados e quer discutir quais análises são adequadas a eles e como fazê-las/ reportá-las  
 
 * Você, que quer contratar um serviço de análise de dados, mas está com dificuldade em definir suas perguntas experimentais e variáveis de interesse  
-
+<br>
 Se você gosta da forma como eu explico os conteúdos no YouTube, provavelmente vai gostar da consultoria.
 
 ##### O que inclui o serviço de consultoria?

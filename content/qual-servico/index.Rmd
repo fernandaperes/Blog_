@@ -5,10 +5,11 @@ type: "static"
 ---
 
 ```{r, include = F}
-agenda_aberta <- T
-razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
+agenda_aberta <- F
+# razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
 # razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. Por esse motivo, a agenda para contratação dos serviços de análise dados ou consultoria está **fechada**."
-reabertura <- "dia 15/07/2024"
+razao_fechamento <- "Você já deve saber que muito em breve eu vou lançar um curso, né? Se não sabia, já fica aqui a informação! Para conseguir finalizar todos os detalhes do curso a tempo, a agenda para contratação dos serviços de análise dados ou consultoria está **temporariamente fechada**. Agradeço a compreensão! Em breve estou de volta!"
+reabertura <- "dia 19/08/2024"
 
 inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")
 fim_aberta <- ifelse(isFALSE(agenda_aberta), "-->", "")

@@ -1369,8 +1369,8 @@ a:hover.button {
 
 .flex-container {
     display: flex;
-    margin-right: 30%;
-    margin-left: 30%;
+    margin-right: 20%;
+    margin-left: 20%;
     margin-top: 8%;
     text-align: center;
     justify-content: space-around;
@@ -1394,7 +1394,7 @@ a:hover.button {
 }  
 
 .flex-child:first-child {
-    margin-right: 10%;
+    margin-right: 0%;
     text-align: center;
     color: #000;
 } 

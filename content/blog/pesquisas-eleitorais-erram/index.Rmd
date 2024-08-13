@@ -2,10 +2,11 @@
 title: "Por que as pesquisas eleitorais erram?"
 author: Fernanda Fiel Peres
 date: '2024-08-15'
+slug: [pesquisas-eleitorais-erram]
 categories: []
 tags: ['Estatística teórica', 'Pesquisas eleitorais']
 comments: yes
-summary: 'Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento "uma senhora toma chá".'
+summary: 'Por que os resultados das eleições quase sempre discordam das pesquisas eleitorais? Essa é uma pergunta que não pode ser respondida de forma superficial. Vamos discuti-la aqui.'
 output:
   blogdown::html_page:
     toc: false

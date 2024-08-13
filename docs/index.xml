@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Por que as pesquisas eleitorais erram?</title>
+      <link>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</link>
+      <pubDate>Tue, 13 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</guid>
+      <description>Por que os resultados das eleições quase sempre discordam das pesquisas eleitorais? Essa é uma pergunta que não pode ser respondida de forma superficial. Vamos discuti-la aqui.</description>
+    </item>
+    
     <item>
       <title>O que não fazer em gráficos de pizza</title>
       <link>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</link>

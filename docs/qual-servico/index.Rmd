@@ -5,8 +5,11 @@ type: "static"
 ---
 
 ```{r, include = F}
-agenda_aberta <- T
-reabertura <- "dia primeiro de agosto (01/08/2023)"
+agenda_aberta <- F
+# razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
+# razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. Por esse motivo, a agenda para contratação dos serviços de análise dados ou consultoria está **fechada**."
+razao_fechamento <- "Você já deve saber que muito em breve eu vou lançar um curso, né? Se não sabia, já fica aqui a informação! Para conseguir finalizar todos os detalhes do curso a tempo, a agenda para contratação dos serviços de análise dados ou consultoria está **temporariamente fechada**. Agradeço a compreensão! Em breve estou de volta!"
+reabertura <- "dia 19/08/2024"
 
 inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")
 fim_aberta <- ifelse(isFALSE(agenda_aberta), "-->", "")
@@ -90,7 +93,7 @@ Não me encaixo em nenhuma situação acima. Quero entender quais são os servi�
 <center>
 Oi! Tudo bem?
 <br>
-A agenda para consultorias e análises de dados está temporariamente fechada.<br>
+`r razao_fechamento`<br>
 Caso possa esperar, a agenda será reaberta no `r reabertura`.<br>
 No link abaixo você tem acesso a uma página que explica como funcionam os dois serviços.
 </center>

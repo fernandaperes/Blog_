@@ -11,6 +11,9 @@ inicio_email <- ifelse(isFALSE(mostrar_email), "<!--", "")
 fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
 ```
 
+
+<center>
+
 <div class="flex-container">
 
   <div class="flex-child">
@@ -49,6 +52,7 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
   
 </div>
 
+</center>
 
 <div class="site-links">
 

@@ -16,14 +16,15 @@ Esse serviço é para:
 * Você, que já coletou os seus dados e quer discutir quais análises são adequadas a eles e como fazê-las/ reportá-las  
 
 * Você, que quer contratar um serviço de análise de dados, mas está com dificuldade em definir suas perguntas experimentais e variáveis de interesse  
-
+  
+<br>
 Se você gosta da forma como eu explico os conteúdos no YouTube, provavelmente vai gostar da consultoria.
 
 ##### O que inclui o serviço de consultoria?
 A consultoria é realizada **online** (via Google Meet) e será estruturada de acordo com a sua necessidade.  
 Por exemplo, caso a sua demanda seja rodarmos as suas análises, vou te pedir para me enviar seus dados/ script com antecedência. Na reunião online, faremos as análises - que eu já terei rodado antes, ao montar a consultoria - e discutiremos seus resultados, soluções de possíveis problemas, e como descrevê-los no seu trabalho.  
 Uma hora consultoria rende muito, porque eu já chego no nosso encontro ao vivo com tudo bem estruturado. Para a maior parte dos alunos, uma ou duas horas são suficientes.
-Ah, para a parte de análise ao vivo, **as opções de programa estatístico são SPSS e R**, ok?
+Ah, para a parte de análise ao vivo, **as opções de programa estatístico são R, JASP e Jamovi**, ok?
 
 ##### Quanto custa esse serviço?
 O valor da hora de consultoria é **R$ 250**.  

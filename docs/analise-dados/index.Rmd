@@ -16,13 +16,14 @@ Ao contratar a análise, você me envia o seu banco, eu defino as análises mais
 <br>
 Depois da entrega do relatório, temos uma reunião de devolutiva (online, via Google Meet), para que você possa tirar todas as suas dúvidas.  
 <br>
-Nesse serviço, as análises são realizadas exclusivamente no software <a href="https://www.r-project.org/" target="_blank">R</a>.  
-
+Nesse serviço, as análises são realizadas **exclusivamente no software <a href="https://www.r-project.org/" target="_blank">R</a>**.  
+  
 ##### Quanto custa esse serviço?
 O custo depende da extensão e complexidade da análise de dados.  
 Por isso, para te passar um orçamento, eu preciso de uma descrição detalhada: da sua pergunta experimental, de quais dados você coletou e de como está o seu banco de dados.  
 **Todo o processo de orçamento e planejamento das análises é feito por e-mail**.  
-  
+<br>
+As **opções de pagamento** para esse serviço são: Pix, boleto bancário e cartão de crédito (com possibilidade de parcelamento).    
 <br>
 
 <center>
@@ -34,7 +35,7 @@ QUERO UM ORÇAMENTO PARA ANÁLISE DE DADOS
 <br>
   
 ##### Quem fará as análises?
-Todas as análises serão feitas por mim, Fernanda. Sou bacharel em biomedicina, especialista em estatística aplicada e mestre e doutora em ciências ([acesso ao currículo completo](http://lattes.cnpq.br/7696717599003359)). Sou também orientadora de cursos de graduação e especialização.  
+Todas as análises serão feitas por mim, Fernanda. Sou bacharel em biomedicina, especialista em estatística aplicada e mestre e doutora em ciências (**[acesso ao currículo completo](http://lattes.cnpq.br/7696717599003359)**). Sou também orientadora de cursos de graduação e especialização.  
 <br>
 Um diferencial do serviço é que ele será realizado por alguém com experiência na redação de TCC, dissertação, tese e artigos científicos. O relatório que você recebe na consultoria é redigido em uma linguagem adequada a esse tipo de documento e inclui todas as informações necessárias.  
   

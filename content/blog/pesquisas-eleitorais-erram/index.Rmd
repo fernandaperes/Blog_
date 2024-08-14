@@ -146,7 +146,7 @@ Os questionários aplicados trazem perguntas que permitem identificar a qual cot
 >
 > Se você já ouviu falar sobre amostragem estratificada, é bem provável que tenha se perguntado se essa técnica é equivalente à amostragem por cotas. A resposta é: **não**! Essas duas técnicas diferem em algo fundamental: a aleatoriedade.  
 >
-> Tanto na amostragem por cotas quanto na estratificada, começamos dividindo a população em estratos. No entanto, na amostragem estratificada, são realizados sorteios dentro desses estratos. Portanto, trata-se de uma técnica de amostragem aleatória. Já na amostragem por cotas, como conversamos, a seleção dos elementos (por exemplo, pessoas) que irão compor a cota não é aleatória, não envolve sorteio. A não-aleatoriedade da amostragem por cotas é a maior críitica a ela, como discutiremos a seguir.
+> Tanto na amostragem por cotas quanto na estratificada, começamos dividindo a população em estratos. No entanto, na amostragem estratificada, são realizados sorteios dentro desses estratos. Portanto, trata-se de uma técnica de amostragem aleatória. Já na amostragem por cotas, como conversamos, a seleção dos elementos (por exemplo, pessoas) que irão compor a cota não é aleatória, não envolve sorteio. A não-aleatoriedade da amostragem por cotas é a maior crítica a ela, como discutiremos a seguir.
   
   
 #### Quais as críticas à amostragem por cotas?

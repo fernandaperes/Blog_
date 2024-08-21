@@ -73,6 +73,15 @@ Currently trying to get this blog running, still don't know what the blog will b
     weight = 40
     url = "/servicos"
     description = "Serviços"
+    
+
+[[menu.main]]
+    name = "CURSO"
+    identifier = "curso"
+    title = "Curso"
+    weight = 50
+    url = "https://curso.fernandafperes.com.br"
+    description = "Curso"
 
 [[menu.main]]
     name = "PÁGINA INICIAL"

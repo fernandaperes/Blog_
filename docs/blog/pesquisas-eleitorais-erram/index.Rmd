@@ -17,7 +17,7 @@ output:
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
 ```
   
-Eu estou escrevendo esse texto em agosto de 2024, poucos meses antes das eleições municipais. E estou deixando aqui a minha previsão: as pesquisas eleitorais vão "errar", para além da margem de erro. E esse é um texto para discutirmos **os porquês**.  
+Eu estou escrevendo esse texto em agosto de 2024, poucos meses antes das eleições municipais. E estou deixando aqui a minha previsão: as pesquisas eleitorais vão "errar", para além da margem de erro. Como todas as pesquisas eleitorais podem "errar". E esse é um texto para discutirmos **os porquês**.  
   
 >Antes, algumas considerações. Eu não sou estatística. Caso você tenha caído nesse texto por acaso, deixa eu me apresentar: eu sou a Fernanda, bacharel em biomedicina, mestre e doutora em farmacologia e especialista em estatística aplicada. Você consegue informações mais detalhadas sobre a minha formação [aqui](https://fernandafperes.com.br/sobre). Desde 2017 eu produzo conteúdo sobre análise de dados e há alguns anos eu consumo conteúdo sobre a estatística por trás das pesquisas eleitorais. E confesso que eu demorei um bom tempo para entender tudo que eu pretendo discutir com você aqui. Ah, todos os conceitos e hipóteses discutidos aqui não são de minha autoria. No final do post, você encontra uma bibliografia consultada.  
   
@@ -146,7 +146,7 @@ Os questionários aplicados trazem perguntas que permitem identificar a qual cot
 >
 > Se você já ouviu falar sobre amostragem estratificada, é bem provável que tenha se perguntado se essa técnica é equivalente à amostragem por cotas. A resposta é: **não**! Essas duas técnicas diferem em algo fundamental: a aleatoriedade.  
 >
-> Tanto na amostragem por cotas quanto na estratificada, começamos dividindo a população em estratos. No entanto, na amostragem estratificada, são realizados sorteios dentro desses estratos. Portanto, trata-se de uma técnica de amostragem aleatória. Já na amostragem por cotas, como conversamos, a seleção dos elementos (por exemplo, pessoas) que irão compor a cota não é aleatória, não envolve sorteio. A não-aleatoriedade da amostragem por cotas é a maior críitica a ela, como discutiremos a seguir.
+> Tanto na amostragem por cotas quanto na estratificada, começamos dividindo a população em estratos. No entanto, na amostragem estratificada, são realizados sorteios dentro desses estratos. Portanto, trata-se de uma técnica de amostragem aleatória. Já na amostragem por cotas, como conversamos, a seleção dos elementos (por exemplo, pessoas) que irão compor a cota não é aleatória, não envolve sorteio. A não-aleatoriedade da amostragem por cotas é a maior crítica a ela, como discutiremos a seguir.
   
   
 #### Quais as críticas à amostragem por cotas?
@@ -162,7 +162,7 @@ Imagine que a cota a ser preenchida é a de homens com 60 anos ou mais. É prov�
   
 2. Nem todas as pessoas têm a mesma probabilidade de serem entrevistadas. Por exemplo, se a seleção ocorre em pontos de fluxo, pessoas que trabalham em *home office* -- e que, portanto, estão em casa nos horários em que as entrevistas ocorrem -- **não serão incluídas** e estarão **subrepresentadas** na amostra final.  
   
-3. O resultado está sujeito ao **viés de não-resposta**. Muitas pessoas vão se recusar a participar da pesquisa. Isso faz parte. Mas, precisamos considerar que as pessoas que aceitaram participar podem diferir daquelas que se recusaram.  
+3. O resultado está sujeito ao **viés de não-resposta**. Isso não é exclusividade da amostragem por cotas, mas vai ocorrer nesse tipo de delineamento. O que acontece é que muitas pessoas vão se recusar a participar da pesquisa. Faz parte. Mas precisamos considerar que as pessoas que aceitaram participar podem diferir daquelas que se recusaram.  
 O problema se agrava quando os eleitores de um determinado candidato apresentam uma probabilidade maior de recusar responder à pesquisa. Nesses casos, os eleitores desse candidato estarão subrepresentados na amostra -- e, portanto, a intenção de votos desse candidato será subestimada pela pesquisa. Essa é, inclusive, uma das hipóteses mais aceitas para explicar a discrepância entre os resultados das pesquisas e os resultados da eleição presidencial de 2022. Recomendo [essa entrevista](https://www.dw.com/pt-br/por-que-as-pesquisas-indicaram-resultados-t%C3%A3o-diferentes-do-das-urnas/a-63324735) excelente com o Raphael Nishimura, caso você tenha interesse em se aprofundar nesse tópico.  
   
 4. A amostra selecionada por cotas é representativa da população **apenas** com relação aos fatores considerados na criação das cotas. No caso das pesquisas eleitorais, a amostra será representativa em termos **demográficos**. No entanto, isso não garante que a amostra será representativa da população em relação a outras variáveis. Ela pode **não ser representativa** com relação à intenção de votos.  
@@ -179,7 +179,7 @@ Imagine que observamos que em uma amostra a intenção de votos para um determin
 knitr::include_graphics("img5.png")
 ```
   
-É bem provável que não, concorda? Essa divergência entre as proporções da amostra e da população será observada mesmo quando a amostra for selecionada adequadamente -– sem erros ou má intenção. O intervalo de confiança é uma ferramenta para estimarmos, a partir da proporção obtida na amostra, um intervalo dentro do qual é provável que a proporção da população esteja.  
+É bem provável que não, concorda? Essa divergência entre as proporções da amostra e da população será observada mesmo quando a amostra for selecionada adequadamente -- sem erros ou má intenção. O intervalo de confiança é uma ferramenta para estimarmos, a partir da proporção obtida na amostra, um intervalo dentro do qual é provável que a proporção da população esteja.  
   
 O intervalo de confiança está sempre associado a um nível de confiança. Esse nível de confiança é complementar ao nível de significância, que eu explico com mais detalhes [aqui](https://fernandafperes.com.br/blog/doutora-toma-cha/) e [aqui](https://fernandafperes.com.br/blog/valor-de-p-calculo/). O padrão é utilizarmos um nível de significância de 5%. Portanto, o nível de confiança padrão será:  
   
@@ -198,9 +198,13 @@ IC 95% = [31%; 37%]
 </center>
 <br>
   
+  
+> A fórmula utilizada para calcular o intervalo de confiança não é o foco desse post, mas se tiver curiosidade você encontra uma explicação [aqui](https://fernandafperes.com.br/blog/intervalo-de-confianca/).
+  
+  
 A interpretação aqui é que é provável que a intenção de votos da população esteja entre 31% e 37%. Mas, **cuidado**! Isso **não significa** que há 95% de probabilidade de essa intenção estar entre 31% e 37%!  
   
-O intervalo de confiança se refere a um cenário **hipotético**. Ele se refere a uma situação em que tenhamos selecionado várias amostras aleatórias simples da população e estimado os intervalos de confiança para cada uma dessas amostras. Nessa situação, 95% das amostras conterão, em seu intervalo de confiança, o parâmetro populacional.  
+O intervalo de confiança se refere a um cenário **hipotético**. Ele se refere a uma situação em que tenhamos selecionado várias amostras aleatórias simples a partir da população e estimado os intervalos de confiança para cada uma dessas amostras. Nessa situação, 95% das amostras conterão, em seu intervalo de confiança, o parâmetro populacional.  
   
 É bem confuso, eu sei. Mas se a gente quer analisar criticamente as pesquisas eleitorais, é nossa obrigação entender esse conceito sem recorrer a falácias.  
   
@@ -216,7 +220,7 @@ knitr::include_graphics("ic_95.png")
   
 Repito: entender intervalo de confiança não é simples. Mas a interpretação correta é essa.  
   
-Vamos trazer essa explicação para o cenário da pesquisa eleitoral. Caso fizéssemos 100 pesquisas eleitorais com o mesmo delineamento, esperaríamos que 95 delas contivessem a intenção de votos real (da população) em seu intervalo de confiança 95%.  
+Vamos trazer essa explicação para o cenário da pesquisa eleitoral. Caso fizéssemos 100 pesquisas eleitorais com o mesmo delineamento e no mesmo momento, esperaríamos que 95 delas contivessem a intenção de votos real (da população) em seu intervalo de confiança 95%.  
   
 Perceba que quando estamos estudando uma amostra, não temos como saber se ela é uma das amostras em azul (que contém o parâmetro populacional em seu intervalo de confiança) ou uma das rosas (que não o contém). Portanto, é possível -- e consideravelmente provável -- que a amostra que estamos estudando **não contenha** o valor populacional no seu intervalo de confiança. Ainda que ela tenha sido adequadamente selecionada.  
   

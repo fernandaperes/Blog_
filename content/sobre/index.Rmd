@@ -96,15 +96,15 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 </li>
 
 <li class = "t">
-<p>2021 - atual</p>
-<p>Professora dos Cursos de Data Science e Data Analytics</p>
-<p><i>Tera</i></p>
-</li>
-
-<li class = "t">
 <p>2019 - atual</p>
 <p>Professora de Psicofarmacologia do curso de Especialização em Neurociências</p>
 <p><i>Universidade Federal de São Paulo (UNIFESP)</i></p>
+</li>
+
+<li class = "t">
+<p>2021 - 2023</p>
+<p>Professora dos Cursos de Data Science e Data Analytics</p>
+<p><i>Tera</i></p>
 </li>
 
 <li class = "t">

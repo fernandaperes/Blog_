@@ -1416,3 +1416,8 @@ a:hover.button {
     font-weight: 700;
     font-family: Nunito;
 } 
+
+div#disqus_thread iframe[sandbox] {
+        max-height: 0px !important;
+}
+

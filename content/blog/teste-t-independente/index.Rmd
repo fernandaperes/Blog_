@@ -243,8 +243,16 @@ ggplot(data = dados,
   
 O teste-t para duas amostras independentes mostrou que há efeito da posição na sala sobre as notas de biologia (t<sub>(30)</sub> = 4,60; p < 0,001), mas não sobre as de história (t<sub>(19,91)</sub> = 1,57; p = 0,131). O grupo que senta na frente da sala apresentou, em média, notas de biologia superiores às do grupo que senta nos fundos da sala.  
   
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Tutorial: Teste-t para amostras independentes no R**. Blog Fernanda Peres, São Paulo, 29 dez. 2020. Disponível em: https://fernandafperes.com.br/blog/teste-t-independente/.
+  
+  
 
-<br><br><br>
+***
   
 
   

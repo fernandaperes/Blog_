@@ -146,7 +146,7 @@ Já para as notas de história, p foi menor que 0,05, indicando que devemos reje
 <p><strong>Teste-t para a nota de biologia:</strong></p>
 <pre class="r"><code>t.test(Nota_Biol ~ Posicao_Sala, dados, var.equal=TRUE)</code></pre>
 <pre><code>## 
-##  Two Sample t-test
+## 	Two Sample t-test
 ## 
 ## data:  Nota_Biol by Posicao_Sala
 ## t = 4.6027, df = 30, p-value = 7.136e-05
@@ -175,7 +175,7 @@ Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>
 <p><strong>Teste-t para a nota de história:</strong></p>
 <pre class="r"><code>t.test(Nota_Hist ~ Posicao_Sala, dados, var.equal=FALSE)</code></pre>
 <pre><code>## 
-##  Welch Two Sample t-test
+## 	Welch Two Sample t-test
 ## 
 ## data:  Nota_Hist by Posicao_Sala
 ## t = 1.5737, df = 19.909, p-value = 0.1313
@@ -235,5 +235,11 @@ Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>
 <div id="descrevendo-os-resultados" class="section level3">
 <h3>Descrevendo os resultados</h3>
 <p>O teste-t para duas amostras independentes mostrou que há efeito da posição na sala sobre as notas de biologia (t<sub>(30)</sub> = 4,60; p &lt; 0,001), mas não sobre as de história (t<sub>(19,91)</sub> = 1,57; p = 0,131). O grupo que senta na frente da sala apresentou, em média, notas de biologia superiores às do grupo que senta nos fundos da sala.</p>
-<p><br><br><br></p>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Tutorial: Teste-t para amostras independentes no R</strong>. Blog Fernanda Peres, São Paulo, 29 dez. 2020. Disponível em: <a href="https://fernandafperes.com.br/blog/teste-t-independente/" class="uri">https://fernandafperes.com.br/blog/teste-t-independente/</a>.</p>
+</blockquote>
+<hr />
+</div>
 </div>

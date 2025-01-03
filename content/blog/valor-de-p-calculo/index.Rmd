@@ -11,6 +11,8 @@ output:
     toc: false
 ---
 
+
+
 ```{r, include=FALSE}
 # knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5)
@@ -287,4 +289,17 @@ Como, no nosso caso, p > $\alpha$, não vamos rejeitar H<sub>0</sub>. Ou seja, n
   
 > Ah, uma última observação: note que, caso tivéssemos optado por um teste unicaudal, o nosso valor de p seria 0,044 e rejeitaríamos a hipótese nula. Passaríamos a considerar que os grupos apresentam médias estatisticamente diferentes.  
 É por isso que é tão fundamental decidir, antes da análise dos dados, se o teste será considerado unicaudal ou bicaudal. É uma forma de evitar posturas antiéticas, que forcem um resultado mais conveniente.  
-
+  
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Valor de p, nível de significância e testes uni vs. bicaudais**. Blog Fernanda Peres, São Paulo, 10 jun. 2021. Disponível em: https://fernandafperes.com.br/blog/valor-de-p-calculo/.
+  
+  
+***
+  
+  
+  
+  

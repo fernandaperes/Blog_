@@ -552,7 +552,7 @@ blockquote {
     display: block;
     margin-bottom: 1.5rem;
     width: auto;
-    height: auto;
+    height: 300px;
 }
 
 .share {

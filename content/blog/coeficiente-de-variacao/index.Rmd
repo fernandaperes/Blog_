@@ -2,7 +2,7 @@
 title: "O que é um coeficiente de variação?"
 author: Fernanda Fiel Peres
 date: '2025-02-10'
-slug: [variancia-desvio-padrao]
+slug: [coeficiente-de-variacao]
 categories: []
 tags: ['Estatística teórica']
 comments: yes

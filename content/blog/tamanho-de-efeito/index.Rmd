@@ -134,6 +134,17 @@ No exemplo acima, o efeito corresponde à diferença entre os grupos. A **difere
 A diferença entre as médias é um tamanho de efeito **não-padronizado**, porque apresenta **unidade de medida** (no caso, mg/dL). Exatamente por estarem na mesma unidade de medida que os dados originais, os tamanhos de efeito não-padronizados tendem a ser mais fáceis de interpretar.  
   
   
+```{r, echo=FALSE, fig.align='center', out.width = '500px'}
+knitr::include_graphics("img7.png")
+```
+<center>
+<font size="2">  
+*Traduzido de [https://www.accountingexperiments.com/post/effect_size/](https://www.accountingexperiments.com/post/effect_size/)*  
+*Veja, você não precisa ser um especialista em sono para perceber que 47 segundos a mais não é um aumento clinicamente relevante...*
+</font>
+</center>
+  
+  
 #### Tamanho de efeito padronizado
   
   

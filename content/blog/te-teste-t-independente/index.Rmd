@@ -110,7 +110,7 @@ No entanto, vale destacar que essa ou outras classificações são, de fato, ape
    
 ##### Outras fórmulas para o d de Cohen
   
-Até aqui, te mostrei a fórmula abaixo. Ela está correta, mas ela se aplica apenas à seguinte situação: dois grupos com o mesmo n e os mesmos desvios-padrão. Quando o n e/ ou os desvios-padrão variam entre os grupos, precisamos ajustar a fórmula para considerar essa variação. Ela passa a ser [@@lakens2013; @espiritosanto2015]:  
+Até aqui te mostrei a fórmula abaixo. Ela está correta, mas ela se aplica apenas à seguinte situação: dois grupos com o mesmo n e os mesmos desvios-padrão. Quando o n e/ ou os desvios-padrão variam entre os grupos, precisamos ajustar a fórmula para considerar essa variação. Ela passa a ser [@lakens2013; @espiritosanto2015]:  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '450px'}
 knitr::include_graphics("img6.png")
@@ -162,7 +162,7 @@ Ou seja, o valor de d para esses dados é igual a -0,65, com um intervalo de con
    
 #### g de Hedges
   
-O tamanho de efeito d de Cohen é o mais popular e utilizado no contexto do teste-t independente. No entanto, o d de Cohen **não é adequado a amostras pequenas** (n < 20 no total). Nessas situações devemos usar o tamanho de efeito g de Hedges, que nada mais é do que o d de Cohen corrigido para amostras pequenas [@@lakens2013; @espiritosanto2015]:  
+O tamanho de efeito d de Cohen é o mais popular e utilizado no contexto do teste-t independente. No entanto, o d de Cohen **não é adequado a amostras pequenas** (n < 20 no total). Nessas situações devemos usar o tamanho de efeito g de Hedges, que nada mais é do que o d de Cohen corrigido para amostras pequenas [@lakens2013; @espiritosanto2015]:  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '450px'}
 knitr::include_graphics("img7.png")

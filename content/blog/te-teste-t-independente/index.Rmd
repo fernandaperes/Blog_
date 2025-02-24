@@ -46,7 +46,7 @@ Quando comparamos as médias de dois grupos independentes, o tamanho de efeito n
 knitr::include_graphics("img1.png")
 ```
   
-Vou repetir a piadinha para que essa informaçã fique na sua cabeça. Perceba pela tirinha abaixo, que descreve um tamanho de efeito não-padronizado (com unidade de medida, segundos), como mesmo sem sermos especialistas na área conseguimos perceber que a diferença entre os grupos não é clinicamente relevante.  
+Vou repetir a piadinha para que essa informação fique na sua cabeça. Perceba pela tirinha abaixo, que descreve um tamanho de efeito não-padronizado (com unidade de medida, segundos), como mesmo sem sermos especialistas na área conseguimos perceber que a diferença entre os grupos não é clinicamente relevante.  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '500px'}
 knitr::include_graphics("img2.png")

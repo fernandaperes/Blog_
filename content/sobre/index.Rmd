@@ -24,7 +24,7 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 </div>
 
 <div class="column2">
-<img width="230" src="/static/sobre_files/author.png" alt="" loading="lazy">
+<img width="230" src="/static/sobre_files/author.jpg" alt="" loading="lazy">
 <br>
 </div>
 
@@ -139,4 +139,3 @@ Você encontra o meu currículo e histórico profissional detalhados, bem como o
 </div>
 
 </div>
-

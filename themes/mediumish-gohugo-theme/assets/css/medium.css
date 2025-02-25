@@ -954,6 +954,7 @@ h6 {
 
 img {
     max-width: 100%;
+    height: auto;
 }
 
 .bottompagination span.navigation {

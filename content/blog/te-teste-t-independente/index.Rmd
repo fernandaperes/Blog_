@@ -105,7 +105,7 @@ O valor de d pode ser classificado como pequeno, médio ou grande, de acordo com
 * d ≥ 0,5 = efeito médio
 * d ≥ 0,8 = efeito grande
    
-No entanto, vale destacar que essa ou outras classificações são, de fato, apenas **sugestões**. É possível que um tamanho de efeito classificado como grande corresponda a uma alteração de magnitude clinicamente irrelevante. Da mesma forma, um tamanho de efeito classificado como irrisório pode representar uma alteração de magnitude significativa na prática. Portanto, recomenda-se que a interpretação do tamanho de efeito leve em consideração o contexto [@thompson2007effect; @schafer2019meaningfulness]. O próprio Cohen enfatiza bastante isso no seu livro [@cohen1988].
+No entanto, vale destacar que essa ou outras classificações são, de fato, apenas **sugestões**. É possível que um tamanho de efeito classificado como grande corresponda a uma alteração de magnitude clinicamente irrelevante. Da mesma forma, um tamanho de efeito classificado como irrisório (inferior a pequeno) pode representar uma alteração de magnitude significativa na prática. Portanto, recomenda-se que a interpretação do tamanho de efeito leve em consideração o contexto [@thompson2007effect; @schafer2019meaningfulness]. O próprio Cohen enfatiza bastante isso no seu livro [@cohen1988].
    
    
 ##### Outras fórmulas para o d de Cohen

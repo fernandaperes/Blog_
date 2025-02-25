@@ -551,8 +551,10 @@ blockquote {
 .featured-image {
     display: block;
     margin-bottom: 1.5rem;
+    max-width:600px;
+    max-height:300px;
     width: auto;
-    height: 300px;
+    height: auto;
 }
 
 .share {

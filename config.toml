@@ -11,6 +11,11 @@ ignoreFiles = ['_bookdown.yml']
 disqusShortname = "fernandafperes"
 googleAnalytics = "G-ZBDS4LT6P0"
 
+# Set to true to disable code folding
+disable_codefolding = false
+# Set to "hide" or "show" all codes by default
+codefolding_show = "show"
+
 
 [params]
   logo = "/images/favicon.ico"

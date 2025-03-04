@@ -1098,7 +1098,6 @@ hr {
   height: 1px;
 }
 
-
 .sobre {
   text-align: left;
   display: inline-block;
@@ -1108,6 +1107,15 @@ hr {
 }
 
 @media (min-width:770px) {
+  
+.faq {
+  text-align: left;
+  display: inline-block;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
 .sobre .column1 {
   float: left;
   width: 65%;
@@ -1148,6 +1156,15 @@ hr {
 }
 
 @media (max-width:770px) {
+  
+.faq {
+  text-align: left;
+  display: inline-block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+  
 .sobre .column1 {
   float: left;
   width: 100%;

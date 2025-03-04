@@ -5,6 +5,7 @@ type: "static"
 ---
 
 ```{r, include = F}
+mostrar_faq <- F
 agenda_aberta <- F
 razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
 # razao_fechamento <- "Estarei em recesso a partir do dia 21/12 e tirarei duas semanas de férias em janeiro. A agenda para contratação dos serviços de análise dados ou consultoria ficará **fechada** durante esse período."
@@ -16,6 +17,9 @@ inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")
 fim_aberta <- ifelse(isFALSE(agenda_aberta), "-->", "")
 inicio_fechada <- ifelse(isFALSE(agenda_aberta), "", "<!--")
 fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
+
+inicio_faq <- ifelse(isFALSE(mostrar_faq), "<!--", "")
+fim_faq <- ifelse(isFALSE(mostrar_faq), "-->", "")
 ```
 
 
@@ -218,3 +222,40 @@ Quando a agenda está aberta, você encontra nessa página um link para um formu
 
 </div>
 `r fim_fechada`
+
+
+`r inicio_faq`
+
+<div class = "parentfaq">
+
+<div class = "faq">
+
+<br />
+<br />
+<br />
+  
+<center>
+<h4>Perguntas frequentes</h4>
+</center>
+  
+<details>
+<summary>Você emite nota fiscal desses serviços?</summary>
+Claro! Tanto para o serviço de consultoria quanto para o serviço de análise de dados são emitidas notas fiscais. Isso significa que você pode me pagar por esses serviços com verbas de pesquisa.
+<br />
+<br />
+</details>
+  
+<details>
+<summary>Você emite nota fiscal desses serviços?</summary>
+Claro! Tanto para o serviço de consultoria quanto para o serviço de análise de dados são emitidas notas fiscais. Isso significa que você pode me pagar por esses serviços com verbas de pesquisa.
+<br />
+<br />
+</details>
+
+<br />
+
+</div>
+
+</div>
+
+`r fim_faq`

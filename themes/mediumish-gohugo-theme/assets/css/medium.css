@@ -1112,8 +1112,10 @@ hr {
   text-align: left;
   display: inline-block;
   width: 60%;
-  margin-left: auto;
+  right: 0;
+  left: 0;
   margin-right: auto;
+  margin-left: auto;
 }
   
 .sobre .column1 {
@@ -1161,8 +1163,10 @@ hr {
   text-align: left;
   display: inline-block;
   width: 90%;
-  margin-left: auto;
+  right: 0;
+  left: 0;
   margin-right: auto;
+  margin-left: auto;
 }
   
 .sobre .column1 {

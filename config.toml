@@ -17,6 +17,7 @@ googleAnalytics = "G-ZBDS4LT6P0"
   description = ""
   customCSS = ["css/purebasic.css", "css/applause-button.css"]
   customJS = ["js/highlight.pack.js", "js/applause-button.js"]
+  hideReadingTime = false
 
 
 [params.author]

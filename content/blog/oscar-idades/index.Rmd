@@ -380,7 +380,7 @@ ggplotly(graf, tooltip = c("text"))
   
 Quer utilizar algum gráfico que eu mostrei aqui ou usar a base de dados que eu organizei? Sem problemas, **desde que você me dê os créditos**.  
   
-Como baixar a base de dados? A versão final está disponível para download no meu GitHub. Eu não me responsabilizo por quaisquer erros de digitação meus ou das pessoas que disponibilizaram as bases 1 e 2, ok?  
+Como baixar a base de dados? A versão final está disponível para [download no meu GitHub](https://raw.githubusercontent.com/fernandaperes/Blog_/refs/heads/master/content/blog/oscar-idades/Dados_Oscar_Fernanda_Peres.csv). Eu não me responsabilizo por quaisquer erros de digitação meus ou das pessoas que disponibilizaram as bases 1 e 2, ok?  
   
   
   

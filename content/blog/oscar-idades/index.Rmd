@@ -7,8 +7,6 @@ categories: ['Estatística descritiva', 'Gráficos']
 tags: ['ggplot2', 'gráficos', 'oscar']
 comments: yes
 summary: 'Há nas redes a sugestão de que mulheres que ganham o Oscar de melhor atriz tendem a ser mais jovens que os homens que ganham o prêmio correspondente. Será que são mesmo? Neste post, eu exploro esses dados.'
-params:
-    hideReadingTime: true
 output:
   blogdown::html_page:
     toc: false

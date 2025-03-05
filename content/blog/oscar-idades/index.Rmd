@@ -230,7 +230,7 @@ colnames(dados) <- c("Ano do filme", "Ano da cerimônia", "Cerimônia",
                      "Data de nascimento", "Idade (anos) no filme",
                      "Idade (anos) na cerimônia", "Gênero")
 
-write.csv2("Dados_Oscar_Fernanda_Peres.csv")
+write.csv2(dados, "Dados_Oscar_Fernanda_Peres.csv", row.names = F)
 ```
   
 #### Qual a média de idade dos homens e mulheres que vencem nas categorias de atuação?

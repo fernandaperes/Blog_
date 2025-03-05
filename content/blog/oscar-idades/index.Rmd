@@ -273,6 +273,8 @@ dados |>
 </details>
   
   
+<br />
+  
 E, por mais estranho que pareça, essa análise que fizemos até agora **basta para afirmar** que as mulheres que recebem prêmios na categoria de atuação são em média mais jovens que os homens.  
   
 Mas, Fernanda, e os **testes estatísticos**? Não vamos fazer um teste-t, calcular o valor de p? Então... Não vamos!  

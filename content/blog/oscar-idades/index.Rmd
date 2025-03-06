@@ -25,7 +25,7 @@ Desde que Mikey Madison ganhou o Oscar de melhor atriz no dia 03 de março de 20
   
 Por outro lado, outros defendem que isso não é bem verdade e que **mulheres mais velhas têm sido premiadas com frequência nos últimos anos** -- uma das mulheres utilizadas como exemplo para essa tese é a Michelle Yeoh, ganhadora do Oscar de melhor atriz aos 60 anos.  
   
-Esse último argumento me incomodou particularmente. Com certeza existem mulheres que foram premiadas mais velhas, acima dos 50 ou 60 anos. Mas, a existência dessas premiações não é **evidência suficiente para rejeitar a hipótese** em questão: em geral (e aqui vamos pensar "em média") as muheres que são premiadas nas categorias de melhor atriz são mais jovens que os homens premiados nas categorias de melhor ator?  
+Esse último argumento me incomodou particularmente. Com certeza existem mulheres que foram premiadas mais velhas, acima dos 50 ou 60 anos. Mas, a existência dessas premiações não é **evidência suficiente para rejeitar a hipótese** em questão: em geral (e aqui vamos pensar "em média") as mulheres que são premiadas nas categorias de melhor atriz são mais jovens que os homens premiados nas categorias de melhor ator?  
   
   
 #### Como testar essa hipótese?

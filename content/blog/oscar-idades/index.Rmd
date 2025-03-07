@@ -235,10 +235,10 @@ write.csv2(dados, "Dados_Oscar_Fernanda_Peres.csv", row.names = F)
   
 #### Qual a média de idade dos homens e mulheres que vencem nas categorias de atuação?
   
-A média de idade ao receber o prêmio de melhor atriz, durante todo o período (1927 a 2025) foi de **36,9 anos** (*versus* **44,6 anos** para melhor ator). Esse padrão se mantém quando olhamos para a mediana: 33,5 anos para as mulheres e 43 anos para os homens. Isso mostra que os **homens** que ganham o prêmio máximo de atuação são, em geral, **mais velhos** que as mulheres.  
+A média de idade ao receber o prêmio de melhor atriz, durante todo o período (1927 a 2025) foi de **36,9 anos** (*versus* **44,6 anos** para melhor ator). Esse padrão se mantém quando olhamos para a mediana: 33,5 anos para as mulheres e 43 anos para os homens. A interpretação desse dado é: metade das mulheres que ganharam o Oscar de melhor atriz tinham menos de 34 anos no momento da premiação. Para homens, esse valor aumenta em 10 anos: metade dos homens premiados nessa categoria tinham 43 anos ou menos. Isso mostra que os **homens** que ganham o prêmio máximo de atuação são, em geral, **mais velhos** que as mulheres.  
   
-Quando avaliamos os prêmios de atrizes e atores coadjuvantes, novamente a média de idade das mulheres é menor: **40,9 anos** *versus* **49,8 anos**. A mediana, mais uma vez, segue a tendência da média. Em mediana, as atrizes coadjuvantes vencedoras têm 39 anos, enquanto os atores coadjuvantes têm 46 anos.  
-  
+Quando avaliamos os prêmios de atrizes e atores coadjuvantes, novamente a média de idade das mulheres é menor: **40,9 anos** *versus* **49,8 anos**. A mediana, mais uma vez, segue a tendência da média. Metade das mulheres premiadas na categoria de atuação coadjuvante tinham até 39 anos no momento da premiação. Entre os homens, metade dos premiados tinham 46 anos ou menos.  
+    
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(flextable)
 

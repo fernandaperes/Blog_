@@ -13,7 +13,7 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
 
 
 
-<div class="flex-container">
+<div class="site-links">
 
   <p>
   <a href="https://curso.fernandafperes.com.br/">
@@ -30,7 +30,7 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
   <br />
   <br />
   
-  teste2
+  teste3
   
   <br><br>
   
@@ -46,10 +46,7 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
   
   <br>
   
-</div>
 
-
-<div class="site-links">
 
 <br><br>
 

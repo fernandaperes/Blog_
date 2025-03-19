@@ -15,36 +15,23 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
 
 <div class="site-links">
 
-  <p>
   <a href="https://curso.fernandafperes.com.br/">
   <img width="300" src="images/cursov2.png" alt="" loading="lazy">
   </a>
-  </p>
   
-  <br>
   
   <a href="https://fernandafperes.com.br/qual-servico/">
   <img width="300" src="images/consultoriasv2.png" alt="" loading="lazy">
   </a>
   
-  <br />
-  <br />
-  
-  teste3
-  
-  <br><br>
-  
   <a href="https://fernandafperes.com.br">
   <img width="300" src="images/blogv2.png" alt="" loading="lazy">
   </a>
   
-  <br>
  
   <a href="https://youtube.com/c/FernandaPeres/">
   <img width="300" src="images/youtubev2.png" alt="" loading="lazy">
   </a>
-  
-  <br>
   
 
 

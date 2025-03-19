@@ -16,10 +16,11 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
 
 <div class="flex-container">
 
-
+  <p>
   <a href="https://curso.fernandafperes.com.br/">
   <img width="300" src="images/cursov2.png" alt="" loading="lazy">
   </a>
+  </p>
   
   <br>
   

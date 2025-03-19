@@ -1,0 +1,84 @@
+---
+title: "Links de acesso"
+hidetitle: true
+type: "links-de-acesso"
+---
+
+```{r, include = F}
+mostrar_email <- F
+
+inicio_email <- ifelse(isFALSE(mostrar_email), "<!--", "")
+fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
+```
+
+
+<center>
+
+<div class="flex-container">
+
+  <div class="flex-child">
+  
+  <a href="https://youtube.com/c/FernandaPeres/">
+  <img width="120" src="images/canal.png" alt="" loading="lazy">
+  </a>
+  <center><p>Canal no YouTube</p><center>
+  
+  <br>
+  
+  <a href="https://fernandafperes.com.br/qual-servico/">
+  <img width="120" src="images/servicos.png" alt="" loading="lazy">
+  </a>
+  <center><p>Informações sobre os serviços de consultoria científica e análise de dados</p><center>
+  
+  </div>
+  
+  <div class="flex-child">
+
+  <a href="https://fernandafperes.com.br/blog/">
+  <img width="120" src="images/blog.png" alt="" loading="lazy">
+  </a>
+  <center><p>Textos no blog</p><center>
+  
+  <br>
+  
+  <!-- <a href="https://youtu.be/EtV3_3aN884"> -->
+  <!-- <img width="120" src="images/como-escolher-2.png" alt="" loading="lazy"> -->
+  <!-- </a> -->
+  <!-- <center><p>Vídeo: como escolher o teste estatístico?</p><center> -->
+  
+  
+  <a href="https://curso.fernandafperes.com.br/">
+  <img width="120" src="images/curso.png" alt="" loading="lazy">
+  </a>
+  <center><p>Curso: Análise de dados para pesquisadores</p><center>
+  
+
+  </div>
+  
+  <br><br>
+  
+</div>
+
+</center>
+
+<div class="site-links">
+
+<br><br>
+
+`r inicio_email`
+<center>
+<a href="mailto:contato@fernandafperes.com.br?subject=Consultoria"><i class="fa fa-solid fa-envelope fa-2x" aria-hidden="true"></i></a>
+
+</center>
+
+<br>
+`r fim_email`
+    
+  <a href="https://fernandafperes.com.br/">
+  fernandafperes.com.br
+  </a>
+
+<br><br>
+
+</div>
+

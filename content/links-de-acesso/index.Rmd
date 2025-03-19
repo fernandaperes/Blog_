@@ -27,7 +27,10 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
   <img width="300" src="images/consultoriasv2.png" alt="" loading="lazy">
   </a>
   
-  teste
+  <br />
+  <br />
+  
+  teste2
   
   <br><br>
   

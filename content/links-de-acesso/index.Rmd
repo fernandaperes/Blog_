@@ -12,7 +12,6 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
 ```
 
 
-<center>
 
 <div class="flex-container">
 
@@ -28,7 +27,7 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
   <img width="300" src="images/consultoriasv2.png" alt="" loading="lazy">
   </a>
   
-  <br>
+  <br><br>
   
   <a href="https://fernandafperes.com.br">
   <img width="300" src="images/blogv2.png" alt="" loading="lazy">
@@ -44,7 +43,6 @@ fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
   
 </div>
 
-</center>
 
 <div class="site-links">
 

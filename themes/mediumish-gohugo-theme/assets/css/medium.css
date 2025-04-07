@@ -318,7 +318,7 @@ section.recent-posts {
 
 .listfeaturedtag h4.card-text,
 .listrecent h4.card-text {
-    color: rgba(0, 0, 0, .44);
+    color: rgba(0, 0, 0, .5);
     font-size: 0.95rem;
     line-height: 1.6;
     font-weight: 400;
@@ -712,6 +712,11 @@ blockquote {
     background-color: #fafafa;
     padding: 40px 0 46px;
     position: relative;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 0;
 }
 
 .listrelated .card {

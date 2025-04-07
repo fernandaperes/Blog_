@@ -14,6 +14,7 @@ bibliography: references.bib
 csl: APA.csl
 ---
 
+
 ```{r, include=FALSE}
 # hugodown::md_document
 # knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
@@ -269,6 +270,13 @@ Se gráficos são um assunto que te interessa, recomendo um livro que ganhou meu
    
 Recomendo também a leitura do artigo de @weissgerber2019reveal, que resume as informações discutidas aqui.  
 
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Gráficos dinamite: usá-los ou não, eis a questão**. Blog Fernanda Peres, São Paulo, 08 abr. 2022. Disponível em: https://fernandafperes.com.br/blog/graficos-dinamite/.
+  
   
   
 ***

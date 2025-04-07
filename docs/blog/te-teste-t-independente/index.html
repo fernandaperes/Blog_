@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Tamanhos de efeito para o teste-t independente | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/te-teste-t-independente/cover.png"/>
+<meta name="twitter:title" content="Tamanhos de efeito para o teste-t independente"/>
+<meta name="twitter:description" content="Qual o tamanho de efeito adequado a resultados analisados pelo teste-t independente? A resposta é: depende. Nesse post te explico os três tamanhos de efeito sugeridos (d de Cohen, g de Hedges e delta de Glass) e quando utilizar cada um deles."/>
+
+	<meta property="og:title" content="Tamanhos de efeito para o teste-t independente" />
+<meta property="og:description" content="Qual o tamanho de efeito adequado a resultados analisados pelo teste-t independente? A resposta é: depende. Nesse post te explico os três tamanhos de efeito sugeridos (d de Cohen, g de Hedges e delta de Glass) e quando utilizar cada um deles." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/te-teste-t-independente/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/te-teste-t-independente/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-02-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-24T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/te-teste-t-independente/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Tamanhos%20de%20efeito%20para%20o%20teste-t%20independente&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fte-teste-t-independente%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fte-teste-t-independente%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fte-teste-t-independente%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fte-teste-t-independente%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Tamanhos de efeito para o teste-t independente</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    24 fev., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/te-teste-t-independente/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+<link href="https://fernandafperes.com.br/blog/te-teste-t-independente/index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/te-teste-t-independente/index_files/tabwid/tabwid.js"></script>
+
+
+<p>Em um <a href="https://fernandafperes.com.br/blog/tamanho-de-efeito/">post anterior</a> eu te expliquei o que é tamanho de efeito e o porquê você deveria calculá-lo nas suas análises. Nesse post, vamos discutir os tamanhos de efeito adequados a situações em que comparamos as <strong>médias</strong> de <strong>dois grupos independentes</strong>, ou seja, situações em que aplicamos o teste-t independente.</p>
+<p>Este post está dividido nos seguintes tópicos:</p>
+<ul>
+<li><a href="#o-tamanho-de-efeito-não-padronizado">O tamanho de efeito não-padronizado</a><br />
+</li>
+<li><a href="#os-tamanhos-de-efeito-padronizados">Os tamanhos de efeito padronizados</a><br />
+
+<ul>
+<li><a href="#d-de-cohen">d de Cohen</a><br />
+</li>
+<li><a href="#g-de-hedges">g de Hedges</a><br />
+</li>
+<li><a href="#delta-de-glass">delta de Glass</a><br />
+</li>
+<li><a href="#explicações-detalhadas-em-r">Explicações detalhadas em R</a><br />
+</li>
+</ul></li>
+<li><a href="#resumo-e-recomendações">Resumo e recomendações</a><br />
+</li>
+<li><a href="#como-citar-esse-post,-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a><br />
+</li>
+<li><a href="#referências-">Referências</a></li>
+</ul>
+<div id="o-tamanho-de-efeito-não-padronizado" class="section level3">
+<h3>O tamanho de efeito não-padronizado</h3>
+<p>No <a href="https://fernandafperes.com.br/blog/tamanho-de-efeito/">post anterior</a>, eu te expliquei que os tamanhos de efeito podem ser divididos em padronizados e não-padronizados. Os <strong>não-padronizados</strong> são aqueles que apresentam <strong>unidade de medida</strong>. Essa unidade de medida é a mesma dos dados coletados, da média, o que torna esse tipo de tamanho de efeito mais <strong>interpretável</strong>. É mais fácil pensarmos na <strong>relevância clínica/ prática</strong> de um achado ao avaliarmos o seu tamanho de efeito não-padronizado. Já o tamanho de efeito <strong>padronizado</strong> é adimensional, <strong>sem unidade de medida</strong>. Isso facilita comparações entre estudos, mas leva a uma perda de interpretabilidade.</p>
+<p>Quando comparamos as médias de dois grupos independentes, o tamanho de efeito não-padronizado é simplesmente a <strong>diferença entre essas médias</strong>. Seguindo com o exemplo do post anterior (mas mudando os valores para fazermos cálculos diferente), imagine que recrutamos 10 pessoas sedentárias e 10 pessoas que praticam exercícios físicos regularmente. Então, quantificamos a glicemia de cada uma dessas pessoas e calculamos a média de cada grupo. A diferença entre essas médias é o tamanho de efeito não-padronizado desta análise, conforme representado abaixo:</p>
+<p><img src="img1.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Vou repetir a piadinha para que essa informação fique na sua cabeça. Perceba pela tirinha abaixo, que descreve um tamanho de efeito não-padronizado (com unidade de medida, segundos), como mesmo sem sermos especialistas na área conseguimos perceber que a diferença entre os grupos não é clinicamente relevante.</p>
+<img src="img2.png" width="500px" style="display: block; margin: auto;" />
+<center>
+<font size="2"><br />
+<em>Traduzido de <a href="https://www.accountingexperiments.com/post/effect_size/">https://www.accountingexperiments.com/post/effect_size/</a></em><br />
+</font>
+</center>
+</div>
+<div id="os-tamanhos-de-efeito-padronizados" class="section level3">
+<h3>Os tamanhos de efeito padronizados</h3>
+<p>Mas, sem dúvida, os tamanhos de efeito mais famosos são os padronizados, adimensionais. Para o teste-t independente, temos três tamanhos de efeito sugeridos:</p>
+<ul>
+<li>d de Cohen (em inglês, <em>Cohen’s d</em>)</li>
+<li>g de Hedges (em inglês, <em>Hedges’ g</em>)</li>
+<li>delta de Glass (em inglês, <em>Glass’ delta</em>)</li>
+</ul>
+<p>Vamos discuti-los um a um e ao final do post eu trago um resumo de quando usá-los, combinado?</p>
+<div id="d-de-cohen" class="section level4">
+<h4>d de Cohen</h4>
+<p>O tamanho de efeito d de Cohen padroniza a diferença entre os grupos ao dividir essa diferença entre as médias pelo desvio-padrão. Uma versão resumida da fórmula, com A e B representando os dois grupos independentes, é:</p>
+<p><img src="img3.png" width="195px" style="display: block; margin: auto;" /></p>
+<p>Como a média e o desvio-padrão estão na mesma unidade de medida, ao dividirmos esses valores no cálculo do d, obtemos um valor adimensional, sem unidade de medida. Assumindo um desvio-padrão igual a 10 mg/dL, obtemos:</p>
+<p><img src="img4.png" width="280px" style="display: block; margin: auto;" /></p>
+<div id="como-interpretar-esse-valor" class="section level5">
+<h5>Como interpretar esse valor?</h5>
+<p>Como estamos dividindo a diferença entre as médias pelo desvio-padrão, um d = 1,1 indica que <strong>a diferença entre as médias equivale a 1,1 desvios-padrão</strong>.</p>
+<p>De fato, se multiplicarmos o desvio-padrão (10 mg/dL) pelo valor de d (1,1), obteremos a diferença entre as médias: 10 x 1,1 = 11.</p>
+<p>Um detalhe importante aqui: observe que o numerador do cálculo corresponde à diferença entre as médias. Aqui, ao montar o cálculo, eu considerei o grupo sedentário como A e o grupo exercício como B. Por isso, a diferença – e, consequentemente, o numerador do cálculo – foi positiva. Mas eu poderia ter considerado o grupo exercício como grupo A e o grupo sedentário como B. O que mudaria?</p>
+<p><img src="img5.png" width="280px" style="display: block; margin: auto;" /></p>
+<p>Perceba que o valor de d passaria a ser <strong>negativo</strong>, mas que o d seria idêntico em valor absoluto (em módulo). Os dois cálculos estão corretos. O valor de d ser negativo não é um problema. Isso vai acontecer quando a média do grupo A for inferior à média do grupo B. Ao interpretarmos o d, analisamos o seu <strong>valor absoluto</strong>.</p>
+</div>
+<div id="classificação-do-valor-de-d" class="section level5">
+<h5>Classificação do valor de d</h5>
+<p>O valor de d pode ser classificado como pequeno, médio ou grande, de acordo com a sugestão do Cohen em seu livro de 1988 <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>:</p>
+<ul>
+<li>d ≥ 0,2 = efeito pequeno</li>
+<li>d ≥ 0,5 = efeito médio</li>
+<li>d ≥ 0,8 = efeito grande</li>
+</ul>
+<p>No entanto, vale destacar que essa ou outras classificações são, de fato, apenas <strong>sugestões</strong>. É possível que um tamanho de efeito classificado como grande corresponda a uma alteração de magnitude clinicamente irrelevante. Da mesma forma, um tamanho de efeito classificado como irrisório (inferior a pequeno) pode representar uma alteração de magnitude significativa na prática. Portanto, recomenda-se que a interpretação do tamanho de efeito leve em consideração o contexto <span class="citation">(<a href="#ref-schafer2019meaningfulness">Schäfer; Schwarz, 2019</a>; <a href="#ref-thompson2007effect">Thompson, 2007</a>)</span>. O próprio Cohen enfatiza bastante isso no seu livro <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>.</p>
+</div>
+<div id="outras-fórmulas-para-o-d-de-cohen" class="section level5">
+<h5>Outras fórmulas para o d de Cohen</h5>
+<p>Até aqui te mostrei a fórmula abaixo. Ela está correta, mas ela se aplica apenas à seguinte situação: dois grupos com o mesmo n e os mesmos desvios-padrão. Quando o n e/ ou os desvios-padrão variam entre os grupos, precisamos ajustar a fórmula para considerar essa variação. Ela passa a ser <span class="citation">(<a href="#ref-espiritosanto2015">Espı́rito-Santo; Daniel, 2015</a>; <a href="#ref-lakens2013">Lakens, 2013</a>)</span>:</p>
+<p><img src="img6.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Eu sei, não é uma fórmula muito simpática. Mas tudo o que discutimos anteriormente, inclusive a interpretação do valor de d, <strong>segue válido</strong> mesmo quando aplicamos essa fórmula.</p>
+</div>
+<div id="como-calcular-o-valor-de-d" class="section level5">
+<h5>Como calcular o valor de d?</h5>
+<p>Bom, como você já deve ter imaginado, basta aplicar a fórmula acima. Mas, vou te indicar outras duas opções:</p>
+<p><strong>1. Usando uma planilha de Excel</strong></p>
+<p>Eu desenvolvi uma planilha de Excel que realiza esses cálculos e inclusive calcula o intervalo de confiança 95% para o d. Para utilizá-la, faça o download do arquivo Excel que está na descrição <a href="https://youtu.be/Oy6woi2HALo?si=ba4394oQymLbf9sU">deste vídeo</a>.<br />
+Ah, o vídeo explica em detalhes como usar a planilha.</p>
+<p><strong>2. Pelo R</strong></p>
+<p>Imagine que temos uma base de dados nomeada como “dados” com uma coluna “Grupo” e outra “Glicemia”. A tabela abaixo mostra algumas linhas dessa base:</p>
+<div class="tabwid"><style>.cl-d8332f76{}.cl-d82eb856{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d82eb860{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d830538c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d830643a{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d830643b{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d830643c{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d8306444{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d8306445{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d8306446{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-d8332f76'><thead><tr style="overflow-wrap:break-word;"><th class="cl-d830643a"><p class="cl-d830538c"><span class="cl-d82eb856">Grupo</span></p></th><th class="cl-d830643b"><p class="cl-d830538c"><span class="cl-d82eb856">Glicemia</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Exercício físico</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">102</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Exercício físico</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">92</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Exercício físico</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Sedentário</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">102</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Sedentário</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Sedentário</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">80</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d830643c"><p class="cl-d830538c"><span class="cl-d82eb860">Exercício físico</span></p></td><td class="cl-d8306444"><p class="cl-d830538c"><span class="cl-d82eb860">88</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d8306445"><p class="cl-d830538c"><span class="cl-d82eb860">Exercício físico</span></p></td><td class="cl-d8306446"><p class="cl-d830538c"><span class="cl-d82eb860">107</span></p></td></tr></tbody></table></div>
+<p>Para calcular o valor de d podemos rodar a seguinte função do pacote <code>effectsize</code>:</p>
+<pre class="r"><code>effectsize::cohens_d(Glicemia ~ Grupo, data = dados)</code></pre>
+<pre><code>## Cohen&#39;s d |        95% CI
+## -------------------------
+## -0.65     | [-1.41, 0.12]
+## 
+## - Estimated using pooled SD.</code></pre>
+<p>Ou seja, o valor de d para esses dados é igual a -0,65, com um intervalo de confiança 95% [-1,41; 0,12]. De acordo com a classificação sugerida pelo Cohen <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>, trata-se de um tamanho de efeito médio.</p>
+<blockquote>
+<p>Não vou discutir intervalo de confiança 95% neste post, mas você encontra <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">aqui</a> um post bem detalhado sobre esse tema.</p>
+</blockquote>
+</div>
+</div>
+<div id="g-de-hedges" class="section level4">
+<h4>g de Hedges</h4>
+<p>O tamanho de efeito d de Cohen é o mais popular e utilizado no contexto do teste-t independente. No entanto, o d de Cohen <strong>não é adequado a amostras pequenas</strong> (n &lt; 20 no total). Nessas situações devemos usar o tamanho de efeito g de Hedges, que nada mais é do que o d de Cohen corrigido para amostras pequenas <span class="citation">(<a href="#ref-espiritosanto2015">Espı́rito-Santo; Daniel, 2015</a>; <a href="#ref-lakens2013">Lakens, 2013</a>)</span>:</p>
+<p><img src="img7.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Os pormenores da correção não nos interessam. O importante é entender que essa versão corrigida é mais adequada que o d de Cohen para amostras pequenas, com n total inferior a 20.</p>
+<div id="interpretação-e-classificação-do-g-de-hedges" class="section level5">
+<h5>Interpretação e classificação do g de Hedges</h5>
+<p>A interpretação e a classificação do g de Hedges são idênticas às do d de Cohen. Afinal, ele é apenas uma versão do d de Cohen corrigida para ser adequada a amostras menores.</p>
+</div>
+<div id="como-calcular-o-valor-de-g" class="section level5">
+<h5>Como calcular o valor de g?</h5>
+<p>De novo, basta aplicar a fórmula acima. Mas, assim como para o d, podemos realizar esse cálculo usando planilhas em Excel ou o software R:</p>
+<p><strong>1. Usando uma planilha de Excel</strong></p>
+<p>A planilha de Excel que eu mencionei anteriormente também calcula o g de Hedges. Para utilizá-la, faça o download do arquivo Excel que está na descrição <a href="https://youtu.be/Oy6woi2HALo?si=ba4394oQymLbf9sU">deste vídeo</a>. O vídeo explica em detalhes como usar a planilha.</p>
+<p><strong>2. Pelo R</strong></p>
+<p>Partindo de uma base de dados nomeada como “dados” com uma coluna “Grupo” e outra “Glicemia”, o g de Hedges pode ser calculado a partir da seguinte função do pacote <code>effectsize</code>:</p>
+<pre class="r"><code>effectsize::hedges_g(Glicemia ~ Grupo, data = dados)</code></pre>
+<pre><code>## Hedges&#39; g |        95% CI
+## -------------------------
+## -0.63     | [-1.37, 0.11]
+## 
+## - Estimated using pooled SD.</code></pre>
+<p>Ou seja, o valor de g para esses dados é igual a -0,63 (bem semelhante ao d, mas um pouco menor), com um intervalo de confiança 95% [-1,37; 0,11]. De acordo com a classificação sugerida pelo Cohen <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>, trata-se de um tamanho de efeito médio.</p>
+</div>
+</div>
+<div id="delta-de-glass" class="section level4">
+<h4>delta de Glass</h4>
+<p>Uma limitação dos tamanhos de efeito d de Cohen e g de Hedges é que eles devem ser usados para grupos com variâncias homogêneas – isso é, não muito discrepantes. Caso os grupos apresentem <strong>variâncias muito diferentes</strong>, o tamanho de efeito mais recomendado é o <strong>delta de Glass</strong>.</p>
+<blockquote>
+<p>Variância não é o foco deste post. Mas, caso queira ler mais sobre esse tema, recomendo <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">esse post</a>.</p>
+</blockquote>
+<p>O delta de Glass tem uma fórmula simples: ele divide a diferença entre as médias pelo desvio-padrão de um dos grupos <span class="citation">(<a href="#ref-espiritosanto2015">Espı́rito-Santo; Daniel, 2015</a>; <a href="#ref-lakens2013">Lakens, 2013</a>)</span>. Recomenda-se que o grupo cujo desvio-padrão será adicionado à fórmula seja o grupo controle.</p>
+<p><img src="img8.png" width="230px" style="display: block; margin: auto;" /></p>
+<div id="e-se-não-existir-grupo-controle" class="section level5">
+<h5>E se não existir grupo controle?</h5>
+<p>Caso não exista grupo controle, a recomendação é calcular as duas versões possíveis do delta de Glass – uma com o desvio-padrão do grupo A e outra com o desvio-padrão do grupo B – e reportá-las:</p>
+<p><img src="img9.png" width="550px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="interpretação-e-classificação-do-delta-de-glass" class="section level5">
+<h5>Interpretação e classificação do delta de Glass</h5>
+<p>O delta de Glass (Δ) segue a mesma classificação do d de Cohen <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>:</p>
+<ul>
+<li>Δ ≥ 0,2 = efeito pequeno</li>
+<li>Δ ≥ 0,5 = efeito médio</li>
+<li>Δ ≥ 0,8 = efeito grande</li>
+</ul>
+<p>E a interpretação se mantém. Perceba que novamente estamos dividindo a diferença entre as médias por um desvio-padrão (nesse caso, geralmente o do grupo controle). Portanto, um delta de Glass de 1,1 indica que a diferença entre as médias é 1,1 vezes o desvio-padrão do controle.</p>
+</div>
+<div id="como-calcular-o-valor-de-delta" class="section level5">
+<h5>Como calcular o valor de delta?</h5>
+<p>Basta aplicar a fórmula acima ou calculá-lo usando planilhas em Excel/ o software R:</p>
+<p><strong>1. Usando uma planilha de Excel</strong></p>
+<p>A planilha de Excel que eu te sugeri também calcula o delta de Glass. Para utilizá-la, faça o download do arquivo Excel que está na descrição <a href="https://youtu.be/Oy6woi2HALo?si=ba4394oQymLbf9sU">deste vídeo</a>. O vídeo explica em detalhes como usar a planilha.</p>
+<p><strong>2. Pelo R</strong></p>
+<p>Partindo de uma base de dados nomeada como “dados” com uma coluna “Grupo” e outra “Glicemia”, o delta de Glass pode ser calculado a partir da seguinte função do pacote <code>effectsize</code>. O segundo grupo mostrado pelo <code>levels(dados$Grupo)</code> é o grupo controle. Nesse caso, “Sedentário”.</p>
+<pre class="r"><code>levels(dados$Grupo)</code></pre>
+<pre><code>## [1] &quot;Exercício físico&quot; &quot;Sedentário&quot;</code></pre>
+<pre class="r"><code>effectsize::glass_delta(Glicemia ~ Grupo, data = dados, adjust = F)</code></pre>
+<pre><code>## Glass&#39; delta |        95% CI
+## ----------------------------
+## -0.62        | [-1.36, 0.14]</code></pre>
+<p>O argumento <code>adjust</code>, quando <code>TRUE</code>, calcula a versão do delta de Glass adequada a amostras pequenas (n &lt; 20). Uma correção semelhante à que é feita no cálculo do g de Hedges. Aqui escolhi calcular a versão não corrigida.</p>
+<p>Ou seja, o valor de delta para esses dados é igual a -0,62, com um intervalo de confiança 95% [-1,36; 0,14]. De acordo com a classificação sugerida pelo Cohen <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>, trata-se de um tamanho de efeito médio.</p>
+<p>Caso você queira trocar o grupo de referência, basta alterar a ordem das categorias:</p>
+<pre class="r"><code>dados$Grupo &lt;- factor(dados$Grupo,
+                      levels = c(&quot;Sedentário&quot;, &quot;Exercício físico&quot;))
+
+effectsize::glass_delta(Glicemia ~ Grupo, data = dados, adjust = F)</code></pre>
+<pre><code>## Glass&#39; delta |        95% CI
+## ----------------------------
+## 0.68         | [-0.15, 1.49]</code></pre>
+<p>Perceba que agora obtemos outro resultado para o delta de Glass. Assim como o d de Cohen e o g de Hedges, o delta de Glass pode apresentar valores negativos. Isso acontece quando o grupo A apresenta uma média inferior à do grupo B.</p>
+</div>
+</div>
+<div id="explicações-detalhadas-em-r" class="section level4">
+<h4>Explicações detalhadas em R</h4>
+<p>Caso você queira calcular esses tamanhos de efeito em R e tenha enfrentado alguma dificuldade com os códigos compartilhados aqui, recomendo que você assista a <a href="https://youtu.be/IpSuIodj-Bs?si=X3CYaWXPInsDzLlZ">esse vídeo</a>.</p>
+</div>
+</div>
+<div id="resumo-e-recomendações" class="section level3">
+<h3>Resumo e recomendações</h3>
+<p><img src="img10.png" width="800px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Tamanhos de efeito para o teste-t independente</strong>. Blog Fernanda Peres, São Paulo, 24 fev. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/te-teste-t-independente/" class="uri">https://fernandafperes.com.br/blog/te-teste-t-independente/</a>.</p>
+</blockquote>
+<p><br /></p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-cohen1988" class="csl-entry">
+COHEN, J. <strong>Statistical power analysis for the behavioral sciences</strong>. Hillsdale, NJ: Lawrence Erlbaum Associates, 1988.
+</div>
+<div id="ref-espiritosanto2015" class="csl-entry">
+ESPÍRITO-SANTO, H.; DANIEL, F. da C. B. Calcular e apresentar tamanhos do efeito em trabalhos cient<span>ı́</span>ficos (1): As limita<span>ç</span><span>õ</span>es do p&lt;0,05 na an<span>á</span>lise de diferen<span>ç</span>as de m<span>é</span>dias de dois grupos. <strong>Revista Portuguesa de Investiga<span>ç</span><span>ã</span>o Comportamental e Social: RPICS</strong>, [<em>s. l.</em>], v. 1, n. 1, p. 3–16, 2015.
+</div>
+<div id="ref-lakens2013" class="csl-entry">
+LAKENS, D. Calculating and reporting effect sizes to facilitate cumulative science: a practical primer for t-tests and ANOVAs. <strong>Frontiers in psychology</strong>, [<em>s. l.</em>], v. 4, p. 863, 2013.
+</div>
+<div id="ref-schafer2019meaningfulness" class="csl-entry">
+SCHÄFER, T.; SCHWARZ, M. A. The meaningfulness of effect sizes in psychological research: Differences between sub-disciplines and the impact of potential biases. <strong>Frontiers in psychology</strong>, [<em>s. l.</em>], v. 10, p. 813, 2019.
+</div>
+<div id="ref-thompson2007effect" class="csl-entry">
+THOMPSON, B. Effect sizes, confidence intervals, and confidence intervals for effect sizes. <strong>Psychology in the Schools</strong>, [<em>s. l.</em>], v. 44, n. 5, p. 423–432, 2007.
+</div>
+</div>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/leituras-2024/"> &laquo; Uma análise exploratória das minhas leituras em 2024</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/tamanho-de-efeito/">O que é e por que calcular um tamanho de efeito? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

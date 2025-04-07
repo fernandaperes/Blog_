@@ -12,6 +12,7 @@ output:
     toc: false
 ---
 
+
 ```{r, include=FALSE}
 # knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
@@ -271,6 +272,15 @@ As pesquisas eleitorais são importantes e há muitos institutos sérios as real
 
   
 <br>
+  
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Por que as pesquisas eleitorais erram?**. Blog Fernanda Peres, São Paulo, 13 ago. 2024. Disponível em: https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/.
+  
+  
 
 <hr>
 

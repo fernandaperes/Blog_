@@ -14,6 +14,7 @@ bibliography: references.bib
 csl: APA.csl
 ---
 
+
 ```{r, include=FALSE, results='asis'}
 # hugodown::md_document
 # knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
@@ -250,6 +251,11 @@ banco_graf %>% filter(Sobreviveu == "Sim") %>%
 ```
 
 
+
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Como representar os resultados do qui-quadrado em um gráfico?**. Blog Fernanda Peres, São Paulo, 08 abr. 2022. Disponível em: https://fernandafperes.com.br/blog/grafico-qui-quadrado/.
   
   
 <br>

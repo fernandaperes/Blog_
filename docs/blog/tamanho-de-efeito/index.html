@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>O que é e por que calcular um tamanho de efeito? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/tamanho-de-efeito/cover.png"/>
+<meta name="twitter:title" content="O que é e por que calcular um tamanho de efeito?"/>
+<meta name="twitter:description" content="Já ouviu falar em tamanho de efeito, mas nunca entendeu o que afinal é isso? Nem o porquê você deveria calculá-lo? Neste post eu te explico o que é e qual a importância das medidas de tamanho de efeito."/>
+
+	<meta property="og:title" content="O que é e por que calcular um tamanho de efeito?" />
+<meta property="og:description" content="Já ouviu falar em tamanho de efeito, mas nunca entendeu o que afinal é isso? Nem o porquê você deveria calculá-lo? Neste post eu te explico o que é e qual a importância das medidas de tamanho de efeito." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/tamanho-de-efeito/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/tamanho-de-efeito/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-02-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-12T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/tamanho-de-efeito/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=O%20que%20%c3%a9%20e%20por%20que%20calcular%20um%20tamanho%20de%20efeito%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftamanho-de-efeito%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftamanho-de-efeito%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftamanho-de-efeito%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftamanho-de-efeito%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">O que é e por que calcular um tamanho de efeito?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    12 fev., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/tamanho-de-efeito/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>A resposta <strong>resumida</strong> à pergunta que abre o post é: tamanhos de efeito são medidas que refletem a <strong>magnitude do efeito detectado</strong> (por exemplo, a magnitude da diferença entre dois grupos). Mas, para que isso faça mais sentido e você entenda o porquê você deveria calculá-los na sua pesquisa, eu vou ter que partir para um exemplo…</p>
+<div id="o-problema-de-pesquisa" class="section level4">
+<h4>O problema de pesquisa</h4>
+<p>Imagine que você quer investigar se a glicemia de pessoas que praticam exercício físico regularmente <strong>difere</strong> da glicemia de pessoas sedentárias. Para isso, você recruta pessoas que se encaixam nesses critérios, dosa suas glicemias e chega nos resultados abaixo:</p>
+<p><img src="img1.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Se calcularmos as médias, perceberemos que, para essa amostra de pessoas, a média de glicemia das pessoas sedentárias é de 105,8 mg/dL e a das pessoas que praticam exercício é de 98,0 mg/dL. Portanto, <strong>na amostra</strong> investigada, pessoas que praticam exercício físico aprensentam uma média de glicemia <strong>menor</strong> que a de pessoas sedentárias. Há uma <strong>diferença de 7,8 mg/dL</strong> entre os grupos.</p>
+<p><img src="img2.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Mas aqui precisamos entender algo importante: estamos analisando uma <strong>amostra</strong> de pessoas. Ao compararmos numericamente essas médias (98,0 é menor que 105,8) podemos afirmar apenas que as médias diferem <strong>nesta amostra</strong>.</p>
+<p>No entanto, em geral, quando investigamos uma amostra, estamos querendo chegar a uma conclusão sobre a <strong>população</strong>. Ou seja, nesse caso queremos responder à pergunta: pessoas que praticam exercícios físicos regularmente têm uma média de glicemia diferente da média de pessoas sedentárias? Perceba que o nosso objetivo é <strong>extrapolar esses achados</strong> para todas as pessoas que praticam exercícios regulares e todas as pessoas sedentárias – essas pessoas compõem a nossa população. E, provavelmente, as médias dessa população não serão idênticas às médias obtidas na amostra.</p>
+<p>Podemos usar a inferência estatística fazer essa <strong>extrapolação</strong> e avaliar se, na população, é esperado que os valores de glicemia difiram entre esses grupos. É aí que entram os <strong>testes de hipóteses</strong>. Nesse caso, como queremos comparar as médias de dois grupos independentes – isso é, compostos por pessoas diferentes – podemos usar um teste chamado <strong>teste-t independente</strong>.</p>
+<blockquote>
+<p>Esse é um post focado em discutir tamanho de efeito. Portanto, eu vou assumir que você tem alguma familiaridade com os conceitos de população, amostra, testes de hipóteses e valor de p. </p>
+<p>Caso queira uma explicação mais detalhada sobre população e amostra, recomendo <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">esse post</a>.</p>
+<p>Para entender a fundo o que é valor de p, recomendo essa série de posts aqui do blog (que devem ser lidos nessa ordem): <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">“Uma doutora toma chá”</a>, <a href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">“Valor de p, nível de significância e testes uni vs. bicaudais”</a> e <a href="https://fernandafperes.com.br/blog/falacias-valor-de-p/">“Falácias do valor de p”</a>.</p>
+</blockquote>
+<p>O teste-t independente vai gerar um valor de p. E esse valor de p é a <strong>base da nossa decisão</strong>: rejeitar ou não a hipótese nula. Nesse caso, considerar ou não que esses grupos <strong>diferem na população</strong>. Usando aqui o ponto de corte (nível de sigificância) padrão de 0,05, poderíamos esquematizas a nossa decisão da seguinte forma:</p>
+<p><img src="img3.png" width="320px" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>Reforço: o foco desse post não é discutir testes de hipóteses, valor de p e essa tomada de decisão. Mas isso está bem detalhado <a href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">aqui</a>.</p>
+</blockquote>
+<p>Podemos rodar um teste-t independente com esses dados. Vou rodá-lo pelo R, mas se você não tem familiaridade com esse software, não se preocupe. O que vamos discutir se aplica à análise realizada em qualquer software.</p>
+<pre class="r"><code>t.test(Glicemia ~ Grupo, data = dados, var.equal = T)</code></pre>
+<pre><code>## 
+## 	Two Sample t-test
+## 
+## data:  Glicemia by Grupo
+## t = -1.233, df = 18, p-value = 0.2334
+## alternative hypothesis: true difference in means between group Exercício físico and group Sedentário is not equal to 0
+## 95 percent confidence interval:
+##  -21.09035   5.49035
+## sample estimates:
+## mean in group Exercício físico       mean in group Sedentário 
+##                           98.0                          105.8</code></pre>
+<p>Perceba que o valor de p (p-value) foi igual a 0,233. Ou seja, um valor de p maior que o nosso ponto de corte de 0,05. Nossa <strong>tomada de decisão</strong> aqui seria a de não rejeitar a H<sub>0</sub>. Portanto, consideraríamos que os grupos <strong>não diferem</strong> estatisticamente.</p>
+<p>No entanto, o valor de p apresenta <strong>limitações importantes</strong>, que têm sido alvo de críticas fervorosas nas últimas décadas <span class="citation">(<a href="#ref-cohen1994earth">Cohen, 1994</a>; <a href="#ref-sullivan2012">Sullivan; Feinn, 2012</a>; <a href="#ref-zhu2012sadly">Zhu, 2012</a>)</span>. Uma dessas limitações é <strong>não representar</strong> adequadamente a <strong>magnitude do efeito</strong> detectado.</p>
+<p>É comum a gente considerar que quanto menor o valor de p, maior o efeito observado – no nosso exemplo, pensaríamos “mais diferentes os grupos são”. Mas esse raciocínio está <strong>errado</strong>. O valor de p depende, sim, da magnitude do efeito. No entanto, esse valor é também muito influenciado pelo <strong>tamanho da amostra</strong> <span class="citation">(<a href="#ref-sullivan2012">Sullivan; Feinn, 2012</a>)</span>.</p>
+</div>
+<div id="valor-de-p-x-tamanho-da-amostra" class="section level4">
+<h4>Valor de p x tamanho da amostra</h4>
+<p>Para isso tudo fazer mais sentido, vamos comparar dois cenários:</p>
+<ol style="list-style-type: decimal">
+<li>Um primeiro cenário idêntico ao exemplo do tópico anterior: comparação das médias de dois grupos (sedentários x exercício físico), com <strong>10 pessoas</strong> em cada grupo (n = 10).</li>
+<li>Um segundo cenário com os mesmos dois grupos, apresentando exatamente as <strong>mesmas médias e desvios-padrão</strong> do cenário 1. A diferença aqui será o tamanho da amostra. Nesse segundo cenário, cada grupo incluirá <strong>50 pessoas</strong> (n = 50).</li>
+</ol>
+<p>Como os valores de p irão se comportar nesses dois cenários?</p>
+<p><img src="img4.png" width="800px" style="display: block; margin: auto;" /></p>
+<p>Note que quando <strong>aumentamos</strong> o tamanho da amostra, o valor de p <strong>reduziu</strong> bastante. Inclusive, no segundo cenário tomaríamos uma <strong>decisão</strong> diferente da que tomamos no primeiro cenário, já que agora o valor de p é inferior a 0,05. E o mais importante: observe que chegamos a conclusões diferentes ainda que as diferenças entre os grupos sejam <strong>idênticas</strong> nesses dois cenários.</p>
+<p>A conclusão aqui é: o valor de p <strong>não reflete</strong> adequadamente a <strong>magnitude do efeito</strong> (nesse caso, a magnitude da diferença entre os grupos). Isso porque esse valor é influenciado também pelo tamanho da amostra. Então, o que reflete essa magnitude? Você já deve ter adivinhado: o tema da nossa conversa, o <strong>tamanho de efeito</strong>.</p>
+<p>Os tamanhos de efeito podem ser divididos em dois tipos: os <strong>padronizados</strong> e os <strong>não-padronizados</strong>. Vamos entendê-los melhor.</p>
+</div>
+<div id="tamanho-de-efeito-não-padronizado" class="section level4">
+<h4>Tamanho de efeito não-padronizado</h4>
+<p>Por mais que “tamanho de efeito” soe como algo complexo, os tamanhos de efeito já fazem parte do nosso dia-a-dia.</p>
+<p>No exemplo acima, o efeito corresponde à diferença entre os grupos. A <strong>diferença entre as médias</strong> (7,8 mg/dL) é uma medida de tamanho de efeito. A partir dela, especialistas podem avaliar a diferença detectada entre esses dois grupos é <strong>clinicamente relevante</strong>.</p>
+<p>A diferença entre as médias é um tamanho de efeito <strong>não-padronizado</strong>, porque apresenta <strong>unidade de medida</strong> (no caso, mg/dL). Exatamente por estarem na mesma unidade de medida que os dados originais, os tamanhos de efeito não-padronizados tendem a ser mais fáceis de interpretar.</p>
+<img src="img7.png" width="500px" style="display: block; margin: auto;" />
+<center>
+<font size="2"><br />
+<em>Traduzido de <a href="https://www.accountingexperiments.com/post/effect_size/">https://www.accountingexperiments.com/post/effect_size/</a></em><br />
+<em>Veja, você não precisa ser um especialista em sono para perceber que 47 segundos a mais não é um aumento clinicamente relevante…</em>
+</font>
+</center>
+</div>
+<div id="tamanho-de-efeito-padronizado" class="section level4">
+<h4>Tamanho de efeito padronizado</h4>
+<p>Em alguns casos, pode ser interessante calcular tamanhos de efeito <strong>padronizados</strong>, que são tamanhos de efeito adimensionais, <strong>sem unidade de medida</strong>. Isso é particularmente útil para compararmos tamanhos de efeito de estudos diferentes.</p>
+<p>Há muitos tamanhos de efeito padronizados <strong>diferentes</strong>. Você já deve ter ouvido falar de vários deles. É o caso do d de Cohen, do eta-quadrado, do V de Cramer… Cada um desses tamanhos de efeito padronizado é <strong>adequado a uma situação diferente</strong>. Por exemplo, o d de Cohen é adequado à comparação de médias de dois grupos independentes (ou seja, é um dos tamanhos de efeito que calculamos após um teste-t independente). Já o eta-quadrado é calculado para dados analisados pela ANOVA de uma via – ou seja, quando comparamos mais de dois grupos independentes. O V de Cramer é calculado quando utilizamos o teste qui-quadrado para investigar a associação entre duas variáveis categóricas.</p>
+<p>Nesse post, eu não vou detalhar os diferentes tamanhos de efeito. Tenho a intenção de fazer posts específicos para eles (me conta nos comentários se isso te interessa?). Mas quero discutir com você a <strong>lógica</strong> do tamanho de efeito d de Cohen, aplicado ao nosso exemplo, para que a parte do “padronizado” faça sentido para você.</p>
+<p>Para calcular o d de Cohen devemos dividir a diferença entre as médias dos grupos (S para sedentário e E para exercício, na imagem abaixo) pelo desvio-padrão. Para simplificar as nossas contas, vou considerar que os dois grupos têm o mesmo desvio-padrão, de 12 mg/dL.</p>
+<p><img src="img5.png" width="190px" style="display: block; margin: auto;" /></p>
+<p>Perceba que ao fazermos a conta as unidades de medida “se cancelam”, resultando em um d adimensional:</p>
+<p><img src="img61.png" width="280px" style="display: block; margin: auto;" /></p>
+<p>O valor de d = 0,65 significa que a diferença entre as médias é de <strong>0,65 vezes o desvio-padrão</strong>. E os tamanhos de efeito padronizados podem ser classificados. Por exemplo, para o d de Cohen há a seguinte <strong>sugestão de classificação</strong> <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>:</p>
+<ul>
+<li>d ≥ 0,2 = efeito pequeno</li>
+<li>d ≥ 0,5 = efeito médio</li>
+<li>d ≥ 0,8 = efeito grande</li>
+</ul>
+<p>No entanto, vale destacar que essas classificações são, de fato, apenas <strong>sugestões</strong>. É possível que um tamanho de efeito classificado como grande corresponda a uma alteração de magnitude clinicamente irrelevante. Da mesma forma, um tamanho de efeito classificado como irrisório pode representar uma alteração de magnitude significativa na prática. Portanto, recomenda-se que a interpretação do tamanho de efeito leve em consideração o contexto <span class="citation">(<a href="#ref-schafer2019meaningfulness">Schäfer; Schwarz, 2019</a>; <a href="#ref-thompson2007effect">Thompson, 2007</a>)</span>.</p>
+</div>
+<div id="então-eu-sempre-deveria-calcular-medidas-de-tamanho-de-efeito" class="section level4">
+<h4>Então, eu sempre deveria calcular medidas de tamanho de efeito?</h4>
+<p>Na minha opinião, sim. E, veja, não necessariamente você precisa calcular tamanhos de efeito padronizados. Os não-padronizados já são extremamente relevantes. Mas, eu acho fundamental incluir uma medida da magnitude do efeito observado, além do clássico valor de p – que eu amo, mas a gente sabe que tem lá as suas limitações.</p>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é e por que calcular um tamanho de efeito?</strong>. Blog Fernanda Peres, São Paulo, 12 fev. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/tamanho-de-efeito/" class="uri">https://fernandafperes.com.br/blog/tamanho-de-efeito/</a>.</p>
+</blockquote>
+<p><br /></p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-cohen1988" class="csl-entry">
+COHEN, J. <strong>Statistical power analysis for the behavioral sciences</strong>. Hillsdale, NJ: Lawrence Erlbaum Associates, 1988.
+</div>
+<div id="ref-cohen1994earth" class="csl-entry">
+COHEN, J. The earth is round (p&lt;. 05). <strong>American psychologist</strong>, [<em>s. l.</em>], v. 49, n. 12, p. 997, 1994.
+</div>
+<div id="ref-schafer2019meaningfulness" class="csl-entry">
+SCHÄFER, T.; SCHWARZ, M. A. The meaningfulness of effect sizes in psychological research: Differences between sub-disciplines and the impact of potential biases. <strong>Frontiers in psychology</strong>, [<em>s. l.</em>], v. 10, p. 813, 2019.
+</div>
+<div id="ref-sullivan2012" class="csl-entry">
+SULLIVAN, G. M.; FEINN, R. Using effect size—or why the P value is not enough. <strong>Journal of graduate medical education</strong>, [<em>s. l.</em>], v. 4, n. 3, p. 279–282, 2012.
+</div>
+<div id="ref-thompson2007effect" class="csl-entry">
+THOMPSON, B. Effect sizes, confidence intervals, and confidence intervals for effect sizes. <strong>Psychology in the Schools</strong>, [<em>s. l.</em>], v. 44, n. 5, p. 423–432, 2007.
+</div>
+<div id="ref-zhu2012sadly" class="csl-entry">
+ZHU, W. Sadly, the earth is still round (p&lt; 0.05). <strong>Journal of Sport and health Science</strong>, [<em>s. l.</em>], v. 1, n. 1, p. 9–11, 2012.
+</div>
+</div>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/te-teste-t-independente/"> &laquo; Tamanhos de efeito para o teste-t independente</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/coeficiente-de-variacao/">O que é um coeficiente de variação? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

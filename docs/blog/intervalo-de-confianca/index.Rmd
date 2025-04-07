@@ -2,7 +2,7 @@
 title: "Como interpretar o intervalo de confiança?"
 author: Fernanda Fiel Peres
 date: '2021-06-08'
-slug: [probabilidade-positivo-verdadeiro]
+slug: [intervalo-de-confianca]
 categories: []
 tags: ['Estatística teórica']
 comments: yes
@@ -134,6 +134,13 @@ Para isso fazer mais sentido, observe o gráfico abaixo, que já discutimos ness
 ```{r, echo=FALSE, fig.align='center', out.width = '450px'}
 knitr::include_graphics("img4.png")
 ```
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Como interpretar o intervalo de confiança?**. Blog Fernanda Peres, São Paulo, 08 jun. 2021. Disponível em: https://fernandafperes.com.br/blog/intervalo-de-confianca/.
+  
   
   
 <br><br><br>

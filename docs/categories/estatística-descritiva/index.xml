@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Estatística descritiva on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/categories/estat%C3%ADstica-descritiva/</link>
+    <description>Recent content in Estatística descritiva on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/categories/estat%C3%ADstica-descritiva/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>As idades de atores e atrizes vencedores do Oscar diferem?</title>
+      <link>https://fernandafperes.com.br/blog/oscar-idades/</link>
+      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/oscar-idades/</guid>
+      <description>Há nas redes a sugestão de que mulheres que ganham o Oscar de melhor atriz tendem a ser mais jovens que os homens que ganham o prêmio correspondente. Será que são mesmo? Neste post, eu exploro esses dados.</description>
+    </item>
+    
+    <item>
+      <title>Uma análise exploratória das minhas leituras em 2024</title>
+      <link>https://fernandafperes.com.br/blog/leituras-2024/</link>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/leituras-2024/</guid>
+      <description>Explorando as minhas leituras do ano usando o R.</description>
+    </item>
+    
+  </channel>
+</rss>

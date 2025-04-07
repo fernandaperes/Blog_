@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>O que é um coeficiente de variação? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/coeficiente-de-variacao/cover.png"/>
+<meta name="twitter:title" content="O que é um coeficiente de variação?"/>
+<meta name="twitter:description" content="Talvez você já tenha ouvido falar em &ldquo;coeficiente de variação&rdquo;, uma forma de medir a dispersão dos dados em porcentagem. Nesse post te explico a lógica dessa medida e em quais situações ela pode ser utilizada."/>
+
+	<meta property="og:title" content="O que é um coeficiente de variação?" />
+<meta property="og:description" content="Talvez você já tenha ouvido falar em &ldquo;coeficiente de variação&rdquo;, uma forma de medir a dispersão dos dados em porcentagem. Nesse post te explico a lógica dessa medida e em quais situações ela pode ser utilizada." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/coeficiente-de-variacao/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/coeficiente-de-variacao/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-02-10T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/coeficiente-de-variacao/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=O%20que%20%c3%a9%20um%20coeficiente%20de%20varia%c3%a7%c3%a3o%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fcoeficiente-de-variacao%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fcoeficiente-de-variacao%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fcoeficiente-de-variacao%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fcoeficiente-de-variacao%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">O que é um coeficiente de variação?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    10 fev., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/coeficiente-de-variacao/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<blockquote>
+<p>Antes de você iniciar a leitura, eu preciso te dar um <em>spoiler</em>: o coeficiente de variação, tema deste post, é calculado a partir da média e do desvio-padrão. O texto vai assumir que você tem familiaridade com o conceito de desvio-padrão. Se não for o seu caso, recomendo que você leia antes <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">o post que explica o que é e como interpretar o desvio-padrão</a>, combinado?</p>
+</blockquote>
+<div id="um-breve-resumo-sobre-variância-e-desvio-padrão" class="section level4">
+<h4>Um breve resumo sobre variância e desvio-padrão</h4>
+<p>No post anterior, sobre variância e desvio-padrão, nós discutimos que:</p>
+<ol style="list-style-type: decimal">
+<li>Variância e desvio-padrão são <strong>medidas de dispersão</strong> que quantificam o quão dispersos os dados estão <strong>em relação à média</strong></li>
+<li>Quanto <strong>maior</strong> a variância ou o desvio-padrão, <strong>mais dispersos</strong> estão os dados – ou seja, mais eles variam</li>
+<li>A unidade de medida da variância é a unidade original <strong>elevada ao quadrado</strong>, o que a torna uma medida muito mais <strong>difícil de interpretar</strong> que o desvio-padrão, que está na unidade de medida <strong>original</strong></li>
+</ol>
+<p>Hoje vamos conversar sobre uma outra medida de dispersão, o <strong>coeficiente de variação</strong>. Mas, para esse coeficiente fazer sentido, vou partir de um <strong>exemplo</strong> – um exemplo um pouco estranho, mas vou te pedir para confiar na minha construção de raciocínio, ok?</p>
+</div>
+<div id="o-que-varia-mais-a-altura-de-mulheres-ou-de-gatos-domésticos" class="section level4">
+<h4>O que varia mais? A altura de mulheres ou de gatos domésticos?</h4>
+<p>Vamos imaginar que estamos interessados em comparar as variações nas alturas de mulheres e de gatos. Para isso, aferimos as alturas de duas amostras: uma composta por 10 mulheres e outra composta por 10 gatos. As alturas que encontramos estão detalhadas a seguir:</p>
+<p><img src="img1.png" width="280px" style="display: block; margin: auto;" /></p>
+<p>Se estamos interessados na variação dos dados, podemos calcular o desvio-padrão para cada uma dessas amostras, seguindo exatamente os passos que discutimos no <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">post anterior</a>. Claro, poderíamos também calcular a variância, mas aqui vou focar no desvio-padrão por ser uma medida mais interpretável. As médias e desvios-padrão para cada uma dessas amostras estão representados abaixo:</p>
+<p><img src="img2.png" width="350px" style="display: block; margin: auto;" /></p>
+<p>O desvio-padrão calculado nos indica que as alturas das mulheres estão variando, em média, 8,5 cm para mais ou para menos, em relação à média da amostra, que é 161,2 cm. Já as alturas dos gatos estão variando 6,0 cm, para mais ou para menos, em relação à sua média de 26,2 cm.</p>
+<p>Podemos, agora, voltar à pergunta que abriu esse tópico: quais alturas <strong>variam mais</strong> em relação à média? As de mulheres ou as de gatos?</p>
+<p>Perceba que os desvios-padrão estão na mesma unidade de medida (cm). Portanto, uma possibilidade seria <strong>compará-los</strong>. Como o desvio-padrão para mulheres é maior, podemos dizer que as alturas das mulheres variam mais em relação à média do que as alturas dos gatos.</p>
+<p>Mas você pode estar pensando: poxa, mas variar 6 cm em relação a 26,2 cm parece uma <strong>variação muito maior</strong> do que variar 8,5 cm em relação a 161,2 cm! E você tem razão nesse raciocínio.</p>
+</div>
+<div id="visualizando-a-variação-nas-duas-amostras" class="section level4">
+<h4>Visualizando a variação nas duas amostras</h4>
+<p>Para entender isso melhor, vamos visualizar essa variação. Nos dois gráficos abaixo, a barra central se refere à média de altura daquela amostra (mulheres no gráfico à esquerda e gatos à direita), a barra à esquerda corresponde à média menos um desvio-padrão (DP) e a barra à direita corresponde à média mais um DP.</p>
+<p><img src="https://fernandafperes.com.br/blog/coeficiente-de-variacao/index_files/figure-html/unnamed-chunk-4-1.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Perceba como o desvio-padrão das alturas das mulheres corresponde a uma variação muito menor – <strong>em termos relativos</strong> – que o desvio-padrão das alturas dos gatos. Tá, mas como avaliar essa variação em termos relativos? Uma das formas é pensarmos <strong>percentualmente</strong>.</p>
+</div>
+<div id="calculando-e-interpretando-o-coeficiente-de-variação" class="section level4">
+<h4>Calculando e interpretando o coeficiente de variação</h4>
+<p>A lógica aqui é pensar: o desvio-padrão calculado corresponde a <strong>quantos porcento</strong> da média? Por exemplo, se a média for 20 cm e o desvio-padrão for 10 cm, então o desvio-padrão é metade da média. O que significa dizer que o desvio-padrão é <strong>50% da média</strong> (1/2 = 0,5 = 50%).</p>
+<p>O coeficiente de variação (CV) faz <strong>exatamente esse cálculo</strong>. Para calcularmos o CV, devemos dividir o desvio-padrão pela média. Além disso, geralmente multiplicamos esse resultado por 100, para facilitar a sua interpretação como porcentagem.</p>
+<p><img src="img3.png" width="235px" style="display: block; margin: auto;" /></p>
+<p>Vamos aplicar esse cálculo às nossas amostras, e interpretar o coeficiente de variação (CV) obtido. Para mulheres, o cálculo será:</p>
+<p><img src="img4.png" width="270px" style="display: block; margin: auto;" /></p>
+<p>Já para gatos, o cálculo do coeficiente de variação (CV) resultará em…</p>
+<p><img src="img5.png" width="240px" style="display: block; margin: auto;" /></p>
+<p>Ok, vamos agora interpretar esse resultados:</p>
+<p><img src="img6.png" width="310px" style="display: block; margin: auto;" /></p>
+<p>O coeficiente de variação nos indica que as alturas das mulheres estão variando, em média, <strong>5,3%</strong> em relação à média. Já as alturas dos gatos variam <strong>22,9%</strong> em relação à sua média. Portanto, se pensarmos em termos <strong>relativos</strong> – isso é, percentualmente – as alturas dos gatos <strong>variam mais</strong>.</p>
+</div>
+<div id="quando-faz-sentido-usar-o-coeficiente-de-variação" class="section level4">
+<h4>Quando faz sentido usar o coeficiente de variação?</h4>
+<p>Como conversamos, o coeficiente de variação fornece uma informação sobre a variação dos dados em termos relativos, percentuais. Um coeficiente de variação de 10%, por exemplo, indica que o desvio-padrão corresponde a 10% da média. Mas, você pode estar se perguntando: em quais situações faz sentido calcular o coeficiente de variação? Bom, a resposta óbvia é: quando o seu interesse é avaliar essa variação em termos relativos. Mas vou detalhar duas situações nas quais esse tende a ser o nosso interesse.</p>
+<div id="quando-os-grupos-apresentam-médias-muito-diferentes" class="section level5">
+<h5>Quando os grupos apresentam médias muito diferentes</h5>
+<p>O exemplo de comparar as alturas de mulheres e gatos não está aqui por acaso. Perceba que são grupos com médias de altura <strong>muito diferentes</strong>. A média de altura das mulheres é mais de seis vezes a média de altura dos gatos. Por isso, soa estranho, até “injusto”, comparar os desvios-padrão – ou seja, comparar uma medida absoluta de variação. O coeficiente de variação resolve esse problema ao permitir que a gente compare o quanto cada grupo está variando usando a média desse grupo como “escala”.</p>
+<p>Então, um dos principais uso do coeficiente de variação é na comparação de grupos com médias muito diferentes.</p>
+</div>
+<div id="quando-queremos-comparar-desvios-padrão-que-estão-em-unidades-de-medida-diferentes" class="section level5">
+<h5>Quando queremos comparar desvios-padrão que estão em unidades de medida diferentes</h5>
+<p>Perceba que o coeficiente de variação (CV) é uma medida de dispersão <strong>adimensional</strong>, isso é, <strong>sem unidade de medida</strong>. Isso porque, ao calcularmos o CV, dividimos o desvio-padrão pela média. E, lembre-se, o desvio-padrão e a média estão na mesma unidade de medida. Ao dividirmos um pelo outro, essas unidades “se cancelam”.</p>
+<p><img src="img7.png" width="190px" style="display: block; margin: auto;" /></p>
+<p>Já discutimos como o coeficiente de variação é uma medida útil para compararmos a dispersão de grupos com médias muito diferentes, ainda que na mesma unidade de medida (como as alturas de mulheres em gatos, ambas em cm). Mas, por ser adimensional, o coeficiente de variação é também uma excelente forma de compararmos dispersões quando temos dados em <strong>unidades de medida diferentes</strong>.</p>
+</div>
+</div>
+<div id="alguns-cuidados" class="section level4">
+<h4>Alguns cuidados!</h4>
+<div id="o-coeficiente-de-variação-não-é-adequado-para-algumas-variáveis" class="section level5">
+<h5>O coeficiente de variação não é adequado para algumas variáveis</h5>
+<p>Muiros autores dirão que o coeficiente de variação só pode ser calculado para variáveis de razão, que apresentam um zero absoluto <span class="citation">(<a href="#ref-abdi2010coefficient">Abdi, 2010</a>; <a href="#ref-favero2017manual">Fávero; Belfiore, 2017</a>; <a href="#ref-santos2021note">Santos; Dias, 2021</a>)</span>. Ok, mas o que isso significa?</p>
+<p>Podemos dividir as variáveis numéricas em variáveis de <strong>intervalo</strong> e variáveis de <strong>razão</strong> <span class="citation">(<a href="#ref-favero2017manual">Fávero; Belfiore, 2017</a>)</span>. A diferença entre elas é que apenas as variáveis de razão apresentam um <strong>zero absoluto</strong>. Para isso fazer sentido, vamos pensar em temperaturas. Se aferimos uma temperatura em graus Celsius (°C), o zero (0°C) não indica ausência de temperatura. A escolha do zero é arbitrária. Por isso, a temperatura em <strong>Celsius</strong> está em uma escala <strong>intervalar</strong>. O mesmo vale para a temperatura em <strong>Fahrenheit</strong> (°F): há um zero arbitrário, que não indica ausência de temperatura. Portanto, Fahrenheit também é uma escala <strong>intervalar</strong>. Por outro lado, a temperatura em <strong>Kelvin</strong> (K) apresenta um zero absoluto: 0K corresponde a ausência de temperatura. Logo, a temperatura em Kelvin está em uma escala de <strong>razão</strong>.</p>
+<p><br />
+A forma como interpretamos dados em escalas intervalares e de razão também é ligeiramente diferente. Se estamos trabalhando com uma escala de <strong>razão</strong>, como Kelvin, em que há um zero absoluto, podemos dizer que:</p>
+<ul>
+<li>A diferença de temperatura entre 10K e 20K é a mesma que entre 35K e 45K, por exemplo</li>
+<li>A temperatura 20K é o <strong>dobro</strong> da temperatura 10K</li>
+</ul>
+<p><br />
+Se estamos falando de um dado medido em uma escala intervalar, a primeira frase se mantém, mas a segunda não. Por exemplo, para graus Celsius podemos dizer que:</p>
+<ul>
+<li>A diferença de temperatura entre 10°C e 20°C é a mesma que entre 35°C e 45°C</li>
+</ul>
+<p>Mas, <strong>não podemos dizer</strong> que 20°C é o dobro da temperatura 10°C. Isso porque como não há um zero absoluto, não podemos dizer que um intervalo específico é multiplo de outro <span class="citation">(<a href="#ref-favero2017manual">Fávero; Belfiore, 2017</a>)</span>.</p>
+<p><br />
+Em geral, as análises e estatísticas descritivas que usamos para variáveis intervalares e de razão são as mesmas. Mas, o coeficiente de variação é uma <strong>exceção</strong>. Esse coeficiente deveria ser calculado <strong>apenas para dados em escala de razão</strong>.</p>
+<p>Aqui preciso compartilhar que um exemplo que me fez enxergar o problema de usarmos dados intervalares para calcular o coeficiente de variação é o que consta na página sobre coefiente de variação da <a href="https://en.wikipedia.org/wiki/Coefficient_of_variation">Wikipedia</a>. Vou discutir uma versão simplificada aqui. Imagine que temos uma base de dados com cinco temperaturas em °C: 0, 10, 20, 30 e 40. Para representar essas mesmas temperaturas em Fahrenheit, devemos multiplicar cada valor em Celsius por 9/5 e então somar 32 ao resultado. Isso resulta nos valores representados na tabela abaixo:</p>
+<p><img src="img8.png" width="200px" style="display: block; margin: auto;" /></p>
+<p>Se os dados são exatamente os mesmos, apenas em escalas diferentes, esperaríamos um mesmo coeficiente de variação, certo? Mas… Isso não acontece:</p>
+<p><img src="img9.png" width="335px" style="display: block; margin: auto;" /></p>
+<p>Além disso, alguns autores dirão que o coeficiente de variação pode ser utilizado apenas quando <strong>todos</strong> os valores do conjunto são <strong>positivos</strong> <span class="citation">(<a href="#ref-abdi2010coefficient">Abdi, 2010</a>)</span>. Outros dirão que o coeficiente de variação pode ser calculado quando há valores negativos, mas apenas quando <strong>todos</strong> os valores do conjunto de dados são <strong>negativos</strong> <span class="citation">(<a href="#ref-santos2021note">Santos; Dias, 2021</a>)</span>. E, nesses casos, para calcular o coeficiente de variação devemos dividir o desvio-padrão pelo <strong>módulo</strong> – isso é, pelo valor absoluto – da média.</p>
+<p>Mas, há aqui um consenso: <strong>não podemos usar</strong> o coeficiente de variação quando o conjunto de dados inclui valores <strong>positivos e negativos</strong>. Isso porque, nessas situações, o cálculo do coeficiente de variação resulta em uma valor que não segue interpretação que discutimos aqui.</p>
+</div>
+<div id="a-média-não-é-tudo-nessa-vida" class="section level5">
+<h5>A média não é tudo nessa vida</h5>
+<p>Já disse isso no post de desvio-padrão, e repito: nem sempre a média é a medida-resumo mais adequada a um conjunto de dados. A média é uma medida bem sensível a valores discrepantes (que chamamos em inglês de <em>outliers</em>). Lembre-se que o coeficiente de variação, assim como o desvio-padrão, é uma medida de dispersão <strong>baseada na média</strong>. Portanto, se a média não for uma representação adequada daquele conjunto de dados, o coeficiente de variação também não o será. Uma possibilidade nesses casos é calcular a amplitude interquartil, que eu discuto em detalhes <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">aqui</a>.</p>
+</div>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é um coeficiente de variação?</strong>. Blog Fernanda Peres, São Paulo, 10 fev. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/coeficiente-de-variacao/" class="uri">https://fernandafperes.com.br/blog/coeficiente-de-variacao/</a>.</p>
+</blockquote>
+<p><br /></p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-abdi2010coefficient" class="csl-entry">
+ABDI, H. Coefficient of variation. <strong>Encyclopedia of research design</strong>, [<em>s. l.</em>], v. 1, n. 5, p. 169–171, 2010.
+</div>
+<div id="ref-favero2017manual" class="csl-entry">
+FÁVERO, L. P.; BELFIORE, P. <strong>Manual de an<span>á</span>lise de dados: estat<span>ı́</span>stica e modelagem multivariada com Excel<span></span>, SPSS<span></span> e Stata<span></span></strong>. [<em>S. l.</em>]: Elsevier Brasil, 2017.
+</div>
+<div id="ref-santos2021note" class="csl-entry">
+SANTOS, C.; DIAS, C. Note on the coefficient of variation properties. <strong>Brazilian Electronic Journal of Mathematics</strong>, [<em>s. l.</em>], v. 2, n. 4, p. 101–111, 2021.
+</div>
+</div>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/tamanho-de-efeito/"> &laquo; O que é e por que calcular um tamanho de efeito?</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">O que é variância? E desvio-padrão? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

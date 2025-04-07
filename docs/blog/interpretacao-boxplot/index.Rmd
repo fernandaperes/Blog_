@@ -248,7 +248,12 @@ ggplot(dados, aes(x = Grupo, y = Páginas)) +
 knitr::include_graphics("g11.png")
 ```
 
+  
 
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Como interpretar (e construir) um gráfico boxplot?**. Blog Fernanda Peres, São Paulo, 29 mar. 2022. Disponível em: https://fernandafperes.com.br/blog/interpretacao-boxplot/.
 
   
 ***

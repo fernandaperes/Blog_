@@ -3,19 +3,122 @@
 {{ end }}
 
 {{ define "main" }}
+
     <div class="main-content">
         <section class="recent-posts">
             <div class="section-title2">
-                <h2><span>Posts Recentes</span></h2>
+                <h2><span>Últimos posts do blog</span></h2>
             </div>
             <div class="row listrecent">
                 {{- range ( where site.RegularPages "Section" "blog" | first 3 ) }}
                     {{- partial "list-partials/postbox.html" . -}}
                 {{end}}
+                
             </div>
         </section>
 
     </div>
+    
+    <center>
+      <a href="https://fernandafperes.com.br/blog" class="buttonhome" target="_blank">
+      Ver todos os posts
+      </a>
+    </center>
+
+
+
+<br />
+<br />
+<br />
+<br />
+
+
+<div class="main-content">
+    <section class="recent-posts">
+            <div class="section-title2">
+                <h2><span>Serviços</span></h2>
+            </div>
+
+<div class="row listrecent">
+  
+  <div class="col-lg-4 col-md-6 mb-30px card-group">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="https://fernandafperes.com.br/servicos">
+                <img class="img-fluid" src="/static/sobre_files/mockup_consultoria.jpg">
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">Consultoria científica</h2>
+            <h4 class="card-text">Texto de resumo</h4>
+        </div>
+        <div class="card-footer bg-white">
+              <center>
+                <a href="https://fernandafperes.com.br/servicos" class="buttonhome" target="_blank">
+                  Mais informações
+                </a>
+              </center>
+              <br>
+                <div class="clearfix"></div>
+        </div>
+    </div>
+  </div>
+  
+  
+      <div class="col-lg-4 col-md-6 mb-30px card-group">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="https://fernandafperes.com.br/servicos">
+              <img class="img-fluid static" src="/static/sobre_files/video_relatorio_mockup_static.jpg"><img class="img-fluid active" src="/static/sobre_files/video_relatorio_mockup_cropped.gif">
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">Análise de dados</h2>
+            <h4 class="card-text">Texto de resumo</h4>
+        </div>
+        <div class="card-footer bg-white">
+              <center>
+                <a href="https://fernandafperes.com.br/servicos" class="buttonhome" target="_blank">
+                  Mais informações
+                </a>
+              </center>
+              <br>
+                <div class="clearfix"></div>
+        </div>
+    </div>
+  </div>
+
+  
+  
+  <div class="col-lg-4 col-md-6 mb-30px card-group">
+    <div class="card h-100">
+        <div class="maxthumb">
+            <a href="https://curso.fernandafperes.com.br/">
+              <img class="img-fluid static" src="/static/sobre_files/video_curso_static.jpg"><img class="img-fluid active" src="/static/sobre_files/video_curso_cropped2.gif">
+            </a>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">Curso Análise de Dados para Pesquisadores</h2>
+            <h4 class="card-text">Texto de resumo</h4>
+        </div>
+        <div class="card-footer bg-white">
+              <center>
+                <a href="https://curso.fernandafperes.com.br/" class="buttonhome" target="_blank">
+                  Mais informações
+                </a>
+              </center>
+              <br>
+                <div class="clearfix"></div>
+        </div>
+    </div>
+  </div>
+  
+  
+    </div>
+  </section>
+</div>
+
+
     {{ if isset .Site.Params.index "alertbar" }}
     	{{ if .Site.Params.index.alertbar }}
             {{- partial "_shared/alertbar.html" . -}}

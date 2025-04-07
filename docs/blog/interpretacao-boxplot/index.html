@@ -39,7 +39,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 
 	
-	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
 
 	
 	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
@@ -148,10 +148,14 @@
                 <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
     <br>
     
+
+
+
     <p>Curtir</p>
     <ul>
         <center>
-        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/interpretacao-boxplot/"/>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/interpretacao-boxplot/"/>
         </center>
     </ul><br>
     
@@ -224,8 +228,8 @@
 <center><span class="author-description">
     29 mar., 2022
 
-    <i class="far fa-clock clock"></i>
-    8 min de leitura
+
+    
     </span>
 </center><br>
 
@@ -286,7 +290,7 @@ Eu acho mais fácil entender o conceito de quartis a partir do conceito de media
 <h4>Os quartis</h4>
 <p>A lógica por trás dos quartis é muito semelhante à lógica da mediana. Mas, ao invés de dividir o conjunto de dados em duas partes iguais, como a mediana, os quartis dividem esse conjunto em quatro (daí vem o nome quartis), cada um contendo 25% (um quarto) dos dados. Veja no exemplo abaixo. Note que o quartil 2 corresponde à mediana.</p>
 <p><img src="g5.png" width="470px" style="display: block; margin: auto;" /></p>
-<p>Apesar da lógica ser sempre a mesma, há mais de uma forma de calcular os quartis. Por isso, os valores de quartis calculados por diferentes softwares estatísticos podem divergir – e, possivelmente, vão diferir do cálculo manual que vimos aqui. Se quiser ler a respeito, recomendo o artigo de <span class="citation">Hyndman &amp; Fan (<a href="#ref-hyndman1996sample" role="doc-biblioref">1996</a>)</span>.</p>
+<p>Apesar da lógica ser sempre a mesma, há mais de uma forma de calcular os quartis. Por isso, os valores de quartis calculados por diferentes softwares estatísticos podem divergir – e, possivelmente, vão diferir do cálculo manual que vimos aqui. Se quiser ler a respeito, recomendo o artigo de <span class="citation">Hyndman &amp; Fan (<a href="#ref-hyndman1996sample">1996</a>)</span>.</p>
 <p>O segundo quartil (ou seja, a mediana) será a linha que corta a caixa do boxplot. Já o primeiro quartil (Q1) será a base da caixa e o terceiro quartil (Q3) o topo. Observe o gráfico boxplot abaixo, construído com os valores da tabela. Note que a base da caixa corresponde ao valor 25, o topo ao 32 e a linha central ao 28,5.</p>
 <p>Outro ponto interessante: a altura da caixa corresponde à diferença entre o terceiro e o primeiro quartil (Q1 - Q3). Essa diferença recebe o nome de <strong>amplitude interquartil</strong>, um termo que eu abreviarei aqui como AIQ, mas que também é comumente abreviada como IQR (que vem do termo em inglês, <em>interquartile range</em>). Note que no boxplot abaixo a AIQ, ou seja, a altura da caixa, é igual a 32 - 25 = 7.</p>
 <p><img src="g6.png" width="200px" style="display: block; margin: auto;" /></p>
@@ -336,7 +340,7 @@ As pessoas se referiam a boxplots como o do grupo “Graduação” no gráfico 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
 <img src="g1.png" alt="Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too." width="350px" />
 <p class="caption">
-Figura 1: Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation">Schenk &amp; Steppan (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+Figura 1: Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation">Schenk &amp; Steppan (<a href="#ref-schenk2014too">2014</a>)</span>.
 </p>
 </div>
 <p>Mas, não há muito segredo. Todos os elementos que vimos - limite inferior, Q1, Q2, Q3, limite inferior - sempre estarão no boxplot. Se você não está enxergando um deles, é porque seu valor coincide com outro, e haverá sobreposição no gráfico.<br />
@@ -354,7 +358,7 @@ Trata-se de um gráfico usado quando queremos representar a distribuição de um
 Além da variável numérica/ ordinal, podemos <strong>incluir uma variável de grupo</strong>, como o boxplot do começo do post. Esse boxplot que mostra a distribuição da quantidade de páginas de artigos selecionados por alunos divididos em três grupos: graduação, pós-graduação e pós-doutorado. Basta uma rápida olhada para percebermos que a mediana de páginas do grupo “Graduação” é inferior às medianas dos demais grupos. Podemos também observar que o grupo com maior variação absoluta (ou seja, maior diferença entre o maior e menor valor) é o grupo “Pós-graduação”. Já o grupo “Pós-doutorado” apresenta a maior amplitude interquartil (ou seja, a caixa mais alta). Poderíamos também usar o boxplot para avaliar a simetria da distribuição, mas essa discussão fica para outro post.</p>
 <img src="g1.png" width="350px" style="display: block; margin: auto;" />
 <center>
-Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation">Schenk &amp; Steppan (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation">Schenk &amp; Steppan (<a href="#ref-schenk2014too">2014</a>)</span>.
 </center>
 <p><br></p>
 <p>Além disso, perceba que o boxplot não é baseado em média nem em medidas de dispersão derivadas da média (como desvio-padrão e variância). Portanto, é um gráfico excelente para <strong>distribuições que não são bem representadas pela média</strong>, sendo ótimo para distribuições não-normais.</p>
@@ -372,11 +376,17 @@ Se ggplot2 é algo que te angustia (socorro, por que tantas linhas para gerar um
   labs(y = &quot;Quantidade de páginas&quot;) +
   theme_classic()</code></pre>
 <p><img src="g11.png" width="400px" style="display: block; margin: auto;" /></p>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Como interpretar (e construir) um gráfico boxplot?</strong>. Blog Fernanda Peres, São Paulo, 29 mar. 2022. Disponível em: <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/" class="uri">https://fernandafperes.com.br/blog/interpretacao-boxplot/</a>.</p>
+</blockquote>
 <hr />
+</div>
 </div>
 <div id="referências" class="section level3 unnumbered">
 <h3>Referências:</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-hyndman1996sample" class="csl-entry">
 Hyndman, R. J., &amp; Fan, Y. (1996). Sample quantiles in statistical packages. <em>The American Statistician</em>, <em>50</em>(4), 361–365.
 </div>
@@ -483,6 +493,8 @@ src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
     
 <br><br>
 Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
             </div>
         </div>
     </div>

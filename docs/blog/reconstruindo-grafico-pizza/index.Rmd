@@ -12,7 +12,6 @@ output:
     toc: false
 ---
 
-
  
 ```{r, include=FALSE}
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
@@ -293,6 +292,12 @@ ggplot(dados2, aes(y = fct_inorder(Time), x = Gols)) +
         panel.grid = element_blank(),
         axis.line.x = element_line(color = "grey80"))
 ```
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **O que não fazer em gráficos de pizza**. Blog Fernanda Peres, São Paulo, 15 jun. 2023. Disponível em: https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/.
   
   
 ***

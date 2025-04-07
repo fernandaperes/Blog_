@@ -7,7 +7,43 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Tue, 13 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tamanhos de efeito para o teste-t independente</title>
+      <link>https://fernandafperes.com.br/blog/te-teste-t-independente/</link>
+      <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/te-teste-t-independente/</guid>
+      <description>Qual o tamanho de efeito adequado a resultados analisados pelo teste-t independente? A resposta é: depende. Nesse post te explico os três tamanhos de efeito sugeridos (d de Cohen, g de Hedges e delta de Glass) e quando utilizar cada um deles.</description>
+    </item>
+    
+    <item>
+      <title>O que é e por que calcular um tamanho de efeito?</title>
+      <link>https://fernandafperes.com.br/blog/tamanho-de-efeito/</link>
+      <pubDate>Wed, 12 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/tamanho-de-efeito/</guid>
+      <description>Já ouviu falar em tamanho de efeito, mas nunca entendeu o que afinal é isso? Nem o porquê você deveria calculá-lo? Neste post eu te explico o que é e qual a importância das medidas de tamanho de efeito.</description>
+    </item>
+    
+    <item>
+      <title>O que é um coeficiente de variação?</title>
+      <link>https://fernandafperes.com.br/blog/coeficiente-de-variacao/</link>
+      <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/coeficiente-de-variacao/</guid>
+      <description>Talvez você já tenha ouvido falar em &amp;ldquo;coeficiente de variação&amp;rdquo;, uma forma de medir a dispersão dos dados em porcentagem. Nesse post te explico a lógica dessa medida e em quais situações ela pode ser utilizada.</description>
+    </item>
+    
+    <item>
+      <title>O que é variância? E desvio-padrão?</title>
+      <link>https://fernandafperes.com.br/blog/variancia-desvio-padrao/</link>
+      <pubDate>Fri, 03 Jan 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/variancia-desvio-padrao/</guid>
+      <description>Já ouviu falar de variância, mas nunca entendeu direito o que ela representa? Nesse post vamos discutir como calculá-la e interpretá-la. Vamos falar também sobre uma medida derivada dela: o desvio-padrão.</description>
+    </item>
+    
     <item>
       <title>Por que as pesquisas eleitorais erram?</title>
       <link>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</link>

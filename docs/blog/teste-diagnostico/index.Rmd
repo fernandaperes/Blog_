@@ -2,7 +2,7 @@
 title: "Seu teste diagnóstico foi positivo. Qual a probabilidade de ser um positivo verdadeiro?"
 author: Fernanda Fiel Peres
 date: '2020-12-28'
-slug: [probabilidade-positivo-verdadeiro]
+slug: [teste-diagnostico]
 categories: []
 tags: ['Bioestatística', 'Estatística teórica']
 comments: yes
@@ -243,6 +243,13 @@ Da mesma forma, vamos imaginar outra situação: uma pessoa faz um teste RT-PCR 
 
 
 Conhecer essas limitações matemáticas e estatísticas é algo fundamental à tomada de decisões no nosso cotidiano.
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Seu teste diagnóstico foi positivo. Qual a probabilidade de ser um positivo verdadeiro?**. Blog Fernanda Peres, São Paulo, 28 dez. 2020. Disponível em: https://fernandafperes.com.br/blog/teste-diagnostico/.
+  
 
 <br>
 <hr>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>O que é variância? E desvio-padrão? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/variancia-desvio-padrao/cover.png"/>
+<meta name="twitter:title" content="O que é variância? E desvio-padrão?"/>
+<meta name="twitter:description" content="Já ouviu falar de variância, mas nunca entendeu direito o que ela representa? Nesse post vamos discutir como calculá-la e interpretá-la. Vamos falar também sobre uma medida derivada dela: o desvio-padrão."/>
+
+	<meta property="og:title" content="O que é variância? E desvio-padrão?" />
+<meta property="og:description" content="Já ouviu falar de variância, mas nunca entendeu direito o que ela representa? Nesse post vamos discutir como calculá-la e interpretá-la. Vamos falar também sobre uma medida derivada dela: o desvio-padrão." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/variancia-desvio-padrao/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/variancia-desvio-padrao/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-01-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-01-03T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/variancia-desvio-padrao/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=O%20que%20%c3%a9%20vari%c3%a2ncia%3f%20E%20desvio-padr%c3%a3o%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvariancia-desvio-padrao%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvariancia-desvio-padrao%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvariancia-desvio-padrao%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvariancia-desvio-padrao%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">O que é variância? E desvio-padrão?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    3 jan., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<div id="por-que-você-deveria-se-preocupar-com-a-variação-dos-dados" class="section level4">
+<h4>Por que você deveria se preocupar com a variação dos dados?</h4>
+<p>As medidas de tendência central, como a média, a moda e a mediana, são usadas para resumir um conjunto de dados. No entanto, na maior parte dos casos, é importante medirmos também a variação dos dados. Isso porque, ao olharmos apenas para uma medida resumo (como a média), podemos perder informações relevantes à nossa pergunta experimental.</p>
+<blockquote>
+<p>Esse é um conteúdo que eu já gravei para o meu canal no YouTube. Caso prefira aprender em um vídeo, o link está <a href="https://youtu.be/A-N-eEB1owQ?si=QKzPxN_KHv2KgzrP">aqui</a>.</p>
+</blockquote>
+<p>Imagine a seguinte situação: você tem dois grupos, um recebendo placebo e outro recebendo um anti-hipertensivo novo no mercado. Você, então, administra o medicamento aos pacientes de cada grupo, afere a pressão arterial de cada um deles e monta um gráfico com as médias de pressão em cada grupo:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-2-1.png" alt="Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20." width="384" />
+<p class="caption">
+Figure 1: Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20.
+</p>
+</div>
+<p>Ótimo, o grupo que tomou anti-hipertensivo apresentou uma média de pressão arterial sistólica inferior à do grupo que tomou placebo. Mas… Será que <strong>investigar a média basta</strong>? Vamos olhar para esses dados com mais detalhes? No gráfico abaixo, o traço em preto representa a média e os círculos em amarelo correspondem à pressão arterial de cada participante.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-3-1.png" alt="Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20." width="384" />
+<p class="caption">
+Figure 2: Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20.
+</p>
+</div>
+<blockquote>
+<p>Vou chamar sua atenção para uma coisa: a escala do gráfico acima é diferente da escala do primeiro gráfico. Isso porque em gráficos de barras é obrigatório que o eixo y inicie em zero (tenho uma discussão sobre isso <a href="https://www.instagram.com/p/CUFncUBgWai/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==">aqui</a>). Em gráficos de dispersão, nosso eixo y pode iniciar em um ponto diferente de zero, para facilitar a visualização dos dados. Aqui, ele inicia em 90.</p>
+</blockquote>
+<p>Perceba uma coisa: ainda que a média tenha reduzido no grupo anti-hipertensivo, as pessoas desse grupo apresentam pressões arteriais <strong>muito diferentes</strong> entre si. Para algumas pessoas (os pontos amarelos mais altos), a pressão não baixou. Para outras (os pontos amarelos mais baixos), a pressão ficou bem baixa após a ingestão do medicamento. Ou seja, o efeito do anti-hipertensivo está <strong>variando muito</strong>. Essa variação (dispersão) é visível. Mas… Será que temos como <strong>quantificá-la</strong>? A resposta é sim.</p>
+</div>
+<div id="a-variância" class="section level4">
+<h4>A variância</h4>
+<p>Esse é um ponto do post em que eu poderia simplesmente te mostrar a <strong>fórmula</strong> para o cálculo da <strong>variância</strong>, uma das medidas que quantifica a variação dos dados. Mas eu não acho essa fórmula muito intuitiva, pelo menos não em um primeiro contato. O que eu vou fazer aqui é calcular a variância usando a lógica - mas, não se preocupe, eu vou seguir exatamente os mesmos passos da fórmula.</p>
+<p>Vamos primeiro pensar no nosso objetivo: medir a variação dos dados. Para medir essa variação, a gente precisa ter um referencial. Nesse caso, eu quero medir a variação dos dados em relação à <strong>média</strong>. Ou seja, eu quero avaliar o quão distantes as pressões de cada participante estão da média do seu grupo. Esse é um cálculo bem simples, que você aprendeu na primeira ou segunda série. Sim, vamos fazer uma <strong>subtração</strong>.</p>
+<p>Para simplificar o nosso cálculo, eu vou trabalhar com um único grupo de apenas cinco pessoas. O <strong>primeiro passo</strong>, como conversamos, será subtrair de cada valor a média do grupo:</p>
+<p><img src="img1.png" width="185px" style="display: block; margin: auto;" /></p>
+<p>Essas diferenças que calculamos podem ser chamadas de <strong>resíduos</strong>. Mas, veja, nós não queremos saber o quanto <strong>cada pessoa</strong> difere da média. Queremos saber o quanto <strong>o grupo</strong>, como um todo, está variando em relação à média. Ainda não temos essa informação. Uma possibilidade – que você também aprendeu na primeira série – seria somar essas diferenças, para uni-las. No entanto, perceba que temos valores negativos e positivos e que <strong>a soma seria zero</strong>. Como unir esses valores sem “cancelá-los”?</p>
+<p>Uma possibilidade seria trabalharmos com o módulo (ou seja, o valor absoluto, desconsiderando o sinal) desses valores. Isso funcionaria. Mas não foi essa a estratégia utilizada no cálculo da variância. Para o cálculo da variância, a estratégia escolhida foi <strong>elevar essas diferenças ao quadrado</strong>. Lembre-se que elevar um número ao quadrado é o mesmo que multiplicá-lo por ele mesmo. E você aprendeu na sua trajetória escolar que, na multiplicação, positivo com positivo dá positivo e negativo com negativo dá positivo. Ou seja, quando elevamos um número positivo ao quadrado, ele segue sendo positivo. Quando elevamos um número negativo ao quadrado, ele passa a ser positivo. Pronto, resolvemos o nosso problema dos sinais. A vantagem de trabalharmos com o quadrado ao invés do módulo é dar mais peso a valores mais distantes da média.</p>
+<p><img src="img2.png" width="350px" style="display: block; margin: auto;" /></p>
+<p>Pronto! Agora podemos unir (somar) esses valores para saber a variação total do grupo em relação à média:</p>
+<p><img src="img3.png" width="370px" style="display: block; margin: auto;" /></p>
+<p>A soma dá 1.190. Mas, temos que pensar em mais uma coisa: essa soma é influenciada pela quantidade de pessoas incluídas no grupo. Quanto maior for esse grupo, maior será a soma. Portanto, faria sentido dividir essa soma pela quantidade de pessoas incluídas no cálculo.</p>
+<p>Mas aqui o cálculo vai depender do nosso delineamento. Se estamos estudando uma <strong>população</strong>, iremos dividir essa soma por N, sendo N o tamanho da população. Se estamos estudando uma <strong>amostra</strong>, dividiremos a soma por n-1, sendo n o tamanho da amostra. Esse “menos 1” é uma forma de sermos mais rígidos com o cálculo por estarmos trabalhando com uma amostra, e não com toda a população. O n-1, nesse contexto, pode ser chamado de grau de liberdade.</p>
+<blockquote>
+<p>Explicar a diferença entre população e amostra está fora do escopo deste post. Mas eu tenho uma explicação bem detalhada <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">aqui</a>.</p>
+</blockquote>
+<p>No nosso exemplo, vou assumir que estamos trabalhando com uma amostra. Portanto, vou dividir a soma por n-1. Como havia 5 pessoas na amostra, nosso n = 5. Logo, dividirei a soma por 4:</p>
+<p><img src="img4.png" width="370px" style="display: block; margin: auto;" /></p>
+<p>Esse valor de 297,5 é uma medida de variação chamada <strong>variância</strong>. Sim, acabamos de calcular manualmente a variância dessa amostra.</p>
+<p>Quero chamar a sua atenção com relação a mais uma coisa: ok, a variância é 297,5. Mas é 297,5 o que? Começamos com pressões arteriais que estavam em mmHg. Podemos pensar que chegamos a uma medida de 297,5 mmHg. Mas, esse pensamento está <strong>errado</strong>. Quando elevamos os valores ao quadrado, no meio da nossa conta, acabamos elevando ao quadrado também a nossa <strong>unidade de medida</strong>. Portanto, a nossa variância é de 297,5 mmHg²:</p>
+<p><img src="img5.png" width="370px" style="display: block; margin: auto;" /></p>
+<p>Você pode ter pensado “poxa, não sei como interpretar essa unidade de medida ao quadrado”. A boa notícia é: nem você, nem ninguém. Por ter a unidade de medida elevada ao quadrado, a variância não é <strong>diretamente interpretável</strong>. A única interpretação que conseguimos fazer é: quanto maior a variância, mais os dados estão variando em relação à média.</p>
+<p>Observe os dois grupos abaixo, que apresentam a mesma média, 130 mmHg. É visível que o grupo A varia mais em relação à média. A variância confirma essa nossa percepção: o grupo A apresenta uma variância bem maior que a do grupo B, indicando que as pressões no grupo A variam mais em relação à média.</p>
+<p><img src="img6.png" width="370px" style="display: block; margin: auto;" /></p>
+<p>Ok, já entendemos que o “ao quadrado” complica a interpretação. Você pode estar se perguntando: “mas não temos como nos livrar dele?”. A resposta, de novo, está na matemática que você aprendeu na escola: para nos livrarmos de um “ao quadrado”, tiramos a raiz quadrada. Esse é exatamente o cálculo de outra medida de variação, mais famosa que a variância por sua interpretabilidade: <strong>o desvio-padrão</strong>.</p>
+</div>
+<div id="o-desvio-padrão" class="section level4">
+<h4>O desvio-padrão</h4>
+<p>O desvio-padrão, como eu já te adiantei, consiste na raiz quadrada da variância. Ao calcularmos a raiz quadrada da variância amostral, obtemos o desvio-padrão amostral. Se calcularmos a raiz quadrada da variância populacional, obtemos o desvio-padrão populacional. A vantagem do desvio-padrão é que, ao tirarmos a raiz quadrada, chegamos à unidade de medida original, o que facilita a nossa interpretação. Veja como ficaria o desvio-padrão para os grupos A e B:</p>
+<p><img src="img7.png" width="470px" style="display: block; margin: auto;" /></p>
+<p>Perceba que a <strong>interpretação</strong> que discutimos para a variância se mantém: quanto maior o desvio-padrão, mais os dados variam em relação à média. Mas agora, como temos uma medida de variação na unidade de medida original (mmHg), podemos ir além e dizer que as pressões arteriais no grupo A variam, em média, 14,25 mmHg para mais ou para menos, em relação à média. É isso que torna o desvio-padrão o grande queridinho quando se trata de medidas de variação em relação à média, a sua interpretabilidade.</p>
+</div>
+<div id="adicionando-o-desvio-padrão-ao-gráfico" class="section level4">
+<h4>Adicionando o desvio-padrão ao gráfico</h4>
+<p>Em geral representamos o desvio-padrão em gráficos como uma barra de erros. Para isso fazer sentido, vou criar um gráfico com os dados dos grupos A e B acima, ok?</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-11-1.png" alt="Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10." width="384" />
+<p class="caption">
+Figure 3: Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10.
+</p>
+</div>
+<p>Perceba que, apesar de os dois grupos terem a mesma média (barra horizontal na mesma altura), o grupo A apresenta um desvio-padrão bem maior. A barra de erros (T para cima e para baixo) do grupo A tem um tamanho de 14,25 mmHg (o desvio-padrão desse grupo) para cima e para baixo. Já a barra de erros do grupo B tem um tamanho de apenas 5,83 mmHg para cima e para baixo, uma vez que esse é o desvio-padrão desse grupo.</p>
+</div>
+<div id="símbolos-usados-para-variância-e-desvio-padrão" class="section level4">
+<h4>Símbolos usados para variância e desvio-padrão</h4>
+<p>Variância e desvio-padrão são medidas chamadas de <strong>medidas de dispersão</strong> – afinal, avaliam o quão dispersos os dados estão em relação à média. A variância amostral é representada por um “s” ao quadrado. Já a variância populacional é representada pela letra grega sigma minúscula (σ) também ao quadrado. O desvio-padrão, por sua vez, segue essa mesma representação, mas sem o “ao quadrado”. O quadro abaixo resume essas representações:</p>
+<p><img src="img8.png" width="380px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="mas-e-a-fórmula" class="section level4">
+<h4>Mas, e a fórmula?</h4>
+<p>Eu desenvolvi essa explicação que você acabou de ler há uns bons anos, quando precisei explicar desvio-padrão no cursinho comunitário em que eu era professora. Desde então já expliquei variância e desvio-padrão dessa forma para várias turmas de graduação e pós-graduação. E em todas essas turmas sempre surgia um aluno indignado com a quantidade de passos e querendo apenas “aplicar a fórmula”. Eu entendo. Vamos à fórmula, então.</p>
+<p><img src="img9.png" width="230px" style="display: block; margin: auto;" /></p>
+<p>Vamos entender primeiro a fórmula da variância amostral (s²). O numerador (parte de cima) dessa fórmula está nos dizendo para calcular a somatória (<span class="math inline">\(\sum\)</span>) dos seguintes resultados: cada valor (<span class="math inline">\(x_i\)</span>), menos a média da amostra (<span class="math inline">\(\bar{x}\)</span>), elevado ao quadrado. O denominador nos diz para dividir esse resultado pelo tamanho da amostra (n) menos 1. Note que, para aplicar a fórmula, precisamos seguir exatamente os mesmos passos do post.</p>
+<p>A fórmula da variância populacional (σ²) é praticamente idêntica, traz apenas uma mudança no denominador. O numerador nos diz para calcular a somatória (<span class="math inline">\(\sum\)</span>) dos seguintes resultados: cada valor (<span class="math inline">\(x_i\)</span>), menos a média da população (μ), elevado ao quadrado. O denominador nos diz para dividir essa soma pelo tamanho da população (N). Ou seja, mesmos passos, mas agora, como estamos trabalhando com uma população, não há o “menos 1” no denominador.</p>
+<p>Já as fórmulas dos desvios-padrão são simples: correspondem à raiz quadrada da variância. Perceba que não temos como calcular manualmente o desvio-padrão sem realizar o cálculo da variância.</p>
+<p><img src="img11.png" width="250px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="dá-sempre-esse-trabalho-calcular-a-variância-e-o-desvio-padrão" class="section level4">
+<h4>Dá sempre esse trabalho calcular a variância e o desvio-padrão?</h4>
+<p>Aqui calculamos a variância e o desvio-padrão à mão. Eu sempre brinco com os alunos que calcular o desvio-padrão à mão constroi caráter. E, de fato, eu acho esse um passo fundamental para entender o que, afinal, é o desvio-padrão. Se ele aparece magicamente na sua tela ao digitar um comando, é bem difícil você entender qual o seu propósito.</p>
+<p>Mas, Fernanda, então você está me dizendo que tem como o desvio-padrão aparecer magicamente na minha tela? Sim! Podemos calculá-lo no Excel, no R ou em qualquer programa de estatística. A tabela abaixo resume as fórmulas usadas no Excel e no R para esse cálculo. No R, as funções calculam apenas a versão amostral (que é a mais utilizada). Para calcular as versões populacionais precisamos criar uma função personalizada, ou partir para algum pacote.</p>
+<p><img src="img10.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Vou aproveitar para incluir aqui um glossário. Em inglês, variância é <strong>variance</strong>. Já desvio-padrão é <strong>standard deviation</strong>. Por isso a fórmula em R para o desvio-padrão é <code>sd()</code>.</p>
+</div>
+<div id="a-média-não-é-tudo-nessa-vida" class="section level4">
+<h4>A média não é tudo nessa vida</h4>
+<p>Para encerrar esse post (aliás, se ele foi útil, me conta nos comentários?) eu preciso te lembrar que nem sempre a média é a medida-resumo mais adequada a um conjunto de dados. A média é uma medida bem sensível a valores discrepantes (que chamamos em inglês de <em>outliers</em>). Lembre-se que variância e desvio-padrão são medidas de dispersão baseadas na média. Portanto, se a média não for uma representação adequada daquele conjunto de dados, a variância e o desvio-padrão também não o serão. Uma possibilidade nesses casos é calcular a amplitude interquartil, que eu discuto em detalhes <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">aqui</a>.</p>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é variância? E desvio-padrão?</strong>. Blog Fernanda Peres, São Paulo, 03 jan. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/" class="uri">https://fernandafperes.com.br/blog/variancia-desvio-padrao/</a>.</p>
+</blockquote>
+<p><br></p>
+<hr />
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/coeficiente-de-variacao/"> &laquo; O que é um coeficiente de variação?</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/">Por que as pesquisas eleitorais erram? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

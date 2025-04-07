@@ -313,6 +313,7 @@ section.recent-posts {
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1;
+    font-family: 'IsidoraSans-Bold';
 }
 
 .listfeaturedtag h4.card-text,
@@ -1085,6 +1086,19 @@ iframe {
     width: 100%;
 }
 
+.static {
+  position:absolute;
+  background: white;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.static:hover {
+  opacity:0;
+  max-height: 300px;
+  object-fit: cover;
+}
+
 .sticky-top-80 {
     top: 80px;
 }
@@ -1394,6 +1408,30 @@ a:hover.button {
     background: #2794A0;
     font-family: 'IsidoraSans-Bold';
     padding: 7px 12px;
+}
+
+a.buttonhome {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: #000;
+    background: #fff;
+    font-family: 'IsidoraSans-Bold';
+    padding: 7px 12px;
+    border: solid;
+}
+
+a:hover.buttonhome {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: #fff;
+    background: #000;
+    font-family: 'IsidoraSans-Bold';
+    padding: 7px 12px;
+    border: solid #000;
 }
 
 .flex-container {

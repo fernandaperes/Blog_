@@ -23,8 +23,7 @@ fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
 
 
 `r inicio_aberta`
-<div class = "sobre row">
-  
+
 <center>
 Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados!
 <br>
@@ -33,11 +32,12 @@ Para eu te explicar o serviço mais indicado para você, por favor, selecione ab
 
 <br><br>
 
-```{r}
+```{r, include=F}
 htmltools::includeHTML("qual_cards.html")
 ```
 
-</div>
+
+
 `r fim_aberta`
 
 

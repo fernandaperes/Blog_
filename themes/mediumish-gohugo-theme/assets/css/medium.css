@@ -310,18 +310,19 @@ section.recent-posts {
 
 .listfeaturedtag h2.card-title,
 .listrecent h2.card-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1;
+    font-size: 1.4rem; !important
+    font-weight: 700; !important
+    line-height: 1; !important
     font-family: 'IsidoraSans-Bold';
 }
 
 .listfeaturedtag h4.card-text,
 .listrecent h4.card-text {
-    color: rgba(0, 0, 0, .5);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    font-weight: 400;
+    color: rgba(0, 0, 0, .5); !important
+    font-size: 0.95rem; !important
+    line-height: 1.6; !important
+    font-weight: 400; !important
+    font-family: Roboto, sans-serif; !important
 }
 
 .featured-box-img-cover {

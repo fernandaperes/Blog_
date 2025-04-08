@@ -4,34 +4,6 @@
 
 {{ define "main" }}
 
-    <div class="main-content">
-        <section class="recent-posts">
-            <div class="section-title2">
-                <h2><span>Últimos posts do blog</span></h2>
-            </div>
-            <div class="row listrecent">
-                {{- range ( where site.RegularPages "Section" "blog" | first 3 ) }}
-                    {{- partial "list-partials/postbox.html" . -}}
-                {{end}}
-                
-            </div>
-        </section>
-
-    </div>
-    
-    <center>
-      <a href="https://fernandafperes.com.br/blog" class="buttonhome">
-      Ver todos os posts
-      </a>
-    </center>
-
-
-
-<br />
-<br />
-<br />
-<br />
-
 
 <div class="main-content">
     <section class="recent-posts">
@@ -135,6 +107,39 @@
 <br />
 <br />
 <br />
+
+
+
+
+    <div class="main-content">
+        <section class="recent-posts">
+            <div class="section-title2">
+                <h2><span>Últimos posts do blog</span></h2>
+            </div>
+            <div class="row listrecent">
+                {{- range ( where site.RegularPages "Section" "blog" | first 3 ) }}
+                    {{- partial "list-partials/postbox.html" . -}}
+                {{end}}
+                
+            </div>
+        </section>
+
+    </div>
+    
+    <center>
+      <a href="https://fernandafperes.com.br/blog" class="buttonhome">
+      Ver todos os posts
+      </a>
+    </center>
+
+
+
+<br />
+<br />
+<br />
+<br />
+
+
 
 
 <div class="main-content">

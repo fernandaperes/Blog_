@@ -32,7 +32,7 @@ Para eu te explicar o serviço mais indicado para você, por favor, selecione ab
 
 <br><br>
 
-```{r, include=F}
+```{r, echo=F}
 htmltools::includeHTML("qual_cards.html")
 ```
 

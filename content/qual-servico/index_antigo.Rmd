@@ -23,6 +23,7 @@ fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
 
 
 `r inicio_aberta`
+
 <div class = "sobre row">
   
 <center>

@@ -1549,18 +1549,43 @@ pre.plot {
   left: -57%;
 }
 
+a.buttonsobrehome {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: #000;
+    background: #fff;
+    font-family: 'IsidoraSans-Bold';
+    padding: 7px 12px;
+    border: solid;
+}
+
+a:hover.buttonsobrehome {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: #fff;
+    background: #2794A0;
+    font-family: 'IsidoraSans-Bold';
+    padding: 7px 12px;
+    border: solid #2794A0;
+}
+
 @media (max-width: 768px) {
   .sobre-home {
     flex-direction: column;
     width: 100%;
     margin-bottom: 40px;
-    height: 400px;
+    height: 100%;
     text-align: center;
     position: relative;
+    padding: 2rem 1.5rem;
   }
 
   .img-wrapper {
-    top: -40px;
+    top: -100px;
     left: 0%;
   }
   
@@ -1568,13 +1593,13 @@ pre.plot {
     width: 100%;
     position: relative;
     left: 0%;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    padding-left: 0px;
-    padding-right: 0px;
     text-align: center;
     margin: 0 auto;
-    margin-top: -30px;
+    margin-top: -90px;
+  }
+  
+  .sobre-home p {
+    padding: 0.8rem 0.3rem;
   }
   
 }

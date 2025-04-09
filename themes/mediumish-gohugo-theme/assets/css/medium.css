@@ -308,6 +308,26 @@ section.recent-posts {
     padding-left: 0;
 }
 
+.listfeaturedtag h2.card-title-q,
+.listrecent h2.card-title-q {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.listfeaturedtag h4.card-text-q,
+.listrecent h4.card-text-q {
+    color: rgba(0, 0, 0, .5);
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
+    text-align: left;
+}
+
 .listfeaturedtag h2.card-title,
 .listrecent h2.card-title {
     font-size: 1.4rem;

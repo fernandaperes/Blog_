@@ -27,7 +27,7 @@ fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
 <center>
 Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados!
 <br>
-Para eu te explicar o serviço mais indicado para você, por favor, selecione abaixo a situação que mais se adequa à sua demanda:
+Abaixo você encontra uma breve explicação dos **dois serviços** que eu ofereço:
 </center>
 
 <br><br>
@@ -45,30 +45,23 @@ htmltools::includeHTML("qual_cards.html")
 <!-- Versão agenda fechada -->
 
 `r inicio_fechada`
-<div class = "sobre row">
   
 <center>
 Oi! Tudo bem?
 <br>
 `r razao_fechamento`<br>
 Caso possa esperar, a agenda será reaberta no `r reabertura`.<br>
-No link abaixo você tem acesso a uma página que explica como funcionam os dois serviços.
+Abaixo você encontra uma breve explicação dos **dois serviços** que eu ofereço:
 </center>
 
 <br><br>
 
-<center>
-<a href="https://fernandafperes.com.br/servicos" class="button">
-Como funcionam os serviços de consultoria e análise de dados?
-</a>
-</center>
+<br><br>
 
+```{r, echo=F}
+htmltools::includeHTML("qual_cards.html")
+```
 
-<br>
-<br>
-<br>
-
-</div>
 
 `r fim_fechada`
 

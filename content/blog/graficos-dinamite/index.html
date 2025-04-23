@@ -37,18 +37,22 @@ csl: APA.csl
 <p>Para discutir as alternativas, vamos construir diferentes gráficos utilizando um mesmo banco de dados. Abaixo, temos um gráfico de barras com a altura da coluna representando a média e a barra de erros representando o desvio-padrão. Observe como os grupos A e C apresentam barras idênticas:</p>
 <img src="g3.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='3'>Gráfico de barras (“gráfico dinamite”) representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+<font size="2"><br />
+Gráfico de barras (“gráfico dinamite”) representando as médias e os desvios-padrão de três grupos: A, B e C.
+</font>
 </center>
-<p><br><br></p>
+<p><br /></p>
 <div id="gráficos-dot-plot" class="section level4">
 <h4>Gráficos dot plot</h4>
 <p>Uma alternativa ao gráfico dinamite é o dotplot. Nesse gráfico, cada sujeito é representado por um ponto – ou seja, estamos visualizando os dados brutos.</p>
 <p>Além disso, é comum sobrepor a esses pontos uma linha horizontal representando a média e uma barra de erros indicando uma medida de dispersão (que, assim como no gráfico de barras, pode ser o desvio-padrão, o erro-padrão da média ou o intervalo de confiança para a média).</p>
 <img src="g4.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font>
+<font size="2"><br />
+Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.
+</font>
 </center>
-<p><br><br></p>
+<p><br /></p>
 <p>Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os outros dois, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).</p>
 <p>O que eu vejo como vantagens do dot plot? Além de ser um gráfico que nos permite visualizar os dados brutos, é um gráfico baseado em média. Se usamos um teste paramétrico para comparar os grupos, como o teste-t ou a ANOVA, a análise será baseada na média e em medidas de dispersão baseadas na média. Portanto, eu gosto de poder visualizar essas medidas no gráfico.</p>
 <p>Por outro lado, é um gráfico que não mostra diretamente quais pontos são <em>outliers</em> (ao contrário do boxplot, que discutiremos a seguir). Além disso, se estivermos trabalhando com amostras muito grandes, teremos <strong>muitos pontos</strong> no gráfico e a visualização ficará comprometida.</p>
@@ -88,15 +92,19 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 <p>Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">último post aqui do blog</a>. O boxplot resume, em uma única figura, cinco medidas de posição: limite inferior, quartil 1 (percentil 25%), mediana, quartil 3 (percentil 75%) e limite superior. Além disso, ele é um gráfico excelente para visualizar valores discrepantes (outliers).</p>
 <img src="g5.png" width="450px" style="display: block; margin: auto;" />
 <center>
-<font size ='3'>Estrutura básica de um gráfico boxplot.</font>
+<font size="2"><br />
+Estrutura básica de um gráfico boxplot.
+</font>
 </center>
-<p><br><br></p>
+<p><br /></p>
 <p>Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente conseguimos detectar que o grupo B apresenta dois valores outliers acima do limite superior:</p>
 <img src="g6.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='3'>Gráfico boxplot para três grupos: A, B e C.</font>
+<font size="2"><br />
+Gráfico boxplot para três grupos: A, B e C.
+</font>
 </center>
-<p><br><br></p>
+<p><br /></p>
 <p>Assim como o dot plot, o boxplot mostra muito mais informações que o gráfico de barras: cinco medidas de posição + <em>outliers</em>. Além disso, conseguimos avaliar a dispersão dos dados através da altura da caixa (que representa a amplitude interquartil) e da distância entre o limite inferior e o superior.</p>
 <p>Porém, é importante entender que as medidas representadas em um boxplot <strong>não são aquelas usadas em testes paramétricos</strong> - o que significa que esse pode não ser o gráfico ideal para representar dados analisados por esses testes. Além disso, o boxplot só pode ser usado em <strong>amostras maiores</strong>. O n mínimo para estimar as 5 medidas é n = 5, mas o ideal mesmo é usá-lo em amostras superiores a isso (ainda que não haja na literatura um consenso de qual seria esse n ideal).</p>
 <p>E, assim como o gráfico de barras, o boxplot <strong>não</strong> mostra os <strong>dados brutos</strong>. Ao olharmos para o boxplot não temos como saber o tamanho dos grupos ou se a distribuição tem mais de uma moda.</p>
@@ -120,9 +128,11 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 <p>Ah, dada essa limitação do boxplot não mostrar os dados brutos, sugere-se que um dotplot seja sobreposto a ele (o que não conseguiremos fazer no Excel), como no gráfico abaixo:</p>
 <img src="g7.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='3'>Gráfico boxplot com dot plot sobreposto representando três grupos: A, B e C.</font>
+<font size="2"><br />
+Gráfico boxplot com dot plot sobreposto representando três grupos: A, B e C.
+</font>
 </center>
-<p><br><br></p>
+<p><br /></p>
 <div id="como-fazer-um-boxplot-com-dot-plot-sobreposto-no-r" class="section level5">
 <h5>Como fazer um boxplot com dot plot sobreposto no R?</h5>
 <p>Segue o código usado para gerar o boxplot acima, usando o <code>ggplot2</code>.</p>
@@ -141,9 +151,11 @@ Se você não tem o hábito de usar o <code>ggplot2</code>, o código abaixo pod
 <p>Aplicando aos nossos dados, obtemos o gráfico a seguir:</p>
 <img src="g8.png" width="280px" style="display: block; margin: auto;" />
 <center>
-<font size ='3'>Gráfico de violino representando as distribuições de três grupos: A, B e C.</font>
+<font size="2"><br />
+Gráfico de violino representando as distribuições de três grupos: A, B e C.
+</font>
 </center>
-<p><br><br></p>
+<p><br /></p>
 <p>O gráfico nos permite observar que, apesar de terem a mesma média e desvio-padrão, os grupos A e C apresentam distribuições diferentes. Além disso, o grupo C apresenta uma distribuição bimodal (há dois picos).</p>
 <p>Por ter um boxplot em seu interior, o gráfico violino apresentará muitas das mesmas vantagens e desvantagens. Além disso, o n exigido para um gráfico de violino é superior ao n necessário para um boxplot. O gráfico violino <strong>não</strong> deve ser usado quando o tamanho do grupo é <strong>pequeno</strong>, já que nesses casos não será possível determinar corretamente a distribuição.</p>
 <p>Outras duas desvantagens são: trata-se de um gráfico recente e muito pouco conhecido (poucas pessoas declaram saber interpretá-lo) e não pode ser feito no Excel - temos que recorrer a outros programas, em particular o R.</p>

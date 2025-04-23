@@ -25,7 +25,7 @@ Essa é então a minha primeira participação no #TidyTuesday. Eu aprendi **tan
 ```{r, echo=FALSE, fig.align='center', out.width = '300px'}
 knitr::include_graphics("Memeggplot.png")
 ```
-<font size='3'>Eu mesma, nesse último mês</font>
+<font size='2'>Eu mesma, nesse último mês</font>
 </center><br>
   
 Ah, eu participei atrasada -- comecei a mexer nesses dados na quarta-feira -- e, como é a minha primeira participação, eu me dei a colher de chá de me inspirar em trabalhos de outros participantes. Os gráficos criados foram em parte inspirados no trabalho do @[thomas_mock](https://twitter.com/thomas_mock/status/1440352188102942721?s=20) e do @[leeolney](https://twitter.com/leeolney3/status/1440163856949547015?s=20).

@@ -45,6 +45,24 @@ dt1 <- lapply(1:datasets,
                 dataset = x)})
 dt1 <- bind_rows(dt1)
 dados <- dt1 %>% filter(dataset == 4)
+
+# library(ggpubr)
+# 
+# dados_cover <- as.data.frame(list(Grupo = rep(LETTERS[1:4], each = 20),
+#                                   Escores = c(rnorm(20, mean = 20, sd = 10),
+#                                               rnorm(20, mean = 25, sd = 15),
+#                                               rnorm(20, mean = 15, sd = 7),
+#                                               rnorm(20, mean = 22, sd = 10))))
+# 
+# ggplot(dados_cover, aes(x = Grupo, y = Escores)) +
+#   geom_errorbar(stat = "summary", fun.data = "mean_sd", width = 0.2) +
+#   geom_bar(stat = "summary", fun = "mean", fill = "white", color = "black",
+#            width = 0.8) +
+#   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+#   theme_classic() +
+#   theme(text = element_text(family = "Nunito"))
+# 
+# ggsave("cover.png", width = 3.7, height = 2.8, dpi = 600)
 ```
 
   

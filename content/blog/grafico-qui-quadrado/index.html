@@ -143,8 +143,8 @@ A função inclui a colocação de asteriscos quando os resíduos padronizados e
 <pre class="r"><code>fstat::graf_obs_esp_ind(dados, Classe, Sobreviveu, cat_graf_v2 = &quot;Sim&quot;,
                         cor = &quot;cadetblue&quot;, xlab = &quot;Classe da passagem&quot;) +
   labs(caption = &quot;Frequências observadas e esperadas para aqueles que sobreviveram\nao desastre do Titanic, de acordo com a classe da passagem.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.&quot;)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" width="441.6" style="display: block; margin: auto;" />
-O problema desse gráfico é que ele só permite a visualização de uma das categorias da variável. Nesse caso, escolhi a categoria “sim” para a variável <code>Sobreviveu</code>, e expliquei isso na legenda.<br />
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" width="441.6" style="display: block; margin: auto;" /></p>
+<p>O problema desse gráfico é que ele só permite a visualização de uma das categorias da variável. Nesse caso, escolhi a categoria “sim” para a variável <code>Sobreviveu</code>, e expliquei isso na legenda.<br />
 Para a variável <code>Sobreviveu</code>, essa é uma alternativa válida. Isso porque, como essa variável tem apenas duas categorias, os resíduos da categoria “não” serão numericamente iguais aos da categoria “sim”, mas com sinal oposto.</p>
 <p>Observe que visualizando o gráfico conseguimos perceber que:</p>
 <ul>

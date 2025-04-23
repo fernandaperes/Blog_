@@ -6,7 +6,7 @@ slug: [reconstruindo-grafico-pizza]
 categories: []
 tags: ['Estatística teórica', 'Gráficos', 'ggplot2']
 comments: yes
-summary: 'O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.'
+summary: 'O gráfico de setores -- popularmente conhecido como gráfico de pizza -- é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.'
 output:
   blogdown::html_page:
     toc: false
@@ -23,15 +23,15 @@ output:
 <p>Para um gráfico ser bom, ele deve ser entendido pelo público-alvo sem requerer grandes esforços. Deveríamos ser capazes de bater o olho e entender o que o gráfico está representando.</p>
 <p>No caso do gráfico de pizza, isso só é possível quando:</p>
 <ul>
-<li>Há poucas categorias (caso contrário, vai ser muito difícil diferenciar as fatias) - recomenda-se no máximo 4 ou 5, mas preferencialmente, ainda menos</li>
+<li>Há poucas categorias (caso contrário, vai ser muito difícil diferenciar as fatias) – recomenda-se no máximo 4 ou 5, mas preferencialmente, ainda menos</li>
 <li>Não há categorias muito pouco frequentes, ou seja, fatias muito pequenas (que serão muito difíceis de visualizar em um gráfico como esse)</li>
-<li>As fatias são de cores facilmente distinguíveis - quanto mais diferentes forem as cores, mais rapidamente o leitor vai conseguir identificar a qual categoria cada fatia pertence</li>
+<li>As fatias são de cores facilmente distinguíveis – quanto mais diferentes forem as cores, mais rapidamente o leitor vai conseguir identificar a qual categoria cada fatia pertence</li>
 </ul>
 <p>Veja que o gráfico da matéria do Globo Esporte peca nesses três pontos:</p>
 <ul>
 <li>Há fatias <strong>muito</strong> pequenas, que praticamente se aglomeram em um borrão branco</li>
 <li>Há muitas fatias, o que torna difícil compará-las</li>
-<li>As cores das principais fatias são <strong>muito</strong> parecidas - eu duvido que você consiga diferenciar o vermelho-escuro do vermelho-não-tão-escuro, ou o preto do… outro preto</li>
+<li>As cores das principais fatias são <strong>muito</strong> parecidas – eu duvido que você consiga diferenciar o vermelho-escuro do vermelho-não-tão-escuro, ou o preto do… outro preto</li>
 </ul>
 <p><img src="g1.png" width="600px" style="display: block; margin: auto;" /></p>
 <p>E, sim, eu entendo que a proposta foi criar um gráfico com as cores do Flamengo. Mas, não funcionou. Perceba que a legenda é mais explicativa que o gráfico em si. Ou seja, o gráfico não está acrescentando informação, não tem utilidade.</p>
@@ -40,7 +40,7 @@ output:
 </blockquote>
 <p>Um gráfico de setores que atende a esses requisitos, por exemplo, é esse abaixo, criado com dados fictícios.</p>
 <p><img src="g3.png" width="250px" style="display: block; margin: auto;" /></p>
-<p>Mas, ainda um gráfico de setores bem construído está aberto a críticas. Estudos indicam que ao ler um gráfico de setores, as pessoas focam nas áreas das fatias. No entanto, seres humanos são péssimos avaliadores de áreas. Em geral, temos dificuldade de comparar as áreas de fatias. Por isso, gráficos de barras seriam preferíveis - já que esse tipo de gráfico requer que analisemos o comprimento, algo que somos muito bons fazendo.</p>
+<p>Mas, ainda um gráfico de setores bem construído está aberto a críticas. Estudos indicam que ao ler um gráfico de setores, as pessoas focam nas áreas das fatias. No entanto, seres humanos são péssimos avaliadores de áreas. Em geral, temos dificuldade de comparar as áreas de fatias. Por isso, gráficos de barras seriam preferíveis – já que esse tipo de gráfico requer que analisemos o comprimento, algo que somos muito bons fazendo.</p>
 <p>A Cole, autora do Storytelling com dados, tem um ótimo blog sobre visualização de dados. Em um dos <a href="https://www.storytellingwithdata.com/blog/2020/5/14/what-is-a-pie-chart">posts</a> ela destrincha essas críticas ao gráfico de pizza (em inglês, <em>pie chart</em>). Recomendo também <a href="https://medium.com/@hypsypops/pie-chart-vs-donut-chart-showdown-in-the-ring-5d24fd86a9ce">esse texto</a> que compara os gráficos de pizza e os de donuts (que são, basicamente, os gráficos de pizza com um círculo branco no meio).</p>
 </div>
 <div id="tá-mas-como-eu-representaria-os-dados-dos-gols-do-flamengo" class="section level3">

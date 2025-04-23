@@ -34,7 +34,7 @@ Diz a lenda (e a biografia de Ronald Fisher) que, em uma tarde no final da déca
 ```{r, echo=FALSE, fig.align='center', out.width = '450px'}
 knitr::include_graphics("img1.png")
 ```
-<center><font size = '3'>Estação experimental agrícola de Rothamsted</font></center>
+<center><font size = '2'>Estação experimental agrícola de Rothamsted</font></center>
 <br><br>  
    
   

@@ -44,6 +44,27 @@ Quando comparamos as médias de dois grupos independentes, o tamanho de efeito n
     
 ```{r, echo=FALSE, fig.align='center', out.width = '500px'}
 knitr::include_graphics("img1.png")
+
+# fstatix::paleta_f()
+# 
+# ggplot(data = data.frame(x = c(60, 160)), aes(x)) +
+#   stat_function(fun = dnorm, args = list(mean = 120.2, sd = 7),
+#                 xlim = c(70, 150), geom = "area",
+#                 fill = azul, alpha = 0.3) +
+#   stat_function(fun = dnorm, n = 500, args = list(mean = 120.2, sd = 7),
+#                 color = azul) +
+#   stat_function(fun = dnorm, n = 500, args = list(mean = 97.2, sd = 7),
+#                 color = "grey70") +
+#   stat_function(fun = dnorm, args = list(mean = 97.2, sd = 7),
+#                 xlim = c(70, 150), geom = "area",
+#                 fill = "grey70", alpha = 0.3) +
+#   scale_y_continuous(breaks = NULL,
+#                      expand = expansion(mult = c(0, 0.05))) +
+#   labs(x = "Glicemia (mg/dL)", y = NULL) +
+#   theme_classic() +
+#   theme(text = element_text(family = "Nunito"))
+# 
+# ggsave("para_cover.png", width = 4, height = 2.5, dpi = 600)
 ```
   
 Vou repetir a piadinha para que essa informação fique na sua cabeça. Perceba pela tirinha abaixo, que descreve um tamanho de efeito não-padronizado (com unidade de medida, segundos), como mesmo sem sermos especialistas na área conseguimos perceber que a diferença entre os grupos não é clinicamente relevante.  

@@ -11,3 +11,4 @@ fstat
 knitr
 kableExtra
 reshape2
+lubridate

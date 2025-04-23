@@ -219,6 +219,23 @@ banco_graf %&gt;% filter(Sobreviveu == &quot;Sim&quot;) %&gt;%
     theme_classic() +
     theme(legend.position = &quot;bottom&quot;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" width="441.6" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># fstatix::paleta_f()
+# 
+# dados &lt;- as.data.frame(list(Frequência = c(70,135,65,80,180,110),
+#                             Tipo = rep(c(&quot;Esperado&quot;, &quot;Observado&quot;), 3),
+#                             Grupo = c(&quot;A&quot;, &quot;A&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C&quot;, &quot;C&quot;)))
+# 
+# ggplot(dados, aes(x = Grupo, y = Frequência, fill = Tipo)) +
+#   geom_bar(stat = &quot;identity&quot;, position = position_dodge()) +
+#   labs(fill = NULL) +
+#   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+#   scale_fill_manual(values = c(&quot;grey75&quot;, roxo)) +
+#   theme_classic() +
+#   theme(legend.position = &quot;bottom&quot;,
+#         text = element_text(family = &quot;Nunito&quot;),
+#         plot.margin = margin(20,20,20,20))
+# 
+# ggsave(&quot;cover.png&quot;, width = 4.1, height = 3.4, dpi = 600)</code></pre>
 </div>
 <div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
 <h4>Como citar esse post, nas normas da ABNT</h4>

@@ -251,6 +251,26 @@ banco_graf %>% filter(Sobreviveu == "Sim") %>%
     theme(legend.position = "bottom")
 ```
 
+```{r}
+# fstatix::paleta_f()
+# 
+# dados <- as.data.frame(list(Frequência = c(70,135,65,80,180,110),
+#                             Tipo = rep(c("Esperado", "Observado"), 3),
+#                             Grupo = c("A", "A", "B", "B", "C", "C")))
+# 
+# ggplot(dados, aes(x = Grupo, y = Frequência, fill = Tipo)) +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   labs(fill = NULL) +
+#   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+#   scale_fill_manual(values = c("grey75", roxo)) +
+#   theme_classic() +
+#   theme(legend.position = "bottom",
+#         text = element_text(family = "Nunito"),
+#         plot.margin = margin(20,20,20,20))
+# 
+# ggsave("cover.png", width = 4.1, height = 3.4, dpi = 600)
+```
+
 
 
 #### Como citar esse post, nas normas da ABNT

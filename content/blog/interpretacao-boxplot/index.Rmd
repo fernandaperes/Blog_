@@ -48,7 +48,12 @@ ggsave(plot = g1, "g1.png", width = 3.4, height = 2.8, dpi = 400)
 ```{r, echo=FALSE, fig.align='center', out.width = '350px'}
 knitr::include_graphics("g2.png")
 ```
-<center><font size = '3'>Elementos que compõem um boxplot.</font></center>
+<center>
+<font size="2">  
+Elementos que compõem um boxplot.
+</font>
+</center>
+<br />
   
   
 ### Os quartis e a mediana  
@@ -177,9 +182,16 @@ Eu confesso que sou tradicional e tendo a preferir os boxplots na vertical, mas 
 Quando eu fiz um conteúdo no [Instagram](https://instagram.com/estatisticaaplicada) explicando a construção e interpretação de boxplots, a pergunta que eu mais recebi foi: "tá, mas e aqueles boxplots com pedaços faltando?".  
 As pessoas se referiam a boxplots como o do grupo "Graduação" no gráfico abaixo, mostrado no início do post:  
   
-```{r, echo=FALSE, fig.align='center', out.width = '350px', fig.cap=paste0('Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too.')}
+```{r, echo=FALSE, fig.align='center'}
 knitr::include_graphics("g1.png")
 ```
+<center>
+<font size="2">  
+Gráfico boxplot, inspirado no gráfico do artigo de Schenk & Steppan (2014).
+</font>
+</center>
+<br />
+  
   
 Mas, não há muito segredo. Todos os elementos que vimos - limite inferior, Q1, Q2, Q3, limite inferior - sempre estarão no boxplot. Se você não está enxergando um deles, é porque seu valor coincide com outro, e haverá sobreposição no gráfico.  
 No caso do grupo "Graduação", a mediana está sobreposta ao Q3 e ao limite superior - ou seja, para esse grupo a mediana, o Q3 e o limite superior são valores idênticos. É por isso que não estamos vendo o T se projetando para além do topo da caixa e é também por isso que o topo da caixa está representado por uma linha mais grossa que a base da caixa (indicando que a mediana está lá).  

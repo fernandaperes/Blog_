@@ -15,9 +15,9 @@ output:
 ### O que é a #TidyTuesday?
   
 Há um tempo eu acompanho os vídeos **incríveis** da [Julia Silge](https://www.youtube.com/c/JuliaSilge) que aplicam `tidymodels` e `tidyverse` na análise dos dados do [projeto #TidyTuesday](https://github.com/rfordatascience/tidytuesday).  
-O #TidyTuesday é um projeto com a proposta de incentivar as pessoas a analisarem dados no R usando as ferramentas do ecossistema do `tidyverse`, uma coleção de pacotes que inclui alguns dos meus favoritos, como o `ggplot2` e o `dplyr`. Um novo conjunto de dados - reais! - é liberado toda segunda-feira no [repositório oficial do projeto](https://github.com/rfordatascience/tidytuesday) e, na terça-feira (daí vem o *tuesday*) as pessoas compartilham os resultados e os códigos utilizados nessa análise, usando a hashtag do projeto. Na página principal do repositório, você encontra mais detalhes sobre o projeto.  
+O #TidyTuesday é um projeto com a proposta de incentivar as pessoas a analisarem dados no R usando as ferramentas do ecossistema do `tidyverse`, uma coleção de pacotes que inclui alguns dos meus favoritos, como o `ggplot2` e o `dplyr`. Um novo conjunto de dados -- reais! -- é liberado toda segunda-feira no [repositório oficial do projeto](https://github.com/rfordatascience/tidytuesday) e, na terça-feira (daí vem o *tuesday*) as pessoas compartilham os resultados e os códigos utilizados nessa análise, usando a hashtag do projeto. Na página principal do repositório, você encontra mais detalhes sobre o projeto.  
   
-Eu estava meio resistente a participar, porque: 1) eu não sou lá muito *expert* em manipulação e visualização de dados no R e 2) a proposta é publicar os resultados no Twitter - e, pelo bem da minha saúde mental, eu não tenho um Twitter, rs. Mas, recentemente eu tenho me divertido muito estudando o pacote `ggplot2` e tenho aprendido coisas super interessantes de manipulação de dados com o `dplyr` (aqui vai um agradecimento especial ao grupo de estudos das [R-Ladies SP](https://www.instagram.com/rladiessaopaulo/)). Comecei a ver os dados da #TidyTuesday como um ótimo jeito de continuar estudando esses pacotes.  
+Eu estava meio resistente a participar, porque: 1) eu não sou lá muito *expert* em manipulação e visualização de dados no R e 2) a proposta é publicar os resultados no Twitter -- e, pelo bem da minha saúde mental, eu não tenho um Twitter, rs. Mas, recentemente eu tenho me divertido muito estudando o pacote `ggplot2` e tenho aprendido coisas super interessantes de manipulação de dados com o `dplyr` (aqui vai um agradecimento especial ao grupo de estudos das [R-Ladies SP](https://www.instagram.com/rladiessaopaulo/)). Comecei a ver os dados da #TidyTuesday como um ótimo jeito de continuar estudando esses pacotes.  
 Essa é então a minha primeira participação no #TidyTuesday. Eu aprendi **tanta** coisa organizando esses dados e montando esses gráficos que, com certeza, valeu a pena :)  
   
   
@@ -28,7 +28,7 @@ knitr::include_graphics("Memeggplot.png")
 <font size='3'>Eu mesma, nesse último mês</font>
 </center><br>
   
-Ah, eu participei atrasada - comecei a mexer nesses dados na quarta-feira - e, como é a minha primeira participação, eu me dei a colher de chá de me inspirar em trabalhos de outros participantes. Os gráficos criados foram em parte inspirados no trabalho do @[thomas_mock](https://twitter.com/thomas_mock/status/1440352188102942721?s=20) e do @[leeolney](https://twitter.com/leeolney3/status/1440163856949547015?s=20).
+Ah, eu participei atrasada -- comecei a mexer nesses dados na quarta-feira -- e, como é a minha primeira participação, eu me dei a colher de chá de me inspirar em trabalhos de outros participantes. Os gráficos criados foram em parte inspirados no trabalho do @[thomas_mock](https://twitter.com/thomas_mock/status/1440352188102942721?s=20) e do @[leeolney](https://twitter.com/leeolney3/status/1440163856949547015?s=20).
   
 ### Os dados
   
@@ -89,8 +89,8 @@ top_10 <- df %>%
 ### Indicações e prêmios recebidos, nos últimos cinco anos, pelas 10 distribuidoras mais indicadas  
   
 Optei por fazer um gráfico de barras com a quantidade total de indicações aos Emmy Awards, por distribuidora, no período de 2016-2021. Além disso, decidi incluir no gráfico a quantidade de prêmios que cada distribuidora recebeu e a porcentagem de indicações que resultaram em prêmios.  
-Para isso, organizei um *data frame* incluindo apenas os dados dos últimos cinco anos e das distribuidoras em `top_10`. Contei a quantidade de indicações e prêmios por distribuidora - as distribuidoras que não tinham vencido nenhum prêmio ficaram com a coluna `Winner` como NA, então substituí os NAs nessa coluna por zeros. Por fim, criei algumas variáveis de interesse. A variável `Total Nominee` foi criada a partir da soma de `Winner` e `Nominee`, para obter o total de indicações. Calculei também a porcentagem (`porc`) de prêmios recebidos, de acordo com o total de indicações.  
-Além disso, tive que criar as colunas `espaco` e `distributortxt` para unir as informações da distribuidora com a porcentagem - o que eu defini que seria o rótulo do meu eixo vertical - e formatá-las adequadamente. Para a formatação, eu usei os pacotes `glue` e `ggtext`, que eu nunca tinha usado na vida. A ideia de usá-los para deixar o rótulo do eixo como eu queria foi inspirada no gráfico de @[leeolney](https://twitter.com/leeolney3/status/1440163856949547015?s=20). Amei a descoberta do pacote `ggtext`!
+Para isso, organizei um *data frame* incluindo apenas os dados dos últimos cinco anos e das distribuidoras em `top_10`. Contei a quantidade de indicações e prêmios por distribuidora -- as distribuidoras que não tinham vencido nenhum prêmio ficaram com a coluna `Winner` como NA, então substituí os NAs nessa coluna por zeros. Por fim, criei algumas variáveis de interesse. A variável `Total Nominee` foi criada a partir da soma de `Winner` e `Nominee`, para obter o total de indicações. Calculei também a porcentagem (`porc`) de prêmios recebidos, de acordo com o total de indicações.  
+Além disso, tive que criar as colunas `espaco` e `distributortxt` para unir as informações da distribuidora com a porcentagem -- o que eu defini que seria o rótulo do meu eixo vertical -- e formatá-las adequadamente. Para a formatação, eu usei os pacotes `glue` e `ggtext`, que eu nunca tinha usado na vida. A ideia de usá-los para deixar o rótulo do eixo como eu queria foi inspirada no gráfico de @[leeolney](https://twitter.com/leeolney3/status/1440163856949547015?s=20). Amei a descoberta do pacote `ggtext`!
   
 ```{r}
 df_top10 <- df %>% filter(distributor %in% top_10,
@@ -205,7 +205,7 @@ razao_genero <- df_genero %>%
 head(razao_genero, 10)
 ```
   
-Portanto, valores acima de 1 indicam que, naquela distribuidora, mais mulheres foram indicadas a categorias de atuação que homens. Valores abaixo de 1, significam que mais homens foram indicados. A distribuidora Hulu se destaca com a maior proporção de mulheres indicadas, em relação aos homens - o que provavelmente se deve a The Handmaid's Tale. Já a Showtime é a distribuidora com a maior proporção de homens indicados em relação a mulheres - curiosamente, é a distribuidora de The L Word Generation Q, uma série focada em mulheres e com um elenco quase em sua totalidade feminino.
+Portanto, valores acima de 1 indicam que, naquela distribuidora, mais mulheres foram indicadas a categorias de atuação que homens. Valores abaixo de 1, significam que mais homens foram indicados. A distribuidora Hulu se destaca com a maior proporção de mulheres indicadas, em relação aos homens -- o que provavelmente se deve a The Handmaid's Tale. Já a Showtime é a distribuidora com a maior proporção de homens indicados em relação a mulheres -- curiosamente, é a distribuidora de The L Word Generation Q, uma série focada em mulheres e com um elenco quase em sua totalidade feminino.
   
 O próximo passo foi unir esses dois *data frames* e criar a variável `distributortxt` para incluir como rótulo do eixo y tanto a distribuidora como a razão entre os gêneros.
   

@@ -29,7 +29,7 @@ fstatix::paleta_f()
 ```
    
    
-O grande objetivo desse post é te ensinar a **interpretar** e a **criar** um gráfico de barras divergentes, como o que você vê acima, adequado à representação de itens em escala Likert. Mas, conforme eu fui estruturando esse post, eu percebi que não tinha como fugir totalmente de algumas questões que geram uma grande crise existencial. O que, afinal, é uma **escala Likert**? O que diferencia uma **escala** Likert de um **item** Likert? Ou ainda, o que os diferencia da escala ou item **tipo-Likert**?  
+O grande objetivo desse post é te ensinar a **interpretar** e a **criar** um gráfico de barras divergentes, como o que você vê acima, adequado à representação de itens Likert. Mas, conforme eu fui estruturando esse post, eu percebi que não tinha como fugir totalmente de algumas questões que geram uma grande crise existencial. O que, afinal, é uma **escala Likert**? O que diferencia uma **escala** Likert de um **item** Likert? Ou ainda, o que os diferencia da escala ou item **tipo-Likert**?  
   
 Por isso, esse post está dividido nos seguintes tópicos:  
   

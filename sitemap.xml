@@ -9,188 +9,203 @@
 
 <url>
   <loc>https://fernandafperes.com.br/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/sobre/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/servicos/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/graficos-likert/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/oscar-idades/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/te-teste-t-independente/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://fernandafperes.com.br/blog/tamanho-de-efeito/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/bioestat%C3%ADstica/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/ggplot2/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/oscar/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/pesquisas-eleitorais/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/r/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/tidytuesday/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/tutorial/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/valor-de-p/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/tamanho-de-efeito/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/coeficiente-de-variacao/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/variancia-desvio-padrao/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/page/2/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/intervalo-de-confianca/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://fernandafperes.com.br/blog/doutora-toma-cha/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://fernandafperes.com.br/blog/valor-de-p-calculo/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://fernandafperes.com.br/blog/falacias-valor-de-p/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/teste-diagnostico/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <loc>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/page/2/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/grafico-qui-quadrado/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/graficos-dinamite/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/interpretacao-boxplot/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/tidy-tuesday-nber/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/ggplot2/page/2/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/tags/gr%C3%A1ficos/page/2/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/teste-t-independente/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/tidy-tuesday-emmy/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/falacias-valor-de-p/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/valor-de-p-calculo/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/doutora-toma-cha/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://fernandafperes.com.br/blog/page/3/</loc>
-  <lastmod>2025-03-05T20:56:20+00:00</lastmod>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
   <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/page/3/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://fernandafperes.com.br/blog/page/4/</loc>
+  <lastmod>2025-04-29T14:08:15+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 
 

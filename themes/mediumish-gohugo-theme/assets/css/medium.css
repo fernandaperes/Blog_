@@ -1161,6 +1161,10 @@ hr {
   right: 0;
   margin: 0 auto;
 }
+
+.faq hr {
+  background-color:#c8c8c8;
+}
   
 .sobre .column1 {
   float: left;

@@ -5,7 +5,7 @@ type: "static"
 ---
 
 ```{r, include = F}
-mostrar_faq <- F
+mostrar_faq <- T
 agenda_aberta <- T
 razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
 # razao_fechamento <- "Estarei em recesso a partir do dia 21/12 e tirarei duas semanas de férias em janeiro. A agenda para contratação dos serviços de análise dados ou consultoria ficará **fechada** durante esse período."
@@ -240,16 +240,40 @@ Quando a agenda está aberta, você encontra nessa página um link para um formu
   
 <details>
 <summary>Você emite nota fiscal desses serviços?</summary>
-Claro! Tanto para o serviço de consultoria quanto para o serviço de análise de dados são emitidas notas fiscais. Isso significa que você pode me pagar por esses serviços com verbas de pesquisa.
-<br />
-<br />
-</details>
+<font color="#8C8C8C">
   
-<details>
-<summary>Você emite nota fiscal desses serviços?</summary>
 Claro! Tanto para o serviço de consultoria quanto para o serviço de análise de dados são emitidas notas fiscais. Isso significa que você pode me pagar por esses serviços com verbas de pesquisa.
-<br />
-<br />
+</font>
+</details>
+
+<hr></hr>
+
+<details>
+<summary>Se você realizar a análise dos meus dados, você entra como co-autora do meu artigo?</summary>
+<font color="#8C8C8C">
+  
+Não! Apenas realizar a análise dos dados do artigo **não** é um critério de autoria. É somente uma prestação de serviço.
+</font>
+</details>
+
+<hr></hr>
+
+<details>
+<summary>Terceirizar a análise de dados do meu projeto é antiético?</summary>
+<font color="#8C8C8C">
+  
+Não. A análise de dados é uma etapa que pode ser terceirizada em um projeto de pesquisa, **dentro da legalidade e da ética**. Isso tanto é verdade que as agências de fomento permitem que se utilize verba de projetos para contratação desse serviço. Além disso, muitas universidades têm setores que realizam as análises estatísticas para os alunos.  
+  
+Mas, saiba que contratar alguém para analisar os dados do seu projeto não te exime de:  
+- **Colaborar** com o analista, explicando quais as suas perguntas experimentais e quais variáveis coletadas estão relacionadas a essas perguntas  
+- Se **responsabilizar** pela base de dados fornecida  
+- Entender **quais análises** foram feitas e **o porquê** foram feitas essas análises, e não outras  
+- **Interpretar** corretamente os resultados dessas análises  
+  
+É justamente para te ajudar com esses dois últimos pontos que em todos os meus serviços de análise de dados está incluída uma **reunião de devolutiva**. Nela eu te **explico o porquê** de cada análise e a **interpretação adequada** dos resultados.  
+  
+Caso tenha interesse, [neste post](https://www.instagram.com/p/Cy1CNviL_ty/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) eu discuto com mais detalhes essa questão. 
+</font>
 </details>
 
 <br />

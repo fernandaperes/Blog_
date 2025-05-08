@@ -3,8 +3,8 @@ title: "Como representar dados em escala Likert?"
 author: Fernanda Fiel Peres
 date: '2025-04-29'
 slug: [graficos-likert]
-categories: []
-tags: ['Estatística teórica']
+categories: ['Estatística teórica', 'Gráficos']
+tags: ['ggplot2', 'gráficos']
 comments: yes
 summary: 'Coletou dados em escala Likert (por exemplo, com opções de Concordo Fortemente a Discordo Fortemente) e bateu uma dúvida quanto a como representá-los? Neste post eu te explico como construir um gráfico de barras divergentes, o mais recomendado pela literatura para esse tipo de dado.'
 output:

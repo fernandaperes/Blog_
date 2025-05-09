@@ -1,0 +1,126 @@
+---
+title: "O que é e como calcular o Índice de Validade de Conteúdo (IVC)?"
+author: Fernanda Fiel Peres
+date: '2025-05-09'
+slug: [ivc-kappa]
+categories: ['Estatística teórica', 'Validade de conteúdo']
+tags: ['validade de conteúdo']
+comments: yes
+summary: 'Alguém te disse para calcular um Índice de Validade de Conteúdo (IVC) para o seu questionário, e você não sabe nem o que isso é, muito menos como calculá-lo? Nesse post eu te explico como calcular os três tipos de IVC e o kappa modificado, que normalmente acompanha esse índice.'
+output:
+  blogdown::html_page:
+    toc: false
+bibliography: "references.bib"
+csl: "/Users/fernandafperes/Documents/Consultorias Científicas/Base para relatórios/ABNT.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+<div id="o-que-é-o-índice-de-validade-de-conteúdo-ivc" class="section level3">
+<h3>O que é o Índice de Validade de Conteúdo (IVC)?</h3>
+<p>Imagine que você desenvolveu um questionário composto por vários itens (perguntas) referentes a depressão. Como <strong>garantir que esse questionário é válido</strong>, isso é, de fato está aferindo o que se propõe a aferir, a depressão? Para que tenhamos essa garantia, esse questionário precisa passar por validações. Uma delas é a chamada <strong>validade (ou validação) de conteúdo</strong> (em inglês, <em>content validity</em>).</p>
+<p>Na validação de conteúdo, especialistas (chamados também de <em>experts</em>, avaliadores ou juízes) avaliam cada item do novo questionário com uma nota de 1 a 4 que se refere à relevância/ representatividade para o constructo que se deseja mensurar (no exemplo acima, depressão). As notas de 1 a 4 correspondem, geralmente, a:</p>
+<ul>
+<li>1 = o item não é relevante ou representativo</li>
+<li>2 = o item precisa de uma grande revisão para ser relevante/ representativo</li>
+<li>3 = o item precisa de uma pequena revisão para ser relevante/ representativo</li>
+<li>4 = o item é relevante ou representativo</li>
+</ul>
+<p><br /></p>
+<p>Duas questões importantes podem estar passando pela sua cabeça:</p>
+<ul>
+<li>Como definir <strong>quem</strong> serão os avaliadores?</li>
+<li><strong>Quantos</strong> avaliadores eu devo incluir no estudo?</li>
+</ul>
+<p>Com relação ao <strong>quem</strong>, a decisão é mais subjetiva: você deve contatar <strong>especialistas naquele constructo</strong> que você pretende aferir com o questionário. Por exemplo, se o constructo é depressão, devem ser contatados psicólogos e psiquiatras com experiência com depressão.</p>
+<p>Mas a segunda pergunta tem uma resposta mais objetiva. <span class="citation">Lynn (<a href="#ref-lynn1986ivc">1986</a>)</span> recomenda incluir <strong>pelo menos 5 avaliadores</strong>, sendo que quanto mais, melhor – mas não há necessidade de mais do que 10. Além disso, ela discute que pode ser difícil encontrar experts em alguns domínios/ constructos. Nesses casos, o pesquisador deve recrutar no mínimo 3 avaliadores <span class="citation">(<a href="#ref-lynn1986ivc">Lynn, 1986</a>)</span>.</p>
+<p>O IVC é uma medida calculada a partir das avaliações desses <em>experts</em>. Mas aqui eu preciso te contar que há três tipos de IVC (em inglês abreviado como CVI, de <em>Content Validity Index</em>):</p>
+<ul>
+<li>IVC-I: um índice calculado para cada <strong>item</strong> (daí vem o I da sigla) do questionário, que reflete a relevância/ representatividade daquele item, de acordo com os <em>experts</em>.</li>
+<li>IVC-S/Ave: um índice calculado para a escala como um todo (daí vem o S, do inglês <em>Scale</em>) que corresponde à <strong>média</strong> (Ave, do inglês <em>Average</em>) de todos os IVC-I.</li>
+<li>IVC-S/UA: um índice também calculado para a escala como um todo que corresponde à proporção de IVC-I iguais a 1. O UA da sigla vem de <strong>“Universal Agreement”</strong>, em tradução livre “concordância universal”.</li>
+</ul>
+<p>Vamos, então, discutir como calcular e interpretar cada um deles.</p>
+<blockquote>
+<p>Você chegou a esse post porque precisa calcular o IVC para os seus dados, mas <strong>não tem tempo</strong> para aprender a calculá-lo? Eu ofereço um serviço de análise de dados em que você pode <strong>me contratar</strong> para realizar esse cálculo. O contato é via formulário que está <a href="https://fernandafperes.com.br/servicos">nesta página</a>.</p>
+</blockquote>
+</div>
+<div id="como-calcular-o-ivc-i" class="section level3">
+<h3>Como calcular o IVC-I?</h3>
+<p>O cálculo do IVC-I, ou seja, do IVC para cada item, é simples. Para isso, basta dividirmos a quantidade de avaliaçoes 3 ou 4 que aquele item recebeu pela quantidade total de respostas:</p>
+<p><img src="img1.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Para isso fazer mais sentido, vamos calcular o IVC-I para alguns itens:</p>
+<p><img src="img2.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Veja que há 5 avaliadores e para o primeiro item há 5 avaliações 3 ou 4. Logo, o IVC-I será:</p>
+<p><img src="img3.png" width="200px" style="display: block; margin: auto;" /></p>
+<p>Já para o Item 3, há apenas 2 avaliações 3 ou 4, em 5 avaliações no total. Portanto, o IVC-I será:</p>
+<p><img src="img4.png" width="200px" style="display: block; margin: auto;" /></p>
+<div id="como-interpretar-o-ivc-i-quando-um-item-é-considerado-adequado-de-acordo-com-o-ivc-i" class="section level4">
+<h4>Como interpretar o IVC-I? Quando um item é considerado adequado, de acordo com o IVC-I?</h4>
+<p>Perceba que o IVC-I corresponde à <strong>proporção de concordância</strong> entre os avaliadores para aquele item, considerando-se que os avaliadores que responderam 3 ou 4 concordam que o item é relevante/ representativo.</p>
+<p><span class="citation">Polit; Beck; Owen (<a href="#ref-polit2007kappa">2007</a>)</span> recomendam que itens com <strong>IVC-I superior a 0,78</strong> sejam considerados adequados.</p>
+</div>
+</div>
+<div id="como-calcular-os-ivc-s" class="section level3">
+<h3>Como calcular os IVC-S?</h3>
+<p>Como discutimos, há dois tipos de ICV para a escala (ICV-S): o Ave e o UA. Vale dizer que essa divisão e nomenclatura não são um consenso. Muita gente calcula um deles e o reporta apenas como “IVC-S”, sem que fique claro qual das versões foi calculada. Polit e Beck discutem justamente isso em seu artigo de 2006, o qual propõe a nomenclatura IVC-S/Ave e IVC-S/UA <span class="citation">(<a href="#ref-polit2006ivc">Polit; Beck, 2006</a>)</span>. Portanto, eu recomendo que você <strong>calcule as duas versões do IVC-S</strong> no seu trabalho e referencie esse artigo.</p>
+<p>O IVC-S/Ave é bem simples de calcular: ele corresponde à média de todos os IVC-I. Já IVC-S/UA corresponde à proporção de IVC-I iguais a 1. Note que para que um item tenha um IVC-I igual a 1 todos os <em>experts</em> precisam tê-lo avaliado como 3 ou 4. Ou seja, trata-se de um item que <strong>todos</strong> os <em>experts</em> consideraram representativo/ relevante. Daí vem o “concordância universal” (UA, do inglês <em>Universal Agreement</em>). Para isso fazer mais sentido, vamos calcular o IVC-S/Ave e o IVC-S/UA para a escala abaixo:</p>
+<p><img src="img5.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>O IVC-S/Ave será a média de todos os IVC-I:</p>
+<p><img src="img6.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>Já para calcular o IVC-S/UA devemos contar quantos IVC-I são iguais a 1,0 e então dividir essa quantidade pelo total de itens:</p>
+<p><img src="img7.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Para o IVC-S/Ave, <span class="citation">Polit; Beck; Owen (<a href="#ref-polit2007kappa">2007</a>)</span> sugerem que valores iguais ou superiores a 0,9 indicam uma escala adequada. Para o IVC-S/UA, recomenda-se valores iguais ou superiores a 0,8 – mas os autores discutem que esse ponto de corte pode ser muito conservador <span class="citation">(<a href="#ref-polit2007kappa">Polit; Beck; Owen, 2007</a>)</span>.</p>
+</div>
+<div id="e-o-kappa" class="section level3">
+<h3>E o kappa?</h3>
+<p>É bem comum que trabalhos que calculem o IVC também calculem o kappa. O kappa seria uma medida de concordância com uma correção para a concordância entre os avaliadores que seria esperada ao acaso (em inglês, <em>chance agreement</em>).</p>
+<p>Aqui também os artigos divergem. Alguns calculam o kappa para a escala como um todo, geralmente utilizando o kappa de Fleiss. Eu tenho vídeos que ensinam a calcular essa medida <a href="https://youtu.be/1JNZCZftKT0?si=qJwGARoyKtjnjY3D">no SPSS</a> e <a href="https://youtu.be/LO4lk1dzvmc?si=Jy0qf0ZV31GndElX">no R</a>.</p>
+<p>Mas, eu quero discutir nesse post o <strong>kappa modificado</strong>, proposto por <span class="citation">Polit; Beck; Owen (<a href="#ref-polit2007kappa">2007</a>)</span>. A proposta dos autores é calcular um kappa que corresponda ao IVC-I <strong>corrigido para a probabilidade de concordância ao acaso</strong>. A fórmula para esse cálculo não é difícil, mas são raros os materiais didáticos – principalmente em português – que o discutem. Inclusive, esse kappa modificado foi a minha principal motivação para escrever esse post. Vamos ao seu cálculo, então.</p>
+<blockquote>
+<p>Lembrando que eu ofereço um serviço de análise de dados em que você pode <strong>me contratar</strong> para realizar esse cálculo. O contato é via formulário que está <a href="https://fernandafperes.com.br/servicos">nesta página</a>.</p>
+</blockquote>
+<p>O primeiro passo para calcular o kappa modificado – que os autores sugerem que seja <strong>representado como κ* </strong>– é calcular a probabilidade de concordância ao acaso, representada por p<sub>c</sub> (c de <em>chance agreement</em>, em inglês):</p>
+<p><img src="img8.png" width="280px" style="display: block; margin: auto;" /></p>
+<p>Sendo:</p>
+<ul>
+<li>N = a quantidade de avaliadores</li>
+<li>A = a quantidade de avaliaçoes 3 ou 4 que aquele item recebeu</li>
+</ul>
+<p>Para isso fazer mais sentido, vamos calcular essas probabilidades para o item abaixo:</p>
+<p><img src="img9.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Veja que esse item foi avaliado por <strong>cinco avaliadores</strong> recebeu <strong>quatro avaliações</strong> 3 ou 4. Portanto, para esse item, N = 5 e A = 4. Logo, o cálculo da p<sub>c</sub> será:</p>
+<p><img src="img10.png" width="310px" style="display: block; margin: auto;" /></p>
+<p>Sabendo a p<sub>c</sub> para aquele item, podemos agora calcular o kappa modificado (κ*), com a equação abaixo. Reforçando: todo esse cálculo é baseado no artigo de 2007 de Polit e colaboradores <span class="citation">(<a href="#ref-polit2007kappa">Polit; Beck; Owen, 2007</a>)</span>.</p>
+<p><img src="img11.png" width="200px" style="display: block; margin: auto;" /></p>
+<p>Aplicando a fórmula acima ao item 2, para o qual p<sub>c</sub> = 0,15625 e IVC-I = 0,8, teremos:</p>
+<p><img src="img12.png" width="580px" style="display: block; margin: auto;" /></p>
+<p>Esse valor de kappa modificado pode ser interpretado conforme as sugestões da literatura, sendo uma das mais utilizadas a de <span class="citation">Landis; Koch (<a href="#ref-landis1977kappa">1977</a>)</span>. De acordo com essa classificação, valores de kappa entre 0,21 e 0,40 indicam confiabilidade fraca; entre 0,41 e 0,60, moderada; entre 0,61 e 0,80, substancial e acima de 0,81, quase perfeita.</p>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é e como calcular o Índice de Validade de Conteúdo (IVC)?</strong>. Blog Fernanda Peres, São Paulo, 09 mai. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/ivc-kappa/" class="uri">https://fernandafperes.com.br/blog/ivc-kappa/</a>.</p>
+</blockquote>
+<p><br /></p>
+<hr />
+</div>
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-landis1977kappa" class="csl-entry">
+LANDIS, J. R.; KOCH, G. G. The measurement of observer agreement for categorical data. <strong>Biometrics</strong>, [<em>s. l.</em>], p. 159–174, 1977.
+</div>
+<div id="ref-lynn1986ivc" class="csl-entry">
+LYNN, M. R. Determination and quantification of content validity. <strong>Nursing research</strong>, [<em>s. l.</em>], v. 35, n. 6, p. 382–386, 1986.
+</div>
+<div id="ref-polit2006ivc" class="csl-entry">
+POLIT, D. F.; BECK, C. T. The content validity index: are you sure you know what’s being reported? Critique and recommendations. <strong>Research in nursing &amp; health</strong>, [<em>s. l.</em>], v. 29, n. 5, p. 489–497, 2006.
+</div>
+<div id="ref-polit2007kappa" class="csl-entry">
+POLIT, D. F.; BECK, C. T.; OWEN, S. V. Is the CVI an acceptable indicator of content validity? Appraisal and recommendations. <strong>Research in nursing &amp; health</strong>, [<em>s. l.</em>], v. 30, n. 4, p. 459–467, 2007.
+</div>
+</div>
+</div>

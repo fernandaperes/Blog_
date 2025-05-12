@@ -47,7 +47,7 @@ Duas questões importantes podem estar passando pela sua cabeça:
 * Como definir **quem** serão os avaliadores?
 * **Quantos** avaliadores eu devo incluir no estudo?
   
-Com relação ao **quem**, a decisão é mais subjetiva: você deve contatar **especialistas naquele constructo** que você pretende aferir com o questionário. Por exemplo, se o constructo é depressão, devem ser contatados psicólogos e psiquiatras com experiência com depressão.  
+Com relação ao **quem**, a decisão é mais subjetiva: você deve contatar **especialistas naquele constructo** que você pretende aferir com o questionário. Por exemplo, se o constructo é depressão, devem ser contatados psicólogos e psiquiatras com experiência em depressão.  
   
 Mas a segunda pergunta tem uma resposta mais objetiva. @lynn1986ivc recomenda incluir **pelo menos 5 avaliadores**, sendo que quanto mais, melhor -- mas não há necessidade de mais do que 10. Além disso, ela discute que pode ser difícil encontrar experts em alguns domínios/ constructos. Nesses casos, o pesquisador deve recrutar no mínimo 3 avaliadores [@lynn1986ivc].  
   
@@ -65,7 +65,7 @@ Vamos, então, discutir como calcular e interpretar cada um deles.
   
 ### Como calcular o IVC-I?
   
-O cálculo do IVC-I, ou seja, do IVC para cada item, é simples. Para isso, basta dividirmos a quantidade de avaliaçoes 3 ou 4 que aquele item recebeu pela quantidade total de respostas:  
+O cálculo do IVC-I, ou seja, do IVC para cada item, é simples. Para isso, basta dividirmos a quantidade de avaliações 3 ou 4 que aquele item recebeu pela quantidade total de respostas:  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '400px'}
 knitr::include_graphics("img1.png")
@@ -100,9 +100,10 @@ Perceba que o IVC-I corresponde à **proporção de concordância** entre os ava
   
 ### Como calcular os IVC-S?
   
-Como discutimos, há dois tipos de ICV para a escala (ICV-S): o Ave e o UA. Vale dizer que essa divisão e nomenclatura não são um consenso. Muita gente calcula um deles e o reporta apenas como "IVC-S", sem que fique claro qual das versões foi calculada. Polit e Beck discutem justamente isso em seu artigo de 2006, o qual propõe a nomenclatura IVC-S/Ave e IVC-S/UA [@polit2006ivc]. Portanto, eu recomendo que você **calcule as duas versões do IVC-S** no seu trabalho e referencie esse artigo.  
+Como discutimos, há dois tipos de IVC para a escala (IVC-S): o Ave e o UA. Vale dizer que essa divisão e nomenclatura não são um consenso. Muita gente calcula um deles e o reporta apenas como "IVC-S", sem que fique claro qual das versões foi calculada. Polit e Beck discutem justamente isso em seu artigo de 2006, o qual propõe a nomenclatura IVC-S/Ave e IVC-S/UA [@polit2006ivc]. Portanto, eu recomendo que você **calcule as duas versões do IVC-S** no seu trabalho e referencie esse artigo.  
   
 O IVC-S/Ave é bem simples de calcular: ele corresponde à média de todos os IVC-I. Já IVC-S/UA corresponde à proporção de IVC-I iguais a 1. Note que para que um item tenha um IVC-I igual a 1 todos os *experts* precisam tê-lo avaliado como 3 ou 4. Ou seja, trata-se de um item que **todos** os *experts* consideraram representativo/ relevante. Daí vem o "concordância universal" (UA, do inglês *Universal Agreement*). Para isso fazer mais sentido, vamos calcular o IVC-S/Ave e o IVC-S/UA para a escala abaixo:  
+  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '500px'}
 knitr::include_graphics("img5.png")
@@ -121,7 +122,7 @@ knitr::include_graphics("img7.png")
 ```
 
   
-Para o IVC-S/Ave, @polit2007kappa sugerem que valores iguais ou superiores a 0,9 indicam uma escala adequada. Para o IVC-S/UA, recomenda-se valores iguais ou superiores a 0,8 -- mas os autores discutem que esse ponto de corte pode ser muito conservador [@polit2007kappa].  
+Para o **IVC-S/Ave**, @polit2007kappa sugerem que valores **iguais ou superiores a 0,9** indicam uma escala adequada. Para o **IVC-S/UA**, recomenda-se valores **iguais ou superiores a 0,8** -- mas os autores discutem que esse ponto de corte pode ser muito conservador [@polit2007kappa].  
   
   
   

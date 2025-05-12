@@ -1628,4 +1628,24 @@ a:hover.buttonsobrehome {
   
 }
 
+.servicos h4 {
+  margin: 0;
+  font-weight: 700;
+  font-family: 'IsidoraSans-Bold';
+  text-align: center;
+  font-size: 22px;
+}
+
+.servicos .headline{
+  max-width: 530px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.servicos .texto-headline{
+  max-width: 730px;
+  margin-left: auto;
+  margin-right: auto;
+}
 

@@ -153,6 +153,11 @@ Veja como o gráfico traz exatamente essas informações:
 knitr::include_graphics("g6.png")
 ```
   
+  
+>Você sabia que você pode me contratar para te ajudar com a interpretação dos seus resultados? Ou mesmo para rodar as suas análises -- e, claro, te explicar depois tudo o que foi feito?
+>Saiba mais sobre os serviços que eu ofereço [clicando aqui](https://fernandafperes.com.br/servicos/).
+  
+  
 ### Boxplots na horizontal  
   
 É possível (e até comum em algumas áreas) representar boxplots na horizontal, ou seja, com a variável de grupo no eixo y (vertical) e a variável numérica no eixo x (horizontal).  

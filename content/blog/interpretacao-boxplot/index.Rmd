@@ -154,7 +154,7 @@ knitr::include_graphics("g6.png")
 ```
   
   
->Você sabia que você pode me contratar para te ajudar com a interpretação dos seus resultados? Ou mesmo para rodar as suas análises -- e, claro, te explicar depois tudo o que foi feito?
+>Você sabia que você pode me contratar para **te ajudar com a interpretação** dos seus resultados? Ou mesmo para **rodar as suas análises** -- e, claro, te explicar depois tudo o que foi feito?  
 >Saiba mais sobre os serviços que eu ofereço [clicando aqui](https://fernandafperes.com.br/servicos/).
   
   

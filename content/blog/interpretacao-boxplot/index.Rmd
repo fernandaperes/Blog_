@@ -187,7 +187,7 @@ Eu confesso que sou tradicional e tendo a preferir os boxplots na vertical, mas 
 Quando eu fiz um conteúdo no [Instagram](https://instagram.com/estatisticaaplicada) explicando a construção e interpretação de boxplots, a pergunta que eu mais recebi foi: "tá, mas e aqueles boxplots com pedaços faltando?".  
 As pessoas se referiam a boxplots como o do grupo "Graduação" no gráfico abaixo, mostrado no início do post:  
   
-```{r, echo=FALSE, fig.align='center'}
+```{r, echo=FALSE, fig.align='center', out.width="300px"}
 knitr::include_graphics("g1.png")
 ```
 <center>

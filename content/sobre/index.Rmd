@@ -10,7 +10,7 @@ type: "static"
 
 ### Oi! Eu sou a Fernanda Fiel Peres
 
-Sou **bacharel** em Ciências Biológicas – Modalidade Médica pela Universidade Federal de São Paulo (UNIFESP), **mestre e doutora** em Farmacologia (UNIFESP) e possuo uma **especialização** em Estatística Aplicada (Unicsul). Trabalho com pesquisa e análise de dados há 11 anos, desde quando ingressei na iniciação científica.  
+Sou **bacharel** em Ciências Biológicas – Modalidade Médica pela Universidade Federal de São Paulo (UNIFESP), **mestre e doutora** em Farmacologia (UNIFESP) e possuo uma **especialização** em Estatística Aplicada (Unicsul). Trabalho com pesquisa e análise de dados há `r as.integer(format(Sys.Date(), "%Y"))-2010` anos, desde quando ingressei na iniciação científica.  
   
 Apesar de ter escolhido uma graduação na área de biológicas, eu sempre amei disciplinas de exatas. Em 2011, durante a minha graduação, comecei a dar aulas de matemática no cursinho universitário da UNIFESP. Atuo como **professora** desde então, tendo experiência em cursos técnicos, de graduação e de pós-graduação.  
   

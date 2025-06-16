@@ -259,21 +259,81 @@ knitr::include_graphics("img18.png")
   
 É bem provável que você encontre a chance representada dessa forma em livros didáticos.  
   
-
-
-
-
-
-
-
-
-
   
+##### Chance e probabilidade são bem diferentes!
+  
+Perceba que chance e probabilidade significam coisas diferentes. E, mais do que isso, que podem corresponder a valores **bem diferentes**. No nosso exemplo, vimos que a **probabilidade** de uma mulher da amostra não ser fumante é de **0,8**, enquanto a **chance** é **4**.  
+  
+Coloquialmente, chance e probabilidade podem ser tratadas como sinônimos. Mas na estatística elas **não são**. Interpretar chance como probabilidade, ou vice-versa, vai levar a uma interpretação incorreta dos seus resultados -- principalmente quando eles envolvem modelos baseados em chance, como a regressão logística.  
+  
+O gráfico abaixo mostra a relação entre probabilidade e chance:  
+  
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.width=4.5, fig.height=4}
+dados <- as.data.frame(list(Probabilidade = seq(0, 0.9, by = 0.001))) |> 
+  mutate(Chance = Probabilidade/(1-Probabilidade),
+         Diferença = Chance-Probabilidade)
+
+ggplot(dados, aes(x = Probabilidade, y = Chance)) +
+  geom_line(color = azul, linewidth = 0.8) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  theme_minimal() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+
+Há apenas um cenário no qual esses dois valores **coincidem**: quando a probabilidade é **igual a zero**.  
+  
+Para **probabilidades baixas**, a chance tende a ser **semelhante** à probabilidade. Mas esses valores se distanciam conforme a probabilidade aumenta:  
+  
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+dados |> 
+  filter(Probabilidade %in% c(0, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9)) |> 
+  mutate(across(1:3, \(x) fstatix::arred(x, digitos = 3))) |> 
+  flextable::flextable() |> 
+  flextable::align(align = "center", part = "all") |> 
+  flextable::bold(part = "header") |> 
+  flextable::width(width = rep(1.25, 3))
+```
+  
+  
+##### Casos favoráveis x casos desfavoráveis
+  
+Para finalizar essa discussão, eu preciso te contar que é bem comum você encontrar chance sendo definida como "a razão entre casos favoráveis e casos desfavoráveis", ou seja:  
+  
+```{r, echo=FALSE, fig.align='center', out.width = '250px'}
+knitr::include_graphics("img19.png")
+```
+  
+Ok, mas o que significa um caso ser favorável ou desfavorável? Casos favoráveis são aqueles que nos interessam; já os casos favoráveis são todos aqueles que não são do nosso interesse.  
+  
+Vou voltar no mesmo exemplo. Se queremos calcular a chance de uma mulher da nossa amostra **não ser fumante**, as mulheres não-fumantes são os nossos "casos favoráveis"; já as mulheres fumantes são os nossos casos desfavoráveis. Ou seja, nosso cálculo fica:  
+  
+  
+```{r, echo=FALSE, fig.align='center', out.width = '380px'}
+knitr::include_graphics("img20.png")
+```
+  
+  
+```{r, echo=FALSE, fig.align='center', out.width = '160px'}
+knitr::include_graphics("img21.png")
+```
+  
+  
+Note que usando esse outro cálculo chegamos à mesma chance: 4. Isso não é por acaso. Os dois cálculos que vimos são equivalentes:  
+  
+```{r, echo=FALSE, fig.align='center', out.width = '700px'}
+knitr::include_graphics("img22.png")
+```
+  
+E, sim, esse cálculo do "casos favoráveis" divididos pelos "casos desfavoráveis" é mais direto. Talvez até por isso ele predomina em materiais didáticos. Mas, honestamente? Eu acho quando aprendemos chance dessa forma temos muito mais dificuldade de interpretá-la. Por isso eu optei aqui por construir todo o raciocínio com a fórmula da razão entre probabilidades. Mas fica aí a informação de que esses dois cálculos **são equivalentes**.  
+  
+
+
   
 #### Como citar esse post, nas normas da ABNT
   
   
-> PERES, Fernanda F. **Probabilidade x chance**. Blog Fernanda Peres, São Paulo, 15 jun. 2025. Disponível em: https://fernandafperes.com.br/blog/probabilidade-chance/.
+> PERES, Fernanda F. **Probabilidade x chance**. Blog Fernanda Peres, São Paulo, 16 jun. 2025. Disponível em: https://fernandafperes.com.br/blog/probabilidade-chance/.
   
   
 <br />

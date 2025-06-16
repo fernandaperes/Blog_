@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Valor de p, nível de significância e testes uni vs. bicaudais | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/valor-de-p-calculo/cover.png"/>
+<meta name="twitter:title" content="Valor de p, nível de significância e testes uni vs. bicaudais"/>
+<meta name="twitter:description" content="Como é calculado o valor de p em um teste estatístico? Qual a diferença entre um teste de hipóteses unicaudal e um bicaudal? Neste post, discutiremos essas questões com base em um exemplo."/>
+
+	<meta property="og:title" content="Valor de p, nível de significância e testes uni vs. bicaudais" />
+<meta property="og:description" content="Como é calculado o valor de p em um teste estatístico? Qual a diferença entre um teste de hipóteses unicaudal e um bicaudal? Neste post, discutiremos essas questões com base em um exemplo." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/valor-de-p-calculo/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/valor-de-p-calculo/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-10T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/valor-de-p-calculo/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Valor%20de%20p%2c%20n%c3%advel%20de%20signific%c3%a2ncia%20e%20testes%20uni%20vs.%20bicaudais&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvalor-de-p-calculo%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvalor-de-p-calculo%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvalor-de-p-calculo%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fvalor-de-p-calculo%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Valor de p, nível de significância e testes uni vs. bicaudais</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    10 jun., 2021
+
+    <i class="far fa-clock clock"></i>
+    11 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/valor-de-p">Valor de p</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/valor-de-p-calculo/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>Em um <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">post anterior</a>, discutimos os conceitos de teste de hipóteses, nível de significância e valor de p, com base no experimento “Uma senhora toma chá”, descrito por Ronald Fisher no seu livro “The design of experiments”. A proposta desse post é explicar como o valor de p é calculado em um teste estatístico, mais especificamente o teste-t independente. Também discutiremos a diferença entre testes uni e bicaudais (e qual deles é o mais adequado à sua pergunta experimental).</p>
+<blockquote>
+<p>Esse também é um post baseado em um vídeo do meu canal. Então, se você prefere consumir esse conteúdo em vídeo, clique <a href="https://youtu.be/bYbW-2BnMk4">aqui</a>.</p>
+</blockquote>
+<div id="a-pergunta-experimental" class="section level3">
+<h3>A pergunta experimental</h3>
+<p>Antes de partirmos para qualquer coleta de dados e análise estatística, precisamos ter uma pergunta experimental relevante. É essa pergunta que vai guiar tanto o planejamento do experimento e a coleta de dados, quanto as análises estatísticas a serem realizadas ao final.<br />
+A pergunta por trás do exemplo que veremos nesse post é: há <strong>diferenças nas médias</strong> de glicemia de jejum de dois grupos de pessoas, um que <strong>faz exercício físico</strong>, e outro <strong>sedentário</strong>?<br />
+Nesse caso, como nosso objetivo é <strong>comparar as médias de dois grupos independentes</strong> (ou seja, formados por pessoas diferentes), vamos usar o <strong>teste-t para duas amostras independentes</strong> (ou simplesmente teste-t independente).</p>
+<blockquote>
+<p>A escolha do teste estatístico adequado não é algo simples. Nesse <a href="https://youtu.be/EtV3_3aN884">vídeo</a> eu faço uma discussão sobre os principais testes estatísticos, e quando usar cada um deles.</p>
+</blockquote>
+<p>Vamos trabalhar aqui com dados hipotéticos e com grupos pequenos para facilitar o cálculo. O foco desse post é entender a teoria por trás dos testes de hipóteses.<br />
+Imagine que sorteamos uma amostra e obtivemos os seguintes valores de glicemia desses dois grupos, exercício físico (EF) e sedendários (SED):</p>
+<p><img src="Img1.png" width="200px" style="display: block; margin: auto;" /></p>
+<p>Podemos facilmente calcular e comparar as médias desses dois grupos:</p>
+<p><img src="Img2.png" width="285px" style="display: block; margin: auto;" /></p>
+<p>Note que há uma diferença de 11 mg/dl entre os grupos. Mas, essa diferença é <strong>estatisticamente significativa</strong>?<br />
+É importante entender que estamos trabalhando com uma <strong>amostra</strong> de pessoas. Logo, os valores de glicemia reais (da população) de pessoas que praticam exercícios e são sedentárias provavelmente serão diferentes dos que obtivemos aqui. Podemos, então, usar a inferência estatística para extrapolar esses resultados e avaliar se na população os valores de glicemia difeririam entre esses grupos. É aí que entram os testes estatísticos. Nesse caso, mais especificamente, o teste-t.</p>
+<blockquote>
+<p>Se os conceitos de população, amostra e inferência estatística não estão muito claros para você, recomendo a leitura desse <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">texto</a>.</p>
+</blockquote>
+</div>
+<div id="as-hipóteses-do-teste-t" class="section level3">
+<h3>As hipóteses do teste-t</h3>
+<p>Vamos discutir isso com mais detalhes mais para frente, mas o teste-t independente é um teste de hipóteses que tem como hipótese nula:</p>
+<ul>
+<li>H<sub>0</sub>: média do grupo A <span class="math inline">\(=\)</span> média do grupo B</li>
+</ul>
+<p>Ou seja, a hipótese nula desse teste é que os grupos apresentam médias iguais.<br />
+E a hipótese alternativa? Bom, discutiremos mais a frente que há mais de uma possibilidade para a hipótese alternativa. Mas, a hipótese alternativa sempre contradiz a hipótese nula. Portanto, nesse caso, a hipótese alternativa é a de que os dois grupos <strong>não</strong> apresentam médias iguais.</p>
+</div>
+<div id="o-cálculo-do-valor-de-t" class="section level3">
+<h3>O cálculo do valor de t</h3>
+<p>O teste-t vai comparar as médias desses dois grupos, levando em consideração também os seus tamanhos e desvios-padrão. Os grupos apresentam um tamanho (n) de 6. Já o desvio-padrão pode ser calculadoEsse <a href="https://youtu.be/A-N-eEB1owQ">vídeo</a> explica como o cálculo do desvio-padrão é realizado, obtendo-se:</p>
+<p><img src="Img3.png" width="285px" style="display: block; margin: auto;" /></p>
+<p>Há algumas fórmulas para o cálculo do <strong>valor de t</strong>, do teste-t. A fórmula abaixo é uma das mais usadas, pois permite que os grupos apresentem variâncias e tamanhos diferentes:</p>
+<p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
+<p>Sendo A e B os dois grupos independentes, DP os seus desvios-padrão e n os seus tamanhos.<br />
+Substituindo os valores da fórmula pelos que calculamos, teremos:</p>
+<p><span class="math display">\[t = \frac{98,8 - 109,8}{\sqrt{\frac{(7,4)^2}{6}+\frac{(12,1)^2}{6}}}\]</span></p>
+<p>Resolvendo, teremos:</p>
+<p><span class="math display">\[t = \frac{-11}{\sqrt{\frac{54,8}{6}+\frac{146,4}{6}}}\]</span></p>
+<p><span class="math display">\[t = \frac{-11}{\sqrt{9,1+24,4}}\]</span></p>
+<p><span class="math display">\[t = \frac{-11}{\sqrt{33,5}}\]</span></p>
+<p><span class="math display">\[t = \frac{-11}{5,8}\]</span></p>
+<p><span class="math display">\[t = -1,897\]</span></p>
+<p>Ok, chegamos a um valor de t. E agora? O que esse valor significa?</p>
+<p>Em geral, o valor de t não será interpretado. Mas, é a partir dele que calculamos um valor fundamental para a nossa tomada de decisão, o valor de p. Vamos então entender como o valor de p é calculado a partir do valor de t.</p>
+</div>
+<div id="o-cálculo-do-valor-de-p-a-partir-do-valor-de-t" class="section level3">
+<h3>O cálculo do valor de p a partir do valor de t</h3>
+<p>O valor de p (valor de probabilidade, discutido <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">aqui</a>) pode ser calculado a partir do valor de p. Como?<br />
+Para isso usamos uma distribuição de probabilidade para valores de t, que <strong>assume que a hipótese nula (H<sub>0</sub>) é verdadeira</strong>. Ou seja, trata-se de uma distribuição dos valores de t em um cenário em que as médias dos dois grupos sejam iguais.<br />
+É uma distribuição simétrica cujo <strong>centro é o t = 0</strong>. Analisando a fórmula do t, percebemos que o t = 0 é obtido quando as médias dos grupos A e B são idênticas (logo, média A - média B = 0). Portanto, uma vez que essa distribuição assume a hipótese nula como verdadeira, os valores mais prováveis serão os valores de t próximos a zero.</p>
+<p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
+<p>A distribuição t tem o seguinte formato:</p>
+<p><img src="Img5.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>A <strong>probabilidade de obtermos um determinado valor de t</strong>, ou um valor ainda mais extremo que aquele, <strong>considerando-se a hipótese nula verdadeira</strong>, é dado pela área sob a curva dessa distribuição. Note que essa probabilidade é o nosso famigerado valor de p.<br />
+Por mais extremo, devemos entender o seguinte: caso t seja positivo (como na figura abaixo), o valor de p corresponde à probabilidade de obtermos um valor de t igual àquele ou ainda superior; caso t seja negativo, o valor de p será a probabilidade de obtermos um valor de t igual àquele ou ainda menor (“mais negativo”).</p>
+<p><img src="Img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Há ainda mais um fator que precisamos considerar antes de calcularmos o valor de p para o valor de t do nosso exemplo (t = -1,89). O formato da distribuição t – e, portanto, também as áreas sob a curva – variam de acordo com os graus de liberdade (gl). Portanto, o cálculo deve considerá-los.</p>
+<p><img src="Img6.png" width="380px" style="display: block; margin: auto;" /></p>
+<blockquote>
+<strong>O que são, afinal, os graus de liberdade?</strong><br />
+Está aí um dos conceitos de estatística mais difíceis de definir, na minha opinião. Uma explicação detalhada está fora do escopo desse post.<br />
+Mas, os graus de liberdade dependem da quantidade de informações dispoíveis (e, portanto, do n) e da quantidade de parâmetros que serão estimados no teste.<br />
+No caso do teste-t independente, os graus de liberdade (gl) correspondem ao n total menos 2. Para o exemplo, temos:<br />
+
+<center>
+gl = 12 - 2<br />
+gl = 10
+</center>
+<p><br></p>
+</blockquote>
+<p>Agora, sim, podemos calcular o valor de p para o nosso exemplo. Esse valor corresponderá à área sob a curva a partir do valor de t calculado (t = -1,98) até o extremo mais próximo, o extremo negativo (esquerdo):</p>
+<p><img src="Img7.png" width="380px" style="display: block; margin: auto;" /></p>
+<p>Esse cálculo depende de integrais (já que trata-se de uma área sob uma curva). Mas, podemos usar uma função do Excel ou do R para calculá-lo rapidamente.</p>
+<p>No R usamos a função <code>pt</code> que recebe como argumentos o valor de t e os graus de liberdade:</p>
+<pre class="r"><code>pt(-1.89, 10)</code></pre>
+<pre><code>## [1] 0.04403099</code></pre>
+<p>No Excel, a função ficaria: <code>=DIST.T(-1,89;10;VERDADEIRO)</code>.</p>
+<blockquote>
+<p>Ah, uma informação importante: essas funções calculam a área da <strong>cauda esquerda</strong> da distribuição. Então, são as funções que usamos quando temos um <strong>t negativo</strong>. Caso o t fosse positivo, por exemplo, t = 2,54, as funções ficariam:</p>
+<ul>
+<li>No R: <code>pt(2.54, 10, lower.tail = FALSE)</code><br />
+</li>
+<li>No Excel: <code>=DIST.T.CD(2,54;10;VERDADEIRO)</code></li>
+</ul>
+</blockquote>
+<p>Bom, calculamos o nosso valor de p, e obtivemos: p = 0,044.<br />
+A qual conclusão iremos chegar? As médias dos dois grupos podem ser consideradas diferentes?<br />
+A resposta a essas perguntas é um sonoro: <strong>depende</strong>.</p>
+<p>Depende de dois fatores:</p>
+<ul>
+<li>O nível de significância (<span class="math inline">\(\alpha\)</span>) estabelecido<br />
+</li>
+<li>Se estamos fazendo um teste uni ou bicaudal</li>
+</ul>
+<p>Vamos discutir cada um desses fatores com mais detalhes.</p>
+</div>
+<div id="o-nível-de-significância-alpha" class="section level3">
+<h3>O nível de significância (<span class="math inline">\(\alpha\)</span>)</h3>
+<p>Como já discutimos no post <a href="https://fernandafperes.com.br/blog/doutora-toma-cha">Uma doutora toma chá</a>, o nível de significância (<span class="math inline">\(\alpha\)</span>) é o nosso ponto de corte para o valor de p. Esse ponto de corte deve ser definido <em>a priori</em>, ou seja, antes das análises dos dados iniciarem.<br />
+É <strong>padrão</strong> na maior parte das áreas usar um <strong>nível de significância de 5% (0,05)</strong>. Mas, é possível estabelecer outros valores, como 1% ou ainda 0,1%.</p>
+<p>Ao estabelecermos um nível de significância de 5% estamos dizendo que só rejeitaremos a hipótese nula caso a probabilidade de obter aquele determinado valor de p, sendo a hipótese nula verdadeira, seja inferior a 5%.</p>
+<p>Vamos adaptar a frase acima ao nosso exemplo. Lembre-se que a nossa hipótese nula é a de que <strong>os dois grupos apresentam médias de glicemia iguais</strong>. E não se esqueça que a distribuição t, a partir da qual calculamos o valor de p, está assumindo que a hipótese nula é verdadeira.<br />
+Caso optemos por um nível de significância de 5%, só rejeitaremos a hipótese nula se a probabilidade de termos obtido aqueles resultados, dado que a hipótese nula é verdadeira, for inferior a 5%.</p>
+<p>Vamos, no nosso exemplo, estabelecer que <span class="math inline">\(\alpha\)</span> = 5%.</p>
+<p>Então:</p>
+<ul>
+<li>Rejeitaremos H<sub>0</sub> caso nosso valor de p seja inferior ou igual ao <span class="math inline">\(\alpha\)</span> (p <span class="math inline">\(\leq\)</span> <span class="math inline">\(\alpha\)</span>)</li>
+<li>Não rejeitaremos H<sub>0</sub> caso nosso valor de p seja superior ao <span class="math inline">\(\alpha\)</span> (p <span class="math inline">\(&gt;\)</span> <span class="math inline">\(\alpha\)</span>)</li>
+</ul>
+<p>No nosso caso, dado que p (0,044) foi inferior a 5% (0,050), rejeitaríamos a hipótese nula (H<sub>0</sub>) e consideraríamos que os grupos apresentam médias estatisticamente diferentes.<br />
+Mas, ainda não podemos chegar a essa conclusão. Antes concluirmos algo a partir do nosso valor de p, precisamos considerar se o teste é uni ou bicaudal.</p>
+</div>
+<div id="testes-uni-vs.-bicaudais" class="section level3">
+<h3>Testes uni <em>vs.</em> bicaudais</h3>
+<p>Vimos que o teste-t independente sempre terá como hipótese nula (H<sub>0</sub>):</p>
+<ul>
+<li>H<sub>0</sub>: média do grupo A <span class="math inline">\(=\)</span> média do grupo B</li>
+</ul>
+<p>No entanto, a hipótese alternativa (H<sub>1</sub>), aquela que contraria a hipótese nula, pode variar. A nossa hipótese alternativa vai depender da teoria por trás daquela análise.</p>
+<p>A hipótese alternativa mais comum - e a mais recomendada, salvo raras exceções - é a de que há uma <strong>diferença</strong> entre os grupos:</p>
+<ul>
+<li>H<sub>1</sub>: média do grupo A <span class="math inline">\(\neq\)</span> média do grupo B</li>
+</ul>
+<p>Observe que aqui estamos estabelecendo apenas que, caso os grupos não sejam iguais, eles serão diferentes. Não estamos nos comprometendo com o sentido dessa diferença, se o grupo A terá uma média superior ou inferior à do grupo B.</p>
+<p>No entanto, é possível construirmos hipóteses alternativas que estabeleçam o sentido dessa diferença:</p>
+<ul>
+<li>H<sub>1</sub>: média do grupo A <span class="math inline">\(&gt;\)</span> média do grupo B<br />
+</li>
+<li>H<sub>1</sub>: média do grupo A <span class="math inline">\(&lt;\)</span> média do grupo B</li>
+</ul>
+<p>A decisão de qual será a hipótese alternativa considerada deve ser tomada <strong>antes da análise dos dados</strong>. E, como eu já disse, mas vale reforçar: deve ser <strong>baseada em razões teóricas</strong>. Só você, pesquisador que formulou aquela pergunta de pesquisa, pode decidir qual será a hipótese alternativa mais adequada.<br />
+De forma geral, eu recomendo a hipótese de <strong>diferença</strong> entre as médias. Muito raramente teremos razões teóricas fortes o suficiente para assumir um sentido para essa diferença.</p>
+<p>Vamos agora analisar essas hipóteses levando em consideração o cálculo do valor de t:</p>
+<p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
+<p>Note que o numerador da conta define o sinal do t. Esse numerador será <strong>positivo</strong> quando a média do grupo A for <strong>superior</strong> à do grupo B; por outro lado, esse numerador será <strong>negativo</strong> quando a média do grupo A for <strong>inferior</strong> à do grupo B.</p>
+<p>Voltando às hipóteses alternativas (H<sub>1</sub>), a primeira delas (média do grupo A <span class="math inline">\(\neq\)</span> média do grupo B) assume que t poderá ser tanto positivo quanto negativo. Já as outras assumem que o t será obrigatoriamente positivo ou obrigatoriamente negativo:</p>
+<p><img src="Img8.png" width="680px" style="display: block; margin: auto;" /></p>
+<p>Caso optemos pela primeira hipótese alternativa, estamos fazendo um teste bicaudal. Isso porque assumimos que o valor de p poderá considerar qualquer uma das caudas (extremidades) da distribuição t. Por outro lado, caso optemos por uma das duas últimas hipóteses, estaremos fazenrdo um teste unicaudal (cujo valor de p considerará apenas uma das caudas da distribuição).</p>
+<p><img src="Img9.png" width="830px" style="display: block; margin: auto;" /></p>
+<p>E a escolha do tipo de teste, se uni ou bicaudal, impacta o cálculo do valor de p.<br />
+Os testes <strong>unicaudais</strong> consideram a área de <strong>apenas um lado</strong> da distribuição, como mostra a figura abaixo. Já os testes <strong>bicaudais</strong> consideram os <strong>dois lados</strong> da distribuição no cálculo da área (ou seja, do valor de p). O valor de p será dado pela soma das áreas sob a curva de cada lado.</p>
+<p><img src="Img10.png" width="700px" style="display: block; margin: auto;" /></p>
+<p>Voltando ao nosso exemplo, vamos optar por um <strong>teste bicaudal</strong>. Portanto, para obter o valor de p para o nosso teste devemos multiplicar o valor calculado, que considerava apenas uma cauda, por dois:</p>
+<center>
+p = 0,044 <span class="math inline">\(\times\)</span> 2<br />
+p = 0,088
+</center>
+</div>
+<div id="a-conclusão" class="section level3">
+<h3>A conclusão</h3>
+<p>Agora, sim, podemos analisar os resultados da nossa análise.<br />
+O nosso valor de p foi de 0,088 e o nível de significância estabelecido foi de 5% (0,050).<br />
+Podemos escrever nossas hipóteses como:</p>
+<ul>
+<li>H<sub>0</sub>: média do grupo EF <span class="math inline">\(=\)</span> média do grupo SED<br />
+</li>
+<li>H<sub>1</sub>: média do grupo EF <span class="math inline">\(\neq\)</span> média do grupo SED</li>
+</ul>
+<p>Lembrando que:</p>
+<ul>
+<li>Rejeitamos H<sub>0</sub> caso p <span class="math inline">\(\leq\)</span> <span class="math inline">\(\alpha\)</span><br />
+</li>
+<li>Não rejeitamos H<sub>0</sub> caso p <span class="math inline">\(&gt;\)</span> <span class="math inline">\(\alpha\)</span></li>
+</ul>
+<p>Como, no nosso caso, p &gt; <span class="math inline">\(\alpha\)</span>, não vamos rejeitar H<sub>0</sub>. Ou seja, não temos evidências suficientes para dizer que as médias dos grupos EF e SED são estatisticamente diferentes.</p>
+<blockquote>
+<p>Ah, uma última observação: note que, caso tivéssemos optado por um teste unicaudal, o nosso valor de p seria 0,044 e rejeitaríamos a hipótese nula. Passaríamos a considerar que os grupos apresentam médias estatisticamente diferentes.<br />
+É por isso que é tão fundamental decidir, antes da análise dos dados, se o teste será considerado unicaudal ou bicaudal. É uma forma de evitar posturas antiéticas, que forcem um resultado mais conveniente.</p>
+</blockquote>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/falacias-valor-de-p/"> &laquo; As falácias do valor de p</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">Como interpretar o intervalo de confiança? &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

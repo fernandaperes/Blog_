@@ -1,0 +1,117 @@
+---
+title: "Qual serviço se adequa a você?"
+hidetitle: true
+type: "static"
+---
+
+```{r, include = F}
+agenda_aberta <- T
+# razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
+# razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. Por esse motivo, a agenda para contratação dos serviços de análise dados ou consultoria está **fechada**."
+razao_fechamento <- "Você já deve saber que muito em breve eu vou lançar um curso, né? Se não sabia, já fica aqui a informação! Para conseguir finalizar todos os detalhes do curso a tempo, a agenda para contratação dos serviços de análise dados ou consultoria está **temporariamente fechada**. Agradeço a compreensão! Em breve estou de volta!"
+reabertura <- "dia 19/08/2024"
+
+inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")
+fim_aberta <- ifelse(isFALSE(agenda_aberta), "-->", "")
+inicio_fechada <- ifelse(isFALSE(agenda_aberta), "", "<!--")
+fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
+```
+
+
+<!-- Versão agenda aberta -->
+
+
+`r inicio_aberta`
+<div class = "sobre row">
+  
+<center>
+Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados!
+<br>
+Para eu te explicar o serviço mais indicado para você, por favor, selecione abaixo a situação que mais se adequa à sua demanda:
+</center>
+
+<br><br>
+
+
+<center>
+<a href="https://fernandafperes.com.br/analise-dados" class="button">
+Já coletei os meus dados e quero contratar alguém que os analise e me entregue um relatório completo com os resultados descritos em texto, gráficos e tabelas.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/consultoria" class="button">
+Já coletei os meus dados e quero eu mesmo(a) realizar a análise. No entanto, estou com dúvidas no processo de análise/ de interpretação dos resultados.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/consultoria" class="button">
+Ainda não coletei os meus dados e gostaria de tirar dúvidas sobre: como realizar a coleta, o que escrever na seção de análise estatística do meu projeto, entre outras questões de delineamento experimental.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/analise-dados" class="button">
+Ainda não coletei os meus dados e gostaria de contratar um serviço de cálculo amostral.
+</a>
+</center>
+
+
+<br>
+
+<center>
+<a href="https://fernandafperes.com.br/servicos" class="button">
+Não me encaixo em nenhuma situação acima. Quero entender quais são os serviços que você oferece e como eles funcionam.
+</a>
+</center>
+
+
+<br>
+<br>
+<br>
+
+</div>
+`r fim_aberta`
+
+
+
+<!-- Versão agenda fechada -->
+
+`r inicio_fechada`
+<div class = "sobre row">
+  
+<center>
+Oi! Tudo bem?
+<br>
+`r razao_fechamento`<br>
+Caso possa esperar, a agenda será reaberta no `r reabertura`.<br>
+No link abaixo você tem acesso a uma página que explica como funcionam os dois serviços.
+</center>
+
+<br><br>
+
+<center>
+<a href="https://fernandafperes.com.br/servicos" class="button">
+Como funcionam os serviços de consultoria e análise de dados?
+</a>
+</center>
+
+
+<br>
+<br>
+<br>
+
+</div>
+
+`r fim_fechada`
+

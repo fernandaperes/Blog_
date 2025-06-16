@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/</link>
+    <description>Recent content on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Tue, 13 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Por que as pesquisas eleitorais erram?</title>
+      <link>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</link>
+      <pubDate>Tue, 13 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/</guid>
+      <description>Por que os resultados das eleições quase sempre discordam das pesquisas eleitorais? Essa é uma pergunta que não pode ser respondida de forma superficial. Vamos discuti-la aqui.</description>
+    </item>
+    
+    <item>
+      <title>O que não fazer em gráficos de pizza</title>
+      <link>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</link>
+      <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</guid>
+      <description>O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
+    </item>
+    
+    <item>
+      <title>Como representar os resultados do qui-quadrado em um gráfico?</title>
+      <link>https://fernandafperes.com.br/blog/grafico-qui-quadrado/</link>
+      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/grafico-qui-quadrado/</guid>
+      <description>Já tentou representar graficamente os resultados de um teste qui-quadrado e sem saber exatamente como fazer? Eu também. Ness post, compartilho algumas soluções que eu encontrei.</description>
+    </item>
+    
+    <item>
+      <title>Gráficos dinamite: usá-los ou não, eis a questão</title>
+      <link>https://fernandafperes.com.br/blog/graficos-dinamite/</link>
+      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-dinamite/</guid>
+      <description>Você já usou um gráfico de barras para representar variáveis numéricas (como peso, idade)? Sabia que essa é uma escolha controversa? Neste post te explico as críticas e sugiro alternativas a esse uso do gráfico de barras.</description>
+    </item>
+    
+    <item>
+      <title>Como interpretar (e construir) um gráfico boxplot?</title>
+      <link>https://fernandafperes.com.br/blog/interpretacao-boxplot/</link>
+      <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/interpretacao-boxplot/</guid>
+      <description>O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.</description>
+    </item>
+    
+    <item>
+      <title>Explorando os dados dos artigos da NBER #TidyTuesday</title>
+      <link>https://fernandafperes.com.br/blog/tidy-tuesday-nber/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/tidy-tuesday-nber/</guid>
+      <description>Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday.</description>
+    </item>
+    
+    <item>
+      <title>Explorando os dados dos Emmy Awards #TidyTuesday</title>
+      <link>https://fernandafperes.com.br/blog/tidy-tuesday-emmy/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/tidy-tuesday-emmy/</guid>
+      <description>Análise exploratória dos dados dos Emmy Awards, com foco em gênero. Essa análise de dados faz parte do projeto #TidyTuesday.</description>
+    </item>
+    
+    <item>
+      <title>As falácias do valor de p</title>
+      <link>https://fernandafperes.com.br/blog/falacias-valor-de-p/</link>
+      <pubDate>Mon, 30 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/falacias-valor-de-p/</guid>
+      <description>O valor de p está entre os conceitos mais complexos de estatística - e também entre os mais mal interpretados. A maior parte dos livros didáticos de estatística definem incorretamente o valor de p. Neste post, vamos discutir as interpretações incorretas mais comuns.</description>
+    </item>
+    
+    <item>
+      <title>Valor de p, nível de significância e testes uni vs. bicaudais</title>
+      <link>https://fernandafperes.com.br/blog/valor-de-p-calculo/</link>
+      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/valor-de-p-calculo/</guid>
+      <description>Como é calculado o valor de p em um teste estatístico? Qual a diferença entre um teste de hipóteses unicaudal e um bicaudal? Neste post, discutiremos essas questões com base em um exemplo.</description>
+    </item>
+    
+    <item>
+      <title>Como interpretar o intervalo de confiança?</title>
+      <link>https://fernandafperes.com.br/blog/intervalo-de-confianca/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/intervalo-de-confianca/</guid>
+      <description>O que significa o intervalo de confiança? Qual a sua relação com a margem de erro? E com o nível de significância? Neste post discutimos, com exemplos, esse conceito tão importante da estatística inferencial.</description>
+    </item>
+    
+    <item>
+      <title>O que é e como interpretar o valor de p?</title>
+      <link>https://fernandafperes.com.br/blog/doutora-toma-cha/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/doutora-toma-cha/</guid>
+      <description>Uma discussão sobre valor de p, teste de hipóteses e nível de significância. Afinal, o que o valor de p – essa medida tão famosa e tão controversa – indica? Neste post, te explico esses conceitos com base no experimento &amp;ldquo;uma senhora toma chá&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: Teste-t para amostras independentes no R</title>
+      <link>https://fernandafperes.com.br/blog/teste-t-independente/</link>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/teste-t-independente/</guid>
+      <description>O teste-t independente é um teste estatístico que permite comparar as médias de dois grupos não relacionados. Neste post, veremos como realizá-lo no R.</description>
+    </item>
+    
+    <item>
+      <title>Seu teste diagnóstico foi positivo. Qual a probabilidade de ser um positivo verdadeiro?</title>
+      <link>https://fernandafperes.com.br/blog/teste-diagnostico/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/teste-diagnostico/</guid>
+      <description>Já se perguntou qual a probabilidade do seu teste diagnóstico ser um positivo verdadeiro? Neste post, discuto essa resposta. E ela não é nada intuitiva: depende de quem você é.</description>
+    </item>
+    
+    <item>
+      <title>Links de acesso</title>
+      <link>https://fernandafperes.com.br/links-de-acesso/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/links-de-acesso/</guid>
+      <description>Canal no YouTube  
+   Informações sobre os serviços de consultoria científica e análise de dados      Textos no blog</description>
+    </item>
+    
+    <item>
+      <title>O serviço de análise de dados</title>
+      <link>https://fernandafperes.com.br/analise-dados/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/analise-dados/</guid>
+      <description>A análise de dados Para quem é o serviço de análise de dados? Para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.</description>
+    </item>
+    
+    <item>
+      <title>O serviço de consultoria</title>
+      <link>https://fernandafperes.com.br/consultoria/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/consultoria/</guid>
+      <description>A consultoria científica Para quem é o serviço de consultoria científica? Esse serviço é para:
+ Você, que ainda não coletou os seus dados e gostaria de conversar sobre o delineamento do seu experimento e sobre essa coleta</description>
+    </item>
+    
+    <item>
+      <title>Qual serviço se adequa a você?</title>
+      <link>https://fernandafperes.com.br/qual-servico/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/qual-servico/</guid>
+      <description>Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados! Para eu te explicar o serviço mais indicado para você, por favor, selecione abaixo a situação que mais se adequa à sua demanda:</description>
+    </item>
+    
+    <item>
+      <title>Serviços</title>
+      <link>https://fernandafperes.com.br/servicos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/servicos/</guid>
+      <description>Como funcionam os serviços de
+consultoria científica e análise de dados?   A análise de dados Para quem é o serviço de análise de dados?</description>
+    </item>
+    
+    <item>
+      <title>Sobre</title>
+      <link>https://fernandafperes.com.br/sobre/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/sobre/</guid>
+      <description>Oi! Eu sou a Fernanda Fiel Peres Sou bacharel em Ciências Biológicas – Modalidade Médica pela Universidade Federal de São Paulo (UNIFESP), mestre e doutora em Farmacologia (UNIFESP) e possuo uma especialização em Estatística Aplicada (Unicsul).</description>
+    </item>
+    
+  </channel>
+</rss>

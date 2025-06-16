@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>As idades de atores e atrizes vencedores do Oscar diferem? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/oscar-idades/cover.png"/>
+<meta name="twitter:title" content="As idades de atores e atrizes vencedores do Oscar diferem?"/>
+<meta name="twitter:description" content="Há nas redes a sugestão de que mulheres que ganham o Oscar de melhor atriz tendem a ser mais jovens que os homens que ganham o prêmio correspondente. Será que são mesmo? Neste post, eu exploro esses dados."/>
+
+	<meta property="og:title" content="As idades de atores e atrizes vencedores do Oscar diferem?" />
+<meta property="og:description" content="Há nas redes a sugestão de que mulheres que ganham o Oscar de melhor atriz tendem a ser mais jovens que os homens que ganham o prêmio correspondente. Será que são mesmo? Neste post, eu exploro esses dados." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/oscar-idades/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/oscar-idades/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-03-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-03-05T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/oscar-idades/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=As%20idades%20de%20atores%20e%20atrizes%20vencedores%20do%20Oscar%20diferem%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2foscar-idades%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2foscar-idades%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2foscar-idades%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2foscar-idades%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">As idades de atores e atrizes vencedores do Oscar diferem?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    5 mar., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">gráficos</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/oscar">oscar</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/oscar-idades/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+<link href="https://fernandafperes.com.br/blog/oscar-idades/index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/tabwid/tabwid.js"></script>
+<link href="https://fernandafperes.com.br/blog/oscar-idades/index_files/htmltools-fill/fill.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/htmlwidgets/htmlwidgets.js"></script>
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/plotly-binding/plotly.js"></script>
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/typedarray/typedarray.min.js"></script>
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/jquery/jquery.min.js"></script>
+<link href="https://fernandafperes.com.br/blog/oscar-idades/index_files/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/crosstalk/js/crosstalk.min.js"></script>
+<link href="https://fernandafperes.com.br/blog/oscar-idades/index_files/plotly-htmlwidgets-css/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/oscar-idades/index_files/plotly-main/plotly-latest.min.js"></script>
+
+
+<div class="parentfaq">
+<div class="faq">
+<center>
+<em>Michelle Yeoh, vencedora do Oscar de Melhor atriz na cerimônia de 2023, aos 60 anos.</em>
+</center>
+</div>
+</div>
+<div id="a-hipótese-a-ser-investigada" class="section level4">
+<h4>A hipótese a ser investigada</h4>
+<p>Desde que Mikey Madison ganhou o Oscar de melhor atriz no dia 03 de março de 2025, aos 25 anos, uma discussão tem tomado conta das redes sociais. Muitas pessoas argumentam que as mulheres premiadas nas categorias de melhor atriz e melhor atriz coadjuvante <strong>tendem a ser mais jovens</strong> que os homens premiados nas categorias correspondentes.</p>
+<p>Por outro lado, outros defendem que isso não é bem verdade e que <strong>mulheres mais velhas têm sido premiadas com frequência nos últimos anos</strong> – uma das mulheres utilizadas como exemplo para essa tese é a Michelle Yeoh, ganhadora do Oscar de melhor atriz aos 60 anos.</p>
+<p>Esse último argumento me incomodou particularmente. Com certeza existem mulheres que foram premiadas mais velhas, acima dos 50 ou 60 anos. Mas, a existência dessas premiações não é <strong>evidência suficiente para rejeitar a hipótese</strong> em questão: em geral (e aqui vamos pensar “em média”) as mulheres que são premiadas nas categorias de melhor atriz são mais jovens que os homens premiados nas categorias de melhor ator?</p>
+</div>
+<div id="como-testar-essa-hipótese" class="section level4">
+<h4>Como testar essa hipótese?</h4>
+<p>Para avaliar se esse é mesmo o caso precisamos de… Dados. Aqui a academia não nos ajuda. O <a href="https://awardsdatabase.oscars.org/">site</a> oferece um “database” que não gera uma planilha, o que dificulta consideravelmente a análise.</p>
+<p>Portanto, para avaliar as idades dos homens e mulheres ganhadores dos Oscars nas categorias de atuação eu trabalhei com as seguintes bases de dados:</p>
+<p><br /></p>
+<ol style="list-style-type: decimal">
+<li>The Oscar Award, 1927 - 2024 - Extraída do <a href="https://www.kaggle.com/datasets/unanimad/the-oscar-award">Kaggle</a></li>
+</ol>
+<ul>
+<li>Essa base inclui os indicados ao Oscar em todas as categorias, de 1927 (primeira cerimônia) até 2024 (penúltima cerimônia). Aqui temos uma lista com todos os indicados ao Oscar nesse período, em todas as categorias. Há o nome do indicado, o filme ao qual a indicação se refere, e uma coluna que indica se essa pessoa venceu ou não o Oscar daquele ano.</li>
+<li>Como você já deve ter percebido, ainda que seja uma base de dados excelente, ela ainda não nos permite responder à nossa pergunta, porque não traz informações sobre a idade ou data de nascimento dos indicados. Portanto, considerei também uma segunda base…</li>
+</ul>
+<p><br /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Demographics of Academy Awards (Oscars) Winners - Também extraída do <a href="https://www.kaggle.com/datasets/fmejia21/demographics-of-academy-awards-oscars-winners">Kaggle</a></li>
+</ol>
+<ul>
+<li>Essa base inclui apenas os vencedores do Oscar – ou seja, ao contrário da base anterior não inclui aqueles que foram indicados, mas não venceram. Isso me fez decidir avaliar apenas os vencedores.</li>
+<li>A base inclui a data de nascimento de todos os vencedores – o que, ótimo, vai nos ajudar a responder à nossa pergunta. Mas… Ela só tem dados das premiações de 1927 a 2014. O que nos leva a uma terceira etapa de coleta dos dados.</li>
+</ul>
+<p><br /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Preenchimento manual com base em pesquisa na Wikipedia das seguintes informações:</li>
+</ol>
+<ul>
+<li>Os vencedores do Oscar de 2025, que não constavam na base – inclui seus nomes, nomes dos filmes e suas datas de nascimento.</li>
+<li>Datas de nascimento dos vencedores de 2015 a 2024, bem como de alguns poucos atores/ atrizes cuja data de nascimento não constava na base 2. Aqui, como eu mencionei, eu usei como base a data fornecida pela Wikipedia. Sim, eu sei que a data de nascimento fornecida pela Wikipedia não é 100% confiável. Mas eu assumi que, como eu precisava de informações mais recentes, as datas de nascimento seriam mais confiáveis.</li>
+<li>E, sim, eu poderia ter feito um <em>web scraping</em> ao invés de um preenchimento manual. Mas, as minhas habilidades com <em>web scraping</em> são tão limitadas que eu com certeza demoraria mais indo por esse caminho.</li>
+</ul>
+<p><br /></p>
+<p>Isso tudo foi unido e devidamente processado – por exemplo, as datas fornecidas pela base 2 não seguiam um padrão e tiveram que ser ajustadas.</p>
+<details>
+<summary>
+Clique para ver o código de download e organização das bases
+</summary>
+<pre class="r"><code>library(tidyverse)
+
+# Leitura da base baixada em: https://www.kaggle.com/datasets/unanimad/the-oscar-award
+dados &lt;- read_csv(&quot;the_oscar_award.csv&quot;) |&gt; 
+  dplyr::filter(grepl(&#39;ACTOR|ACTRESS&#39;, category)) |&gt;
+  filter(winner == T)
+# Essa base resulta em 370 vencedores nas categorias de atriz ou ator
+
+# Leitura da base baixada em: https://www.kaggle.com/datasets/fmejia21/demographics-of-academy-awards-oscars-winners
+dados2 &lt;- read_csv(&quot;Oscars-demographics-DFE.csv&quot;) |&gt; 
+  dplyr::filter(grepl(&#39;Actor|Actress&#39;, award)) |&gt; 
+  select(c(date_of_birth, person)) |&gt; 
+  distinct()
+# Essa base resulta em 283 vencedores nas categorias de atriz ou ator distintos, com suas respectivas datas de nascimento
+
+# Renomeando a coluna &quot;person&quot; da base 2, para uni-la com a base 1
+colnames(dados2)[2] &lt;- c(&quot;name&quot;)
+
+# União das duas bases
+dados &lt;- dplyr::left_join(dados, dados2)
+
+# Filtragem dos dados que tinham data de nascimento e organização dessa data
+dados_com_data &lt;- dados |&gt; 
+  filter(!is.na(date_of_birth)) |&gt; 
+  separate_wider_delim(cols = 8, delim = &quot;-&quot;,
+                       names = c(&quot;d&quot;, &quot;m&quot;, &quot;y&quot;)) |&gt; 
+  mutate(d = ifelse(as.numeric(d) &lt; 10, paste0(&quot;0&quot;, d), d),
+         y = ifelse(as.numeric(y) &gt; 1000, y,
+                    paste0(&quot;19&quot;, y)),
+         date_of_birth = as.Date(paste0(d, &quot;-&quot;, m, &quot;-&quot;, y),
+                                 format = &quot;%d-%b-%Y&quot;)) |&gt; 
+  select(-c(&quot;d&quot;, &quot;m&quot;, &quot;y&quot;))
+
+# Filtragem dos dados sem data de nascimento para preenchimento manual
+dados_sem_data &lt;- dados |&gt; 
+  filter(is.na(date_of_birth))
+
+# Salvando os dados sem data de nascimento para preenchimento manual
+# dados_sem_data |&gt; 
+#   writexl::write_xlsx(&quot;dados_para_adicionar_data.xlsx&quot;)
+
+# Lendo a base de dados preenchida manualmente
+dados_sem_data &lt;- readxl::read_excel(&quot;dados_para_adicionar_data.xlsx&quot;)
+
+# Unindo as bases com e sem data
+dados &lt;- rbind(dados_com_data, dados_sem_data)
+rm(dados_com_data, dados_sem_data, dados2)
+
+# Cálculo das idades dos atores e atrizes no ano da cerimônia e do lançamento do filme
+# Considerei que a cerimônia aconteceu sempre em março, para simplificar
+dados &lt;- dados |&gt; 
+  mutate(age_filming = as.numeric(difftime(as.Date(paste0(year_film,&quot;-01-01&quot;)),
+                                           date_of_birth)/365.25),
+         age_ceremony = as.numeric(difftime(as.Date(paste0(year_ceremony,&quot;-03-01&quot;)),
+                                            date_of_birth)/365.25)) |&gt; 
+  mutate(age_filming = floor(age_filming),
+         age_ceremony = floor(age_ceremony))
+
+# Criação da variável gênero, de acordo com a categoria
+dados$gender &lt;- ifelse(stringr::str_detect(dados$category, &quot;ACTRESS&quot;),
+                       &quot;Feminino&quot;, &quot;Masculino&quot;)
+
+# Organização da variável categoria
+dados$category &lt;- factor(dados$category,
+                         levels = c(&quot;ACTOR&quot;,
+                                    &quot;ACTOR IN A LEADING ROLE&quot;,
+                                    &quot;ACTOR IN A SUPPORTING ROLE&quot;, 
+                                    &quot;ACTRESS&quot;,
+                                    &quot;ACTRESS IN A LEADING ROLE&quot;,
+                                    &quot;ACTRESS IN A SUPPORTING ROLE&quot;),
+                         labels = c(&quot;Melhor ator&quot;,
+                                    &quot;Melhor ator&quot;,
+                                    &quot;Melhor ator coadjuvante&quot;, 
+                                    &quot;Melhor atriz&quot;,
+                                    &quot;Melhor atriz&quot;,
+                                    &quot;Melhor atriz coadjuvante&quot;))
+
+# Renomeando as colunas para português
+colnames(dados) &lt;- c(&quot;Ano do filme&quot;, &quot;Ano da cerimônia&quot;, &quot;Cerimônia&quot;,
+                     &quot;Categoria&quot;, &quot;Nome&quot;, &quot;Filme&quot;, &quot;Vencedor&quot;,
+                     &quot;Data de nascimento&quot;, &quot;Idade (anos) no filme&quot;,
+                     &quot;Idade (anos) na cerimônia&quot;, &quot;Gênero&quot;)</code></pre>
+</details>
+</div>
+<div id="qual-a-média-de-idade-dos-homens-e-mulheres-que-vencem-nas-categorias-de-atuação" class="section level4">
+<h4>Qual a média de idade dos homens e mulheres que vencem nas categorias de atuação?</h4>
+<p>A média de idade ao receber o prêmio de melhor atriz, durante todo o período (1927 a 2025) foi de <strong>36,9 anos</strong> (<em>versus</em> <strong>44,6 anos</strong> para melhor ator). Esse padrão se mantém quando olhamos para a mediana: 33,5 anos para as mulheres e 43 anos para os homens. A interpretação desse dado é: metade das mulheres que ganharam o Oscar de melhor atriz tinham menos de 34 anos no momento da premiação. Para homens, esse valor aumenta em 10 anos: metade dos homens premiados nessa categoria tinham 43 anos ou menos. Isso mostra que os <strong>homens</strong> que ganham o prêmio máximo de atuação são, em geral, <strong>mais velhos</strong> que as mulheres.</p>
+<p>Quando avaliamos os prêmios de atrizes e atores coadjuvantes, novamente a média de idade das mulheres é menor: <strong>40,9 anos</strong> <em>versus</em> <strong>49,8 anos</strong>. A mediana, mais uma vez, segue a tendência da média. Metade das mulheres premiadas na categoria de atuação coadjuvante tinham até 39 anos no momento da premiação. Entre os homens, metade dos premiados tinham 46 anos ou menos.</p>
+<div class="tabwid"><style>.cl-0bf92734{}.cl-0bf55eba{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0bf55ec4{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0bf6c6f6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0bf6c6f7{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0bf6d4ca{width:1.95in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4cb{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4cc{width:1.346in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4d4{width:0.82in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4d5{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4d6{width:0.896in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4de{width:1.95in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4df{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4e0{width:1.346in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4e1{width:0.82in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4e8{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4e9{width:0.896in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4ea{width:1.95in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4eb{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4f2{width:1.346in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4f3{width:0.82in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4f4{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4f5{width:0.896in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4fc{width:1.95in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4fd{width:0.718in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4fe{width:1.346in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d4ff{width:0.82in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d506{width:0.854in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0bf6d507{width:0.896in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-0bf92734'><thead><tr style="overflow-wrap:break-word;"><th class="cl-0bf6d4ca"><p class="cl-0bf6c6f6"><span class="cl-0bf55eba">Categoria</span></p></th><th class="cl-0bf6d4cb"><p class="cl-0bf6c6f7"><span class="cl-0bf55eba">Média</span></p></th><th class="cl-0bf6d4cc"><p class="cl-0bf6c6f7"><span class="cl-0bf55eba">Desvio-padrão</span></p></th><th class="cl-0bf6d4d4"><p class="cl-0bf6c6f7"><span class="cl-0bf55eba">Mínimo</span></p></th><th class="cl-0bf6d4d5"><p class="cl-0bf6c6f7"><span class="cl-0bf55eba">Máximo</span></p></th><th class="cl-0bf6d4d6"><p class="cl-0bf6c6f7"><span class="cl-0bf55eba">Mediana</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-0bf6d4de"><p class="cl-0bf6c6f6"><span class="cl-0bf55ec4">Melhor ator</span></p></td><td class="cl-0bf6d4df"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">44,6</span></p></td><td class="cl-0bf6d4e0"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">9,6</span></p></td><td class="cl-0bf6d4e1"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">29</span></p></td><td class="cl-0bf6d4e8"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">83</span></p></td><td class="cl-0bf6d4e9"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">43,0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0bf6d4ea"><p class="cl-0bf6c6f6"><span class="cl-0bf55ec4">Melhor ator coadjuvante</span></p></td><td class="cl-0bf6d4eb"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">49,8</span></p></td><td class="cl-0bf6d4f2"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">13,6</span></p></td><td class="cl-0bf6d4f3"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">20</span></p></td><td class="cl-0bf6d4f4"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">82</span></p></td><td class="cl-0bf6d4f5"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">46,0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0bf6d4de"><p class="cl-0bf6c6f6"><span class="cl-0bf55ec4">Melhor atriz</span></p></td><td class="cl-0bf6d4df"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">36,9</span></p></td><td class="cl-0bf6d4e0"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">12,2</span></p></td><td class="cl-0bf6d4e1"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">21</span></p></td><td class="cl-0bf6d4e8"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">80</span></p></td><td class="cl-0bf6d4e9"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">33,5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0bf6d4fc"><p class="cl-0bf6c6f6"><span class="cl-0bf55ec4">Melhor atriz coadjuvante</span></p></td><td class="cl-0bf6d4fd"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">40,9</span></p></td><td class="cl-0bf6d4fe"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">14,0</span></p></td><td class="cl-0bf6d4ff"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">10</span></p></td><td class="cl-0bf6d506"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">77</span></p></td><td class="cl-0bf6d507"><p class="cl-0bf6c6f7"><span class="cl-0bf55ec4">39,0</span></p></td></tr></tbody></table></div>
+<details>
+<summary>
+Clique para ver o código de que gerou a tabela acima
+</summary>
+<pre class="r"><code>dados |&gt; 
+  group_by(Categoria) |&gt; 
+  summarise(`Média` = mean(`Idade (anos) na cerimônia`),
+            `Desvio-padrão` = sd(`Idade (anos) na cerimônia`),
+            Mínimo = min(`Idade (anos) na cerimônia`),
+            Máximo = max(`Idade (anos) na cerimônia`),
+            Mediana = median(`Idade (anos) na cerimônia`)) |&gt; 
+  mutate(across(c(2:3,6), \(x) scales::number(x, accuracy = 0.1,
+                                              decimal.mark = &quot;,&quot;)))</code></pre>
+</details>
+<p><br /></p>
+<p>E, por mais estranho que pareça, essa análise que fizemos até agora <strong>basta para afirmar</strong> que as mulheres que recebem prêmios na categoria de atuação são em média mais jovens que os homens.</p>
+<p>Mas, Fernanda, e os <strong>testes estatísticos</strong>? Não vamos fazer um teste-t, calcular o valor de p? Então… Não vamos!</p>
+<blockquote>
+<p>E antes que alguém me acuse de não querer fazer o teste porque ele não mostraria diferenças estatisticamente significativas entre as médias, saiba que, sim, ele mostraria. Os valores de p para as duas comparações (melhor atriz x melhor ator e melhor atriz coadjuvante x melhor ator coadjuvante) são menores que 0,001.</p>
+</blockquote>
+</div>
+<div id="por-que-não-devemos-fazer-testes-estatísticos-nesse-caso" class="section level4">
+<h4>Por que não devemos fazer testes estatísticos nesse caso?</h4>
+<p>Para entender o porquê não devemos fazer testes estatísticos aqui – ou ainda, o porquê a análise das médias basta – precisamos lembrar de dois conceitos de estatística: população e amostra. Vou discuti-los brevemente, mas já adianto que não é o foco desse post discutir esses conceitos – caso queira uma discussão mais aprofundada, recomendo <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">esse post</a>.</p>
+<p>Em resumo, chamamos de <strong>população</strong> a totalidade dos elementos que nos interessam para responder à nossa pergunta de pesquisa. Em muitos casos, é inviável estudar toda a população e, portanto, investigamos apenas uma parcela dessa população, que recebe o nome de <strong>amostra</strong>. Os testes estatísticos são utilizados para fazer inferências – ou seja, <strong>extrapolar</strong> os resultados obtidos em uma amostra para a população. Perceba que só faz sentido utilizarmos testes estatísticos quando trabalhamos com amostras.</p>
+<p>No nosso caso, a <strong>população</strong> é composta por <strong>todos os ganhadores do Oscar</strong> de atuação, no período de 1927 a 2025. E, sim, nós temos acesso a toda a população. Portanto, não precisamos utilizar recursos para fazer inferências. Nossa pergunta é respondida com uma simples análise descritiva.</p>
+<p>Nossa pergunta era: “a média de idade de mulheres é menor que a média de idade de homens que ganham Oscar por atuação?”. A resposta, como vimos, é <strong>sim</strong>.</p>
+</div>
+<div id="visualizando-as-idades-nas-quatro-categorias-de-interesse" class="section level4">
+<h4>Visualizando as idades nas quatro categorias de interesse</h4>
+<p>No gráfico abaixo cada ponto corresponde a um vencedor do Oscar. As linhas horizontais indicam a média e as barras de erro correspondem ao desvio-padrão. É possível notar que os pontos das duas categorias femininas estão <strong>deslocados para baixo</strong> em relação às categorias masculinas correspondentes – ou seja, mulheres tendem a tem idades menores quando vencem nessas categorias.</p>
+<p><img src="plot1.png" width="500px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="qual-a-tendência-da-média-de-idade-ao-longo-das-décadas" class="section level4">
+<h4>Qual a tendência da média de idade ao longo das décadas?</h4>
+<p>Outra pergunta interessante a se responder com esses dados é: o padrão de idades das mulheres premiadas têm mudado ao longo dos anos? Para responder a essa pergunta, eu calculei as médias de idade (na cerimônia) ao longo das décadas.</p>
+<p>Podemos observar que para a categoria principal (melhor atriz e melhor ator), <strong>as médias de idade dos homens são superiores às das mulheres em todas as décadas</strong>. E, curiosamente, nos anos 2020 vemos as maiores médias históricas, tanto para os homens quanto para as mulheres.</p>
+<p>Para a categoria de atuação coadjuvante, os homens são em média mais velhos em quase todas as décadas, exceto em 1930 e 2020 – décadas nas quais as médias de idade das mulheres são ligeiramente superiores. Vale destacar que nas demais décadas as médias de idade dos homens são bem superiores às das mulheres.</p>
+<p><img src="plot2.png" width="750px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="um-gráfico-interativo-para-você-explorar-os-dados" class="section level4">
+<h4>Um gráfico interativo para você explorar os dados</h4>
+<p>O gráfico abaixo traz todos os dados mencionados aqui. Se você <strong>passar o cursor</strong> pelos pontos, verá quem é o vencedor, qual a sua idade no momento da cerimônia, em que ano essa cerimônia aconteceu e qual o filme pelo qual ele recebeu o Oscar.</p>
+<center>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-1" style="width:500px;height:336px;"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"data":[{"x":[1,1,1,1,1,1,1,1.04,1.04,1,1,1,0.95999999999999996,1,1.04,1,1.04,1.04,1,1,0.95999999999999996,1.04,0.95999999999999996,1,1,1,0.95999999999999996,1,0.95999999999999996,1.04,1.04,1,1,1.04,1.04,1.04,1,1,1.04,1.04,1,1.0800000000000001,0.95999999999999996,1,0.95999999999999996,0.95999999999999996,0.95999999999999996,1,1.04,1.04,1.0800000000000001,0.95999999999999996,1,1.0800000000000001,1,0.95999999999999996,1.04,1.04,0.92000000000000004,1.04,0.92000000000000004,1,1.0800000000000001,1.0800000000000001,1.0800000000000001,1,1.0800000000000001,1.04,0.95999999999999996,0.95999999999999996,0.95999999999999996,1.04,1,1.1200000000000001,0.92000000000000004,0.92000000000000004,0.92000000000000004,1,1.04,0.95999999999999996,1.04,0.92000000000000004,1,1,1,0.95999999999999996,0.95999999999999996,1.04,1.04,1.1200000000000001,1.1200000000000001,1,1.0800000000000001,0.92000000000000004,1.04,1.04,1.1200000000000001,0.95999999999999996,2,2,2,2,2,2,2,2,2,2.04,2,2,2,2.04,1.96,2,2,2,2.04,2,2.04,1.96,2,2.04,2.0800000000000001,2,2,2,1.96,2.0800000000000001,2.04,2.04,2.04,2,2,2,2,2.04,2,2,2,2,2,2,2,1.9199999999999999,2.0800000000000001,2,2.04,2,1.96,2.04,2,2,2.04,1.96,1.96,2,2,2.1200000000000001,2,2.04,2,2,2,2,2,1.9199999999999999,2.04,1.9199999999999999,2.04,1.96,2.04,2,1.96,2.04,1.96,2,2.04,2.0800000000000001,2.04,2.0800000000000001,2.04,2.04,1.96,1.9199999999999999,2,1.8799999999999999,1.96,3,3,3,3,3,3,3.04,3.04,2.96,3,3,3,3,3,3,3.04,3.04,3,3.04,3,3,3,2.96,3.04,3,2.96,3.04,3,3,3.04,3.04,2.96,3.0800000000000001,3.0800000000000001,2.96,3.0800000000000001,2.9199999999999999,3.0800000000000001,3.04,3,3,3.04,2.96,3,3.04,2.96,3,3,3.04,3.04,3.04,2.96,3.04,3.0800000000000001,3,2.96,3,2.9199999999999999,3.04,3.04,3.0800000000000001,3.0800000000000001,3,3.04,3.1200000000000001,3.0800000000000001,3.0800000000000001,3,3.04,3,2.96,2.9199999999999999,2.96,2.9199999999999999,2.9199999999999999,3.1200000000000001,2.96,2.96,2.8799999999999999,2.96,2.96,3.1200000000000001,3.04,3.1600000000000001,3.04,3,3,3.04,3,3.0800000000000001,2.8799999999999999,2.96,3.04,3,2.96,3.0800000000000001,3.1200000000000001,3.04,4,4,4,4,4,4,4,4,4,4,4,4,4.04,4,4.04,4,4.04,4.04,4.04,4,4,4,4.04,4,4,3.96,4,4,3.96,4.04,3.96,4,4,4.04,4,3.96,4,4,4,4,4,4.04,4,4.0800000000000001,4.04,4,3.96,3.96,4,4,4.0800000000000001,4.04,4.0800000000000001,4.0800000000000001,4.04,4.04,3.96,4,4.0800000000000001,4.0800000000000001,4.04,3.96,4,3.96,3.96,4,3.9199999999999999,3.96,4.04,4,4.04,4.04,4,4.04,3.9199999999999999,4.04,3.9199999999999999,4,4.04,3.96,4,4.04,4.04,4,4,4,4.1200000000000001,3.96,4.0800000000000001],"y":[43,39,61,52,46,34,33,34,52,41,37,38,34,40,43,56,41,39,49,57,41,38,52,51,35,30,39,36,43,49,36,47,31,46,37,56,42,45,42,45,62,43,42,48,49,56,38,60,30,40,42,37,76,39,53,45,35,62,43,51,42,54,52,37,38,32,45,60,46,40,36,47,29,43,37,38,45,50,48,60,50,39,55,44,83,51,47,54,53,45,37,59,41,41,33,32,39,32,42,41,44,47,46,61,32,66,56,44,33,72,64,46,44,39,37,38,39,31,41,39,49,47,39,27,62,43,46,46,43,61,56,63,53,40,71,31,80,54,55,35,78,20,77,46,44,81,53,57,41,35,48,73,63,47,63,36,29,46,70,66,34,52,51,45,67,44,72,39,29,53,37,82,56,42,42,58,51,53,32,56,45,49,43,56,60,46,61,21,36,27,62,31,25,31,27,27,28,30,26,29,24,38,24,29,40,30,35,32,33,29,38,54,24,25,47,41,28,40,38,29,27,31,38,29,24,35,60,61,26,35,34,34,26,37,42,41,36,32,41,33,31,74,33,49,38,61,21,41,26,80,42,29,33,35,45,49,39,34,26,25,33,35,35,28,30,29,61,32,33,45,29,62,22,44,60,63,25,35,60,44,50,45,28,26,54,38,45,47,46,61,35,24,43,65,42,23,30,38,33,65,29,29,33,30,41,32,28,46,39,26,30,16,71,46,45,29,40,72,24,70,45,53,10,59,48,62,41,44,30,28,56,33,38,77,34,38,56,33,45,35,44,28,11,46,28,32,44,64,24,41,31,33,35,34,25,47,42,50,39,30,31,46,37,64,31,73,53,48,58,51,27,46,34,34],"text":["Idade: 43<br>Emil Jannings<br>Filme: The Last Command<br>Ano da cerimônia: 1928","Idade: 39<br>Warner Baxter<br>Filme: In Old Arizona<br>Ano da cerimônia: 1929","Idade: 61<br>George Arliss<br>Filme: Disraeli<br>Ano da cerimônia: 1930","Idade: 52<br>Lionel Barrymore<br>Filme: A Free Soul<br>Ano da cerimônia: 1931","Idade: 46<br>Wallace Beery<br>Filme: The Champ<br>Ano da cerimônia: 1932","Idade: 34<br>Fredric March<br>Filme: Dr. Jekyll and Mr. Hyde<br>Ano da cerimônia: 1932","Idade: 33<br>Charles Laughton<br>Filme: The Private Life of Henry VIII<br>Ano da cerimônia: 1933","Idade: 34<br>Clark Gable<br>Filme: It Happened One Night<br>Ano da cerimônia: 1935","Idade: 52<br>Victor McLaglen<br>Filme: The Informer<br>Ano da cerimônia: 1936","Idade: 41<br>Paul Muni<br>Filme: The Story of Louis Pasteur<br>Ano da cerimônia: 1937","Idade: 37<br>Spencer Tracy<br>Filme: Captains Courageous<br>Ano da cerimônia: 1938","Idade: 38<br>Spencer Tracy<br>Filme: Boys Town<br>Ano da cerimônia: 1939","Idade: 34<br>Robert Donat<br>Filme: Goodbye, Mr. Chips<br>Ano da cerimônia: 1940","Idade: 40<br>Gary Cooper<br>Filme: Sergeant York<br>Ano da cerimônia: 1942","Idade: 43<br>James Cagney<br>Filme: Yankee Doodle Dandy<br>Ano da cerimônia: 1943","Idade: 56<br>Paul Lukas<br>Filme: Watch on the Rhine<br>Ano da cerimônia: 1944","Idade: 41<br>Bing Crosby<br>Filme: Going My Way<br>Ano da cerimônia: 1945","Idade: 39<br>Ray Milland<br>Filme: The Lost Weekend<br>Ano da cerimônia: 1946","Idade: 49<br>Fredric March<br>Filme: The Best Years of Our Lives<br>Ano da cerimônia: 1947","Idade: 57<br>Ronald Colman<br>Filme: A Double Life<br>Ano da cerimônia: 1948","Idade: 41<br>Laurence Olivier<br>Filme: Hamlet<br>Ano da cerimônia: 1949","Idade: 38<br>Broderick Crawford<br>Filme: All the King's Men<br>Ano da cerimônia: 1950","Idade: 52<br>Humphrey Bogart<br>Filme: The African Queen<br>Ano da cerimônia: 1952","Idade: 51<br>Gary Cooper<br>Filme: High Noon<br>Ano da cerimônia: 1953","Idade: 35<br>William Holden<br>Filme: Stalag 17<br>Ano da cerimônia: 1954","Idade: 30<br>Marlon Brando<br>Filme: On the Waterfront<br>Ano da cerimônia: 1955","Idade: 39<br>Ernest Borgnine<br>Filme: Marty<br>Ano da cerimônia: 1956","Idade: 36<br>Yul Brynner<br>Filme: The King and I<br>Ano da cerimônia: 1957","Idade: 43<br>Alec Guinness<br>Filme: The Bridge on the River Kwai<br>Ano da cerimônia: 1958","Idade: 49<br>David Niven<br>Filme: Separate Tables<br>Ano da cerimônia: 1959","Idade: 36<br>Charlton Heston<br>Filme: Ben-Hur<br>Ano da cerimônia: 1960","Idade: 47<br>Burt Lancaster<br>Filme: Elmer Gantry<br>Ano da cerimônia: 1961","Idade: 31<br>Maximilian Schell<br>Filme: Judgment at Nuremberg<br>Ano da cerimônia: 1962","Idade: 46<br>Gregory Peck<br>Filme: To Kill a Mockingbird<br>Ano da cerimônia: 1963","Idade: 37<br>Sidney Poitier<br>Filme: Lilies of the Field<br>Ano da cerimônia: 1964","Idade: 56<br>Rex Harrison<br>Filme: My Fair Lady<br>Ano da cerimônia: 1965","Idade: 42<br>Lee Marvin<br>Filme: Cat Ballou<br>Ano da cerimônia: 1966","Idade: 45<br>Paul Scofield<br>Filme: A Man for All Seasons<br>Ano da cerimônia: 1967","Idade: 42<br>Rod Steiger<br>Filme: In the Heat of the Night<br>Ano da cerimônia: 1968","Idade: 45<br>Cliff Robertson<br>Filme: Charly<br>Ano da cerimônia: 1969","Idade: 62<br>John Wayne<br>Filme: True Grit<br>Ano da cerimônia: 1970","Idade: 43<br>George C. Scott<br>Filme: Patton<br>Ano da cerimônia: 1971","Idade: 42<br>Gene Hackman<br>Filme: The French Connection<br>Ano da cerimônia: 1972","Idade: 48<br>Marlon Brando<br>Filme: The Godfather<br>Ano da cerimônia: 1973","Idade: 49<br>Jack Lemmon<br>Filme: Save the Tiger<br>Ano da cerimônia: 1974","Idade: 56<br>Art Carney<br>Filme: Harry and Tonto<br>Ano da cerimônia: 1975","Idade: 38<br>Jack Nicholson<br>Filme: One Flew over the Cuckoo's Nest<br>Ano da cerimônia: 1976","Idade: 60<br>Peter Finch<br>Filme: Network<br>Ano da cerimônia: 1977","Idade: 30<br>Richard Dreyfuss<br>Filme: The Goodbye Girl<br>Ano da cerimônia: 1978","Idade: 40<br>Jon Voight<br>Filme: Coming Home<br>Ano da cerimônia: 1979","Idade: 42<br>Dustin Hoffman<br>Filme: Kramer vs. Kramer<br>Ano da cerimônia: 1980","Idade: 37<br>Robert De Niro<br>Filme: Raging Bull<br>Ano da cerimônia: 1981","Idade: 76<br>Henry Fonda<br>Filme: On Golden Pond<br>Ano da cerimônia: 1982","Idade: 39<br>Ben Kingsley<br>Filme: Gandhi<br>Ano da cerimônia: 1983","Idade: 53<br>Robert Duvall<br>Filme: Tender Mercies<br>Ano da cerimônia: 1984","Idade: 45<br>F. Murray Abraham<br>Filme: Amadeus<br>Ano da cerimônia: 1985","Idade: 35<br>William Hurt<br>Filme: Kiss of the Spider Woman<br>Ano da cerimônia: 1986","Idade: 62<br>Paul Newman<br>Filme: The Color of Money<br>Ano da cerimônia: 1987","Idade: 43<br>Michael Douglas<br>Filme: Wall Street<br>Ano da cerimônia: 1988","Idade: 51<br>Dustin Hoffman<br>Filme: Rain Man<br>Ano da cerimônia: 1989","Idade: 42<br>Jeremy Irons<br>Filme: Reversal of Fortune<br>Ano da cerimônia: 1991","Idade: 54<br>Anthony Hopkins<br>Filme: The Silence of the Lambs<br>Ano da cerimônia: 1992","Idade: 52<br>Al Pacino<br>Filme: Scent of a Woman<br>Ano da cerimônia: 1993","Idade: 37<br>Tom Hanks<br>Filme: Philadelphia<br>Ano da cerimônia: 1994","Idade: 38<br>Tom Hanks<br>Filme: Forrest Gump<br>Ano da cerimônia: 1995","Idade: 32<br>Nicolas Cage<br>Filme: Leaving Las Vegas<br>Ano da cerimônia: 1996","Idade: 45<br>Geoffrey Rush<br>Filme: Shine<br>Ano da cerimônia: 1997","Idade: 60<br>Jack Nicholson<br>Filme: As Good as It Gets<br>Ano da cerimônia: 1998","Idade: 46<br>Roberto Benigni<br>Filme: Life Is Beautiful<br>Ano da cerimônia: 1999","Idade: 40<br>Kevin Spacey<br>Filme: American Beauty<br>Ano da cerimônia: 2000","Idade: 36<br>Russell Crowe<br>Filme: Gladiator<br>Ano da cerimônia: 2001","Idade: 47<br>Denzel Washington<br>Filme: Training Day<br>Ano da cerimônia: 2002","Idade: 29<br>Adrien Brody<br>Filme: The Pianist<br>Ano da cerimônia: 2003","Idade: 43<br>Sean Penn<br>Filme: Mystic River<br>Ano da cerimônia: 2004","Idade: 37<br>Jamie Foxx<br>Filme: Ray<br>Ano da cerimônia: 2005","Idade: 38<br>Philip Seymour Hoffman<br>Filme: Capote<br>Ano da cerimônia: 2006","Idade: 45<br>Forest Whitaker<br>Filme: The Last King of Scotland<br>Ano da cerimônia: 2007","Idade: 50<br>Daniel Day-Lewis<br>Filme: There Will Be Blood<br>Ano da cerimônia: 2008","Idade: 48<br>Sean Penn<br>Filme: Milk<br>Ano da cerimônia: 2009","Idade: 60<br>Jeff Bridges<br>Filme: Crazy Heart<br>Ano da cerimônia: 2010","Idade: 50<br>Colin Firth<br>Filme: The King's Speech<br>Ano da cerimônia: 2011","Idade: 39<br>Jean Dujardin<br>Filme: The Artist<br>Ano da cerimônia: 2012","Idade: 55<br>Daniel Day-Lewis<br>Filme: Lincoln<br>Ano da cerimônia: 2013","Idade: 44<br>Matthew McConaughey<br>Filme: Dallas Buyers Club<br>Ano da cerimônia: 2014","Idade: 83<br>Anthony Hopkins<br>Filme: The Father<br>Ano da cerimônia: 2021","Idade: 51<br>Adrien Brody<br>Filme: The Brutalist<br>Ano da cerimônia: 2025","Idade: 47<br>Cillian Murphy<br>Filme: Oppenheimer<br>Ano da cerimônia: 2024","Idade: 54<br>Brendan Fraser<br>Filme: The Whale<br>Ano da cerimônia: 2023","Idade: 53<br>Will Smith<br>Filme: King Richard<br>Ano da cerimônia: 2022","Idade: 45<br>Joaquin Phoenix<br>Filme: Joker<br>Ano da cerimônia: 2020","Idade: 37<br>Rami Malek<br>Filme: Bohemian Rhapsody<br>Ano da cerimônia: 2019","Idade: 59<br>Gary Oldman<br>Filme: Darkest Hour<br>Ano da cerimônia: 2018","Idade: 41<br>Casey Affleck<br>Filme: Manchester by the Sea<br>Ano da cerimônia: 2017","Idade: 41<br>Leonardo DiCaprio<br>Filme: The Revenant<br>Ano da cerimônia: 2016","Idade: 33<br>Eddie Redmayne<br>Filme: The Theory of Everything<br>Ano da cerimônia: 2015","Idade: 32<br>Daniel Day Lewis<br>Filme: My Left Foot<br>Ano da cerimônia: 1990","Idade: 39<br>José Ferrer<br>Filme: Cyrano de Bergerac<br>Ano da cerimônia: 1951","Idade: 32<br>James Stewart<br>Filme: The Philadelphia Story<br>Ano da cerimônia: 1941","Idade: 42<br>Walter Brennan<br>Filme: Come and Get It<br>Ano da cerimônia: 1937","Idade: 41<br>Joseph Schildkraut<br>Filme: The Life of Emile Zola<br>Ano da cerimônia: 1938","Idade: 44<br>Walter Brennan<br>Filme: Kentucky<br>Ano da cerimônia: 1939","Idade: 47<br>Thomas Mitchell<br>Filme: Stagecoach<br>Ano da cerimônia: 1940","Idade: 46<br>Walter Brennan<br>Filme: The Westerner<br>Ano da cerimônia: 1941","Idade: 61<br>Donald Crisp<br>Filme: How Green Was My Valley<br>Ano da cerimônia: 1942","Idade: 32<br>Van Heflin<br>Filme: Johnny Eager<br>Ano da cerimônia: 1943","Idade: 66<br>Charles Coburn<br>Filme: The More the Merrier<br>Ano da cerimônia: 1944","Idade: 56<br>Barry Fitzgerald<br>Filme: Going My Way<br>Ano da cerimônia: 1945","Idade: 44<br>James Dunn<br>Filme: A Tree Grows in Brooklyn<br>Ano da cerimônia: 1946","Idade: 33<br>Harold Russell<br>Filme: The Best Years of Our Lives<br>Ano da cerimônia: 1947","Idade: 72<br>Edmund Gwenn<br>Filme: Miracle on 34th Street<br>Ano da cerimônia: 1948","Idade: 64<br>Walter Huston<br>Filme: The Treasure of the Sierra Madre<br>Ano da cerimônia: 1949","Idade: 46<br>Dean Jagger<br>Filme: Twelve O'Clock High<br>Ano da cerimônia: 1950","Idade: 44<br>George Sanders<br>Filme: All about Eve<br>Ano da cerimônia: 1951","Idade: 39<br>Karl Malden<br>Filme: A Streetcar Named Desire<br>Ano da cerimônia: 1952","Idade: 37<br>Anthony Quinn<br>Filme: Viva Zapata!<br>Ano da cerimônia: 1953","Idade: 38<br>Frank Sinatra<br>Filme: From Here to Eternity<br>Ano da cerimônia: 1954","Idade: 39<br>Edmond O'Brien<br>Filme: The Barefoot Contessa<br>Ano da cerimônia: 1955","Idade: 31<br>Jack Lemmon<br>Filme: Mister Roberts<br>Ano da cerimônia: 1956","Idade: 41<br>Anthony Quinn<br>Filme: Lust for Life<br>Ano da cerimônia: 1957","Idade: 39<br>Red Buttons<br>Filme: Sayonara<br>Ano da cerimônia: 1958","Idade: 49<br>Burl Ives<br>Filme: The Big Country<br>Ano da cerimônia: 1959","Idade: 47<br>Hugh Griffith<br>Filme: Ben-Hur<br>Ano da cerimônia: 1960","Idade: 39<br>Peter Ustinov<br>Filme: Spartacus<br>Ano da cerimônia: 1961","Idade: 27<br>George Chakiris<br>Filme: West Side Story<br>Ano da cerimônia: 1962","Idade: 62<br>Melvyn Douglas<br>Filme: Hud<br>Ano da cerimônia: 1964","Idade: 43<br>Peter Ustinov<br>Filme: Topkapi<br>Ano da cerimônia: 1965","Idade: 46<br>Martin Balsam<br>Filme: A Thousand Clowns<br>Ano da cerimônia: 1966","Idade: 46<br>Walter Matthau<br>Filme: The Fortune Cookie<br>Ano da cerimônia: 1967","Idade: 43<br>George Kennedy<br>Filme: Cool Hand Luke<br>Ano da cerimônia: 1968","Idade: 61<br>Jack Albertson<br>Filme: The Subject Was Roses<br>Ano da cerimônia: 1969","Idade: 56<br>Gig Young<br>Filme: They Shoot Horses, Don't They?<br>Ano da cerimônia: 1970","Idade: 63<br>John Mills<br>Filme: Ryan's Daughter<br>Ano da cerimônia: 1971","Idade: 53<br>Ben Johnson<br>Filme: The Last Picture Show<br>Ano da cerimônia: 1972","Idade: 40<br>Joel Grey<br>Filme: Cabaret<br>Ano da cerimônia: 1973","Idade: 71<br>John Houseman<br>Filme: The Paper Chase<br>Ano da cerimônia: 1974","Idade: 31<br>Robert De Niro<br>Filme: The Godfather Part II<br>Ano da cerimônia: 1975","Idade: 80<br>George Burns<br>Filme: The Sunshine Boys<br>Ano da cerimônia: 1976","Idade: 54<br>Jason Robards<br>Filme: All the President's Men<br>Ano da cerimônia: 1977","Idade: 55<br>Jason Robards<br>Filme: Julia<br>Ano da cerimônia: 1978","Idade: 35<br>Christopher Walken<br>Filme: The Deer Hunter<br>Ano da cerimônia: 1979","Idade: 78<br>Melvyn Douglas<br>Filme: Being There<br>Ano da cerimônia: 1980","Idade: 20<br>Timothy Hutton<br>Filme: Ordinary People<br>Ano da cerimônia: 1981","Idade: 77<br>John Gielgud<br>Filme: Arthur<br>Ano da cerimônia: 1982","Idade: 46<br>Jack Nicholson<br>Filme: Terms of Endearment<br>Ano da cerimônia: 1984","Idade: 44<br>Haing S. Ngor<br>Filme: The Killing Fields<br>Ano da cerimônia: 1985","Idade: 81<br>Don Ameche<br>Filme: Cocoon<br>Ano da cerimônia: 1986","Idade: 53<br>Michael Caine<br>Filme: Hannah and Her Sisters<br>Ano da cerimônia: 1987","Idade: 57<br>Sean Connery<br>Filme: The Untouchables<br>Ano da cerimônia: 1988","Idade: 41<br>Kevin Kline<br>Filme: A Fish Called Wanda<br>Ano da cerimônia: 1989","Idade: 35<br>Denzel Washington<br>Filme: Glory<br>Ano da cerimônia: 1990","Idade: 48<br>Joe Pesci<br>Filme: Good Fellas<br>Ano da cerimônia: 1991","Idade: 73<br>Jack Palance<br>Filme: City Slickers<br>Ano da cerimônia: 1992","Idade: 63<br>Gene Hackman<br>Filme: Unforgiven<br>Ano da cerimônia: 1993","Idade: 47<br>Tommy Lee Jones<br>Filme: The Fugitive<br>Ano da cerimônia: 1994","Idade: 63<br>Martin Landau<br>Filme: Ed Wood<br>Ano da cerimônia: 1995","Idade: 36<br>Kevin Spacey<br>Filme: The Usual Suspects<br>Ano da cerimônia: 1996","Idade: 29<br>Cuba Gooding, Jr.<br>Filme: Jerry Maguire<br>Ano da cerimônia: 1997","Idade: 46<br>Robin Williams<br>Filme: Good Will Hunting<br>Ano da cerimônia: 1998","Idade: 70<br>James Coburn<br>Filme: Affliction<br>Ano da cerimônia: 1999","Idade: 66<br>Michael Caine<br>Filme: The Cider House Rules<br>Ano da cerimônia: 2000","Idade: 34<br>Benicio Del Toro<br>Filme: Traffic<br>Ano da cerimônia: 2001","Idade: 52<br>Jim Broadbent<br>Filme: Iris<br>Ano da cerimônia: 2002","Idade: 51<br>Chris Cooper<br>Filme: Adaptation<br>Ano da cerimônia: 2003","Idade: 45<br>Tim Robbins<br>Filme: Mystic River<br>Ano da cerimônia: 2004","Idade: 67<br>Morgan Freeman<br>Filme: Million Dollar Baby<br>Ano da cerimônia: 2005","Idade: 44<br>George Clooney<br>Filme: Syriana<br>Ano da cerimônia: 2006","Idade: 72<br>Alan Arkin<br>Filme: Little Miss Sunshine<br>Ano da cerimônia: 2007","Idade: 39<br>Javier Bardem<br>Filme: No Country for Old Men<br>Ano da cerimônia: 2008","Idade: 29<br>Heath Ledger<br>Filme: The Dark Knight<br>Ano da cerimônia: 2009","Idade: 53<br>Christoph Waltz<br>Filme: Inglourious Basterds<br>Ano da cerimônia: 2010","Idade: 37<br>Christian Bale<br>Filme: The Fighter<br>Ano da cerimônia: 2011","Idade: 82<br>Christopher Plummer<br>Filme: Beginners<br>Ano da cerimônia: 2012","Idade: 56<br>Christoph Waltz<br>Filme: Django Unchained<br>Ano da cerimônia: 2013","Idade: 42<br>Jared Leto<br>Filme: Dallas Buyers Club<br>Ano da cerimônia: 2014","Idade: 42<br>Kieran Culkin<br>Filme: A Real Pain<br>Ano da cerimônia: 2025","Idade: 58<br>Robert Downey Jr.<br>Filme: Oppenheimer<br>Ano da cerimônia: 2024","Idade: 51<br>Ke Huy Quan<br>Filme: Everything Everywhere All at Once<br>Ano da cerimônia: 2023","Idade: 53<br>Troy Kotsur<br>Filme: CODA<br>Ano da cerimônia: 2022","Idade: 32<br>Daniel Kaluuya<br>Filme: Judas and the Black Messiah<br>Ano da cerimônia: 2021","Idade: 56<br>Brad Pitt<br>Filme: Once upon a Time...in Hollywood<br>Ano da cerimônia: 2020","Idade: 45<br>Mahershala Ali<br>Filme: Green Book<br>Ano da cerimônia: 2019","Idade: 49<br>Sam Rockwell<br>Filme: Three Billboards outside Ebbing, Missouri<br>Ano da cerimônia: 2018","Idade: 43<br>Mahershala Ali<br>Filme: Moonlight<br>Ano da cerimônia: 2017","Idade: 56<br>Mark Rylance<br>Filme: Bridge of Spies<br>Ano da cerimônia: 2016","Idade: 60<br>J.K. Simmons<br>Filme: Whiplash<br>Ano da cerimônia: 2015","Idade: 46<br>Louis Gossett, Jr.<br>Filme: An Officer and a Gentleman<br>Ano da cerimônia: 1983","Idade: 61<br>Ed Begley<br>Filme: Sweet Bird of Youth<br>Ano da cerimônia: 1963","Idade: 21<br>Janet Gaynor<br>Filme: 7th Heaven<br>Ano da cerimônia: 1928","Idade: 36<br>Mary Pickford<br>Filme: Coquette<br>Ano da cerimônia: 1929","Idade: 27<br>Norma Shearer<br>Filme: The Divorcee<br>Ano da cerimônia: 1930","Idade: 62<br>Marie Dressler<br>Filme: Min and Bill<br>Ano da cerimônia: 1931","Idade: 31<br>Helen Hayes<br>Filme: The Sin of Madelon Claudet<br>Ano da cerimônia: 1932","Idade: 25<br>Katharine Hepburn<br>Filme: Morning Glory<br>Ano da cerimônia: 1933","Idade: 31<br>Claudette Colbert<br>Filme: It Happened One Night<br>Ano da cerimônia: 1935","Idade: 27<br>Bette Davis<br>Filme: Dangerous<br>Ano da cerimônia: 1936","Idade: 27<br>Luise Rainer<br>Filme: The Great Ziegfeld<br>Ano da cerimônia: 1937","Idade: 28<br>Luise Rainer<br>Filme: The Good Earth<br>Ano da cerimônia: 1938","Idade: 30<br>Bette Davis<br>Filme: Jezebel<br>Ano da cerimônia: 1939","Idade: 26<br>Vivien Leigh<br>Filme: Gone with the Wind<br>Ano da cerimônia: 1940","Idade: 29<br>Ginger Rogers<br>Filme: Kitty Foyle<br>Ano da cerimônia: 1941","Idade: 24<br>Joan Fontaine<br>Filme: Suspicion<br>Ano da cerimônia: 1942","Idade: 38<br>Greer Garson<br>Filme: Mrs. Miniver<br>Ano da cerimônia: 1943","Idade: 24<br>Jennifer Jones<br>Filme: The Song of Bernadette<br>Ano da cerimônia: 1944","Idade: 29<br>Ingrid Bergman<br>Filme: Gaslight<br>Ano da cerimônia: 1945","Idade: 40<br>Joan Crawford<br>Filme: Mildred Pierce<br>Ano da cerimônia: 1946","Idade: 30<br>Olivia de Havilland<br>Filme: To Each His Own<br>Ano da cerimônia: 1947","Idade: 35<br>Loretta Young<br>Filme: The Farmer's Daughter<br>Ano da cerimônia: 1948","Idade: 32<br>Jane Wyman<br>Filme: Johnny Belinda<br>Ano da cerimônia: 1949","Idade: 33<br>Olivia de Havilland<br>Filme: The Heiress<br>Ano da cerimônia: 1950","Idade: 29<br>Judy Holliday<br>Filme: Born Yesterday<br>Ano da cerimônia: 1951","Idade: 38<br>Vivien Leigh<br>Filme: A Streetcar Named Desire<br>Ano da cerimônia: 1952","Idade: 54<br>Shirley Booth<br>Filme: Come Back, Little Sheba<br>Ano da cerimônia: 1953","Idade: 24<br>Audrey Hepburn<br>Filme: Roman Holiday<br>Ano da cerimônia: 1954","Idade: 25<br>Grace Kelly<br>Filme: The Country Girl<br>Ano da cerimônia: 1955","Idade: 47<br>Anna Magnani<br>Filme: The Rose Tattoo<br>Ano da cerimônia: 1956","Idade: 41<br>Ingrid Bergman<br>Filme: Anastasia<br>Ano da cerimônia: 1957","Idade: 28<br>Joanne Woodward<br>Filme: The Three Faces of Eve<br>Ano da cerimônia: 1958","Idade: 40<br>Susan Hayward<br>Filme: I Want to Live!<br>Ano da cerimônia: 1959","Idade: 38<br>Simone Signoret<br>Filme: Room at the Top<br>Ano da cerimônia: 1960","Idade: 29<br>Elizabeth Taylor<br>Filme: Butterfield 8<br>Ano da cerimônia: 1961","Idade: 27<br>Sophia Loren<br>Filme: Two Women<br>Ano da cerimônia: 1962","Idade: 31<br>Anne Bancroft<br>Filme: The Miracle Worker<br>Ano da cerimônia: 1963","Idade: 38<br>Patricia Neal<br>Filme: Hud<br>Ano da cerimônia: 1964","Idade: 29<br>Julie Andrews<br>Filme: Mary Poppins<br>Ano da cerimônia: 1965","Idade: 24<br>Julie Christie<br>Filme: Darling<br>Ano da cerimônia: 1966","Idade: 35<br>Elizabeth Taylor<br>Filme: Who's Afraid of Virginia Woolf?<br>Ano da cerimônia: 1967","Idade: 60<br>Katharine Hepburn<br>Filme: Guess Who's Coming to Dinner<br>Ano da cerimônia: 1968","Idade: 61<br>Katharine Hepburn<br>Filme: The Lion in Winter<br>Ano da cerimônia: 1969","Idade: 26<br>Barbra Streisand<br>Filme: Funny Girl<br>Ano da cerimônia: 1969","Idade: 35<br>Maggie Smith<br>Filme: The Prime of Miss Jean Brodie<br>Ano da cerimônia: 1970","Idade: 34<br>Glenda Jackson<br>Filme: Women in Love<br>Ano da cerimônia: 1971","Idade: 34<br>Jane Fonda<br>Filme: Klute<br>Ano da cerimônia: 1972","Idade: 26<br>Liza Minnelli<br>Filme: Cabaret<br>Ano da cerimônia: 1973","Idade: 37<br>Glenda Jackson<br>Filme: A Touch of Class<br>Ano da cerimônia: 1974","Idade: 42<br>Ellen Burstyn<br>Filme: Alice Doesn't Live Here Anymore<br>Ano da cerimônia: 1975","Idade: 41<br>Louise Fletcher<br>Filme: One Flew over the Cuckoo's Nest<br>Ano da cerimônia: 1976","Idade: 36<br>Faye Dunaway<br>Filme: Network<br>Ano da cerimônia: 1977","Idade: 32<br>Diane Keaton<br>Filme: Annie Hall<br>Ano da cerimônia: 1978","Idade: 41<br>Jane Fonda<br>Filme: Coming Home<br>Ano da cerimônia: 1979","Idade: 33<br>Sally Field<br>Filme: Norma Rae<br>Ano da cerimônia: 1980","Idade: 31<br>Sissy Spacek<br>Filme: Coal Miner's Daughter<br>Ano da cerimônia: 1981","Idade: 74<br>Katharine Hepburn<br>Filme: On Golden Pond<br>Ano da cerimônia: 1982","Idade: 33<br>Meryl Streep<br>Filme: Sophie's Choice<br>Ano da cerimônia: 1983","Idade: 49<br>Shirley MacLaine<br>Filme: Terms of Endearment<br>Ano da cerimônia: 1984","Idade: 38<br>Sally Field<br>Filme: Places in the Heart<br>Ano da cerimônia: 1985","Idade: 61<br>Geraldine Page<br>Filme: The Trip to Bountiful<br>Ano da cerimônia: 1986","Idade: 21<br>Marlee Matlin<br>Filme: Children of a Lesser God<br>Ano da cerimônia: 1987","Idade: 41<br>Cher<br>Filme: Moonstruck<br>Ano da cerimônia: 1988","Idade: 26<br>Jodie Foster<br>Filme: The Accused<br>Ano da cerimônia: 1989","Idade: 80<br>Jessica Tandy<br>Filme: Driving Miss Daisy<br>Ano da cerimônia: 1990","Idade: 42<br>Kathy Bates<br>Filme: Misery<br>Ano da cerimônia: 1991","Idade: 29<br>Jodie Foster<br>Filme: The Silence of the Lambs<br>Ano da cerimônia: 1992","Idade: 33<br>Emma Thompson<br>Filme: Howards End<br>Ano da cerimônia: 1993","Idade: 35<br>Holly Hunter<br>Filme: The Piano<br>Ano da cerimônia: 1994","Idade: 45<br>Jessica Lange<br>Filme: Blue Sky<br>Ano da cerimônia: 1995","Idade: 49<br>Susan Sarandon<br>Filme: Dead Man Walking<br>Ano da cerimônia: 1996","Idade: 39<br>Frances McDormand<br>Filme: Fargo<br>Ano da cerimônia: 1997","Idade: 34<br>Helen Hunt<br>Filme: As Good as It Gets<br>Ano da cerimônia: 1998","Idade: 26<br>Gwyneth Paltrow<br>Filme: Shakespeare in Love<br>Ano da cerimônia: 1999","Idade: 25<br>Hilary Swank<br>Filme: Boys Don't Cry<br>Ano da cerimônia: 2000","Idade: 33<br>Julia Roberts<br>Filme: Erin Brockovich<br>Ano da cerimônia: 2001","Idade: 35<br>Halle Berry<br>Filme: Monster's Ball<br>Ano da cerimônia: 2002","Idade: 35<br>Nicole Kidman<br>Filme: The Hours<br>Ano da cerimônia: 2003","Idade: 28<br>Charlize Theron<br>Filme: Monster<br>Ano da cerimônia: 2004","Idade: 30<br>Hilary Swank<br>Filme: Million Dollar Baby<br>Ano da cerimônia: 2005","Idade: 29<br>Reese Witherspoon<br>Filme: Walk the Line<br>Ano da cerimônia: 2006","Idade: 61<br>Helen Mirren<br>Filme: The Queen<br>Ano da cerimônia: 2007","Idade: 32<br>Marion Cotillard<br>Filme: La Vie en Rose<br>Ano da cerimônia: 2008","Idade: 33<br>Kate Winslet<br>Filme: The Reader<br>Ano da cerimônia: 2009","Idade: 45<br>Sandra Bullock<br>Filme: The Blind Side<br>Ano da cerimônia: 2010","Idade: 29<br>Natalie Portman<br>Filme: Black Swan<br>Ano da cerimônia: 2011","Idade: 62<br>Meryl Streep<br>Filme: The Iron Lady<br>Ano da cerimônia: 2012","Idade: 22<br>Jennifer Lawrence<br>Filme: Silver Linings Playbook<br>Ano da cerimônia: 2013","Idade: 44<br>Cate Blanchett<br>Filme: Blue Jasmine<br>Ano da cerimônia: 2014","Idade: 60<br>Frances McDormand<br>Filme: Three Billboards outside Ebbing, Missouri<br>Ano da cerimônia: 2018","Idade: 63<br>Frances McDormand<br>Filme: Nomadland<br>Ano da cerimônia: 2021","Idade: 25<br>Mikey Madison<br>Filme: Anora<br>Ano da cerimônia: 2025","Idade: 35<br>Emma Stone<br>Filme: Poor Things<br>Ano da cerimônia: 2024","Idade: 60<br>Michelle Yeoh<br>Filme: Everything Everywhere All at Once<br>Ano da cerimônia: 2023","Idade: 44<br>Jessica Chastain<br>Filme: The Eyes of Tammy Faye<br>Ano da cerimônia: 2022","Idade: 50<br>Renée Zellweger<br>Filme: Judy<br>Ano da cerimônia: 2020","Idade: 45<br>Olivia Colman<br>Filme: The Favourite<br>Ano da cerimônia: 2019","Idade: 28<br>Emma Stone<br>Filme: La La Land<br>Ano da cerimônia: 2017","Idade: 26<br>Brie Larson<br>Filme: Room<br>Ano da cerimônia: 2016","Idade: 54<br>Julianne Moore<br>Filme: Still Alice<br>Ano da cerimônia: 2015","Idade: 38<br>Gale Sondergaard<br>Filme: Anthony Adverse<br>Ano da cerimônia: 1937","Idade: 45<br>Alice Brady<br>Filme: In Old Chicago<br>Ano da cerimônia: 1938","Idade: 47<br>Fay Bainter<br>Filme: Jezebel<br>Ano da cerimônia: 1939","Idade: 46<br>Hattie McDaniel<br>Filme: Gone with the Wind<br>Ano da cerimônia: 1940","Idade: 61<br>Jane Darwell<br>Filme: The Grapes of Wrath<br>Ano da cerimônia: 1941","Idade: 35<br>Mary Astor<br>Filme: The Great Lie<br>Ano da cerimônia: 1942","Idade: 24<br>Teresa Wright<br>Filme: Mrs. Miniver<br>Ano da cerimônia: 1943","Idade: 43<br>Katina Paxinou<br>Filme: For Whom the Bell Tolls<br>Ano da cerimônia: 1944","Idade: 65<br>Ethel Barrymore<br>Filme: None but the Lonely Heart<br>Ano da cerimônia: 1945","Idade: 42<br>Anne Revere<br>Filme: National Velvet<br>Ano da cerimônia: 1946","Idade: 23<br>Anne Baxter<br>Filme: The Razor's Edge<br>Ano da cerimônia: 1947","Idade: 30<br>Celeste Holm<br>Filme: Gentleman's Agreement<br>Ano da cerimônia: 1948","Idade: 38<br>Claire Trevor<br>Filme: Key Largo<br>Ano da cerimônia: 1949","Idade: 33<br>Mercedes McCambridge<br>Filme: All the King's Men<br>Ano da cerimônia: 1950","Idade: 65<br>Josephine Hull<br>Filme: Harvey<br>Ano da cerimônia: 1951","Idade: 29<br>Kim Hunter<br>Filme: A Streetcar Named Desire<br>Ano da cerimônia: 1952","Idade: 29<br>Gloria Grahame<br>Filme: The Bad and the Beautiful<br>Ano da cerimônia: 1953","Idade: 33<br>Donna Reed<br>Filme: From Here to Eternity<br>Ano da cerimônia: 1954","Idade: 30<br>Eva Marie Saint<br>Filme: On the Waterfront<br>Ano da cerimônia: 1955","Idade: 41<br>Jo Van Fleet<br>Filme: East of Eden<br>Ano da cerimônia: 1956","Idade: 32<br>Dorothy Malone<br>Filme: Written on the Wind<br>Ano da cerimônia: 1957","Idade: 28<br>Miyoshi Umeki<br>Filme: Sayonara<br>Ano da cerimônia: 1958","Idade: 46<br>Wendy Hiller<br>Filme: Separate Tables<br>Ano da cerimônia: 1959","Idade: 39<br>Shelley Winters<br>Filme: The Diary of Anne Frank<br>Ano da cerimônia: 1960","Idade: 26<br>Shirley Jones<br>Filme: Elmer Gantry<br>Ano da cerimônia: 1961","Idade: 30<br>Rita Moreno<br>Filme: West Side Story<br>Ano da cerimônia: 1962","Idade: 16<br>Patty Duke<br>Filme: The Miracle Worker<br>Ano da cerimônia: 1963","Idade: 71<br>Margaret Rutherford<br>Filme: The V.I.P.s<br>Ano da cerimônia: 1964","Idade: 46<br>Lila Kedrova<br>Filme: Zorba the Greek<br>Ano da cerimônia: 1965","Idade: 45<br>Shelley Winters<br>Filme: A Patch of Blue<br>Ano da cerimônia: 1966","Idade: 29<br>Sandy Dennis<br>Filme: Who's Afraid of Virginia Woolf?<br>Ano da cerimônia: 1967","Idade: 40<br>Estelle Parsons<br>Filme: Bonnie and Clyde<br>Ano da cerimônia: 1968","Idade: 72<br>Ruth Gordon<br>Filme: Rosemary's Baby<br>Ano da cerimônia: 1969","Idade: 24<br>Goldie Hawn<br>Filme: Cactus Flower<br>Ano da cerimônia: 1970","Idade: 70<br>Helen Hayes<br>Filme: Airport<br>Ano da cerimônia: 1971","Idade: 45<br>Cloris Leachman<br>Filme: The Last Picture Show<br>Ano da cerimônia: 1972","Idade: 53<br>Eileen Heckart<br>Filme: Butterflies Are Free<br>Ano da cerimônia: 1973","Idade: 10<br>Tatum O'Neal<br>Filme: Paper Moon<br>Ano da cerimônia: 1974","Idade: 59<br>Ingrid Bergman<br>Filme: Murder on the Orient Express<br>Ano da cerimônia: 1975","Idade: 48<br>Lee Grant<br>Filme: Shampoo<br>Ano da cerimônia: 1976","Idade: 62<br>Beatrice Straight<br>Filme: Network<br>Ano da cerimônia: 1977","Idade: 41<br>Vanessa Redgrave<br>Filme: Julia<br>Ano da cerimônia: 1978","Idade: 44<br>Maggie Smith<br>Filme: California Suite<br>Ano da cerimônia: 1979","Idade: 30<br>Meryl Streep<br>Filme: Kramer vs. Kramer<br>Ano da cerimônia: 1980","Idade: 28<br>Mary Steenburgen<br>Filme: Melvin and Howard<br>Ano da cerimônia: 1981","Idade: 56<br>Maureen Stapleton<br>Filme: Reds<br>Ano da cerimônia: 1982","Idade: 33<br>Jessica Lange<br>Filme: Tootsie<br>Ano da cerimônia: 1983","Idade: 38<br>Linda Hunt<br>Filme: The Year of Living Dangerously<br>Ano da cerimônia: 1984","Idade: 77<br>Peggy Ashcroft<br>Filme: A Passage to India<br>Ano da cerimônia: 1985","Idade: 34<br>Anjelica Huston<br>Filme: Prizzi's Honor<br>Ano da cerimônia: 1986","Idade: 38<br>Dianne Wiest<br>Filme: Hannah and Her Sisters<br>Ano da cerimônia: 1987","Idade: 56<br>Olympia Dukakis<br>Filme: Moonstruck<br>Ano da cerimônia: 1988","Idade: 33<br>Geena Davis<br>Filme: The Accidental Tourist<br>Ano da cerimônia: 1989","Idade: 45<br>Brenda Fricker<br>Filme: My Left Foot<br>Ano da cerimônia: 1990","Idade: 35<br>Whoopi Goldberg<br>Filme: Ghost<br>Ano da cerimônia: 1991","Idade: 44<br>Mercedes Ruehl<br>Filme: The Fisher King<br>Ano da cerimônia: 1992","Idade: 28<br>Marisa Tomei<br>Filme: My Cousin Vinny<br>Ano da cerimônia: 1993","Idade: 11<br>Anna Paquin<br>Filme: The Piano<br>Ano da cerimônia: 1994","Idade: 46<br>Dianne Wiest<br>Filme: Bullets over Broadway<br>Ano da cerimônia: 1995","Idade: 28<br>Mira Sorvino<br>Filme: Mighty Aphrodite<br>Ano da cerimônia: 1996","Idade: 32<br>Juliette Binoche<br>Filme: The English Patient<br>Ano da cerimônia: 1997","Idade: 44<br>Kim Basinger<br>Filme: L.A. Confidential<br>Ano da cerimônia: 1998","Idade: 64<br>Judi Dench<br>Filme: Shakespeare in Love<br>Ano da cerimônia: 1999","Idade: 24<br>Angelina Jolie<br>Filme: Girl, Interrupted<br>Ano da cerimônia: 2000","Idade: 41<br>Marcia Gay Harden<br>Filme: Pollock<br>Ano da cerimônia: 2001","Idade: 31<br>Jennifer Connelly<br>Filme: A Beautiful Mind<br>Ano da cerimônia: 2002","Idade: 33<br>Catherine Zeta-Jones<br>Filme: Chicago<br>Ano da cerimônia: 2003","Idade: 35<br>Cate Blanchett<br>Filme: The Aviator<br>Ano da cerimônia: 2005","Idade: 34<br>Rachel Weisz<br>Filme: The Constant Gardener<br>Ano da cerimônia: 2006","Idade: 25<br>Jennifer Hudson<br>Filme: Dreamgirls<br>Ano da cerimônia: 2007","Idade: 47<br>Tilda Swinton<br>Filme: Michael Clayton<br>Ano da cerimônia: 2008","Idade: 42<br>Mo'Nique<br>Filme: Precious: Based on the Novel 'Push' by Sapphire<br>Ano da cerimônia: 2010","Idade: 50<br>Melissa Leo<br>Filme: The Fighter<br>Ano da cerimônia: 2011","Idade: 39<br>Octavia Spencer<br>Filme: The Help<br>Ano da cerimônia: 2012","Idade: 30<br>Anne Hathaway<br>Filme: Les Misérables<br>Ano da cerimônia: 2013","Idade: 31<br>Lupita Nyong'o<br>Filme: 12 Years a Slave<br>Ano da cerimônia: 2014","Idade: 46<br>Zoe Saldana-Perego<br>Filme: Emilia Perez<br>Ano da cerimônia: 2025","Idade: 37<br>Da'Vine Joy Randolph<br>Filme: The Holdovers<br>Ano da cerimônia: 2024","Idade: 64<br>Jamie Lee Curtis<br>Filme: Everything Everywhere All at Once<br>Ano da cerimônia: 2023","Idade: 31<br>Ariana DeBose<br>Filme: West Side Story<br>Ano da cerimônia: 2022","Idade: 73<br>Yuh-Jung Youn<br>Filme: Minari<br>Ano da cerimônia: 2021","Idade: 53<br>Laura Dern<br>Filme: Marriage Story<br>Ano da cerimônia: 2020","Idade: 48<br>Regina King<br>Filme: If Beale Street Could Talk<br>Ano da cerimônia: 2019","Idade: 58<br>Allison Janney<br>Filme: I, Tonya<br>Ano da cerimônia: 2018","Idade: 51<br>Viola Davis<br>Filme: Fences<br>Ano da cerimônia: 2017","Idade: 27<br>Alicia Vikander<br>Filme: The Danish Girl<br>Ano da cerimônia: 2016","Idade: 46<br>Patricia Arquette<br>Filme: Boyhood<br>Ano da cerimônia: 2015","Idade: 34<br>Penélope Cruz<br>Filme: Vicky Cristina Barcelona<br>Ano da cerimônia: 2009","Idade: 34<br>Renée Zellweger<br>Filme: Cold Mountain<br>Ano da cerimônia: 2004"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(39,148,160,1)","opacity":0.69999999999999996,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(39,148,160,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.524461839530336,"r":7.3059360730593621,"b":42.478799739073722,"l":37.260273972602747},"font":{"color":"rgba(0,0,0,1)","family":"Nunito","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,4.5999999999999996],"tickmode":"array","ticktext":["Melhor ator","Melhor ator<br />coadjuvante","Melhor atriz","Melhor atriz<br />coadjuvante"],"tickvals":[1,2,3,4],"categoryorder":"array","categoryarray":["Melhor ator","Melhor ator<br />coadjuvante","Melhor atriz","Melhor atriz<br />coadjuvante"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Nunito","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Categoria","font":{"color":"rgba(0,0,0,1)","family":"Nunito","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[6.3499999999999996,86.650000000000006],"tickmode":"array","ticktext":["20","40","60","80"],"tickvals":[20,40,60,80],"categoryorder":"array","categoryarray":["20","40","60","80"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"Nunito","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Idade (anos) na cerimônia","font":{"color":"rgba(0,0,0,1)","family":"Nunito","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"Nunito","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"f2ae2d25df41":{"x":{},"y":{},"text":{},"type":"scatter"}},"cur_data":"f2ae2d25df41","visdat":{"f2ae2d25df41":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</center>
+</div>
+<div id="créditos-e-base-para-download" class="section level4">
+<h4>Créditos e base para download</h4>
+<p>Quer utilizar algum gráfico que eu mostrei aqui ou usar a base de dados que eu organizei? Sem problemas, <strong>desde que você me dê os créditos</strong>.</p>
+<p>Como baixar a base de dados? A versão final está disponível para <a href="https://raw.githubusercontent.com/fernandaperes/Blog_/refs/heads/master/content/blog/oscar-idades/Dados_Oscar_Fernanda_Peres.csv">download no meu GitHub</a>. Eu não me responsabilizo por quaisquer erros de digitação meus ou das pessoas que disponibilizaram as bases 1 e 2, ok?</p>
+<p><br /></p>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>As idades de atores e atrizes vencedores do Oscar diferem?</strong>. Blog Fernanda Peres, São Paulo, 05 mar. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/oscar-idades/" class="uri">https://fernandafperes.com.br/blog/oscar-idades/</a>.</p>
+</blockquote>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/leituras-2024/">Uma análise exploratória das minhas leituras em 2024 &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

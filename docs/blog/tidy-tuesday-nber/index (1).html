@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Explorando os dados dos artigos da NBER #TidyTuesday | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/tidy-tuesday-nber/cover.png"/>
+<meta name="twitter:title" content="Explorando os dados dos artigos da NBER #TidyTuesday"/>
+<meta name="twitter:description" content="Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday."/>
+
+	<meta property="og:title" content="Explorando os dados dos artigos da NBER #TidyTuesday" />
+<meta property="og:description" content="Analisando os dados das publicações no NBER nas últimas décadas, com foco no gênero dos autores e co-autores. Essa análise de dados faz parte do projeto #TidyTuesday." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/tidy-tuesday-nber/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/tidy-tuesday-nber/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-09-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-20T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/tidy-tuesday-nber/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Explorando%20os%20dados%20dos%20artigos%20da%20NBER%20%23TidyTuesday&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-nber%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-nber%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-nber%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-nber%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Explorando os dados dos artigos da NBER #TidyTuesday</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    20 set., 2021
+
+    <i class="far fa-clock clock"></i>
+    11 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/tidytuesday">TidyTuesday</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">Gráficos</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/tidy-tuesday-nber/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+<link href="https://fernandafperes.com.br/blog/tidy-tuesday-nber/index_files/tabwid/tabwid.css" rel="stylesheet" />
+
+
+<div id="os-dados-analisados" class="section level3">
+<h3>Os dados analisados</h3>
+<p>O post de hoje explora os dados dos artigos publicados pela National Bureau of Economic Research (NBER), que fazem parte da semana 40 do projeto <a href="https://github.com/rfordatascience/tidytuesday">#TidyTuesday</a>. Os dados estão disponíveis no <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-09-28/readme.md">repositório oficial do projeto</a>.</p>
+<blockquote>
+<p>National Bureau of Economic Research (NBER) é uma organização sem fins lucrativos norte-americana voltada para pesquisa e “comprometida em realizar e disseminar pesquisas econômicas imparciais entre formuladores de políticas públicas, profissionais de negócios e a comunidade acadêmica”.<br />
+Fonte: <a href="https://pt.wikipedia.org/wiki/National_Bureau_of_Economic_Research">Wikipedia</a></p>
+</blockquote>
+<p>Essa é a minha segunda participação no #TidyTuesday e tem sido super proveitoso participar, porque acabo aprendendo novas funções de pacotes que eu uso e amo, como o <code>dplyr</code> e o <code>ggplot2</code>, e também acabo explorando outros pacotes. Essa semana, além do <code>ggtext</code> que eu conheci semana passada, também usei o pacote <code>gender</code>, que há um tempo eu tinha vontade de usar, mas ainda não tinha tido coragem de explorar.<br />
+Ah, se você não sabe o que é a #TidyTuesday, eu explico melhor no meu <a href="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/">post anterior</a>.</p>
+</div>
+<div id="leitura-do-banco-de-dados-e-carregamento-dos-pacotes" class="section level3">
+<h3>Leitura do banco de dados e carregamento dos pacotes</h3>
+<p>Como comentei, eu usei os pacotes <code>gender</code>, <code>ggtext</code> e o <code>tidyverse</code>. No primeiro uso do pacote <code>gender</code> também é necessário instalar o <code>genderdata</code>, que eu só consegui instalar usando o código comentado abaixo - por alguma razão, não instalou automaticamente no meu computador.</p>
+<pre class="r"><code>pacman::p_load(tidyverse, ggtext, gender)
+# devtools::install_github(&quot;ropensci/genderdata&quot;)</code></pre>
+<p>Para ler o banco de dados, usei o código fornecido no repositório do #TiduTuesday, que une vários bancos diferentes com a função <code>left_join</code>:</p>
+<pre class="r"><code>papers &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/papers.csv&#39;)
+authors &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/authors.csv&#39;)
+programs &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/programs.csv&#39;)
+paper_authors &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_authors.csv&#39;)
+paper_programs &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-28/paper_programs.csv&#39;)
+
+
+joined_df &lt;- left_join(papers, paper_authors) %&gt;% 
+  left_join(authors) %&gt;% 
+  left_join(paper_programs) %&gt;% 
+  left_join(programs)%&gt;% 
+  mutate(
+    catalogue_group = str_sub(paper, 1, 1),
+    catalogue_group = case_when(
+      catalogue_group == &quot;h&quot; ~ &quot;Historical&quot;,
+      catalogue_group == &quot;t&quot; ~ &quot;Technical&quot;,
+      catalogue_group == &quot;w&quot; ~ &quot;General&quot;
+    ),
+    .after = paper
+  )</code></pre>
+<pre class="r"><code>sample_n(joined_df, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 12
+##    paper  catalogue_group  year month title    author name  user_nber user_repec
+##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
+##  1 w12852 General          2007     1 Capital… w1063… Seba… sebastia… ped3      
+##  2 w22533 General          2016     8 The I T… w1061… Yuli… yuliy_sa… &lt;NA&gt;      
+##  3 w18623 General          2012    12 The Imp… w1862… Mahe… maheshwo… &lt;NA&gt;      
+##  4 w15639 General          2010     1 Growth … w0855… Kenn… kenneth_… pro164    
+##  5 w10158 General          2003    12 Governa… w8386… Luc … luc_laev… pla174    
+##  6 w25270 General          2018    11 Non-Ran… w2527… Stan… stanley_… &lt;NA&gt;      
+##  7 w28243 General          2020    12 Transhu… w2305… Eoin… eoinmcgu… pmc163    
+##  8 w25728 General          2019     4 The Imp… w2402… Akir… akira_sa… &lt;NA&gt;      
+##  9 w2522  General          1988     2 Sectora… w2514… Robe… robert_s… pst85     
+## 10 w2412  General          1987    10 The Equ… w2171… Davi… david_ro… pro406    
+## # … with 3 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
+## #   program_category &lt;chr&gt;</code></pre>
+<p>O banco incluí uma lista de artigos da NBER acompanhados da data de publicação, nome dos autores e programa ao qual o artigo pertence. O banco inclui artigos do período de 1973 a 2021.</p>
+</div>
+<div id="identificando-o-gênero-dos-autores" class="section level3">
+<h3>Identificando o gênero dos autores</h3>
+<p>Há um tempo eu ouço falar no pacote <code>gender</code>, mas nunca o havia utilizado. Esse pacote permite identificar o gênero da pessoa com base no primeiro nome e no seu ano de nascimento. Por exemplo, de todos as pessoas chamadas Steve que nasceram em 1983, 99,4% eram homens e 0,6% eram mulheres. Logo, o pacote classificará um Steve nascido nesse ano como alguém do gênero masculino.<br />
+Vale dizer que é um pacote que usa um banco de dados com nomes em inglês, então seu funcionamento é limitado esse tipo de dado. Para os autores dos artigos da NBER, o pacote foi capaz de identificar o gênero de mais de 80% dos autores, então segui com a análise.<br />
+As análises que eu conduzi aqui foram baseadas no artigo <a href="https://bldavies.com/blog/female-representation-collaboration-nber/">Female representation and collaboration at the NBER</a>, escrito por Ben Davies. Eu tentei criar meu próprio script, sem “colar” do dele para me desafiar (e porque, para ser honesta, eu demorei para perceber que o post tinha um link para o script, haha!). Mas, eventualmente, o <a href="https://github.com/bldavies/bldavies.com/tree/master/content/blog/2021-03-29-female-representation-collaboration-nber/">script do Ben Davies</a> foi consultado.</p>
+<p>O meu primeiro passo foi criar duas colunas: uma coluna com o primeiro nome de cada autor (coluna <code>first_name</code>) e uma coluna com a data de nascimento estimada para cada autor (coluna <code>birth_year</code>). Estimei como ano de nascimento a data de publicação do artigo menos 35 anos - uma estratégia que não é à prova de falhas, mas que eu considerei uma estimativa válida.</p>
+<pre class="r"><code>joined_df$first_name &lt;- sapply(strsplit(joined_df$name, &quot; &quot;), `[`, 1)
+joined_df$birth_year &lt;- joined_df$year - 35</code></pre>
+<p>O próximo passo foi aplicar a função <code>gender_df</code> ao <em>data frame</em> para estimar os gêneros dos autores.</p>
+<pre class="r"><code>df_gender &lt;- gender::gender_df(joined_df,
+                               name_col = &quot;first_name&quot;,
+                               year_col = &quot;birth_year&quot;,
+                               method = &quot;ssa&quot;)</code></pre>
+<pre><code>## Warning: The `.dots` argument of `group_by()` is deprecated as of dplyr 1.0.0.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.</code></pre>
+<p>Isso resultou no seguinte banco de dados:</p>
+<pre class="r"><code>sample_n(df_gender, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 6
+##    name    proportion_male proportion_female gender year_min year_max
+##    &lt;chr&gt;             &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 James             0.997            0.0031 male       1955     1955
+##  2 David             0.992            0.0081 male       1985     1985
+##  3 Matthew           0.999            0.0014 male       1962     1962
+##  4 Kirsten           0                1      female     1975     1975
+##  5 Douglas           0.996            0.0044 male       1970     1970
+##  6 Gene              0.972            0.0277 male       1980     1980
+##  7 Ricardo           0.993            0.0073 male       1980     1980
+##  8 Todd              0.996            0.0035 male       1970     1970
+##  9 Adam              0.995            0.0052 male       1978     1978
+## 10 Stephen           0.992            0.0075 male       1973     1973</code></pre>
+<p>O próximo passo foi unir o banco de dados com os artigos, o <code>joined_df</code>, ao banco com os gêneros, o <code>df_gender</code>. Para isso, eu inicialmente tive que filtrar o banco <code>df_gender</code> para incluir apenas os casos não repetidos de nome e ano de nascimento, além de renomear algumas colunas para possibilitar o <code>left_join</code>. Ao final, fiquei com um <em>data frame</em> chamado <code>df</code>.</p>
+<pre class="r"><code>df_gender &lt;- df_gender %&gt;% rename(first_name = name,
+                                  birth_year = year_min) %&gt;%
+  select(first_name, birth_year, gender) %&gt;% distinct()
+
+df &lt;- left_join(joined_df, df_gender)</code></pre>
+<pre><code>## Joining, by = c(&quot;first_name&quot;, &quot;birth_year&quot;)</code></pre>
+<pre class="r"><code>sample_n(df, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 15
+##    paper  catalogue_group  year month title    author name  user_nber user_repec
+##    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     
+##  1 w24211 General          2018     1 &quot;The Di… w2421… Eric… erica_my… pmy46     
+##  2 w22015 General          2016     2 &quot;Social… w2201… Patr… patricia… &lt;NA&gt;      
+##  3 w25323 General          2018    12 &quot;Invest… w2532… Sand… sandeep_… &lt;NA&gt;      
+##  4 w14919 General          2009     4 &quot;Reply … w1036… Troy… troy_dav… pda131    
+##  5 w24423 General          2018     3 &quot;Are Re… w8541… Neer… neeraj_k… pka320    
+##  6 w11456 General          2005     7 &quot;Mexica… w8344… Darr… darren_l… plu41     
+##  7 w28162 General          2020    12 &quot;Why is… w2816… Salo… salomon_… &lt;NA&gt;      
+##  8 w28151 General          2020    11 &quot;Revenu… w9146… Anto… antoinet… psc180    
+##  9 w7296  General          1999     8 &quot;The Go… w1006… Henr… henry_fa… &lt;NA&gt;      
+## 10 w7584  General          2000     3 &quot;A Dyna… w7584… Step… &lt;NA&gt;      &lt;NA&gt;      
+## # … with 6 more variables: program &lt;chr&gt;, program_desc &lt;chr&gt;,
+## #   program_category &lt;chr&gt;, first_name &lt;chr&gt;, birth_year &lt;dbl&gt;, gender &lt;chr&gt;</code></pre>
+</div>
+<div id="proporção-de-mulheres-autoras-ou-co-autoras-de-artigos-da-nber-por-década" class="section level3">
+<h3>Proporção de mulheres autoras ou co-autoras de artigos da NBER por década</h3>
+<p>O próximo passo foi criar uma variável que correspondesse à década de publicação do artigo, chamada de <code>decade</code>. Eu incluí as décadas de 1980 a 2010 em um objeto ( <code>decades</code>), para filtrar o banco posteriormente. Essas décadas foram escolhidas por serem as com dados completos, referentes aos 10 anos.</p>
+<pre class="r"><code>df &lt;- df %&gt;% mutate(decade = factor(paste0((floor(year / 10) * 10),&quot;s&quot;)))
+
+decades &lt;- c(&quot;1980s&quot;, &quot;1990s&quot;, &quot;2000s&quot;, &quot;2010s&quot;)</code></pre>
+<p>A tabela abaixo resume a proporção de mulheres autoras/ co-autoras por década, bem como a proporção de autores em cada década cujo gênero não pode ser identificado.</p>
+<pre class="r"><code>tbl_sum &lt;- df %&gt;% filter(decade %in% decades) %&gt;%
+  group_by(decade, gender) %&gt;% 
+  count() %&gt;% 
+  spread(gender, n) %&gt;% 
+  rename(NI = &quot;&lt;NA&gt;&quot;) %&gt;% 
+  mutate(total = female + male,
+         prop.f = round(100*female/total,2),
+         prop.m = round(100*male/total,2),
+         estimated.sex = 100-round(100*NI/(female+male+NI),2))
+
+tbl_cont &lt;- df %&gt;% filter(!is.na(gender),
+                          decade %in% decades) %&gt;%
+  group_by(decade, gender) %&gt;% 
+  count()</code></pre>
+<template id="0d7c5636-b24c-42df-8937-30d6e3d29090"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-332b57a6{}.cl-33265616{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-33265fd0{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-33267772{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3326777c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33267786{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33267787{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33267790{width:100.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3326779a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-332b57a6'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-3326779a"><p class="cl-33265fd0"><span class="cl-33265616">Década</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Autoras/ Co-autoras mulheres</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Autores/ Co-autores homens</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Proporção de autoras mulheres (%)</span></p></td><td class="cl-33267790"><p class="cl-33265fd0"><span class="cl-33265616">Proporção de autores com gênero identificado (%)</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-3326777c"><p class="cl-33265fd0"><span class="cl-33265616">1980s</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">401</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">4956</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">7,49</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">85,75</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3326777c"><p class="cl-33265fd0"><span class="cl-33265616">1990s</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">1380</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">8191</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">14,42</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">85,22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3326777c"><p class="cl-33265fd0"><span class="cl-33265616">2000s</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">4877</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">20975</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">18,87</span></p></td><td class="cl-33267772"><p class="cl-33265fd0"><span class="cl-33265616">82,32</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33267787"><p class="cl-33265fd0"><span class="cl-33265616">2010s</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">10990</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">38964</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">22,00</span></p></td><td class="cl-33267786"><p class="cl-33265fd0"><span class="cl-33265616">80,00</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="4ec6d2dc-de35-4e6f-9760-1e9bfa88d8c1"></div>
+<script>
+var dest = document.getElementById("4ec6d2dc-de35-4e6f-9760-1e9bfa88d8c1");
+var template = document.getElementById("0d7c5636-b24c-42df-8937-30d6e3d29090");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Então, eu optei por criar um gráfico de linhas para mostrar a evolução da quantidade de autores/ co-autores de ambos os gêneros ao longo das décadas. Além disso, incluí no gráfico um rótulo indicando a proporção de mulheres. Usei para isso a camada <code>geom_label</code>, que por alguma razão eu sempre evito, tanto que essa foi a primeira vez que usei essa camada na vida, haha.</p>
+<pre class="r"><code>ggplot() +
+  geom_line(data = tbl_cont,
+            aes(x = decade, y = n,
+                group = gender, color = gender),
+            size = 1) +
+  geom_label(data = tbl_sum, aes(x = decade, y = (female+2100),
+                                 label = scales::number(prop.f,
+                                                        decimal.mark = &quot;,&quot;,
+                                                        suffix = &quot;%&quot;)),
+             size = 2.8) +
+  labs(x = &quot;Década&quot;, color = &quot;Gênero do autor&quot;,
+       title = &quot;&lt;b style=&#39;color:#B8D8D8&#39;&gt;Homens&lt;/b&gt; e &lt;b style=&#39;color:#7A9E9F&#39;&gt;mulheres&lt;/b&gt; autores ou co-autores de&lt;br&gt;
+       artigos da NBER por década&quot;,
+       subtitle = &quot;A proporção de autoras/ co-autoras mulheres aumentou ao longo das décadas\nmas mulheres ainda representam menos de 25% dos autores/ co-autores&quot;) +
+  scale_color_manual(values = c(&quot;#7A9E9F&quot;, &quot;#B8D8D8&quot;)) +
+  theme_classic() +
+  theme(axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        panel.grid.major.y = element_line(color = &quot;grey90&quot;,
+                                          size = 0.3),
+        axis.title.y = element_blank(),
+        legend.position = &quot;none&quot;,
+        plot.title = element_markdown())</code></pre>
+<p><img src="graf1.png" width="700px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="proporção-de-mulheres-autoras-ou-co-autoras-de-artigos-da-nber-por-programa-no-período-de-2000-a-2019" class="section level3">
+<h3>Proporção de mulheres autoras ou co-autoras de artigos da NBER por programa, no período de 2000 a 2019</h3>
+<p>Como próximo passo, eu tentei reproduzir o gráfico gerado pelo Ben Davies no artigo <a href="https://bldavies.com/blog/female-representation-collaboration-nber/">Female representation and collaboration at the NBER</a>, o qual representa a proporção de mulheres de acordo com o programa no qual o artigo foi publicado.<br />
+Para isso, selecionei os 10 programas com mais publicações e agrupei os demais em “outros”. Calculei a proporção de mulheres em cada um desses programas, bem como a proporção de mulheres no geral. Ah, eu selecionei como período de interesse apenas as décadas de 2000 e 2010.</p>
+<pre class="r"><code>top_20 &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&quot;)) %&gt;% 
+  mutate(program = factor(program)) %&gt;% 
+  group_by(program) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  arrange(-n) %&gt;%
+  slice_max(n, n = 20) %&gt;% 
+  pull(program)
+
+df &lt;- df %&gt;% mutate(program_top = factor(case_when(program %in% top_20 ~ program,
+                                                   TRUE ~ &quot;Other&quot;)))
+
+df_prog &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&quot;),
+                         !is.na(gender), !is.na(program)) %&gt;%
+  group_by(program, program_desc, program_category, gender) %&gt;% 
+  count() %&gt;% 
+  spread(gender, n) %&gt;%
+  mutate(total = female + male,
+         prop.f = round(100*female/total,2),
+         program = factor(program))
+
+
+prop.f.all &lt;- df %&gt;% filter(decade %in% c(&quot;2000s&quot;, &quot;2010s&quot;),
+                            !is.na(gender), !is.na(program)) %&gt;%
+  group_by(gender) %&gt;% 
+  count() %&gt;% 
+  spread(gender, n) %&gt;%
+  mutate(total = female + male,
+         prop.f = round(100*female/total,2)) %&gt;% 
+  pull(prop.f)</code></pre>
+<p>O gráfico, no final, ficou assim:</p>
+<pre class="r"><code>ggplot(df_prog) +
+  geom_bar(aes(x = fct_reorder(program,
+                               prop.f),
+               y = prop.f, fill = program_category), stat = &quot;identity&quot;) +
+  geom_hline(yintercept = prop.f.all,
+             color = &quot;grey50&quot;,
+             lty = &quot;dashed&quot;) +
+  geom_text(aes(label = program_desc, x = program, y = (prop.f/2)),
+            size = 3) +
+  scale_y_continuous(expand = expansion(add = c(0,3))) +
+  scale_fill_manual(values = c(&quot;#7A9E9F&quot;, &quot;#C09BA2&quot;,&quot;#B8D8D8&quot;),
+                    na.value = &quot;grey80&quot;) +
+  labs(y = &quot;% de mulheres como autoras ou co-autoras&quot;,
+       title = &quot;Proporção de autorias ou co-autorias de mulheres\nem artigos da NBER durante o período de 2000 a 2019&quot;,
+       subtitle = &quot;A linha pontilhada indica essa proporção considerando-se todos os programas&quot;,
+       fill = &quot;Categoria do programa&quot;) +
+  coord_flip() +
+  theme_classic() +
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank(),
+        axis.line.x = element_line(color = &quot;grey50&quot;, size = 0.3),
+        axis.title.x = element_text(margin = margin(10,10,15,10)),
+        legend.position = &quot;bottom&quot;,
+        legend.title = element_text(size = 10)) +
+  guides(fill = guide_legend(title.position = &quot;top&quot;, title.hjust = 0.5))</code></pre>
+<p><img src="graf2.png" width="700px" style="display: block; margin: auto;" /></p>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/interpretacao-boxplot/"> &laquo; Como interpretar (e construir) um gráfico boxplot?</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/">Explorando os dados dos Emmy Awards #TidyTuesday &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

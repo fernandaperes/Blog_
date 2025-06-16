@@ -1,0 +1,111 @@
+---
+title: "Uma análise exploratória das minhas leituras em 2024"
+author: Fernanda Fiel Peres
+date: '2025-02-26'
+slug: [leituras-2024]
+categories: ['Estatística descritiva', 'Gráficos']
+tags: ['ggplot2', 'gráficos']
+comments: yes
+summary: 'Explorando as minhas leituras do ano usando o R.'
+output:
+  blogdown::html_page:
+    toc: false
+bibliography: references.bib
+csl: APA.csl
+---
+
+  
+  
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
+library(tidyverse)
+library(plotly)
+fstatix::paleta_f()
+
+dados <- readxl::read_excel("Livros.xlsx")
+
+graf <- ggplot(dados, aes(x = `Minha avaliação`, y = `Avaliação no Skoob`)) +
+  geom_point(aes(text = Título),
+             color = azul,
+             position = position_jitter(width = 0.02, height = 0.02, seed = 1234)) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+
+  
+Fortemente inspirada no [post da Beatriz Milz](https://beamilz.com/posts/2024-07-25-leituras-1sem/pt/), eu decidi fazer uma análise exploratória das minhas leituras em 2024. Antes de você seguir nesse post, eu preciso te dizer que minhas leituras seguem aquele ditado **"um pouco de droga, um pouco de salada"**. Eu curto livros mais sérios, mas também amo ler livros bem comerciais e com tramas mais óbvias (os livros que são ridicularizados nos clubes do livro *cults* por aí).  
+  
+Eu vejo as pessoas compartilhando essas listas e dizendo "eu excluí os livros vergonhosos". E eu sempre penso: poxa, mas eu adoraria saber quais livros "vergonhosos" as pessoas que eu sigo na internet ou convivo leem. Então, eu escolhi não excluir os "vergonhosos". Espero de você, leitor, o respeito a essa decisão 🙃  
+    
+Uma outra informação é que em 2024 eu participei de dois **clubes do livro**. Isso com certeza contribuiu para que minhas leituras fossem mais diversas -- principalmente no que diz respeito à nacionalidade dos autores. Os clubes também me fizeram ler livros que eu normalmente não leria (e alguns que, depois de ler, eu confirmei que não queria ter lido, haha!).  
+  
+  
+### Principais características dos livros
+  
+```{r, include=FALSE}
+dados |> 
+  summarise(`Quantidade de livros` = n(),
+            `Total de páginas` = sum(`Quantidade de páginas`),
+            `Média de páginas por dia` = `Total de páginas`/365)
+```
+  
+No total, eu li 30 livros, que totalizaram 7.068 páginas -- uma média de 19,4 páginas por dia. Eu tenho preferido e-books a livros físicos. Mas em 2024 eu li mais livros físicos do que normalmente e eles corresponderam a 30% das leituras.  
+  
+```{r, echo=FALSE, fig.width=4.5, fig.height=2.5, fig.align='center'}
+dados |> 
+  count(`Tipo do livro`) |> 
+  mutate(rotulo = paste0(n, " (", 100*n/sum(n), "%)")) |> 
+  ggplot(aes(y = `Tipo do livro`, x = n)) +
+  geom_bar(stat = "identity", fill = azul) +
+  geom_text(aes(label = rotulo), size = 3.5, family = "Nunito", hjust = -0.1) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.2))) +
+  labs(y = NULL, titulo = "Formato do livro", x = "Quantidade de livros") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 13))
+```
+
+
+  
+  
+### Ano da publicação
+  
+A maior parte dos livros que eu li em 2024 foram publicados entre 2022 e 2024. Os dois mais antigos são da rainha do crime (e dona do meu coração): Assassinato no Beco (1937) e A mansão Hollow (1946).  
+  
+```{r, echo=FALSE, fig.width=5, fig.height=3.5, fig.align='center'}
+dados |> 
+  count(`Ano da publicação`) |> 
+  filter(!is.na(`Ano da publicação`)) |> 
+  ggplot(aes(x = factor(`Ano da publicação`), y = n)) +
+  geom_bar(stat = "identity", fill = azul) +
+  geom_text(aes(label = n), size = 3, family = "Nunito", vjust = -0.5) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.2)),
+                     breaks = seq(0, 10, by = 2)) +
+  labs(y = "Quantidade de livros", x = "Ano da publicação") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 13))
+```
+
+  
+  
+<br>
+
+<center>
+```{r, echo=FALSE, fig.width=4.5, fig.height=4, fig.align='center'}
+ggplotly(graf)
+```
+</center>
+
+
+
+<details>
+<summary>Visible text</summary>
+Hidden content.
+</details>
+  
+<br />
+
+  
+***
+  
+### Referências:  
+

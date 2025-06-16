@@ -1,0 +1,176 @@
+---
+title: "Probabilidade x chance"
+author: Fernanda Fiel Peres
+date: '2025-06-15'
+slug: [probabilidade-chance]
+categories: ['Estatística teórica']
+tags: ['estatística-teórica']
+comments: yes
+summary: 'No dia-a-dia, é comum usarmos chance e probabilidade como sinônimos. Mas na estatística, elas significam coisas consideravelmente diferentes. Nesse post eu te explico, com exemplos, como interpretar cada uma delas.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+<p>No dia-a-dia, é comum usarmos os termos chance e probabilidade como sinônimos. “Qual a chance de eu ganhar na mega da virada?”, você provavelmente já se perguntou alguma vez. Mas na estatística, chance e probabilidade significam coisas <strong>consideravelmente diferentes</strong>. E confundi-las vai levar a uma <strong>interpretação errada dos seus resultados</strong>, principalmente ao rodar modelos de regressão logística. Nesse post, vamos entender de uma vez por todas o que esses dois conceitos significam.</p>
+<div id="o-que-é-probabilidade" class="section level3">
+<h3>O que é probabilidade?</h3>
+<p>Antes de discutirmos o que é chance, precisamos definir probabilidade. Essa não é uma tarefa tão simples, porque <strong>há mais de uma definição</strong> de probabilidade. Por exemplo, na escola você aprendeu a <strong>probabilidade clássica</strong> – aquela, que a gente geralmente ensina usando dados e moedas como exemplo.</p>
+<p>A probabilidade clássica é calculada dividindo-se a quantidade de casos favoráveis pelo total de possibilidades. Como assim? Imagine que queremos saber a probabilidade de sair <strong>um número maior ou igual a 5 em um dado</strong>. Nesse caso, nosso evento de interesse é “sair um número ≥ 5”. Há <strong>dois</strong> “casos favoráveis” (isso é, resultados que correspondem ao nosso evento de interesse): 5 e 6. E, no total, temos <strong>seis</strong> possibilidades de resultados. Logo, essa probabilidade será calculada como:</p>
+<p><img src="img1.png" width="380px" style="display: block; margin: auto;" /></p>
+<p>Ou seja, chegamos a uma probabilidade de 0,333. Esse valor também pode ser pensado em porcentagem, basta que ele seja multiplicado por 100:</p>
+<center>
+0,333 x 100 = 33,3%
+</center>
+<p><br />
+Essa forma de calcular probabilidade é útil, mas bastante <strong>limitada</strong>, porque se aplica <strong>apenas</strong> a eventos <strong>equiprováveis</strong> – ou seja, a situações em que todos os eventos têm a mesma probabilidade de ocorrer, como é o caso do lançamento de um dado ou de uma moeda não viciados.</p>
+<p>Perceba como <strong>não faz sentido</strong> aplicarmos esse raciocínio a outras situações. Vamos imaginar que queremos saber a probabilidade de um bebê nascer prematuro (sem termos qualquer outra informação sobre o bebê ou sua mãe). Se formos seguir a probabilidade <strong>clássica</strong>, discutida acima, nosso raciocínio seria:</p>
+<ul>
+<li>Temos duas (2) possibilidades ao total: parto prematuro e parto não-prematuro.</li>
+<li>Queremos saber a probabilidade de uma (1) das possibilidades, logo:</li>
+</ul>
+<p><img src="img2.png" width="300px" style="display: block; margin: auto;" /></p>
+<p>Ou seja, seguindo essa raciocínio consideraríamos que há 50% de probabilidade de um parto ser prematuro. Mas essa raciocínio está <strong>errado</strong>! Isso porque a probabilidade de um parto ser prematuro é <strong>bem menor</strong> que a probabilidade de ele não ser prematuro. Esses dois eventos <strong>não são equiprováveis</strong>. Como calcular a probabilidade nessas situações, então?</p>
+<p>É aqui que entra a <strong>probabilidade frequentista</strong>, que se baseia na frequência de ocorrência do evento. Na estatística clássica usamos essa definição de probabilidade – até por isso essa estatística é também chamada de <strong>estatística frequentista</strong>.</p>
+<p>Imagine que fizemos uma pesquisa e descobrimos que ocorreram 2.621.015 partos no Brasil em 2022. Desses, 314.518 foram prematuros. Sabendo dessas informações podemos calcular a probabilidade de um parto ser prematuro como:</p>
+<p><img src="img3.png" width="360px" style="display: block; margin: auto;" /></p>
+<p>Aplicando os valores que encontramos à fórmula, temos:</p>
+<p><img src="img4.png" width="320px" style="display: block; margin: auto;" /></p>
+<p>Portanto, a probabilidade de um parto prematuro no Brasil em 2022 é de <strong>0,12</strong>.<br />
+Aqui também podemos pensar em porcentagem. Lembrando que para isso basta multiplicar o valor por 100:</p>
+<center>
+0,12 x 100 = 12%
+</center>
+<p><br />
+Ou seja, há uma probabilidade de 12% de um parto ser prematuro nesse cenário.</p>
+<div id="mais-um-exemplo" class="section level5">
+<h5>Mais um exemplo…</h5>
+<p>Vamos imaginar que coletamos uma amostra de homens e mulheres e os classificamos quanto ao seu hábito de fumar. Os resultados estão resumidos na tabela abaixo:</p>
+<p><img src="img5.png" width="380px" style="display: block; margin: auto;" /></p>
+<p>Agora, tente responder o seguinte: <strong>qual a probabilidade de uma mulher dessa amostra não ser fumante?</strong></p>
+<p>Reforçando: aqui vamos usar a <strong>estatística clássica</strong> e, portanto, consideraremos que <strong>probabilidade é sinônimo de frequência</strong>. Vamos, então, calcular a frequência de mulheres não-fumantes nessa amostra.</p>
+<p>Perceba que a amostra inclui <strong>200</strong> mulheres, sendo <strong>160</strong> delas não-fumantes:</p>
+<p><img src="img6.png" width="380px" style="display: block; margin: auto;" /></p>
+<p>A probabilidade de uma mulher dessa amostra não ser fumante é dada pela frequência de mulheres não-fumantes, ou seja:</p>
+<p><img src="img7.png" width="430px" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>Essa notação “P(não-fumante | mulher)” é a notação que usamos para probabilidades condicionais – isso é, que se baseiam em uma condição. A barra vertical ( | ) significa “dado que”. Portanto, lemos “P(não-fumante | mulher)” como probabilidade de não ser fumante dado que é uma mulher.</p>
+</blockquote>
+<p>Adicionando os valores à fórmula, temos:</p>
+<p><img src="img8.png" width="340px" style="display: block; margin: auto;" /></p>
+<p>Ou seja, a probabilidade de uma mulher dessa amostra <strong>não ser fumante</strong> é de <strong>0,8 ou 80%</strong>.</p>
+<p>Ok, para finalizar esse raciocínio, quero que a gente calcule a probabilidade de uma <strong>mulher</strong> dessa amostra <strong>ser fumante</strong>. Perceba que a amostra inclui <strong>200</strong> mulheres, sendo <strong>40</strong> delas não-fumantes:</p>
+<p><img src="img11.png" width="380px" style="display: block; margin: auto;" /></p>
+<p>A probabilidade de uma mulher dessa amostra ser fumante é dada pela frequência de mulheres fumantes, ou seja:</p>
+<p><img src="img12.png" width="360px" style="display: block; margin: auto;" /></p>
+<p>A probabilidade de uma mulher dessa amostra <strong>ser fumante</strong> é, portanto, de <strong>0,2 ou 20%</strong>.</p>
+<blockquote>
+<p>Ah, um cuidado importante aqui: probabilidades condicionais <strong>não podem ser invertidas</strong>. O que eu quero dizer com isso? Que a probabilidade de não ser fumante dado que é uma mulher <strong>é diferente</strong> da probabilidade de ser uma mulher dado que não é fumante:</p>
+<center>
+P(não-fumante | mulher) ≠ P(mulher | não-fumante)
+</center>
+<p><br /><br />
+Para isso fazer mais sentido, vamos calcular a probabilidade de ser uma mulher dado que é não-fumante, P(mulher | não-fumante):</p>
+<center>
+<img src="img9.png" width="340" />
+</center>
+<br /><br />
+<center>
+<img src="img10.png" width="400" />
+</center>
+<p><br /><br />
+Note que chegamos a probabilidades diferentes!</p>
+</blockquote>
+</div>
+<div id="probabilidades-de-eventos-complementares" class="section level5">
+<h5>Probabilidades de eventos complementares</h5>
+<p>Os eventos “não ser fumante” e “ser fumante” são o que chamamos de <strong>eventos complementares</strong>. Isso porque, em conjunto, incluem todas as possibilidades: ou a mulher é fumante ou ela não é fumante, não há outras opções.</p>
+<p>A <strong>soma</strong> das probabilidades de eventos complementares <strong>dá 100%</strong> – ou 1, se representarmos a probabilidade em decimal. Perceba como isso é verdade para os dados do nosso exemplo:</p>
+<p><img src="img13.png" width="340px" style="display: block; margin: auto;" /></p>
+<p>Por isso, se representarmos a probabilidade de não ser fumante como <strong>p</strong>, a probabilidade de ser fumante pode ser representada como <strong>1 – p</strong>:</p>
+<p><img src="img14.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Por enquanto, <strong>guarde essa informação</strong>. Ela vai voltar ao longo do texto, quando formos definir chance.</p>
+</div>
+<div id="probabilidades-variam-de-0-a-1" class="section level5">
+<h5>Probabilidades variam de 0 a 1</h5>
+<p>Antes de encerrarmos a nossa definição de probabilidade, quero chamar a sua atenção para o fato de que qualquer probabilidade estará entre 0 e 1 – ou, pensando em porcentagem, entre 0% e 100%.<br />
+Isso porque o denominador do cálculo da porcentagem é o total, o que torna impossível valores acima de 100%.</p>
+</div>
+</div>
+<div id="ok-mas-o-que-é-chance-afinal" class="section level3">
+<h3>Ok, mas o que é chance afinal?</h3>
+<p>A chance é uma <strong>razão entre probabilidades</strong>.<br />
+Se queremos saber a chance uma mulher não ser fumante, devemos <strong>dividir</strong> a probabilidade de ela não ser fumante pela probabilidade de ela ser fumante:</p>
+<p><img src="img15.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Perceba que a probabilidade que vai no <strong>numerador</strong> (parte superior da divisão) é a que <strong>nos interessa</strong>. Se queremos saber a chance de uma mulher da amostra <strong>não ser fumante</strong> é a probabilidade de <strong>não ser fumante</strong> que vai no numerador. Já no denominador (parte inferior da divisão) vai a probabilidade do <strong>evento complementar</strong> ao que nos interessa.</p>
+<p>Para os dados do nosso exemplo, temos:</p>
+<p><img src="img16.png" width="270px" style="display: block; margin: auto;" /></p>
+<p>Ou seja, a <strong>chance</strong> de uma mulher dessa amostra não ser fumante <strong>é igual a 4</strong>.</p>
+<div id="como-eu-devo-interpretar-uma-chance" class="section level5">
+<h5>Como eu devo interpretar uma chance?</h5>
+<p>Essa é, provavelmente, a maior dificuldade no que diz respeito a chances. A <strong>interpretação</strong> delas, na minha opinião, não é das mais intuitivas. Se a chance de uma mulher da amostra <strong>não ser fumante</strong> é <strong>igual a 4</strong>, o que isso significa? A interpretação correta é:</p>
+<blockquote>
+<p>“A probabilidade de uma mulher dessa amostra não ser fumante é <strong>4 vezes</strong> a probabilidade de uma mulher dessa amostra ser fumante.”</p>
+</blockquote>
+<p>Perceba como isso é verdade: se multiplicarmos a probabilidade de ser fumante por 4 chegamos à probabilidade de não ser fumante:</p>
+<center>
+4 x 0,2 = 0,8
+</center>
+<p><br />
+Ah, e <strong>cuidado</strong> para não dizer “4 vezes <strong>maior</strong>”. Isso está <strong>errado</strong>! Se quisermos montar a frase dessa forma, precisamos subtrair 1 da chance:</p>
+<center>
+4 - 1 = 3
+</center>
+<p><br />
+Agora, sim, podemos interpretar como “vezes maior”. Podemos dizer:</p>
+<blockquote>
+<p>“A probabilidade de uma mulher dessa amostra não ser fumante é <strong>3 vezes maior</strong> que a probabilidade de ela ser fumante”</p>
+</blockquote>
+<p>Como 3, em porcentagem, corresponde a 300% (3 x 100 = 300%), podemos também montar a frase da seguinte forma:</p>
+<blockquote>
+<p>“A probabilidade de uma mulher dessa amostra não ser fumante é <strong>300% maior</strong> que a probabilidade de ela ser fumante”</p>
+</blockquote>
+<p>Ok, Fernanda, mas e se a chance for <strong>menor que 1</strong>, como eu interpreto? Bom, a lógica segue a mesma. Mas vamos treinar com um exemplo.</p>
+<p>Vamos agora calcular a <strong>chance</strong> de uma mulher dessa amostra <strong>ser fumante</strong>. Se queremos saber a chance uma mulher ser fumante, devemos <strong>dividir</strong> a probabilidade de ela ser fumante pela probabilidade de ela não ser fumante:</p>
+<p><img src="img17.png" width="360px" style="display: block; margin: auto;" /></p>
+<p>Ou seja, a chance de uma mulher dessa amostra <strong>ser fumante</strong> é de 0,25. Como interpretar esse valor? A interpretação correta é:</p>
+<blockquote>
+<p>“A probabilidade de uma mulher dessa amostra ser fumante é <strong>0,25 vezes</strong> a probabilidade de uma mulher dessa amostra não ser fumante.”</p>
+</blockquote>
+<p>De novo, cuidado para não dizer “vezes maior” ou “vezes menor”. Isso estaria <strong>errado</strong>. Para montarmos a frase dessa forma, assim como fizemos com a chance maior que 1, devemos subtrair 1:</p>
+<center>
+0,25 - 1 = -0,75
+</center>
+<p><br />
+Perceba que o resultado dessa subtração foi negativo. Isso significa que esse valor calculado representa o quantas vezes <strong>menor</strong> é aquela probabilidade. A frase correta fica:</p>
+<blockquote>
+<p>“A probabilidade de uma mulher dessa amostra ser fumante é <strong>0,75 vezes menor</strong> que a probabilidade de ela não ser fumante”</p>
+</blockquote>
+<p>Como 0,75, em porcentagem, corresponde a 75% (0,75 x 100 = 75%), podemos também montar a frase da seguinte forma:</p>
+<blockquote>
+<p>“A probabilidade de uma mulher dessa amostra ser fumante é <strong>75% menor</strong> que a probabilidade de ela não ser fumante”</p>
+</blockquote>
+<p>Já disse e repito: eu não considero essa interpretação muito intuitiva. Minha sugestão? Pega um papel e esquematiza essas probabilidades e chances. Eu te garanto que vai ficar menos abstrato!</p>
+</div>
+<div id="chances-variam-de-0-ao-infinito-positivo" class="section level5">
+<h5>Chances variam de 0 ao infinito positivo</h5>
+<p>Perceba que, ao contrário das probabilidades, as chances não se limitam ao intervalo entre 0 e 1. Elas variam de 0 ao infinito positivo.<br />
+Isso porque o denominador do cálculo da chance não é um total – logo, valores acima de 1 são posíveis. Por outro lado, como as chances são uma razão entre probabilidades, elas nunca serão negativas, já que probabilidades nunca são negativas – isso faz com que o menor valor possível para uma chance seja zero.</p>
+</div>
+<div id="uma-notação-comum-para-chances" class="section level5">
+<h5>Uma notação comum para chances…</h5>
+<p>Mais acima eu te contei que se representamos a probabilidade de um evento como “p”, a probabilidade do seu evento complementar pode ser representada como “1 - p”. Como a chance é a divisão entre esses eventos, podemos representá-la como:</p>
+<p><img src="img18.png" width="140px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Probabilidade x chance</strong>. Blog Fernanda Peres, São Paulo, 15 jun. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/probabilidade-chance/" class="uri">https://fernandafperes.com.br/blog/probabilidade-chance/</a>.</p>
+</blockquote>
+<p><br /></p>
+</div>
+</div>

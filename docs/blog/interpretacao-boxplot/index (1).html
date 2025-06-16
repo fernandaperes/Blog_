@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Como interpretar (e construir) um gráfico boxplot? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/interpretacao-boxplot/cover.png"/>
+<meta name="twitter:title" content="Como interpretar (e construir) um gráfico boxplot?"/>
+<meta name="twitter:description" content="O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot."/>
+
+	<meta property="og:title" content="Como interpretar (e construir) um gráfico boxplot?" />
+<meta property="og:description" content="O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/interpretacao-boxplot/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/interpretacao-boxplot/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-03-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-29T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/interpretacao-boxplot/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Como%20interpretar%20%28e%20construir%29%20um%20gr%c3%a1fico%20boxplot%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2finterpretacao-boxplot%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2finterpretacao-boxplot%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2finterpretacao-boxplot%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2finterpretacao-boxplot%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Como interpretar (e construir) um gráfico boxplot?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    29 mar., 2022
+
+    <i class="far fa-clock clock"></i>
+    8 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">Gráficos</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/interpretacao-boxplot/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>Se você está na área de análise de dados ou na área acadêmica, é provável que você já tenha visto um gráfico com aparência um tanto peculiar, como o acima, inspirado no artigo de Schenk &amp; Steppan (2014).<br />
+Trata-se de um gráfico cujo nome em português é “diagrama de caixas,” mas que é muito mais conhecido pelo seu nome em inglês: boxplot.<br />
+Ok, mas como interpretá-lo? O boxplot é composto por seis elementos: limite inferior, quartil 1, mediana (= quartil 2), quartil 3, limite superior e outliers. Portanto, para interpretá-lo antes precisamos entender cada um desses elementos.</p>
+<img src="g2.png" width="350px" style="display: block; margin: auto;" />
+<center>
+<font size = '3'>Elementos que compõem um boxplot.</font>
+</center>
+<div id="os-quartis-e-a-mediana" class="section level3">
+<h3>Os quartis e a mediana</h3>
+<p>Os quartis são as medidas que delimitam a caixa em um boxplot (como você pode ver na figura acima). Mas, o que são quartis?<br />
+Eu acho mais fácil entender o conceito de quartis a partir do conceito de mediana. Então, vamos a ela.</p>
+<div id="a-mediana" class="section level4">
+<h4>A mediana</h4>
+<p>A mediana é o valor central de um conjunto de dados, quando esse conjunto está organizado de forma crescente. A mediana divide o conjunto em duas partes: 50% dos valores serão iguais ou inferiores a ela, e os outros 50% serão iguais ou superiores. Vejamos isso na prática. Observe que no conjunto de dados abaixo (já organizado de forma crescente) o valor <strong>30</strong> é o valor central: 50% dos dados estão abaixo e 50% estão acima dele.</p>
+<p><img src="g3.png" width="220px" style="display: block; margin: auto;" /></p>
+<p>Se o conjunto de dados tiver uma quantidade par de valores, então a mediana será a média entre os dois valores centrais, como no caso abaixo, em que a mediana é <strong>28,5</strong>:</p>
+<p><img src="g4.png" width="330px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="os-quartis" class="section level4">
+<h4>Os quartis</h4>
+<p>A lógica por trás dos quartis é muito semelhante à lógica da mediana. Mas, ao invés de dividir o conjunto de dados em duas partes iguais, como a mediana, os quartis dividem esse conjunto em quatro (daí vem o nome quartis), cada um contendo 25% (um quarto) dos dados. Veja no exemplo abaixo. Note que o quartil 2 corresponde à mediana.</p>
+<p><img src="g5.png" width="470px" style="display: block; margin: auto;" /></p>
+<p>Apesar da lógica ser sempre a mesma, há mais de uma forma de calcular os quartis. Por isso, os valores de quartis calculados por diferentes softwares estatísticos podem divergir – e, possivelmente, vão diferir do cálculo manual que vimos aqui. Se quiser ler a respeito, recomendo o artigo de <span class="citation">Hyndman &amp; Fan (<a href="#ref-hyndman1996sample" role="doc-biblioref">1996</a>)</span>.</p>
+<p>O segundo quartil (ou seja, a mediana) será a linha que corta a caixa do boxplot. Já o primeiro quartil (Q1) será a base da caixa e o terceiro quartil (Q3) o topo. Observe o gráfico boxplot abaixo, construído com os valores da tabela. Note que a base da caixa corresponde ao valor 25, o topo ao 32 e a linha central ao 28,5.</p>
+<p>Outro ponto interessante: a altura da caixa corresponde à diferença entre o terceiro e o primeiro quartil (Q1 - Q3). Essa diferença recebe o nome de <strong>amplitude interquartil</strong>, um termo que eu abreviarei aqui como AIQ, mas que também é comumente abreviada como IQR (que vem do termo em inglês, <em>interquartile range</em>). Note que no boxplot abaixo a AIQ, ou seja, a altura da caixa, é igual a 32 - 25 = 7.</p>
+<p><img src="g6.png" width="200px" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="os-limites-superior-e-inferior" class="section level3">
+<h3>Os limites superior e inferior</h3>
+<p>Além dos quartis, um boxplot é composto pelos <strong>limites superior e inferior</strong>. Esses limites correspondem, respectivamente, ao <strong>maior e menor valor do conjunto de dados que não sejam <em>outliers</em></strong>. Um <em>outlier</em> é um valor que destoa do conjunto de dados, o que podemos chamar em português de “valor discrepante” - mas aqui, de novo, o termo em inglês é mais conhecido e usado.</p>
+<p>E como definir se um valor é <em>outlier</em>? Para isso, precisamos calcular os limites superior e inferior <strong>teóricos</strong>. Esses limites são definidos com base na amplitude interquartil (AIQ). Da seguinte forma:</p>
+<center>
+<blockquote>
+<p>Limite inferior teórico = <span class="math inline">\(Q1 - 1,5 \times AIQ\)</span><br />
+Limite superior teórico = <span class="math inline">\(Q3 + 1,5 \times AIQ\)</span></p>
+</blockquote>
+</center>
+<p>Na verdade, esse 1,5 pode variar. Mas, 1,5 é o <strong>valor padrão</strong> para o cálculo desses limites. Ao usarmos o valor de 1,5 estamos criando o <strong>boxplot de Tukey</strong> (que é o que sai por padrão nos softwares). Cerca de 0.7% dos valores serão considerados outliers se usarmos esse critério - se quiser se aprofundar, há uma discussão <a href="https://www.kaggle.com/general/129242">nesse link</a>.</p>
+<p>Bom, para isso fazer mais sentido, vamos calcular os limites para os nossos dados:</p>
+<center>
+<p>Limite inferior teórico = <span class="math inline">\(Q1 - 1,5 \times AIQ\)</span><br />
+Limite inferior teórico = <span class="math inline">\(25 - 1,5 \times 7\)</span><br />
+Limite inferior teórico = <span class="math inline">\(25 - 10,5\)</span><br />
+Limite inferior teórico = <span class="math inline">\(14,5\)</span></p>
+<p><br><br></p>
+<p>Limite superior teórico = <span class="math inline">\(Q3 + 1,5 \times AIQ\)</span><br />
+Limite superior teórico = <span class="math inline">\(32 + 1,5 \times 7\)</span><br />
+Limite superior teórico = <span class="math inline">\(32 + 10,5\)</span><br />
+Limite superior teórico = <span class="math inline">\(42,5\)</span></p>
+</center>
+<p>Agora o que faremos será comparar os nossos limites teóricos com os nossos dados.<br />
+Observe que não há no nosso banco valores abaixo do nosso limite inferior teórico. Logo, nosso limite inferior verdadeiro - que irá para o gráfico - será o menor valor do banco, o 24.<br />
+Por outro lado, há um valor que está acima do limite superior teórico, o valor 43. Esse valor será considerado um <em>outlier</em>. O limite inferior verdadeiro, que será plotado no gráfico, será, portanto, o maior valor do banco exceto o outlier. No caso, o valor 35. O 43, por ser um <em>outlier</em> será representado por um círculo (em geral, aberto) na altura do eixo y (vertical) correspondente ao 43.</p>
+<p><img src="g7.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Veja como o gráfico traz exatamente essas informações:</p>
+<p><img src="g6.png" width="200px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="boxplots-na-horizontal" class="section level3">
+<h3>Boxplots na horizontal</h3>
+<p>É possível (e até comum em algumas áreas) representar boxplots na horizontal, ou seja, com a variável de grupo no eixo y (vertical) e a variável numérica no eixo x (horizontal).<br />
+A interpretação será a mesma. Veja abaixo o mesmo boxplot que construímos, mas na horizontal:</p>
+<p><img src="g8.png" width="330px" style="display: block; margin: auto;" /></p>
+<p>Eu confesso que sou tradicional e tendo a preferir os boxplots na vertical, mas é uma questão de estilo. Sinta-se livre para usar como preferir.</p>
+</div>
+<div id="e-os-boxplots-esquisitinhos" class="section level3">
+<h3>E os boxplots esquisitinhos?</h3>
+<p>Quando eu fiz um conteúdo no <a href="https://instagram.com/estatisticaaplicada">Instagram</a> explicando a construção e interpretação de boxplots, a pergunta que eu mais recebi foi: “tá, mas e aqueles boxplots com pedaços faltando?”.<br />
+As pessoas se referiam a boxplots como o do grupo “Graduação” no gráfico abaixo, mostrado no início do post:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="g1.png" alt="Gráfico boxplot, inspirado no gráfico do artigo de @schenk2014too." width="350px" />
+<p class="caption">
+Figura 1: Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation">Schenk &amp; Steppan (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+</p>
+</div>
+<p>Mas, não há muito segredo. Todos os elementos que vimos - limite inferior, Q1, Q2, Q3, limite inferior - sempre estarão no boxplot. Se você não está enxergando um deles, é porque seu valor coincide com outro, e haverá sobreposição no gráfico.<br />
+No caso do grupo “Graduação”, a mediana está sobreposta ao Q3 e ao limite superior - ou seja, para esse grupo a mediana, o Q3 e o limite superior são valores idênticos. É por isso que não estamos vendo o T se projetando para além do topo da caixa e é também por isso que o topo da caixa está representado por uma linha mais grossa que a base da caixa (indicando que a mediana está lá).</p>
+<p>Vejamos mais alguns exemplos.</p>
+<p>No gráfico abaixo, a mediana se sobrepõe ao Q1 (note que a base da caixa está representada por uma linha mais grossa):</p>
+<p><img src="g9.png" width="180px" style="display: block; margin: auto;" /></p>
+<p>Já nesse gráfico, a mediana se sobrepõe ao Q1 (a base da caixa está representada por uma linha mais grossa) e o limite superior está sobreposto ao Q3 (não há o clássico T se projetando paa além do limite superior):</p>
+<p><img src="g10.png" width="180px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="quando-usar-um-gráfico-boxplot" class="section level3">
+<h3>Quando usar um gráfico boxplot?</h3>
+<p>Em quais situações faz sentido usar um gráfico boxplot?<br />
+Trata-se de um gráfico usado quando queremos representar a distribuição de uma <strong>variável numérica ou, pelo menos, ordinal</strong>. No caso, representamos a distribuição da variável idade na nossa amostra.<br />
+Além da variável numérica/ ordinal, podemos <strong>incluir uma variável de grupo</strong>, como o boxplot do começo do post. Esse boxplot que mostra a distribuição da quantidade de páginas de artigos selecionados por alunos divididos em três grupos: graduação, pós-graduação e pós-doutorado. Basta uma rápida olhada para percebermos que a mediana de páginas do grupo “Graduação” é inferior às medianas dos demais grupos. Podemos também observar que o grupo com maior variação absoluta (ou seja, maior diferença entre o maior e menor valor) é o grupo “Pós-graduação”. Já o grupo “Pós-doutorado” apresenta a maior amplitude interquartil (ou seja, a caixa mais alta). Poderíamos também usar o boxplot para avaliar a simetria da distribuição, mas essa discussão fica para outro post.</p>
+<img src="g1.png" width="350px" style="display: block; margin: auto;" />
+<center>
+Gráfico boxplot, inspirado no gráfico do artigo de <span class="citation">Schenk &amp; Steppan (<a href="#ref-schenk2014too" role="doc-biblioref">2014</a>)</span>.
+</center>
+<p><br></p>
+<p>Além disso, perceba que o boxplot não é baseado em média nem em medidas de dispersão derivadas da média (como desvio-padrão e variância). Portanto, é um gráfico excelente para <strong>distribuições que não são bem representadas pela média</strong>, sendo ótimo para distribuições não-normais.</p>
+<p>Mas, claro, não é um gráfico para todas as audiências. Veja quantos parágrafos eu gastei para explicá-lo nesse texto. O boxplot é excelente para uso pelo time de dados, para publicações acadêmicas, mas em geral péssimo para contextos como divulgação científica e matérias jornalísticas.</p>
+</div>
+<div id="como-fazer-um-boxplot" class="section level3">
+<h3>Como fazer um boxplot?</h3>
+<p>Nas suas últimas versões, o Excel implementou o boxplot. <a href="https://youtu.be/DWs98A0yCMQ">Nesse vídeo</a> eu explico como fazê-lo.</p>
+<p>Se você for um amante do R (como eu), minha sugestão é montar o boxplot pelo pacote <code>ggplot2</code>. Eu tenho um vídeo bem detalhado sobre <a href="https://youtu.be/-XQPlOG12vc">boxplot no ggplot2</a>.<br />
+Se ggplot2 é algo que te angustia (socorro, por que tantas linhas para gerar um único gráfico?), eu tenho uma playlist com vários vídeos ensinando a construir <a href="https://youtube.com/playlist?list=PLOw62cBQ5j9X5eOavzeu9CaHMO6TFsPkY">gráficos no ggplot2 do zero</a>. Efeitos colaterais de aprender a mexer no ggplot2: amor incondicional e não querer fazer sequer um gráfico de barras em outro software, haha!</p>
+<p>Mas, vou deixar um código simples, para você usar como base. Partindo de um <code>data frame</code> chamado <code>dados</code> contendo os grupos em uma coluna e a quantidade de páginas em outra, temos:</p>
+<pre class="r"><code>ggplot(dados, aes(x = Grupo, y = Páginas)) +
+  geom_errorbar(stat = &quot;boxplot&quot;, width = 0.3) +
+  geom_boxplot(outlier.shape = 1, fill = &quot;grey95&quot;) +
+  labs(y = &quot;Quantidade de páginas&quot;) +
+  theme_classic()</code></pre>
+<p><img src="g11.png" width="400px" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências:</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-hyndman1996sample" class="csl-entry">
+Hyndman, R. J., &amp; Fan, Y. (1996). Sample quantiles in statistical packages. <em>The American Statistician</em>, <em>50</em>(4), 361–365.
+</div>
+<div id="ref-schenk2014too" class="csl-entry">
+Schenk, J. J., &amp; Steppan, S. J. (2014). Too long to read: Assessing the motivation behind graduate student attendance in reading groups. <em>Journal of College Science Teaching</em>, <em>44</em>(2), 40–45.
+</div>
+</div>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/graficos-dinamite/"> &laquo; Gráficos dinamite: usá-los ou não, eis a questão</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/tidy-tuesday-nber/">Explorando os dados dos artigos da NBER #TidyTuesday &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Explorando os dados dos Emmy Awards #TidyTuesday | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/cover.svg"/>
+<meta name="twitter:title" content="Explorando os dados dos Emmy Awards #TidyTuesday"/>
+<meta name="twitter:description" content="Análise exploratória dos dados dos Emmy Awards, com foco em gênero. Essa análise de dados faz parte do projeto #TidyTuesday."/>
+
+	<meta property="og:title" content="Explorando os dados dos Emmy Awards #TidyTuesday" />
+<meta property="og:description" content="Análise exploratória dos dados dos Emmy Awards, com foco em gênero. Essa análise de dados faz parte do projeto #TidyTuesday." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/cover.svg"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2021-09-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-09-20T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Explorando%20os%20dados%20dos%20Emmy%20Awards%20%23TidyTuesday&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-emmy%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-emmy%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-emmy%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2ftidy-tuesday-emmy%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Explorando os dados dos Emmy Awards #TidyTuesday</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    20 set., 2021
+
+    <i class="far fa-clock clock"></i>
+    12 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/tidytuesday">TidyTuesday</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">Gráficos</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/tidy-tuesday-emmy/cover.svg" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<div id="o-que-é-a-tidytuesday" class="section level3">
+<h3>O que é a #TidyTuesday?</h3>
+<p>Há um tempo eu acompanho os vídeos <strong>incríveis</strong> da <a href="https://www.youtube.com/c/JuliaSilge">Julia Silge</a> que aplicam <code>tidymodels</code> e <code>tidyverse</code> na análise dos dados do <a href="https://github.com/rfordatascience/tidytuesday">projeto #TidyTuesday</a>.<br />
+O #TidyTuesday é um projeto com a proposta de incentivar as pessoas a analisarem dados no R usando as ferramentas do ecossistema do <code>tidyverse</code>, uma coleção de pacotes que inclui alguns dos meus favoritos, como o <code>ggplot2</code> e o <code>dplyr</code>. Um novo conjunto de dados - reais! - é liberado toda segunda-feira no <a href="https://github.com/rfordatascience/tidytuesday">repositório oficial do projeto</a> e, na terça-feira (daí vem o <em>tuesday</em>) as pessoas compartilham os resultados e os códigos utilizados nessa análise, usando a hashtag do projeto. Na página principal do repositório, você encontra mais detalhes sobre o projeto.</p>
+<p>Eu estava meio resistente a participar, porque: 1) eu não sou lá muito <em>expert</em> em manipulação e visualização de dados no R e 2) a proposta é publicar os resultados no Twitter - e, pelo bem da minha saúde mental, eu não tenho um Twitter, rs. Mas, recentemente eu tenho me divertido muito estudando o pacote <code>ggplot2</code> e tenho aprendido coisas super interessantes de manipulação de dados com o <code>dplyr</code> (aqui vai um agradecimento especial ao grupo de estudos das <a href="https://www.instagram.com/rladiessaopaulo/">R-Ladies SP</a>). Comecei a ver os dados da #TidyTuesday como um ótimo jeito de continuar estudando esses pacotes.<br />
+Essa é então a minha primeira participação no #TidyTuesday. Eu aprendi <strong>tanta</strong> coisa organizando esses dados e montando esses gráficos que, com certeza, valeu a pena :)</p>
+<center>
+<img src="Memeggplot.png" width="300px" style="display: block; margin: auto;" />
+<font size='3'>Eu mesma, nesse último mês</font>
+</center>
+<p><br></p>
+<p>Ah, eu participei atrasada - comecei a mexer nesses dados na quarta-feira - e, como é a minha primeira participação, eu me dei a colher de chá de me inspirar em trabalhos de outros participantes. Os gráficos criados foram em parte inspirados no trabalho do @<a href="https://twitter.com/thomas_mock/status/1440352188102942721?s=20">thomas_mock</a> e do @<a href="https://twitter.com/leeolney3/status/1440163856949547015?s=20">leeolney</a>.</p>
+</div>
+<div id="os-dados" class="section level3">
+<h3>Os dados</h3>
+<p>O dados dessa semana (semana 39 de 2021) são referentes aos prêmios e indicações ao Emmy Awards. Os dados foram obtidos do site <a href="https://www.emmys.com/awards/nominations/award-search">emmys.com</a>.</p>
+<blockquote>
+<p>O Emmy Award, ou simplesmente Emmy, é o maior e mais prestigioso prêmio atribuído a programas e profissionais de televisão. É apresentado em vários eventos anuais realizados ao longo do ano, cada um homenageando um dos vários setores da indústria televisiva. Os dois eventos que recebem maior cobertura dos meios de comunicação são os Emmy do Primetime e os Prêmios Emmy do Daytime que reconhecem o trabalho de destaque na programação americana do horário nobre e entretenimento diurno, respectivamente.<br />
+Fonte: <a href="https://pt.wikipedia.org/wiki/Emmy_Award">Wikipedia</a></p>
+</blockquote>
+</div>
+<div id="leitura-do-banco-de-dados-e-carregamento-dos-pacotes" class="section level3">
+<h3>Leitura do banco de dados e carregamento dos pacotes</h3>
+<pre class="r"><code>pacman::p_load(tidyverse, ggtext, glue, forcats)</code></pre>
+<pre class="r"><code>df &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-09-21/nominees.csv&#39;)</code></pre>
+<pre class="r"><code>head(df, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 10
+##    category        logo  production type  title distributor producer  year  page
+##    &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
+##  1 Outstanding Ch… http… &lt;NA&gt;       Nomi… blac… ABC         ABC       2021     0
+##  2 Outstanding Ch… http… &lt;NA&gt;       Nomi… Brid… Netflix     A Netfl…  2021     0
+##  3 Outstanding Ch… http… &lt;NA&gt;       Nomi… Fami… FOX         20th Te…  2021     0
+##  4 Outstanding Ch… http… &lt;NA&gt;       Nomi… Arch… FX Networks FX Prod…  2021     0
+##  5 Outstanding Pr… http… Elisabeth… Nomi… The … Hulu        Hulu, M…  2021     0
+##  6 Outstanding Pr… http… Martha Sp… Nomi… The … Hulu        Hulu, M…  2021     0
+##  7 Outstanding Pr… http… Larry Spi… Nomi… The … Hulu        Hulu, M…  2021     0
+##  8 Outstanding Pr… http… Rob Hepbu… Nomi… The … Hulu        Hulu, M…  2021     0
+##  9 Outstanding Pr… http… Lester Co… Nomi… The … HBO         HBO in …  2021     0
+## 10 Outstanding Pr… http… Doug Husz… Nomi… The … HBO         HBO in …  2021     0
+## # … with 1 more variable: page_id &lt;dbl&gt;</code></pre>
+<pre class="r"><code>glimpse(df)</code></pre>
+<pre><code>## Rows: 29,678
+## Columns: 10
+## $ category    &lt;chr&gt; &quot;Outstanding Character Voice-Over Performance - 2021&quot;, &quot;Ou…
+## $ logo        &lt;chr&gt; &quot;https://www.emmys.com/sites/default/files/styles/show_sea…
+## $ production  &lt;chr&gt; NA, NA, NA, NA, &quot;Elisabeth Williams, Production Designer&quot;,…
+## $ type        &lt;chr&gt; &quot;Nominee&quot;, &quot;Nominee&quot;, &quot;Nominee&quot;, &quot;Nominee&quot;, &quot;Nominee&quot;, &quot;No…
+## $ title       &lt;chr&gt; &quot;black-ish: Election Special (Part 2)&quot;, &quot;Bridgerton&quot;, &quot;Fam…
+## $ distributor &lt;chr&gt; &quot;ABC&quot;, &quot;Netflix&quot;, &quot;FOX&quot;, &quot;FX Networks&quot;, &quot;Hulu&quot;, &quot;Hulu&quot;, &quot;H…
+## $ producer    &lt;chr&gt; &quot;ABC&quot;, &quot;A Netflix Original Series in association with shon…
+## $ year        &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021…
+## $ page        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ page_id     &lt;dbl&gt; 1, 2, 3, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9…</code></pre>
+<p>Trata-se de um banco com 29678 linhas e 10 colunas, que inclui dados do período de 1957 a 2021. Cada linha corresponde a uma indicação ao prêmio, e a coluna <code>type</code> especifica se o indicado foi vencedor daquela categoria (<code>Winner</code>) ou não (<code>Nominee</code>). A variável <code>distributor</code> especifica qual a distribuidora responsável pela produção indicada ao Emmy.</p>
+</div>
+<div id="quais-são-as-dez-distribuidoras-mais-indicadas-ao-emmy-nos-últimos-cinco-anos" class="section level3">
+<h3>Quais são as dez distribuidoras mais indicadas ao Emmy nos últimos cinco anos?</h3>
+<p>Eu achei interessante trabalhar com os dados mais recentes, para investigar o cenário atual dos Emmy Awards. Para isso, selecionei as 10 distribuidoras mais indicadas a Emmy Awards nos anos de 2016 a 2021.</p>
+<pre class="r"><code>df %&gt;%
+  filter(year &gt; 2015) %&gt;%
+  group_by(distributor) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  arrange(-n) %&gt;%
+  slice_max(n, n = 10)</code></pre>
+<pre><code>## # A tibble: 10 × 2
+##    distributor     n
+##    &lt;chr&gt;       &lt;int&gt;
+##  1 HBO          2116
+##  2 Netflix      2014
+##  3 NBC          1598
+##  4 ABC          1031
+##  5 CBS           999
+##  6 FX Networks   776
+##  7 FOX           574
+##  8 Hulu          377
+##  9 Prime Video   337
+## 10 Showtime      324</code></pre>
+<p>Nesse período, a HBO foi a distribuidora mais indicada a Emmys, com 2116 indicações, sendo seguida pela Netflix, com 2014.<br />
+Decidi criar os gráficos apenas com essas distribuidoras mais indicadas nos últimos cinco anos. Para isso, salvei os seus nomes no objeto <code>top_10</code>.</p>
+<pre class="r"><code>top_10 &lt;- df %&gt;%
+  filter(year &gt; 2015) %&gt;%
+  group_by(distributor) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  arrange(-n) %&gt;%
+  slice_max(n, n = 10) %&gt;% 
+  pull(distributor)</code></pre>
+</div>
+<div id="indicações-e-prêmios-recebidos-nos-últimos-cinco-anos-pelas-10-distribuidoras-mais-indicadas" class="section level3">
+<h3>Indicações e prêmios recebidos, nos últimos cinco anos, pelas 10 distribuidoras mais indicadas</h3>
+<p>Optei por fazer um gráfico de barras com a quantidade total de indicações aos Emmy Awards, por distribuidora, no período de 2016-2021. Além disso, decidi incluir no gráfico a quantidade de prêmios que cada distribuidora recebeu e a porcentagem de indicações que resultaram em prêmios.<br />
+Para isso, organizei um <em>data frame</em> incluindo apenas os dados dos últimos cinco anos e das distribuidoras em <code>top_10</code>. Contei a quantidade de indicações e prêmios por distribuidora - as distribuidoras que não tinham vencido nenhum prêmio ficaram com a coluna <code>Winner</code> como NA, então substituí os NAs nessa coluna por zeros. Por fim, criei algumas variáveis de interesse. A variável <code>Total Nominee</code> foi criada a partir da soma de <code>Winner</code> e <code>Nominee</code>, para obter o total de indicações. Calculei também a porcentagem (<code>porc</code>) de prêmios recebidos, de acordo com o total de indicações.<br />
+Além disso, tive que criar as colunas <code>espaco</code> e <code>distributortxt</code> para unir as informações da distribuidora com a porcentagem - o que eu defini que seria o rótulo do meu eixo vertical - e formatá-las adequadamente. Para a formatação, eu usei os pacotes <code>glue</code> e <code>ggtext</code>, que eu nunca tinha usado na vida. A ideia de usá-los para deixar o rótulo do eixo como eu queria foi inspirada no gráfico de @<a href="https://twitter.com/leeolney3/status/1440163856949547015?s=20">leeolney</a>. Amei a descoberta do pacote <code>ggtext</code>!</p>
+<pre class="r"><code>df_top10 &lt;- df %&gt;% filter(distributor %in% top_10,
+                          year &gt; 2015) %&gt;% 
+  group_by(distributor, type) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  ungroup() %&gt;%
+  spread(type, n) %&gt;% 
+  mutate(across(Winner, ~replace_na(.x, 0))) %&gt;% 
+  mutate(TotalNominee = Nominee + Winner,
+         porc = Winner/TotalNominee,
+         espaco = case_when(porc &gt;= 0.1 ~ paste0(&quot;_&quot;),
+                            porc &lt; 0.1 ~ paste0(&quot;__&quot;)),
+         porc = scales::percent(porc, decimal.mark = &quot;,&quot;,
+                                 accuracy = 0.1),
+         distributortxt = as.factor(glue::glue(&quot;&lt;b&gt;{distributor} &lt;/b&gt;   |  &lt;span style=&#39;color:#FFFFFF;font-size:12px&#39;&gt;{espaco}&lt;/span&gt;&lt;span style=&#39;font-size:12px&#39;&gt;{porc}  &lt;/span&gt;&quot;)))</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;distributor&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<p>O <em>data frame</em> modificado ficou assim:</p>
+<pre class="r"><code>head(df_top10, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 7
+##    distributor Nominee Winner TotalNominee porc  espaco distributortxt          
+##    &lt;chr&gt;         &lt;int&gt;  &lt;int&gt;        &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  &lt;fct&gt;                   
+##  1 ABC             919    112         1031 10,9% _      &lt;b&gt;ABC &lt;/b&gt;   |  &lt;span …
+##  2 CBS             937     62          999 6,2%  __     &lt;b&gt;CBS &lt;/b&gt;   |  &lt;span …
+##  3 FOX             463    111          574 19,3% _      &lt;b&gt;FOX &lt;/b&gt;   |  &lt;span …
+##  4 FX Networks     619    157          776 20,2% _      &lt;b&gt;FX Networks &lt;/b&gt;   |…
+##  5 HBO            1491    625         2116 29,5% _      &lt;b&gt;HBO &lt;/b&gt;   |  &lt;span …
+##  6 Hulu            329     48          377 12,7% _      &lt;b&gt;Hulu &lt;/b&gt;   |  &lt;span…
+##  7 NBC            1328    270         1598 16,9% _      &lt;b&gt;NBC &lt;/b&gt;   |  &lt;span …
+##  8 Netflix        1631    383         2014 19,0% _      &lt;b&gt;Netflix &lt;/b&gt;   |  &lt;s…
+##  9 Prime Video     280     57          337 16,9% _      &lt;b&gt;Prime Video &lt;/b&gt;   |…
+## 10 Showtime        296     28          324 8,6%  __     &lt;b&gt;Showtime &lt;/b&gt;   |  &lt;…</code></pre>
+<p>E o gráfico ficou assim:</p>
+<pre class="r"><code>ggplot(df_top10, aes(x = forcats::fct_reorder(distributortxt,
+                                              TotalNominee, max))) +
+  geom_bar(aes(y = TotalNominee), stat = &quot;identity&quot;,
+           fill = &quot;grey87&quot;, width = 0.75) +
+  geom_bar(aes(y = Winner), stat = &quot;identity&quot;,
+           fill = &quot;#E28C27&quot;, width = 0.2) +
+  scale_y_continuous(expand = expansion(add = c(0,300))) +
+  labs(y = &quot;Total de nomeações&quot;,
+       title = &quot;HBO lidera as &lt;b style=&#39;color:grey70&#39;&gt;nomeações&lt;/b&gt;
+       e o &lt;b style=&#39;color:#E28C27;&#39;&gt;ganho&lt;/b&gt; de Emmy Awards&quot;,
+       subtitle = &quot;no período de 2016-2021, tendo recebido 29,5%\ndos prêmios aos quais foi indicada&quot;,
+       x = &quot;&lt;b&gt;Distribuidora &lt;/b&gt;  |  &lt;span style=&#39;font-size:12px&#39;&gt;Prêmios&lt;/span&gt;&quot;,
+       caption = &quot;Gráfico: fernandafperes.com.br  |  #TidyTuesday  |  Dados: emmys.com&quot;) +
+  coord_flip() +
+  theme_classic() +
+  theme(axis.ticks.y = element_blank(),
+        axis.title.y = element_markdown(angle = 0,
+                                    margin = margin(0,-105,0,0),
+                                    vjust = 1.065,
+                                    size = 10,
+                                    color = &quot;black&quot;),
+        axis.line.y = element_blank(),
+        axis.text.y = element_markdown(color = &quot;grey30&quot;, size = 10),
+        axis.title.x = element_blank(),
+        plot.margin = margin(10, 10, 10, 10),
+        plot.title = element_markdown(margin = margin(0,0,2,0)),
+        plot.subtitle = element_text(margin = margin(0,0,25,0)),
+        plot.caption = element_text(hjust = 0.5, margin = margin(15,0,0,0),
+                                    color = &quot;grey35&quot;, size = 8))</code></pre>
+<p><img src="plot1.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Minhas maiores dificuldades com esse gráfico foram: 1) criar um rótulo para as categorias do eixo y que ficasse alinhadas adequadamente e 2) colocar o título do eixo y acima das categorias. Inclusive, cheguei a achar respostas no StackOverflow dizendo que isso não era possível. Mas, colocando uma margem direita negativa, e modificando o <code>vjust</code>, depois de muita tentativa e erro, eu consegui!</p>
+</div>
+<div id="os-prêmios-por-gênero" class="section level3">
+<h3>Os prêmios por gênero</h3>
+<p>Para me forçar a trabalhar com pacotes que manipulam <em>strings</em>, eu decidi também fazer um gráfico separando as indicações aos prêmios de melhor ator e melhor atriz. A ideia era avaliar se havia uma diferença na quantidade de homens e mulheres indicados e premiados, de acordo com a distribuidora.</p>
+<p>Primeiramente, separei no objeto <code>top10_gen</code> as 10 distribuidoras mais indicadas aos prêmios de melhor ator ou melhor atriz. Para isso usei a função <code>str_detect</code> do pacote <code>stringr</code> e filtrei para categorias que contivessem “actress” ou “actor” no título.</p>
+<pre class="r"><code>top10_gen &lt;- df %&gt;%
+  filter(year &gt; 2015 &amp;
+           (str_detect(category, fixed(&#39;Actress&#39;, ignore_case=TRUE)) |
+              str_detect(category, fixed(&#39;Actor&#39;, ignore_case=TRUE)))) %&gt;%
+  group_by(distributor) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  arrange(-n) %&gt;%
+  slice_max(n, n = 10) %&gt;% 
+  pull(distributor)</code></pre>
+<p>Então, criei um <em>data frame</em> que incluía o gênero do indicado àquela categoria.</p>
+<pre class="r"><code>df_genero &lt;- df %&gt;% filter(year &gt; 2015, distributor %in% top10_gen) %&gt;%
+  mutate(gender = case_when(str_detect(category, &quot;Actress&quot;) ~ &quot;F&quot;,
+                              str_detect(category, &quot;Actor&quot;) ~ &quot;M&quot;)) %&gt;% 
+  filter(!is.na(gender)) %&gt;% 
+  group_by(gender, distributor, type) %&gt;%
+  count() %&gt;%
+  spread(type, n) %&gt;% 
+  mutate(across(Winner, ~replace_na(.x, 0))) %&gt;% 
+  mutate(TotalNominee = Nominee + Winner,
+         porc = Winner/TotalNominee,
+         distributor = factor(distributor),
+         gender = as.factor(gender))</code></pre>
+<p>Também criei um <em>data frame</em> à parte para incluir a razão entre a quantidade de mulheres e homens indicados em cada distribuidora:</p>
+<pre class="r"><code>razao_genero &lt;- df_genero %&gt;%
+  select(distributor, gender, TotalNominee) %&gt;% 
+  spread(gender, TotalNominee) %&gt;% 
+  mutate(ratio = F/M)</code></pre>
+<pre class="r"><code>head(razao_genero, 10)</code></pre>
+<pre><code>## # A tibble: 10 × 4
+## # Groups:   distributor [10]
+##    distributor     F     M ratio
+##    &lt;fct&gt;       &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+##  1 ABC            22    10 2.2  
+##  2 Disney+         4    11 0.364
+##  3 FX Networks    30    31 0.968
+##  4 HBO            60    67 0.896
+##  5 Hulu           25    11 2.27 
+##  6 NBC            40    51 0.784
+##  7 Netflix        59    51 1.16 
+##  8 Prime Video    16    10 1.6  
+##  9 Quibi           7     8 0.875
+## 10 Showtime        4    17 0.235</code></pre>
+<p>Portanto, valores acima de 1 indicam que, naquela distribuidora, mais mulheres foram indicadas a categorias de atuação que homens. Valores abaixo de 1, significam que mais homens foram indicados. A distribuidora Hulu se destaca com a maior proporção de mulheres indicadas, em relação aos homens - o que provavelmente se deve a The Handmaid’s Tale. Já a Showtime é a distribuidora com a maior proporção de homens indicados em relação a mulheres - curiosamente, é a distribuidora de The L Word Generation Q, uma série focada em mulheres e com um elenco quase em sua totalidade feminino.</p>
+<p>O próximo passo foi unir esses dois <em>data frames</em> e criar a variável <code>distributortxt</code> para incluir como rótulo do eixo y tanto a distribuidora como a razão entre os gêneros.</p>
+<pre class="r"><code>df_genero &lt;- inner_join(df_genero, razao_genero[c(1,4)], by = &quot;distributor&quot;) %&gt;% 
+  mutate(ratio = scales::number(ratio, accuracy = 0.01, decimal.mark = &quot;,&quot;),
+         distributortxt = as.factor(glue::glue(&quot;&lt;b&gt;{distributor} &lt;/b&gt;   |  &lt;span style=&#39;font-size:13px&#39;&gt;{ratio}&lt;/span&gt;&quot;)))</code></pre>
+<p>Então, criei um gráfico, com uma proposta semelhante ao sem separação por gênero:</p>
+<pre class="r"><code>ggplot(df_genero, aes(x = forcats::fct_reorder(distributortxt,
+                                               TotalNominee, max),
+                      group = factor(gender, levels = c(&quot;M&quot;, &quot;F&quot;)))) +
+  geom_bar(aes(y = TotalNominee, fill = gender),
+           stat = &quot;identity&quot;, position = &quot;dodge&quot;, width = 0.85) +
+  geom_bar(aes(y = Winner),
+           stat = &quot;identity&quot;, fill = &quot;black&quot;, width = 0.2,
+           position = position_dodge(.85)) +
+  scale_y_continuous(expand = expansion(add = c(0,5))) +
+  scale_fill_manual(values = c(&quot;#2794A0&quot;, &quot;grey65&quot;)) +
+  labs(y = &quot;Total de nomeações&quot;,
+       title = &quot;&lt;b style=&#39;color:#2794A0&#39;&gt;Mulheres&lt;/b&gt; 
+       e &lt;b style=&#39;color:grey65;&#39;&gt;homens&lt;/b&gt; indicados e &lt;b style=&#39;color:black&#39;&gt;vencedores&lt;/b&gt; de&lt;br&gt;Emmy Awards
+       nas categorias de atuação,&lt;br&gt;no período de 2016-2021&quot;,
+       subtitle = &quot;Hulu apresenta a maior proporção de mulheres indicadas,&lt;br&gt;
+       em relação a homens; Showtime, a menor.&quot;,
+       x = &quot;&lt;b&gt;Distribuidora &lt;/b&gt;  |  &lt;span style=&#39;font-size:13px&#39;&gt;F/M&lt;/span&gt;&quot;,
+       caption = &quot;Gráfico: fernandafperes.com.br  |  #TidyTuesday  |  Dados: emmys.com&quot;) +
+  coord_flip() +
+  theme_classic() +
+  theme(axis.ticks.y = element_blank(),
+        axis.title.y = element_markdown(angle = 0,
+                                    margin = margin(0,-88.5,0,0),
+                                    vjust = 1.05,
+                                    size = 10,
+                                    color = &quot;black&quot;),
+        axis.line.y = element_blank(),
+        axis.text.y = element_markdown(color = &quot;grey30&quot;, size = 10),
+        axis.title.x = element_blank(),
+        plot.margin = margin(10, 20, 10, 10),
+        plot.title = element_markdown(margin = margin(0,0,2,0)),
+        plot.caption = element_text(hjust = 0.5, margin = margin(15,0,0,0),
+                                    color = &quot;grey35&quot;, size = 8),
+        plot.subtitle = element_markdown(margin = margin(3,0,25,0)),
+        legend.position = &quot;none&quot;)</code></pre>
+<p><img src="plot2.png" width="600px" style="display: block; margin: auto;" /></p>
+<p>Nesse, a minha maior dificuldade foi decidir cores que ficassem coordenadas, mas ainda fossem facilmente diferenciáveis. Depois de muitos testes, acabei optando por esse gráfico com azul como destaque, e o restante em tons de cinza.</p>
+</div>
+<div id="como-foi-a-experiência" class="section level3">
+<h3>Como foi a experiência?</h3>
+<p>Eu definitivamente me diverti e aprendi muita coisa nova com essa #TidyTuesday. Pretendo participar das próximas, e vou postando por aqui, para quem quiser acompanhar :)</p>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/tidy-tuesday-nber/"> &laquo; Explorando os dados dos artigos da NBER #TidyTuesday</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/falacias-valor-de-p/">As falácias do valor de p &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

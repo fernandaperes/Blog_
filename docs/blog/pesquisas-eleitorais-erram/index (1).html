@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Por que as pesquisas eleitorais erram? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/cover.png"/>
+<meta name="twitter:title" content="Por que as pesquisas eleitorais erram?"/>
+<meta name="twitter:description" content="Por que os resultados das eleições quase sempre discordam das pesquisas eleitorais? Essa é uma pergunta que não pode ser respondida de forma superficial. Vamos discuti-la aqui."/>
+
+	<meta property="og:title" content="Por que as pesquisas eleitorais erram?" />
+<meta property="og:description" content="Por que os resultados das eleições quase sempre discordam das pesquisas eleitorais? Essa é uma pergunta que não pode ser respondida de forma superficial. Vamos discuti-la aqui." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2024-08-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-08-13T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Por%20que%20as%20pesquisas%20eleitorais%20erram%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fpesquisas-eleitorais-erram%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fpesquisas-eleitorais-erram%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fpesquisas-eleitorais-erram%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fpesquisas-eleitorais-erram%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Por que as pesquisas eleitorais erram?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    13 ago., 2024
+
+    <i class="far fa-clock clock"></i>
+    19 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">Estatística teórica</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/pesquisas-eleitorais">Pesquisas eleitorais</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/pesquisas-eleitorais-erram/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>Eu estou escrevendo esse texto em agosto de 2024, poucos meses antes das eleições municipais. E estou deixando aqui a minha previsão: as pesquisas eleitorais vão “errar”, para além da margem de erro. Como todas as pesquisas eleitorais podem “errar”. E esse é um texto para discutirmos <strong>os porquês</strong>.</p>
+<blockquote>
+<p>Antes, algumas considerações. Eu não sou estatística. Caso você tenha caído nesse texto por acaso, deixa eu me apresentar: eu sou a Fernanda, bacharel em biomedicina, mestre e doutora em farmacologia e especialista em estatística aplicada. Você consegue informações mais detalhadas sobre a minha formação <a href="https://fernandafperes.com.br/sobre">aqui</a>. Desde 2017 eu produzo conteúdo sobre análise de dados e há alguns anos eu consumo conteúdo sobre a estatística por trás das pesquisas eleitorais. E confesso que eu demorei um bom tempo para entender tudo que eu pretendo discutir com você aqui. Ah, todos os conceitos e hipóteses discutidos aqui não são de minha autoria. No final do post, você encontra uma bibliografia consultada.</p>
+</blockquote>
+<p><br></p>
+<p>Vamos lá: <strong>por que as pesquisas eleitorais “erram”</strong>? A resposta a essa pergunta depende do entendimento de conceitos estatísticos que até fazem parte do nosso dia-a-dia, mas a maior parte das pessoas não compreende em sua totalidade. Então, para responder a essa pergunta com <strong>responsabilidade</strong>, não poderemos fugir desses conceitos.</p>
+<div id="população-x-amostra" class="section level2">
+<h2>População x amostra</h2>
+<p>Na estatística, chamamos de população o conjunto dos elementos que nos interessam. Por exemplo, se queremos prever os resultados das eleições municipais de São Paulo, a nossa população será composta por <strong>todos os eleitores</strong> da cidade de São Paulo. Trata-se de uma população de aproximadamente 8.628.989 pessoas (dá para consultar a quantidade estimada de eleitores por zona eleitoral e cidade <a href="https://www.tse.jus.br/eleicoes/estatisticas/estatisticas-de-eleitorado/consulta-por-municipio-zona">aqui</a>).</p>
+<p>Como você já deve ter imaginado, na maior parte das situações é inviável estudarmos toda a população. Uma pesquisa eleitoral que entrevistasse os quase 9 milhões de eleitores da cidade de São Paulo seria extremamente cara e demorada. Qual a alternativa, então? Nessas situações, a alternativa é trabalharmos com uma <strong>amostra</strong>.</p>
+<p>A estatística define amostra como um <strong>subconjunto</strong> da população que de fato é estudado. No contexto da pesquisa eleitoral, a amostra corresponde a uma parcela dos eleitores (ou seja, da população) que de fato é entrevistada. Podemos <strong>extrapolar</strong> os resultados obtidos em uma amostra para uma população. Isso recebe o nome de <strong>inferência estatística</strong>.</p>
+<blockquote>
+<p>Pode soar estranho chegar a uma conclusão sobre a população a partir de uma pequena parcela dela. No entanto, a inferência faz parte do nosso cotidiano. Imagine que você fez um belo <strong>curry</strong> (amo!) e quer saber se o sal colocado foi suficiente. Você experimenta o curry todo para chegar a uma conclusão? Não, certo? O que você faz é mexê-lo bem e experimentar uma colher de curry, ou seja, uma amostra do que está na panela. Com base nessa colher, você avalia se o curry precisa de mais sal. A mesma lógica se aplica a <strong>exames de sangue</strong>. Para saber se o seu LDL (o “colesterol ruim”) está elevado, não há necessidade de retirar todo o seu sangue e quantificar o LDL. O que fazemos é coletar uma amostra de sangue e, com base nos resultados dessa amostra, chegamos a uma conclusão sobre o sangue como um todo. Fez sentido?</p>
+</blockquote>
+<p>Voltemos à pesquisa eleitoral. Concluímos que não é possível entrevistar toda a população e que, portanto, vamos entrevistar uma amostra. Aqui surgem duas perguntas, cujas respostas influenciam a nossa capacidade de fazer inferências:</p>
+<ol style="list-style-type: decimal">
+<li>Quantas pessoas vamos incluir na amostra? Ou seja, quantos eleitores serão entrevistados?</li>
+<li>Como faremos a seleção dos eleitores que irão compor a amostra?</li>
+</ol>
+</div>
+<div id="quantas-pessoas-incluir-na-amostra" class="section level2">
+<h2>Quantas pessoas incluir na amostra?</h2>
+<p>A resposta a essa pergunta depende de algumas definições:</p>
+<ul>
+<li>Qual será o nível de confiança?
+<ul>
+<li>Aqui, o padrão é considerarmos um <strong>nível de confiança de 95%</strong>. Vamos aprofundar a conversa sobre nível de confiança ao longo do texto. Por enquanto, consideraremos o nível de confiança padrão.</li>
+</ul></li>
+<li>Qual será a margem de erro?
+<ul>
+<li>É aqui que as pesquisas eleitorais variam. Quanto menor for a margem de erro, mais precisão teremos, mas maior será a amostra necessária. Em geral, as pesquisas eleitorais trabalham com <strong>margens de erro de 2% ou 3%</strong>. O conceito de margem de erro também será aprofundado ao longo do texto.</li>
+</ul></li>
+<li>Qual a proporção esperada de votos?
+<ul>
+<li>Como não temos ideia – afinal, é para estimar essa proporção que estamos fazendo a pesquisa! – usamos a proporção <strong>mais conservadora</strong>, que resulta na maior amostra possível, a <strong>proporção de 50%</strong>.</li>
+</ul></li>
+</ul>
+<div id="tamanho-da-amostra-para-uma-margem-de-erro-de-2" class="section level4">
+<h4>Tamanho da amostra para uma margem de erro de 2%</h4>
+<p>Existe uma fórmula para definir esse tamanho ideal da amostra. Essa fórmula foi implementada por diversas calculadoras online, como <a href="http://estatistica.bauru.usp.br/calculoamostral/ta_ic_proporcao.php">esta</a> da USP de Bauru, que foi usada para elaborar este post. Para que a margem de erro seja 2%, a amostra deve incluir 2.401 pessoas:</p>
+<p><img src="img1.png" width="450px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="tamanho-da-amostra-para-uma-margem-de-erro-de-3" class="section level4">
+<h4>Tamanho da amostra para uma margem de erro de 3%</h4>
+<p>Muitos institutos de pesquisa não têm verba suficiente para entrevistar 2.401 pessoas. O que esses institutos fazem é trabalhar com uma margem de erro maior, de 3%. Isso resulta em uma amostra de 1.068 pessoas a serem entrevistadas:</p>
+<p><img src="img2.png" width="450px" style="display: block; margin: auto;" /></p>
+<div id="mas-é-impossível-que-2.401-pessoas-representem-quase-9-milhões-de-eleitores" class="section level5">
+<h5>Mas é impossível que 2.401 pessoas representem quase 9 milhões de eleitores!</h5>
+<p>Bom… Não é. Esse cálculo considera uma população infinita – o que é o equivalente a dizer que não importa o tamanho da população. Só precisamos considerar o tamanho da população no cálculo quando essa população é <strong>pequena</strong>. Nesses casos, há um ajuste para reduzir o tamanho da amostra.</p>
+<p>Por exemplo, imagine que estamos trabalhando com uma população de apenas 3.000 eleitores. Entrevistar 2.401 pessoas corresponde a entrevistar 80% dessa população, o que pode ser inviável. Nesses casos, ajustamos o cálculo para uma <strong>população finita</strong> de 3.000 pessoas, o que resulta em uma amostra de 1.334 pessoas a serem entrevistadas:</p>
+<p><img src="img3.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>Mas, antes de concluirmos que essas 2.401 pessoas representam perfeitamente os quase 9 milhões de eleitores da cidade, precisamos avaliar a resposta à segunda pergunta: como essa amostra será <strong>selecionada</strong>.</p>
+</div>
+</div>
+</div>
+<div id="como-selecionar-quem-irá-compor-amostra" class="section level2">
+<h2>Como selecionar quem irá compor amostra?</h2>
+<p>O processo de seleção da amostra recebe o nome de amostragem. Há várias técnicas de amostragem, que resultam em amostras mais ou menos representativas da população.</p>
+<p><img src="img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<div id="a-amostragem-aleatória-simples" class="section level4">
+<h4>A amostragem aleatória simples</h4>
+<p>Uma das principais formas de selecionar a amostra é por amostragem aleatória simples. Nesse tipo de amostragem, todos os elementos da população <strong>têm a mesma probabilidade de serem selecionados</strong>. Se pensarmos no contexto da pesquisa eleitoral, para selecionarmos uma amostra por essa técnica precisaríamos: 1) ter uma lista com todos os eleitores e seus contatos; 2) sortear 2.401 eleitores para responderem à pesquisa; 3) entrevistar todos os eleitores selecionados.</p>
+<p>Perceba que essa técnica traz algumas dificuldades. Primeiramente, implica em termos uma lista atualizada de todos os eleitores e uma forma de contatá-los. Uma outra dificuldade é que podem ser sorteadas pessoas em locais muito diferentes, o que implica em um gasto considerável com deslocamento do entrevistador (se a entrevista for feita pessoalmente). Além disso, para que de fato a amostra seja aleatória simples, todas as pessoas sorteadas têm que ser incluídas – isso é, têm que aceitar responder. Em um país grande como o Brasil, esse tipo de amostragem tende a ser inviável. Por isso, a técnica usada nas nossas pesquisas eleitorais é outra: a por cotas.</p>
+</div>
+<div id="a-amostragem-por-cotas" class="section level4">
+<h4>A amostragem por cotas</h4>
+<p>Como funciona a amostragem por cotas? A amostragem por cotas visa a simplificar a seleção da amostra e garantir que todos os <strong>estratos</strong> importantes estarão representados nessa amostra. Chamamos de estratos os subgrupos com características semelhantes que sejam importantes para a pergunta experimental, como gênero e faixa etária.</p>
+<p>Na amostragem por cotas, o primeiro passo é dividir a população em estratos. De forma geral, as pesquisas consideram os seguintes estratos, baseados em dados demográficos: sexo, faixa etária e grau de instrução. A partir da estimação da <strong>proporção</strong> desses estratos na população de eleitores, são criadas <strong>cotas</strong>. Vejamos um exemplo, referente à pesquisa SP-03279/2024 do DATAFOLHA para a prefeitura de São Paulo, divulgada em 08/08/2024, que pode ser consultada <a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas">aqui</a>:</p>
+<blockquote>
+<p>Essa pesquisa considerou as seguintes proporções para a criação das cotas:</p>
+<ul>
+<li><strong>Sexo</strong>: 46% masculino e 54% feminino</li>
+<li><strong>Idade</strong>: 11% de 16 a 24 anos, 19% de 25 a 34 anos, 21% de 35 a 44 anos, 25% de 45 a 59 anos e 14% de 60 anos ou mais.</li>
+<li><strong>Grau de instrução</strong>: 63% até nível médio completo ou incompleto e 37% nível superior (completo ou incompleto).</li>
+</ul>
+</blockquote>
+<p>A pesquisa em questão incluiu uma amostra 1.092 pessoas – eles optaram por uma margem de erro de 3%. Considerando-se as proporções acima, podemos criar a cota para mulheres de 25 a 34 anos com ensino superior:</p>
+<center>
+<span class="math inline">\(1.092 \times 54\% \times 19\% \times 37\% = 41,5\)</span>
+</center>
+<p></br></p>
+<p>Ou seja, devem ser entrevistadas 42 mulheres com esse perfil.</p>
+<p>A amostragem por cotas é uma técnica de seleção <strong>não-aleatória</strong>. A partir da definição da cota, pessoas são recrutadas e entrevistadas. Essas entrevistas podem ser domiciliares ou em pontos de fluxo. No caso das <strong>domiciliares</strong>, em geral sorteia-se bairros/ setores censitários e são realizadas entrevistas nas casas dessas regiões. Mas, o mais comum é a seleção em <strong>pontos de fluxo</strong>, que podem ser uma praça, um shopping, a saída do metrô. O entrevistador fica em um desses locais movimentados e vai abordando pessoas para serem entrevistadas. Por exemplo, na pesquisa que eu citei anteriormente, foram definidos 78 pontos de abordagem.</p>
+<p>Os questionários aplicados trazem perguntas que permitem identificar a qual cota cada pessoa pertence. As entrevistas são conduzidas até que todas as cotas sejam preenchidas.</p>
+<blockquote>
+<p><strong>Qual a diferença entre a amostragem por cotas e a estratificada?</strong></p>
+<p>Se você já ouviu falar sobre amostragem estratificada, é bem provável que tenha se perguntado se essa técnica é equivalente à amostragem por cotas. A resposta é: <strong>não</strong>! Essas duas técnicas diferem em algo fundamental: a aleatoriedade.</p>
+<p>Tanto na amostragem por cotas quanto na estratificada, começamos dividindo a população em estratos. No entanto, na amostragem estratificada, são realizados sorteios dentro desses estratos. Portanto, trata-se de uma técnica de amostragem aleatória. Já na amostragem por cotas, como conversamos, a seleção dos elementos (por exemplo, pessoas) que irão compor a cota não é aleatória, não envolve sorteio. A não-aleatoriedade da amostragem por cotas é a maior crítica a ela, como discutiremos a seguir.</p>
+</blockquote>
+</div>
+<div id="quais-as-críticas-à-amostragem-por-cotas" class="section level4">
+<h4>Quais as críticas à amostragem por cotas?</h4>
+<p>A principal crítica é se tratar de uma <strong>amostragem não-aleatória</strong>, dado o método de seleção dos sujeitos. Isso é um problema porque o tamanho da amostra e a <strong>margem de erro</strong> das pesquisas eleitorais são calculadas considerando uma amostragem aleatória simples. Logo, esses cálculos <strong>não são válidos</strong> para amostragens por cotas. Não é possível calcular a margem de erro quando são usadas amostras não-aleatórias.</p>
+<p>Vou reforçar: o cálculo do tamanho da amostra e a estimação da margem de erro se baseiam em fórmulas criadas para amostras aleatórias. <strong>Não temos</strong> como estimar uma margem de erro para amostras não-aleatórias!</p>
+<p>Além disso, a amostra selecionada por cotas está associada a <strong>vieses</strong>. Chamamos de viés algo que leva a uma diferença entre os valores estimados na amostra e os valores reais (da população). Quais vieses são esses?</p>
+<ol style="list-style-type: decimal">
+<li><p>Cabe ao entrevistador a seleção dos sujeitos. Portanto, a amostragem depende de <strong>critérios subjetivos</strong> desse profissional. Discute-se que isso se torna um problema principalmente quando quase todas as cotas já estão preenchidas. Nessa situação, o entrevistador passará a abordar pessoas que, na sua concepção, pertencem às cotas ainda não preenchidas.<br />
+Imagine que a cota a ser preenchida é a de homens com 60 anos ou mais. É provável que o entrevistador tenda a abordar homens mais velhos, de forma a garantir que pertençam à cota – afinal, é difícil diferenciar uma pessoa com 59 anos de uma com 60.</p></li>
+<li><p>Nem todas as pessoas têm a mesma probabilidade de serem entrevistadas. Por exemplo, se a seleção ocorre em pontos de fluxo, pessoas que trabalham em <em>home office</em> – e que, portanto, estão em casa nos horários em que as entrevistas ocorrem – <strong>não serão incluídas</strong> e estarão <strong>subrepresentadas</strong> na amostra final.</p></li>
+<li><p>O resultado está sujeito ao <strong>viés de não-resposta</strong>. Isso não é exclusividade da amostragem por cotas, mas vai ocorrer nesse tipo de delineamento. O que acontece é que muitas pessoas vão se recusar a participar da pesquisa. Faz parte. Mas precisamos considerar que as pessoas que aceitaram participar podem diferir daquelas que se recusaram.<br />
+O problema se agrava quando os eleitores de um determinado candidato apresentam uma probabilidade maior de recusar responder à pesquisa. Nesses casos, os eleitores desse candidato estarão subrepresentados na amostra – e, portanto, a intenção de votos desse candidato será subestimada pela pesquisa. Essa é, inclusive, uma das hipóteses mais aceitas para explicar a discrepância entre os resultados das pesquisas e os resultados da eleição presidencial de 2022. Recomendo <a href="https://www.dw.com/pt-br/por-que-as-pesquisas-indicaram-resultados-t%C3%A3o-diferentes-do-das-urnas/a-63324735">essa entrevista</a> excelente com o Raphael Nishimura, caso você tenha interesse em se aprofundar nesse tópico.</p></li>
+<li><p>A amostra selecionada por cotas é representativa da população <strong>apenas</strong> com relação aos fatores considerados na criação das cotas. No caso das pesquisas eleitorais, a amostra será representativa em termos <strong>demográficos</strong>. No entanto, isso não garante que a amostra será representativa da população em relação a outras variáveis. Ela pode <strong>não ser representativa</strong> com relação à intenção de votos.<br />
+Eu sou uma mulher com idade entre 25 a 34 anos e com nível superior – como vimos, uma cota que corresponde a 42 pessoas na pesquisa que estamos usando como exemplo. Mas, será as mulheres que se encaixam nessa cota têm uma intenção de votos semelhante? Provavelmente não. Quando recrutamos uma mulher para compor essa cota e essa seleção é feita de forma não-aleatória, estamos assumindo que essa mulher representa bem o estrato ao qual pertence. Mas, isso só seria verdade se a intenção de votos nesse estrato fosse homogênea, o que tende a não acontecer.</p></li>
+</ol>
+</div>
+</div>
+<div id="a-margem-de-erro-e-o-intervalo-de-confiança" class="section level2">
+<h2>A margem de erro e o intervalo de confiança</h2>
+<p>Eu tenho um post bem completo por aqui sobre <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">intervalo de confiança</a>. Recomendo a leitura caso você queira se aprofundar no assunto. A seguir, discutiremos os pontos fundamentais para analisarmos criticamente as pesquisas eleitorais.</p>
+<p>Imagine que observamos que em uma amostra a intenção de votos para um determinado candidato foi de 34%. Será que obteremos essa mesma proporção ao perguntarmos a intenção de votos de toda a população?</p>
+<p><img src="img5.png" width="450px" style="display: block; margin: auto;" /></p>
+<p>É bem provável que não, concorda? Essa divergência entre as proporções da amostra e da população será observada mesmo quando a amostra for selecionada adequadamente – sem erros ou má intenção. O intervalo de confiança é uma ferramenta para estimarmos, a partir da proporção obtida na amostra, um intervalo dentro do qual é provável que a proporção da população esteja.</p>
+<p>O intervalo de confiança está sempre associado a um nível de confiança. Esse nível de confiança é complementar ao nível de significância, que eu explico com mais detalhes <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">aqui</a> e <a href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">aqui</a>. O padrão é utilizarmos um nível de significância de 5%. Portanto, o nível de confiança padrão será:</p>
+<center>
+<span class="math inline">\(100\% - 5\% = 95\%\)</span>
+</center>
+<p><br></p>
+<p>Ok, geralmente usamos um nível de confiança de 95% para calcularmos o intervalo, que passa a ser chamado de “intervalo de confiança 95%”. Mas o que isso significa? Como interpretamos esse intervalo? É nessa interpretação que a maior parte das pessoas erra.</p>
+<p>Vamos imaginar que calculamos o intervalo de confiança 95% para a amostra do exemplo, para a qual tínhamos uma intenção de votos de 34%, e obtivemos o seguinte intervalo:</p>
+<center>
+IC 95% = [31%; 37%]
+</center>
+<p><br></p>
+<blockquote>
+<p>A fórmula utilizada para calcular o intervalo de confiança não é o foco desse post, mas se tiver curiosidade você encontra uma explicação <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">aqui</a>.</p>
+</blockquote>
+<p>A interpretação aqui é que é provável que a intenção de votos da população esteja entre 31% e 37%. Mas, <strong>cuidado</strong>! Isso <strong>não significa</strong> que há 95% de probabilidade de essa intenção estar entre 31% e 37%!</p>
+<p>O intervalo de confiança se refere a um cenário <strong>hipotético</strong>. Ele se refere a uma situação em que tenhamos selecionado várias amostras aleatórias simples a partir da população e estimado os intervalos de confiança para cada uma dessas amostras. Nessa situação, 95% das amostras conterão, em seu intervalo de confiança, o parâmetro populacional.</p>
+<p>É bem confuso, eu sei. Mas se a gente quer analisar criticamente as pesquisas eleitorais, é nossa obrigação entender esse conceito sem recorrer a falácias.</p>
+<p>Então, vamos imaginar um cenário. Imagine que a intenção de votos real, na <strong>população</strong>, de um determinado candidato é de <strong>31%</strong>. Se extraíssemos 100 amostras aleatórias dessa população, estimássemos a intenção de votos nessas amostras, e calculássemos o intervalo de confiança para cada uma delas, aproximadamente 95 dos intervalos de confiança conteriam o valor populacional (31%) nos seus intervalos de confiança.</p>
+<p>Vamos visualizar isso? Na figura abaixo temos essa simulação. Na população, a intenção de votos é 31% (linha vertical pontilhada). Extraímos, a partir dessa população, 50 amostras, dispostas no eixo vertical y. Para essas 50 amostras, foram calculadas as intenções de votos (representadas pelos pontos) e os intervalos de confiança (representados pelas barras de erros, linhas horizontais que se estendem a partir dos pontos). Perceba que apenas três dessas amostras (destacadas em rosa) não contêm o valor de 31% em seu intervalo de confiança, o que corresponde a aproximadamente 5% das amostras.</p>
+<p><img src="ic_95.png" width="550px" style="display: block; margin: auto;" /></p>
+<p>Repito: entender intervalo de confiança não é simples. Mas a interpretação correta é essa.</p>
+<p>Vamos trazer essa explicação para o cenário da pesquisa eleitoral. Caso fizéssemos 100 pesquisas eleitorais com o mesmo delineamento e no mesmo momento, esperaríamos que 95 delas contivessem a intenção de votos real (da população) em seu intervalo de confiança 95%.</p>
+<p>Perceba que quando estamos estudando uma amostra, não temos como saber se ela é uma das amostras em azul (que contém o parâmetro populacional em seu intervalo de confiança) ou uma das rosas (que não o contém). Portanto, é possível – e consideravelmente provável – que a amostra que estamos estudando <strong>não contenha</strong> o valor populacional no seu intervalo de confiança. Ainda que ela tenha sido adequadamente selecionada.</p>
+<div id="e-a-margem-de-erro" class="section level4">
+<h4>E a margem de erro?</h4>
+<p>Se você já entendeu o conceito de intervalo de confiança, entender margem de erro é simples: ela corresponde a metade do intervalo de confiança. Assim como esse intervalo, a margem de erro está sempre associada a um nível de confiança.</p>
+<p>No exemplo anterior, vimos que o intervalo era [31%; 37%]. Perceba que o intervalo é de 6%. Portanto, temos uma margem de erro de 3% (6 dividido por 2).</p>
+<p>Quando falamos que a margem de erro é de 3% estamos dizendo que o intervalo de confiança para essa proporção se estende 3% para cima e para baixo, a partir da proporção estimada na amostra – no nosso exemplo, 34%:</p>
+<ul>
+<li>34% - 3% = 31%</li>
+<li>34% + 3% = 37%</li>
+</ul>
+</div>
+<div id="limitações-da-margem-de-erro-nas-pesquisas-eleitorais" class="section level4">
+<h4>Limitações da margem de erro nas pesquisas eleitorais</h4>
+<p>Agora vem um problema que eu já tinha te adiantado uns parágrafos atrás: os intervalos de confiança – e, consequentemente, as margens de erro – <strong>só podem ser calculados</strong> para amostras aleatórias! A essa altura você já sabe que a amostragem utilizada nas pesquisas eleitorais <strong>não é aleatória</strong>. Portanto, margem de erro e intervalo de confiança <strong>não podem</strong> ser calculados para pesquisas eleitorais.</p>
+<p>Mas, Fernanda, não temos como calcular um intervalo de confiança para uma amostra não-aleatória? Não temos. Justamente porque ela está sujeita a vieses (discutidos acima), o que torna esse cálculo impossível.</p>
+<p>A conclusão aqui é que aquela margem de erro reportada pelos jornais deve ser interpretada apenas como um guia. Devemos olhar para os resultados já considerando que é <strong>esperado que eles se desviem da margem de erro</strong>. E que essa divergência não reflete uma manipulação da pesquisa eleitoral.</p>
+</div>
+</div>
+<div id="outros-fatores-a-se-considerar" class="section level2">
+<h2>Outros fatores a se considerar</h2>
+<p>A discrepância entre os resultados da pesquisa eleitoral e os resultados das eleições é explicada também por outros fatores.</p>
+<ol style="list-style-type: decimal">
+<li><p>As pessoas <strong>mentem</strong>. Sempre que entrevistamos pessoas, temos que considerar que suas respostas podem não ser verdadeiras.<br />
+Uma das hipóteses levantadas para explicar a divergência entre os resultados das pesquisas e os resultados das eleições é o “<strong>voto envergonhado</strong>”. Ou seja, acredita-se que algumas pessoas já decidiram o seu voto, mas têm vergonha de revelá-lo ao entrevistador. Portanto, dizem que ainda não se decidiram ou que votarão em branco. Se essa “vergonha” acomete mais os eleitores de um determinado candidato, os votos nesse candidato serão <strong>subestimados</strong>.<br />
+Vale dizer que essa é apenas uma hipótese, que não foi confirmada nem refutada no Brasil. O Raphael Nishimura comenta essa hipótese na sua <a href="https://www.dw.com/pt-br/por-que-as-pesquisas-indicaram-resultados-t%C3%A3o-diferentes-do-das-urnas/a-63324735">entrevista</a>.</p></li>
+<li><p>Pessoas <strong>definem o seu voto em cima da hora</strong>. Principalmente para cargos “menores”, como os cargos de vereador e deputado.<br />
+Eu adoraria dizer que eu decido em quem vou votar com bastante antecedência. Mas isso tende a ser verdade apenas para os cargos de presidência, prefeitura e senado. Em geral, eu decido minha candidata a vereadora e minhas candidatas a deputada federal e estadual apenas algumas semanas antes das eleições. E eu não estou sozinha nessa.<br />
+Como o padrão de decisão de votos é esse, para os cargos de vereador e deputado as pesquisas costumam “errar” muito mais. A pesquisa é um recorte daquele momento, ela não tem como prever a nossa decisão futura.</p></li>
+<li><p>As pessoas <strong>mudam de ideia</strong>. Esse é um dos principais pontos para discutirmos. A pesquisa eleitoral nos informa a intenção de votos <strong>naquele momento</strong> em que ela foi realizada. Podemos pensar na pesquisa eleitoral como uma foto daquele dia. O objetivo dela não é prever o futuro. Perceba, inclusive, que eu coloquei ao longo do texto o termo “errar” sempre entre aspas. Não podemos dizer que as pesquisas estão erradas simplesmente porque os seus resultados diferem daqueles obtidos nas eleições. Elas <strong>não se propõem</strong> a prever os resultados das eleições.<br />
+A intenção de votos futura é algo que <strong>não conseguimos prever</strong> porque depende de fatores, em geral, imprevisíveis. Por exemplo, a uma semana das eleições um escândalo envolvendo um determinado candidato pode vir à tona. Isso levará a uma migração de votos que a pesquisa realizada anteriormente a esse escândalo jamais conseguiria prever.<br />
+Ainda nessa linha, temos que considerar que o próprio <strong>resultado da pesquisa</strong> pode levar pessoas a mudarem os seus votos. Por exemplo, em 2018 houve uma campanha na internet para que as pessoas que votariam no Lula migrassem os seus votos para Ciro Gomes, apontado pelas pesquisas eleitorais como o único com chances de vencer Bolsonaro no segundo turno.<br />
+Ok, esse é um exemplo mais extremo. Mas é comum que os resultados das pesquisas influenciem os votos. Uma pessoa pode decidir nem se dar ao trabalho de ir votar quando sabe que o seu candidato não tem nenhuma chance de se eleger (de acordo com as pesquisas). Ou pode decidir migrar seus votos para alguém que tenha chance.</p></li>
+</ol>
+</div>
+<div id="então-as-pesquisas-eleitorais-são-inúteis" class="section level2">
+<h2>Então as pesquisas eleitorais são inúteis?</h2>
+<p>Claro que não. Mas elas apresentam limitações, como qualquer estudo. Se você, que está lendo esse texto, é acadêmico, eu te proponho um exercício: liste as limitações do seu estudo. Acredite, existirão várias. Se você não conseguiu listar nenhuma, pode se preocupar. Porque com certeza elas existem, e a sua banca perguntará sobre elas.</p>
+<p>As pesquisas eleitorais são importantes e há muitos institutos sérios as realizando. Além disso, a pesquisa precisa ser registrada no Tribunal Superior Eleitoral (TSE) e ter um estatístico responsável. Toda a metodologia empregada é disponibilizada publicamente no <a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas">site do TSE</a>. Só não dá para esperar delas algo que nunca se propuseram a nos entregar.</p>
+<p><br></p>
+<hr>
+<div id="artigos-consultados" class="section level3">
+<h3>Artigos consultados:</h3>
+<ul>
+<li><p>Kamradt, J. (2017). É possível confiar nas pesquisas eleitorais? Análise das intenções de votos nas eleições para governadores no Brasil em 2014. Compolítica, 7(1), 157-188.</p></li>
+<li><p>Pesquisa Eleitoral por Cota. Nota Nº 1. Luiz Carlos da Rocha. 2015. Disponível em: <a href="http://www.confe.org.br/pesquisaeleitoralnota1.pdf" class="uri">http://www.confe.org.br/pesquisaeleitoralnota1.pdf</a></p></li>
+<li><p>Margem de erro, empate técnico e eleições. Cléber da Costa Figueiredo. Disponível em: <a href="https://notaalta.espm.br/fala-professor/margem-de-erro-empate-tecnico-e-eleicoes/" class="uri">https://notaalta.espm.br/fala-professor/margem-de-erro-empate-tecnico-e-eleicoes/</a></p></li>
+<li><p>Validade e confiabilidade das pesquisas eleitorais. Rogério J. Barbosa. Disponível em: <a href="https://sociaisemetodos.wordpress.com/2014/09/04/validade-e-confiabilidade-das-pesquisas-eleitorais/" class="uri">https://sociaisemetodos.wordpress.com/2014/09/04/validade-e-confiabilidade-das-pesquisas-eleitorais/</a></p></li>
+<li><p>A metodologia dos institutos de Pesquisa. Disponível em: <a href="http://sleekdata.blogspot.com" class="uri">http://sleekdata.blogspot.com</a></p></li>
+</ul>
+<p><br><b><br></p>
+</div>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/">O que não fazer em gráficos de pizza &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

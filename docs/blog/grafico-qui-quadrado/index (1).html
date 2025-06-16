@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Como representar os resultados do qui-quadrado em um gráfico? | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/grafico-qui-quadrado/cover.png"/>
+<meta name="twitter:title" content="Como representar os resultados do qui-quadrado em um gráfico?"/>
+<meta name="twitter:description" content="Já tentou representar graficamente os resultados de um teste qui-quadrado e sem saber exatamente como fazer? Eu também. Ness post, compartilho algumas soluções que eu encontrei."/>
+
+	<meta property="og:title" content="Como representar os resultados do qui-quadrado em um gráfico?" />
+<meta property="og:description" content="Já tentou representar graficamente os resultados de um teste qui-quadrado e sem saber exatamente como fazer? Eu também. Ness post, compartilho algumas soluções que eu encontrei." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/grafico-qui-quadrado/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/grafico-qui-quadrado/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-04-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-08T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.4e4a55888b671747a1901a2c1654706c6b67666d48d7704a0bc04378655c3b58.css" integrity="sha256-TkpViItnF0ehkBosFlRwbGtnZm1I13BKC8BDeGVcO1g=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+    <p>Curtir</p>
+    <ul>
+        <center>
+        <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" url="https://fernandafperes.com.br/blog/grafico-qui-quadrado/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Como%20representar%20os%20resultados%20do%20qui-quadrado%20em%20um%20gr%c3%a1fico%3f&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgrafico-qui-quadrado%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgrafico-qui-quadrado%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgrafico-qui-quadrado%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgrafico-qui-quadrado%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Como representar os resultados do qui-quadrado em um gráfico?</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    8 abr., 2022
+
+    <i class="far fa-clock clock"></i>
+    9 min de leitura
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">gráficos</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<p>Recentemente eu me deparei com um dilema: eu queria representar graficamente os resultados do teste qui-quadrado, mas não sabia como estruturar essa representação.</p>
+<blockquote>
+<p>Ah, um aviso: esse texto assume que você tem familiaridade com o teste qui-quadrado de independência. E, mais do que isso: que você entende a lógica da comparação entre as frequências observadas e esperadas que está por trás desse teste.<br />
+Se quiser entender isso melhor antes de seguir com o texto, recomendo a leitura <a href="https://www.instagram.com/p/CTzfJS7AmyF/?utm_source=ig_web_copy_link">deste post</a> no meu Instagram.</p>
+</blockquote>
+<p>Eu uso testes qui-quadrado com frequência nas minhas análises. Sempre representei os resultados em tabelas acompanhadas por um texto explicando quais categorias haviam diferido significativamente. Mas, nunca achei essa solução ideal, já que o leitor vai levar um tempo para entender quais diferenças foram encontradas.</p>
+<p>Eu queria achar uma forma de representar esses resultados em gráficos. Então, a ideia desse post é te contar a minha solução, e compartilhar o script criado para isso. Ah, eu não faço ideia se essa é mesmo a melhor solução. Fique à vontade para compartilhar outras.</p>
+<p><br></p>
+<p>Para discutir as possibilidades de representação do qui-quadrado, vou usar o famoso <a href="https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/problem12.html">banco de dados do Titanic</a>. Apenas o traduzi para o exemplo ser mais acessível, e selecionei as colunas de interesse:</p>
+<pre class="r"><code>head(dados)</code></pre>
+<template id="b3f77e6a-550d-4166-b19c-29765b28d076"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-8a891458{}.cl-8a857672{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a858482{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8a85a048{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a05c{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a066{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a067{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a070{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a071{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a07a{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a084{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a08e{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a08f{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a098{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a0a2{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-8a891458'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-8a85a08f"><p class="cl-8a858482"><span class="cl-8a857672">Sobreviveu</span></p></td><td class="cl-8a85a098"><p class="cl-8a858482"><span class="cl-8a857672">Genero</span></p></td><td class="cl-8a85a0a2"><p class="cl-8a858482"><span class="cl-8a857672">Classe</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8a85a05c"><p class="cl-8a858482"><span class="cl-8a857672">Não</span></p></td><td class="cl-8a85a066"><p class="cl-8a858482"><span class="cl-8a857672">M</span></p></td><td class="cl-8a85a048"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a071"><p class="cl-8a858482"><span class="cl-8a857672">Sim</span></p></td><td class="cl-8a85a070"><p class="cl-8a858482"><span class="cl-8a857672">F</span></p></td><td class="cl-8a85a067"><p class="cl-8a858482"><span class="cl-8a857672">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a071"><p class="cl-8a858482"><span class="cl-8a857672">Sim</span></p></td><td class="cl-8a85a070"><p class="cl-8a858482"><span class="cl-8a857672">F</span></p></td><td class="cl-8a85a067"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a071"><p class="cl-8a858482"><span class="cl-8a857672">Sim</span></p></td><td class="cl-8a85a070"><p class="cl-8a858482"><span class="cl-8a857672">F</span></p></td><td class="cl-8a85a067"><p class="cl-8a858482"><span class="cl-8a857672">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a05c"><p class="cl-8a858482"><span class="cl-8a857672">Não</span></p></td><td class="cl-8a85a066"><p class="cl-8a858482"><span class="cl-8a857672">M</span></p></td><td class="cl-8a85a048"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a08e"><p class="cl-8a858482"><span class="cl-8a857672">Não</span></p></td><td class="cl-8a85a07a"><p class="cl-8a858482"><span class="cl-8a857672">M</span></p></td><td class="cl-8a85a084"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="ecc6e18b-3e63-420b-bc2b-1692eddd1811"></div>
+<script>
+var dest = document.getElementById("ecc6e18b-3e63-420b-bc2b-1692eddd1811");
+var template = document.getElementById("b3f77e6a-550d-4166-b19c-29765b28d076");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<div id="há-associação-entre-ter-sobrevivido-ao-desastre-do-titanic-e-a-classe-da-passagem" class="section level4">
+<h4>Há associação entre ter sobrevivido ao desastre do Titanic e a classe da passagem?</h4>
+<p>Essa é a pergunta que iremos responder com a nossa análise.</p>
+<p>Vamos começar fazendo o teste qui-quadrado.<br />
+(Se quiser se aprofundar em como fazer um teste qui-quadrado no R, recomendo <a href="https://youtu.be/u2mXKHQAOQE">esse vídeo</a>)</p>
+<pre class="r"><code>tabela &lt;- table(Sobreviveu = dados$Sobreviveu,
+                Classe = dados$Classe)
+
+qui &lt;- chisq.test(tabela)
+qui</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tabela
+## X-squared = 101.22, df = 2, p-value &lt; 2.2e-16</code></pre>
+<p>O teste qui-quadrado apresentou um p &lt; 0,001. Logo, iremos rejeitar a hipótese nula do teste e consideraremos que há associação entre ter sobrevivido ao Titanic e a classe da passagem.</p>
+<p>Para aprofundarmos essa análise, podemos avaliar os resíduos padronizados ajustados:</p>
+<pre class="r"><code>qui$stdres</code></pre>
+<pre><code>##           Classe
+## Sobreviveu         1         2         3
+##        Não -8.472993 -2.731520  9.534392
+##        Sim  8.472993  2.731520 -9.534392</code></pre>
+<p>Todos os resíduos estão fora do intervalo [-1,96; 1,96]. Logo, todas as células apresentam frequências observadas que diferem estatisticamente as esperadas.</p>
+<p><br></p>
+<blockquote>
+<p>Se quiser entender melhor essa questão dos resíduos, recomendo <a href="https://youtu.be/u2mXKHQAOQE">esse vídeo</a> e o artigo de Sharpe (2015).</p>
+</blockquote>
+<p><br></p>
+<p>Observe também que os resíduos de “sim” para as classes 1 e 2 são positivos - indicando que foram observadas mais pessoas dessas classes na categoria “sim” do que seria esperado - e, para a classe 3, são negativos, indicando que sobreviveram menos pessoas dessa classe do que seria esperado.<br />
+Importante lembrar: esse “esperado” se refere à frequência esperada caso não houvesse associação entre as variáveis - no caso, caso classe e sobrevivência não estivessem associadas.</p>
+<p>Agora vem a grande questão: <strong>como representar graficamente esses resultados?</strong></p>
+</div>
+<div id="opção-1-gráficos-de-frequências" class="section level4">
+<h4>Opção 1: gráficos de frequências</h4>
+<p>Uma boa opção, que eu sempre utilizei, é representar esses dados em gráficos de frequências.</p>
+<div id="gráfico-de-frequências-absolutas-n-e-relativas" class="section level5">
+<h5>Gráfico de frequências absolutas (n) e relativas (%)</h5>
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Essa é uma opção interessante: ao mesmo tempo em que mostra a frequência absoluta (eixo y, altura das barras), mostra também a proporção (%).<br />
+Conseguimos observar que não ter sobrevivido é muito mais frequente (75,56%) entre as pessoas que estavam na 3ª classe do que entre as que estavam na 1ª (apenas 37,04% não sobreviveram) ou na 2ª (52,72% não sobreviveram).<br />
+O meu incômodo com essa representação é a dificuldade em representar quais categorias apresentam frequências observadas que diferem das esperadas.</p>
+</div>
+<div id="gráfico-de-barras-empilhadas-com-as-frequências-relativas" class="section level5">
+<h5>Gráfico de barras empilhadas com as frequências relativas (%)</h5>
+<p>Outra opção, bastante usada, é o gráfico com barras empilhadas que somam 100%.<br />
+Para uma situação como essa, em que só há duas categorias na variável que dará a cor das barras, esse tipo de gráfico funciona muito bem.</p>
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Na minha opinião, o gráfico de barras empilhadas facilita as comparações das proporções entre os grupos. Como desvantagem, ele não mostra as frequências absolutas. E, assim como a opção anterior, não é um gráfico adequado para representar as diferenças entre os valores observados e esperados.</p>
+</div>
+</div>
+<div id="opção-2-gráfico-das-frequências-observadas-e-esperadas" class="section level4">
+<h4>Opção 2: gráfico das frequências observadas e esperadas</h4>
+<p>Procurando na internet uma solução para essa representação, eu encontrei o gráfico abaixo, no <a href="https://support.minitab.com/pt-br/minitab/21/help-and-how-to/statistics/tables/how-to/chi-square-goodness-of-fit-test/interpret-the-results/all-statistics-and-graphs/">site do MiniTab</a>.</p>
+<p><img src="g1.png" width="400px" style="display: block; margin: auto;" /></p>
+<p>Na verdade, trata-se de um gráfico para o teste <a href="https://www.instagram.com/p/CR6YTuLjfaq/?utm_source=ig_web_copy_link">qui-quadrado de aderência</a>. Mas, eu pensei que daria para adaptar para o de independência.<br />
+Seguindo essa proposta, cheguei ao gráfico abaixo. Vou compartilhar o script completo ao final do post, mas, transformei esse script em uma função, que está no meu pacote <code>fstat</code>, para facilitar o uso.<br />
+Ah, todos os scripts deste post estão na linguagem R e todos os gráficos foram construídos usando o pacote <code>ggplot2</code>.</p>
+<p>O primeiro passo será instalar e carregar o pacote:</p>
+<pre class="r"><code>devtools::install_github(&quot;fernandaperes/fstat&quot;)
+library(fstat)</code></pre>
+<p>Então, vamos criar o gráfico. Veja que eu usei a função e acrescentei uma legenda para explicar os asteriscos e qual teste havia sido feito.<br />
+A função inclui a colocação de asteriscos quando os resíduos padronizados estão fora do intervalo [-1,96; 1,96]. Se não quiser os asteriscos, inclua como argumento <code>asterisco = FALSE</code>.</p>
+<pre class="r"><code>fstat::graf_obs_esp_ind(dados, Classe, Sobreviveu, cat_graf_v2 = &quot;Sim&quot;,
+                        cor = &quot;cadetblue&quot;, xlab = &quot;Classe da passagem&quot;) +
+  labs(caption = &quot;Frequências observadas e esperadas para aqueles que sobreviveram\nao desastre do Titanic, de acordo com a classe da passagem.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.&quot;)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-11-1.png" width="441.6" style="display: block; margin: auto;" />
+O problema desse gráfico é que ele só permite a visualização de uma das categorias da variável. Nesse caso, escolhi a categoria “sim” para a variável <code>Sobreviveu</code>, e expliquei isso na legenda.<br />
+Para a variável <code>Sobreviveu</code>, essa é uma alternativa válida. Isso porque, como essa variável tem apenas duas categorias, os resíduos da categoria “não” serão numericamente iguais aos da categoria “sim”, mas com sinal oposto.</p>
+<p>Observe que visualizando o gráfico conseguimos perceber que:</p>
+<ul>
+<li>Para as classes 1 e 2, sobreviveram mais passageiros do que seria esperado;<br />
+</li>
+<li>Para a classe 3, sobreviveram menos passageiros do que seria esperado.</li>
+</ul>
+<p>Perceba que, para esse caso, não precisamos visualizar os dados referentes a “não sobreviveram” porque serão obrigatoriamente complementares ao “sobreviveram”.</p>
+<p>Mas, e se tivermos mais de duas categorias nas duas variáveis? Como proceder?</p>
+</div>
+<div id="opção-3-gráfico-das-frequências-observadas-e-esperadas-para-variáveis-com-mais-de-duas-categorias" class="section level4">
+<h4>Opção 3: gráfico das frequências observadas e esperadas para variáveis com mais de duas categorias</h4>
+<p>Pensando nessa possibilidade, criei uma outra versão, que usa o <code>facet</code> do <code>ggplot2</code>.</p>
+<pre class="r"><code>fstat::graf_obs_esp_ind_2(dados, Classe, Sobreviveu,
+                          cor = &quot;cadetblue&quot;,
+                          xlab = &quot;Classe da passagem /\n Sobreviveu ao desastre do Titanic&quot;) +
+  labs(caption = &quot;* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.&quot;)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-12-1.png" width="528" style="display: block; margin: auto;" /></p>
+<p>Vantagem dessa versão: mostra todas as categorias, o que significa que funciona bem para variáveis com mais de duas categorias. Desvantagem: a depender da quantidade de categorias, pode ficar poluído.</p>
+</div>
+<div id="opção-4-gráfico-das-frequências-observadas-e-esperadas-com-barras-vazadas" class="section level4">
+<h4>Opção 4: gráfico das frequências observadas e esperadas, com barras vazadas</h4>
+<p>Segui procurando outras ideias, quando, <a href="https://community.rstudio.com/t/any-effective-way-of-visualizing-expected-results-from-chi-square-test-onto-grouped-bar-graph/130305/2">em um fórum de R</a>, me deparei com esse gráfico abaixo.</p>
+<p><img src="g2.png" width="500px" style="display: block; margin: auto;" /></p>
+<p>A ideia de representar as frequências esperadas como barras vazadas e as frequências observadas como barras preenchidas me pareceu uma ótima solução para representar variáveis com múltiplas categorias sem poluir a figura.</p>
+<pre class="r"><code>fstat::graf_obs_esp_ind_3(dados, Classe, Sobreviveu, cor = &quot;cadetblue&quot;,
+                          xlab = &quot;Classe da passagem&quot;,
+                          filllab = &quot;Sobreviveu ao desastre do Titanic&quot;) +
+  labs(caption = &quot;As barras preenchidas correspondem às frequências\nobservadas e as barras vazadas, às frequências esperadas.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.&quot;)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-14-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Eu gosto dessa solução para situações com múltiplas categorias. Mas, acho também que o gráfico, dessa forma, é menos intuitivo que os anteriores.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<p>Essas foram as soluções que encontrei. Cada uma delas tem suas vantagens e desvantagens, mas tenho gostado de representar os resultados em forma de gráfico.</p>
+</div>
+<div id="o-script-completo" class="section level4">
+<h4>O script completo</h4>
+<p>Para finalizar, como prometido, segue o script completo para gerar aquele primeiro gráfico. Os demais são resultado de pequenas modificações nele. Você também tem acesso ao script dessas funções pelo <a href="https://github.com/fernandaperes/fstat">repositório do pacote no meu GitHub</a>.</p>
+<pre class="r"><code>library(reshape2)
+library(ggplot2)
+library(dplyr)
+
+tabela &lt;- table(dados$Classe, dados$Sobreviveu)
+
+quiqua &lt;- chisq.test(tabela)
+
+esp &lt;- as.data.frame(melt(cbind(quiqua$expected)))
+esp$v &lt;- &quot;Esperado&quot;
+obs &lt;- as.data.frame(melt(cbind(quiqua$observed)))
+obs$v &lt;- &quot;Observado&quot;
+banco_graf &lt;- rbind(esp, obs)
+colnames(banco_graf) &lt;- c(&quot;Classe&quot;, &quot;Sobreviveu&quot;, &quot;Valor&quot;, &quot;Resultado&quot;)
+
+asteriscos &lt;- as.data.frame(quiqua$stdres) %&gt;%
+    mutate(sinal = case_when(between(Freq, -1.96, 1.96) ~ &quot;&quot;,
+                             TRUE ~ &quot;*&quot;)) %&gt;%
+    filter(Var2 == &quot;Sim&quot;)
+asteriscos &lt;- asteriscos$sinal
+vazios &lt;- rep(&quot;&quot;, length(asteriscos))
+rotulos &lt;- c(vazios, asteriscos)
+
+banco_graf %&gt;% filter(Sobreviveu == &quot;Sim&quot;) %&gt;%
+    ggplot(aes(x = Classe, y = Valor, fill = Resultado)) +
+    geom_bar(position = &quot;dodge&quot;, stat = &quot;identity&quot;) +
+    geom_text(aes(y = Valor+2, label = rotulos),
+              position = position_dodge(width = 0.9), size = 4.5) +
+    labs(y = &quot;Frequência (n)&quot;, x = &quot;Classe da passagem&quot;, fill = NULL,
+         caption = &quot;Frequências observadas e esperadas para aqueles que sobreviveram\nao desastre do Titanic, de acordo com a classe da passagem.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.&quot;) +
+    scale_fill_manual(values = c(&quot;cadetblue&quot;, colorspace::lighten(&quot;cadetblue&quot;, 0.4))) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+    theme_classic() +
+    theme(legend.position = &quot;bottom&quot;)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-15-1.png" width="441.6" style="display: block; margin: auto;" /></p>
+<p><br></p>
+<hr />
+</div>
+<div id="referências" class="section level4">
+<h4>Referências</h4>
+<ul>
+<li>SHARPE, Donald. Chi-square test is statistically significant: Now what?. Practical Assessment, Research, and Evaluation, v. 20, n. 1, p. 8, 2015.</li>
+</ul>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/"> &laquo; O que não fazer em gráficos de pizza</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/graficos-dinamite/">Gráficos dinamite: usá-los ou não, eis a questão &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

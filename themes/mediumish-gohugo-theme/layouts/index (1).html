@@ -1,0 +1,28 @@
+{{ define "header"}}
+    {{- partial "_shared/navbar.html" . -}}
+{{ end }}
+
+{{ define "main" }}
+    <div class="main-content">
+        <section class="recent-posts">
+            <div class="section-title2">
+                <h2><span>Posts Recentes</span></h2>
+            </div>
+            <div class="row listrecent">
+                {{- range ( where site.RegularPages "Section" "blog" | first 3 ) }}
+                    {{- partial "list-partials/postbox.html" . -}}
+                {{end}}
+            </div>
+        </section>
+
+    </div>
+    {{ if isset .Site.Params.index "alertbar" }}
+    	{{ if .Site.Params.index.alertbar }}
+            {{- partial "_shared/alertbar.html" . -}}
+        {{ end }}
+    {{ end }}
+{{end}}
+
+{{ define "footer" }}
+    {{- partial "_shared/footer.html" . -}}
+{{end}}

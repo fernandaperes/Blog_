@@ -251,7 +251,7 @@ banco_graf %>% filter(Sobreviveu == "Sim") %>%
     theme(legend.position = "bottom")
 ```
 
-```{r}
+```{r, include=FALSE}
 # fstatix::paleta_f()
 # 
 # dados <- as.data.frame(list(Frequência = c(70,135,65,80,180,110),

@@ -141,7 +141,7 @@ Limite superior teórico = $42,5$
   
 Agora o que faremos será comparar os nossos limites teóricos com os nossos dados.  
 Observe que não há no nosso banco valores abaixo do nosso limite inferior teórico. Logo, nosso limite inferior verdadeiro -- que irá para o gráfico -- será o menor valor do banco, o 24.  
-Por outro lado, há um valor que está acima do limite superior teórico, o valor 43. Esse valor será considerado um *outlier*. O limite inferior verdadeiro, que será plotado no gráfico, será, portanto, o maior valor do banco exceto o outlier. No caso, o valor 35. O 43, por ser um *outlier* será representado por um círculo (em geral, aberto) na altura do eixo y (vertical) correspondente ao 43.  
+Por outro lado, há um valor que está acima do limite superior teórico, o valor 43. Esse valor será considerado um *outlier*. O limite superior verdadeiro, que será plotado no gráfico, será, portanto, o maior valor do banco exceto o outlier. No caso, o valor 35. O 43, por ser um *outlier* será representado por um círculo (em geral, aberto) na altura do eixo y (vertical) correspondente ao 43.  
   
 ```{r, echo=FALSE, fig.align='center', out.width= '450px'}
 knitr::include_graphics("g7.png")

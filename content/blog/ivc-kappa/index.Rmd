@@ -4,7 +4,7 @@ author: Fernanda Fiel Peres
 date: '2025-05-09'
 slug: [ivc-kappa]
 categories: ['Estatística teórica', 'Validade de conteúdo']
-tags: ['validade de conteúdo']
+tags: ['validade-de-conteúdo', 'estatística-teórica']
 comments: yes
 summary: 'Alguém te disse para calcular um Índice de Validade de Conteúdo (IVC) para o seu questionário, e você não sabe nem o que isso é, muito menos como calculá-lo? Nesse post eu te explico como calcular os três tipos de IVC e o kappa modificado, que normalmente acompanha esse índice.'
 output:

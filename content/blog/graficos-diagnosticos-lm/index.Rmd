@@ -365,7 +365,7 @@ Mas o gráfico 3 é ainda melhor para avaliarmos homocedasticidade. Esse gráfic
 plot(mod, which = 3)
 ```
   
-Como esse gráfico mostra a raiz quadrada dos resíduos em módulo, ele traz apenas resíduos positivos. Isso nos ajuda a enxergar o padrão de disribuição desses resíduos. Caso a variação seja constante ao longo dos valores previstos, a linha de tendência desse gráfico será aproximadamente **horizontal**. Modelos heterocedásticos terão gráficos com linhas de tendência **inclinadas**.  
+Como esse gráfico mostra a raiz quadrada dos resíduos em módulo, ele traz apenas resíduos positivos. Isso nos ajuda a enxergar o padrão de distribuição desses resíduos. Caso a variação seja constante ao longo dos valores previstos, a linha de tendência desse gráfico será aproximadamente **horizontal**. Modelos heterocedásticos terão gráficos com linhas de tendência **inclinadas**.  
   
 O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de homocedasticidade atendido -- veja que a linha de tendência é aproximadamente horizontal. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto: note como a linha de tendência está inclinada, ela sobe ao longo do gráfico.  
   

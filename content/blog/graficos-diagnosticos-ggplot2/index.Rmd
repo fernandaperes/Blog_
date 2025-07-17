@@ -6,7 +6,7 @@ slug: [graficos-diagnosticos-ggplot2]
 categories: ['Estatística teórica', 'Regressão linear']
 tags: ['regressão-linear', 'ggplot2', 'gráficos', 'estatística-teórica']
 comments: yes
-summary: 'Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos justes estéticos.'
+summary: 'Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos.'
 output:
   blogdown::html_page:
     toc: false

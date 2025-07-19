@@ -250,6 +250,21 @@ Avaliamos a multicolinearidade pelo cálculo do Fator de Inflação da Variânci
 <br />
   
   
+**6. Erros independentes**
+  
+Um outro pressuposto do modelo de regressão é a independência dos erros, que podemos simplificar como independência dos resíduos. Isso significa que o resíduo de uma observação **não deve apresentar correlação** com o resíduo de uma outra observação (linha da base). Essa correlação é muito comum em dados de medidas repetidas, quando um mesmo sujeito é avaliado diversas vezes -- e, portanto, várias linhas da base correspondem a dados que vieram de um mesmo sujeito.  
+  
+A independência dos resíduos pode ser avaliada por um **teste**, chamado **Durbin-Watson**. No entanto, há quem argumente que esse pressuposto deve ser testado apenas em bases de dados longitudinais -- isso é, com medidas repetidas.  
+  
+>"A hipótese de aleatoriedade e independência dos termos de erro apenas faz sentido de ser estudada em modelos em que há a evolução temporal dos dados. Em outras palavras, se estivermos trabalhando com uma base de dados em cross-section, este pressuposto não se justifica (...)"   
+>  
+>FÁVERO, Luiz Paulo; BELFIORE, Patrícia. **Manual de análise de dados: estatística e modelagem multivariada com Excel®, SPSS® e Stata®**. Elsevier Brasil, 2017.
+  
+Como esse pressuposto não é avaliado pelos gráficos diagnósticos do R -- e nem faria sentido para a nossa base, que não traz medidas repetidas -- não vamos discuti-lo aqui.  
+  
+<br />
+  
+  
 ### Gráficos diagnósticos
   
 Quando criamos um modelo de regressão no R, podemos usar a função `plot()` para acessar seus gráficos diagnósticos. O R mostrará um gráfico por vez. Para ver em uma única figura os quatro principais gráficos diagnósticos, devemos rodar antes a função `par(mfrow = c(2,2))`:  

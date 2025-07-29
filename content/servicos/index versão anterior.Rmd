@@ -28,10 +28,21 @@ fim_faq <- ifelse(isFALSE(mostrar_faq), "-->", "")
 `r inicio_aberta`
 <div class = "sobre row">
   
+<div class = "servicos headline">
 <center>
-<h4>Como funcionam os serviços de  
-consultoria científica e análise de dados?</h4>
+<h4>Mesmo com tanto conteúdo disponível, analisar seus dados <u>com segurança</u> pode ser desafiador.  
+Eu te ajudo a fazer isso com precisão e clareza, <u>sem dor de cabeça</u>.</h4>
 </center>
+</div>
+
+<div class = "servicos texto-headline">
+<br /><br />
+<center>
+<p>A análise é uma das partes mais decisivas da pesquisa -- e **não precisa ser um peso**.  
+Eu te ajudo a transformar essa etapa num processo **claro, bem conduzido e rápido**, com explicações que realmente fazem sentido e te preparam para apresentar seu trabalho **com confiança**.</p>
+</center>
+<br /><br />
+</div>
 
 
 <div class = "column5">

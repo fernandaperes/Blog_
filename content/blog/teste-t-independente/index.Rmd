@@ -18,6 +18,7 @@ output:
 </font>
 </center>
 
+<br>  
 <br>
 
 ```{r, include=FALSE}

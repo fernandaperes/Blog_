@@ -18,6 +18,8 @@ output:
 </font>
 </center>
 
+<br>
+
 ```{r, include=FALSE}
 knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)

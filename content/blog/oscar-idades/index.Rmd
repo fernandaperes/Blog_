@@ -15,7 +15,9 @@ output:
 <div class = "parentfaq">
 <div class = "faq">
 <center>
-*Michelle Yeoh, vencedora do Oscar de Melhor atriz em 2023, aos 60 anos.*
+*Michelle Yeoh, vencedora do Oscar de Melhor atriz em 2023, aos 60 anos.*  
+  
+<font size='1'>Crédito de cortesia: Imagem do Executive Office of the President dos EUA (domínio público), via Wikimedia Commons.</font>
 </center>
 </div></div>
   

@@ -413,7 +413,7 @@ plot(mod, which = 5, cook.levels = c(0.05, 0.5))
 ```
   
   
-Esse gráfico nos permite avaliar o pressuposto de **ausência de pontos influentes**. Caso esse pressuposto seja atendido, os pontos não devem ultrapassar a linha pontilhada. O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de ausência de pontos influentes atendido. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto: note como os pontos se distanciam bastante dessa linha, principalmente em quantis baixos e altos (esquerda e direita do gráfico).  
+Esse gráfico nos permite avaliar o pressuposto de **ausência de pontos influentes**. Caso esse pressuposto seja atendido, os pontos não devem ultrapassar a linha pontilhada. O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de ausência de pontos influentes atendido. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto: note como há um ponto (a 80ª pessoa da base) que tem distância de Cook superior a 1.  
   
 ```{r, include=FALSE, fig.width=6.5}
 set.seed(4321)

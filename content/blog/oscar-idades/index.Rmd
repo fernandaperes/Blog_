@@ -16,8 +16,7 @@ output:
 <div class = "faq">
 <center>
 *Michelle Yeoh, vencedora do Oscar de Melhor atriz em 2023, aos 60 anos.*  
-  
-<font size='1'>Crédito de cortesia: Imagem do Executive Office of the President dos EUA (domínio público), via Wikimedia Commons.</font>
+<font size='1'>Crédito de cortesia: Imagem do Executive Office of the President of USA (domínio público), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Michelle_Yeoh.jpg).</font>
 </center>
 </div></div>
   

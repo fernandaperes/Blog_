@@ -45,6 +45,24 @@ dt1 <- lapply(1:datasets,
                 dataset = x)})
 dt1 <- bind_rows(dt1)
 dados <- dt1 %>% filter(dataset == 4)
+
+# library(ggpubr)
+# 
+# dados_cover <- as.data.frame(list(Grupo = rep(LETTERS[1:4], each = 20),
+#                                   Escores = c(rnorm(20, mean = 20, sd = 10),
+#                                               rnorm(20, mean = 25, sd = 15),
+#                                               rnorm(20, mean = 15, sd = 7),
+#                                               rnorm(20, mean = 22, sd = 10))))
+# 
+# ggplot(dados_cover, aes(x = Grupo, y = Escores)) +
+#   geom_errorbar(stat = "summary", fun.data = "mean_sd", width = 0.2) +
+#   geom_bar(stat = "summary", fun = "mean", fill = "white", color = "black",
+#            width = 0.8) +
+#   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+#   theme_classic() +
+#   theme(text = element_text(family = "Nunito"))
+# 
+# ggsave("cover.png", width = 3.7, height = 2.8, dpi = 600)
 ```
 
   
@@ -87,7 +105,12 @@ Para discutir as alternativas, vamos construir diferentes gráficos utilizando u
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g3.png")
 ```
-<center><font size ='3'>Gráfico de barras ("gráfico dinamite") representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center>
+<font size="2">  
+Gráfico de barras ("gráfico dinamite") representando as médias e os desvios-padrão de três grupos: A, B e C.
+</font>
+</center>
+<br />
   
   
 #### Gráficos dot plot  
@@ -99,7 +122,12 @@ Além disso, é comum sobrepor a esses pontos uma linha horizontal representando
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g4.png")
 ```
-<center><font size ='3'>Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.</font></center><br><br>
+<center>
+<font size="2">  
+Gráfico dot plot representando as médias e os desvios-padrão de três grupos: A, B e C.
+</font>
+</center>
+<br />
   
   
 Note que o dot plot mostra muito mais informações que o gráfico de barras. Ao analisarmos o dot plot, conseguimos perceber que o grupo B é bem menor que os outros dois, sendo formado por apenas 10 sujeitos. Também notamos que nesse grupo parece haver valores discrepantes, bem superiores aos demais. O grupo C parece ser formado por dois subgrupos: há um grupo de pontos acima da média que está separado dos pontos abaixo da média. Esse padrão não é observado no grupo A (apesar de os grupos A e C terem médias e desvios-padrão praticamente idênticos).  
@@ -153,7 +181,12 @@ Outra alternativa é o boxplot, um gráfico que eu discuti em detalhes no [últi
 ```{r, echo=FALSE, fig.align='center', out.width='450px'}
 knitr::include_graphics("g5.png")
 ```
-<center><font size ='3'>Estrutura básica de um gráfico boxplot.</font></center><br><br>
+<center>
+<font size="2">  
+Estrutura básica de um gráfico boxplot.
+</font>
+</center>
+<br />
   
 Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente conseguimos detectar que o grupo B apresenta dois valores outliers acima do limite superior:
 
@@ -161,7 +194,12 @@ Aplicando aos nossos dados, obtemos o gráfico abaixo. Observe que rapidamente c
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g6.png")
 ```
-<center><font size ='3'>Gráfico boxplot para três grupos: A, B e C.</font></center><br><br>
+<center>
+<font size="2">  
+Gráfico boxplot para três grupos: A, B e C.
+</font>
+</center>
+<br />
   
 Assim como o dot plot, o boxplot mostra muito mais informações que o gráfico de barras: cinco medidas de posição + *outliers*. Além disso, conseguimos avaliar a dispersão dos dados através da altura da caixa (que representa a amplitude interquartil) e da distância entre o limite inferior e o superior.  
   
@@ -194,7 +232,12 @@ Ah, dada essa limitação do boxplot não mostrar os dados brutos, sugere-se que
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g7.png")
 ```
-<center><font size ='3'>Gráfico boxplot com dot plot sobreposto representando três grupos: A, B e C.</font></center><br><br>
+<center>
+<font size="2">  
+Gráfico boxplot com dot plot sobreposto representando três grupos: A, B e C.
+</font>
+</center>
+<br />
   
   
 ##### Como fazer um boxplot com dot plot sobreposto no R?  
@@ -222,7 +265,12 @@ Aplicando aos nossos dados, obtemos o gráfico a seguir:
 ```{r, echo=FALSE, fig.align='center', out.width='280px'}
 knitr::include_graphics("g8.png")
 ```
-<center><font size ='3'>Gráfico de violino representando as distribuições de três grupos: A, B e C.</font></center><br><br>
+<center>
+<font size="2">  
+Gráfico de violino representando as distribuições de três grupos: A, B e C.
+</font>
+</center>
+<br />
   
 O gráfico nos permite observar que, apesar de terem a mesma média e desvio-padrão, os grupos A e C apresentam distribuições diferentes. Além disso, o grupo C apresenta uma distribuição bimodal (há dois picos).  
   

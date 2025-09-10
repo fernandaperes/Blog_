@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Mon, 24 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Construindo gráficos diagnósticos para regressão no ggplot2</title>
+      <link>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</guid>
+      <description>Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos.</description>
+    </item>
+    
+    <item>
+      <title>Probabilidade x chance</title>
+      <link>https://fernandafperes.com.br/blog/probabilidade-chance/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/probabilidade-chance/</guid>
+      <description>No dia-a-dia, é comum usarmos chance e probabilidade como sinônimos. Mas na estatística, elas significam coisas consideravelmente diferentes. Nesse post eu te explico, com exemplos, como interpretar cada uma delas.</description>
+    </item>
+    
+    <item>
+      <title>O que é e como calcular o Índice de Validade de Conteúdo (IVC)?</title>
+      <link>https://fernandafperes.com.br/blog/ivc-kappa/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/ivc-kappa/</guid>
+      <description>Alguém te disse para calcular um Índice de Validade de Conteúdo (IVC) para o seu questionário, e você não sabe nem o que isso é, muito menos como calculá-lo? Nesse post eu te explico como calcular os três tipos de IVC e o kappa modificado, que normalmente acompanha esse índice.</description>
+    </item>
+    
     <item>
       <title>Tamanhos de efeito para o teste-t independente</title>
       <link>https://fernandafperes.com.br/blog/te-teste-t-independente/</link>
@@ -59,7 +86,7 @@
       <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</guid>
-      <description>O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
+      <description>O gráfico de setores &amp;ndash; popularmente conhecido como gráfico de pizza &amp;ndash; é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
     </item>
     
     <item>
@@ -68,7 +95,7 @@
       <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/blog/interpretacao-boxplot/</guid>
-      <description>O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.</description>
+      <description>O diagrama de caixas &amp;ndash; ou boxplot, como é mais conhecido &amp;ndash; é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.</description>
     </item>
     
     <item>

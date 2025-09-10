@@ -39,7 +39,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 
 	
-	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.b5be3dbfa4ca81580e14656577d04ae06f90c1aa65488d7d9b0317528063bf60.css" integrity="sha256-tb49v6TKgVgOFGVld9BK4G&#43;QwaplSI19mwMXUoBjv2A=">
 
 	
 	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
@@ -77,10 +77,6 @@
         <div class="collapse navbar-collapse" id="navbarMediumish">
             
             <ul class="navbar-nav ml-auto">
-                
-                <li class="nav-item ">
-                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
-                </li>
                 
                 <li class="nav-item ">
                     <a class="nav-link" href="/">PÁGINA INICIAL</a>
@@ -262,6 +258,8 @@
                     
                     <div class="article-post">
                         
+<link href="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/tabwid/tabwid.js"></script>
 
 
 <p>Recentemente eu me deparei com um dilema: eu queria representar graficamente os resultados do teste qui-quadrado, mas não sabia como estruturar essa representação.</p>
@@ -274,58 +272,7 @@ Se quiser entender isso melhor antes de seguir com o texto, recomendo a leitura 
 <p><br></p>
 <p>Para discutir as possibilidades de representação do qui-quadrado, vou usar o famoso <a href="https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/problem12.html">banco de dados do Titanic</a>. Apenas o traduzi para o exemplo ser mais acessível, e selecionei as colunas de interesse:</p>
 <pre class="r"><code>head(dados)</code></pre>
-<template id="b3f77e6a-550d-4166-b19c-29765b28d076"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  margin-top: 1.275em;
-  margin-bottom: 1.275em;
-  border-color: transparent;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-</style><div class="tabwid"><style>.cl-8a891458{}.cl-8a857672{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-8a858482{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-8a85a048{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a05c{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a066{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a067{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a070{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a071{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a07a{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a084{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a08e{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a08f{width:75.6pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a098{width:57.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-8a85a0a2{width:54.2pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-8a891458'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-8a85a08f"><p class="cl-8a858482"><span class="cl-8a857672">Sobreviveu</span></p></td><td class="cl-8a85a098"><p class="cl-8a858482"><span class="cl-8a857672">Genero</span></p></td><td class="cl-8a85a0a2"><p class="cl-8a858482"><span class="cl-8a857672">Classe</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-8a85a05c"><p class="cl-8a858482"><span class="cl-8a857672">Não</span></p></td><td class="cl-8a85a066"><p class="cl-8a858482"><span class="cl-8a857672">M</span></p></td><td class="cl-8a85a048"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a071"><p class="cl-8a858482"><span class="cl-8a857672">Sim</span></p></td><td class="cl-8a85a070"><p class="cl-8a858482"><span class="cl-8a857672">F</span></p></td><td class="cl-8a85a067"><p class="cl-8a858482"><span class="cl-8a857672">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a071"><p class="cl-8a858482"><span class="cl-8a857672">Sim</span></p></td><td class="cl-8a85a070"><p class="cl-8a858482"><span class="cl-8a857672">F</span></p></td><td class="cl-8a85a067"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a071"><p class="cl-8a858482"><span class="cl-8a857672">Sim</span></p></td><td class="cl-8a85a070"><p class="cl-8a858482"><span class="cl-8a857672">F</span></p></td><td class="cl-8a85a067"><p class="cl-8a858482"><span class="cl-8a857672">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a05c"><p class="cl-8a858482"><span class="cl-8a857672">Não</span></p></td><td class="cl-8a85a066"><p class="cl-8a858482"><span class="cl-8a857672">M</span></p></td><td class="cl-8a85a048"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-8a85a08e"><p class="cl-8a858482"><span class="cl-8a857672">Não</span></p></td><td class="cl-8a85a07a"><p class="cl-8a858482"><span class="cl-8a857672">M</span></p></td><td class="cl-8a85a084"><p class="cl-8a858482"><span class="cl-8a857672">3</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="ecc6e18b-3e63-420b-bc2b-1692eddd1811"></div>
-<script>
-var dest = document.getElementById("ecc6e18b-3e63-420b-bc2b-1692eddd1811");
-var template = document.getElementById("b3f77e6a-550d-4166-b19c-29765b28d076");
-var caption = template.content.querySelector("caption");
-if(caption) {
-  caption.style.cssText = "display:block;text-align:center;";
-  var newcapt = document.createElement("p");
-  newcapt.appendChild(caption)
-  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
-}
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
+<div class="tabwid"><style>.cl-a4a7fdb2{}.cl-a4a4cfca{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a4a62672{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a4a63432{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a6343c{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a6343d{width:0.752in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a6343e{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63446{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63447{width:0.752in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63448{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63449{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63450{width:0.752in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63451{width:1.05in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a6345a{width:0.795in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a4a63464{width:0.752in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-a4a7fdb2'><thead><tr style="overflow-wrap:break-word;"><th class="cl-a4a63432"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Sobreviveu</span></p></th><th class="cl-a4a6343c"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Genero</span></p></th><th class="cl-a4a6343d"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Classe</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-a4a6343e"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Não</span></p></td><td class="cl-a4a63446"><p class="cl-a4a62672"><span class="cl-a4a4cfca">M</span></p></td><td class="cl-a4a63447"><p class="cl-a4a62672"><span class="cl-a4a4cfca">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a4a63448"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Sim</span></p></td><td class="cl-a4a63449"><p class="cl-a4a62672"><span class="cl-a4a4cfca">F</span></p></td><td class="cl-a4a63450"><p class="cl-a4a62672"><span class="cl-a4a4cfca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a4a63448"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Sim</span></p></td><td class="cl-a4a63449"><p class="cl-a4a62672"><span class="cl-a4a4cfca">F</span></p></td><td class="cl-a4a63450"><p class="cl-a4a62672"><span class="cl-a4a4cfca">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a4a63448"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Sim</span></p></td><td class="cl-a4a63449"><p class="cl-a4a62672"><span class="cl-a4a4cfca">F</span></p></td><td class="cl-a4a63450"><p class="cl-a4a62672"><span class="cl-a4a4cfca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a4a6343e"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Não</span></p></td><td class="cl-a4a63446"><p class="cl-a4a62672"><span class="cl-a4a4cfca">M</span></p></td><td class="cl-a4a63447"><p class="cl-a4a62672"><span class="cl-a4a4cfca">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a4a63451"><p class="cl-a4a62672"><span class="cl-a4a4cfca">Não</span></p></td><td class="cl-a4a6345a"><p class="cl-a4a62672"><span class="cl-a4a4cfca">M</span></p></td><td class="cl-a4a63464"><p class="cl-a4a62672"><span class="cl-a4a4cfca">3</span></p></td></tr></tbody></table></div>
 <div id="há-associação-entre-ter-sobrevivido-ao-desastre-do-titanic-e-a-classe-da-passagem" class="section level4">
 <h4>Há associação entre ter sobrevivido ao desastre do Titanic e a classe da passagem?</h4>
 <p>Essa é a pergunta que iremos responder com a nossa análise.</p>
@@ -372,6 +319,11 @@ O meu incômodo com essa representação é a dificuldade em representar quais c
 <h5>Gráfico de barras empilhadas com as frequências relativas (%)</h5>
 <p>Outra opção, bastante usada, é o gráfico com barras empilhadas que somam 100%.<br />
 Para uma situação como essa, em que só há duas categorias na variável que dará a cor das barras, esse tipo de gráfico funciona muito bem.</p>
+<pre><code>## Warning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.
+## ℹ Please use `after_stat(count)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
 <p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Na minha opinião, o gráfico de barras empilhadas facilita as comparações das proporções entre os grupos. Como desvantagem, ele não mostra as frequências absolutas. E, assim como a opção anterior, não é um gráfico adequado para representar as diferenças entre os valores observados e esperados.</p>
 </div>
@@ -391,8 +343,8 @@ A função inclui a colocação de asteriscos quando os resíduos padronizados e
 <pre class="r"><code>fstat::graf_obs_esp_ind(dados, Classe, Sobreviveu, cat_graf_v2 = &quot;Sim&quot;,
                         cor = &quot;cadetblue&quot;, xlab = &quot;Classe da passagem&quot;) +
   labs(caption = &quot;Frequências observadas e esperadas para aqueles que sobreviveram\nao desastre do Titanic, de acordo com a classe da passagem.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.&quot;)</code></pre>
-<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-11-1.png" width="441.6" style="display: block; margin: auto;" />
-O problema desse gráfico é que ele só permite a visualização de uma das categorias da variável. Nesse caso, escolhi a categoria “sim” para a variável <code>Sobreviveu</code>, e expliquei isso na legenda.<br />
+<p><img src="https://fernandafperes.com.br/blog/grafico-qui-quadrado/index_files/figure-html/unnamed-chunk-11-1.png" width="441.6" style="display: block; margin: auto;" /></p>
+<p>O problema desse gráfico é que ele só permite a visualização de uma das categorias da variável. Nesse caso, escolhi a categoria “sim” para a variável <code>Sobreviveu</code>, e expliquei isso na legenda.<br />
 Para a variável <code>Sobreviveu</code>, essa é uma alternativa válida. Isso porque, como essa variável tem apenas duas categorias, os resíduos da categoria “não” serão numericamente iguais aos da categoria “sim”, mas com sinal oposto.</p>
 <p>Observe que visualizando o gráfico conseguimos perceber que:</p>
 <ul>

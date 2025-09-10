@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ggplot2</title>
       <link>https://fernandafperes.com.br/tags/ggplot2/</link>
-      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/tags/ggplot2/</guid>
       <description></description>
@@ -20,9 +20,36 @@
     <item>
       <title>gráficos</title>
       <link>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</link>
-      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/tags/gr%C3%A1ficos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Estatística teórica</title>
+      <link>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>regressão-linear</title>
+      <link>https://fernandafperes.com.br/tags/regress%C3%A3o-linear/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/regress%C3%A3o-linear/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>validade-de-conteúdo</title>
+      <link>https://fernandafperes.com.br/tags/validade-de-conte%C3%BAdo/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/tags/validade-de-conte%C3%BAdo/</guid>
       <description></description>
     </item>
     
@@ -32,15 +59,6 @@
       <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/tags/oscar/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Estatística teórica</title>
-      <link>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</link>
-      <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://fernandafperes.com.br/tags/estat%C3%ADstica-te%C3%B3rica/</guid>
       <description></description>
     </item>
     

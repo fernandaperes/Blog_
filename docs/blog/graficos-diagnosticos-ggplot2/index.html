@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Construindo gráficos diagnósticos para regressão no ggplot2 | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/cover.png"/>
+<meta name="twitter:title" content="Construindo gráficos diagnósticos para regressão no ggplot2"/>
+<meta name="twitter:description" content="Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos."/>
+
+	<meta property="og:title" content="Construindo gráficos diagnósticos para regressão no ggplot2" />
+<meta property="og:description" content="Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-07-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-07-17T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.b5be3dbfa4ca81580e14656577d04ae06f90c1aa65488d7d9b0317528063bf60.css" integrity="sha256-tb49v6TKgVgOFGVld9BK4G&#43;QwaplSI19mwMXUoBjv2A=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Construindo%20gr%c3%a1ficos%20diagn%c3%b3sticos%20para%20regress%c3%a3o%20no%20ggplot2&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-ggplot2%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-ggplot2%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-ggplot2%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-ggplot2%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Construindo gráficos diagnósticos para regressão no ggplot2</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    17 jul., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/regress%C3%A3o-linear">regressão-linear</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/ggplot2">ggplot2</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/gr%C3%A1ficos">gráficos</a>
+                        </li>
+                        
+                        <li>
+                        <a href="/tags/estat%C3%ADstica-te%C3%B3rica">estatística-teórica</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+
+
+<div id="por-que-construir-gráficos-diagnósticos-em-ggplot2" class="section level3">
+<h3>Por que construir gráficos diagnósticos em ggplot2?</h3>
+<p>Eu vou começar admitindo que esse é um post que eu acredito ser de pouco interesse para a maior parte das pessoas. Como vimos em um <a href="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/">post anterior</a>, o R traz excelentes gráficos diagnósticos que nos permitem avaliar o atendimento aos pressupostos do modelo de regressão linear. E construi-los é <strong>bem simples</strong>: basta usar a função <code>plot()</code>.</p>
+<p>No entanto, apesar de serem gráficos que fazem muito bem o que se propõem a fazer, eu os acho <strong>feios</strong>. E como muita gente inclui esses gráficos em seus TCCs, dissertações ou teses, construi-los em ggplot2 me parece muito válido – dessa forma, conseguimos alterar fontes, cores e o que mais quisermos.</p>
+<p>Então, esse é um post sobre como reproduzir os gráficos diagnósticos em ggplot2.</p>
+<blockquote>
+<p>Vale dizer que meu objetivo aqui não é discutir todas as personalizações possíveis quando construímos a figura em ggplot2. Caso isso seja do seu interesse, recomendo <a href="https://youtube.com/playlist?list=PLOw62cBQ5j9X5eOavzeu9CaHMO6TFsPkY&amp;si=pwP8gxu3d4Aox6D2">essa playlist</a> do meu canal que explica a lógica do ggplot2 e <strong>muitas</strong> das opções de personalização.</p>
+</blockquote>
+<p>Vamos partir de um modelo de regressão linear múltipla. Para isso, usaremos novamente a base de dados FEV, com os seguintes dados:</p>
+<ul>
+<li>fev: Volume expiratório forçado, em litros. Uma medida da capacidade pulmonar.</li>
+<li>idade: Idade das crianças e adolescentes, em anos.</li>
+<li>altura: Altura das crianças e adolescentes, em centímetros.</li>
+</ul>
+<p>Vamos criar um modelo de regressão linear com <code>fev</code> como variável dependente e <code>idade</code> e <code>altura</code> como variáveis independentes.</p>
+<div id="leitura-da-base-de-dados-e-construção-do-modelo" class="section level4">
+<h4>Leitura da base de dados e construção do modelo</h4>
+<pre class="r"><code># Instalação e carregamento dos pacotes tidyverse e qqplotr
+if(!require(tidyverse)){install.packages(&quot;tidyverse&quot;)}
+library(tidyverse)
+
+if(!require(qqplotr)){install.packages(&quot;qqplotr&quot;)}
+library(qqplotr)
+
+# Leitura da base de dados
+dados &lt;- read.csv2(&quot;FEV_80.csv&quot;)
+
+# Construção do modelo de regressão linear
+mod &lt;- lm(fev ~ altura + idade, data = dados)
+
+# Gráficos diagnósticos
+par(mfrow = c(2,2))
+plot(mod)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-2-1.png" width="624" style="display: block; margin: auto;" /></p>
+<p><br /></p>
+</div>
+</div>
+<div id="gráfico-1-resíduos-x-valores-ajustados" class="section level3">
+<h3>Gráfico 1: resíduos x valores ajustados</h3>
+<p>O primeiro gráfico mostra a relação entre os resíduos (eixo y) e os valores ajustados (eixo x). Além disso, ele traz: 1) uma linha pontilhada em zero e 2) uma linha de tendência destacada em vermelho.</p>
+<pre class="r"><code>plot(mod, which = 1)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-4-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p>Esse é um gráfico simples de reproduzir. Obtemos os resíduos com a função <code>residuals()</code> e obtemos os valores ajustados com a função <code>fitted()</code>. Depois, plotamos cada um desses valores nos seus respectivos eixos. Vamos usar a camada <code>geom_point()</code> para criar o gráfico de dispersão. Perceba que eu deixei os pontos em cinza (<code>color = "grey60"</code>) e adicionei uma transparência (<code>alpha = 0.6</code>).</p>
+<p>O <code>theme_classic()</code> deixa o gráfico com fundo branco e eixos pretos, mas você pode optar por outro tema caso prefira, como <code>theme_minimal()</code> ou <code>theme_bw()</code>. As camadas <code>scale_x_continuous()</code> e <code>scale_y_continuous()</code> foram adicionadas para trocar o separador de decimal de ponto (padrão em inglês) para vírgula (padrão em português). A camada <code>labs()</code> renomeia os eixos.</p>
+<pre class="r"><code>dados |&gt; 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |&gt; 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = &quot;Resíduos&quot;, x = &quot;Valores ajustados&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-5-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Ficou faltando adicionar:</p>
+<ul>
+<li>A linha horizontal pontilhada em zero, que adicionaremos com a camada <code>geom_hline()</code>. O comando <code>linetype = "dashed"</code> define que ela será pontilhada. Eu a deixei em preto, mas você pode alterar a cor com o argumento <code>color</code>.</li>
+<li>A linha de tendência dos pontos, que adicionaremos com a camada <code>geom_smooth()</code>. No gráfico do R base essa linha está em vermelho, mas que aqui representarei no rosa da minha paleta de cores, que tem o código hexadecimal “#B5284B”.</li>
+</ul>
+<pre class="r"><code>dados |&gt; 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |&gt; 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_hline(yintercept = 0, linetype = &quot;dashed&quot;) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = &quot;#B5284B&quot;, method = &quot;loess&quot;) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = &quot;Resíduos&quot;, x = &quot;Valores ajustados&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-6-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>O gráfico já está bem bom! Mas note que a curva suavizada criada pelo <code>geom_smooth()</code> difere um pouco daquela que observamos no gráfico criado pela função <code>plot()</code>. Isso porque eles diferem quanto ao tipo de suavização utilizada. Para replicar a mesma suavização do <code>plot()</code>, temos que fazer algumas alterações nesse código. Para isso usei como base <a href="https://stackoverflow.com/questions/54072789/linear-model-diagnostics-smoothing-line-obtained-in-ggplot2-is-different-from-t">a seguinte resposta</a> do StackOverflow.</p>
+<pre class="r"><code># Criação de um data.frame com os valores da curva suavizada
+# A suavização é obtida com a função lowess()
+smoothed &lt;- as.data.frame(lowess(x = fitted(mod), y = residuals(mod)))
+
+dados |&gt; 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |&gt; 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_hline(yintercept = 0, linetype = &quot;dashed&quot;) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = &quot;#B5284B&quot;, linewidth = 0.7) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = &quot;Resíduos&quot;, x = &quot;Valores ajustados&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-8-1.png" width="384" style="display: block; margin: auto;" /><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-8-2.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Agora sim! Veja que o gráfico ficou idêntico ao do R base, exceto, claro, pela estética.</p>
+</div>
+<div id="gráfico-2-raiz-quadrada-do-valor-absoluto-dos-resíduos-padronizados-x-valores-ajustados" class="section level3">
+<h3>Gráfico 2: raiz quadrada do valor absoluto dos resíduos padronizados x valores ajustados</h3>
+<p>Esse gráfico é, pela função <code>plot()</code>, o gráfico 3. Mas vai ser o segundo gráfico que eu irei construir porque ele se assemelha muito ao que construímos anteriormente. O que muda é: ao invés de colocarmos os resíduos do eixo y, colocaremos <strong>a raiz quadrada do módulo dos resíduos padronizados</strong>.</p>
+<pre class="r"><code>plot(mod, which = 3)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-9-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p>Vamos construir um gráfico praticamente idêntico ao que construímos anteriormente. Mas, vamos obter os resíduos padronizados (<code>rstandard(mod)</code>). Para obtermos o módulo desses valores, precisamos inseri-los na função <code>abs()</code>, ou seja, ficamos com: <code>abs(rstandard(mod))</code>. Por fim, para tirar a raiz quadrada, devemos usar a função <code>sqrt()</code>, o que resulta em: <code>sqrt(abs(rstandard(mod)))</code>.</p>
+<p>Nesse gráfico não há uma linha horizontal de referência, por isso excluímos a camada <code>geom_hline()</code>.</p>
+<pre class="r"><code>dados |&gt; 
+  mutate(Residuals = sqrt(abs(rstandard(mod))),
+         Fitted = fitted(mod)) |&gt; 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = &quot;#B5284B&quot;, method = &quot;loess&quot;) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = bquote(sqrt(abs(&quot;Resíduos Padronizados&quot;))), x = &quot;Valores ajustados&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-10-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>De novo, está bem bom, mas a suavização utilizada não é idêntica à utilizada pela função <code>plot()</code>. Com as modificações abaixo, chegamos a um gráfico idêntico:</p>
+<pre class="r"><code>smoothed &lt;- as.data.frame(lowess(x = fitted(mod), y = sqrt(abs(rstandard(mod)))))
+
+dados |&gt; 
+  mutate(Residuals = sqrt(abs(rstandard(mod))),
+         Fitted = fitted(mod)) |&gt; 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = &quot;#B5284B&quot;, linewidth = 0.7) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = bquote(sqrt(abs(&quot;Resíduos Padronizados&quot;))), x = &quot;Valores ajustados&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-12-1.png" width="384" style="display: block; margin: auto;" /><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-12-2.png" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gráfico-3-q-q-plot-para-os-resíduos" class="section level3">
+<h3>Gráfico 3: Q-Q plot para os resíduos</h3>
+<p>O Q-Q plot dos resíduos é, pela função <code>plot()</code>, o gráfico 2. Mas, como explicado, eu alterei a ordem para fins didáticos.</p>
+<pre class="r"><code>plot(mod, which = 2)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-13-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p>Construir um Q-Q plot no ggplot2 é algo menos intuitivo, mas não muito complexo. Precisamos dos seguintes passos:</p>
+<ul>
+<li>Adicionar os resíduos padronizados (obtidos pela função <code>rstandard()</code>) como “sample” no <code>aes()</code>.</li>
+<li>Adicionar uma linha com a camada <code>geom_qq_line()</code>. Aqui o importante é estabelecer que a distribuição que queremos testar é a normal. Fazemos isso com o argumento <code>stats::qqnorm</code>.</li>
+<li>Adicionar os pontos referentes aos resíduos com a camada <code>geom_qq()</code>. De novo, estabelecemos que a distribuição que queremos testar é a normal com o argumento <code>stats::qqnorm</code>. Estabeleci que os pontos serão rosa (“#B5284B”) e terão uma transparência (<code>alpha = 0.3</code>).</li>
+<li>Adicionar uma camada <code>stat_qq_band()</code> para incluir um intervalo de confiança. Essa função vem do pacote <code>qqplotr</code>, que deve estar instalado. Aqui estabelecemos que a distribuição é a normal (<code>distribution = "norm"</code>) e que vamos usar a normal-padrão, com média zero e desvio-padrão 1 (<code>dparams = list(mean = 0, sd = 1)</code>). Coloquei essa camada antes das demais para que a sombra não ficasse por cima dos pontos.</li>
+</ul>
+<pre class="r"><code>dados |&gt; 
+  mutate(Residuals = rstandard(mod)) |&gt; 
+  ggplot(aes(sample = Residuals)) +
+  qqplotr::stat_qq_band(distribution = &quot;norm&quot;, dparams = list(mean = 0, sd = 1),
+                        alpha = 0.2) +
+  geom_qq_line(distribution = stats::qnorm) +
+  geom_qq(distribution = stats::qnorm, color = &quot;#B5284B&quot;, alpha = 0.3) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Quantis teóricos&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-14-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>“E tá pronto o sorvetinho!” (Ilt, Matheus, 2019)</p>
+</div>
+<div id="gráfico-4-resíduos-padronizados-x-alavancagem-distância-de-cook" class="section level3">
+<h3>Gráfico 4: resíduos padronizados x alavancagem + distância de Cook</h3>
+<p>Esse gráfico é pela função <code>plot()</code>, o gráfico 5. Ele mostra ao mesmo tempo os resíduos padronizados (eixo y), a alavancagem (eixo x) e a distância de Cook (representada por uma linha pontilhada). À semelhança do que vimos no gráfico 1, esse gráfico também inclui uma linha horizontal pontilhada no y = 0 e uma linha de tendência representada em vermelho.</p>
+<pre class="r"><code>plot(mod, which = 5)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-15-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p>Esse é um gráfico que por uns anos eu pensei “nossa, o trabalho de construir isso em ggplot2 não deve compensar o resultado”. Porque inserir as linhas de distância de Cook me parecia muito complexo. Mas aí, estudando um outro modelo – para o qual esse gráfico não é construído com a função <code>plot()</code> – eu decidi encarar o desafio de criá-lo em ggplot2. E foi mais simples do que eu imaginava.</p>
+<p>Vamos aos passos:</p>
+<ul>
+<li>Obter os resíduos padronizados, a partir da função <code>rstandard()</code>.</li>
+<li>Obter os valores de alavancagem (<em>leverage</em>), a partir da função <code>hatvalues()</code>.</li>
+<li>Salvar os valores obtidos nos dois passos anteriores em um <code>data.frame()</code> chamado “dados_graf”.</li>
+<li>Criar duas funções, uma para cada linha pontilhada a ser plotada para a distância de Cook: <code>cd_cont_pos()</code> e <code>cd_cont_neg()</code>. Essas funções não são de minha autoria. Elas foram extraídas <a href="https://stackoverflow.com/questions/48962406/add-cooks-distance-levels-to-ggplot2">dessa resposta</a> no StackOverflow.</li>
+<li>Adicionar duas camadas <code>stat_function()</code>, uma com a função (<code>fun</code>) “cd_cont_pos” e outra com a função “cd_cont_neg”. O <code>level = 0.5</code> define que queremos a linha de distância de Cook = 0,5. Ao alterar esse <em>level</em>, obtemos linhas referentes a outros pontos de corte. Precisamos também adicionar o nome do modelo (no nosso caso, “mod”) ao argumento <code>model</code>. Os outros argumentos são para ajustes estéticos: deixar a linha roxa (“#68357A”), mais fina (<code>linewidth = 0.5</code>) e pontilhada (linetype = “dashed”).</li>
+</ul>
+<pre class="r"><code>dados_graf &lt;- dados |&gt; 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+cd_cont_pos &lt;- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg &lt;- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_hline(yintercept = 0, linetype = &quot;dashed&quot;) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = &quot;#B5284B&quot;, method = &quot;loess&quot;) +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;#68357A&quot;,
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;#68357A&quot;,
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Alavancagem&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-16-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Você pode até estar pensando: “mas esse gráfico está diferente do que obtivemos com a função <code>plot()</code>!”. Então… Ele parece diferente mesmo. Isso porque o que obtivemos com a função <code>plot()</code> tem um eixo y que vai de -3 a 4. Já o eixo y do gráfico que criamos se estende para muito além disso. Portanto, para deixá-los equivalentes, vamos adicionar a camada <code>coord_cartesian()</code> para deixar o nosso gráfico com um eixo y de -3 a 4:</p>
+<pre class="r"><code>dados_graf &lt;- dados |&gt; 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+cd_cont_pos &lt;- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg &lt;- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_hline(yintercept = 0, linetype = &quot;dashed&quot;) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = &quot;#B5284B&quot;, method = &quot;loess&quot;) +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;#68357A&quot;,
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;#68357A&quot;,
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  coord_cartesian(ylim = c(-3, 4)) +
+  labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Alavancagem&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-17-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Se você é detalhista você talvez tenha reparado que há ainda três diferenças entre o gráfico que criamos e aquele criado pela função <code>plot()</code>:</p>
+<ul>
+<li>O gráfico do <code>plot()</code> traz uma linha vertical em x = 0 e uma linha pontilhada para distância de Cook = 1.
+<ul>
+<li>Vamos adicionar uma camada <code>geom_vline()</code> para incluir a linha pontilhada vertical</li>
+<li>Vamos replicar as camadas <code>stat_function()</code> e alterar o level para 1</li>
+</ul></li>
+<li>A suavização usada pelo <code>plot()</code> é diferente daquela usada pelo <code>geom_smooth()</code>. Zero surpresa aqui, né?
+<ul>
+<li>Vamos aplicar a mesma suavização que usamos nos gráficos 1 e 2</li>
+</ul></li>
+</ul>
+<pre class="r"><code>dados_graf &lt;- dados |&gt; 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+smoothed &lt;- as.data.frame(lowess(x = hatvalues(mod), y = rstandard(mod)))
+
+cd_cont_pos &lt;- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg &lt;- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_vline(xintercept = 0, linetype = &quot;dashed&quot;) +
+  geom_hline(yintercept = 0, linetype = &quot;dashed&quot;) +
+  geom_point(color = &quot;grey60&quot;, alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = &quot;#B5284B&quot;, linewidth = 0.7) +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;#68357A&quot;,
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;#68357A&quot;,
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_pos, args = list(level = 1, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;grey40&quot;,
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 1, model = mod),
+                linetype = &quot;dashed&quot;, color = &quot;grey40&quot;,
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
+  coord_cartesian(ylim = c(-3, 4)) +
+  labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Alavancagem&quot;) +
+  theme_classic()</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-19-1.png" width="384" style="display: block; margin: auto;" /><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/index_files/figure-html/unnamed-chunk-19-2.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Agora, sim, temos uma versão idêntica!</p>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
+<h4>Como citar esse post, nas normas da ABNT</h4>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Construindo gráficos diagnósticos para regressão no ggplot2</strong>. Blog Fernanda Peres, São Paulo, 17 jul. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/" class="uri">https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</a>.</p>
+</blockquote>
+<p><br /></p>
+<hr />
+</div>
+</div>
+<div id="referências" class="section level3">
+<h3>Referências</h3>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/leituras-2024/"> &laquo; Uma análise exploratória das minhas leituras em 2024</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/">Gráficos diagnósticos: Avaliando os pressupostos da regressão linear &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

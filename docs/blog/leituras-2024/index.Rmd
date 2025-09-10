@@ -1,43 +1,37 @@
 ---
 title: "Uma análise exploratória das minhas leituras em 2024"
 author: Fernanda Fiel Peres
-date: '2025-02-26'
+date: '2025-09-10'
 slug: [leituras-2024]
 categories: ['Estatística descritiva', 'Gráficos']
 tags: ['ggplot2', 'gráficos']
 comments: yes
-summary: 'Explorando as minhas leituras do ano usando o R.'
+summary: 'Explorando as minhas leituras de 2024 usando o R.'
 output:
   blogdown::html_page:
     toc: false
 bibliography: references.bib
 csl: APA.csl
+editor_options: 
+  chunk_output_type: console
 ---
 
   
   
 ```{r, include=FALSE}
 knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
-library(tidyverse)
-library(plotly)
+pacman::p_load(rnaturalearth, rnaturalearthdata, ggiraph, tidyverse)
 fstatix::paleta_f()
 
 dados <- readxl::read_excel("Livros.xlsx")
-
-graf <- ggplot(dados, aes(x = `Minha avaliação`, y = `Avaliação no Skoob`)) +
-  geom_point(aes(text = Título),
-             color = azul,
-             position = position_jitter(width = 0.02, height = 0.02, seed = 1234)) +
-  theme_classic() +
-  theme(text = element_text(family = "Nunito"))
 ```
 
   
 Fortemente inspirada no [post da Beatriz Milz](https://beamilz.com/posts/2024-07-25-leituras-1sem/pt/), eu decidi fazer uma análise exploratória das minhas leituras em 2024. Antes de você seguir nesse post, eu preciso te dizer que minhas leituras seguem aquele ditado **"um pouco de droga, um pouco de salada"**. Eu curto livros mais sérios, mas também amo ler livros bem comerciais e com tramas mais óbvias (os livros que são ridicularizados nos clubes do livro *cults* por aí).  
   
-Eu vejo as pessoas compartilhando essas listas e dizendo "eu excluí os livros vergonhosos". E eu sempre penso: poxa, mas eu adoraria saber quais livros "vergonhosos" as pessoas que eu sigo na internet ou convivo leem. Então, eu escolhi não excluir os "vergonhosos". Espero de você, leitor, o respeito a essa decisão 🙃  
-    
 Uma outra informação é que em 2024 eu participei de dois **clubes do livro**. Isso com certeza contribuiu para que minhas leituras fossem mais diversas -- principalmente no que diz respeito à nacionalidade dos autores. Os clubes também me fizeram ler livros que eu normalmente não leria (e alguns que, depois de ler, eu confirmei que não queria ter lido, haha!).  
+  
+Ao final, trago uma mini resenha dos meus livros favoritos do ano -- e já te adianto que alguns deles estão entre os meus favoritos da vida. Então, caso tenha interesse em sugestões de leituras, não pule essa parte, ok?  
   
   
 ### Principais características dos livros
@@ -47,9 +41,11 @@ dados |>
   summarise(`Quantidade de livros` = n(),
             `Total de páginas` = sum(`Quantidade de páginas`),
             `Média de páginas por dia` = `Total de páginas`/365)
+
+table(dados$`Clube do livro`)
 ```
   
-No total, eu li 30 livros, que totalizaram 7.068 páginas -- uma média de 19,4 páginas por dia. Eu tenho preferido e-books a livros físicos. Mas em 2024 eu li mais livros físicos do que normalmente e eles corresponderam a 30% das leituras.  
+No total, eu li 30 livros, que totalizaram 7.068 páginas -- uma média de 19,4 páginas por dia. De todos os livros lidos, 15 (50%) foram para algum clube do livro. Eu tenho preferido e-books a livros físicos. Mas em 2024 eu li mais livros físicos do que normalmente e eles corresponderam a 30% das leituras.  
   
 ```{r, echo=FALSE, fig.width=4.5, fig.height=2.5, fig.align='center'}
 dados |> 
@@ -86,20 +82,153 @@ dados |>
 ```
 
   
+### Perfil dos autores
   
-<br>
-
-<center>
-```{r, echo=FALSE, fig.width=4.5, fig.height=4, fig.align='center'}
-ggplotly(graf)
+Mulheres predominaram a autoria das minhas leituras (83,3%), como acontece há uns bons anos. Dos cinco livros escritos por homens que eu li, três foram para um clube do livro (e eu não amei nenhum, haha!) e os outros dois foram: 1) a autobiografia do Matthew Perry ("Amigos, amores e aquela coisa terrível"), que eu não gostei muito; 2) o livro novo do Vitor Martins ("Mais ou menos nove horas"), do qual eu gostei bastante, mas nem de perto tanto quanto o meu livro favorito dele, "Quinze dias".  
+  
+```{r, echo=FALSE, fig.width=4.5, fig.height=2.5, fig.align='center'}
+dados |> 
+  count(`Gênero do autor`) |> 
+  mutate(rotulo = paste0(n, " (", scales::number(100*n/sum(n), accuracy = 0.1,
+                                                 decimal.mark = ","), "%)")) |> 
+  ggplot(aes(y = `Gênero do autor`, x = n)) +
+  geom_bar(stat = "identity", fill = azul) +
+  geom_text(aes(label = rotulo), size = 3.5, family = "Nunito", hjust = -0.1) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.3))) +
+  labs(y = NULL, titulo = "Formato do livro", x = "Quantidade de livros") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 13))
 ```
-</center>
+  
+  
+Eu tentei avaliar a cor/raça dos autores, me baseando em fotos deles. Apliquei aqui o critério do IBGE, ainda que ele não se estenda necessariamente a países além do Brasil. Há um predomínio de pessoas brancas (76,7%). Essa diversidade de cor/raça é algo que eu gostaria de melhorar nos próximos anos. Das sete pessoas não-brancas lidas, apenas uma é um homem -- Tamiki Hara, o autor de "Flores de verão", um sobrevivente da bomba de Hiroshima e o pioneiro em literatura sobre esse tema.  
+  
+```{r, echo=FALSE, fig.width=4.5, fig.height=3.2, fig.align='center'}
+dados |> 
+  count(`Cor/raça do autor`) |> 
+  mutate(rotulo = paste0(n, " (", scales::number(100*n/sum(n), accuracy = 0.1,
+                                                 decimal.mark = ","), "%)")) |> 
+  ggplot(aes(y = forcats::fct_infreq(`Cor/raça do autor`, n), x = n)) +
+  geom_bar(stat = "identity", fill = azul) +
+  geom_text(aes(label = rotulo), size = 3.5, family = "Nunito", hjust = -0.1) +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.25))) +
+  labs(y = NULL, titulo = "Formato do livro", x = "Quantidade de livros") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 13))
+```
+  
+  
+### Países dos autores
+  
+O país mais prevalente entre os autores foi os Estados Unidos (26,7%) -- aqui predominaram os livros menos *cults*, como "Estou feliz que a minha mãe morreu" (que eu gostei bastante, diga-se de passagem) e "A empregada" (que tem uma trama praticamente idêntica à de um livro que eu li há muitos anos, e do qual eu gostei muito mais, chamado "A outra Sra. Parrish").  
+  
+Em segundo lugar veio o Brasil, empatado com Argentina. Eu acho que antes desse ano eu nunca tinha lido um livro argentino. Mas três dos quatro livros de autoras argentinas estão nos meus favoritos do ano -- sério, latinas que escrevem terror, obrigada por tanto!  
+  
+Depois vieram França e Inglaterra. França me surpreendeu com a posição nessa lista. Mas, todos os livros franceses que eu li foram para um mesmo clube do livro. Aqui "A última filha" se destaca, um livro belíssimo da Fatima Daas. Quanto à Inglaterra, todos os livros são da Agatha.  
+  
+Os demais países aparecem apenas uma vez, mas considero as leituras bem diversas quanto a país. Eu nunca tinha lido livros de vários deles até esse ano.  
+  
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+dados |> 
+  count(`País do autor`) |> 
+  mutate(`%` = scales::number(100*n/sum(n), decimal.mark = ",", accuracy = 0.1,
+                              suffix = "%")) |> 
+  arrange(-n) |> 
+  flextable::flextable() |> 
+  flextable::bold(part = "header") |> 
+  flextable::align(j = -c(1), align = "center", part = "all") |> 
+  flextable::autofit()
+```
 
+  
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+mundo <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
 
+dados_paises <- dados |> 
+  count(`País do autor`) |> 
+  rename("name_pt" = "País do autor") |> 
+  mutate(name_pt = ifelse(name_pt == "Inglaterra", "Reino Unido", name_pt))
+
+dados_mapa <- mundo |> 
+  select(geometry, name_pt) |> 
+  dplyr::left_join(dados_paises) |> 
+  mutate(n = ifelse(is.na(n), 0, n),
+         porc = n/sum(n),
+         rotulo = scales::number(100*porc, decimal.mark = ",",
+                                 accuracy = 0.1, suffix = "%"))
+
+oceano <- rnaturalearth::ne_download(scale = "medium", type = "ocean", category = "physical")
+
+mapa <- ggplot(data = dados_mapa, aes(geometry = geometry, fill = n)) +
+  geom_sf_interactive(
+    aes(tooltip = paste0("País: ", name_pt,
+                         "\nLivros lidos: ", n, " (", rotulo, ")")),
+    color = "black") +
+  geom_sf(data = oceano, fill = "aliceblue", color = NA) +
+  scale_fill_gradientn(colours = c("white",
+                                   c(colorspace::lighten(amarelo, amount = 0.4),
+                                     rosa)),
+                       values = scales::rescale(c(0, 1, max(dados_mapa$n, na.rm = TRUE))),
+                       na.value = "white",
+                       limits = c(0, max(dados_mapa$n, na.rm = TRUE))) +
+  guides(fill = guide_colorbar(title.hjust = 0.5, title.position = "top",
+                               barwidth = 15, barheight = 0.5)) +
+  labs(fill = "Quantidade de livros lidos") +
+  theme_void() +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_text(size = 8),
+    text = element_text(family = "Nunito", size = 13),
+    legend.text = element_text(size = 5)
+  )
+
+girafe(ggobj = mapa)
+```
+  
+  
+### Eu *versus* o Skoob
+
+Eu fiquei curiosa também para entender o quanto a minha avaliação diferiria da opinião geral. Para isso, usei as notas dadas aos livros no [Skoob](https://www.skoob.com.br/), a rede social de livros mais popular no Brasil. Os dados foram coletados no último dia de 2024.  
+  
+```{r, echo=FALSE, fig.width=4.5, fig.height=3.5, fig.align='center', warning=FALSE, message=FALSE}
+ggplot(dados, aes(x = `Minha avaliação`, y = `Avaliação no Skoob`)) +
+  geom_point(aes(text = Título),
+             color = azul,
+             position = position_jitter(width = 0.02, height = 0.02, seed = 1234)) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 13))
+```
+  
+Dá para ver que eu e Skoob não concordamos muito, haha!  
+  
+Dentre os livros em que a minha avaliação foi muito inferior à do Skoob se destacam:  
+  
+* "O coração do dano", da Maria Negroni -- Minha nota foi 2, a nota mais baixa desse ano (eu realmente detestei!), *versus* 3,8 do Skoob
+* "A vergonha é um sentimento revolucionário", do Frédéric Gros -- Esse é um livro famoso e amado, mas eu não curti muito a escrita, achei meio pretensiosa (Minha nota = 3 *versus* Skoob = 4,5)
+* "Amigos, amores e aquela coisa terrível", do Matthew Perry -- Também esperado que o mundo ame, mas eu não amei 😬 (Minha nota = 3 *versus* Skoob = 4,5)
+  
+  
+Quanto às discordâncias no sentido contrário, se destacam três que estão na minha lista de favoritos do ano (todos devidamente detalhados abaixo):  
+  
+* "Meu assassinato", da Katie Williams -- Minha nota = 5 *versus* Skoob = 3,4
+* "Os perigos de fumar na cama", da Mariana Enriquez -- Minha nota = 5 *versus* Skoob = 3,6
+* "Saboroso cadáver", da Agustina Bazterrica -- Minha nota = 5 *versus* Skoob = 3,7
+  
+  
+### Os meus favoritos do ano
+  
 
 <details>
-<summary>Visible text</summary>
-Hidden content.
+<summary>Saboroso cadáver, por Agustina Bazterrica</summary>
+
+<div style="text-align:center;">
+  <img src="saboroso_cadaver.jpg" height="200">
+  <p style="font-size:0.8em;">Capa do livro "Saboroso cadáver", de Agustina Bazterrica, publicada por Darkside. Imagem usada apenas para fins de divulgação.</p>
+</div>
+
+<p>Teste de resenha</p>
+
 </details>
   
 <br />

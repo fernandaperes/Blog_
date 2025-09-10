@@ -11,7 +11,14 @@ output:
   blogdown::html_page:
     toc: false
 ---
+<center>
+<font size = '1'>
+<a href="http://www.freepik.com">Designed by vectorpocket / Freepik</a>
+</font>
+</center>
 
+<br>  
+<br>
 
 ```{r, include=FALSE}
 knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)

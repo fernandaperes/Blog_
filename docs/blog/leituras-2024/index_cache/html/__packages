@@ -8,6 +8,11 @@ dplyr
 stringr
 forcats
 lubridate
-data.table
-truncnorm
 plotly
+rnaturalearth
+rnaturalearthdata
+ggspatial
+leaflet
+sf
+tmap
+ggiraph

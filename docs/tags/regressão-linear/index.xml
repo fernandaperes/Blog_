@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>regressão-linear on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/regress%C3%A3o-linear/</link>
+    <description>Recent content in regressão-linear on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/regress%C3%A3o-linear/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Construindo gráficos diagnósticos para regressão no ggplot2</title>
+      <link>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</guid>
+      <description>Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos.</description>
+    </item>
+    
+    <item>
+      <title>Gráficos diagnósticos: Avaliando os pressupostos da regressão linear</title>
+      <link>https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/</guid>
+      <description>É bem comum que a gente utilize os chamados &amp;ldquo;gráficos diagnósticos&amp;rdquo; para avaliar se um modelo de regressão linear está atendendo aos pressupostos. Mas, esses gráficos não têm uma interpretação tão intuitiva. Nesse post, eu te explico como interpretar cada um deles.</description>
+    </item>
+    
+  </channel>
+</rss>

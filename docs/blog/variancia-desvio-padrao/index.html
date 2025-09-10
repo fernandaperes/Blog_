@@ -39,7 +39,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
 
 	
-	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.235bfdfe2bfd01297b4cda38eb19ce8f2762f8b14fac32a1df94141126b67cf2.css" integrity="sha256-I1v9/iv9ASl7TNo46xnOjydi&#43;LFPrDKh35QUESa2fPI=">
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.b5be3dbfa4ca81580e14656577d04ae06f90c1aa65488d7d9b0317528063bf60.css" integrity="sha256-tb49v6TKgVgOFGVld9BK4G&#43;QwaplSI19mwMXUoBjv2A=">
 
 	
 	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
@@ -77,10 +77,6 @@
         <div class="collapse navbar-collapse" id="navbarMediumish">
             
             <ul class="navbar-nav ml-auto">
-                
-                <li class="nav-item ">
-                    <a class="nav-link" href="https://en.fernandafperes.com.br">ENGLISH</a>
-                </li>
                 
                 <li class="nav-item ">
                     <a class="nav-link" href="/">PÁGINA INICIAL</a>
@@ -267,19 +263,21 @@
 <p>Esse é um conteúdo que eu já gravei para o meu canal no YouTube. Caso prefira aprender em um vídeo, o link está <a href="https://youtu.be/A-N-eEB1owQ?si=QKzPxN_KHv2KgzrP">aqui</a>.</p>
 </blockquote>
 <p>Imagine a seguinte situação: você tem dois grupos, um recebendo placebo e outro recebendo um anti-hipertensivo novo no mercado. Você, então, administra o medicamento aos pacientes de cada grupo, afere a pressão arterial de cada um deles e monta um gráfico com as médias de pressão em cada grupo:</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-2-1.png" alt="Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20." width="384" />
-<p class="caption">
-Figure 1: Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20.
-</p>
-</div>
+<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;" />
+<center>
+<font size="2"><br />
+Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20.
+</font>
+</center>
+<p><br /></p>
 <p>Ótimo, o grupo que tomou anti-hipertensivo apresentou uma média de pressão arterial sistólica inferior à do grupo que tomou placebo. Mas… Será que <strong>investigar a média basta</strong>? Vamos olhar para esses dados com mais detalhes? No gráfico abaixo, o traço em preto representa a média e os círculos em amarelo correspondem à pressão arterial de cada participante.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
-<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-3-1.png" alt="Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20." width="384" />
-<p class="caption">
-Figure 2: Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20.
-</p>
-</div>
+<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;" />
+<center>
+<font size="2"><br />
+Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20.
+</font>
+</center>
+<p><br /></p>
 <blockquote>
 <p>Vou chamar sua atenção para uma coisa: a escala do gráfico acima é diferente da escala do primeiro gráfico. Isso porque em gráficos de barras é obrigatório que o eixo y inicie em zero (tenho uma discussão sobre isso <a href="https://www.instagram.com/p/CUFncUBgWai/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==">aqui</a>). Em gráficos de dispersão, nosso eixo y pode iniciar em um ponto diferente de zero, para facilitar a visualização dos dados. Aqui, ele inicia em 90.</p>
 </blockquote>
@@ -320,12 +318,13 @@ Figure 2: Gráfico de dispersão para a pressão arterial sistólica (mmHg) de a
 <div id="adicionando-o-desvio-padrão-ao-gráfico" class="section level4">
 <h4>Adicionando o desvio-padrão ao gráfico</h4>
 <p>Em geral representamos o desvio-padrão em gráficos como uma barra de erros. Para isso fazer sentido, vou criar um gráfico com os dados dos grupos A e B acima, ok?</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
-<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-11-1.png" alt="Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10." width="384" />
-<p class="caption">
-Figure 3: Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10.
-</p>
-</div>
+<img src="https://fernandafperes.com.br/blog/variancia-desvio-padrao/index_files/figure-html/unnamed-chunk-11-1.png" width="384" style="display: block; margin: auto;" />
+<center>
+<font size="2"><br />
+Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10.
+</font>
+</center>
+<p><br /></p>
 <p>Perceba que, apesar de os dois grupos terem a mesma média (barra horizontal na mesma altura), o grupo A apresenta um desvio-padrão bem maior. A barra de erros (T para cima e para baixo) do grupo A tem um tamanho de 14,25 mmHg (o desvio-padrão desse grupo) para cima e para baixo. Já a barra de erros do grupo B tem um tamanho de apenas 5,83 mmHg para cima e para baixo, uma vez que esse é o desvio-padrão desse grupo.</p>
 </div>
 <div id="símbolos-usados-para-variância-e-desvio-padrão" class="section level4">

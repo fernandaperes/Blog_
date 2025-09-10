@@ -7,7 +7,8 @@ purrr
 dplyr
 stringr
 forcats
-fstat
+lubridate
 knitr
 kableExtra
+fstat
 reshape2

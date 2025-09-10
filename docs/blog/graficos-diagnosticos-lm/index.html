@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+  
+  <meta name="referrer" content="unsafe-url">
+  
+  <link rel="stylesheet" href="/css/applause-button.css" />
+  <script src="/js/applause-button.js"></script>
+  
+  <link href="/css/purebasic.css" rel="stylesheet"> 
+  
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="generator" content="Hugo 0.96.0" />
+	
+	<link rel="icon" href="/images/favicon.ico">
+	
+	<title>Gráficos diagnósticos: Avaliando os pressupostos da regressão linear | Fernanda Peres | Estatística aplicada</title>
+	
+	
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/cover.png"/>
+<meta name="twitter:title" content="Gráficos diagnósticos: Avaliando os pressupostos da regressão linear"/>
+<meta name="twitter:description" content="É bem comum que a gente utilize os chamados &ldquo;gráficos diagnósticos&rdquo; para avaliar se um modelo de regressão linear está atendendo aos pressupostos. Mas, esses gráficos não têm uma interpretação tão intuitiva. Nesse post, eu te explico como interpretar cada um deles."/>
+
+	<meta property="og:title" content="Gráficos diagnósticos: Avaliando os pressupostos da regressão linear" />
+<meta property="og:description" content="É bem comum que a gente utilize os chamados &ldquo;gráficos diagnósticos&rdquo; para avaliar se um modelo de regressão linear está atendendo aos pressupostos. Mas, esses gráficos não têm uma interpretação tão intuitiva. Nesse post, eu te explico como interpretar cada um deles." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/" /><meta property="og:image" content="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/cover.png"/><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2025-07-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-07-14T00:00:00+00:00" />
+
+
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/medium.b5be3dbfa4ca81580e14656577d04ae06f90c1aa65488d7d9b0317528063bf60.css" integrity="sha256-tb49v6TKgVgOFGVld9BK4G&#43;QwaplSI19mwMXUoBjv2A=">
+
+	
+	<link rel="stylesheet" href="https://fernandafperes.com.br/css/additional.77122c28d54fb4398498d8eb647093daef5593de649d76a15162813005e4642f.css" integrity="sha256-dxIsKNVPtDmEmNjrZHCT2u9Vk95knXahUWKBMAXkZC8=">
+
+	
+	
+	<link rel="stylesheet" href="/css/purebasic.css" integrity="" crossorigin="anonymous" media="screen">
+	<link rel="stylesheet" href="/css/applause-button.css" integrity="" crossorigin="anonymous" media="screen">
+
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "logo">
+<a href="https://fernandafperes.com.br">
+<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
+</a>
+</div>
+
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
+
+<div class = "social">
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        
+        <div class="collapse navbar-collapse" id="navbarMediumish">
+            
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">PÁGINA INICIAL</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/blog">BLOG</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/sobre">SOBRE</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="/servicos">SERVIÇOS</a>
+                </li>
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="https://curso.fernandafperes.com.br">CURSO</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+
+<div class = "menu">
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+
+
+</div>
+
+
+</nav>
+
+
+        <div class="site-content">   
+            <div class="container">
+<div class="mainheading">
+    <h1 class="sitetitle"></h1>
+    <p class="lead">
+         
+    </p>
+</div>
+<div class="main-content">
+        
+        <div class="container">
+            <div class="row">
+                
+                
+                <div class="col-md-2 pl-0"><div class="share sticky-top sticky-top-offset">
+    <br>
+    
+
+
+
+    <p>Curtir</p>
+    <ul>
+        <center>
+          <meta name="referrer" content="strict-origin">
+          <applause-button color="#11807f" style="width: 35px; height: 35px;" multiclap="true" api="https://applause.chabouis.fr" url="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/"/>
+        </center>
+    </ul><br>
+    
+    
+    <p>Compartilhar</p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Gr%c3%a1ficos%20diagn%c3%b3sticos%3a%20Avaliando%20os%20pressupostos%20da%20regress%c3%a3o%20linear&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-lm%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-lm%2f" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="whatsapp://send?text=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-lm%2f" onclick="window.open(this.href, 'whatsapp-share', 'width=550,height=435');return false;">
+        <i class="fab fa-whatsapp"></i>
+        </a>
+        </li>
+        
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffernandafperes.com.br%2fblog%2fgraficos-diagnosticos-lm%2f&title=&summary=&source=" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        </li>
+        
+    </ul>
+
+    
+        <div class="sep">
+        </div>
+        <ul>
+            <li>
+            <a  class="small smoothscroll" href="#disqus_thread"></a>
+            </li>
+        </ul>
+    
+</div>
+</div>
+                    
+                
+                <div class="col-md-9 flex-first flex-md-unordered">
+                    <div class="mainheading">
+                        
+                        
+                        
+                        
+                        <div class="row post-top-meta">
+                            <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0 md-nopad-right">
+                            </div>
+                            <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left md-nopad-left">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        
+
+
+<h1 class="posttitle">Gráficos diagnósticos: Avaliando os pressupostos da regressão linear</h1>
+
+</div>
+
+
+<center><span class="author-description">
+    14 jul., 2025
+
+
+    
+    </span>
+</center><br>
+
+
+                    
+                    <div class="after-post-tags">
+                        <ul class="tags"><center>
+                        
+                        <li>
+                        <a href="/tags/regress%C3%A3o-linear">regressão linear</a>
+                        </li>
+                        
+                        </center></ul>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    
+                        <center><img class="featured-image img-fluid" src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/cover.png" alt="thumbnail for this post"></center>
+                    
+                    
+
+
+                    
+                    <div class="article-post">
+                        
+<link href="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/tabwid/tabwid.js"></script>
+
+
+<p>Este post está dividido nos seguintes tópicos:</p>
+<ul>
+<li><a href="#conceitos-importantes-para-que-os-gr%C3%A1ficos-fa%C3%A7am-sentido">Conceitos importantes para que os gráficos façam sentido</a><br />
+
+<ul>
+<li><a href="#valores-previstos">Valores previstos</a><br />
+</li>
+<li><a href="#res%C3%ADduos">Resíduos</a><br />
+</li>
+<li><a href="#res%C3%ADduos-padronizados">Resíduos padronizados</a><br />
+</li>
+<li><a href="#dist%C3%A2ncia-de-cook">Distância de Cook</a><br />
+</li>
+</ul></li>
+<li><a href="#pressupostos-do-modelo-de-regress%C3%A3o-linear">Pressupostos do modelo de regressão linear</a><br />
+</li>
+<li><a href="#gr%C3%A1ficos-diagn%C3%B3sticos">Gráficos diagnósticos</a><br />
+
+<ul>
+<li><a href="#gr%C3%A1fico-1.-avalia%C3%A7%C3%A3o-da-linearidade">Gráfico 1. Avaliação da linearidade</a><br />
+</li>
+<li><a href="#gr%C3%A1fico-2.-avalia%C3%A7%C3%A3o-da-normalidade">Gráfico 2. Avaliação da normalidade</a><br />
+</li>
+<li><a href="#gr%C3%A1fico-3.-homocedasticidade">Gráfico 3. Homocedasticidade</a><br />
+</li>
+<li><a href="#gr%C3%A1fico-4.-pontos-influentes">Gráfico 4. Pontos influentes</a><br />
+</li>
+</ul></li>
+<li><a href="#como-citar-esse-post,-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a><br />
+</li>
+<li><a href="#refer%C3%AAncias-">Referências</a></li>
+</ul>
+<div id="conceitos-importantes-para-que-os-gráficos-façam-sentido" class="section level3">
+<h3>Conceitos importantes para que os gráficos façam sentido</h3>
+<p>Bom, antes de discutirmos os gráficos diagnósticos, eu preciso <strong>rever</strong> com você <strong>alguns conceitos</strong>. Lembrando que o foco desse post é te explicar os gráficos diagnósticos. Então, eu estou assumindo que você tem uma noção do que é uma regressão linear, ok?</p>
+<blockquote>
+<p>Caso queira ler sobre a teoria por trás da regressão recomendo alguns posts do meu Instagram:</p>
+<ul>
+<li><a href="https://www.instagram.com/p/CC_PjHSpWi9/?utm_source=ig_web_copy_link">Regressão linear - Parte 1</a><br />
+</li>
+<li><a href="https://www.instagram.com/p/CDmK4RWJHWe/?utm_source=ig_web_copy_link">Regressão linear - Parte 2</a><br />
+</li>
+<li><a href="https://www.instagram.com/p/CEHfHfZAyKs/?utm_source=ig_web_copy_link">Regressão linear - Parte 3</a></li>
+</ul>
+</blockquote>
+<div id="valores-previstos" class="section level4">
+<h4>Valores previstos</h4>
+<p>Um conceito bem importante para pensarmos em gráficos diagnósticos é o conceito de <strong>valores previstos</strong> pelo modelo de regressão linear. Os valores previstos podem ser chamados também de <strong>valores ajustados</strong>. Em inglês, os termos utilizados são: <em>predicted values</em> ou <em>fitted values</em>.</p>
+<p>Para o valor previsto fazer mais sentido, vamos partir para um <strong>exemplo</strong>. Temos uma base de dados com as seguintes informações sobre crianças e adolescentes (idades entre 11 e 18 anos):</p>
+<ul>
+<li>fev: Volume expiratório forçado, em litros. Uma medida da capacidade pulmonar.</li>
+<li>idade: Idade das crianças e adolescentes, em anos.</li>
+<li>altura: Altura das crianças e adolescentes, em centímetros.</li>
+</ul>
+<p>Queremos avaliar se a idade e a altura dos jovens prevê a sua capacidade pulmonar. Para isso, vamos criar um modelo de regressão linear com <code>fev</code> como variável dependente e <code>idade</code> e <code>altura</code> como variáveis independentes.</p>
+<pre class="r"><code>dados &lt;- read.csv2(&quot;FEV_80.csv&quot;)
+
+mod &lt;- lm(fev ~ altura + idade, data = dados)
+
+summary(mod)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = fev ~ altura + idade, data = dados)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.25713 -0.29577  0.03588  0.32060  1.86773 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -6.289925   1.224535  -5.137 2.05e-06 ***
+## altura       0.053328   0.007675   6.948 1.04e-09 ***
+## idade        0.058849   0.034127   1.724   0.0886 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5159 on 77 degrees of freedom
+## Multiple R-squared:  0.4465,	Adjusted R-squared:  0.4321 
+## F-statistic: 31.06 on 2 and 77 DF,  p-value: 1.289e-10</code></pre>
+<p>O resultado nos indica um intercepto de <strong>-6,29</strong> e coeficientes para altura e idade de <strong>0,053</strong> e <strong>0,059</strong>, respectivamente. O modelo, portanto, resulta na seguinte <strong>equação</strong> para prever o fev:</p>
+<center>
+fev = -6,29 + 0,053 x altura + 0,059 x idade
+</center>
+<p><br /><br /></p>
+<p>Portanto, se estamos falando de uma criança de <strong>11 anos</strong> e <strong>165 cm</strong> de altura, temos:</p>
+<center>
+<p>fev = -6,29 + 0,053 x altura + 0,059 x idade</p>
+<p>fev = -6,29 + 0,053 x 165 + 0,059 x 11</p>
+<p>fev = -6,29 + 8,745 + 0,649</p>
+fev = 3,104
+</center>
+<p><br /><br /></p>
+<p>Isso significa que para essa criança o modelo está <strong>prevendo um fev de 3,104 litros</strong>.</p>
+<p>Veja os valores previstos para outros jovens da base:</p>
+<div class="tabwid"><style>.cl-22579274{}.cl-2253eb7e{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2253eb88{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-22555950{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-225568be{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568c8{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568c9{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568d2{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568d3{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568d4{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568dc{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568dd{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568de{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568df{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568e6{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568e7{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568e8{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568fa{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568fb{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-225568fc{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-22556904{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-22556905{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-22556906{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-22556907{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-22579274'><thead><tr style="overflow-wrap:break-word;"><th class="cl-225568be"><p class="cl-22555950"><span class="cl-2253eb7e">fev</span></p></th><th class="cl-225568c8"><p class="cl-22555950"><span class="cl-2253eb7e">altura</span></p></th><th class="cl-225568c9"><p class="cl-22555950"><span class="cl-2253eb7e">idade</span></p></th><th class="cl-225568d2"><p class="cl-22555950"><span class="cl-2253eb7e">previsto</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-225568d3"><p class="cl-22555950"><span class="cl-2253eb88">3,500</span></p></td><td class="cl-225568d4"><p class="cl-22555950"><span class="cl-2253eb88">157</span></p></td><td class="cl-225568dc"><p class="cl-22555950"><span class="cl-2253eb88">17</span></p></td><td class="cl-225568dd"><p class="cl-22555950"><span class="cl-2253eb88">3,083</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568de"><p class="cl-22555950"><span class="cl-2253eb88">3,428</span></p></td><td class="cl-225568df"><p class="cl-22555950"><span class="cl-2253eb88">163</span></p></td><td class="cl-225568e6"><p class="cl-22555950"><span class="cl-2253eb88">14</span></p></td><td class="cl-225568e7"><p class="cl-22555950"><span class="cl-2253eb88">3,226</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568e8"><p class="cl-22555950"><span class="cl-2253eb88">5,793</span></p></td><td class="cl-225568fa"><p class="cl-22555950"><span class="cl-2253eb88">175</span></p></td><td class="cl-225568fb"><p class="cl-22555950"><span class="cl-2253eb88">15</span></p></td><td class="cl-225568fc"><p class="cl-22555950"><span class="cl-2253eb88">3,925</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568de"><p class="cl-22555950"><span class="cl-2253eb88">2,976</span></p></td><td class="cl-225568df"><p class="cl-22555950"><span class="cl-2253eb88">166</span></p></td><td class="cl-225568e6"><p class="cl-22555950"><span class="cl-2253eb88">13</span></p></td><td class="cl-225568e7"><p class="cl-22555950"><span class="cl-2253eb88">3,328</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568e8"><p class="cl-22555950"><span class="cl-2253eb88">3,082</span></p></td><td class="cl-225568fa"><p class="cl-22555950"><span class="cl-2253eb88">161</span></p></td><td class="cl-225568fb"><p class="cl-22555950"><span class="cl-2253eb88">12</span></p></td><td class="cl-225568fc"><p class="cl-22555950"><span class="cl-2253eb88">3,002</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568de"><p class="cl-22555950"><span class="cl-2253eb88">3,058</span></p></td><td class="cl-225568df"><p class="cl-22555950"><span class="cl-2253eb88">154</span></p></td><td class="cl-225568e6"><p class="cl-22555950"><span class="cl-2253eb88">12</span></p></td><td class="cl-225568e7"><p class="cl-22555950"><span class="cl-2253eb88">2,629</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568e8"><p class="cl-22555950"><span class="cl-2253eb88">3,403</span></p></td><td class="cl-225568fa"><p class="cl-22555950"><span class="cl-2253eb88">157</span></p></td><td class="cl-225568fb"><p class="cl-22555950"><span class="cl-2253eb88">12</span></p></td><td class="cl-225568fc"><p class="cl-22555950"><span class="cl-2253eb88">2,789</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568de"><p class="cl-22555950"><span class="cl-2253eb88">4,073</span></p></td><td class="cl-225568df"><p class="cl-22555950"><span class="cl-2253eb88">174</span></p></td><td class="cl-225568e6"><p class="cl-22555950"><span class="cl-2253eb88">12</span></p></td><td class="cl-225568e7"><p class="cl-22555950"><span class="cl-2253eb88">3,695</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-225568de"><p class="cl-22555950"><span class="cl-2253eb88">1,916</span></p></td><td class="cl-225568df"><p class="cl-22555950"><span class="cl-2253eb88">154</span></p></td><td class="cl-225568e6"><p class="cl-22555950"><span class="cl-2253eb88">12</span></p></td><td class="cl-225568e7"><p class="cl-22555950"><span class="cl-2253eb88">2,629</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-22556904"><p class="cl-22555950"><span class="cl-2253eb88">2,606</span></p></td><td class="cl-22556905"><p class="cl-22555950"><span class="cl-2253eb88">165</span></p></td><td class="cl-22556906"><p class="cl-22555950"><span class="cl-2253eb88">11</span></p></td><td class="cl-22556907"><p class="cl-22555950"><span class="cl-2253eb88">3,157</span></p></td></tr></tbody></table></div>
+<center>
+<font size='2'>Os valores previstos podem variar um pouco em relação ao nosso cálculo manual porque fizemos arredondamentos.</font>
+</center>
+</div>
+<div id="resíduos" class="section level4">
+<h4>Resíduos</h4>
+<p>Mas toda criança de 11 anos e 165 cm de altura terá esse mesmo valor de fev? Não, é claro. Haverá diferenças entre o valor observado e o valor que o modelo está prevendo. Essas diferenças recebem o nome de <strong>resíduos</strong>.</p>
+<p>Os resíduos são a <strong>diferença</strong> entre o <strong>valor observado</strong> (o valor real, que consta na base) e o <strong>valor previsto</strong> pelo modelo de regressão.</p>
+<center>
+Resíduo = Valor observado - Valor previsto
+</center>
+<p><br /><br /></p>
+<p>Veja os valores previstos e os resíduos para alguns jovens da base:</p>
+<div class="tabwid"><style>.cl-22664a62{}.cl-22627194{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2262719e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2263b176{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2263bf0e{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf0f{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf18{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf19{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf1a{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf22{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf23{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf24{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf2c{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf2d{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf2e{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf36{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf37{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf38{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf40{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf41{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf42{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf4a{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf4b{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf54{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf55{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf56{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf5e{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf5f{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2263bf60{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-22664a62'><thead><tr style="overflow-wrap:break-word;"><th class="cl-2263bf0e"><p class="cl-2263b176"><span class="cl-22627194">fev</span></p></th><th class="cl-2263bf0f"><p class="cl-2263b176"><span class="cl-22627194">altura</span></p></th><th class="cl-2263bf18"><p class="cl-2263b176"><span class="cl-22627194">idade</span></p></th><th class="cl-2263bf19"><p class="cl-2263b176"><span class="cl-22627194">previsto</span></p></th><th class="cl-2263bf1a"><p class="cl-2263b176"><span class="cl-22627194">residuo</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2263bf22"><p class="cl-2263b176"><span class="cl-2262719e">3,500</span></p></td><td class="cl-2263bf23"><p class="cl-2263b176"><span class="cl-2262719e">157</span></p></td><td class="cl-2263bf24"><p class="cl-2263b176"><span class="cl-2262719e">17</span></p></td><td class="cl-2263bf2c"><p class="cl-2263b176"><span class="cl-2262719e">3,083</span></p></td><td class="cl-2263bf2d"><p class="cl-2263b176"><span class="cl-2262719e">0,417</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">3,428</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">163</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">14</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">3,226</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">0,202</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">5,793</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">175</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">15</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">3,925</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">1,868</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">2,976</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">166</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">13</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">3,328</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">-0,352</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf41"><p class="cl-2263b176"><span class="cl-2262719e">3,082</span></p></td><td class="cl-2263bf42"><p class="cl-2263b176"><span class="cl-2262719e">161</span></p></td><td class="cl-2263bf4a"><p class="cl-2263b176"><span class="cl-2262719e">12</span></p></td><td class="cl-2263bf4b"><p class="cl-2263b176"><span class="cl-2262719e">3,002</span></p></td><td class="cl-2263bf54"><p class="cl-2263b176"><span class="cl-2262719e">0,080</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">3,058</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">154</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">12</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">2,629</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">0,429</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">3,403</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">157</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">12</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">2,789</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">0,614</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">4,073</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">174</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">12</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">3,695</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">0,378</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf2e"><p class="cl-2263b176"><span class="cl-2262719e">1,916</span></p></td><td class="cl-2263bf36"><p class="cl-2263b176"><span class="cl-2262719e">154</span></p></td><td class="cl-2263bf37"><p class="cl-2263b176"><span class="cl-2262719e">12</span></p></td><td class="cl-2263bf38"><p class="cl-2263b176"><span class="cl-2262719e">2,629</span></p></td><td class="cl-2263bf40"><p class="cl-2263b176"><span class="cl-2262719e">-0,713</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2263bf55"><p class="cl-2263b176"><span class="cl-2262719e">2,606</span></p></td><td class="cl-2263bf56"><p class="cl-2263b176"><span class="cl-2262719e">165</span></p></td><td class="cl-2263bf5e"><p class="cl-2263b176"><span class="cl-2262719e">11</span></p></td><td class="cl-2263bf5f"><p class="cl-2263b176"><span class="cl-2262719e">3,157</span></p></td><td class="cl-2263bf60"><p class="cl-2263b176"><span class="cl-2262719e">-0,551</span></p></td></tr></tbody></table></div>
+</div>
+<div id="resíduos-padronizados" class="section level4">
+<h4>Resíduos padronizados</h4>
+<p>O resíduo está na mesma unidade de medida da variável dependente. No nosso caso, como fev está em litros, o resíduo está em litros.</p>
+<p>É comum também calcularmos os <strong>resíduos padronizados</strong> (em inglês, <em>standardized residuals</em>). Esses resíduos são padronizados para terem média zero e desvio-padrão igual a 1.</p>
+<div class="tabwid"><style>.cl-2274a080{}.cl-22719106{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-22719110{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2272cbde{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2272d886{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d887{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d888{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d890{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d891{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d892{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d89a{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d89b{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d89c{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d89d{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8a4{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8a5{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8a6{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8a7{width:0.701in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8ae{width:0.684in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8af{width:0.88in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8b0{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2272d8b1{width:1.508in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-2274a080'><thead><tr style="overflow-wrap:break-word;"><th class="cl-2272d886"><p class="cl-2272cbde"><span class="cl-22719106">fev</span></p></th><th class="cl-2272d887"><p class="cl-2272cbde"><span class="cl-22719106">altura</span></p></th><th class="cl-2272d888"><p class="cl-2272cbde"><span class="cl-22719106">idade</span></p></th><th class="cl-2272d890"><p class="cl-2272cbde"><span class="cl-22719106">previsto</span></p></th><th class="cl-2272d891"><p class="cl-2272cbde"><span class="cl-22719106">residuo</span></p></th><th class="cl-2272d892"><p class="cl-2272cbde"><span class="cl-22719106">res_padronizado</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">3,500</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">157</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">17</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">3,083</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">0,417</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">0,862</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">3,428</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">163</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">14</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">3,226</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">0,202</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">0,395</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">5,793</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">175</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">15</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">3,925</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">1,868</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">3,703</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">2,976</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">166</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">13</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">3,328</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">-0,352</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">-0,686</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">3,082</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">161</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">12</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">3,002</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">0,080</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">0,156</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">3,058</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">154</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">12</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">2,629</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">0,429</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">0,848</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">3,403</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">157</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">12</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">2,789</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">0,614</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">1,206</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">4,073</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">174</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">12</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">3,695</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">0,378</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">0,746</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d89a"><p class="cl-2272cbde"><span class="cl-22719110">1,916</span></p></td><td class="cl-2272d89b"><p class="cl-2272cbde"><span class="cl-22719110">154</span></p></td><td class="cl-2272d89c"><p class="cl-2272cbde"><span class="cl-22719110">12</span></p></td><td class="cl-2272d89d"><p class="cl-2272cbde"><span class="cl-22719110">2,629</span></p></td><td class="cl-2272d8a4"><p class="cl-2272cbde"><span class="cl-22719110">-0,713</span></p></td><td class="cl-2272d8a5"><p class="cl-2272cbde"><span class="cl-22719110">-1,408</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2272d8a6"><p class="cl-2272cbde"><span class="cl-22719110">2,606</span></p></td><td class="cl-2272d8a7"><p class="cl-2272cbde"><span class="cl-22719110">165</span></p></td><td class="cl-2272d8ae"><p class="cl-2272cbde"><span class="cl-22719110">11</span></p></td><td class="cl-2272d8af"><p class="cl-2272cbde"><span class="cl-22719110">3,157</span></p></td><td class="cl-2272d8b0"><p class="cl-2272cbde"><span class="cl-22719110">-0,551</span></p></td><td class="cl-2272d8b1"><p class="cl-2272cbde"><span class="cl-22719110">-1,082</span></p></td></tr></tbody></table></div>
+</div>
+<div id="distância-de-cook" class="section level4">
+<h4>Distância de Cook</h4>
+<p>A distância de Cook é uma medida que avalia o quanto uma determinada observação influencia o modelo de regressão. Por isso, ela é uma ferramenta que nos ajuda a identificar <strong>pontos influentes</strong>.</p>
+<p>Há vários pontos de corte sugeridos para a distância de Cook, mas uma <strong>regra</strong> bem usada (e implementada em um dos gráficos diagnósticos do R) é: pontos com distância de Cook <strong>acima de 1</strong> são influentes; pontos com distância de Cook <strong>acima de 0,5</strong> já devem ser avaliados com atenção.</p>
+<p>Mas, há outras sugestões de ponto de corte. Um dos pontos de corte sugeridos é <strong>4/n</strong>. Ou seja, em um modelo com 80 observações, teremos:</p>
+<center>
+4/80 = 0,05
+</center>
+<p><br /><br /></p>
+<p>Isso significa que observações com distância de Cook acima de 0,05 já seriam observações <strong>potencialmente influentes</strong>.</p>
+</div>
+</div>
+<div id="pressupostos-do-modelo-de-regressão-linear" class="section level3">
+<h3>Pressupostos do modelo de regressão linear</h3>
+<p>Ok, relembramos os conceitos importantes. Agora, vamos rever os pressupostos do modelo de regressão linear:</p>
+<p><br /></p>
+<p><strong>1. Linearidade</strong></p>
+<p>O modelo de regressão linear assume que há uma <strong>relação linear</strong> entre a variável dependente e quaisquer variáveis independentes numéricas.</p>
+<p><br /></p>
+<p><strong>2. Normalidade dos resíduos</strong></p>
+<p>Os <strong>resíduos</strong> do modelo de regressão linear devem apresentar <strong>distribuição normal</strong>. Podemos avaliar esse pressuposto com um teste estatístico, como o Shapiro-Wilk, ou com um gráfico, como o Q-Q plot, que usaremos aqui.</p>
+<p><br /></p>
+<p><strong>3. Homocedasticidade</strong></p>
+<p>Homocedasticidade é um nome bonito (ok, talvez não <em>tão</em> bonito) para <strong>homogeneidade de variâncias</strong>. Para que o modelo de regressão seja válido, ele deve <strong>errar de forma semelhante</strong> ao prever valores mais baixos e mais altos. Para um modelo com uma única variável independente numérica, isso significa que quando plotamos um gráfico com a variável dependente no eixo y e a independente no eixo x, os pontos devem apresentar um padrão de distribuição <strong>retangular</strong> – não triangular, em formato de gravata, etc. Ou seja: o espalhamento dos pontos ao redor da reta deve ser semelhante ao longo de toda a reta.</p>
+<p><img src="img1.png" width="580px" style="display: block; margin: auto;" /></p>
+<p>Essa inspeção visual acima só funciona quando temos apenas uma variável independente. Quando temos mais de uma, um gráfico adequado para analisar essa relação é um que traz os <strong>resíduos</strong> no eixo y e os <strong>valores previstos</strong> no eixo x. De novo, esperamos um padrão retangular na distribuição dos dados.</p>
+<p><img src="img2.png" width="580px" style="display: block; margin: auto;" /></p>
+<p><br /></p>
+<p><strong>4. Ausência de pontos influentes</strong></p>
+<p>Pontos influentes são aqueles que influenciam de forma significativa o modelo de regressão, podendo distorcer seus coeficientes. Como discutimos, uma boa forma de avaliar essa influência é pela distância de Cook. Temos um gráfico diagnóstico para ela.</p>
+<p><br /></p>
+<p><strong>5. Ausência de multicolinearidade</strong></p>
+<p>Multicolinearidade corresponde a uma <strong>alta correlação entre variáveis independentes</strong>. A presença de multicolinearidade leva a distorções nos coeficientes do modelo de regressão e nos seus valores de p. Por isso, é fundamental que <strong>não haja</strong> multicolinearidade no modelo.</p>
+<p>Avaliamos a multicolinearidade pelo cálculo do Fator de Inflação da Variância (<strong>VIF</strong>, do inglês <em>Variance Inflation Factor</em>). Como a multicolinearidade não é avaliada por gráficos diagnósticos, ela <strong>não será abordada nesse post</strong>. Mas posso fazer um post específico sobre ela. Me conta se tiver interesse, combinado?</p>
+<p><br /></p>
+<p><strong>6. Erros independentes</strong></p>
+<p>Um outro pressuposto do modelo de regressão é a independência dos erros, que podemos simplificar como independência dos resíduos. Isso significa que o resíduo de uma observação <strong>não deve apresentar correlação</strong> com o resíduo de uma outra observação (linha da base). Essa correlação é muito comum em dados de medidas repetidas, quando um mesmo sujeito é avaliado diversas vezes – e, portanto, várias linhas da base correspondem a dados que vieram de um mesmo sujeito.</p>
+<p>A independência dos resíduos pode ser avaliada por um <strong>teste</strong>, chamado <strong>Durbin-Watson</strong>. No entanto, há quem argumente que esse pressuposto deve ser testado apenas em bases de dados longitudinais – isso é, com medidas repetidas.</p>
+<blockquote>
+<p>“A hipótese de aleatoriedade e independência dos termos de erro apenas faz sentido de ser estudada em modelos em que há a evolução temporal dos dados. Em outras palavras, se estivermos trabalhando com uma base de dados em cross-section, este pressuposto não se justifica (…)”</p>
+<p>FÁVERO, Luiz Paulo; BELFIORE, Patrícia. <strong>Manual de análise de dados: estatística e modelagem multivariada com Excel®, SPSS® e Stata®</strong>. Elsevier Brasil, 2017.</p>
+</blockquote>
+<p>Como esse pressuposto não é avaliado pelos gráficos diagnósticos do R – e nem faria sentido para a nossa base, que não traz medidas repetidas – não vamos discuti-lo aqui.</p>
+<p><br /></p>
+</div>
+<div id="gráficos-diagnósticos" class="section level3">
+<h3>Gráficos diagnósticos</h3>
+<p>Quando criamos um modelo de regressão no R, podemos usar a função <code>plot()</code> para acessar seus gráficos diagnósticos. O R mostrará um gráfico por vez. Para ver em uma única figura os quatro principais gráficos diagnósticos, devemos rodar antes a função <code>par(mfrow = c(2,2))</code>:</p>
+<pre class="r"><code>par(mfrow = c(2,2))
+plot(mod)
+par(mfrow = c(1,1))</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>Vamos, então, discutir cada um desses gráficos em detalhes.</p>
+<div id="gráfico-1.-avaliação-da-linearidade" class="section level4">
+<h4>Gráfico 1. Avaliação da linearidade</h4>
+<p>O primeiro gráfico mostra a relação entre os resíduos (eixo y) e os valores previstos (eixo x). Ele também traz uma linha de tendência em vermelho e uma linha horizontal pontilhada em zero.</p>
+<p>Caso a gente queira acessar apenas esse gráfico, podemos usar a função plot com o argumento <code>which = 1</code>:</p>
+<pre class="r"><code>plot(mod, which = 1)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/figure-html/unnamed-chunk-11-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Esse gráfico nos permite avaliar o pressuposto de linearidade. Caso esse pressuposto seja atendido, os pontos devem apresentar uma <strong>linha de tendência</strong> (em vermelho) aproximadamente <strong>horizontal</strong>.</p>
+<p>O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de linearidade atendido. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto. Veja como a linha de tendência do gráfico à direita forma uma parábola – ou seja, não é horizontal.</p>
+<p><img src="img3.png" width="580px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gráfico-2.-avaliação-da-normalidade" class="section level4">
+<h4>Gráfico 2. Avaliação da normalidade</h4>
+<p>O segundo gráfico é um <strong>Q-Q plot</strong>: mostra a relação entre os resíduos padronizados (eixo y) e os quantis teóricos (eixo x). Esses quantis correspondem aos valores que seriam esperados caso os resíduos seguissem a distribuição normal. Ele também traz uma linha de referência (pontilhada) na diagonal.</p>
+<p>Caso a gente queira acessar apenas esse gráfico, podemos usar a função plot com o argumento <code>which = 2</code>:</p>
+<pre class="r"><code>plot(mod, which = 2)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/figure-html/unnamed-chunk-14-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Esse gráfico nos permite avaliar o pressuposto de <strong>normalidade dos resíduos</strong>. Caso esse pressuposto seja atendido, os pontos devem estar <strong>sobrepostos à linha diagonal</strong> – ou, pelo menos, bem próximos a ela.</p>
+<p>O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de normalidade atendido – veja que os pontos estão próximos à linha diagonal. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto: note como os pontos se distanciam bastante dessa linha, principalmente em quantis baixos e altos (esquerda e direita do gráfico).</p>
+<p><img src="img4.png" width="580px" style="display: block; margin: auto;" /></p>
+<p>E como você já deve ter percebido: sim, essa é uma avaliação bem subjetiva. Faz parte.</p>
+</div>
+<div id="gráfico-3.-homocedasticidade" class="section level4">
+<h4>Gráfico 3. Homocedasticidade</h4>
+<p>A homocedasticidade pode ser avaliada pelo gráfico 1, que discutimos anteriormente. Ao avaliarmos o gráfico 1, consideramos que os dados apresentam homocedasticidade quando o padrão de distribuição dos pontos é retangular. Caso esse padrão seja triangular, ou em formato de gravata, temos dados heterocedásticos (= não-homocedásticos). Perceba como os pontos do gráfico à direita seguem um <strong>padrão triangular</strong>, mas os da esquerda, não:</p>
+<p><img src="img5.png" width="580px" style="display: block; margin: auto;" /></p>
+<p>Mas o gráfico 3 é ainda melhor para avaliarmos homocedasticidade. Esse gráfico mostra a relação entre a raiz quadrada do valor absoluto dos resíduos padronizados (eixo y) e os valores previstos (eixo x). Caso a gente queira acessar apenas esse gráfico, podemos usar a função plot com o argumento <code>which = 3</code>:</p>
+<pre class="r"><code>plot(mod, which = 3)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/figure-html/unnamed-chunk-19-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Como esse gráfico mostra a raiz quadrada dos resíduos em módulo, ele traz apenas resíduos positivos. Isso nos ajuda a enxergar o padrão de distribuição desses resíduos. Caso a variação seja constante ao longo dos valores previstos, a linha de tendência desse gráfico será aproximadamente <strong>horizontal</strong>. Modelos heterocedásticos terão gráficos com linhas de tendência <strong>inclinadas</strong>.</p>
+<p>O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de homocedasticidade atendido – veja que a linha de tendência é aproximadamente horizontal. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto: note como a linha de tendência está inclinada, ela sobe ao longo do gráfico.</p>
+<p><img src="img6.png" width="580px" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gráfico-4.-pontos-influentes" class="section level4">
+<h4>Gráfico 4. Pontos influentes</h4>
+<p>O quarto gráfico mostra a relação entre os resíduos padronizados (eixo y) e a alavancagem (eixo x). A alavancagem reflete o quanto um ponto se distancia dos demais em relação aos valores das variáveis independentes. Esse gráfico também traz linha pontilhadas que indicam as distâncias de Cook 0,5 e 1 (por padrão).</p>
+<p>Caso a gente queira acessar apenas esse gráfico, podemos usar a função plot com o argumento <code>which = 5</code>:</p>
+<pre class="r"><code>plot(mod, which = 5)</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/figure-html/unnamed-chunk-22-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Se quisermos alterar os valores de distância de Cook representados no gráfico, podemos adicionar o argumento <code>cook.levels</code>. No exemplo, pedi para que fossem plotados os valores 0,05 e 0,5.</p>
+<pre class="r"><code>plot(mod, which = 5, cook.levels = c(0.05, 0.5))</code></pre>
+<p><img src="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/index_files/figure-html/unnamed-chunk-23-1.png" width="336" style="display: block; margin: auto;" /></p>
+<p>Esse gráfico nos permite avaliar o pressuposto de <strong>ausência de pontos influentes</strong>. Caso esse pressuposto seja atendido, os pontos não devem ultrapassar a linha pontilhada. O gráfico à esquerda da figura abaixo mostra um modelo com o pressuposto de ausência de pontos influentes atendido. Já o gráfico da direita, mostra um modelo que não atendeu a esse pressuposto: note como há um ponto (a 80ª pessoa da base) que tem distância de Cook superior a 1.</p>
+<p><img src="img7.png" width="580px" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Gráficos diagnósticos: Avaliando os pressupostos da regressão linear</strong>. Blog Fernanda Peres, São Paulo, 14 jul. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/" class="uri">https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/</a>.</p>
+</blockquote>
+<p><br /></p>
+<hr />
+</div>
+<div id="referências" class="section level3">
+<h3>Referências</h3>
+<ul>
+<li><p>FÁVERO, Luiz Paulo; BELFIORE, Patrícia. <strong>Manual de análise de dados: estatística e modelagem multivariada com Excel®, SPSS® e Stata®</strong>. Elsevier Brasil, 2017.</p></li>
+<li><p>FIELD, Andy; MILES, Jeremy; FIELD, Zoë. <strong>Discovering Statistics Using R</strong>. Great Britain: Sage Publications, Ltd, v. 958, 2012.</p></li>
+<li><p><a href="https://data.library.virginia.edu/diagnostic-plots/">Understanding Diagnostic Plots for Linear Regression Analysis</a></p></li>
+</ul>
+</div>
+
+                    </div>
+
+<br><br><br>
+                    
+                    <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
+                    
+                        <a class="d-block col-md-6" href="https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/"> &laquo; Construindo gráficos diagnósticos para regressão no ggplot2</a>
+                    
+                    
+                        <a class="d-block col-md-6 text-lg-right" href="https://fernandafperes.com.br/blog/probabilidade-chance/">Probabilidade x chance &raquo;</a>
+                    
+                    <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+<div class="container">
+  
+  <br><br><br>
+  
+      <div id="comments" class="row justify-content-center mb-5">
+        <div class="col-md-8">    
+       
+  <div class="button"> 
+<center>
+  <a href="https://fernandafperes.com.br/servicos" class="button">Gostou do post? Se quiser me contratar para te ajudar com a análise dos seus dados, saiba mais sobre os serviços que eu ofereço clicando aqui!</a>
+</center>
+  </div>
+  <br><br>
+  
+            <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "fernandafperes" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>               
+        </div>
+    </div>
+</div>
+
+    </div>
+
+
+            </div>
+<footer class="footer">
+
+<script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                <img src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/footer_files/logo-rodape.png" alt="" width="300px"/>
+            </div>
+
+<div class="col-md-6 col-sm-6 text-center text-lg-right">
+
+
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://github.com/fernandaperes"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/fernandafielperes"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/estatisticaaplicada"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
+    
+    
+    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/c/FernandaPeres"><i class="fab fa-youtube social-icon" aria-hidden="true"> </i></a>
+    
+    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
+    
+    
+<br><br>
+Adaptado de <a target="_blank" rel="noopener" href="https://www.wowthemes.net">Mediumish Theme</a> by WowThemes.net
+<br>
+FERNANDA F PERES LTDA - CNPJ 40.903.870/0001-95
+            </div>
+        </div>
+    </div>
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+
+<script>
+hljs.configure({languages: []});
+hljs.initHighlightingOnLoad();
+</script>  
+
+</footer>
+
+
+
+        </div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script src="https://fernandafperes.com.br/js/mediumish.84218587c174fd40bce82544b98851670f0b124a7324b349c54a4065e2b32ffc.js" integrity="sha256-hCGFh8F0/UC86CVEuYhRZw8LEkpzJLNJxUpAZeKzL/w="></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBDS4LT6P0"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-ZBDS4LT6P0', { 'anonymize_ip': false });
+}
+</script>
+
+    </body>
+</html>

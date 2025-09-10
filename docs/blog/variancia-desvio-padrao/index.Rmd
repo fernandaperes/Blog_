@@ -35,7 +35,7 @@ As medidas de tendência central, como a média, a moda e a mediana, são usadas
 Imagine a seguinte situação: você tem dois grupos, um recebendo placebo e outro recebendo um anti-hipertensivo novo no mercado. Você, então, administra o medicamento aos pacientes de cada grupo, afere a pressão arterial de cada um deles e monta um gráfico com as médias de pressão em cada grupo:  
   
   
-```{r, echo=FALSE, fig.cap="Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20."}
+```{r, echo=FALSE}
 set.seed(4321)
 dados <- as.data.frame(list(Grupo = c(rep("Placebo", 10),
                                       rep("Anti-hipertensivo", 10)),
@@ -50,12 +50,17 @@ ggplot(dados, aes(x = Grupo, y = PA)) +
   theme_classic() +
   theme(text = element_text(family = "Nunito", size = 13))
 ```
-  
+<center>
+<font size="2">  
+Gráfico de barras para as médias de pressão arterial sistólica (mmHg) dos grupos Placebo e Anti-hipertensivo. N = 20.
+</font>
+</center>
+<br />
   
 Ótimo, o grupo que tomou anti-hipertensivo apresentou uma média de pressão arterial sistólica inferior à do grupo que tomou placebo. Mas... Será que **investigar a média basta**? Vamos olhar para esses dados com mais detalhes? No gráfico abaixo, o traço em preto representa a média e os círculos em amarelo correspondem à pressão arterial de cada participante.  
   
   
-```{r, echo=FALSE, fig.cap="Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20."}
+```{r, echo=FALSE}
 ggplot(dados, aes(x = Grupo, y = PA)) +
   geom_point(color = "#E28C27", alpha = 0.6) +
   geom_crossbar(stat = "summary", fun = "mean", fatten = 1, width = 0.4) +
@@ -64,6 +69,12 @@ ggplot(dados, aes(x = Grupo, y = PA)) +
   theme_classic() +
   theme(text = element_text(family = "Nunito", size = 13))
 ```
+<center>
+<font size="2">  
+Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. N = 20.
+</font>
+</center>
+<br />
   
   
 > Vou chamar sua atenção para uma coisa: a escala do gráfico acima é diferente da escala do primeiro gráfico. Isso porque em gráficos de barras é obrigatório que o eixo y inicie em zero (tenho uma discussão sobre isso [aqui](https://www.instagram.com/p/CUFncUBgWai/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==)). Em gráficos de dispersão, nosso eixo y pode iniciar em um ponto diferente de zero, para facilitar a visualização dos dados. Aqui, ele inicia em 90.
@@ -172,7 +183,7 @@ Perceba que a **interpretação** que discutimos para a variância se mantém: q
 Em geral representamos o desvio-padrão em gráficos como uma barra de erros. Para isso fazer sentido, vou criar um gráfico com os dados dos grupos A e B acima, ok?  
   
   
-```{r, echo=FALSE, fig.cap="Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10."}
+```{r, echo=FALSE}
 dados_grupos <- as.data.frame(list(Grupo = c(rep("Grupo A", 5),
                                              rep("Grupo B", 5)),
                                    PA = c(111,120,123,144,152,
@@ -187,6 +198,12 @@ ggplot(dados_grupos, aes(x = Grupo, y = PA)) +
   theme_classic() +
   theme(text = element_text(family = "Nunito", size = 13))
 ```
+<center>
+<font size="2">  
+Gráfico de dispersão para a pressão arterial sistólica (mmHg) de acordo com o grupo. As linhas horizontais correspondem à média aritmética do grupo. As barras de erro correspondem ao desvio-padrão. N = 10.
+</font>
+</center>
+<br />
   
   
 Perceba que, apesar de os dois grupos terem a mesma média (barra horizontal na mesma altura), o grupo A apresenta um desvio-padrão bem maior. A barra de erros (T para cima e para baixo) do grupo A tem um tamanho de 14,25 mmHg (o desvio-padrão desse grupo) para cima e para baixo. Já a barra de erros do grupo B tem um tamanho de apenas 5,83 mmHg para cima e para baixo, uma vez que esse é o desvio-padrão desse grupo.  

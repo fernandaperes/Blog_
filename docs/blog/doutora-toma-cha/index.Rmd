@@ -11,11 +11,16 @@ output:
   blogdown::html_page:
     toc: false
 ---
-
+<center>
+<font size = '1'>
+Imagem de <a href="http://www.freepik.com">Freepik</a>
+</font>
+</center>
+  
+<br><br>
 
 ```{r, include=FALSE}
-knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
-knitr::opts_chunk$set(fig.width = 5, fig.height = 5, cache = TRUE)
+knitr::opts_chunk$set(fig.width = 5, fig.height = 5)
 ```
   
 ## Uma doutora toma chá
@@ -29,14 +34,12 @@ A proposta desse post é explicar esses conceitos através da história da cria�
   
 ### O problema
   
-Diz a lenda (e a biografia de Ronald Fisher) que, em uma tarde no final da década de 1920, três pesquisadores – dois homens e uma mulher – que trabalhavam na Estação experimental agrícola de Rothamsted, na Inglaterra, fizeram uma pausa para tomar chá. Como bons ingleses, esses três pesquisadores tomavam o seu chá com leite.
-  
+Diz a lenda (e a biografia de Ronald Fisher) que, em uma tarde no final da década de 1920, três pesquisadores – dois homens e uma mulher – que trabalhavam na Estação experimental agrícola de Rothamsted, na Inglaterra, fizeram uma pausa para tomar chá. Como bons ingleses, esses três pesquisadores tomavam o seu chá com leite.  
 ```{r, echo=FALSE, fig.align='center', out.width = '450px'}
-knitr::include_graphics("img1.png")
+# knitr::include_graphics("img1.png")
+# <center><font size = '2'>Estação experimental agrícola de Rothamsted</font></center>
+# <br><br>  
 ```
-<center><font size = '3'>Estação experimental agrícola de Rothamsted</font></center>
-<br><br>  
-   
   
 Um dos homens adicionou leite à xícara, complementou-a com chá, mexeu o conteúdo e serviu-a à mulher. Ela educadamente recusou, dizendo que preferia quando o chá era adicionado antes do leite. Ele protestou, dizendo que a ordem não fazia diferença. Ela continuou insistindo que sentia diferença, e preferia quando o chá era adicionado antes.
   
@@ -44,7 +47,8 @@ Um dos homens adicionou leite à xícara, complementou-a com chá, mexeu o conte
 knitr::include_graphics("img2.png")
 ```
   
-Se as pessoas envolvidas nessa história fossem outras, ela provavelmente teria acabado aqui. Mas, o homem em questão era Ronald Fisher, um estatístico e geneticista, que anos depois ganharia o título de Sir. Já a pesquisadora era Blanche Muriel Bristol, uma algologista que na época já possuía os títulos de mestre e doutora. Infelizmente, muitas informações sobre a Dra. Muriel se perderam com o tempo, mas sabe-se que uma espécie de alga recebeu o nome de C. *muriella* em homenagem a ela, indicando que ela contribuiu de forma significativa com a sua área.
+Se as pessoas envolvidas nessa história fossem outras, ela provavelmente teria acabado aqui. Mas, o homem em questão era Ronald Fisher, um estatístico e geneticista, que anos depois ganharia o título de Sir. Já a pesquisadora era Blanche Muriel Bristol, uma algologista que na época já possuía os títulos de mestre e doutora. Infelizmente, muitas informações sobre a Dra. Muriel se perderam com o tempo, mas sabe-se que uma espécie de alga recebeu o nome de C. *muriella* em homenagem a ela, indicando que ela contribuiu de forma significativa com a sua área.  
+  
   
 ```{r, echo=FALSE, fig.align='center', out.width = '500px'}
 knitr::include_graphics("img3.png")

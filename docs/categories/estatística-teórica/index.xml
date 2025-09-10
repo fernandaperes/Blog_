@@ -7,7 +7,52 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Fri, 08 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/categories/estat%C3%ADstica-te%C3%B3rica/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/categories/estat%C3%ADstica-te%C3%B3rica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Construindo gráficos diagnósticos para regressão no ggplot2</title>
+      <link>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</guid>
+      <description>Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos.</description>
+    </item>
+    
+    <item>
+      <title>Gráficos diagnósticos: Avaliando os pressupostos da regressão linear</title>
+      <link>https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/</guid>
+      <description>É bem comum que a gente utilize os chamados &amp;ldquo;gráficos diagnósticos&amp;rdquo; para avaliar se um modelo de regressão linear está atendendo aos pressupostos. Mas, esses gráficos não têm uma interpretação tão intuitiva. Nesse post, eu te explico como interpretar cada um deles.</description>
+    </item>
+    
+    <item>
+      <title>Probabilidade x chance</title>
+      <link>https://fernandafperes.com.br/blog/probabilidade-chance/</link>
+      <pubDate>Sun, 15 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/probabilidade-chance/</guid>
+      <description>No dia-a-dia, é comum usarmos chance e probabilidade como sinônimos. Mas na estatística, elas significam coisas consideravelmente diferentes. Nesse post eu te explico, com exemplos, como interpretar cada uma delas.</description>
+    </item>
+    
+    <item>
+      <title>O que é e como calcular o Índice de Validade de Conteúdo (IVC)?</title>
+      <link>https://fernandafperes.com.br/blog/ivc-kappa/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/ivc-kappa/</guid>
+      <description>Alguém te disse para calcular um Índice de Validade de Conteúdo (IVC) para o seu questionário, e você não sabe nem o que isso é, muito menos como calculá-lo? Nesse post eu te explico como calcular os três tipos de IVC e o kappa modificado, que normalmente acompanha esse índice.</description>
+    </item>
+    
+    <item>
+      <title>Como representar dados em escala Likert?</title>
+      <link>https://fernandafperes.com.br/blog/graficos-likert/</link>
+      <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-likert/</guid>
+      <description>Coletou dados em escala Likert (por exemplo, com opções de Concordo Fortemente a Discordo Fortemente) e bateu uma dúvida quanto a como representá-los? Neste post eu te explico como construir um gráfico de barras divergentes, o mais recomendado pela literatura para esse tipo de dado.</description>
+    </item>
+    
     <item>
       <title>Como representar os resultados do qui-quadrado em um gráfico?</title>
       <link>https://fernandafperes.com.br/blog/grafico-qui-quadrado/</link>

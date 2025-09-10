@@ -1,0 +1,452 @@
+---
+title: "Construindo gráficos diagnósticos para regressão no ggplot2"
+author: Fernanda Fiel Peres
+date: '2025-07-17'
+slug: [graficos-diagnosticos-ggplot2]
+categories: ['Estatística teórica', 'Regressão linear']
+tags: ['regressão-linear', 'ggplot2', 'gráficos', 'estatística-teórica']
+comments: yes
+summary: 'Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos.'
+output:
+  blogdown::html_page:
+    toc: false
+bibliography: "references.bib"
+csl: "/Users/fernandafperes/Documents/Consultorias Científicas/Base para relatórios/ABNT.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+# knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
+                      fig.align = "center")
+library(patchwork)
+source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
+fstatix::paleta_f()
+```
+   
+   
+### Por que construir gráficos diagnósticos em ggplot2?
+  
+Eu vou começar admitindo que esse é um post que eu acredito ser de pouco interesse para a maior parte das pessoas. Como vimos em um [post anterior](https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/), o R traz excelentes gráficos diagnósticos que nos permitem avaliar o atendimento aos pressupostos do modelo de regressão linear. E construi-los é **bem simples**: basta usar a função `plot()`.  
+  
+No entanto, apesar de serem gráficos que fazem muito bem o que se propõem a fazer, eu os acho **feios**. E como muita gente inclui esses gráficos em seus TCCs, dissertações ou teses, construi-los em ggplot2 me parece muito válido -- dessa forma, conseguimos alterar fontes, cores e o que mais quisermos.  
+  
+Então, esse é um post sobre como reproduzir os gráficos diagnósticos em ggplot2.  
+  
+>Vale dizer que meu objetivo aqui não é discutir todas as personalizações possíveis quando construímos a figura em ggplot2. Caso isso seja do seu interesse, recomendo [essa playlist](https://youtube.com/playlist?list=PLOw62cBQ5j9X5eOavzeu9CaHMO6TFsPkY&si=pwP8gxu3d4Aox6D2) do meu canal que explica a lógica do ggplot2 e **muitas** das opções de personalização.  
+  
+  
+Vamos partir de um modelo de regressão linear múltipla. Para isso, usaremos novamente a base de dados FEV, com os seguintes dados:  
+  
+  
+* fev: Volume expiratório forçado, em litros. Uma medida da capacidade pulmonar.
+* idade: Idade das crianças e adolescentes, em anos.
+* altura: Altura das crianças e adolescentes, em centímetros.
+  
+Vamos criar um modelo de regressão linear com `fev` como variável dependente e `idade` e `altura` como variáveis independentes.  
+  
+  
+#### Leitura da base de dados e construção do modelo
+  
+```{r, warning=FALSE, message=FALSE, fig.width=6.5, fig.height=6}
+# Instalação e carregamento dos pacotes tidyverse e qqplotr
+if(!require(tidyverse)){install.packages("tidyverse")}
+library(tidyverse)
+
+if(!require(qqplotr)){install.packages("qqplotr")}
+library(qqplotr)
+
+# Leitura da base de dados
+dados <- read.csv2("FEV_80.csv")
+
+# Construção do modelo de regressão linear
+mod <- lm(fev ~ altura + idade, data = dados)
+
+# Gráficos diagnósticos
+par(mfrow = c(2,2))
+plot(mod)
+```
+
+```{r, include=FALSE}
+par(mfrow = c(1,1))
+```
+
+  
+<br />
+  
+### Gráfico 1: resíduos x valores ajustados
+  
+O primeiro gráfico mostra a relação entre os resíduos (eixo y) e os valores ajustados (eixo x). Além disso, ele traz: 1) uma linha pontilhada em zero e 2) uma linha de tendência destacada em vermelho.  
+```{r, fig.width=3.4, fig.height=3.4}
+plot(mod, which = 1)
+```
+
+  
+Esse é um gráfico simples de reproduzir. Obtemos os resíduos com a função `residuals()` e obtemos os valores ajustados com a função `fitted()`. Depois, plotamos cada um desses valores nos seus respectivos eixos. Vamos usar a camada `geom_point()` para criar o gráfico de dispersão. Perceba que eu deixei os pontos em cinza (`color = "grey60"`) e adicionei uma transparência (`alpha = 0.6`).  
+  
+O `theme_classic()` deixa o gráfico com fundo branco e eixos pretos, mas você pode optar por outro tema caso prefira, como `theme_minimal()` ou `theme_bw()`. As camadas `scale_x_continuous()` e `scale_y_continuous()` foram adicionadas para trocar o separador de decimal de ponto (padrão em inglês) para vírgula (padrão em português). A camada `labs()` renomeia os eixos.  
+  
+```{r}
+dados |> 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = "grey60", alpha = 0.6) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = "Resíduos", x = "Valores ajustados") +
+  theme_classic()
+```
+  
+  
+Ficou faltando adicionar:  
+  
+* A linha horizontal pontilhada em zero, que adicionaremos com a camada `geom_hline()`. O comando `linetype = "dashed"` define que ela será pontilhada. Eu a deixei em preto, mas você pode alterar a cor com o argumento `color`.
+* A linha de tendência dos pontos, que adicionaremos com a camada `geom_smooth()`. No gráfico do R base essa linha está em vermelho, mas que aqui representarei no rosa da minha paleta de cores, que tem o código hexadecimal "#B5284B".  
+  
+```{r, warning=FALSE, message=FALSE}
+dados |> 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = "#B5284B", method = "loess") +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = "Resíduos", x = "Valores ajustados") +
+  theme_classic()
+```
+  
+O gráfico já está bem bom! Mas note que a curva suavizada criada pelo `geom_smooth()` difere um pouco daquela que observamos no gráfico criado pela função `plot()`. Isso porque eles diferem quanto ao tipo de suavização utilizada. Para replicar a mesma suavização do `plot()`, temos que fazer algumas alterações nesse código. Para isso usei como base [a seguinte resposta](https://stackoverflow.com/questions/54072789/linear-model-diagnostics-smoothing-line-obtained-in-ggplot2-is-different-from-t) do StackOverflow.  
+  
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
+# Criação de um data.frame com os valores da curva suavizada
+# A suavização é obtida com a função lowess()
+smoothed <- as.data.frame(lowess(x = fitted(mod), y = residuals(mod)))
+
+dados |> 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = "#B5284B", linewidth = 0.7) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = "Resíduos", x = "Valores ajustados") +
+  theme_classic()
+```
+  
+  
+```{r, echo=FALSE}
+smoothed <- as.data.frame(lowess(x = fitted(mod), y = residuals(mod)))
+
+dados |> 
+  mutate(Residuals = residuals(mod),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = "#B5284B", linewidth = 0.7) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = "Resíduos", x = "Valores ajustados") +
+  theme_classic()
+
+plot(mod, which = 1)
+```
+
+  
+Agora sim! Veja que o gráfico ficou idêntico ao do R base, exceto, claro, pela estética.
+  
+  
+  
+### Gráfico 2: raiz quadrada do valor absoluto dos resíduos padronizados x valores ajustados
+  
+Esse gráfico é, pela função `plot()`, o gráfico 3. Mas vai ser o segundo gráfico que eu irei construir porque ele se assemelha muito ao que construímos anteriormente. O que muda é: ao invés de colocarmos os resíduos do eixo y, colocaremos **a raiz quadrada do módulo dos resíduos padronizados**.  
+  
+```{r, fig.width=3.4, fig.height=3.4}
+plot(mod, which = 3)
+```
+
+  
+Vamos construir um gráfico praticamente idêntico ao que construímos anteriormente. Mas, vamos obter os resíduos padronizados (`rstandard(mod)`). Para obtermos o módulo desses valores, precisamos inseri-los na função `abs()`, ou seja, ficamos com: `abs(rstandard(mod))`. Por fim, para tirar a raiz quadrada, devemos usar a função `sqrt()`, o que resulta em: `sqrt(abs(rstandard(mod)))`.  
+  
+Nesse gráfico não há uma linha horizontal de referência, por isso excluímos a camada `geom_hline()`.  
+  
+```{r, warning=FALSE, message=FALSE}
+dados |> 
+  mutate(Residuals = sqrt(abs(rstandard(mod))),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = "#B5284B", method = "loess") +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = bquote(sqrt(abs("Resíduos Padronizados"))), x = "Valores ajustados") +
+  theme_classic()
+```
+  
+  
+De novo, está bem bom, mas a suavização utilizada não é idêntica à utilizada pela função `plot()`. Com as modificações abaixo, chegamos a um gráfico idêntico:  
+  
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
+smoothed <- as.data.frame(lowess(x = fitted(mod), y = sqrt(abs(rstandard(mod)))))
+
+dados |> 
+  mutate(Residuals = sqrt(abs(rstandard(mod))),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = "#B5284B", linewidth = 0.7) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = bquote(sqrt(abs("Resíduos Padronizados"))), x = "Valores ajustados") +
+  theme_classic()
+```
+  
+```{r, echo=FALSE}
+smoothed <- as.data.frame(lowess(x = fitted(mod), y = sqrt(abs(rstandard(mod)))))
+
+dados |> 
+  mutate(Residuals = sqrt(abs(rstandard(mod))),
+         Fitted = fitted(mod)) |> 
+  ggplot(aes(y = Residuals, x = Fitted)) +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = "#B5284B", linewidth = 0.7) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = bquote(sqrt(abs("Resíduos Padronizados"))), x = "Valores ajustados") +
+  theme_classic()
+
+plot(mod, which = 3)
+```
+  
+  
+### Gráfico 3: Q-Q plot para os resíduos
+  
+O Q-Q plot dos resíduos é, pela função `plot()`, o gráfico 2. Mas, como explicado, eu alterei a ordem para fins didáticos.  
+  
+
+```{r, fig.width=3.4, fig.height=3.4}
+plot(mod, which = 2)
+```
+  
+  
+Construir um Q-Q plot no ggplot2 é algo menos intuitivo, mas não muito complexo. Precisamos dos seguintes passos:  
+  
+* Adicionar os resíduos padronizados (obtidos pela função `rstandard()`) como "sample" no `aes()`.
+* Adicionar uma linha com a camada `geom_qq_line()`. Aqui o importante é estabelecer que a distribuição que queremos testar é a normal. Fazemos isso com o argumento `stats::qqnorm`.
+* Adicionar os pontos referentes aos resíduos com a camada `geom_qq()`. De novo, estabelecemos que a distribuição que queremos testar é a normal com o argumento `stats::qqnorm`. Estabeleci que os pontos serão rosa ("#B5284B") e terão uma transparência (`alpha = 0.3`).
+* Adicionar uma camada `stat_qq_band()` para incluir um intervalo de confiança. Essa função vem do pacote `qqplotr`, que deve estar instalado. Aqui estabelecemos que a distribuição é a normal (`distribution = "norm"`) e que vamos usar a normal-padrão, com média zero e desvio-padrão 1 (`dparams = list(mean = 0, sd = 1)`). Coloquei essa camada antes das demais para que a sombra não ficasse por cima dos pontos.  
+  
+  
+```{r, warning=FALSE, message=FALSE}
+dados |> 
+  mutate(Residuals = rstandard(mod)) |> 
+  ggplot(aes(sample = Residuals)) +
+  qqplotr::stat_qq_band(distribution = "norm", dparams = list(mean = 0, sd = 1),
+                        alpha = 0.2) +
+  geom_qq_line(distribution = stats::qnorm) +
+  geom_qq(distribution = stats::qnorm, color = "#B5284B", alpha = 0.3) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = "Resíduos padronizados", x = "Quantis teóricos") +
+  theme_classic()
+```
+  
+"E tá pronto o sorvetinho!" (Ilt, Matheus, 2019)
+  
+  
+  
+### Gráfico 4: resíduos padronizados x alavancagem + distância de Cook
+  
+Esse gráfico é pela função `plot()`, o gráfico 5. Ele mostra ao mesmo tempo os resíduos padronizados (eixo y), a alavancagem (eixo x) e a distância de Cook (representada por uma linha pontilhada). À semelhança do que vimos no gráfico 1, esse gráfico também inclui uma linha horizontal pontilhada no y = 0 e uma linha de tendência representada em vermelho.  
+  
+```{r, fig.width=3.4, fig.height=3.4}
+plot(mod, which = 5)
+```
+  
+  
+Esse é um gráfico que por uns anos eu pensei "nossa, o trabalho de construir isso em ggplot2 não deve compensar o resultado". Porque inserir as linhas de distância de Cook me parecia muito complexo. Mas aí, estudando um outro modelo -- para o qual esse gráfico não é construído com a função `plot()` -- eu decidi encarar o desafio de criá-lo em ggplot2. E foi mais simples do que eu imaginava.  
+  
+Vamos aos passos:  
+  
+* Obter os resíduos padronizados, a partir da função `rstandard()`.
+* Obter os valores de alavancagem (*leverage*), a partir da função `hatvalues()`.
+* Salvar os valores obtidos nos dois passos anteriores em um `data.frame()` chamado "dados_graf".
+* Criar duas funções, uma para cada linha pontilhada a ser plotada para a distância de Cook: `cd_cont_pos()` e `cd_cont_neg()`. Essas funções não são de minha autoria. Elas foram extraídas [dessa resposta](https://stackoverflow.com/questions/48962406/add-cooks-distance-levels-to-ggplot2) no StackOverflow.
+* Adicionar duas camadas `stat_function()`, uma com a função (`fun`) "cd_cont_pos" e outra com a função "cd_cont_neg". O `level = 0.5` define que queremos a linha de distância de Cook = 0,5. Ao alterar esse *level*, obtemos linhas referentes a outros pontos de corte. Precisamos também adicionar o nome do modelo (no nosso caso, "mod") ao argumento `model`. Os outros argumentos são para ajustes estéticos: deixar a linha roxa ("#68357A"), mais fina (`linewidth = 0.5`) e pontilhada (linetype = "dashed").  
+  
+```{r, warning=FALSE, message=FALSE}
+dados_graf <- dados |> 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+cd_cont_pos <- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg <- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = "#B5284B", method = "loess") +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  labs(y = "Resíduos padronizados", x = "Alavancagem") +
+  theme_classic()
+```
+  
+  
+Você pode até estar pensando: "mas esse gráfico está diferente do que obtivemos com a função `plot()`!". Então... Ele parece diferente mesmo. Isso porque o que obtivemos com a função `plot()` tem um eixo y que vai de -3 a 4. Já o eixo y do gráfico que criamos se estende para muito além disso. Portanto, para deixá-los equivalentes, vamos adicionar a camada `coord_cartesian()` para deixar o nosso gráfico com um eixo y de -3 a 4:  
+  
+```{r, warning=FALSE, message=FALSE}
+dados_graf <- dados |> 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+cd_cont_pos <- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg <- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_smooth(se = T, alpha = 0.2, color = "#B5284B", method = "loess") +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  coord_cartesian(ylim = c(-3, 4)) +
+  labs(y = "Resíduos padronizados", x = "Alavancagem") +
+  theme_classic()
+```
+  
+  
+Se você é detalhista você talvez tenha reparado que há ainda três diferenças entre o gráfico que criamos e aquele criado pela função `plot()`:  
+  
+* O gráfico do `plot()` traz uma linha vertical em x = 0 e uma linha pontilhada para distância de Cook = 1.
+  - Vamos adicionar uma camada `geom_vline()` para incluir a linha pontilhada vertical
+  - Vamos replicar as camadas `stat_function()` e alterar o level para 1
+* A suavização usada pelo `plot()` é diferente daquela usada pelo `geom_smooth()`. Zero surpresa aqui, né?
+  - Vamos aplicar a mesma suavização que usamos nos gráficos 1 e 2  
+  
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
+dados_graf <- dados |> 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+smoothed <- as.data.frame(lowess(x = hatvalues(mod), y = rstandard(mod)))
+
+cd_cont_pos <- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg <- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = "#B5284B", linewidth = 0.7) +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_pos, args = list(level = 1, model = mod),
+                linetype = "dashed", color = "grey40",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 1, model = mod),
+                linetype = "dashed", color = "grey40",
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  coord_cartesian(ylim = c(-3, 4)) +
+  labs(y = "Resíduos padronizados", x = "Alavancagem") +
+  theme_classic()
+```
+  
+```{r, echo=FALSE}
+dados_graf <- dados |> 
+  mutate(Residuals = rstandard(mod),
+         Leverage = hatvalues(mod))
+
+smoothed <- as.data.frame(lowess(x = hatvalues(mod), y = rstandard(mod)))
+
+cd_cont_pos <- function(leverage, level, model){
+    sqrt(level*length(coef(model))*(1-leverage)/leverage)
+  }
+
+cd_cont_neg <- function(leverage, level, model){
+  -cd_cont_pos(leverage, level, model)
+  }
+
+ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_point(color = "grey60", alpha = 0.6) +
+  geom_path(data = smoothed, aes(x = x, y = y), color = "#B5284B", linewidth = 0.7) +
+  stat_function(fun = cd_cont_pos, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 0.5, model = mod),
+                linetype = "dashed", color = "#68357A",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_pos, args = list(level = 1, model = mod),
+                linetype = "dashed", color = "grey40",
+                linewidth = 0.5) +
+  stat_function(fun = cd_cont_neg, args = list(level = 1, model = mod),
+                linetype = "dashed", color = "grey40",
+                linewidth = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  coord_cartesian(ylim = c(-3, 4)) +
+  labs(y = "Resíduos padronizados", x = "Alavancagem") +
+  theme_classic()
+
+plot(mod, which = 5)
+```
+  
+Agora, sim, temos uma versão idêntica!  
+  
+  
+  
+#### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Construindo gráficos diagnósticos para regressão no ggplot2**. Blog Fernanda Peres, São Paulo, 17 jul. 2025. Disponível em: https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/.
+  
+  
+<br />
+
+*** 
+  
+  
+### Referências  
+  
+
+

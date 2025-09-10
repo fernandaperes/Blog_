@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/ggplot2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Uma análise exploratória das minhas leituras em 2024</title>
+      <link>https://fernandafperes.com.br/blog/leituras-2024/</link>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/leituras-2024/</guid>
+      <description>Explorando as minhas leituras de 2024 usando o R.</description>
+    </item>
+    
+    <item>
+      <title>Construindo gráficos diagnósticos para regressão no ggplot2</title>
+      <link>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-diagnosticos-ggplot2/</guid>
+      <description>Em um post anterior, eu te expliquei como interpretar os gráficos diagnósticos, que nos permitem checar pressupostos do modelo de regressão linear. Nesse post, te explico como construí-los com o pacote ggplot2, que permite diversos ajustes estéticos.</description>
+    </item>
+    
+    <item>
+      <title>Como representar dados em escala Likert?</title>
+      <link>https://fernandafperes.com.br/blog/graficos-likert/</link>
+      <pubDate>Tue, 29 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/graficos-likert/</guid>
+      <description>Coletou dados em escala Likert (por exemplo, com opções de Concordo Fortemente a Discordo Fortemente) e bateu uma dúvida quanto a como representá-los? Neste post eu te explico como construir um gráfico de barras divergentes, o mais recomendado pela literatura para esse tipo de dado.</description>
+    </item>
+    
     <item>
       <title>As idades de atores e atrizes vencedores do Oscar diferem?</title>
       <link>https://fernandafperes.com.br/blog/oscar-idades/</link>
@@ -18,21 +45,12 @@
     </item>
     
     <item>
-      <title>Uma análise exploratória das minhas leituras em 2024</title>
-      <link>https://fernandafperes.com.br/blog/leituras-2024/</link>
-      <pubDate>Wed, 26 Feb 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://fernandafperes.com.br/blog/leituras-2024/</guid>
-      <description>Explorando as minhas leituras do ano usando o R.</description>
-    </item>
-    
-    <item>
       <title>O que não fazer em gráficos de pizza</title>
       <link>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</link>
       <pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/blog/reconstruindo-grafico-pizza/</guid>
-      <description>O gráfico de setores - popularmente conhecido como gráfico de pizza - é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
+      <description>O gráfico de setores &amp;ndash; popularmente conhecido como gráfico de pizza &amp;ndash; é um gráfico muito utilizado, principalmente em contextos jornalísticos. Mas, a depender da natureza dos dados, ele deve ser evitado.</description>
     </item>
     
     <item>
@@ -59,7 +77,7 @@
       <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/blog/interpretacao-boxplot/</guid>
-      <description>O diagrama de caixas - ou boxplot, como é mais conhecido - é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.</description>
+      <description>O diagrama de caixas &amp;ndash; ou boxplot, como é mais conhecido &amp;ndash; é um gráfico bastante utilizado na área acadêmica e de análise de dados. Você sabe como interpretá-lo? Neste post discutimos como construir e interpretar um boxplot.</description>
     </item>
     
     <item>

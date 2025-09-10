@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>validade-de-conteúdo on Fernanda Peres | Estatística aplicada</title>
+    <link>https://fernandafperes.com.br/tags/validade-de-conte%C3%BAdo/</link>
+    <description>Recent content in validade-de-conteúdo on Fernanda Peres | Estatística aplicada</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
+    <lastBuildDate>Fri, 09 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/tags/validade-de-conte%C3%BAdo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>O que é e como calcular o Índice de Validade de Conteúdo (IVC)?</title>
+      <link>https://fernandafperes.com.br/blog/ivc-kappa/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/blog/ivc-kappa/</guid>
+      <description>Alguém te disse para calcular um Índice de Validade de Conteúdo (IVC) para o seu questionário, e você não sabe nem o que isso é, muito menos como calculá-lo? Nesse post eu te explico como calcular os três tipos de IVC e o kappa modificado, que normalmente acompanha esse índice.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>Fernanda Fiel Peres - Todos os direitos reservados</copyright>
-    <lastBuildDate>Wed, 05 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://fernandafperes.com.br/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Estatística descritiva</title>
       <link>https://fernandafperes.com.br/categories/estat%C3%ADstica-descritiva/</link>
-      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/categories/estat%C3%ADstica-descritiva/</guid>
       <description></description>
@@ -20,7 +20,7 @@
     <item>
       <title>Gráficos</title>
       <link>https://fernandafperes.com.br/categories/gr%C3%A1ficos/</link>
-      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 10 Sep 2025 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/categories/gr%C3%A1ficos/</guid>
       <description></description>
@@ -29,9 +29,27 @@
     <item>
       <title>Estatística teórica</title>
       <link>https://fernandafperes.com.br/categories/estat%C3%ADstica-te%C3%B3rica/</link>
-      <pubDate>Fri, 08 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
       
       <guid>https://fernandafperes.com.br/categories/estat%C3%ADstica-te%C3%B3rica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regressão linear</title>
+      <link>https://fernandafperes.com.br/categories/regress%C3%A3o-linear/</link>
+      <pubDate>Thu, 17 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/categories/regress%C3%A3o-linear/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Validade de conteúdo</title>
+      <link>https://fernandafperes.com.br/categories/validade-de-conte%C3%BAdo/</link>
+      <pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://fernandafperes.com.br/categories/validade-de-conte%C3%BAdo/</guid>
       <description></description>
     </item>
     

@@ -156,6 +156,7 @@ fstat::graf_obs_esp_ind(dados, Classe, Sobreviveu, cat_graf_v2 = "Sim",
                         cor = "cadetblue", xlab = "Classe da passagem") +
   labs(caption = "Frequências observadas e esperadas para aqueles que sobreviveram\nao desastre do Titanic, de acordo com a classe da passagem.\n* para frequências observadas que diferem estatisticamente\ndas esperadas. Teste qui-quadrado de independência.")
 ```
+  
 O problema desse gráfico é que ele só permite a visualização de uma das categorias da variável. Nesse caso, escolhi a categoria "sim" para a variável `Sobreviveu`, e expliquei isso na legenda.  
 Para a variável `Sobreviveu`, essa é uma alternativa válida. Isso porque, como essa variável tem apenas duas categorias, os resíduos da categoria "não" serão numericamente iguais aos da categoria "sim", mas com sinal oposto.  
   
@@ -248,6 +249,26 @@ banco_graf %>% filter(Sobreviveu == "Sim") %>%
     scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
     theme_classic() +
     theme(legend.position = "bottom")
+```
+
+```{r, include=FALSE}
+# fstatix::paleta_f()
+# 
+# dados <- as.data.frame(list(Frequência = c(70,135,65,80,180,110),
+#                             Tipo = rep(c("Esperado", "Observado"), 3),
+#                             Grupo = c("A", "A", "B", "B", "C", "C")))
+# 
+# ggplot(dados, aes(x = Grupo, y = Frequência, fill = Tipo)) +
+#   geom_bar(stat = "identity", position = position_dodge()) +
+#   labs(fill = NULL) +
+#   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+#   scale_fill_manual(values = c("grey75", roxo)) +
+#   theme_classic() +
+#   theme(legend.position = "bottom",
+#         text = element_text(family = "Nunito"),
+#         plot.margin = margin(20,20,20,20))
+# 
+# ggsave("cover.png", width = 4.1, height = 3.4, dpi = 600)
 ```
 
 

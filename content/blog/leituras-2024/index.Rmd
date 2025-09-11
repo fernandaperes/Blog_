@@ -224,9 +224,8 @@ Quanto às discordâncias no sentido contrário, se destacam três que estão na
   
 ### Os meus favoritos do ano
   
-Esses foram os meus livros favoritos do ano. Basta clicar no nome para ler uma mini resenha. Ah, vale dizer que a ordem é totalmente aleatória. Todos são livro que eu avaliei como 5 esse ano!  
+Esses foram os meus livros favoritos do ano. Basta clicar no nome para ler uma mini resenha. Ah, vale dizer que a ordem é totalmente aleatória. Todos são livros que eu avaliei como 5 esse ano!  
   
-<br />
   
 <details>
 <summary>Saboroso cadáver, por Agustina Bazterrica (Argentina)</summary>
@@ -345,9 +344,9 @@ Agatha Christie é minha leitura de conforto, o que eu leio quando quero me dist
 <p style="font-size:0.8em;">Capa do livro "A tatuagem de pássaro", de Dunya Mikhail, publicado por Tabla. Imagem usada apenas para fins de divulgação.</p>
 </div>
   
-O livro acompanha a história de Helin, uma mulher iazidi, que é sequestrada e mantida em cativeiro pelo o autointitulado Estado Islâmico (esse é um trecho da sinopse, que pode ser encontrada na íntegra [aqui](https://editoratabla.com.br/catalogo/a-tatuagem-de-passaro/)). Trata-se de um livro baseado em histórias reais, relatadas à autora.  
+O livro acompanha a história de Helin, uma mulher iazidi, que é sequestrada e mantida em cativeiro pelo o autointitulado Estado Islâmico (esse é um trecho da sinopse, que pode ser encontrada na íntegra [aqui](https://editoratabla.com.br/catalogo/a-tatuagem-de-passaro/)). Trata-se de um livro baseado em histórias reais relatadas à autora.  
   
-Acho importante dizer que esse livro retrata violência sexual. Então, leia apenas se você estiver confortável com o tema. Aqui eu preciso dizer que eu amei a forma como a autora conduziu a história. Normalmente, livros com essa temática iniciam nos apresentando a personagem, a sua vida pregressa, vão fazendo com que a gente se apegue a ela enquanto vamos nos angustiando imaginando quais sofrimento inimagináveis a aguardam no futuro. Mas Dunya Mikhail inverte essa construção: ela parte do pior. O livro se inicia com o sequestro seguido por escravização sexual. Só depois vamos entender quem era Helin antes daquele momento e como ela seguiu com a sua vida depois dessa experiência. Eu amei essa estrutura. Me parece uma estratégia excelente para fugir do que às vezes me soa como fetichização do sofrimento.  
+Acho importante dizer que esse livro retrata violência sexual. Então, leia apenas se você estiver confortável com o tema. Aqui eu preciso dizer que **eu amei a forma como a autora conduziu a história**. Normalmente, livros com essa temática iniciam nos apresentando a personagem, a sua vida pregressa, vão fazendo com que a gente se apegue a ela enquanto vamos nos angustiando imaginando quais sofrimento inimagináveis a aguardam no futuro. Mas Dunya Mikhail inverte essa construção: ela parte do pior. O livro se inicia com o sequestro seguido por escravização sexual. Só depois vamos entender quem era Helin antes daquele momento e como ela seguiu com a sua vida depois dessa experiência. Eu amei essa estrutura. Me parece uma estratégia excelente para fugir do que às vezes me soa como fetichização do sofrimento.  
   
 É um livro difícil, indigesto, mas excelente. Recomendo demais a leitura. E fica a dica: se no início parecer que está pesado demais e que você não dará conta de ler, dê uma insistida, porque o pior está nessas primeiras páginas.  
   
@@ -373,11 +372,11 @@ A história da escrita desse livro começa em maio de 2023, no meu aniversário.
   
 <br>
 <div style="width:300px; margin:0 auto; text-align:center;">
-<img src="hall_fama.jpg" style="height:200px;">
+<img src="hall_fama.jpg" style="height:300px;">
 <p style="font-size:0.8em;">Essas somos nós, no [Hall da Fama da Intrínseca](https://www.intrinseca.com.br/a-mandibula-de-caim/quem-ja-descobriu/).</p>
 </div>  
   
-E aí, depois de resolvermos, se abateu sobre nós uma sensação de vazio, hahah! Inclusive, caso você tenha interesse, [nesse vídeo](https://youtu.be/ItFwfKl3JHI?si=YgtEk1xzbEHzzn4p) nós conversamos sobre como foi a experiência de solucionar "A mandíbula de Caim" e compartilhamos algumas dicas (aquelas que poderiam ser compartilhadas sem quebrar o contrato de confidencialidade que assinamos).  
+E aí, depois de resolvermos, se abateu sobre nós uma sensação de vazio, hahah! Inclusive, caso você tenha interesse, [nesse vídeo](https://youtu.be/ItFwfKl3JHI?si=YgtEk1xzbEHzzn4p) nós conversamos sobre como foi a experiência de solucionar "A mandíbula de Caim" e compartilhamos algumas dicas (aquelas que poderiam ser compartilhadas sem quebrar o contrato de confidencialidade que assinamos, claro, porque ainda não sou milionária).  
   
 Uma vez que a sensação que ficou foi "cadê o próximo livro quebra-cabeça para resolvermos?", Débora decidiu escrever um e me dar de presente de aniversário! E sério, o livro está demais! Ao longo das 60 páginas embaralhadas há seis assassinatos e seis narradores diferentes. Ao ordenar, o leitor descobre quem são as vítimas e os assassinos. Na minha opinião, é um livro que tem algumas vantagens em relação a "A mandíbula de Caim": 1) a história é mais bem amarrada, com personagens mais esféricos; 2) é um livro que se passa no Brasil e traz referências à nossa cultura; 3) é um livro um pouco mais fácil de resolver que "A mandíbula de Caim" (que tem uma taxa de desistência altíssima).  
   
@@ -401,7 +400,7 @@ Caso você não tenha lido a resenha anterior, fica aqui a minha declaração de
   
 Débora me contou, há alguns anos, que estava escrevendo um livro e me pediu para lê-lo. Eu aceitei, mas já montei um discurso na minha cabeça de: "olha, nem todo mundo nasceu para ser escritor, pelo menos você é uma psicóloga fantástica, formada em uma das melhores universidades do país, tem uma ótima carreira pela frente". Mas bastou alguns capítulos para que eu jogasse esse discurso fora.  
   
-"A oitava geração" é um livro Young Adult -- um tipo de livro que eu amo, mas acho a maior parte sofrível. No livro, acompanhamos a jornada de Nora Fontenelle, uma adolescente de 17 anos com uma vida "normal", ainda que ela viva em uma nave espacial. A história se passa em um futuro no qual a Terra se tornou inabitável. A solução encontrada foi construir uma nave -- batizada de Arca -- que permitisse que os humanos viajassem para um outro planeta que ofereceria condições de sobrevivência à espécie. Mas essa viagem durará cerca de 1000 anos. Nora faz parte da oitava geração que ocupa a Arca.  
+"A oitava geração" é um livro Young Adult -- um tipo de livro que eu amo, mas acho a maior parte dos publicados sofríveis. No livro, acompanhamos a jornada de Nora Fontenelle, uma adolescente de 18 anos com uma vida "normal", ainda que ela viva em uma nave espacial. A história se passa em um futuro no qual a Terra se tornou inabitável. A solução encontrada foi construir uma nave -- batizada de Arca -- que permitisse que os humanos viajassem para um outro planeta que ofereceria condições de sobrevivência à espécie. Mas essa viagem durará cerca de 1000 anos. Nora faz parte da oitava geração que ocupa essa Arca.  
   
 Eu sei que você talvez não confie na minha opinião, mas, para mim, esse é um livro Young Adult com tudo que um bom livro Young Adult deve ter: boa escrita, uma bela aventura e alguns ótimos romances (que não roubam a cena da trama principal). Se tiver interesse, o livro está à venda na [Amazon](https://www.amazon.com.br/Oitava-Gera%C3%A7%C3%A3o-D%C3%A9bora-Fiel-ebook/dp/B0DRTMZB94).  
   

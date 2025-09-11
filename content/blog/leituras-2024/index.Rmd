@@ -6,7 +6,7 @@ slug: [leituras-2024]
 categories: ['Estatística descritiva', 'Gráficos']
 tags: ['ggplot2', 'gráficos']
 comments: yes
-summary: 'Explorando as minhas leituras de 2024 usando o R.'
+summary: 'Nesse post, eu uso o R para fazer uma análise descritiva das minhas leituras de 2024 (tem até mapa!). No final, eu te conto quais foram os meus livros favoritos do ano e o porquê.'
 output:
   blogdown::html_page:
     toc: false

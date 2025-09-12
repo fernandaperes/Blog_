@@ -373,10 +373,10 @@ A história da escrita desse livro começa em maio de 2023, no meu aniversário.
 <br>
 <div style="width:300px; margin:0 auto; text-align:center;">
 <img src="hall_fama.jpg" style="height:300px;">
-<p style="font-size:0.8em;">Essas somos nós, no [Hall da Fama da Intrínseca](https://www.intrinseca.com.br/a-mandibula-de-caim/quem-ja-descobriu/).</p>
+<p style="font-size:0.8em;">Essas somos nós, no <a href="https://www.intrinseca.com.br/a-mandibula-de-caim/quem-ja-descobriu/" target="_blank">Hall da Fama da Intrínseca</a>.</p>
 </div>  
   
-E aí, depois de resolvermos, se abateu sobre nós uma sensação de vazio, hahah! Inclusive, caso você tenha interesse, [nesse vídeo](https://youtu.be/ItFwfKl3JHI?si=YgtEk1xzbEHzzn4p) nós conversamos sobre como foi a experiência de solucionar "A mandíbula de Caim" e compartilhamos algumas dicas (aquelas que poderiam ser compartilhadas sem quebrar o contrato de confidencialidade que assinamos, claro, porque ainda não sou milionária).  
+E aí, depois de resolvermos, se abateu sobre nós uma sensação de vazio, hahah! Inclusive, caso você tenha interesse, <a href="https://youtu.be/ItFwfKl3JHI?si=YgtEk1xzbEHzzn4p" target="_blank">nesse vídeo</a> nós conversamos sobre como foi a experiência de solucionar "A mandíbula de Caim" e compartilhamos algumas dicas (aquelas que poderiam ser compartilhadas sem quebrar o contrato de confidencialidade que assinamos, claro, porque ainda não sou milionária).  
   
 Uma vez que a sensação que ficou foi "cadê o próximo livro quebra-cabeça para resolvermos?", Débora decidiu escrever um e me dar de presente de aniversário! E sério, o livro está demais! Ao longo das 60 páginas embaralhadas há seis assassinatos e seis narradores diferentes. Ao ordenar, o leitor descobre quem são as vítimas e os assassinos. Na minha opinião, é um livro que tem algumas vantagens em relação a "A mandíbula de Caim": 1) a história é mais bem amarrada, com personagens mais esféricos; 2) é um livro que se passa no Brasil e traz referências à nossa cultura; 3) é um livro um pouco mais fácil de resolver que "A mandíbula de Caim" (que tem uma taxa de desistência altíssima).  
   
@@ -402,7 +402,7 @@ Débora me contou, há alguns anos, que estava escrevendo um livro e me pediu pa
   
 "A oitava geração" é um livro Young Adult -- um tipo de livro que eu amo, mas acho a maior parte dos publicados sofríveis. No livro, acompanhamos a jornada de Nora Fontenelle, uma adolescente de 18 anos com uma vida "normal", ainda que ela viva em uma nave espacial. A história se passa em um futuro no qual a Terra se tornou inabitável. A solução encontrada foi construir uma nave -- batizada de Arca -- que permitisse que os humanos viajassem para um outro planeta que ofereceria condições de sobrevivência à espécie. Mas essa viagem durará cerca de 1000 anos. Nora faz parte da oitava geração que ocupa essa Arca.  
   
-Eu sei que você talvez não confie na minha opinião, mas, para mim, esse é um livro Young Adult com tudo que um bom livro Young Adult deve ter: boa escrita, uma bela aventura e alguns ótimos romances (que não roubam a cena da trama principal). Se tiver interesse, o livro está à venda na [Amazon](https://www.amazon.com.br/Oitava-Gera%C3%A7%C3%A3o-D%C3%A9bora-Fiel-ebook/dp/B0DRTMZB94).  
+Eu sei que você talvez não confie na minha opinião, mas, para mim, esse é um livro Young Adult com tudo que um bom livro Young Adult deve ter: boa escrita, uma bela aventura e alguns ótimos romances (que não roubam a cena da trama principal). Se tiver interesse, o livro está à venda na <a href="https://www.amazon.com.br/Oitava-Gera%C3%A7%C3%A3o-D%C3%A9bora-Fiel-ebook/dp/B0DRTMZB94" target="_blank">Amazon</a>.  
   
   
 </details>  

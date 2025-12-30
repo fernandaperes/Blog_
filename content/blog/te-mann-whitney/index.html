@@ -1,0 +1,278 @@
+---
+title: "Tamanhos de efeito para o teste de Mann-Whitney"
+author: Fernanda Fiel Peres
+date: '2025-12-28'
+slug: [te-mann-whitney]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Sabia que há mais de um tamanho de efeito sugerido para o teste não-paramétrico de Mann-Whitney? Neste post te explico os três tamanhos de efeito sugeridos (r, VDA e correlação rank-biserial), como interpretá-los e calculá-los.'
+output:
+  blogdown::html_page:
+    toc: false
+bibliography: "references.bib"
+csl: "/Users/fernandafperes/Documents/Consultorias Científicas/Base para relatórios/ABNT.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+<link href="{{< blogdown/postref >}}index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/tabwid/tabwid.js"></script>
+
+
+<p>Em um <a href="https://fernandafperes.com.br/blog/tamanho-de-efeito/">post anterior</a> eu te expliquei o que é tamanho de efeito e o porquê você deveria calculá-lo nas suas análises. Nesse post, vamos discutir os tamanhos de efeito adequados a um teste <strong>não-paramétrico</strong> que compara as distribuições de dois grupos independentes: o teste de <strong>Mann-Whitney</strong>.</p>
+<p>Se você já se aventurou a pesquisar sobre tamanhos de efeito para testes não-paramétricos, deve ter percebido que a literatura sobre esse tema é bem mais escassa e dispersa que a de tamanhos de efeito para testes paramétricos (como testes-t, ANOVAs). Isso me motivou a publicar recentemente um artigo de revisão sobre esse tema <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>. Caso o assunto seja do seu interesse, recomendo a leitura! Você pode baixá-lo gratuitamente <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12701665/pdf/bm-36-1-010101.pdf">neste link</a> :)</p>
+<p>Este post está dividido nos seguintes tópicos:</p>
+<ul>
+<li><a href="#o-que-%C3%A9-o-teste-de-mann-whitney">O que é o teste de Mann-Whitney</a><br />
+</li>
+<li><a href="#tamanho-de-efeito-r">Tamanho de efeito r</a><br />
+
+<ul>
+<li><a href="#calculando-o-valor-de-r">Calculando o valor de r</a><br />
+</li>
+<li><a href="#como-interpretar-o-valor-de-r?">Como interpretar o valor de r?</a><br />
+</li>
+</ul></li>
+<li><a href="#tamanho-de-efeito-vda-(linguagem-comum)">Tamanho de efeito VDA (Linguagem comum)</a><br />
+
+<ul>
+<li><a href="#calculando-o-valor-de-vda">Calculando o valor de VDA</a><br />
+</li>
+<li><a href="#como-interpretar-o-valor-de-vda?">Como interpretar o valor de VDA?</a><br />
+</li>
+</ul></li>
+<li><a href="#tamanho-de-efeito-correla%C3%A7%C3%A3o-*rank-biserial*">Tamanho de efeito correlação <em>rank-biserial</em></a><br />
+
+<ul>
+<li><a href="#calculando-o-valor-de-rg-(=-%CE%B4)">Calculando o valor de rg (= δ)</a><br />
+</li>
+<li><a href="#como-interpretar-o-valor-de-rg-(=-%CE%B4)?">Como interpretar o valor de rg (= δ)?</a><br />
+</li>
+</ul></li>
+<li><a href="#como-citar-esse-post,-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a><br />
+</li>
+<li><a href="#refer%C3%AAncias-">Referências</a></li>
+</ul>
+<div id="o-que-é-o-teste-de-mann-whitney" class="section level3">
+<h3>O que é o teste de Mann-Whitney</h3>
+<p>O teste de Mann-Whitney – também conhecido como teste da soma dos postos de Wilcoxon (em inglês, <em>Wilcoxon rank-sum test</em>), ou ainda teste Wilcoxon-Mann-Whitney – compara as distribuições de <strong>dois grupos independentes</strong>. Portanto, usamos o teste de Mann-Whitney quando temos uma variável independente com duas categorias. Já a variável dependente pode ser de <strong>natureza numérica ou ordinal</strong> <span class="citation">(<a href="#ref-king2018">King; Rosopa; Minium, 2018</a>)</span>.</p>
+<p>É comum vermos o teste de Mann-Whitney sendo descrito como um teste que compara as medianas de dois grupos independentes. No entanto, essa interpretação é <strong>incorreta</strong>. O teste de Mann-Whitney <strong>compara as distribuições</strong> dos dois grupos em análise, de forma que é possível observar diferenças estatisticamente significativas mesmo quando os grupos apresentam medianas idênticas. O teste de Mann-Whitney pode ser interpretado como um teste de comparação de medianas apenas quando os dois grupos em comparação apresentam distribuições com formato e espalhamento muito semelhantes. Para uma discussão mais aprofundada sobre as hipóteses do teste de Mann-Whitney, recomendo a leitura de <span class="citation">Hart (<a href="#ref-hart2001mann">2001</a>)</span>.</p>
+<blockquote>
+<p>Caso tenha interesse em entender com mais profundidade o cálculo por trás do teste de Mann-Whitney, recomendo <a href="https://youtu.be/3GZ5Y7Xixyo?si=II5NXLKH1j4yHuUB">esse vídeo</a> do meu canal, que mostra o passo-a-passo do cálculo manual.</p>
+</blockquote>
+</div>
+<div id="tamanho-de-efeito-r" class="section level3">
+<h3>Tamanho de efeito r</h3>
+<p>O tamanho de efeito mais reportado após a realização de um teste de Mann-Whitney é o tamanho de efeito <strong>r</strong>. Para calcular esse tamanho de efeito precisamos apenas do valor de z e do N. O z corresponde à estatística padronizada do teste de Mann-Whitney, liberada pela maior parte dos softwares de análise estatística, como o SPSS. Já o N é o tamanho total da amostra, considerando os dois grupos <span class="citation">(<a href="#ref-fritz2012effect">Fritz; Morris; Richler, 2012</a>)</span>.</p>
+<p><span class="math display">\[
+r = \frac{z}{\sqrt{N}}
+\]</span></p>
+<p>Caso o valor de z não seja liberado pelo software estatístico que você está utilizando, é possível calculá-lo manualmente. No meu artigo você encontra a fórmula e as referências para esse cálculo <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>.</p>
+<div id="calculando-o-valor-de-r" class="section level4">
+<h4>Calculando o valor de r</h4>
+<div id="no-software-r" class="section level5">
+<h5>No software R</h5>
+<p>Caso você use o software R <span class="citation">(<a href="#ref-R-base">R Core Team, 2025</a>)</span>, minha recomendação é calcular o valor de r com a função <code>wilcoxonR()</code> do pacote <code>rcompanion</code> <span class="citation">(<a href="#ref-rcompanion">Mangiafico, 2025</a>)</span>. Para tudo fazer mais sentido, vamos partir de uma base de exemplo, com dados de glicemia de dois grupos, um formado por pessoas que praticam exercícios físicos regularmente e outro por sedentários:</p>
+<pre class="r"><code># Criação da base de dados
+
+set.seed(4321)
+dados &lt;- as.data.frame(list(Grupo = c(rep(&quot;Exercício&quot;, 29), rep(&quot;Sedentários&quot;, 31)),
+                            Glicemia = c(round(rnorm(29, mean = 95, sd = 10)),
+                                         round(rnorm(31, mean = 120, sd = 15)))))</code></pre>
+<div class="tabwid"><style>.cl-049bad78{}.cl-04987e64{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-04987e78{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0499c774{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0499c77e{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0499c77f{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0499c788{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0499d462{width:1.508in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d463{width:1.491in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d46c{width:1.661in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d46d{width:1.508in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d46e{width:1.491in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d476{width:1.661in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d477{width:1.508in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d478{width:1.491in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d479{width:1.661in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d47a{width:1.508in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d480{width:1.491in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d481{width:1.661in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d482{width:1.508in;background-color:transparent;vertical-align: top;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d483{width:1.491in;background-color:transparent;vertical-align: top;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-0499d48a{width:1.661in;background-color:transparent;vertical-align: top;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-049bad78'><thead><tr style="overflow-wrap:break-word;"><th class="cl-0499d462"><p class="cl-0499c774"><span class="cl-04987e64">Variável</span></p></th><th class="cl-0499d463"><p class="cl-0499c77e"><span class="cl-04987e64">Exercício</span><br><span class="cl-04987e64">(n</span><span class="cl-04987e64"> </span><span class="cl-04987e64">=</span><span class="cl-04987e64"> </span><span class="cl-04987e64">29)</span></p></th><th class="cl-0499d46c"><p class="cl-0499c77e"><span class="cl-04987e64">Sedentários</span><br><span class="cl-04987e64">(n</span><span class="cl-04987e64"> </span><span class="cl-04987e64">=</span><span class="cl-04987e64"> </span><span class="cl-04987e64">31)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-0499d46d"><p class="cl-0499c77f"><span class="cl-04987e64">Glicemia</span></p></td><td class="cl-0499d46e"><p class="cl-0499c788"><span class="cl-04987e78"></span></p></td><td class="cl-0499d476"><p class="cl-0499c788"><span class="cl-04987e78"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0499d477"><p class="cl-0499c77f"><span class="cl-04987e78">Média</span><span class="cl-04987e78"> </span><span class="cl-04987e78">(DP)</span></p></td><td class="cl-0499d478"><p class="cl-0499c788"><span class="cl-04987e78">95,0</span><span class="cl-04987e78"> </span><span class="cl-04987e78">(8,2)</span></p></td><td class="cl-0499d479"><p class="cl-0499c788"><span class="cl-04987e78">126,1</span><span class="cl-04987e78"> </span><span class="cl-04987e78">(12,3)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0499d47a"><p class="cl-0499c77f"><span class="cl-04987e78">Mediana</span><span class="cl-04987e78"> </span><span class="cl-04987e78">(Q1;</span><span class="cl-04987e78"> </span><span class="cl-04987e78">Q3)</span></p></td><td class="cl-0499d480"><p class="cl-0499c788"><span class="cl-04987e78">95,0</span><span class="cl-04987e78"> </span><span class="cl-04987e78">(91,0;</span><span class="cl-04987e78"> </span><span class="cl-04987e78">100,0)</span></p></td><td class="cl-0499d481"><p class="cl-0499c788"><span class="cl-04987e78">124,0</span><span class="cl-04987e78"> </span><span class="cl-04987e78">(120,5;</span><span class="cl-04987e78"> </span><span class="cl-04987e78">135,5)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0499d482"><p class="cl-0499c77f"><span class="cl-04987e78">Mín</span><span class="cl-04987e78"> </span><span class="cl-04987e78">-</span><span class="cl-04987e78"> </span><span class="cl-04987e78">Máx</span></p></td><td class="cl-0499d483"><p class="cl-0499c788"><span class="cl-04987e78">79</span><span class="cl-04987e78"> </span><span class="cl-04987e78">-</span><span class="cl-04987e78"> </span><span class="cl-04987e78">111</span></p></td><td class="cl-0499d48a"><p class="cl-0499c788"><span class="cl-04987e78">99</span><span class="cl-04987e78"> </span><span class="cl-04987e78">-</span><span class="cl-04987e78"> </span><span class="cl-04987e78">151</span></p></td></tr></tbody></table></div>
+<p>Perceba que os participantes do grupo sedentário tendem a apresentar <strong>valores mais altos</strong> de glicemia do que aqueles que praticam exercícios regularmente.</p>
+<p>Como calcular o tamanho de efeito r para essa base, em R?</p>
+<pre class="r"><code># Cálculo do tamanho de efeito r
+
+library(rcompanion)
+
+rcompanion::wilcoxonR(x = dados$Glicemia, g = dados$Grupo)</code></pre>
+<pre><code>##      r 
+## -0.825</code></pre>
+<p>Veja que isso resulta em um tamanho de efeito r de -0,825. No próximo tópico vamos discutir como interpretá-lo.</p>
+</div>
+<div id="com-uma-planilha-de-excel" class="section level5">
+<h5>Com uma planilha de Excel</h5>
+<p>Caso você não use o software R, você pode calcular o tamanho de efeito r em uma planilha de Excel que eu criei. <a href="https://youtu.be/-zm8xhTN-IU?si=bH9Bq-QSq0gXzLsJ">Neste vídeo</a> eu te explico como utilizar a planilha para esse cálculo e, na descrição, você encontra o link para baixá-la. Caso não queira citar o vídeo do YouTube no seu trabalho, você pode <strong>citar</strong> o meu artigo de 2025, no qual eu disponibilizo uma planilha equivalente <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>.</p>
+<blockquote>
+<p>Só um ponto de atenção: caso você use o valor de z calculado pela planilha, há uma diferença entre a planilha do YouTube e a fornecida como material suplementar do artigo. A do YouTube inclui a correção de continuidade (em inglês, <em>continuity correction</em>) e a do artigo usa a primeira fórmula proposta, sem essa correção.<br />
+Mas, se você estiver usando o <strong>z calculado pelo software</strong>, os resultados serão <strong>idênticos</strong>.</p>
+</blockquote>
+</div>
+</div>
+<div id="como-interpretar-o-valor-de-r" class="section level4">
+<h4>Como interpretar o valor de r?</h4>
+<p>O valor de r varia de -1 a 1, sendo que o valor zero indica ausência de diferenças entre os dois grupos. Há mais de uma sugestão de classificação para esse valor de r, mas a mais comumente utilizada é <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>; <a href="#ref-fritz2012effect">Fritz; Morris; Richler, 2012</a>; <a href="#ref-peres2025effect">Peres, 2025</a>)</span>:</p>
+<ul>
+<li>r ≥ 0,1 = efeito pequeno</li>
+<li>r ≥ 0,3 = efeito médio</li>
+<li>r ≥ 0,5 = efeito grande</li>
+</ul>
+<p>Ah, essas classificações se referem ao <strong>valor absoluto</strong>, ignorando o sinal. Portanto, no nosso exemplo, o r = -0,825 seria classificado como um <strong>efeito grande</strong>.</p>
+<p>No entanto, vale destacar que essa ou outras classificações são, de fato, apenas <strong>sugestões</strong>. É possível que um tamanho de efeito classificado como grande corresponda a uma alteração de magnitude clinicamente irrelevante. Da mesma forma, um tamanho de efeito classificado como irrisório (inferior a pequeno) pode representar uma alteração de magnitude significativa na prática. Portanto, recomenda-se que a interpretação do tamanho de efeito leve em consideração o contexto <span class="citation">(<a href="#ref-schafer2019meaningfulness">Schäfer; Schwarz, 2019</a>; <a href="#ref-thompson2007effect">Thompson, 2007</a>)</span>. O próprio Cohen enfatiza bastante isso no seu livro <span class="citation">(<a href="#ref-cohen1988">Cohen, 1988</a>)</span>.</p>
+</div>
+</div>
+<div id="tamanho-de-efeito-vda-linguagem-comum" class="section level3">
+<h3>Tamanho de efeito VDA (Linguagem comum)</h3>
+<p>Existe um tipo de tamanho de efeito chamado de “linguagem comum”, abreviado como CLES, do inglês <em>Common Language Effect Size</em>. A proposta desse tipo de tamanho de efeito é tornar a informação da magnitude do efeito mais intuitiva, facilitando a sua interpretação. Esses tamanhos de efeito correspondem a <strong>probabilidades de superioridade</strong>, termo também frequentemente utilizado para descrevê-los.</p>
+<p>Para o teste de Mann-Whitney o tamanho de efeito linguagem comum recebe o nome de “A de Vargha e Delaney” (abreviado como <strong>VDA</strong>, do inglês <em>Vargha and Delaney’s A</em>), uma vez que foi proposto por <span class="citation">Vargha; Delaney (<a href="#ref-vargha2000">2000</a>)</span>.</p>
+<p>O VDA é calculado a partir da fórmula abaixo, para a qual:</p>
+<ul>
+<li>U = estatística não-padronizada do teste de Mann-Whitney</li>
+<li>n<sub>1</sub> = tamanho do grupo 1</li>
+<li>n<sub>2</sub> = tamanho do grupo 2</li>
+</ul>
+<p><span class="math display">\[
+VDA = \dfrac{U}{n_1 \times n_2}
+\]</span></p>
+<div id="calculando-o-valor-de-vda" class="section level4">
+<h4>Calculando o valor de VDA</h4>
+<p>O cálculo do VDA é bem simples: basta aplicar a fórmula acima. Mas abaixo te explico duas formas de automatizar esse cálculo: 1) calculando o VDA no software R e 2) calculando o VDA com uma planilha de Excel.</p>
+<div id="no-software-r-1" class="section level5">
+<h5>No software R</h5>
+<p>Caso você use o software R <span class="citation">(<a href="#ref-R-base">R Core Team, 2025</a>)</span>, você pode calcular o valor de VDA com a função <code>vda()</code> do pacote <code>rcompanion</code> <span class="citation">(<a href="#ref-rcompanion">Mangiafico, 2025</a>)</span>. Vamos calculá-lo para a base de dados que criamos acima:</p>
+<pre class="r"><code># Cálculo do tamanho de efeito VDA
+
+library(rcompanion)
+
+rcompanion::vda(formula = Glicemia ~ Grupo, data = dados)</code></pre>
+<pre><code>##    VDA 
+## 0.0195</code></pre>
+<p>Veja que isso resulta em um VDA de 0,038. No próximo tópico vamos discutir como interpretá-lo.</p>
+</div>
+<div id="com-uma-planilha-de-excel-1" class="section level5">
+<h5>Com uma planilha de Excel</h5>
+<p>Caso você não use o software R, você pode calcular o VDA na planilha em Excel que eu disponibilizo <a href="https://youtu.be/-zm8xhTN-IU?si=bH9Bq-QSq0gXzLsJ">neste vídeo</a>. Lembrando que ela é equivalente à planilha disponibilizada no meu artigo <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>.</p>
+</div>
+</div>
+<div id="como-interpretar-o-valor-de-vda" class="section level4">
+<h4>Como interpretar o valor de VDA?</h4>
+<p>O valor de VDA varia de 0 a 1, sendo que o valor 0,5 indica ausência de diferenças entre os dois grupos. Os autores sugerem que esse valor seja classificado da seguinte forma <span class="citation">(<a href="#ref-vargha2000">Vargha; Delaney, 2000</a>)</span>:</p>
+<ul>
+<li>VDA ≥ 0,56 = efeito pequeno</li>
+<li>VDA ≥ 0,64 = efeito médio</li>
+<li>VDA ≥ 0,71 = efeito grande</li>
+</ul>
+<blockquote>
+<p>Mas aqui tem um detalhe importante: caso o VDA calculado seja <strong>inferior a 0,5</strong>, a interpretação deve ser feita em cima do valor complementar – ou seja, devemos <strong>subtrair o VDA de 1</strong>.</p>
+</blockquote>
+<p>No nosso exemplo, o VDA foi igual a 0,038. Como esse valor é inferior a 0,5, para interpretá-lo e classificá-lo, vamos subtraí-lo de 1:</p>
+<center>
+1 - VDA<br />
+1 - 0,038<br />
+<strong>0,962</strong>
+</center>
+<p>Pronto, agora podemos classificar o VDA. Como o valor é superior a 0,71, temos um <strong>efeito grande</strong>.</p>
+<p>Com relação à interpretação, o VDA corresponde a uma <strong>probabilidade de superioridade</strong>. No nosso exemplo, sabemos que os valores de glicemia do grupo “Sedentários” são mais altos que os valores do grupo “Exercício”. Chegamos a um valor de 0,962. Para pensarmos em porcentagem, basta multiplicar esse valor por 100:</p>
+<center>
+0,962 x 100 = <strong>96,2%</strong>
+</center>
+<p>Isso significa que, ao sortearmos uma pessoa do grupo sedentário, há <strong>92,6% de probabilidade de que sua glicemia seja maior</strong> do que a de uma pessoa sorteada no grupo exercício <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>; <a href="#ref-vargha2000">Vargha; Delaney, 2000</a>)</span>.</p>
+</div>
+</div>
+<div id="tamanho-de-efeito-correlação-rank-biserial" class="section level3">
+<h3>Tamanho de efeito correlação <em>rank-biserial</em></h3>
+<p>Uma terceira possibilidade de tamanho de efeito é a chamada correlação <em>rank-biserial</em>, que pode ser traduzida livremente como <strong>correlação posto-bisserial</strong>. Essa correlação é <strong>equivalente</strong> ao tamanho de efeito chamado de <strong>delta de Cliff</strong> (em inglês, <em>Cliff’s delta</em>). A correlação <em>rank-biserial</em> tende a ser abreviada como rg, enquanto o delta de Cliff é abreviado pela letra grega delta minúscula, δ <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>.</p>
+<p>Esse tamanho de efeito corresponde a uma transformação linear do tamanho de efeito VDA:</p>
+<p><span class="math display">\[
+rg = \delta = 2 \times VDA - 1
+\]</span></p>
+<p>Ou, caso você prefira a fórmula que não inclui o VDA, ela passa a ser:</p>
+<p><span class="math display">\[
+rg = \delta = \dfrac{2 \times U}{n_1 \times n_2}-1
+\]</span></p>
+<p>Sendo:<br />
+* U = estatística não-padronizada do teste de Mann-Whitney
+* n<sub>1</sub> = tamanho do grupo 1
+* n<sub>2</sub> = tamanho do grupo 2</p>
+<div id="calculando-o-valor-de-rg-δ" class="section level4">
+<h4>Calculando o valor de rg (= δ)</h4>
+<p>De novo, para cálcular esse tamanho de efeito basta aplicar a fórmula acima. Mas há duas formas de automatizar esse cálculo: 1) calculando o rg (= δ) no software R e 2) calculando o rg (= δ) com uma planilha de Excel.</p>
+<div id="no-software-r-2" class="section level5">
+<h5>No software R</h5>
+<p>Caso você use o software R <span class="citation">(<a href="#ref-R-base">R Core Team, 2025</a>)</span>, você pode calcular o valor de rg com a função <code>wilcoxonRG()</code> do pacote <code>rcompanion</code> <span class="citation">(<a href="#ref-rcompanion">Mangiafico, 2025</a>)</span> ou com a função <code>rank_biserial()</code> do pacote <code>effectsize</code> <span class="citation">(<a href="#ref-effectsize">Ben-Shachar; Lüdecke; Makowski, 2020</a>)</span>. Vamos calculá-lo para a base de dados que criamos acima:</p>
+<pre class="r"><code># Cálculo do tamanho de efeito rg pelo pacote rcompanion
+
+library(rcompanion)
+
+rcompanion::wilcoxonRG(x = dados$Glicemia, g = dados$Grupo)</code></pre>
+<pre><code>##     rg 
+## -0.961</code></pre>
+<pre class="r"><code># Cálculo do tamanho de efeito rg pelo pacote effectsize
+
+library(effectsize)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;effectsize&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:rcompanion&#39;:
+## 
+##     phi</code></pre>
+<pre class="r"><code>effectsize::rank_biserial(x = dados$Glicemia, y = dados$Grupo)</code></pre>
+<pre><code>## r (rank biserial) |         95% CI
+## ----------------------------------
+## -0.96             | [-0.98, -0.93]</code></pre>
+<p>Veja que isso resulta em um rg de -0,961. No próximo tópico vamos discutir como interpretá-lo.</p>
+</div>
+<div id="com-uma-planilha-de-excel-2" class="section level5">
+<h5>Com uma planilha de Excel</h5>
+<p>Caso você não use o software R, você pode calcular o rg na planilha em Excel que eu disponibilizo <a href="https://youtu.be/-zm8xhTN-IU?si=bH9Bq-QSq0gXzLsJ">neste vídeo</a>. Lembrando que ela é equivalente à planilha disponibilizada no meu artigo <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>.</p>
+</div>
+</div>
+<div id="como-interpretar-o-valor-de-rg-δ" class="section level4">
+<h4>Como interpretar o valor de rg (= δ)?</h4>
+<p>O tamanho de efeito rg (= δ) é uma transformação linear do VDA: enquanto o VDA varia de 0 a 1, com 0,5 indicando ausência de efeito, o rg varia de -1 a 1, com 0 indicando ausência de efeito. De acordo com <span class="citation">Vargha; Delaney (<a href="#ref-vargha2000">2000</a>)</span> esse tamanho de efeito pode ser classificado, <strong>em valor absoluto</strong>, como:</p>
+<ul>
+<li>rg ≥ 0,11 = efeito pequeno</li>
+<li>rg ≥ 0,28 = efeito médio</li>
+<li>rg ≥ 0,43 = efeito grande</li>
+</ul>
+<p>No nosso exemplo, o rg foi igual a -0,961. Para interpretá-lo, vamos ignorar o sinal. Veja que esse é um tamanho de efeito classificado como <strong>grande</strong>.</p>
+</div>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>Tamanhos de efeito para o teste de Mann-Whitney</strong>. Blog Fernanda Peres, São Paulo, 28 dez. 2025. Disponível em: <a href="https://fernandafperes.com.br/blog/te-mann-whitney/" class="uri">https://fernandafperes.com.br/blog/te-mann-whitney/</a>.</p>
+</blockquote>
+<p>Lembrando que todo o conteúdo que está neste post está incluído também no meu artigo de revisão <span class="citation">(<a href="#ref-peres2025effect">Peres, 2025</a>)</span>.</p>
+<p><br /></p>
+<hr />
+</div>
+<div id="referências" class="section level3 unnumbered">
+<h3>Referências</h3>
+<div id="refs" class="references csl-bib-body" entry-spacing="1">
+<div id="ref-effectsize" class="csl-entry">
+BEN-SHACHAR, M. S.; LÜDECKE, D.; MAKOWSKI, D. <span>e</span>ffectsize: Estimation of Effect Size Indices and Standardized Parameters. <strong>Journal of Open Source Software</strong>, [<em>s. l.</em>], v. 5, n. 56, p. 2815, 2020. Disponível em: <a href="https://doi.org/10.21105/joss.02815">https://doi.org/10.21105/joss.02815. </a>
+</div>
+<div id="ref-cohen1988" class="csl-entry">
+COHEN, J. <strong>Statistical power analysis for the behavioral sciences</strong>. Hillsdale, NJ: Lawrence Erlbaum Associates, 1988.
+</div>
+<div id="ref-fritz2012effect" class="csl-entry">
+FRITZ, C. O.; MORRIS, P. E.; RICHLER, J. J. Effect size estimates: current use, calculations, and interpretation. <strong>Journal of experimental psychology: General</strong>, [<em>s. l.</em>], v. 141, n. 1, p. 2, 2012.
+</div>
+<div id="ref-hart2001mann" class="csl-entry">
+HART, A. Mann-Whitney test is not just a test of medians: differences in spread can be important. <strong>Bmj</strong>, [<em>s. l.</em>], v. 323, n. 7309, p. 391–393, 2001.
+</div>
+<div id="ref-king2018" class="csl-entry">
+KING, B. M.; ROSOPA, P. J.; MINIUM, E. W. <strong>Statistical reasoning in the behavioral sciences</strong>. [<em>S. l.</em>]: John Wiley &amp; Sons, 2018.
+</div>
+<div id="ref-rcompanion" class="csl-entry">
+MANGIAFICO, S. S. <strong><span>rcompanion</span>: Functions to Support Extension Education Program Evaluation</strong>. New Brunswick, New Jersey: Rutgers Cooperative Extension, 2025. Disponível em: <a href="https://CRAN.R-project.org/package=rcompanion/">https://CRAN.R-project.org/package=rcompanion/. </a>
+</div>
+<div id="ref-peres2025effect" class="csl-entry">
+PERES, F. F. Effect sizes for nonparametric tests. <strong>Biochemia Medica</strong>, [<em>s. l.</em>], v. 36, n. 1, p. 010101, 2025.
+</div>
+<div id="ref-R-base" class="csl-entry">
+R CORE TEAM. <strong>R: A Language and Environment for Statistical Computing</strong>. Vienna, Austria: R Foundation for Statistical Computing, 2025. Disponível em: <a href="https://www.R-project.org/">https://www.R-project.org/. </a>
+</div>
+<div id="ref-schafer2019meaningfulness" class="csl-entry">
+SCHÄFER, T.; SCHWARZ, M. A. The meaningfulness of effect sizes in psychological research: Differences between sub-disciplines and the impact of potential biases. <strong>Frontiers in psychology</strong>, [<em>s. l.</em>], v. 10, p. 813, 2019.
+</div>
+<div id="ref-thompson2007effect" class="csl-entry">
+THOMPSON, B. Effect sizes, confidence intervals, and confidence intervals for effect sizes. <strong>Psychology in the Schools</strong>, [<em>s. l.</em>], v. 44, n. 5, p. 423–432, 2007.
+</div>
+<div id="ref-vargha2000" class="csl-entry">
+VARGHA, A.; DELANEY, H. D. A critique and improvement of the CL common language effect size statistics of McGraw and Wong. <strong>Journal of Educational and Behavioral Statistics</strong>, [<em>s. l.</em>], v. 25, n. 2, p. 101–132, 2000.
+</div>
+</div>
+</div>

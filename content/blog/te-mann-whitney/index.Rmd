@@ -19,7 +19,7 @@ editor_options:
 ```{r, include=FALSE}
 # knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
 knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
-                      fig.align = "center")
+                      fig.align = "center", warning = FALSE, message = FALSE)
 library(tidyverse)
 library(ggpubr)
 source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
@@ -185,7 +185,7 @@ No nosso exemplo, o VDA foi igual a 0,038. Como esse valor é inferior a 0,5, pa
 1 - 0,038  
 **0,962**  
 </center>
-  
+</br>
   
 Pronto, agora podemos classificar o VDA. Como o valor é superior a 0,71, temos um **efeito grande**.  
   
@@ -194,6 +194,7 @@ Com relação à interpretação, o VDA corresponde a uma **probabilidade de sup
 <center>
 0,962 x 100 = **96,2%**  
 </center>
+</br>
   
 Isso significa que, ao sortearmos uma pessoa do grupo sedentário, há **92,6% de probabilidade de que sua glicemia seja maior** do que a de uma pessoa sorteada no grupo exercício [@vargha2000; @peres2025effect].  
   
@@ -216,7 +217,8 @@ rg = \delta = \dfrac{2 \times U}{n_1 \times n_2}-1
 $$
   
   
-Sendo:  
+Sendo:
+
 * U = estatística não-padronizada do teste de Mann-Whitney
 * n~1~ = tamanho do grupo 1
 * n~2~ = tamanho do grupo 2  

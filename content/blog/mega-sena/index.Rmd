@@ -1,0 +1,208 @@
+---
+title: "Qual a probabilidade de ganhar na Mega-Sena? E como aumentar essa probabilidade?"
+author: Fernanda Fiel Peres
+date: '2026-01-02'
+slug: [mega-sena]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Já se perguntou qual é a chance real de ganhar na Mega-Sena? Neste post, eu explico de onde vem esse número, como a probabilidade muda quando fazemos mais apostas ou apostamos em mais números, e por que aumentar a chance de ganhar não significa, necessariamente, sair no lucro.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+  
+</br>
+</br>
+  
+  
+```{r, include=FALSE}
+# knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
+                      fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(ggpubr)
+source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
+fstatix::paleta_f()
+```
+   
+   
+Uma informação sobre mim que você, que está lendo este post, provavelmente não sabe é: eu jogo todos os anos na **Mega da Virada**. E passo bons meses que antecedem o sorteio sonhando com tudo o que eu faria com o prêmio. Ah, e já faz alguns anos que eu **uso o R para sortear os números**, quando estou sem inspiração.  
+  
+</br>
+  
+>Caso você tenha curiosidade, usar o R para sortear 6 números aleatórios em 60 é bem simples. Basta rodar o código abaixo:  
+>  
+>`sample(1:60, size = 6, replace = F)`
+   
+</br>
+  
+  
+Este post foi inspirado em alguns **erros matemáticos e estatísticos** que andei lendo por aí nos últimos dias sobre a Mega da Virada. Aqui eu explico qual é a probabilidade de ganhar na Mega-Sena, o que realmente significa **"aumentar"** essa probabilidade e se faz algum sentido tentar **prever** os resultados de sorteios futuros. O texto está dividido nos seguintes tópicos:  
+  
+```{r toc, echo=FALSE}
+render_toc("index.Rmd", toc_header_name = NULL, toc_depth = 2, base_level = 3)
+```
+  
+  
+### Qual a probabilidade de uma pessoa ganhar na Mega-Sena?
+  
+Para conseguirmos pensar na probabilidade de uma pessoa ganhar na Mega-Sena, o primeiro passo é calcular quantos sorteios diferentes podem existir. Em cada aposta, escolhemos **6 números em 60**, e a **ordem** dos números sorteados **não importa** (ou seja, 1-2-3-4-5-6 é a mesma coisa que 6-5-4-3-2-1).  
+  
+A gente aprende lá no ensino médio que, quando a ordem não importa, estamos lidando com uma **combinação** -- caso a ordem importasse, teríamos um arranjo.  
+  
+Para calcular a quantidade de combinações diferentes de 6 números a partir de 60, podemos aplicar a fórmula da combinação (sim, a mesma que você aprendeu na escola), detalhada abaixo:  
+  
+$$
+C_{n,k} = \binom{n}{k} = \frac{n!}{k!\,(n-k)!}
+$$
+</br>
+  
+$$
+C_{60,6} = \binom{60}{6} = \frac{60!}{6!\,(60-6)!}
+$$
+ 
+$$
+C_{60,6} = \binom{60}{6} = \frac{60!}{6!\,54!}
+$$
+ 
+  
+$$
+C_{60,6} = \binom{60}{6} = 50.063.860
+$$
+  
+>Caso queira calcular essa combinação em R, basta usar a função `choose`:  
+>  
+>`choose(60,6)`
+  
+  
+O cálculo nos diz que há 50.063.860 combinações possíveis de 6 números a partir dos 60. Ao fazer uma única aposta de 6 números você está escolhendo **uma** dessas mais de 50 milhões de combinações. Portanto, a sua probabilidade de ganhar é de **1 em 50.063.860** -- o que, em porcentagem, dá algo em torno de **0,000002%**:  
+  
+  
+$$
+P = \frac{1}{50.063.860} \times 100
+\approx 0{,}000002\%
+$$
+  
+  
+### Como aumentar a sua probabilidade de ganhar na Mega-Sena?
+  
+Caso você faça **mais apostas** (ou seja, jogue mais de uma combinação) ou faça apostas com **mais números**, a sua probabilidade de ganhar **aumenta** -- ainda que, infelizmente, siga sendo **bem baixa**.  
+  
+#### Opção 1: Fazendo mais jogos
+  
+Por exemplo, se você fizer **10 jogos** de 6 números, em vez de apenas 1, a probabilidade de ganhar será **multiplicada por 10**. Ela deixa de ser **0,000002%** e passa a ser **0,00002%** (repare que temos um zero a menos nesse segundo número).    
+  
+$$
+P = \frac{10}{50.063.860} \times 100
+\approx 0{,}00002\%
+$$
+  
+  
+#### Opção 2: Fazendo jogos com mais números
+  
+E caso você aposte mais números? Como isso aumenta a sua probabilidade de ganhar?  
+  
+Para ilustrar como essa probabilidade aumenta, vamos imaginar a maior aposta possível: um **jogo com 20 números**. Para pensar na probabilidade de ganhar nesse caso, precisamos descobrir quantas combinações de 6 números estão contidas dentro desses 20 números escolhidos. Novamente, vamos partir para a fórmula da combinação:  
+  
+$$
+C_{20,6} = \binom{20}{6} = \frac{20!}{6!\,(20-6)!} = \frac{20!}{6!\,14!} = 38.760
+$$
+Ou, pelo R:  
+  
+```{r}
+choose(20,6)
+```
+
+Ou seja, em um jogo de 20 números há 38.760 combinações diferentes de 6 números. Isso significa que, ao fazer um jogo com 20 números, a sua **probabilidade** de ganhar é **multiplicada por 38.760** em relação a uma aposta simples.  
+  
+$$
+P = \frac{38.760}{50.063.860} \times 100
+\approx 0{,}0774\%
+$$
+   
+Você pode estar pensando: "Uau! Então compensa jogar 20 números!".  
+  
+Na prática, não é bem assim. Em janeiro de 2026, um jogo simples de **6 números** custa **R\$ 7,00**, enquanto um jogo com **20 números** custa **R\$ 232.560,00**.  
+  
+Ou seja, embora a probabilidade aumente bastante, o custo da aposta também aumenta muito -- ainda que não exatamente na mesma proporção do número de combinações. Não sei você, mas eu não tenho mais de R\$ 230 mil sobrando, então sigo fazendo apostas mais modestas 😬
+  
+  
+### Eu tenho como garantir que vou ganhar na Mega-Sena?
+  
+A resposta curta é: **sim**.  
+Mas antes que você se anime, eu te adianto: a estratégia que eu vou contar **não compensa**.  
+  
+Para **garantir** que você vai ganhar na Mega-Sena você precisa jogar **todas** as 50.063.860 combinações. Fazendo jogos de 6 números, que custam R\$ 7,00, precisaríamos desembolsar:  
+  
+<center>
+R\$ 7,00 x 50.063.860 = R\$ 350.447.020,00  
+  
+</center>
+  
+Ou seja, você tiver mais de 350 milhões disponíveis para apostar, você consegue jogar todas as combinações possíveis e **garantir** que vencerá a sena. Fazendo jogos de 20 números, esse valor pode até ficar um pouco menor -- mas ainda estamos falando de algo na casa dos **300 milhões de reais**.  
+  
+E por que isso **não compensa**, mesmo que você tenha esse dinheiro sobrando?  
+<font size = '2'>*Aliás, se você que está lendo esse post tiver 350 milhões sobrando aí, que tal me agradecer pelo post com 1 milhãozinho?*  
+*Só pedir que eu passo a chave Pix!*</font>  
+
+A resposta é simples: porque, mesmo que você consiga **garantir** que vai ganhar, você não consegue garantir que vai ganhar **sozinho**. Ao dividir o prêmio com outros apostadores, o valor recebido provavelmente será **menor que o total investido**.  
+  
+Para isso fazer sentido, vamos usar a Mega da Virada de 2025 como exemplo. Essa edição teve a **maior arrecadação da história** e pagou um prêmio total de R\$ 1.091.357.287,00 (sim, mais de um **bilhão**). No entanto, como seis apostas acertaram a Sena, o prêmio foi **dividido** e cada uma levou para casa "apenas" R\$ 181.892.881,00. Veja: é um valor impressionante, mas ainda assim **insuficiente para cobrir o custo** de apostar todas as combinações possíveis.  
+  
+  
+### Qual a probabilidade de saírem os números 1-2-3-4-5-6?
+
+Espero que, a essa altura do texto, a resposta **"1 em 50.063.860"** já tenha vindo automaticamente à sua cabeça.  
+  
+A questão é que a combinação 1-2-3-4-5-6 é apenas **uma** entre as 50.063.860 combinações possíveis e, portanto, tem **exatamente a mesma probabilidade de acontecer que qualquer outra combinação**.  
+  
+Então, posso jogar essa combinação?  
+Pode, claro. Mas eu **não recomendo**.  
+  
+Essa é uma combinação bastante popular, o que significa que, caso ela saia em um sorteio, o prêmio será dividido entre **muitas pessoas**. Além de ser uma combinação mais "óbvia", ela também foi popularizada pelo filme brasileiro [*O Homem que Copiava*](https://pt.wikipedia.org/wiki/O_Homem_Que_Copiava) (2003).  
+  
+Outra combinação jogada com muita frequência é a da série [*Lost*](https://pt.wikipedia.org/wiki/Lost_(s%C3%A9rie_de_televis%C3%A3o)): 04-08-15-16-23-42. Recentemente, um sorteio incluiu **5 dos 6 números da série** e bateu o [recorde de vencedores da quina](https://istoedinheiro.com.br/mega-sena-5-dos-6-numeros-de-lost-sao-sorteados-e-quina-tem-quase-3-mil-acertadores), com **2.967 apostas premiadas**.  
+Detalhe importante: se você assistiu à série, sabe que ganhar usando esses números pode não ser exatamente um bom presságio.  
+  
+Todas as combinações têm a mesma probabilidade de serem sorteadas -- mas não a mesma probabilidade de serem jogadas. Por isso, pode valer a pena investir em combinações menos jogadas.  
+  
+  
+### Temos como prever quais números serão sorteados?
+  
+Como você já deve ter imaginado: **não temos**.  
+  
+Eu estava pesquisando bases de dados com todos os números já sorteados -- e encontrei uma oficial que pretendo explorar em um post futuro -- quando me deparei com um texto que usava um algoritmo de *machine learning* para tentar prever os resultados da Mega-Sena.  
+  
+Não conseguia, é claro. Mas o autor arrematava dizendo que "melhores algoritmos podem nos levar a essa solução no futuro". O que só reforçou uma percepção que eu tenho há anos: as pessoas precisam **aprender matemática e estatística** antes de aprender *machine learning* ou ciência de dados. Caso contrário, você vira -- como diz a [Adriana Silva](https://www.instagram.com/asn.rocks/) -- um simples "apertador de botões".  
+  
+A questão central é que os números sorteados são **aleatórios**. Literalmente.  
+  
+Caso você nunca tenha [assistido a um sorteio](https://www.youtube.com/live/klSM-11AUzM?si=S9ssLxWpI2Q6pj3J), ele funciona assim: 60 bolas são colocadas em um globo transparente com pás que as misturam, e então os números são sorteados. Exatamente como em um bingo. Aposto que você nunca pensou em criar um algoritmo de *machine learning* para prever o bingo da paróquia na festa junina, né?  
+  
+Justamente por serem números aleatórios, o sorteio é **verdadeiramente imprevisível**. E não importa o quão sofisticados venham a ser os algoritmos no futuro: eles continuarão **incapazes de prever** o resultado da Mega-Sena.  
+  
+E, sim, tem gente que acredita que os resultados não são aleatórios. Basta passar alguns minutos no chat da [transmissão ao vivo do sorteio](https://www.youtube.com/live/klSM-11AUzM?si=S9ssLxWpI2Q6pj3J) para ver surgir todo tipo de **teoria da conspiração**. Se você acredita que o sorteio é manipulado para beneficiar alguém em específico, aí realmente não há o que prever. E, nesse caso, também não faria muito sentido jogar.  
+  
+Se desse para prever o resultado da Mega-Sena, eu estaria escrevendo este post das Maldivas. E não de um apartamento sem ar-condicionado no auge do verão em São Paulo 🙃
+  
+</br>
+   
+***
+
+### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Qual a probabilidade de ganhar na Mega-Sena? E como aumentar essa probabilidade?**. Blog Fernanda Peres, São Paulo, 02 jan. 2026. Disponível em: https://fernandafperes.com.br/blog/mega-sena/.
+  
+  
+<br />
+
+
+

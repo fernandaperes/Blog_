@@ -23,7 +23,8 @@ editor_options:
   
   
 ```{r, include=FALSE}
-# knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)
+# https://pt.linkedin.com/pulse/prevendo-n%C3%BAmeros-da-mega-sena-com-intelig%C3%AAncia-e-wagner-fonseca-souza-lnj7f
+
 knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
                       fig.align = "center", warning = FALSE, message = FALSE)
 library(tidyverse)

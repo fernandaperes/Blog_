@@ -67,7 +67,12 @@ render_toc <- function(
       header_text <- gsub("\\s+?\\{.+\\}\\s*$", "", header_text) # strip { .tabset ... }
       header_text <- gsub("^[^[:alpha:]]*\\s*", "", header_text) # remove up to first alpha char
       header_slug <- paste(strsplit(header_text, " ")[[1]], collapse="-")
-      header_slug <- tolower(header_slug)
+      header_slug <- header_slug |>
+        tolower() |>
+        gsub("[^[:alnum:]\\s-]", "", x = _) |>
+        gsub("\\s+", "-", x = _) |>
+        gsub("-+", "-", x = _) |>
+        gsub("^-|-$", "", x = _)
     }
     paste0(strrep(" ", level * 4), "- [", header_text, "](#", header_slug, ")")
   })

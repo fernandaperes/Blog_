@@ -40,7 +40,7 @@ fim_faq <- ifelse(isFALSE(mostrar_faq), "-->", "")
 
 <div class = "column5">
 
-#### A análise de dados
+#### A análise de dados {#a-analise-de-dados}
 
 ##### Para quem é o serviço de análise de dados?
 Para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.  
@@ -85,7 +85,7 @@ Não deixe para a última hora. O momento ideal de contratar o serviço de consu
 
 <div class = "column6">
 
-#### A consultoria científica
+#### A consultoria científica {#a-consultoria-cientifica}
 
 ##### Para quem é o serviço de consultoria científica?
 Esse serviço é para:  
@@ -151,7 +151,7 @@ Abaixo você encontra a explicação do funcionamento dos dois serviços.<br>
 
 <div class = "column5">
 
-#### A análise de dados
+#### A análise de dados {#a-analise-de-dados}
 
 ##### Para quem é o serviço de análise de dados?
 Para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.  

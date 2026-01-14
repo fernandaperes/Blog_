@@ -1660,3 +1660,8 @@ a:hover.buttonsobrehome {
   margin-bottom: 0.6em;
 }
 
+@media (max-width: 768px) {
+  #a-consultoria-cientifica {
+    margin-top: 3rem;
+  }
+}

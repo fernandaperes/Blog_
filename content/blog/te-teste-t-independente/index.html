@@ -23,7 +23,7 @@ editor_options:
 <p>Em um <a href="https://fernandafperes.com.br/blog/tamanho-de-efeito/">post anterior</a> eu te expliquei o que é tamanho de efeito e o porquê você deveria calculá-lo nas suas análises. Nesse post, vamos discutir os tamanhos de efeito adequados a situações em que comparamos as <strong>médias</strong> de <strong>dois grupos independentes</strong>, ou seja, situações em que aplicamos o teste-t independente.</p>
 <p>Este post está dividido nos seguintes tópicos:</p>
 <ul>
-<li><a href="#o-tamanho-de-efeito-não-padronizado">O tamanho de efeito não-padronizado</a><br />
+<li><a href="#o-tamanho-de-efeito-n%C3%A3o-padronizado">O tamanho de efeito não-padronizado</a><br />
 </li>
 <li><a href="#os-tamanhos-de-efeito-padronizados">Os tamanhos de efeito padronizados</a><br />
 
@@ -34,22 +34,22 @@ editor_options:
 </li>
 <li><a href="#delta-de-glass">delta de Glass</a><br />
 </li>
-<li><a href="#explicações-detalhadas-em-r">Explicações detalhadas em R</a><br />
+<li><a href="#explica%C3%A7%C3%B5es-detalhadas-em-r">Explicações detalhadas em R</a><br />
 </li>
 </ul></li>
-<li><a href="#resumo-e-recomendações">Resumo e recomendações</a><br />
+<li><a href="#resumo-e-recomenda%C3%A7%C3%B5es">Resumo e recomendações</a><br />
 </li>
-<li><a href="#como-citar-esse-post,-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a><br />
+<li><a href="#como-citar-esse-post-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a><br />
 </li>
-<li><a href="#referências-">Referências</a></li>
+<li><a href="#refer%C3%AAncias">Referências</a></li>
 </ul>
 <div id="o-tamanho-de-efeito-não-padronizado" class="section level3">
 <h3>O tamanho de efeito não-padronizado</h3>
 <p>No <a href="https://fernandafperes.com.br/blog/tamanho-de-efeito/">post anterior</a>, eu te expliquei que os tamanhos de efeito podem ser divididos em padronizados e não-padronizados. Os <strong>não-padronizados</strong> são aqueles que apresentam <strong>unidade de medida</strong>. Essa unidade de medida é a mesma dos dados coletados, da média, o que torna esse tipo de tamanho de efeito mais <strong>interpretável</strong>. É mais fácil pensarmos na <strong>relevância clínica/ prática</strong> de um achado ao avaliarmos o seu tamanho de efeito não-padronizado. Já o tamanho de efeito <strong>padronizado</strong> é adimensional, <strong>sem unidade de medida</strong>. Isso facilita comparações entre estudos, mas leva a uma perda de interpretabilidade.</p>
 <p>Quando comparamos as médias de dois grupos independentes, o tamanho de efeito não-padronizado é simplesmente a <strong>diferença entre essas médias</strong>. Seguindo com o exemplo do post anterior (mas mudando os valores para fazermos cálculos diferente), imagine que recrutamos 10 pessoas sedentárias e 10 pessoas que praticam exercícios físicos regularmente. Então, quantificamos a glicemia de cada uma dessas pessoas e calculamos a média de cada grupo. A diferença entre essas médias é o tamanho de efeito não-padronizado desta análise, conforme representado abaixo:</p>
-<p><img src="img1.png" width="500px" style="display: block; margin: auto;" /></p>
+<p><img src="img1.png" alt="" width="500px" style="display: block; margin: auto;" /></p>
 <p>Vou repetir a piadinha para que essa informação fique na sua cabeça. Perceba pela tirinha abaixo, que descreve um tamanho de efeito não-padronizado (com unidade de medida, segundos), como mesmo sem sermos especialistas na área conseguimos perceber que a diferença entre os grupos não é clinicamente relevante.</p>
-<img src="img2.png" width="500px" style="display: block; margin: auto;" />
+<img src="img2.png" alt="" width="500px" style="display: block; margin: auto;" />
 <center>
 <font size="2"><br />
 <em>Traduzido de <a href="https://www.accountingexperiments.com/post/effect_size/">https://www.accountingexperiments.com/post/effect_size/</a></em><br />
@@ -68,15 +68,15 @@ editor_options:
 <div id="d-de-cohen" class="section level4">
 <h4>d de Cohen</h4>
 <p>O tamanho de efeito d de Cohen padroniza a diferença entre os grupos ao dividir essa diferença entre as médias pelo desvio-padrão. Uma versão resumida da fórmula, com A e B representando os dois grupos independentes, é:</p>
-<p><img src="img3.png" width="195px" style="display: block; margin: auto;" /></p>
+<p><img src="img3.png" alt="" width="195px" style="display: block; margin: auto;" /></p>
 <p>Como a média e o desvio-padrão estão na mesma unidade de medida, ao dividirmos esses valores no cálculo do d, obtemos um valor adimensional, sem unidade de medida. Assumindo um desvio-padrão igual a 10 mg/dL, obtemos:</p>
-<p><img src="img4.png" width="280px" style="display: block; margin: auto;" /></p>
+<p><img src="img4.png" alt="" width="280px" style="display: block; margin: auto;" /></p>
 <div id="como-interpretar-esse-valor" class="section level5">
 <h5>Como interpretar esse valor?</h5>
 <p>Como estamos dividindo a diferença entre as médias pelo desvio-padrão, um d = 1,1 indica que <strong>a diferença entre as médias equivale a 1,1 desvios-padrão</strong>.</p>
 <p>De fato, se multiplicarmos o desvio-padrão (10 mg/dL) pelo valor de d (1,1), obteremos a diferença entre as médias: 10 x 1,1 = 11.</p>
 <p>Um detalhe importante aqui: observe que o numerador do cálculo corresponde à diferença entre as médias. Aqui, ao montar o cálculo, eu considerei o grupo sedentário como A e o grupo exercício como B. Por isso, a diferença – e, consequentemente, o numerador do cálculo – foi positiva. Mas eu poderia ter considerado o grupo exercício como grupo A e o grupo sedentário como B. O que mudaria?</p>
-<p><img src="img5.png" width="280px" style="display: block; margin: auto;" /></p>
+<p><img src="img5.png" alt="" width="280px" style="display: block; margin: auto;" /></p>
 <p>Perceba que o valor de d passaria a ser <strong>negativo</strong>, mas que o d seria idêntico em valor absoluto (em módulo). Os dois cálculos estão corretos. O valor de d ser negativo não é um problema. Isso vai acontecer quando a média do grupo A for inferior à média do grupo B. Ao interpretarmos o d, analisamos o seu <strong>valor absoluto</strong>.</p>
 </div>
 <div id="classificação-do-valor-de-d" class="section level5">
@@ -92,7 +92,7 @@ editor_options:
 <div id="outras-fórmulas-para-o-d-de-cohen" class="section level5">
 <h5>Outras fórmulas para o d de Cohen</h5>
 <p>Até aqui te mostrei a fórmula abaixo. Ela está correta, mas ela se aplica apenas à seguinte situação: dois grupos com o mesmo n e os mesmos desvios-padrão. Quando o n e/ ou os desvios-padrão variam entre os grupos, precisamos ajustar a fórmula para considerar essa variação. Ela passa a ser <span class="citation">(<a href="#ref-espiritosanto2015">Espı́rito-Santo; Daniel, 2015</a>; <a href="#ref-lakens2013">Lakens, 2013</a>)</span>:</p>
-<p><img src="img6.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img6.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>Eu sei, não é uma fórmula muito simpática. Mas tudo o que discutimos anteriormente, inclusive a interpretação do valor de d, <strong>segue válido</strong> mesmo quando aplicamos essa fórmula.</p>
 </div>
 <div id="como-calcular-o-valor-de-d" class="section level5">
@@ -103,7 +103,7 @@ editor_options:
 Ah, o vídeo explica em detalhes como usar a planilha.</p>
 <p><strong>2. Pelo R</strong></p>
 <p>Imagine que temos uma base de dados nomeada como “dados” com uma coluna “Grupo” e outra “Glicemia”. A tabela abaixo mostra algumas linhas dessa base:</p>
-<div class="tabwid"><style>.cl-c8248a2e{}.cl-c81fd52e{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c81fd538{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c82153fe{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c82163ee{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82163f8{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82163f9{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82163fa{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82163fb{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c8216402{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-c8248a2e'><thead><tr style="overflow-wrap:break-word;"><th class="cl-c82163ee"><p class="cl-c82153fe"><span class="cl-c81fd52e">Grupo</span></p></th><th class="cl-c82163f8"><p class="cl-c82153fe"><span class="cl-c81fd52e">Glicemia</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Exercício físico</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">102</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Exercício físico</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">92</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Exercício físico</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Sedentário</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">102</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Sedentário</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Sedentário</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">80</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163f9"><p class="cl-c82153fe"><span class="cl-c81fd538">Exercício físico</span></p></td><td class="cl-c82163fa"><p class="cl-c82153fe"><span class="cl-c81fd538">88</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82163fb"><p class="cl-c82153fe"><span class="cl-c81fd538">Exercício físico</span></p></td><td class="cl-c8216402"><p class="cl-c82153fe"><span class="cl-c81fd538">107</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-c858e160{}.cl-c854cc24{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c854cc2e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c8562f9c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c8563cf8{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c8563d02{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c8563d03{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c8563d04{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c8563d05{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c8563d0c{width:1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-c858e160'><thead><tr style="overflow-wrap:break-word;"><th class="cl-c8563cf8"><p class="cl-c8562f9c"><span class="cl-c854cc24">Grupo</span></p></th><th class="cl-c8563d02"><p class="cl-c8562f9c"><span class="cl-c854cc24">Glicemia</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Exercício físico</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">102</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Exercício físico</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">92</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Exercício físico</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Sedentário</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">102</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Sedentário</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">98</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Sedentário</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">80</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d03"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Exercício físico</span></p></td><td class="cl-c8563d04"><p class="cl-c8562f9c"><span class="cl-c854cc2e">88</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c8563d05"><p class="cl-c8562f9c"><span class="cl-c854cc2e">Exercício físico</span></p></td><td class="cl-c8563d0c"><p class="cl-c8562f9c"><span class="cl-c854cc2e">107</span></p></td></tr></tbody></table></div>
 <p>Para calcular o valor de d podemos rodar a seguinte função do pacote <code>effectsize</code>:</p>
 <pre class="r"><code>effectsize::cohens_d(Glicemia ~ Grupo, data = dados)</code></pre>
 <pre><code>## Cohen&#39;s d |        95% CI
@@ -120,7 +120,7 @@ Ah, o vídeo explica em detalhes como usar a planilha.</p>
 <div id="g-de-hedges" class="section level4">
 <h4>g de Hedges</h4>
 <p>O tamanho de efeito d de Cohen é o mais popular e utilizado no contexto do teste-t independente. No entanto, o d de Cohen <strong>não é adequado a amostras pequenas</strong> (n &lt; 20 no total). Nessas situações devemos usar o tamanho de efeito g de Hedges, que nada mais é do que o d de Cohen corrigido para amostras pequenas <span class="citation">(<a href="#ref-espiritosanto2015">Espı́rito-Santo; Daniel, 2015</a>; <a href="#ref-lakens2013">Lakens, 2013</a>)</span>:</p>
-<p><img src="img7.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img7.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>Os pormenores da correção não nos interessam. O importante é entender que essa versão corrigida é mais adequada que o d de Cohen para amostras pequenas, com n total inferior a 20.</p>
 <div id="interpretação-e-classificação-do-g-de-hedges" class="section level5">
 <h5>Interpretação e classificação do g de Hedges</h5>
@@ -149,11 +149,11 @@ Ah, o vídeo explica em detalhes como usar a planilha.</p>
 <p>Variância não é o foco deste post. Mas, caso queira ler mais sobre esse tema, recomendo <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">esse post</a>.</p>
 </blockquote>
 <p>O delta de Glass tem uma fórmula simples: ele divide a diferença entre as médias pelo desvio-padrão de um dos grupos <span class="citation">(<a href="#ref-espiritosanto2015">Espı́rito-Santo; Daniel, 2015</a>; <a href="#ref-lakens2013">Lakens, 2013</a>)</span>. Recomenda-se que o grupo cujo desvio-padrão será adicionado à fórmula seja o grupo controle.</p>
-<p><img src="img8.png" width="230px" style="display: block; margin: auto;" /></p>
+<p><img src="img8.png" alt="" width="230px" style="display: block; margin: auto;" /></p>
 <div id="e-se-não-existir-grupo-controle" class="section level5">
 <h5>E se não existir grupo controle?</h5>
 <p>Caso não exista grupo controle, a recomendação é calcular as duas versões possíveis do delta de Glass – uma com o desvio-padrão do grupo A e outra com o desvio-padrão do grupo B – e reportá-las:</p>
-<p><img src="img9.png" width="550px" style="display: block; margin: auto;" /></p>
+<p><img src="img9.png" alt="" width="550px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="interpretação-e-classificação-do-delta-de-glass" class="section level5">
 <h5>Interpretação e classificação do delta de Glass</h5>
@@ -198,7 +198,7 @@ effectsize::glass_delta(Glicemia ~ Grupo, data = dados, adjust = F)</code></pre>
 </div>
 <div id="resumo-e-recomendações" class="section level3">
 <h3>Resumo e recomendações</h3>
-<p><img src="img10.png" width="800px" style="display: block; margin: auto;" /></p>
+<p><img src="img10.png" alt="" width="800px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
 <h3>Como citar esse post, nas normas da ABNT</h3>

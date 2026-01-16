@@ -1,0 +1,280 @@
+---
+title: "O que é um outlier?"
+author: Fernanda Fiel Peres
+date: '2026-01-16'
+slug: [outliers]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Já ouviu por aí o termo "outlier", mas ficou sem entender o que ele significa? Nesse post eu discuto o que é e como identificar um outlier. Também te explico como "tratá-los".'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<link href="{{< blogdown/postref >}}index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/tabwid/tabwid.js"></script>
+
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+<p></br>
+</br></p>
+<ul>
+<li><a href="#a-defini%C3%A7%C3%A3o-de-outlier">A definição de <em>outlier</em></a><br />
+</li>
+<li><a href="#como-identificar-se-um-valor-%C3%A9-um-outlier">Como identificar se um valor é um <em>outlier</em>?</a><br />
+
+<ul>
+<li><a href="#o-ponto-de-corte-baseado-em-quartis">O ponto de corte baseado em quartis</a><br />
+</li>
+<li><a href="#o-ponto-de-corte-baseado-em-escore-z">O ponto de corte baseado em escore-z</a><br />
+</li>
+<li><a href="#por-que-os-outliers-s%C3%A3o-uma-preocupa%C3%A7%C3%A3o">Por que os <em>outliers</em> são uma preocupação?</a><br />
+</li>
+</ul></li>
+<li><a href="#outliers-bivariados"><em>Outliers</em> bivariados</a><br />
+
+<ul>
+<li><a href="#caso-1-outlier-bivariado">Caso 1: <em>outlier</em> bivariado</a><br />
+</li>
+<li><a href="#caso-2-ponto-de-alavancagem">Caso 2: ponto de alavancagem</a><br />
+</li>
+<li><a href="#caso-3-ponto-influente">Caso 3: ponto influente</a><br />
+</li>
+<li><a href="#como-identificar-um-ponto-influente">Como identificar um ponto influente?</a><br />
+</li>
+</ul></li>
+<li><a href="#como-lidar-com-outliers">Como lidar com <em>outliers</em>?</a><br />
+
+<ul>
+<li><a href="#passo-1-definir-como-os-outliers-ser%C3%A3o-avaliados">Passo 1: definir como os <em>outliers</em> serão avaliados</a><br />
+</li>
+<li><a href="#passo-2-entender-por-que-aquela-observa%C3%A7%C3%A3o-%C3%A9-um-outlier">Passo 2: entender por que aquela observação é um <em>outlier</em></a><br />
+</li>
+</ul></li>
+<li><a href="#como-citar-esse-post-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a></li>
+</ul>
+<div id="a-definição-de-outlier" class="section level3">
+<h3>A definição de <em>outlier</em></h3>
+<p>A definição de <em>outlier</em> é simples: trata-se de um <strong>valor discrepante</strong>, que <strong>destoa dos demais</strong>. <em>Outlier</em> é o termo em inglês; em português, podemos dizer “valor discrepante” ou “<strong>valor atípico</strong>”. Mas a verdade é que o termo em inglês é muito mais utilizado no contexto de análise de dados, então, seguirei com ele, ok?</p>
+<p>Por exemplo, na base de dados abaixo, com idades de alunos de um cursinho pré-vestibular, organizadas em ordem crescente, percebemos que <strong>a idade de 75 anos destoa das demais</strong>, todas na faixa de 16 a 25 anos:</p>
+<div class="tabwid"><style>.cl-ee54c7a2{}.cl-ee518eca{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ee518ed4{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ee52eff4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ee52fd00{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee52fd01{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee52fd0a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-ee54c7a2'><thead><tr style="overflow-wrap:break-word;"><th class="cl-ee52fd00"><p class="cl-ee52eff4"><span class="cl-ee518eca">Idade (anos)</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">17</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">18</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">19</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">19</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">19</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">20</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">20</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">21</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">21</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd01"><p class="cl-ee52eff4"><span class="cl-ee518ed4">25</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee52fd0a"><p class="cl-ee52eff4"><span class="cl-ee518ed4">75</span></p></td></tr></tbody></table></div>
+<p>Se colocarmos essas idades em um gráfico de dispersão, com um ponto representando cada aluno, veremos que a idade de 75 anos <strong>se distancia</strong> de todas as demais:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" alt="" width="240" style="display: block; margin: auto;" /></p>
+</div>
+<div id="como-identificar-se-um-valor-é-um-outlier" class="section level3">
+<h3>Como identificar se um valor é um <em>outlier</em>?</h3>
+<p>Você talvez tenha visto o exemplo acima e pensado: “Ok, nesse exemplo é bem óbvio que o valor 75 é um <em>outlier</em>. Mas e se for menos óbvio? Por exemplo, caso existisse alguém de <strong>30 anos</strong>, eu diria que <strong>é um <em>outlier</em></strong>? Onde traçar esse <strong>limite</strong>?”.</p>
+<p>Bom, agora esbarramos em uma questão mais delicada. Como definir se um determinado valor é um <em>outlier</em>?</p>
+<p>Há <strong>mais de uma forma</strong> de definir se um valor é um <em>outlier</em> <strong>univariado</strong>. E estamos falando de “univariado” aqui porque estamos pensando nos valores daquela observação para <strong>uma única variável</strong> – no caso do exemplo, a variável idade.</p>
+<div id="o-ponto-de-corte-baseado-em-quartis" class="section level4">
+<h4>O ponto de corte baseado em quartis</h4>
+<p>O ponto de corte mais comumente utilizado para definir se um valor é um <em>outlier</em> é o utilizado na construção de um gráfico chamado <strong>boxplot</strong>.</p>
+<blockquote>
+<p>Explicar boxplot foge da proposta deste post, mas eu tenho um post <strong>bem detalhado</strong> sobre isso – que, inclusive, é o mais lido do blog!<br />
+Caso queira entender como esse gráfico é construído, basta <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">clicar aqui</a>.</p>
+</blockquote>
+<p>O boxplot clássico, chamado de <strong>boxplot de Tukey</strong>, define se um valor é um outlier com base na <strong>amplitude interquartil</strong> (que eu vou abreviar aqui como AIQ, mas que é também frequentemente abreviada como IQR, do inglês <em>Interquartile Range</em>). A AIQ é a diferença entre o quartil 3 (Q3) e o quartil 1 (Q1):</p>
+<center>
+<p>AIQ = Q3 - Q1</p>
+</center>
+<p>Para o boxplot de Tukey, um valor será um outlier caso ele esteja <strong>abaixo</strong> do <strong>limite inferior teórico</strong> ou <strong>acima</strong> do <strong>limite superior</strong> teórico:</p>
+<center>
+<p>Limite inferior teórico = Q1 - 1,5 x AIQ<br />
+Limite superior teórico = Q3 + 1,5 x AIQ</p>
+</center>
+<p>No nosso exemplo, os quartis 1 e 3 correspondem a <strong>18</strong> e <strong>21</strong>, respectivamente.<br />
+<em>Lembrando que você encontra uma definição mais detalhada de quartis no <a href="https://fernandafperes.com.br/blog/interpretacao-boxplot/">post de boxplot</a>.</em></p>
+<p><img src="img1.png" alt="" width="160px" style="display: block; margin: auto;" /></p>
+<p>Portanto, a AIQ nessa amostra é 5:</p>
+<center>
+<p>AIQ = Q3 - Q1<br />
+AIQ = 21 - 18<br />
+AIQ = 5</p>
+</center>
+<p>Sabendo a AIQ podemos calcular os limites inferior e superior teóricos:</p>
+<center>
+<p>Limite inferior teórico = Q1 - 1,5 x AIQ<br />
+Limite inferior teórico = 18 - 1,5 x 5<br />
+Limite inferior teórico = 18 - 7,5<br />
+<strong>Limite inferior teórico = 10,5</strong></p>
+<p>Limite superior teórico = Q3 + 1,5 x AIQ<br />
+Limite superior teórico = 21 + 1,5 x 5<br />
+Limite superior teórico = 21 + 7,5<br />
+<strong>Limite superior teórico = 28,5</strong></p>
+</center>
+<p>Ou seja, de acordo com a definição de <em>outlier</em> utilizada pelo boxplot de Tukey, qualquer valor <strong>abaixo de 10,5 anos</strong> ou <strong>acima de 28,5 anos</strong> será considerado um <em>outlier</em> nessa amostra de idades. A idade de 75 anos, portanto, será considerada um <em>outlier</em> de acordo com esse critério.</p>
+<p>Perceba que ao construirmos um boxplot, a idade de 75 anos de fato é identificada como um <em>outlier</em>, sendo representada por um ponto:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" alt="" width="240" style="display: block; margin: auto;" /></p>
+</div>
+<div id="o-ponto-de-corte-baseado-em-escore-z" class="section level4">
+<h4>O ponto de corte baseado em escore-z</h4>
+<p>De longe, a técnica mais utilizada para identificar um <em>outlier</em> univariado é a que eu expliquei acima, baseada na AIQ. Mas há outra possibilidade: definir se um valor é um <em>outlier</em> com <strong>base em seu escore-z</strong> (em inglês, <em>z-score</em>).</p>
+<p>O escore-z consiste no seguinte cálculo, que padroniza os valores:</p>
+<p><span class="math display">\[
+\text{Escore}\text{-}z =
+\frac{\text{Valor} - \text{Média}}{\text{Desvio}\text{-}\text{padrão}}
+\]</span></p>
+<p>Ou seja, calculamos a média, a subtraímos de cada valor e então dividimos esse resultado pelo desvio-padrão.</p>
+<blockquote>
+<p>De novo, explicar desvio-padrão foge do escopo do post, mas você pode ler um texto bem didático sobre essa medida <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">clicando aqui</a>.</p>
+</blockquote>
+<p>Ao fazermos esse cálculo, fazemos com que os dados passem a ter média igual a zero e desvio-padrão igual a 1. Portanto, uma idade que tenha um <strong>escore-z igual a 3</strong> será uma idade que está <strong>três desvios-padrão acima da média</strong>. Na nossa amostra, a média é igual a 23,7 e o desvio-padrão é igual a 15,6. Aplicando a conta, obtemos os seguintes escores-z:</p>
+<div class="tabwid"><style>.cl-ee86afb0{}.cl-ee83abd0{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ee83abda{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ee84e388{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ee84ef5e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee84ef5f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ee84ef68{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-ee86afb0'><thead><tr style="overflow-wrap:break-word;"><th class="cl-ee84ef5e"><p class="cl-ee84e388"><span class="cl-ee83abd0">Idade (anos)</span></p></th><th class="cl-ee84ef5e"><p class="cl-ee84e388"><span class="cl-ee83abd0">Idade − Média</span></p></th><th class="cl-ee84ef5e"><p class="cl-ee84e388"><span class="cl-ee83abd0">Escore-z</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">16</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-7,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">17</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-6,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">18</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-5,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">18</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-5,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">19</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-4,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">19</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-4,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">19</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-4,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">20</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-3,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">20</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-3,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">21</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-2,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">21</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-2,7</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">-0,2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">25</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">1,3</span></p></td><td class="cl-ee84ef5f"><p class="cl-ee84e388"><span class="cl-ee83abda">0,1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ee84ef68"><p class="cl-ee84e388"><span class="cl-ee83abda">75</span></p></td><td class="cl-ee84ef68"><p class="cl-ee84e388"><span class="cl-ee83abda">51,3</span></p></td><td class="cl-ee84ef68"><p class="cl-ee84e388"><span class="cl-ee83abda">3,3</span></p></td></tr></tbody></table></div>
+<p></br></p>
+<p>Uma convenção é considerar que é um <em>outlier</em> qualquer valor cujo escore-z esteja <strong>fora do intervalo [-3; 3]</strong>. Ou seja, escores abaixo de -3 ou acima de 3.</p>
+<p>Note que a <strong>idade de 75 anos</strong> também é considerada um <em>outlier</em> por esse critério, já que o seu <strong>escore-z é 3,3</strong>.</p>
+<p>Vale dizer que essa definição de <em>outlier</em> com base no escore-z é mais adequada a dados que apresentam <strong>distribuição normal</strong>, uma distribuição em formato de sino. Se os dados seguirem a distribuição normal, <strong>apenas cerca de 0,3% dos dados</strong> estarão fora desse intervalo.</p>
+</div>
+<div id="por-que-os-outliers-são-uma-preocupação" class="section level4">
+<h4>Por que os <em>outliers</em> são uma preocupação?</h4>
+<p>Até aqui você pode estar pensando: “ok, tem um valor discrepante na amostra, e daí?”. A nossa maior <strong>preocupação</strong> quando temos um <em>outlier</em> na amostra é com relação à <strong>média</strong>. A média é uma medida muito <strong>influenciada por valores extremos</strong> – o que significa que na presença desses valores ela pode <strong>não ser</strong> uma boa representação do conjunto de dados.</p>
+<p>Para isso ficar menos abstrato, vou retomar o exemplo das idades. Nós vimos que a média da amostra é de <strong>29,7 anos</strong>. Se eu te digo: “olha, tenho uma turma de pré-vestibular com idade média de 29,7 anos”, <strong>o que viria à sua cabeça?</strong> Eu mesma imaginaria que os alunos tem em torno de 30 anos, com idades variando entre 25 e 35. Mas veja: isso está bem longe da realidade da nossa amostra.</p>
+<p>Quando a gente constrói um gráfico com todas as idades e coloca uma barra indicando a média, dá para ver que <strong>quase todos os alunos</strong> – com exceção de dois – <strong>têm idades abaixo da média</strong>:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" alt="" width="240" style="display: block; margin: auto;" /></p>
+<p>Ao excluírmos a idade <em>outlier</em>, a média passa a ser 19,4 anos, um valor que representa a amostra de forma mais adequada:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" alt="" width="240" style="display: block; margin: auto;" /></p>
+<p>Ao impactar a média, os <em>outliers</em> impactam não apenas as <strong>análises descritivas</strong>, mas também os <strong>testes de hipóteses</strong> baseados em médias, como o teste-t e a ANOVA.</p>
+<blockquote>
+<p>Mas, se acalme. Isso <strong>não significa</strong> que você pode simplesmente <strong>excluir</strong> os valores <em>outliers</em>, ok?</p>
+<p>Abaixo eu vou explicar o conceito de outliers bivariados. Se você não tem interesse nesse tema, mas quer saber como lidar com os <em>outliers</em> das suas análises, recomendo pular para <a href="#como-lidar-com-outliers">essa seção</a>.</p>
+<p>Ah, eu também incluo essa explicação no <a href="https://curso.fernandafperes.com.br/">meu curso</a>, caso você tenha interesse em aprender análise de dados do zero ao avançado, com vídeo-aulas bem didáticas :)</p>
+</blockquote>
+</div>
+</div>
+<div id="outliers-bivariados" class="section level3">
+<h3><em>Outliers</em> bivariados</h3>
+<p>Até agora te expliquei como identificar um <em>outlier</em> univariado. Mas muitas vezes – principalmente ao rodarmos uma análise de regressão – a nossa preocupação é com os <em>outliers</em> <strong>bivariados</strong>. Então, vamos entender isso melhor!</p>
+<blockquote>
+<p>O que eu vou explicar a seguir é fortemente baseado nesses dois posts incríveis:</p>
+<ul>
+<li><a href="https://online.stat.psu.edu/stat462/node/170/">Distinction Between Outliers and High Leverage Observations</a>, da Penn State</li>
+<li><a href="https://stats.libretexts.org/Bookshelves/Advanced_Statistics/Intermediate_Statistics_with_R_(Greenwood)/06%3A_Correlation_and_Simple_Linear_Regression/6.09%3A_Outliers_-_leverage_and_influence">Outliers - leverage and influence</a>, de autoria de Mark Greenwood</li>
+</ul>
+</blockquote>
+<p>Vamos imaginar que queremos avaliar a <strong>relação</strong> entre <strong>idade e pressão arterial sistólica</strong>. Essa relação de fato existe: a nossa pressão arterial tende a aumentar conforme envelhecemos. Mas aqui eu vou exagerar um pouco essa relação para fins didáticos, ok?</p>
+<p>Perceba que nessa amostra, conforme a idade aumenta, a pressão aumenta. Podemos, inclusive, traçar uma linha que descreve essa relação (pontilhada em preto). Ao rodarmos uma <a href="https://youtu.be/CBo3FHMtt1s">regressão linear simples</a>, vemos que o <strong>coeficiente</strong> para a idade é <strong>1,6</strong>, indicando que a pressão aumenta, em média, 1,6 mmHg a cada um ano de aumento na idade.</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+<div id="caso-1-outlier-bivariado" class="section level4">
+<h4>Caso 1: <em>outlier</em> bivariado</h4>
+<p>Essa amostra inclui pessoas com idades <strong>entre 50 e 85 anos</strong> e com pressões arteriais <strong>entre 110 e 166 mmHg</strong>. Suponha agora que incluímos na amostra uma pessoa com <strong>64 anos</strong> e <strong>154 mmHg</strong> de pressão arterial.</p>
+<p>Não parece um <em>outlier</em>, certo? Tanto a idade quanto a pressão estão dentro do intervalo observado nos demais dados. Mas vamos visualizar o gráfico com a inclusão desse novo participante (em rosa):</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+<p>No gráfico de dispersão conseguimos perceber que essa nova pessoa (ponto em rosa) <strong>destoa do padrão</strong> das demais: trata-se de alguém com pressão arterial mais alta do que o esperado para a sua idade. Portanto, a pessoa em rosa é um <em>outlier</em> – mas um <strong><em>outlier</em> bivariado</strong>, que só passa a ser considerado <em>outlier</em> quando analisamos simultaneamente a idade e a pressão.</p>
+<p>Nem todo <em>outlier</em> representa um <strong>problema</strong> no contexto da <strong>regressão</strong>. O problema aparece quando esse ponto é <strong>influente</strong> – ou seja, quando influencia, modifica, a estimação da reta de regressão.</p>
+<p>Note que o <em>outlier</em> em rosa não modifica de forma significativa a estimação da reta: a reta estimada com ele (em preto, linha sólida) se assemelha muito à reta estimada sem ele (pontilhada).</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<div id="caso-2-ponto-de-alavancagem" class="section level4">
+<h4>Caso 2: ponto de alavancagem</h4>
+<p>Um outro conceito importante no contexto da regressão é o de “ponto de alavancagem”. Dizemos que um ponto tem <strong>alta alavancagem</strong> quando ele apresenta <strong>valores extremos nas variáveis explicativas</strong>. No caso de uma regressão linear simples, com uma única variável explicativa, um ponto será considerado “de alavancagem” quando estiver distante da maior parte dos dados no eixo x.</p>
+<p>Para isso fazer mais sentido, vamos voltar ao exemplo. Agora vamos incluir uma pessoa com <strong>99 anos e 186 mmHg</strong> de pressão arterial (em rosa no gráfico):</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+<p>Perceba que essa pessoa <strong>não é um <em>outlier</em> bivariado</strong>. Isso porque o ponto <strong>segue a tendência linear</strong> dos demais dados e não destoa do padrão observado. No entanto, trata-se de um <strong>ponto de alavancagem</strong>, com um valor de idade (eixo x) bem distante do restante da amostra.</p>
+<p>Ok, mas o ponto de alavancagem é um <strong>problema</strong> para a <strong>regressão</strong>? Não necessariamente. Isso porque ele pode ser um ponto de alavancagem, mas não influenciar a estimação da reta – ou seja, não ser um <strong>ponto influente</strong>. Note que no exemplo o ponto em rosa não modifica de forma significativa a reta de regressão: a reta estimada com ele (linha preta sólida) é muito semelhante à estimada sem ele (linha pontilhada).</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<div id="caso-3-ponto-influente" class="section level4">
+<h4>Caso 3: ponto influente</h4>
+<p>Como já discutimos, um <strong>ponto influente</strong> é aquele que <strong>modifica a estimação da reta</strong> de regressão. Vamos voltar ao nosso exemplo e adicionar à amostra (em rosa) uma pessoa com idade de <strong>96 anos</strong> e pressão arterial de <strong>127 mmHg</strong>:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+<p>Perceba que esse ponto em rosa é:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Um <em>outlier</em> bivariado</strong>, porque ele destoa do padrão linear dos demais pontos – em outras palavras, trata-se de uma pessoa com pressão arterial inferior à esperada para a sua idade</li>
+<li><strong>Um ponto de alavancagem</strong>, porque a sua idade (eixo x) está acima das idades do restante da amostra, que vão até 82 anos</li>
+</ol>
+<p>Uma vez que esse ponto é tanto um ponto de alavancagem quanto um <em>outlier</em> bivariado, ele influencia a estimação da reta, é um <strong>ponto influente</strong>. Perceba como a reta estimada com esse ponto (linha sólida em preto) <strong>difere muito</strong> da reta estimada quando ele é excluído (linha pontilhada):</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-17-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+</div>
+<div id="como-identificar-um-ponto-influente" class="section level4">
+<h4>Como identificar um ponto influente?</h4>
+<p>Até aqui eu te falei que um ponto influente é aquele que é tanto um ponto de alavancagem quanto um <em>outlier</em> bivariado, certo? Mas podemos <strong>expandir essa definição</strong> para <strong>cenários multivariados</strong> (isso é, quando temos mais de duas variáveis no modelo).</p>
+<p>De forma geral, um ponto influente é uma observação que apresenta, simultaneamente:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Alta alavancagem</strong> – ou seja, apresenta valores extremos nas variáveis explicativas (variáveis independentes)</li>
+<li><strong>Resíduo elevado</strong> – o que indica que esse ponto foge do padrão da relação descrita pelo modelo</li>
+</ol>
+<p>Quando dizemos que um ponto tem <strong>resíduo elevado</strong>, não significa necessariamente que ele esteja distante dos demais pontos no conjunto de dados, mas sim que ele <strong>se afasta</strong> do valor que <strong>seria esperado</strong> pelo modelo ajustado. Caso queira entender melhor o <strong>conceito de resíduo</strong>, eu recomendo a leitura do primeiro tópico <a href="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/">desse post</a>.</p>
+<div id="a-distância-de-cook" class="section level5">
+<h5>A distância de Cook</h5>
+<p>Uma medida que nos ajuda a identificar se um ponto é influente é a <strong>distância de Cook</strong>, um valor cujo cálculo considera o resíduo e a alavancagem de cada observação. A distância de Cook pode ser pensada como uma medida que indica o quanto os <strong>coeficientes</strong> estimados pelo modelo <strong>mudariam</strong>, em média, se uma observação específica fosse <strong>removida</strong> do conjunto de dados.</p>
+<p>Para isso fazer mais sentido, vamos voltar à amostra representada no gráfico abaixo. Vimos que o ponto em rosa é um ponto influente, uma vez que a sua inclusão na amostra modifica a estimação da reta:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-18-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+<p>Calculando a distância de Cook para cada observação da amostra, obtemos os resultados abaixo, organizados da maior para a menor distância:</p>
+<div class="tabwid"><style>.cl-f1401728{}.cl-f13c7960{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f13c796a{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f13dc086{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f13dcdf6{width:0.8in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dcdf7{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce00{width:1.3in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce01{width:0.8in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce02{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce0a{width:1.3in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce0b{width:0.8in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce0c{width:1.5in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f13dce14{width:1.3in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-f1401728'><thead><tr style="overflow-wrap:break-word;"><th class="cl-f13dcdf6"><p class="cl-f13dc086"><span class="cl-f13c7960">Idade (anos)</span></p></th><th class="cl-f13dcdf7"><p class="cl-f13dc086"><span class="cl-f13c7960">Pressão arterial sistólica (mmHg)</span></p></th><th class="cl-f13dce00"><p class="cl-f13dc086"><span class="cl-f13c7960">Distância de Cook</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">96</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">127</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">4,195</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">81</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">166</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,094</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">50</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">110</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,076</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">79</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">162</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,057</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">80</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">162</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,052</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">...</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">...</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">...</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">65</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">135</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">73</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">144</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">68</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">139</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce01"><p class="cl-f13dc086"><span class="cl-f13c796a">61</span></p></td><td class="cl-f13dce02"><p class="cl-f13dc086"><span class="cl-f13c796a">132</span></p></td><td class="cl-f13dce0a"><p class="cl-f13dc086"><span class="cl-f13c796a">0,000</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f13dce0b"><p class="cl-f13dc086"><span class="cl-f13c796a">61</span></p></td><td class="cl-f13dce0c"><p class="cl-f13dc086"><span class="cl-f13c796a">130</span></p></td><td class="cl-f13dce14"><p class="cl-f13dc086"><span class="cl-f13c796a">0,000</span></p></td></tr></tbody></table></div>
+<p>Repare que a <strong>maior distância de Cook</strong> (4,195) é da pessoa com 96 anos e pressão arterial de 127 mmHg, ou seja, o ponto que está indicado em <strong>rosa</strong>.</p>
+<p>Ok, mas <strong>a partir de qual valor</strong> de distância de Cook consideramos que um ponto <strong>é influente</strong>?</p>
+<p>Há vários <strong>pontos de corte</strong> sugeridos para a distância de Cook, mas uma regra bem usada é: pontos com distância de Cook <strong>acima de 1</strong> são influentes; pontos com distância de Cook <strong>acima de 0,5</strong> já devem ser avaliados com atenção.</p>
+<p>Mas há outras sugestões. Um dos pontos de corte sugeridos é <strong>4/n</strong>. Por exemplo, em um modelo com 100 observações, teremos:</p>
+<center>
+<p>4/100 = 0,04</p>
+</center>
+<p>Isso significa que observações com distância de Cook acima de 0,04 já seriam observações potencialmente influentes.</p>
+</div>
+<div id="calculando-a-distância-de-cook" class="section level5">
+<h5>Calculando a distância de Cook</h5>
+<p>Em R, conseguimos calcular a distância de Cook com a função <code>cooks.distance()</code>:</p>
+<pre class="r"><code>mod &lt;- lm(pressao ~ idade, data = dados)
+
+cooks.distance(mod) |&gt;
+  round(3) # Arredondei os valores para 3 casas decimais</code></pre>
+<pre><code>##     1     2     3     4     5     6     7     8     9    10    11    12    13 
+## 0.076 0.030 0.025 0.001 0.009 0.008 0.000 0.000 0.001 0.000 0.000 0.002 0.009 
+##    14    15    16    17    18    19    20    21 
+## 0.000 0.003 0.036 0.057 0.094 0.052 0.033 4.195</code></pre>
+<p>Veja que a distância de Cook de <strong>4,195</strong> está na <strong>linha 21</strong> da minha base de dados – e essa é justamente a pessoa com idade 96 anos e pressão 127 mmHg.</p>
+<p>A gente também pode pedir um <strong>gráfico</strong> que mostra a relação entre resíduo e alavancagem, e inclui uma linha correspondente à distância de Cook. Trata-se do gráfico 5 quando rodamos a função <code>plot()</code> para um modelo linear:</p>
+<pre class="r"><code>plot(mod, which = 5)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-21-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>Caso queira mais detalhes sobre a interpretação deste gráfico, recomendo <a href="https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/">esse post</a> que detalha os gráficos diagnósticos para regressão.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="como-lidar-com-outliers" class="section level3">
+<h3>Como lidar com <em>outliers</em>?</h3>
+<p>Eu constantemente recebo a pergunta: “como eu <strong>excluo</strong> os <em>outliers</em> da minha amostra?”.<br />
+Ou então: “já rodei toda a minha análise <strong>sem</strong> os <em>outliers</em>, como meu orientador pediu!”.</p>
+<p>E aqui eu preciso te dizer uma coisa importante: a primeira pergunta <strong>nunca</strong> deveria ser “<strong>como</strong> excluir?”, mas sim “<strong>devo</strong> excluir?”.<br />
+Já adianto que, <strong>na maior parte dos casos</strong>, <em>outliers</em> não devem ser simplesmente <strong>removidos</strong>.</p>
+<div id="passo-1-definir-como-os-outliers-serão-avaliados" class="section level4">
+<h4>Passo 1: definir como os <em>outliers</em> serão avaliados</h4>
+<p>O primeiro passo é entender que <strong>tipo</strong> de <em>outlier</em> é uma preocupação para você. Essa decisão depende da sua <strong>pergunta experimental</strong> e da análise estatística que será utilizada para respondê-la. Como assim?</p>
+<p>Em <strong>análises descritivas</strong> ou em <strong>testes de comparação de médias entre grupos</strong>, faz sentido nos preocuparmos com <strong><em>outliers</em> univariados</strong>, já que estamos olhando para o comportamento de cada variável isoladamente. Ah, nos casos em que a análise envolve grupos, a avaliação deve ser feita <strong>dentro de cada grupo</strong>, ok?</p>
+<p>Por outro lado, em análises como <strong>regressão</strong>, remover <em>outliers</em> univariados <strong>não faz sentido</strong>. Um ponto pode ter um valor discrepante em uma variável e, ainda assim, não destoar do padrão dos dados. Vimos isso nos exemplos de <a href="#caso-1-outlier-bivariado"><em>outlier</em> bivariado</a> e <a href="#caso-2-ponto-de-alavancagem">ponto de alavancagem</a>.<br />
+Para esse tipo de análise, o foco não deve estar em <em>outliers</em> univariados, mas sim em <a href="#caso-3-ponto-influente"><strong>pontos influentes</strong></a> – isto é, observações que têm impacto relevante sobre a estimação do modelo.</p>
+</div>
+<div id="passo-2-entender-por-que-aquela-observação-é-um-outlier" class="section level4">
+<h4>Passo 2: entender por que aquela observação é um <em>outlier</em></h4>
+<p>Identificado um possível <em>outlier</em>, o passo seguinte é avaliar por que aquela observação difere das demais:</p>
+<ul>
+<li>É um <strong>erro</strong> de digitação ou de aferição?</li>
+<li>É um valor <strong>real</strong>, mas raro?</li>
+</ul>
+<p>Imagine que estamos estudando idades e encontramos um <em>outlier</em>: 350 anos. Trata-se de um valor <strong>impossível</strong>, concorda? Portanto, esse valor só pode ser um <strong>erro de digitação</strong>. Nesse cenário, o que fazer?</p>
+<ol style="list-style-type: decimal">
+<li>Caso seja possível, o valor deve ser <strong>corrigido</strong> – por exemplo, consultando a anotação original que foi digitada ou a fonte primária dos dados.</li>
+<li>Se a correção não for possível, a observação pode ser <strong>excluída</strong>, já que não representa um valor real do fenômeno estudado.</li>
+</ol>
+<blockquote>
+<p>Caso você opte por remover <em>outliers</em> da sua amostra, essa decisão precisa estar explicitada no seu texto – seja em um artigo, dissertação, TCC ou tese. É fundamental <strong>justificar</strong> essa escolha e informar <strong>quantas observações</strong> foram removidas. Esse nível de transparência é fundamental para a <strong>avaliação crítica</strong> e a <strong>reprodutibilidade</strong> dos resultados.</p>
+</blockquote>
+<p>Agora, pense em um cenário diferente: suponha que o <em>outlier</em> identificado corresponda a um valor <strong>real</strong> e <strong>plausível</strong>, ainda que raro. É o caso do aluno de 75 anos em uma turma de pré-vestibular, exemplo que abriu este post. Nesse caso, a lógica muda completamente.</p>
+<p>Quando o valor é <strong>real</strong>, <strong>não devemos excluí-lo</strong>. Uma estratégia mais adequada é recorrer a <strong>análises menos sensíveis</strong> a esse valor extremo. No caso da <strong>análise descritiva</strong>, além da média – que, como discutimos, é fortemente influenciada por <em>outliers</em> – podemos reportar a mediana, uma medida robusta a eles. O mesmo raciocínio se aplica aos <strong>testes estatísticos</strong>. Testes clássicos de comparação de médias, especialmente em amostras pequenas, dependem fortemente da média e da variância e, por isso, podem ser bastante afetados por valores extremos. Nesses casos, uma possibilidade é recorrer a abordagens <strong>robustas a <em>outliers</em></strong>, como testes não-paramétricos ou modelos que assumem distribuições diferentes da normal, em vez de simplesmente remover observações válidas.</p>
+<p>Em análises de <strong>regressão</strong>, o foco deixa de ser o <em>outlier</em> em si e passa a ser a influência da observação. Uma estratégia possível é estimar o modelo <strong>com e sem a observação potencialmente influente</strong> e comparar os resultados. Se os dois modelos chegarem às <strong>mesmas conclusões</strong>, significa que aquela observação não exerceu uma influência relevante sobre a análise. Caso contrário, a divergência entre os modelos precisa ser devidamente <strong>discutida e justificada</strong>.</p>
+<p></br></p>
+<hr />
+</div>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é um outlier?</strong>. Blog Fernanda Peres, São Paulo, 16 jan. 2026. Disponível em: <a href="https://fernandafperes.com.br/blog/outliers/" class="uri">https://fernandafperes.com.br/blog/outliers/</a>.</p>
+</blockquote>
+<p><br /></p>
+</div>

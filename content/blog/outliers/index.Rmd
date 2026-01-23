@@ -193,7 +193,7 @@ Ou seja, calculamos a média, a subtraímos de cada valor e então dividimos ess
   
 >De novo, explicar desvio-padrão foge do escopo do post, mas você pode ler um texto bem didático sobre essa medida [clicando aqui](https://fernandafperes.com.br/blog/variancia-desvio-padrao/).  
   
-Ao fazermos esse cálculo, fazemos com que os dados passem a ter média igual a zero e desvio-padrão igual a 1. Portanto, uma idade que tenha um **escore-z igual a 3** será uma idade que está **três desvios-padrão acima da média**. Na nossa amostra, a média é igual a 23,7 e o desvio-padrão é igual a 15,6. Aplicando a conta, obtemos os seguintes escores-z:  
+Ao fazermos esse cálculo, fazemos com que os dados passem a ter média igual a zero e desvio-padrão igual a 1. Portanto, uma idade que tenha um **escore-z igual a 3** será uma idade que está **três desvios-padrão acima da média**. Na nossa amostra, a média é igual a 29,7 e o desvio-padrão é igual a 15,6. Aplicando a conta, obtemos os seguintes escores-z:  
   
 
 ```{r, echo=FALSE}

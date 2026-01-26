@@ -1,0 +1,625 @@
+---
+title: "O que um gráfico de custo-benefício de hambúrgueres nos ensina sobre estatística?"
+author: Fernanda Fiel Peres
+date: '2026-01-26'
+slug: [grafico-hamburgueres]
+categories: []
+tags: ['Estatística teórica', 'Gráficos']
+comments: yes
+summary: 'Recentemente, pipocou pela internet um gráfico sobre o custo-benefício de 100 hamburguerias da cidade de São Paulo. E, como tudo na internet em 2025, acabou gerando briga nos comentários. Mas eu, particularmente, achei o gráfico um ótimo ponto de partida para conversarmos sobre princípios de visualização de dados. É exatamente isso que trago neste post.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+  
+</br>
+</br>
+  
+  
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
+                      fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(ggpubr)
+source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
+fstatix::paleta_f()
+```
+   
+   
+No final de novembro de 2025, recebi por DM um post do Instagram que trazia [um gráfico](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH) sobre o **custo-benefício de hamburguerias de São Paulo**. Nos comentários, tinha de tudo: acusações de manipulação visual, discordâncias acaloradas sobre as notas atribuídas, insinuações de viés político nas avaliações, e o que mais você imaginar. Eu me abstive de **mexer nesse vespeiro**, mas o gráfico e a polêmica ao redor dele ficaram na minha cabeça. Então, este é um post para conversarmos sobre **visualização de dados e estatística**, usando o famigerado gráfico dos hambúrgueres como exemplo.  
+  
+### Antes de tudo, os créditos
+  
+O gráfico polêmico foi criado por Wellington Kadooka e [publicado em seu perfil](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH) no LinkedIn. Por questões de direitos autorais, não irei reproduzi-lo aqui.  
+  
+Os dados utilizados na construção desse gráfico são o resultado da avaliação de 100 hamburguerias da cidade de São Paulo, realizada por três críticos gastronômicos: [\@ocritico.antigourmet](https://www.instagram.com/ocritico.antigourmet/), [\@tastebr](https://www.instagram.com/tasterbr/) e [\@gastronomium](https://www.instagram.com/gastronomium/). [Nesse post](https://www.instagram.com/p/DEyJKO6SCs3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) você encontra uma explicação da **metodologia**.  
+  
+>Vale deixar claro desde já: este não é um post para discutir se a avaliação foi **justa** ou não.  
+É um post para discutirmos os princípios de **visualização de dados**.    
+  
+  
+### Quanto mais caro eu pago em um hambúrguer, melhor ele tende a ser?
+  
+Essa é a pergunta que norteia a construção do gráfico. E aqui eu quero te convidar a fazer comigo um **exercício de imaginação**:  
+  
+Vamos supor que avaliamos 100 hamburguerias e **existe, de fato, uma relação entre custo e benefício**: hambúrgueres mais caros tendem a ser mais bem avaliados, enquanto hambúrgueres mais baratos recebem notas menores.  
+  
+Se construíssemos um gráfico de dispersão com o custo (preço do hambúrguer) no eixo x e a avaliação -- isto é, o "benefício" percebido -- no eixo y, **como você esperaria que os pontos desse gráfico se comportassem?**  
+  
+Se você respondeu mentalmente algo como "ah, eu esperaria um padrão com os **pontos subindo**!", ótimo: estamos alinhados.  
+  
+```{r, echo=FALSE}
+set.seed(123)
+
+dados <- tibble::tibble(
+  hamburgueria = paste("Hamburgueria", 1:100),
+  preco = runif(100, min = 20, max = 80)
+) |>
+  dplyr::mutate(
+    avaliacao = 4 + 0.05 * preco + rnorm(100, mean = 0, sd = 0.4)
+  )
+
+ggplot(dados, aes(x = preco, y = avaliacao)) +
+  geom_point(color = azul) +
+  labs(x = "Preço (R$)", y = "Nota") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+A **interpretação** desse gráfico é: quanto maior o preço, maior tende a ser a nota recebida pelo hambúrguer. Vale reforçar que os dados apresentados acima são **fictícios**.  
+  
+O gráfico que vamos discutir, no entanto, coloca o preço no eixo y e a avaliação no eixo x -- o que é um pouco menos intuitivo, mas também válido. Note que, ao **invertermos os eixos**, continuamos observando um **padrão ascendente** nos pontos:  
+  
+```{r, echo=FALSE}
+ggplot(dados, aes(y = preco, x = avaliacao)) +
+  geom_point(color = azul) +
+  labs(y = "Preço (R$)", x = "Nota") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+
+  
+### Os dados que temos à nossa disposição
+  
+O ranking divulgado pelos três perfis (creditados <a href="#antes-de-tudo-os-créditos">aqui</a>) nos fornece três informações:  
+  
+1. A posição da hamburgueria no *ranking*
+2. O preço do cheeseburger
+3. O preço do cheese-salada
+  
+Isso impõe algumas **limitações** à nossa análise de custo-benefício:  
+  
+#### Limitação 1: *ranking* x nota
+  
+Os críticos calcularam uma **nota média** para cada hamburgueria, mas **não temos acesso** a ela. Sabemos apenas a posição de cada estabelecimento no *ranking*. Isso não é o ideal para uma análise de custo-benefício, porque o *ranking* **padroniza artificialmente as distâncias entre as avaliações**.  
+  
+Para essa limitação fazer mais sentido, imagine que temos apenas cinco hamburguerias, que receberam as seguintes avaliações:  
+  
+```{r, echo=FALSE}
+tab <- as.data.frame(list(Hamburgueria = c("Lanche Feliz", "Tradicional",
+                                           "Rei dos Lanches",
+                                           "Esquina", "Pão com ovo"),
+                          Nota = c(4.5, 4.3, 4.9, 9.5, 4.7)))
+
+tab |>
+  mutate(Nota = fstatix::arred(Nota, digitos = 1)) |> 
+  flextable::regulartable() |>
+  flextable::align(align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(1.5, 0.8))
+```
+  
+Se ordenarmos as notas e atribuirmos um *ranking* a elas, obteremos:  
+  
+```{r, echo=FALSE}
+tab |>
+  arrange(-Nota) |> 
+  mutate(Nota = fstatix::arred(Nota, digitos = 1),
+         Posição = 1:5) |> 
+  flextable::regulartable() |>
+  flextable::align(align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(1.5, 0.8, 0.8))
+```
+  
+Perceba que, ao termos acesso apenas ao ***ranking***, somos obrigados a assumir que a **diferença de avaliação** entre a primeira e a segunda colocadas é a mesma que entre a segunda e a terceira. No entanto, ao observarmos as **notas**, entendemos que o cenário é completamente diferente: a primeira colocada tem uma avaliação muito superior às demais.  A diferença entre a primeira e a segunda colocadas é de **4,6 pontos**, enquanto entre a 
+segunda e a terceira é de apenas **0,2 pontos**.
+  
+  
+#### Limitação 2: o preço absoluto
+  
+O segundo detalhe a considerar é que não sabemos o **tamanho dos lanches**. Um hambúrguer mais **barato** pode ser simplesmente **menor**, o que torna o preço absoluto uma medida inadequada de custo-benefício. Sem **padronizar** por quantidade (por exemplo, por grama), a comparação entre estabelecimentos fica **enviesada**.  
+  
+>Eu mesma como com bastante frequência no Patties -- que, *alerta de spoiler*, aparece como um dos melhores custo-benefícios dessa base de dados. Ainda assim, o hambúrguer do Patties é relativamente pequeno: enquanto **um hambúrguer do BK** é mais do que suficiente para mim, no **Patties** eu sempre acabo comendo **um hambúrguer e meio**.  
+>Só deixando claro: isso não é uma crítica ao estabelecimento, mas uma forma de ilustrar como a avaliação baseada apenas no preço absoluto tem as suas **limitações**.  
+  
+Vale destacar que essa limitação não é "culpa" dos críticos: o *ranking* foi criado **sem qualquer pretensão** de servir como base para uma **análise de custo-benefício**.  
+  
+  
+#### Limitação 3: o delineamento do estudo
+  
+Antes de tudo, vale deixar isso muito claro: o que segue aqui **não é uma crítica aos avaliadores**. Os próprios autores do *ranking* deixam explícito que têm **ciência das limitações** do delineamento adotado. E, neste blog, eu sempre reforço: 100% dos estudos têm limitações. O papel delas não é desqualificar um trabalho, mas nos ajudar a interpretar os resultados de forma crítica e honesta.  
+  
+Dito isso, eis algumas limitações associadas à forma como a avaliação foi executada:  
+  
+* A avaliação de um alimento -- ainda que baseada em critérios bem definidos -- é inevitavelmente **subjetiva**. Pessoas diferentes podem chegar a conclusões bastante distintas. Basta ver as discussões inflamadas nos comentários.  
+  
+* Essa variabilidade poderia ser minimizada com um número maior de avaliações independentes. No entanto, aqui temos, na prática, um **n = 1**. Embora três pessoas tenham participado da avaliação, elas foram juntas aos estabelecimentos, trocaram impressões entre si e divulgaram um *ranking* único -- ou seja, suas opiniões não são independentes.  
+  
+* O delineamento assume que a **qualidade de um hambúrguer é estável** ao longo do tempo. Na prática, sabemos que isso raramente é verdade: um mesmo lanche pode estar excelente em um dia e decepcionar em outro. O *ranking* poderia, portanto, ser diferente se a avaliação fosse realizada em outro momento.  
+  
+* Como vários hambúrgueres foram experimentados em um mesmo dia, a avaliação pode ter sido influenciada pela **ordem do consumo**. Hambúrgueres provados mais cedo podem ter sido mais bem avaliados por terem sido consumidos "de estômago vazio". Avaliar cada hamburgueria em dias distintos reduziria esse problema, mas tornaria o estudo excessivamente longo e introduziria outros vieses, como alterações no preço pela inflação.  
+  
+* As avaliações **não foram cegas**: os avaliadores sabiam qual estabelecimento estavam avaliando, o que pode influenciar, ainda que inconscientemente, a percepção do produto.  
+  
+  
+### Vamos, então, construir o gráfico
+  
+#### Leitura da base de dados
+  
+O primeiro passo foi extrair manualmente, dos posts no Instagram, o *ranking* e os preços dos hambúrgueres. Salvei em Excel e ficou com a seguinte estrutura (abaixo uma amostra da listagem):  
+  
+```{r, echo=FALSE}
+dados <- readxl::read_excel("Base_hamburgueres.xlsx")
+
+dados <- dados |> 
+  mutate(Ranking = str_extract(Listagem, "^\\d+"))
+
+set.seed(1234)
+dados |>
+  sample_n(15) |>
+  arrange(Ranking) |>
+  select(Listagem) |> 
+  flextable::regulartable() |>
+  flextable::align(align = "left", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = 4)
+```
+  
+Perceba que não há um padrão perfeito. Às vezes a posição no *ranking* é seguida por um ponto, às vezes por dois pontos. Para algumas hamburguerias há o preço de dois lanches, para outras, de apenas um. Nem sempre os preços são precedidos por "R$". Apliquei algumas funções para extrair esses dados em três colunas: Ranking, Preço do cheeseburguer, Preço do cheese-salada.  
+  
+```{r}
+dados <- readxl::read_excel("Base_hamburgueres.xlsx")
+
+dados <- dados |> 
+  mutate(Ranking = stringr::str_extract(Listagem, "^\\d+"),
+         Nome = stringr::str_trim(stringr::str_replace_all(stringr::str_extract(stringr::str_replace(Listagem, "^\\d+[.:]\\s*", ""), "^[^\\(]+"), "[\\p{C}]", "")),
+         Valores = stringr::str_extract_all(Listagem, "R\\$\\s*\\d+"),
+         Valores = lapply(Valores, \(x) as.numeric(gsub("\\D", "", x))),
+         Cheeseburguer = sapply(Valores, \(x) if (length(x) > 1) x[1] else x[1]),
+         `Cheese-salada` = sapply(Valores, \(x) if (length(x) > 1) x[2] else x[1])) |> 
+  select(-c("Valores"))
+
+dados[,c(2,4:5)] <- lapply(dados[,c(2,4:5)], as.numeric)
+```
+  
+Agora passamos a ter a seguinte base de dados (foram sorteadas apenas algumas linhas):  
+  
+```{r, echo=FALSE}
+set.seed(1234)
+dados |>
+  sample_n(15) |>
+  arrange(Ranking) |>
+  flextable::regulartable() |>
+  flextable::align(j = 1, align = "left", part = "all") |>
+  flextable::align(j = -1, align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(3.5, 0.8, 1.7, 1.3, 1.3))
+```
+
+
+Ótimo! Podemos agora criar um gráfico que relacione o **preço do hambúrguer** -- e aqui vou usar o do **cheeseburguer**, porque me parece que é o que foi utilizado no gráfico original -- à **avaliação**, mais especificamente ao *ranking*.  
+  
+```{r, echo=FALSE}
+ggplot(dados, aes(x = Ranking, y = Cheeseburguer)) +
+  geom_point(color = azul) +
+  labs(y = "Preço do cheeseburguer (R$)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+Talvez você tenha olhado para esse gráfico e estranhado: ok, não há um padrão muito claro, mas os pontos parecem **"descer"**, e não "subir", como havíamos hipotetizado.  
+  
+Por que isso acontece? Hambúrgueres **mais caros** seriam, então, **piores**?  
+  
+Essa não é a interpretação correta desse gráfico. Repare que não estamos representando uma **nota**, mas sim um ***ranking***. Para notas, valores maiores indicam melhor desempenho; já em *rankings* é o oposto: quanto menor a posição, mais bem avaliado foi o hambúrguer.  
+  
+É justamente essa inversão que **exige um esforço extra** de interpretação quando visualizamos um gráfico construído dessa forma.  
+  
+Qual a alternativa, então?  
+  
+O autor do [gráfico original](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH) decidiu **inverter o eixo x**. Assim, avaliações melhores ficam à direita e as piores à esquerda -- reproduzindo a leitura **intuitiva** que teríamos caso o eixo x trouxesse uma **nota**, e não um *ranking*.  
+  
+```{r, echo=FALSE}
+ggplot(dados, aes(x = Ranking, y = Cheeseburguer)) +
+  geom_point(color = azul) +
+  scale_x_continuous(trans = "reverse") +
+  labs(y = "Preço do cheeseburguer (R$)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+E essa foi a decisão estética que mais gerou **polêmica**. Muitas pessoas, nos comentários, acusaram o autor do gráfico de ter invertido o eixo x para **induzir o leitor ao erro**.  
+  
+Eu, como você já deve ter percebido, **discordo** dessa acusação. Na minha avaliação, manter o gráfico sem a inversão tem uma probabilidade ainda maior de levar a uma interpretação equivocada.  
+  
+"Mas, Fernanda, inverter o eixo é um **absurdo**!"  
+  
+Olha, pode não ser a melhor estratégia para esse **público específico** -- afinal, um gráfico só pode ser considerado bem construído se for corretamente interpretado pelo público ao qual se destina. E, nesse caso, claramente houve **ruído na comunicação**.  
+  
+Isso não significa, no entanto, que inverter um eixo seja, por definição, um erro. Em determinados contextos, essa pode ser uma escolha legítima de visualização. Essa é, inclusive, a estratégia adotada em boa parte dos gráficos de [curva ROC](https://youtu.be/7ZMT0tiUJRY?si=eE-3fsfD1EnzRPuE): o eixo y traz a sensibilidade e o eixo x traz a especificidade, mas com o eixo invertido.  
+  
+  
+```{r, echo=FALSE}
+set.seed(4321)
+
+Câncer <- rep(c("Não", "Sim"), each = 10000)
+`PSA Livre` <- c(rnorm(n = 10000, mean = 0.8, sd = 0.3),
+                 rnorm(n = 10000, mean = 1.2, sd = 0.3))
+data_roc <- as.data.frame(cbind(Câncer, `PSA Livre`))
+data_roc$`PSA Livre` <- as.numeric(data_roc$`PSA Livre`)
+
+curva <- pROC::roc(data = data_roc, response = Câncer, predictor = `PSA Livre`)
+
+pROC::ggroc(curva) +
+  geom_abline(slope = 1, intercept = 1, 
+              color = "grey50", linetype = "dashed") +
+  labs(x = "Especificidade", y = "Sensibilidade") +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_reverse(labels = scales::number_format(decimal.mark = ",")) +
+  theme_bw() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+  
+Outra estratégia, bastante comum, utilizada para evitar a inversão do eixo x é construí-lo diretamente com **1 − especificidade**. Nesse caso, o gráfico fica visualmente idêntico ao anterior, mas sem a necessidade de inverter a orientação do eixo:  
+  
+```{r, echo=FALSE}
+pROC::ggroc(curva, legacy.axes = T) +
+  geom_abline(slope = 1, intercept = 0, 
+              color = "grey50", linetype = "dashed") +
+  labs(x = "1 - Especificidade", y = "Sensibilidade") +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_x_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  theme_bw() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+  
+Podemos aplicar essa lógica ao nosso **gráfico dos hambúrgueres** e construí-lo com **101 - Ranking** no eixo x. Assim, não precisamos inverter o eixo. A hamburgueria que ficou em **primeiro lugar** no *ranking* passará a ter o valor **100**, enquanto a que ficou em **último lugar** (posição 100) passará a ter o valor **1**. Dessa forma, valores "melhores" continuam aparecendo mais à direita do gráfico, o que torna a leitura mais intuitiva.  
+  
+```{r, echo=FALSE}
+ggplot(dados, aes(x = 101-Ranking, y = Cheeseburguer)) +
+  geom_point(color = azul) +
+  scale_x_continuous() +
+  labs(y = "Preço do cheeseburguer (R$)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+Mas aposto que você está pensando: "continua muito **confuso** para o leitor!". Concordo com você. E, aqui, para mim, a solução é renomear o eixo. Em vez de chamá-lo de "101 - Ranking", podemos chamá-lo simplesmente de "Nota".  
+  
+>Claro, já sabemos que esse *ranking* reescalado não é, de fato, uma nota. Mas, como não temos acesso às avaliações originais, essa é a **melhor aproximação disponível** para representar visualmente a ideia de **quão bem avaliado** cada estabelecimento foi.  
+  
+Adicionei também os **nomes das hamburguerias** aos pontos. Fica um pouco **poluído**, mas conversaremos sobre isso mais para frente, ok?  
+  
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(dados, aes(x = 101-Ranking, y = Cheeseburguer)) +
+  geom_point(color = azul) +
+  ggrepel::geom_text_repel(aes(label = Nome), size = 2.5, family = "Nunito") +
+  scale_x_continuous() +
+  labs(x = "Nota", y = "Preço do cheeseburguer (R$)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+  
+### Até aí, tudo bem
+  
+Até esse ponto, eu concordo com as decisões do autor do gráfico. Não considero um erro, por si só, inverter o eixo -- ainda que, para o público geral, essa escolha claramente não tenha funcionado. A opção por um gráfico de dispersão também me parece adequada.  
+
+O **problema** surge quando o autor adiciona uma **faixa diagonal** que, segundo a legenda, corresponderia à chamada "**zona de equivalência de valor**", definida como a região "onde o preço é coerente com o valor entregue".  
+  
+
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+faixa <- tibble(
+  Nota = seq(min(101 - dados$Ranking),
+             max(101 - dados$Ranking),
+             length.out = 200)
+) |>
+  mutate(
+    preco_central = 10 + 0.78 * Nota,
+    ymin = preco_central - 8,
+    ymax = preco_central + 8
+  )
+
+ggplot(dados, aes(x = 101 - Ranking, y = Cheeseburguer)) +
+  geom_ribbon(
+    data = faixa,
+    aes(x = Nota, ymin = ymin, ymax = ymax),
+    fill = azul,
+    alpha = 0.25,
+    inherit.aes = FALSE
+  ) +
+  geom_point(color = azul) +
+  # geom_abline(slope = 0.78, intercept = 10) +
+  ggrepel::geom_text_repel(aes(label = Nome), size = 2.5, family = "Nunito") +
+  labs(
+    x = "Nota",
+    y = "Preço do cheeseburguer (R$)"
+  ) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+
+# ggsave("cover.png", width = 5, height = 3.2)
+```
+  
+  
+A **ideia** por trás dessa faixa é simples: hamburguerias dentro dela teriam um custo **equivalente** ao benefício. As que aparecem acima da faixa apresentariam um custo superior ao benefício, enquanto as que estão abaixo ofereceriam um benefício superior ao custo.  
+  
+Parece ótimo, certo?  
+  
+O **problema** é que não sabemos qual **critério** foi utilizado para definir essa faixa.  
+  
+Testei algumas possibilidades, como uma reta de 45°, mas nenhuma delas reproduz o resultado do [gráfico original](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH). Depois de algumas tentativas, concluí de que a reta central parece ter sido traçada ligando o ponto mais inferior à esquerda ao ponto mais superior à direita do gráfico.  
+  
+Esse, infelizmente, não é um bom critério, porque torna a faixa extremamente **sensível a valores extremos** (*outliers*): bastaria a presença (ou ausência) de um único ponto muito caro ou muito barato para alterar de forma substancial a inclinação da reta e, consequentemente, a classificação de todas as demais hamburguerias.  
+  
+#### Mas como criar uma faixa de equivalência, então?  
+  
+Antes de mais nada, precisamos avaliar criticamente quais **informações** temos à nossa disposição. No nosso caso, temos acesso ao **preço** do cheeseburguer, em **reais**, e a uma **nota**, expressa em uma escala **de 1 a 100**.  
+  
+O ponto central é que essas duas variáveis estão em **unidades de medida diferentes**: uma está em reais, a outra em pontuação. Por esse motivo, não faz sentido considerar que a equivalência entre custo e benefício será descrita por uma reta de 45°.  
+  
+Para entender isso melhor, vamos imaginar um **cenário alternativo**:  
+Suponha que, em vez de atribuírem notas ou posições em um *ranking*, os avaliadores estimassem **quanto consideram justo pagar** por cada cheeseburguer, também em reais.  
+  
+Imagine, por exemplo, duas hamburguerias:  
+  
+* A Hamburgueria "Lanche Feliz" cobra R\$ 30 por um cheeseburguer, e os avaliadores consideram que ele "vale" exatamente R\$ 30.
+* A Hamburgueria "Pão com ovo" cobra R\$ 40, mas os avaliadores consideram que o lanche vale apenas R\$ 32.  
+  
+Nesse cenário, tanto o preço quanto o benefício estão **na mesma unidade de medida**: reais. Um gráfico de dispersão com essas duas variáveis permitiria traçar uma **reta de 45°**, correspondente à situação em que **preço = valor percebido**. Pontos acima da reta indicariam um preço maior do que o valor percebido; pontos abaixo, um benefício superior ao custo.  
+  
+O problema é que esse não é o cenário que temos. No gráfico dos hambúrgueres, custo e benefício estão em **unidades de medida diferentes**. Para que seja possível traçar uma reta de equivalência, precisamos primeiro tornar essas variáveis **comparáveis**. Uma estratégia estatística que faz sentido aqui é o cálculo do **escore-z**, que vai padronizar essas variáveis, tornando-as **adimensionais** -- isto é, sem unidade de medida.  
+  
+#### Como calculamos um escore-z?  
+  
+Para calcular um escore-z, subtraímos de cada valor a média da amostra e dividimos esse resultado pelo [desvio-padrão](https://fernandafperes.com.br/blog/variancia-desvio-padrao/). Esse procedimento faz com que a variável passe a ter média igual a zero e desvio-padrão igual a 1.  
+  
+Além disso, como a média e o desvio-padrão estão na **mesma unidade de medida** da variável original, ao realizarmos essa divisão obtemos um valor **adimensional**, isto é, sem unidade de medida.  
+  
+Vamos a um exemplo concreto. Para o preço do cheeseburguer, a média da amostra é R\$ 35,99 e o desvio-padrão é R\$ 12,49. Um lanche cujo preço seja **igual à média** -- aproximadamente R$ 36 -- terá, portanto, um **escore-z igual a zero**.  
+  
+Já um hambúrguer que custe cerca de R\$ 49,50, ou seja, aproximadamente um desvio-padrão acima da média, terá um **escore-z igual a 1**. Da mesma forma, um cheeseburguer com preço em torno de R\$ 24,50, um desvio-padrão abaixo da média, terá **escore-z igual a -1**.  
+  
+A tabela abaixo apresenta alguns dos escores-z calculados para os preços. Note que o cheeseburguer mais barato da amostra, o do **McDonald's**, possui escore-z igual a -2, indicando que seu preço está **dois desvios-padrão abaixo da média**. Já o cheeseburguer mais caro apresenta escore-z igual a 4, o que significa que seu preço está **quatro desvios-padrão acima da média**.  
+  
+```{r, echo=FALSE}
+dados |> 
+  mutate(Nota = 101-Ranking) |> 
+  select(c("Nome", "Ranking", "Nota", "Cheeseburguer")) |> 
+  mutate(`Escore-z` = (Cheeseburguer-mean(Cheeseburguer))/sd(Cheeseburguer)) |> 
+  filter(Cheeseburguer %in% c(11, 23, 36, 49, 86)) |> 
+  arrange(Cheeseburguer) |> 
+  filter(Nome %in% c("McDonald’s", "Charles Smash", "Tradi",
+                     "Coa Bar y Parrilla", "Elevado Conselheiro")) |> 
+  mutate(`Escore-z` = fstatix::arred(`Escore-z`, digitos = 2)) |> 
+  flextable::regulartable() |>
+  flextable::align(j = -1, align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(2, 0.8, 0.8, 1.3, 1))
+```
+  
+Para criar uma faixa de equivalência, vamos padronizar -- isto é, calcular o escore-z -- tanto para o **preço** quanto para a **nota**. Após essa transformação, poderemos traçar uma reta de 45º.  
+  
+Essa reta representa situações em que custo e benefício ocupam **a mesma posição relativa** dentro de suas respectivas distribuições. Como assim?  
+  
+Em termos práticos, essa reta funciona como uma régua de comparação. Ela passa pelo ponto em que o preço está exatamente **na média** e a nota também está exatamente **na média**. A partir daí, ela sobe ligando **situações equivalentes**: um lanche que está um desvio-padrão acima da média em preço com um lanche que está um desvio-padrão acima da média em nota; dois desvios-padrão acima em preço com dois desvios-padrão acima em nota, e assim sucessivamente.  
+  
+Repare como essa nova reta **difere bastante** daquela obtida ao ligar os pontos mais extremos do gráfico. Isso acontece porque, agora, ela não é fortemente influenciada por valores *outliers*.  
+  
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+dados |> 
+  mutate(Nota = 101-Ranking) |> 
+  select(c("Nome", "Ranking", "Nota", "Cheeseburguer")) |> 
+  mutate(`Nota padronizada` = scale(Nota)[,1],
+         `Preço padronizado` = scale(Cheeseburguer)[,1]) |> 
+  ggplot(aes(x = `Nota padronizada`, y = `Preço padronizado`)) +
+  geom_point(color = azul) +
+  geom_abline() +
+  ggrepel::geom_text_repel(aes(label = Nome), size = 2.5, family = "Nunito") +
+  scale_x_continuous() +
+  labs(x = "Nota padronizada (escore-z)", y = "Preço do cheeseburguer\npadronizado (escore-z)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+  
+Também podemos usar os escores-z para identificar os pontos com maior **diferença relativa** entre custo (preço) e benefício (nota). Para isso, basta subtrair o escore-z da nota do escore-z do preço. Essa diferença é apresentada na tabela abaixo como "Relação Custo–Benefício".  
+  
+```{r, echo=FALSE}
+dados_graf2 <- dados |> 
+  mutate(Nota = 101-Ranking) |> 
+  select(c("Nome", "Ranking", "Nota", "Cheeseburguer")) |> 
+  mutate(`Nota padronizada` = scale(Nota)[,1],
+         `Preço padronizado` = scale(Cheeseburguer)[,1],
+         CB = ifelse(`Nota padronizada` > `Preço padronizado`,
+                     "Benefício > Custo",
+                     "Custo > Benefício"),
+         `Relação Custo-Benefício` = round(`Preço padronizado`,2) -
+           round(`Nota padronizada`, 2)) 
+
+dados_graf2 |> 
+  select(c("Nome", "Nota", "Cheeseburguer", "Nota padronizada",
+           "Preço padronizado", "Relação Custo-Benefício")) |> 
+  mutate(across(-c(1:3), \(x) fstatix::arred(x, digitos = 2))) |> 
+  filter(Nome %in% c("McDonald’s", "Charles Smash", "Tradi",
+                     "Coa Bar y Parrilla", "Elevado Conselheiro")) |> 
+  flextable::regulartable() |>
+  flextable::align(j = -1, align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(1.8, 0.8, 1.3, 1.2, 1.2, 1.3))
+```
+  
+Essa relação pode ser utilizada para destacar as 10 hamburguerias com melhor custo-benefício e as 10 com pior custo-benefício:   
+  
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+bottom10  <- dados_graf2 |> slice_max(`Relação Custo-Benefício`, n = 10, with_ties = TRUE) |> pull(`Relação Custo-Benefício`)
+top10 <- dados_graf2 |> slice_min(`Relação Custo-Benefício`, n = 10, with_ties = TRUE) |> pull(`Relação Custo-Benefício`)
+
+dados_graf2 <- dados_graf2 |>
+  mutate(
+    Categoria = case_when(
+      `Relação Custo-Benefício` %in% top10    ~ "Melhores custos-benefícios",
+      `Relação Custo-Benefício` %in% bottom10 ~ "Piores custos-benefícios",
+      TRUE ~ NA_character_
+    )
+  )
+
+dados_graf2$Categoria <- factor(dados_graf2$Categoria,
+                                levels = c("Piores custos-benefícios",
+                                           "Melhores custos-benefícios"))
+
+
+ggplot(dados_graf2, aes(x = `Nota padronizada`, y = `Preço padronizado`)) +
+  geom_point(aes(color = Categoria)) +
+  geom_abline() +
+  ggrepel::geom_text_repel(aes(label = Nome), size = 2.5, family = "Nunito") +
+  scale_x_continuous() +
+  labs(x = "Nota padronizada (escore-z)", y = "Preço do cheeseburguer\npadronizado (escore-z)", color = NULL) +
+  scale_color_manual(breaks = \(x) x[!is.na(x)], na.value = "grey70",
+                     values = c(rosa, azul)) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        legend.position = "top")
+```
+  
+  
+>Claro, esse não é o único critério possível. Mas, diante das informações disponíveis, ele é um dos que fazem mais sentido do ponto de vista estatístico.  
+>E vale reforçar: essa análise tem limitações -- como qualquer análise de dados --, as quais já discutimos ao longo do texto. O objetivo aqui não é dar uma **resposta definitiva**, mas olhar para esses dados de uma forma mais **criteriosa e transparente**.  
+
+
+### Em gráficos, menos é mais
+  
+No [gráfico original](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH), o autor optou por colorir os pontos de acordo com a categoria da hamburgueria: tradicional, *fast-food* ou restaurante. A ideia é boa, mas, na minha opinião, resultou em **informação demais** para uma única figura.  
+  
+Esse tipo de codificação por cor faria mais sentido se o objetivo fosse **destacar uma única categoria** e discuti-la quanto a relação de custo-benefício. Caso contrário, o excesso de elementos visuais acaba competindo pela atenção do leitor. Como a Cole Knaflic discute no [Storytelling com Dados](https://a.co/d/fFunXqN): em visualização, menos é mais.  
+  
+Para reduzir essa carga visual, optei por destacar apenas os estabelecimentos com os maiores e os menores custos-benefícios, deixando os demais pontos em segundo plano.
+  
+Outro fator que contribui para a poluição visual é a tentativa de **exibir os nomes das 100 hamburguerias** em uma única figura. Inclusive, no [gráfico original](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH), alguns nomes acabam não aparecendo, o que rendeu comentários indignados como: "se a Pão com Carne não foi avaliada, não tem como levar esse *ranking* a sério!".  
+  
+O ponto aqui é que a "Pão com Carne" foi, sim, avaliada. O nome simplesmente não aparece porque, com tantos pontos próximos entre si, ocorre sobreposição -- e o software utilizado para gerar o gráfico opta por **omitir alguns rótulos**.  
+  
+Como resolver esse problema?  
+  
+Isso vai **depender** do nosso **objetivo**. Se o propósito do gráfico for destacar os melhores e piores **custos-benefícios**, faz sentido nomear apenas as hamburguerias que se encontram nesses extremos:  
+  
+```{r, echo=FALSE, fig.width=7, fig.height=5}
+ggplot(dados_graf2, aes(x = `Nota padronizada`, y = `Preço padronizado`)) +
+  geom_point(aes(color = Categoria)) +
+  geom_abline() +
+  ggrepel::geom_text_repel(aes(label = ifelse(is.na(Categoria), NA, Nome)),
+                           size = 2.5, family = "Nunito") +
+  scale_x_continuous() +
+  labs(x = "Nota padronizada (escore-z)", y = "Preço do cheeseburguer\npadronizado (escore-z)", color = NULL) +
+  scale_color_manual(breaks = \(x) x[!is.na(x)], na.value = "grey70",
+                     values = c(rosa, azul)) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        legend.position = "top")
+```
+  
+  
+Por outro lado, se o objetivo for **permitir que o leitor explore os preços e as avaliações** de todas as hamburguerias, então uma boa solução é transformar o gráfico em uma figura interativa. Nesse caso, ao passar o mouse sobre cada ponto, é possível acessar o nome da hamburgueria, sua posição no ranking e o preço do cheeseburguer:  
+  
+```{r, echo=FALSE}
+library(ggiraph)
+
+p <- ggplot(
+  dados_graf2,
+  aes(
+    x = `Nota padronizada`,
+    y = `Preço padronizado`,
+    color = Categoria
+  )
+) +
+  geom_point_interactive(
+    aes(
+      tooltip = paste0(
+        "<b>Nome:</b> ", Nome, "<br>",
+        "<b>Ranking:</b> ", Ranking, "<br>",
+        "<b>Preço do cheeseburguer:</b> R$ ",
+        fstatix::arred(Cheeseburguer, digitos = 2)
+      ),
+      data_id = Nome
+    ),
+    size = 2.5,
+    alpha = 0.6
+  ) +
+  geom_abline() +
+  scale_x_continuous() +
+  labs(
+    x = "Nota padronizada (escore-z)",
+    y = "Preço do cheeseburguer\npadronizado (escore-z)",
+    color = NULL
+  ) +
+  scale_color_manual(
+    breaks = \(x) x[!is.na(x)],
+    na.value = "grey70",
+    values = c(rosa, azul)
+  ) +
+  theme_classic() +
+  theme(
+    text = element_text(family = "Nunito"),
+    legend.position = "top"
+  )
+
+girafe(
+  ggobj = p,
+  width_svg = 6,
+  height_svg = 4.3,
+  options = list(
+    opts_sizing(rescale = FALSE),
+    opts_hover(css = "fill-opacity:0.8;"),
+    opts_tooltip(
+      css = "
+        background-color: white;
+        color: black;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        padding: 6px;
+        font-family: Nunito;
+        font-size: 11px;
+      "
+    )
+  )
+)
+```
+
+  
+
+  
+  
+
+</br>
+   
+***
+
+### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **O que um gráfico de custo-benefício de hambúrgueres nos ensina sobre estatística?**. Blog Fernanda Peres, São Paulo, 26 jan. 2026. Disponível em: https://fernandafperes.com.br/blog/grafico-hamburgueres/.
+  
+  
+<br />
+
+
+

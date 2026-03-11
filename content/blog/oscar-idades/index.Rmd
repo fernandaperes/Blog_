@@ -374,6 +374,31 @@ knitr::include_graphics("plot2.png")
 ```
   
   
+
+```{r, include=FALSE}
+dados |> 
+  group_by(Categoria) |> 
+  arrange(`Ano da cerimônia`) |> 
+  mutate(`Idade média` = zoo::rollmean(`Idade (anos) na cerimônia`,
+                                       k = 15, fill = NA, align = "center")) |> 
+  ggplot(aes(x = `Ano da cerimônia`,
+             y = `Idade média`,
+             color = Categoria)) +
+  geom_line(stat = "identity") +
+  scale_x_continuous(breaks = seq(1920, 2020, by = 10)) +
+  scale_color_manual(values = c(azul, amarelo, rosa, roxo)) +
+  theme_minimal() +
+  theme(text = element_text(family = "Nunito"),
+        axis.title.x = element_text(margin = margin(10,0,0,0)))
+
+#ggsave("plot2.png", width = 7, height = 3.5)
+```
+  
+
+  
+  
+  
+  
   
 #### Um gráfico interativo para você explorar os dados
   

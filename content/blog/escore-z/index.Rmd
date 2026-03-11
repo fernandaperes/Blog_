@@ -1,0 +1,289 @@
+---
+title: "O que é um escore-z?"
+author: Fernanda Fiel Peres
+date: '2026-02-23'
+slug: [escore-z]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Você já ouviu falar em escore-z (ou *z-score*, em inglês), mas nunca entendeu exatamente o que ele significa? Neste post discutimos o que é o escore-z, como calculá-lo e como ele deve ser interpretado.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+  
+</br>
+</br>
+  
+
+  
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
+                      fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(ggpubr)
+source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
+fstatix::paleta_f()
+```
+   
+   
+```{r toc, echo=FALSE}
+# render_toc("index.Rmd", toc_header_name = NULL, toc_depth = 2, base_level = 3)
+```
+   
+   
+   
+### O que é um escore-z?
+  
+O escore-z (*z-score*, em inglês) é uma forma de padronizar variáveis numéricas. Após a padronização, as variáveis transformadas passam a:  
+  
+* Ser adimensionais -- isto é, não possuem unidade de medida
+* Ter média igual a zero
+* Ter desvio-padrão igual a um
+  
+  
+Mas, vamos entender isso melhor!
+  
+  
+
+### Como é calculado um escore-z?
+  
+O cálculo do escore-z tem como base a média e o [desvio-padrão](https://fernandafperes.com.br/blog/variancia-desvio-padrao/) do conjunto de dados. Para calcular o escore-z de uma determinada observação (x), basta subtrairmos a média e dividirmos o resultado dessa subtração pelo desvio-padrão (DP):  
+  
+$$
+z = \frac{x - Média}{DP}
+$$
+  
+  
+### Como interpretar o escore-z?
+  
+Para que a interpretação do escore faça mais sentido, vamos partir para um exemplo. Imagine que temos uma amostra de mulheres que tiveram a sua altura, em cm, aferida. Ao calcularmos a média e o [desvio-padrão](https://fernandafperes.com.br/blog/variancia-desvio-padrao/) para essa amostra, obtivemos:  
+  
+* Média = 160 cm
+* Desvio-padrão = 10 cm
+  
+Substituindo esses valores na fórmula do escore-z, obtemos:  
+  
+$$
+z = \frac{x - Média}{DP}
+$$
+  
+$$
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+<br />
+  
+##### Qual seria o escore-z para uma mulher com altura média (160 cm)?
+  
+Para calcular esse escore-z, basta substituirmos o valor de x por 160:  
+  
+$$
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+$$
+z = \frac{160\,\text{cm} - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+Perceba que:  
+  
+* Isso resulta em um numerador igual a zero (160 -- 160 = 0)
+* Ficamos com uma fração que divide cm por cm -- essas unidades de medida se cancelam e o resultado, portanto, passa a ser adimensional, sem unidade de medida  
+  
+$$
+z = \frac{0\,\text{cm}}{10\,\text{cm}} = 0
+$$
+  
+Logo, uma mulher com altura **igual à média** da amostra terá um **escore-z igual a zero**.  
+  
+</br>
+  
+##### Qual seria o escore-z para uma mulher com altura um desvio-padrão acima da média?  
+  
+Uma mulher cuja altura esteja **um desvio-padrão acima** da média dessa amostra terá uma altura de 170 cm (160 cm + 10 cm). Para calcular o escore-z para ela, substituímos o x por 170:  
+
+$$
+z = \frac{x - 160}{10} = \frac{170 - 160}{10}
+$$
+  
+$$
+z = \frac{10}{10} = 1
+$$
+  
+Portanto, uma mulher com altura 1 desvio-padrão acima da média da amostra terá **escore-z igual a 1**.  
+  
+</br>
+  
+##### E qual seria o escore-z para uma mulher com altura um desvio-padrão abaixo da média?  
+  
+Uma mulher cuja altura esteja **um desvio-padrão abaixo** da média dessa amostra terá uma altura de 150 cm (160 cm - 10 cm). Para calcular o escore-z para ela, substituímos o x por 150:  
+
+$$
+z = \frac{x - 160}{10} = \frac{150 - 160}{10}
+$$
+  
+$$
+z = \frac{-10}{10} = -1
+$$
+  
+Portanto, uma mulher com altura 1 desvio-padrão abaixo da média da amostra terá **escore-z igual a -1**.  
+  
+</br>
+  
+#### Um guia de como interpretar o escore-z
+  
+Note que:  
+  
+* As alturas iguais à média têm z = 0
+* As alturas um desvio-padrão **acima** da média têm z = 1
+* As alturas um desvio-padrão **abaixo** da média têm z = -1  
+  
+Isso é o mesmo que dizer que a variável padronizada pelo escore-z tem média igual a zero e desvio-padrão igual a 1. Também significa que qualquer escore-z indica quantos desvios-padrão um valor está acima ou abaixo da média da distribuição.  
+  
+Por exemplo, se uma mulher tem um **escore-z** para altura igual a **2,3**, sabemos que ela sua altura está 2,3 desvios-padrão **acima** da média. Por outro lado, uma mulher com escore-z igual a **-1,5** é alguém com uma altura 1,5 desvios-padrão **abaixo** da média.  
+  
+  
+</br>
+  
+### Relação entre o escore-z e a curva normal
+  
+Até aqui, vimos que o escore-z nos diz quantos desvios-padrão um valor está acima ou abaixo da média. Mas uma outra pergunta que podemos querer responder é: o **quão raro** é alguém estar 2,3 desvios-padrão acima da média? Para responder a isso, precisamos saber como os dados de altura **se distribuem**.  
+  
+Em muitas situações, principalmente quando estamos lidando com medidas biológicas (como altura, pressão arterial), os dados tendem a seguir uma distribuição de frequências com formato aproximado de **sino**, que recebe o nome de "**distribuição normal**" ou "distribuição gaussiana":  
+  
+```{r, echo=FALSE, fig.width=5}
+library(tidyverse)
+
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  # stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+  #               xlim = c(300, 427.8), geom = "area",
+  #               fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(breaks = NULL,
+                     expand = expansion(mult = c(0, 0.05))) +
+  labs(x = "Altura (cm)", y = NULL) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+A curva normal tem propriedades conhecidas:  
+  
+* O seu valor central corresponde à média e coincide com a moda e a mediana
+* A distribuição é simétrica em relação à média (note como os lados direito e esquerdo são iguais, apenas espelhados)
+* Os valores próximos à média apresentam maior frequência
+* Conforme os valores se distanciam da média, vão se tornando mais raros
+  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  # stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+  #               xlim = c(300, 427.8), geom = "area",
+  #               fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(breaks = NULL,
+                     expand = expansion(mult = c(0, 0.05))) +
+  labs(x = "Média\nMediana\nModa", y = NULL) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank())
+```
+  
+  
+Além disso, sabemos que, caso uma variável apresente uma distribuição normal, **68,3% das observações** estarão entre a média mais 1 desvio-padrão (DP) e a média menos 1 DP:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+                xlim = c(150, 170), geom = "area",
+                fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 160, y = dnorm(160, mean = 160, sd = 10)/2,
+           geom = "label", label = "68,3%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(breaks = NULL,
+                     expand = expansion(mult = c(0, 0.05))) +
+  scale_x_continuous(breaks = c(150, 160, 170),
+                     labels = c("Média\n- 1DP",
+                                "Média",
+                                "Média\n+ 1DP")) +
+  labs(x = NULL, y = NULL) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+Outra informação importante: **95,5% das observações** estarão entre a média mais 2 desvios-padrão (DP) e a média menos 2 DP:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+                xlim = c(140, 180), geom = "area",
+                fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 160, y = dnorm(160, mean = 160, sd = 10)/2,
+           geom = "label", label = "95,5%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(breaks = NULL,
+                     expand = expansion(mult = c(0, 0.05))) +
+  scale_x_continuous(breaks = c(140, 160, 180),
+                     labels = c("Média\n- 2DP",
+                                "Média",
+                                "Média\n+ 2DP")) +
+  labs(x = NULL, y = NULL) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+Dois 
+
+
+Quando padronizamos uma variável usando o escore-z, estamos essencialmente transformando qualquer distribuição normal em uma normal padrão — isto é, uma distribuição com média 0 e desvio-padrão 1.
+
+Essa transformação é poderosa porque nos permite interpretar probabilidades de forma universal: uma vez que sabemos o escore-z de um valor, podemos determinar quão frequente ou raro ele é dentro da distribuição.
+  
+
+
+  
+  
+</br>
+  
+### Exemplos de aplicações
+* IMC de criança
+* Pesos de criança?
+* Meu post de hambúrgueres
+   
+***
+
+### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **O que é um escore-z?**. Blog Fernanda Peres, São Paulo, 23 fev. 2026. Disponível em: https://fernandafperes.com.br/blog/escore-z/.
+  
+  
+<br />
+
+
+

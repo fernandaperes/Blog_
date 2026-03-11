@@ -1,0 +1,147 @@
+---
+title: "O que é um escore-z?"
+author: Fernanda Fiel Peres
+date: '2026-02-23'
+slug: [escore-z]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Você já ouviu falar em escore-z (ou *z-score*, em inglês), mas nunca entendeu exatamente o que ele significa? Neste post discutimos o que é o escore-z, como calculá-lo e como ele deve ser interpretado.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+<p></br>
+</br></p>
+<div id="o-que-é-um-escore-z" class="section level3">
+<h3>O que é um escore-z?</h3>
+<p>O escore-z (<em>z-score</em>, em inglês) é uma forma de padronizar variáveis numéricas. Após a padronização, as variáveis transformadas passam a:</p>
+<ul>
+<li>Ser adimensionais – isto é, não possuem unidade de medida</li>
+<li>Ter média igual a zero</li>
+<li>Ter desvio-padrão igual a um</li>
+</ul>
+<p>Mas, vamos entender isso melhor!</p>
+</div>
+<div id="como-é-calculado-um-escore-z" class="section level3">
+<h3>Como é calculado um escore-z?</h3>
+<p>O cálculo do escore-z tem como base a média e o <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">desvio-padrão</a> do conjunto de dados. Para calcular o escore-z de uma determinada observação (x), basta subtrairmos a média e dividirmos o resultado dessa subtração pelo desvio-padrão (DP):</p>
+<p><span class="math display">\[
+z = \frac{x - Média}{DP}
+\]</span></p>
+</div>
+<div id="como-interpretar-o-escore-z" class="section level3">
+<h3>Como interpretar o escore-z?</h3>
+<p>Para que a interpretação do escore faça mais sentido, vamos partir para um exemplo. Imagine que temos uma amostra de mulheres que tiveram a sua altura, em cm, aferida. Ao calcularmos a média e o <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">desvio-padrão</a> para essa amostra, obtivemos:</p>
+<ul>
+<li>Média = 160 cm</li>
+<li>Desvio-padrão = 10 cm</li>
+</ul>
+<p>Substituindo esses valores na fórmula do escore-z, obtemos:</p>
+<p><span class="math display">\[
+z = \frac{x - Média}{DP}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p><br /></p>
+<div id="qual-seria-o-escore-z-para-uma-mulher-com-altura-média-160-cm" class="section level5">
+<h5>Qual seria o escore-z para uma mulher com altura média (160 cm)?</h5>
+<p>Para calcular esse escore-z, basta substituirmos o valor de x por 160:</p>
+<p><span class="math display">\[
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{160\,\text{cm} - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p>Perceba que:</p>
+<ul>
+<li>Isso resulta em um numerador igual a zero (160 – 160 = 0)</li>
+<li>Ficamos com uma fração que divide cm por cm – essas unidades de medida se cancelam e o resultado, portanto, passa a ser adimensional, sem unidade de medida</li>
+</ul>
+<p><span class="math display">\[
+z = \frac{0\,\text{cm}}{10\,\text{cm}} = 0
+\]</span></p>
+<p>Logo, uma mulher com altura <strong>igual à média</strong> da amostra terá um <strong>escore-z igual a zero</strong>.</p>
+<p></br></p>
+</div>
+<div id="qual-seria-o-escore-z-para-uma-mulher-com-altura-um-desvio-padrão-acima-da-média" class="section level5">
+<h5>Qual seria o escore-z para uma mulher com altura um desvio-padrão acima da média?</h5>
+<p>Uma mulher cuja altura esteja <strong>um desvio-padrão acima</strong> da média dessa amostra terá uma altura de 170 cm (160 cm + 10 cm). Para calcular o escore-z para ela, substituímos o x por 170:</p>
+<p><span class="math display">\[
+z = \frac{x - 160}{10} = \frac{170 - 160}{10}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{10}{10} = 1
+\]</span></p>
+<p>Portanto, uma mulher com altura 1 desvio-padrão acima da média da amostra terá <strong>escore-z igual a 1</strong>.</p>
+<p></br></p>
+</div>
+<div id="e-qual-seria-o-escore-z-para-uma-mulher-com-altura-um-desvio-padrão-abaixo-da-média" class="section level5">
+<h5>E qual seria o escore-z para uma mulher com altura um desvio-padrão abaixo da média?</h5>
+<p>Uma mulher cuja altura esteja <strong>um desvio-padrão abaixo</strong> da média dessa amostra terá uma altura de 150 cm (160 cm - 10 cm). Para calcular o escore-z para ela, substituímos o x por 150:</p>
+<p><span class="math display">\[
+z = \frac{x - 160}{10} = \frac{150 - 160}{10}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{-10}{10} = -1
+\]</span></p>
+<p>Portanto, uma mulher com altura 1 desvio-padrão abaixo da média da amostra terá <strong>escore-z igual a -1</strong>.</p>
+<p></br></p>
+</div>
+<div id="um-guia-de-como-interpretar-o-escore-z" class="section level4">
+<h4>Um guia de como interpretar o escore-z</h4>
+<p>Note que:</p>
+<ul>
+<li>As alturas iguais à média têm z = 0</li>
+<li>As alturas um desvio-padrão <strong>acima</strong> da média têm z = 1</li>
+<li>As alturas um desvio-padrão <strong>abaixo</strong> da média têm z = -1</li>
+</ul>
+<p>Isso é o mesmo que dizer que a variável padronizada pelo escore-z tem média igual a zero e desvio-padrão igual a 1. Também significa que qualquer escore-z indica quantos desvios-padrão um valor está acima ou abaixo da média da distribuição.</p>
+<p>Por exemplo, se uma mulher tem um <strong>escore-z</strong> para altura igual a <strong>2,3</strong>, sabemos que ela sua altura está 2,3 desvios-padrão <strong>acima</strong> da média. Por outro lado, uma mulher com escore-z igual a <strong>-1,5</strong> é alguém com uma altura 1,5 desvios-padrão <strong>abaixo</strong> da média.</p>
+<p></br></p>
+</div>
+</div>
+<div id="relação-entre-o-escore-z-e-a-curva-normal" class="section level3">
+<h3>Relação entre o escore-z e a curva normal</h3>
+<p>Até aqui, vimos que o escore-z nos diz quantos desvios-padrão um valor está acima ou abaixo da média. Mas uma outra pergunta que podemos querer responder é: o <strong>quão raro</strong> é alguém estar 2,3 desvios-padrão acima da média? Para responder a isso, precisamos saber como os dados de altura <strong>se distribuem</strong>.</p>
+<p>Em muitas situações, principalmente quando estamos lidando com medidas biológicas (como altura, pressão arterial), os dados tendem a seguir uma distribuição de frequências com formato aproximado de <strong>sino</strong>, que recebe o nome de “<strong>distribuição normal</strong>” ou “distribuição gaussiana”:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>A curva normal tem propriedades conhecidas:</p>
+<ul>
+<li>O seu valor central corresponde à média e coincide com a moda e a mediana</li>
+<li>A distribuição é simétrica em relação à média (note como os lados direito e esquerdo são iguais, apenas espelhados)</li>
+<li>Os valores próximos à média apresentam maior frequência</li>
+<li>Conforme os valores se distanciam da média, vão se tornando mais raros</li>
+</ul>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Além disso, sabemos que, caso uma variável apresente uma distribuição normal, <strong>68,27% das observações</strong> estarão entre a média mais 1 desvio-padrão (DP) e a média menos 1 DP:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Quando padronizamos uma variável usando o escore-z, estamos essencialmente transformando qualquer distribuição normal em uma normal padrão — isto é, uma distribuição com média 0 e desvio-padrão 1.</p>
+<p>Essa transformação é poderosa porque nos permite interpretar probabilidades de forma universal: uma vez que sabemos o escore-z de um valor, podemos determinar quão frequente ou raro ele é dentro da distribuição.</p>
+<p></br></p>
+</div>
+<div id="exemplos-de-aplicações" class="section level3">
+<h3>Exemplos de aplicações</h3>
+<ul>
+<li>IMC de criança</li>
+<li>Pesos de criança?</li>
+<li>Meu post de hambúrgueres</li>
+</ul>
+<hr />
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é um escore-z?</strong>. Blog Fernanda Peres, São Paulo, 23 fev. 2026. Disponível em: <a href="https://fernandafperes.com.br/blog/escore-z/" class="uri">https://fernandafperes.com.br/blog/escore-z/</a>.</p>
+</blockquote>
+<p><br /></p>
+</div>

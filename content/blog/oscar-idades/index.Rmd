@@ -372,7 +372,8 @@ ggsave("plot2.png", width = 7, height = 3.5)
 ```{r, echo=FALSE, fig.align='center', out.width = '750px'}
 knitr::include_graphics("plot2.png")
 ```
-
+  
+  
   
 #### Um gráfico interativo para você explorar os dados
   

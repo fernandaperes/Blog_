@@ -327,7 +327,7 @@ No gráfico abaixo cada ponto corresponde a um vencedor do Oscar. As linhas hori
 fstatix::paleta_f()
 library(ggpubr)
 
-ggplot(dados, aes(y = `Idade (anos) no filme`, x = Categoria)) +
+ggplot(dados, aes(y = `Idade (anos) na cerimônia`, x = Categoria)) +
   ggbeeswarm::geom_beeswarm(color = azul, alpha = 0.3) +
   geom_crossbar(stat = "summary", fun = "mean", fatten = 1, width = 0.6) +
   geom_errorbar(stat = "summary", fun.data = "mean_sd", width = 0.2) +

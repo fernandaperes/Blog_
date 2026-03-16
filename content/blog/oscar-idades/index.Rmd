@@ -18,7 +18,9 @@ editor_options:
 <div class = "faq">
 <center>
 *Michelle Yeoh, vencedora do Oscar de Melhor atriz em 2023, aos 60 anos.*  
-<font size='1' style="line-height:0.8;">Crédito de cortesia: Imagem do Executive Office of the President of USA (domínio público), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Michelle_Yeoh.jpg).</font>
+<span style="font-size:0.7em; line-height:0.7;">
+Crédito de cortesia: Imagem do Executive Office of the President of USA (domínio público), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Michelle_Yeoh.jpg).
+</span>
 </center>
 </div></div>
   
@@ -26,7 +28,7 @@ editor_options:
   
 >Esse post foi escrito em 2025 e atualizado em 16 de março de 2026, para incluir as idades dos vencedores da edição do Oscar de 2026.  
   
-<br><br>
+<br>
   
   
 #### A hipótese a ser investigada

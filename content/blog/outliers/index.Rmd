@@ -224,7 +224,7 @@ Vale dizer que essa definição de *outlier* com base no escore-z é mais adequa
   
 #### Por que os *outliers* são uma preocupação?
   
-Até aqui você pode estar pensando: "ok, tem um valor discrepante na amostra, e daí?". A nossa maior **preocupação** quando temos um *outlier* na amostra é com relação à **média**. A média é uma medida muito **influenciada por valores extremos** -- o que significa que na presença desses valores ela pode **não ser** uma boa representação do conjunto de dados.  
+Até aqui você pode estar pensando: "ok, tem um valor discrepante na amostra, e daí?". A nossa maior **preocupação** quando temos um *outlier* univariado na amostra é com relação à **média**. A média é uma medida muito **influenciada por valores extremos** -- o que significa que na presença desses valores ela pode **não ser** uma boa representação do conjunto de dados.  
   
 Para isso ficar menos abstrato, vou retomar o exemplo das idades. Nós vimos que a média da amostra é de **29,7 anos**. Se eu te digo: "olha, tenho uma turma de pré-vestibular com idade média de 29,7 anos", **o que viria à sua cabeça?** Eu mesma imaginaria que os alunos tem em torno de 30 anos, com idades variando entre 25 e 35. Mas veja: isso está bem longe da realidade da nossa amostra.  
   
@@ -242,7 +242,7 @@ ggplot(dados, aes(y = Idade, x = "")) +
   theme(text = element_text(family = "Nunito"),
         axis.ticks.x = element_blank())
 ```
-
+  
 Ao excluírmos a idade *outlier*, a média passa a ser 19,4 anos, um valor que representa a amostra de forma mais adequada:  
   
 ```{r, echo=FALSE, fig.width=2.5}
@@ -259,7 +259,7 @@ ggplot(dados |> filter(Idade < 30), aes(y = Idade, x = "")) +
 ```
   
   
-Ao impactar a média, os *outliers* impactam não apenas as **análises descritivas**, mas também os **testes de hipóteses** baseados em médias, como o teste-t e a ANOVA.  
+Ao impactar a média, os *outliers* impactam não apenas as **análises descritivas**, mas podem também os **testes de hipóteses** baseados em médias, como o teste-t e a ANOVA.  
 
 
 >Mas, se acalme. Isso **não significa** que você pode simplesmente **excluir** os valores *outliers*, ok?  

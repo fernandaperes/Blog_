@@ -22,6 +22,10 @@ editor_options:
 </center>
 </div></div>
   
+  
+*Esse post foi escrito em 2025 e atualizado em 16 de março de 2026, para incluir as idades dos vencedores da edição do Oscar de 2026.*  
+  
+  
 #### A hipótese a ser investigada
   
 Desde que Mikey Madison ganhou o Oscar de melhor atriz no dia 03 de março de 2025, aos 25 anos, uma discussão tem tomado conta das redes sociais. Muitas pessoas argumentam que as mulheres premiadas nas categorias de melhor atriz e melhor atriz coadjuvante **tendem a ser mais jovens** que os homens premiados nas categorias correspondentes.  
@@ -52,7 +56,7 @@ Portanto, para avaliar as idades dos homens e mulheres ganhadores dos Oscars nas
 <br />
   
 3. Preenchimento manual com base em pesquisa na Wikipedia das seguintes informações:
-  - Os vencedores do Oscar de 2025, que não constavam na base -- inclui seus nomes, nomes dos filmes e suas datas de nascimento.
+  - Os vencedores do Oscar de 2025 e 2026, que não constavam na base -- inclui seus nomes, nomes dos filmes e suas datas de nascimento.
   - Datas de nascimento dos vencedores de 2015 a 2024, bem como de alguns poucos atores/ atrizes cuja data de nascimento não constava na base 2. Aqui, como eu mencionei, eu usei como base a data fornecida pela Wikipedia. Sim, eu sei que a data de nascimento fornecida pela Wikipedia não é 100% confiável. Mas eu assumi que, como eu precisava de informações mais recentes, as datas de nascimento seriam mais confiáveis.
   - E, sim, eu poderia ter feito um *web scraping* ao invés de um preenchimento manual. Mas, as minhas habilidades com *web scraping* são tão limitadas que eu com certeza demoraria mais indo por esse caminho.  
   
@@ -238,11 +242,11 @@ write.csv2(dados, "Dados_Oscar_Fernanda_Peres.csv", row.names = F)
   
 #### Qual a média de idade dos homens e mulheres que vencem nas categorias de atuação?
   
-A média de idade ao receber o prêmio de melhor atriz, durante todo o período (1927 a 2025) foi de **36,9 anos** (*versus* **44,6 anos** para melhor ator). Esse padrão se mantém quando olhamos para a mediana: 33,5 anos para as mulheres e 43 anos para os homens. A interpretação desse dado é: metade das mulheres que ganharam o Oscar de melhor atriz tinham menos de 34 anos no momento da premiação. Para homens, esse valor aumenta em quase 10 anos: metade dos homens premiados nessa categoria tinham 43 anos ou menos. Isso mostra que os **homens** que ganham o prêmio máximo de atuação são, em geral, **mais velhos** que as mulheres.  
+A média de idade ao receber o prêmio de melhor atriz, durante todo o período (1927 a 2026) foi de **36,9 anos** (*versus* **44,6 anos** para melhor ator). Esse padrão se mantém quando olhamos para a mediana: 34 anos para as mulheres e 43 anos para os homens. A interpretação desse dado é: metade das mulheres que ganharam o Oscar de melhor atriz tinham até 34 anos no momento da premiação. Para homens, esse valor aumenta em quase 10 anos: metade dos homens premiados nessa categoria tinham 43 anos ou menos. Isso mostra que os **homens** que ganham o prêmio máximo de atuação são, em geral, **mais velhos** que as mulheres.  
   
-Quando avaliamos os prêmios de atrizes e atores coadjuvantes, novamente a média de idade das mulheres é menor: **40,9 anos** *versus* **49,8 anos**. A mediana, mais uma vez, segue a tendência da média. Metade das mulheres premiadas na categoria de atuação coadjuvante tinham até 39 anos no momento da premiação. Entre os homens, metade dos premiados tinham 46 anos ou menos.  
+Quando avaliamos os prêmios de atrizes e atores coadjuvantes, novamente a média de idade das mulheres é menor: **41,2 anos** *versus* **50,0 anos**. A mediana, mais uma vez, segue a tendência da média. Metade das mulheres premiadas na categoria de atuação coadjuvante tinham até 39 anos no momento da premiação. Entre os homens, metade dos premiados tinham até 46 anos.  
   
-Também adicionei à tabela os percentis 25 e 75 (P25 e P75). Para a categoria de melhor atriz, o P25 é 28,2 anos e o P75 é de 41 anos. Isso significa que **25% das mulheres que venceram nessa categoria têm até 28 anos**; além disso, 2/3 dessas mulheres (75%) têm até 41 anos. Isso também significa que **apenas 25% das premiadas como "melhor atriz" tinham mais de 40 anos**. Para os vencedores do prêmio de "melhor ator", P25 e P75 são de 31 e 50,8 anos, respectivamente.  
+Também adicionei à tabela os percentis 25 e 75 (P25 e P75). Para a categoria de melhor atriz, o P25 é 28,5 anos e o P75 é de 41 anos. Isso significa que **25% das mulheres que venceram nessa categoria têm até 28 anos**; além disso, 2/3 dessas mulheres (75%) têm até 41 anos. Isso também significa que **apenas 25% das premiadas como "melhor atriz" tinham mais de 40 anos**. Para os vencedores do prêmio de "melhor ator", P25 e P75 são de 38 e 50,5 anos, respectivamente.  
     
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(flextable)
@@ -314,7 +318,7 @@ Para entender o porquê não devemos fazer testes estatísticos aqui -- ou ainda
   
 Em resumo, chamamos de **população** a totalidade dos elementos que nos interessam para responder à nossa pergunta de pesquisa. Em muitos casos, é inviável estudar toda a população e, portanto, investigamos apenas uma parcela dessa população, que recebe o nome de **amostra**. Os testes estatísticos são utilizados para fazer inferências -- ou seja, **extrapolar** os resultados obtidos em uma amostra para a população. Perceba que só faz sentido utilizarmos testes estatísticos quando trabalhamos com amostras.  
   
-No nosso caso, a **população** é composta por **todos os ganhadores do Oscar** de atuação, no período de 1927 a 2025. E, sim, nós temos acesso a toda a população. Portanto, não precisamos utilizar recursos para fazer inferências. Nossa pergunta é respondida com uma simples análise descritiva.  
+No nosso caso, a **população** é composta por **todos os ganhadores do Oscar** de atuação, no período de 1927 a 2026. E, sim, nós temos acesso a toda a população. Portanto, não precisamos utilizar recursos para fazer inferências. Nossa pergunta é respondida com uma simples análise descritiva.  
   
 Nossa pergunta era: "a média de idade de mulheres é menor que a média de idade de homens que ganham Oscar por atuação?". A resposta, como vimos, é **sim**.  
   
@@ -444,5 +448,5 @@ Como baixar a base de dados? A versão final está disponível para [download no
 #### Como citar esse post, nas normas da ABNT
   
   
-> PERES, Fernanda F. **As idades de atores e atrizes vencedores do Oscar diferem?**. Blog Fernanda Peres, São Paulo, 05 mar. 2025. Disponível em: https://fernandafperes.com.br/blog/oscar-idades/.
+> PERES, Fernanda F. **As idades de atores e atrizes vencedores do Oscar diferem?**. Blog Fernanda Peres, São Paulo, 05 mar. 2025. Atualizado em 16 mar. 2026. Disponível em: https://fernandafperes.com.br/blog/oscar-idades/.
 

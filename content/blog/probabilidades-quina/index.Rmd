@@ -61,7 +61,7 @@ Ganha o prêmio máximo quem acertar os cinco números sorteados.
   
 ### Qual a probabilidade de uma pessoa ganhar na Quina?
   
-Para conseguirmos pensar na probabilidade de uma pessoa ganhar na Quina, o primeiro passo é calcular quantos sorteios diferentes podem existir. Perceba que são sempre sorteados **5 números em 50**, e a **ordem** dos números sorteados **não importa** (ou seja, 1-2-3-4-5 é a mesma coisa que 5-4-3-2-1).  
+Para conseguirmos pensar na probabilidade de uma pessoa ganhar na Quina, o primeiro passo é calcular quantos sorteios diferentes podem existir. Perceba que são sempre sorteados **5 números em 80**, e a **ordem** dos números sorteados **não importa** (ou seja, 1-2-3-4-5 é a mesma coisa que 5-4-3-2-1).  
   
 A gente aprende lá no ensino médio que, quando a ordem não importa, estamos lidando com uma **combinação** -- caso a ordem importasse, teríamos um arranjo.  
   

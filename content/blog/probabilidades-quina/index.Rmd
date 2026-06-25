@@ -1,0 +1,228 @@
+---
+title: "Qual a probabilidade de ganhar na Quina?"
+author: Fernanda Fiel Peres
+date: '2026-06-25'
+slug: [probabilidades-quina]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'A Quina é uma das loterias tradicionais da Caixa, embora receba menos atenção do que a Mega-Sena. Alguns de seus sorteios entregam prêmios de centenas de milhões de reais. Com um desses sorteios se aproximando, eu quis entender -- e discutir por aqui: qual a probabilidade de ganhar na Quina?'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+  
+</br>
+</br>
+  
+  
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
+                      fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(flextable)
+source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
+fstatix::paleta_f()
+```
+   
+   
+```{r toc, echo=FALSE}
+render_toc("index.Rmd", toc_header_name = NULL, toc_depth = 2, base_level = 3)
+```
+   
+   
+  
+### Como funciona e quanto custa um jogo da Quina?
+   
+Se você, como eu, costuma dar mais atenção à [Mega-Sena](https://fernandafperes.com.br/blog/mega-sena/), deixa eu te contar antes como funciona a Quina: são sorteados **5 números entre 1 e 80**. Ao fazer uma aposta, você pode selecionar apenas 5 números ou fazer uma aposta maior:  
+  
+```{r, echo=FALSE}
+as.data.frame(list(
+  numeros = 5:15,
+  preco = c(3, 18, 63, 168, 378, 756, 1386, 2376, 3861, 6006, 9009)
+)) |> 
+  mutate(preco = fstatix::arred(preco, digitos = 2, bm = ".")) |> 
+  rename("Quantidade de números na aposta" = "numeros",
+         "Preço (R$) em 2026" = "preco") |> 
+  flextable::flextable() |> 
+  flextable::align(align = "center", part = "all") |> 
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(1.5,1))
+```
+  
+Ganha o prêmio máximo quem acertar os cinco números sorteados.
+
+  
+### Qual a probabilidade de uma pessoa ganhar na Quina?
+  
+Para conseguirmos pensar na probabilidade de uma pessoa ganhar na Quina, o primeiro passo é calcular quantos sorteios diferentes podem existir. Perceba que são sempre sorteados **5 números em 50**, e a **ordem** dos números sorteados **não importa** (ou seja, 1-2-3-4-5 é a mesma coisa que 5-4-3-2-1).  
+  
+A gente aprende lá no ensino médio que, quando a ordem não importa, estamos lidando com uma **combinação** -- caso a ordem importasse, teríamos um arranjo.  
+  
+Para calcular a quantidade de combinações diferentes de 5 em 80, podemos aplicar a fórmula da combinação detalhada abaixo. É a mesma que a gente aprende na escola:  
+  
+$$
+C_{n,k} = \binom{n}{k} = \frac{n!}{k!\,(n-k)!}
+$$
+</br>
+  
+$$
+C_{80,5} = \binom{80}{5} = \frac{80!}{5!\,(80-5)!}
+$$
+ 
+$$
+C_{80,5} = \binom{80}{5} = \frac{80!}{5!\,75!}
+$$
+ 
+  
+$$
+C_{80,5} = \binom{80}{5} = 24.040.016
+$$
+  
+>Caso queira calcular essa combinação em R, basta usar a função `choose`:  
+>  
+>`choose(80,5)`
+  
+  
+O cálculo nos diz que há 24.040.016 combinações possíveis de 5 números a partir dos 80. Ao fazer uma única aposta de 5 números você está escolhendo **uma** dessas mais de 24 milhões de combinações. Portanto, a sua probabilidade de ganhar é de **1 em 24.040.016** -- o que, em porcentagem, dá algo em torno de **0,000004%**:  
+  
+  
+$$
+P = \frac{1}{24.040.016} \times 100
+\approx 0{,}000004\%
+$$
+  
+  
+### É mais provável ganhar na Quina ou na Mega-Sena?
+  
+Essa é uma dúvida que eu tinha, antes de parar para analisar as probabilidades. Na Quina, são sorteados 5 números em 80; na Mega-Sena, são sorteados 6 números em 60.  
+  
+À primeira vista, pode parecer que a Mega-Sena é mais "fácil", já que o sorteio envolve menos números. Mas isso não é verdade: o que determina a probabilidade é o número total de combinações possíveis em cada jogo. Na Mega-Sena, há 50.063.860 combinações possíveis. Logo, a probabilidade de ganhar -- que eu detalhei [neste post](https://fernandafperes.com.br/blog/mega-sena/) anterior do blog é de:  
+  
+$$
+P = \frac{1}{50.063.860} \times 100
+\approx 0{,}000002
+\%
+$$
+  
+  
+Portanto, por mais contraintuitivo que pareça, ganhar na Quina é cerca de 2 vezes mais provável do que na Mega-Sena (com apostas mínimas em ambos os jogos). Vale dizer que a probabilidade segue sendo bem baixa.  
+  
+  
+### Como aumentar a sua probabilidade de ganhar na Quina?
+  
+Com a Quina de São João se aproximando -- e com um prêmio estimado em 260 milhões -- você talvez esteja se perguntando: como aumentar a minha probabilidade de ganhar? Bom, não há uma solução mágica. Mas há duas opções:  
+
+* Fazer **mais apostas** (ou seja, jogar mais de uma combinação de 5 números)
+* Fazer apostas com **mais números**  
+  
+Vamos destrinchar as probabilidades nesses dois cenários.  
+
+  
+#### Opção 1: Fazendo mais jogos
+  
+Por exemplo, se você fizer **10 jogos** de 5 números, em vez de apenas 1, a probabilidade de ganhar será **multiplicada por 10**. Ela deixa de ser **0,000004%** e passa a ser **0,00004%** (repare que temos um zero a menos nesse segundo número).    
+  
+$$
+P = \frac{10}{24.040.016} \times 100
+\approx 0{,}00004\%
+$$
+  
+  
+#### Opção 2: Fazendo jogos com mais números
+  
+E caso você aposte mais números? Como isso aumenta a sua probabilidade de ganhar?  
+  
+Para ilustrar como essa probabilidade aumenta, vamos imaginar a maior aposta possível: um **jogo com 15 números**. Para pensar na probabilidade de ganhar nesse caso, precisamos descobrir quantas combinações de 5 números estão contidas dentro desses 15 números escolhidos. Novamente, vamos partir para a fórmula da combinação:  
+  
+$$
+C_{15,5} = \binom{15}{5} = \frac{15!}{5!\,(15-5)!} = \frac{15!}{5!\,10!} = 3.003
+$$
+Ou, pelo R:  
+  
+```{r}
+choose(15,5)
+```
+
+Ou seja, em um jogo de 15 números há 3.003 combinações diferentes de 5 números. Isso significa que, ao fazer um jogo com 15 números, a sua **probabilidade** de ganhar é **multiplicada por 3.003** em relação a uma aposta simples.  
+  
+$$
+P = \frac{3.003}{24.040.016} \times 100
+\approx 0{,}0125\%
+$$
+   
+Outra forma, talvez mais intuitiva, de pensar nisso é: aproximadamente **1 em 8.000**.  
+Bem mais provável que 1 em 24 milhões, né?  
+  
+Como era de se esperar, quanto maior a probabilidade de ganhar, maior também o valor da aposta. Esse aumento do preço é proporcional ao aumento da probabilidade:  
+  
+```{r, echo=FALSE}
+as.data.frame(list(
+  numeros = 5:15,
+  preco = c(3, 18, 63, 168, 378, 756, 1386, 2376, 3861, 6006, 9009)
+)) |> 
+  mutate(preco = fstatix::arred(preco, digitos = 2, bm = ".")) |> 
+  mutate(combinacoes = choose(numeros, 5)) |> 
+  mutate(probabilidade = paste0("1 em ",
+                                fstatix::arred(choose(80,5)/combinacoes,
+                                               digitos = 0, bm = "."))) |>
+  mutate(combinacoes = fstatix::arred(combinacoes, dm = ".")) |> 
+  rename("Quantidade de números na aposta" = "numeros",
+         "Preço (R$) em 2026" = "preco",
+         "Quantidade de combinações de 5 números" = "combinacoes",
+         "Probabilidade aproximada" = "probabilidade") |> 
+  flextable::flextable() |> 
+  flextable::align(align = "center", part = "all") |> 
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(1.5,1,1.3,1.9))
+```
+  
+  
+### Eu tenho como garantir que vou ganhar na Quina?
+  
+Assim como discutimos para a [Mega-Sena](https://fernandafperes.com.br/blog/mega-sena/), a resposta é: **sim**. Mas já te adianto que a estratégia que eu vou te explicar **não compensa**.  
+  
+Para **garantir** que você vai ganhar na Quina precisa jogar **todas** as 24.040.016 combinações. Fazendo jogos de 5 números, que custam R\$ 3,00, você precisaria desembolsar:  
+  
+<center>
+R\$ 3,00 x 24.040.016 = R\$ 72.120.048,00
+  
+</center>
+  
+Ou seja, com um investimento de um pouco mais de 72 milhões de reais você consegue jogar todas as combinações possíveis e **garantir** que vai ganhar a quina.  
+  
+Mas, por que eu te disse que isso **não compensa**, mesmo que você tenha 72 milhões de reais sobrando por aí?  
+A questão é ao jogar todas as combinações você consegue garantir que vai vencer. Mas **não** consegue garantir que vai **vencer sozinho**. Ao dividir o prêmio com outros apostadores, o valor recebido provavelmente será **menor que o total investido**.  
+
+Para ilustrar, vamos analisar a Quina de São João de 2025.  
+Essa edição teve uma **impressionante arrecadação** e pagou um prêmio total de R\$ 250.247.082,54. No entanto, como **treze apostas** acertaram a Quina, o prêmio foi **dividido** e cada uma levou para casa "apenas" R\$ 19.249.776,00. Veja: eu já estaria **bem satisfeita com mais de 19 milhões**, mas note que o prêmio **insuficiente para cobrir o custo** de apostar todas as combinações possíveis (mais de 72 milhões).  
+  
+  
+***
+  
+Se você curtiu essa discussão sobre probabilidades, vale ler também [meu post sobre a Mega-Sena](https://fernandafperes.com.br/blog/mega-sena/). Lá, além das probabilidades de vencer na Mega, eu discuto:  
+  
+* Qual a probabilidade de saírem os números 1-2-3-4-5-6?
+* É possível prever quais números serão sorteados?
+  
+É uma discussão bem didática sobre alguns mitos desses sorteios da loteria.  
+   
+   
+***
+
+### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **Qual a probabilidade de ganhar na Quina?**. Blog Fernanda Peres, São Paulo, 25 jun. 2026. Disponível em: https://fernandafperes.com.br/blog/probabilidades-quina/.
+  
+  
+<br />
+
+
+

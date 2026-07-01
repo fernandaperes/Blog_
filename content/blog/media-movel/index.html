@@ -1,0 +1,237 @@
+---
+title: "O que é uma média móvel?"
+author: Fernanda Fiel Peres
+date: '2026-07-01'
+slug: [media-movel]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: ''
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<link href="{{< blogdown/postref >}}index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/tabwid/tabwid.js"></script>
+
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+<p></br>
+</br></p>
+<p><strong>Média móvel</strong> era um conceito que nunca tinha feito parte da minha realidade, até que chegou 2020. E com ele, a pandemia de COVID-19 e os <strong>gráficos</strong> com quantidade de casos e suas médias móveis em <strong>todos os telejornais</strong> do país.</p>
+<p>Foi aí que eu fiz questão de entender essa medida – inclusive para explicá-la, como eu fiz <a href="https://www.instagram.com/p/CDOsLUTp8C2/?utm_source=ig_web_copy_link&amp;igsh=NTc4MTIwNjQ2YQ==">nesse post</a> do meu Instagram.</p>
+<p>Os anos se passaram, a popularidade da média móvel diminuiu, mas eventualmente eu <a href="https://fernandafperes.com.br/servicos/">atendo algum cliente</a> que precisa calculá-la. E sinto falta de um material mais estruturado que <strong>explique o que é uma média móvel e qual o cálculo por trás dessa medida</strong>. Então, a proposta deste post é preencher essa lacuna.</p>
+<ul>
+<li><a href="#por-que-calcular-uma-m%C3%A9dia-m%C3%B3vel">Por que calcular uma média móvel?</a><br />
+</li>
+<li><a href="#o-que-afinal-%C3%A9-uma-m%C3%A9dia-m%C3%B3vel">O que, afinal, é uma média móvel?</a><br />
+</li>
+<li><a href="#a-m%C3%A9dia-m%C3%B3vel-no-exemplo-do-covid-19">A média móvel no exemplo do COVID-19</a><br />
+</li>
+<li><a href="#como-calcular-a-m%C3%A9dia-m%C3%B3vel-no-excel">Como calcular a média móvel no Excel?</a><br />
+</li>
+<li><a href="#como-calcular-a-m%C3%A9dia-m%C3%B3vel-no-r">Como calcular a média móvel no R?</a><br />
+
+<ul>
+<li><a href="#com-a-fun%C3%A7%C3%A3o-rollmean-do-pacote-zoo">Com a função rollmean do pacote zoo</a><br />
+</li>
+<li><a href="#com-a-fun%C3%A7%C3%A3o-slidedbl-do-pacote-slider">Com a função slide_dbl do pacote slider</a><br />
+</li>
+</ul></li>
+<li><a href="#como-citar-esse-post-nas-normas-da-abnt">Como citar esse post, nas normas da ABNT</a></li>
+</ul>
+<div id="por-que-calcular-uma-média-móvel" class="section level3">
+<h3>Por que calcular uma média móvel?</h3>
+<p>Na minha opinião, o exemplo da quantidade de <strong>casos novos de COVID-19</strong> segue sendo o mais <strong>didático</strong>. Então, vamos a ele. Em julho de 2020, o cenário era esse:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" alt="" width="624" style="display: block; margin: auto;" /></p>
+<p>A partir de 11 de março, novos casos de COVID-19 eram registrados todos os dias no Brasil. O maior pico do período foi o registro de <strong>67.860 casos novos</strong> em 23 de julho.</p>
+<p>No entanto, há uma grande flutuação na quantidade de casos novos. No gráfico de linhas, observamos subidas seguidas de quedas. Perceba como a quantidade de casos novos varia muito de um dia para o outro, ao redor da data do pico (23/07):</p>
+<div class="tabwid"><style>.cl-4bbb1e5e{}.cl-4bb6fab8{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4bb6fac2{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-4bb8b22c{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-4bb8c7ee{width:1.2in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bb8c7ef{width:1.2in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-4bb8c7f8{width:1.2in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-4bbb1e5e'><thead><tr style="overflow-wrap:break-word;"><th class="cl-4bb8c7ee"><p class="cl-4bb8b22c"><span class="cl-4bb6fab8">Data</span></p></th><th class="cl-4bb8c7ee"><p class="cl-4bb8b22c"><span class="cl-4bb6fab8">Casos novos</span></p></th><th class="cl-4bb8c7ee"><p class="cl-4bb8b22c"><span class="cl-4bb6fab8">Dia da semana</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">18/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">34.177</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Sábado</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">19/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">28.532</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Domingo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">20/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">23.529</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Segunda-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">21/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">20.257</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Terça-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">22/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">41.008</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Quarta-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">23/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">67.860</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Quinta-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">24/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">59.961</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Sexta-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">25/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">55.891</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Sábado</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">26/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">51.147</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Domingo</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">27/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">24.578</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Segunda-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">28/07/2020</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">23.284</span></p></td><td class="cl-4bb8c7ef"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Terça-feira</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-4bb8c7f8"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">29/07/2020</span></p></td><td class="cl-4bb8c7f8"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">40.816</span></p></td><td class="cl-4bb8c7f8"><p class="cl-4bb8b22c"><span class="cl-4bb6fac2">Quarta-feira</span></p></td></tr></tbody></table></div>
+<p>Há um <strong>padrão</strong> de aumento e queda que se repete, aproximadamente, <strong>a cada sete dias</strong>. Em geral, quantidades <strong>menores</strong> de casos são observadas às <strong>segundas e terças</strong>, enquanto quantidades <strong>maiores</strong> são registradas <strong>entre quinta e sábado</strong>.</p>
+<p>Essa variação não representa necessariamente uma <strong>flutuação real</strong> na quantidade de novos casos em cada dia. A principal <strong>hipótese</strong> levantada na época era um <strong>atraso na notificação</strong> dos casos e no processamento dos resultados dos testes, fazendo com que os registros se concentrassem em determinados dias da semana.</p>
+<p>A questão é que essa flutuação <strong>atrapalha a análise da tendência dos dados</strong>. Ao olharmos para o gráfico, temos dificuldade de identificar se a quantidade de casos está aumentando ou diminuindo. Esse é exatamente o tipo de situação em que a média móvel pode ser mais informativa.</p>
+</div>
+<div id="o-que-afinal-é-uma-média-móvel" class="section level3">
+<h3>O que, afinal, é uma média móvel?</h3>
+<p>Ainda que o nome não seja dos mais intuitivos, a média móvel é uma sequência de médias calculadas sobre um <strong>período fixo</strong> de observações. Esse período, também chamado de <strong>janela</strong>, depende do contexto da análise.</p>
+<p>No caso da <strong>COVID-19</strong>, faz sentido utilizar um <strong>período de sete dias</strong>, já que os registros apresentam um padrão semanal de aumento e redução de casos. Ao calcular a média dos últimos sete dias, esse padrão é suavizado, facilitando a visualização da tendência da série de dados.</p>
+<p>Vamos <strong>calcular manualmente</strong> uma média móvel para entendê-la. Imagine que temos o seguinte conjunto de dados:</p>
+<p><img src="tab1.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+<p>Como o <strong>período</strong> é de <strong>sete dias</strong>, a primeira média só pode ser calculada quando o sétimo dia da série é observado. Essa primeira média corresponde à média dos sete primeiros dias:</p>
+<p><img src="tab2.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+<p>A segunda média será calculada quando for coletado o oitavo dia. E corresponderá à média dos últimos sete dias. Isso significa que agora a média desconsiderará o primeiro dia e passará a considerar o oitavo:</p>
+<p><img src="tab3.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+<p>E assim sucessivamente. A cada novo dia observado, a janela de sete dias desloca-se uma posição para frente, descartando o dia mais antigo e incluindo o mais recente. É justamente esse deslocamento da janela ao longo do tempo que dá origem ao nome média móvel.</p>
+<p><img src="tab4.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+<p><img src="tab5.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+<p>Ao final, para essa base de dados, vamos obter as seguintes médias móveis:</p>
+<p><img src="tab6.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+</div>
+<div id="a-média-móvel-no-exemplo-do-covid-19" class="section level3">
+<h3>A média móvel no exemplo do COVID-19</h3>
+<p>Ao calcularmos a média móvel (representada pela linha azul no gráfico), obtemos uma série com muito menos flutuações do que os dados originais. Com isso, a tendência fica muito mais nítida. Por exemplo, agora conseguimos observar com mais clareza uma tendência de aumento no final da série de dados.</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" alt="" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<div id="como-calcular-a-média-móvel-no-excel" class="section level3">
+<h3>Como calcular a média móvel no Excel?</h3>
+<p>Imagine que você tem uma base de dados com um dia por linha e deseja considerar um período de sete dias. Para calcular a média móvel no Excel, insira a <strong>fórmula da média</strong> (<code>=MÉDIA()</code>) na linha correspondente ao <strong>sétimo dia</strong>. Nessa célula, a função deve calcular a média dos sete primeiros dias da série.</p>
+<p>Em seguida, basta <strong>arrastar a fórmula</strong> até o final da planilha. A cada nova linha, o Excel <strong>ajustará automaticamente</strong> as células sendo consideradas no cálculo, fazendo com que a média seja calculada sempre com base nos <strong>últimos sete dias</strong>:</p>
+<p><img src="img1.jpg" style="height:250px; width:auto; display:block; margin:auto;"></p>
+</div>
+<div id="como-calcular-a-média-móvel-no-r" class="section level3">
+<h3>Como calcular a média móvel no R?</h3>
+<p>Há mais de uma forma de calcular a média móvel no R. Mas duas funções são razoavelmente populares para esse cálculo: a função <code>rollmean</code> do pacote <code>zoo</code> e a função <code>slide_dbl</code> do pacote <code>slider</code>.</p>
+<p>Para os exemplos abaixo, considere que temos a seguinte base de dados:</p>
+<pre><code>##          data casos_novos
+## 1  2020-03-07           5
+## 2  2020-03-08           0
+## 3  2020-03-09          12
+## 4  2020-03-10           0
+## 5  2020-03-11           9
+## 6  2020-03-12          18
+## 7  2020-03-13          25
+## 8  2020-03-14          21
+## 9  2020-03-15          23
+## 10 2020-03-16          79
+## 11 2020-03-17          34
+## 12 2020-03-18          57
+## 13 2020-03-19         137
+## 14 2020-03-20         193
+## 15 2020-03-21         283
+## 16 2020-03-22         224
+## 17 2020-03-23         418
+## 18 2020-03-24         345
+## 19 2020-03-25         310
+## 20 2020-03-26         232
+## 21 2020-03-27         482
+## 22 2020-03-28         502
+## 23 2020-03-29         487
+## 24 2020-03-30         352
+## 25 2020-03-31         323
+## 26 2020-04-01        1138</code></pre>
+<div id="com-a-função-rollmean-do-pacote-zoo" class="section level4">
+<h4>Com a função rollmean do pacote zoo</h4>
+<p>Para usarmos a função <code>rollmean()</code> precisamos definir 4 argumentos:</p>
+<ul>
+<li>x: variável para a qual se deseja calcular a média móvel
+<ul>
+<li>No nosso exemplo, a variável <code>casos_novos</code></li>
+</ul></li>
+<li>k: quantidade de linhas a ser considerada no cálculo
+<ul>
+<li>No nosso caso, cada linha corresponde a um dia e queremos considerar um período de 7 dias; logo, k = 7</li>
+</ul></li>
+<li>fill: valor utilizado para preencher as posições em que a média móvel ainda não pode ser calculada
+<ul>
+<li>No exemplo, vamos deixar como valor ausente, <code>NA</code></li>
+</ul></li>
+<li>align: define em qual linha do intervalo a média será registrada
+<ul>
+<li>Ao utilizar <code>align = "right"</code>, média dos dias 1 a 7 será registrada no dia 7, a média dos dias 2 a 8 será registrada no dia 8, e assim sucessivamente – ou seja, a média será registrada no último dia do período</li>
+<li>Essa configuração é a mesma que utilizamos no cálculo manual e no exemplo em Excel</li>
+</ul></li>
+</ul>
+<pre class="r"><code>library(dplyr)
+library(zoo)
+
+dados |&gt; 
+  mutate(media_movel = zoo::rollmean(x = casos_novos, k = 7,
+                                     fill = NA, align = &quot;right&quot;))</code></pre>
+<pre><code>##          data casos_novos media_movel
+## 1  2020-03-07           5          NA
+## 2  2020-03-08           0          NA
+## 3  2020-03-09          12          NA
+## 4  2020-03-10           0          NA
+## 5  2020-03-11           9          NA
+## 6  2020-03-12          18          NA
+## 7  2020-03-13          25    9.857143
+## 8  2020-03-14          21   12.142857
+## 9  2020-03-15          23   15.428571
+## 10 2020-03-16          79   25.000000
+## 11 2020-03-17          34   29.857143
+## 12 2020-03-18          57   36.714286
+## 13 2020-03-19         137   53.714286
+## 14 2020-03-20         193   77.714286
+## 15 2020-03-21         283  115.142857
+## 16 2020-03-22         224  143.857143
+## 17 2020-03-23         418  192.285714
+## 18 2020-03-24         345  236.714286
+## 19 2020-03-25         310  272.857143
+## 20 2020-03-26         232  286.428571
+## 21 2020-03-27         482  327.714286
+## 22 2020-03-28         502  359.000000
+## 23 2020-03-29         487  396.571429
+## 24 2020-03-30         352  387.142857
+## 25 2020-03-31         323  384.000000
+## 26 2020-04-01        1138  502.285714</code></pre>
+</div>
+<div id="com-a-função-slide_dbl-do-pacote-slider" class="section level4">
+<h4>Com a função slide_dbl do pacote slider</h4>
+<p>Para usarmos a função <code>slide_dbl()</code> precisamos definir também 4 argumentos:</p>
+<ul>
+<li>.x: variável para a qual se deseja calcular a média móvel
+<ul>
+<li>No nosso exemplo, a variável <code>casos_novos</code></li>
+</ul></li>
+<li>.f: função a ser utilizada no cálculo
+<ul>
+<li>No nosso caso, vamos usar a função <code>mean</code>, que calcula a média</li>
+<li>A função <code>slide_dbl()</code> pode ser utilizada para diversos outros cálculos – por exemplo, bastaria substituir <code>mean</code> por <code>sum</code> para calcular uma soma móvel</li>
+</ul></li>
+<li>.before: quantidade de observações anteriores que devem ser incluídas no cálculo
+<ul>
+<li>Como queremos calcular uma média móvel de sete dias, definimos <code>.before = 6</code>, indicando que serão considerados o dia atual e os seis dias anteriores</li>
+</ul></li>
+<li>.complete: indica se o cálculo só deve ser realizado quando houver observações suficientes para completar o período
+<ul>
+<li>Ao utilizarmos <code>.complete = TRUE</code>, os seis primeiros dias da série recebem <code>NA</code>, pois ainda não há sete observações disponíveis para calcular a média móvel</li>
+</ul></li>
+</ul>
+<pre class="r"><code>library(dplyr)
+library(slider)
+
+dados |&gt;
+  mutate(media_movel = slider::slide_dbl(.x = casos_novos, .f = mean,
+                                         .before = 6, .complete = TRUE))</code></pre>
+<pre><code>##          data casos_novos media_movel
+## 1  2020-03-07           5          NA
+## 2  2020-03-08           0          NA
+## 3  2020-03-09          12          NA
+## 4  2020-03-10           0          NA
+## 5  2020-03-11           9          NA
+## 6  2020-03-12          18          NA
+## 7  2020-03-13          25    9.857143
+## 8  2020-03-14          21   12.142857
+## 9  2020-03-15          23   15.428571
+## 10 2020-03-16          79   25.000000
+## 11 2020-03-17          34   29.857143
+## 12 2020-03-18          57   36.714286
+## 13 2020-03-19         137   53.714286
+## 14 2020-03-20         193   77.714286
+## 15 2020-03-21         283  115.142857
+## 16 2020-03-22         224  143.857143
+## 17 2020-03-23         418  192.285714
+## 18 2020-03-24         345  236.714286
+## 19 2020-03-25         310  272.857143
+## 20 2020-03-26         232  286.428571
+## 21 2020-03-27         482  327.714286
+## 22 2020-03-28         502  359.000000
+## 23 2020-03-29         487  396.571429
+## 24 2020-03-30         352  387.142857
+## 25 2020-03-31         323  384.000000
+## 26 2020-04-01        1138  502.285714</code></pre>
+<hr />
+</div>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é uma média móvel?</strong>. Blog Fernanda Peres, São Paulo, 01 jul. 2026. Disponível em: <a href="https://fernandafperes.com.br/blog/media-movel/" class="uri">https://fernandafperes.com.br/blog/media-movel/</a>.</p>
+</blockquote>
+<p><br /></p>
+</div>

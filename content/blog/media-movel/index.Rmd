@@ -143,6 +143,20 @@ dados |>
                                                     big.mark = ".")) +
   scale_x_date(labels = scales::label_date("%b/%y")) +
   theme_minimal()
+
+# dados |>
+#   mutate(media_movel = zoo::rollmean(new_cases, k = 7, fill = NA, align = "right")) |>
+#   ggplot(aes(x = date, y = new_cases)) +
+#   geom_line(color = "grey60") +
+#   geom_line(aes(y = media_movel), color = rosa, linewidth = 0.8) +
+#   labs(y = NULL, x = NULL) +
+#   scale_y_continuous(labels = scales::number_format(decimal.mark = ",",
+#                                                     big.mark = ".")) +
+#   scale_x_date(labels = scales::label_date("%b/%y")) +
+#   theme_minimal() +
+#   theme(plot.margin = margin(15, 23, 15, 15))
+# 
+# ggsave("cover.png", width = 5, height = 3)
 ```
   
   

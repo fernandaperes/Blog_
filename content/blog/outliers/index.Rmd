@@ -193,7 +193,7 @@ Ou seja, calculamos a média, a subtraímos de cada valor e então dividimos ess
   
 >De novo, explicar desvio-padrão foge do escopo do post, mas você pode ler um texto bem didático sobre essa medida [clicando aqui](https://fernandafperes.com.br/blog/variancia-desvio-padrao/).  
   
-Ao fazermos esse cálculo, fazemos com que os dados passem a ter média igual a zero e desvio-padrão igual a 1. Portanto, uma idade que tenha um **escore-z igual a 3** será uma idade que está **três desvios-padrão acima da média**. Na nossa amostra, a média é igual a 29,7 e o desvio-padrão é igual a 15,6. Aplicando a conta, obtemos os seguintes escores-z:  
+Ao fazermos esse cálculo, fazemos com que os dados passem a ter média igual a zero e desvio-padrão igual a 1. Portanto, uma idade que tenha um **escore-z igual a 3** será uma idade que está **três desvios-padrão acima da média**. Na nossa amostra, a média é igual a 23,7 e o desvio-padrão é igual a 15,6. Aplicando a conta, obtemos os seguintes escores-z:  
   
 
 ```{r, echo=FALSE}
@@ -226,7 +226,7 @@ Vale dizer que essa definição de *outlier* com base no escore-z é mais adequa
   
 Até aqui você pode estar pensando: "ok, tem um valor discrepante na amostra, e daí?". A nossa maior **preocupação** quando temos um *outlier* univariado na amostra é com relação à **média**. A média é uma medida muito **influenciada por valores extremos** -- o que significa que na presença desses valores ela pode **não ser** uma boa representação do conjunto de dados.  
   
-Para isso ficar menos abstrato, vou retomar o exemplo das idades. Nós vimos que a média da amostra é de **29,7 anos**. Se eu te digo: "olha, tenho uma turma de pré-vestibular com idade média de 29,7 anos", **o que viria à sua cabeça?** Eu mesma imaginaria que os alunos tem em torno de 30 anos, com idades variando entre 25 e 35. Mas veja: isso está bem longe da realidade da nossa amostra.  
+Para isso ficar menos abstrato, vou retomar o exemplo das idades. Nós vimos que a média da amostra é de **23,7 anos**. Se eu te digo: "olha, tenho uma turma de pré-vestibular com idade média de 23,7 anos", **o que viria à sua cabeça?** Eu mesma imaginaria que os alunos tem em torno de 30 anos, com idades variando entre 25 e 35. Mas veja: isso está bem longe da realidade da nossa amostra.  
   
 Quando a gente constrói um gráfico com todas as idades e coloca uma barra indicando a média, dá para ver que **quase todos os alunos** -- com exceção de dois -- **têm idades abaixo da média**:  
   

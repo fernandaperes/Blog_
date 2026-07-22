@@ -133,13 +133,13 @@ knitr::include_graphics("img1.png")
 ```
   
   
-Portanto, a AIQ nessa amostra é 5:  
+Portanto, a AIQ nessa amostra é 3:  
   
   
 <center>
 AIQ = Q3 - Q1  
 AIQ = 21 - 18  
-AIQ = 5  
+AIQ = 3  
   
 </center>
   
@@ -148,20 +148,20 @@ Sabendo a AIQ podemos calcular os limites inferior e superior teóricos:
   
 <center>
 Limite inferior teórico = Q1 - 1,5 x AIQ  
-Limite inferior teórico = 18 - 1,5 x 5  
-Limite inferior teórico = 18 - 7,5  
-**Limite inferior teórico = 10,5**  
+Limite inferior teórico = 18 - 1,5 x 3  
+Limite inferior teórico = 18 - 4,5  
+**Limite inferior teórico = 13,5**  
   
   
 Limite superior teórico = Q3 + 1,5 x AIQ  
-Limite superior teórico = 21 + 1,5 x 5  
-Limite superior teórico = 21 + 7,5  
-**Limite superior teórico = 28,5**  
+Limite superior teórico = 21 + 1,5 x 3  
+Limite superior teórico = 21 + 4,5  
+**Limite superior teórico = 25,5**  
   
 </center>
   
   
-Ou seja, de acordo com a definição de *outlier* utilizada pelo boxplot de Tukey, qualquer valor **abaixo de 10,5 anos** ou **acima de 28,5 anos** será considerado um *outlier* nessa amostra de idades. A idade de 75 anos, portanto, será considerada um *outlier* de acordo com esse critério.  
+Ou seja, de acordo com a definição de *outlier* utilizada pelo boxplot de Tukey, qualquer valor **abaixo de 13,5 anos** ou **acima de 25,5 anos** será considerado um *outlier* nessa amostra de idades. A idade de 75 anos, portanto, será considerada um *outlier* de acordo com esse critério.  
   
   
 Perceba que ao construirmos um boxplot, a idade de 75 anos de fato é identificada como um *outlier*, sendo representada por um ponto:  

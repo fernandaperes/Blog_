@@ -719,7 +719,7 @@ Se quisermos comparar estatisticamente esses grupos, a análise clássica a ser 
   
 Note que o **jovem** com **140 mmHg** de pressão arterial apresenta a maior distância de Cook -- mas ela está abaixo do ponto de corte sugerido de 0,5.  
   
-```{r}
+```{r, echo=FALSE}
 mod <- lm(pressao ~ faixa_etaria, data = dados)
 
 tab_cook <- dados |> 

@@ -63,8 +63,8 @@ Se colocarmos essas idades em um gráfico de dispersão, com um ponto representa
   
 ```{r, echo=FALSE, fig.width=2.5}
 ggplot(dados, aes(y = Idade, x = "")) +
-  ggbeeswarm::geom_beeswarm(method = "center", color = azul,
-                            alpha = 0.5, cex = 2) +
+  geom_dotplot(binaxis = "y", stackdir = "center", fill = azul,
+               binwidth = 1, color = azul, alpha = 0.5, dotsize = 1.3) +
   scale_y_continuous(breaks = seq(0, 80, by = 10)) +
   labs(x = NULL, y = "Idade (anos)") +
   theme_classic() +
@@ -114,7 +114,7 @@ AIQ = Q3 - Q1
 </center>
   
   
-Para o boxplot de Tukey, um valor será um outlier caso ele esteja **abaixo** do **limite inferior teórico** ou **acima** do **limite superior** teórico:  
+Para o boxplot de Tukey, um valor será um outlier caso ele esteja **abaixo** do **limite inferior** teórico ou **acima** do **limite superior** teórico:  
   
   
 <center>
@@ -224,16 +224,16 @@ Vale dizer que essa definição de *outlier* com base no escore-z é mais adequa
   
 #### Por que os *outliers* são uma preocupação?
   
-Até aqui você pode estar pensando: "ok, tem um valor discrepante na amostra, e daí?". A nossa maior **preocupação** quando temos um *outlier* univariado na amostra é com relação à **média**. A média é uma medida muito **influenciada por valores extremos** -- o que significa que na presença desses valores ela pode **não ser** uma boa representação do conjunto de dados.  
+Até aqui você pode estar pensando: "ok, tem um valor discrepante na amostra, e daí?". A nossa maior **preocupação** quando temos um *outlier* **univariado** na amostra é com relação à **média** e às medidas derivadas dela, como o **desvio-padrão**. A média é uma medida muito **influenciada por valores extremos** -- o que significa que na presença desses valores ela pode **não ser** uma boa representação do conjunto de dados.  
   
-Para isso ficar menos abstrato, vou retomar o exemplo das idades. Nós vimos que a média da amostra é de **23,7 anos**. Se eu te digo: "olha, tenho uma turma de pré-vestibular com idade média de 23,7 anos", **o que viria à sua cabeça?** Eu mesma imaginaria que os alunos tem em torno de 30 anos, com idades variando entre 25 e 35. Mas veja: isso está bem longe da realidade da nossa amostra.  
+Para isso ficar menos abstrato, vou retomar o exemplo das idades. Nós vimos que a média da amostra é de **23,7 anos**. Se eu te digo: "olha, tenho uma turma de pré-vestibular com idade média de 23,7 anos", **o que viria à sua cabeça?** Eu mesma imaginaria que os alunos tem em torno de 24 anos, com idades variando entre 20 e 28. Mas veja: isso está bem longe da realidade da nossa amostra.  
   
 Quando a gente constrói um gráfico com todas as idades e coloca uma barra indicando a média, dá para ver que **quase todos os alunos** -- com exceção de dois -- **têm idades abaixo da média**:  
   
 ```{r, echo=FALSE, fig.width=2.5}
 ggplot(dados, aes(y = Idade, x = "")) +
-  ggbeeswarm::geom_beeswarm(method = "center", color = azul,
-                            alpha = 0.5, cex = 2) +
+  geom_dotplot(binaxis = "y", stackdir = "center", fill = azul,
+               binwidth = 1, color = azul, alpha = 0.5, dotsize = 1.3) +
   geom_crossbar(stat = "summary", fun = "mean", middle.linewidth = 0.5,
                 width = 0.3) +
   scale_y_continuous(breaks = seq(0, 80, by = 10)) +
@@ -247,8 +247,8 @@ Ao excluírmos a idade *outlier*, a média passa a ser 19,4 anos, um valor que r
   
 ```{r, echo=FALSE, fig.width=2.5}
 ggplot(dados |> filter(Idade < 30), aes(y = Idade, x = "")) +
-  ggbeeswarm::geom_beeswarm(method = "center", color = azul,
-                            alpha = 0.5, cex = 2) +
+  geom_dotplot(binaxis = "y", stackdir = "center", fill = azul,
+               binwidth = 1, color = azul, alpha = 0.5, dotsize = 0.22) +
   geom_crossbar(stat = "summary", fun = "mean", middle.linewidth = 0.5,
                 width = 0.3) +
   scale_y_continuous(breaks = seq(0, 50, by = 2)) +
@@ -259,12 +259,11 @@ ggplot(dados |> filter(Idade < 30), aes(y = Idade, x = "")) +
 ```
   
   
-Ao impactar a média, os *outliers* impactam não apenas as **análises descritivas**, mas podem também os **testes de hipóteses** baseados em médias, como o teste-t e a ANOVA.  
 
 
 >Mas, se acalme. Isso **não significa** que você pode simplesmente **excluir** os valores *outliers*, ok?  
 >  
->Abaixo eu vou explicar o conceito de outliers bivariados. Se você não tem interesse nesse tema, mas quer saber como lidar com os *outliers* das suas análises, recomendo pular para <a href="#como-lidar-com-outliers">essa seção</a>.  
+>Abaixo eu vou explicar os conceitos de *outliers* **bivariados** e **multivariados**. Se você não tem interesse nesse tema, mas quer saber como lidar com os *outliers* das suas análises, recomendo pular para <a href="#como-lidar-com-outliers">essa seção</a>.  
 >  
 >Ah, eu também incluo essa explicação no [meu curso](https://curso.fernandafperes.com.br/), caso você tenha interesse em aprender análise de dados do zero ao avançado, com vídeo-aulas bem didáticas :)
   
@@ -272,7 +271,80 @@ Ao impactar a média, os *outliers* impactam não apenas as **análises descriti
   
 ### *Outliers* bivariados
   
-Até agora te expliquei como identificar um *outlier* univariado. Mas muitas vezes -- principalmente ao rodarmos uma análise de regressão -- a nossa preocupação é com os *outliers* **bivariados**. Então, vamos entender isso melhor!  
+Até agora te expliquei como identificar um *outlier* univariado. Mas muitas vezes -- principalmente ao rodarmos testes de hipóteses ou modelos de regressão -- a nossa preocupação é com os *outliers* **bivariados**. Então, vamos entender isso melhor.  
+  
+  
+#### Variável numérica x categórica
+  
+O exemplo acima envolve duas variáveis numéricas. Mas podemos também detectar um *outlier* bivariado ao considerarmos simultaneamente uma variável numérica e uma categórica.  
+  
+Vamos de novo partir para um exemplo. Veja as pressões arteriais abaixo. Perceba que as pressões variam bastante -- de 94 a 154 mmHg -- mas que nenhum ponto se destaca. Ou seja: **não** temos *outliers* **univariados**.  
+  
+```{r, fig.width=2.5, echo=FALSE}
+library(tibble)
+
+set.seed(4321)
+dados <- tibble(
+  faixa_etaria = c(rep("Jovem", 20),
+                   rep("Idoso", 20)),
+  pressao = c(
+    round(rnorm(n = 20, mean = 110, sd = 10), 0),
+    round(rnorm(n = 20, mean = 135, sd = 15), 0)
+  )
+)
+
+dados$pressao[20] <- 140
+
+
+ggplot(dados, aes(y = pressao, x = "")) +
+  ggbeeswarm::geom_beeswarm(color = azul, alpha = 0.5,
+                            method = "center", cex = 2.5) +
+  labs(x = NULL, y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+De fato, ao construirmos um boxplot com esses dados, nenhum ponto é considerado um *outlier*:  
+  
+```{r, fig.width=2.5, echo=FALSE}
+ggplot(dados, aes(y = pressao, x = "")) +
+  geom_errorbar(stat = "boxplot", width = 0.3) +
+  geom_boxplot(fill = azul) +
+  labs(x = NULL, y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+Ok, mas agora vou te dar mais uma informação: essa base de dados é formada por **dois grupos**, jovens e idosos. E eu quero avaliar a pressão arterial de acordo com o grupo. O que muda?  
+  
+```{r, fig.width=4.5, echo=FALSE}
+ggplot(dados, aes(y = pressao, x = faixa_etaria)) +
+  ggbeeswarm::geom_beeswarm(color = azul, alpha = 0.5,
+                            method = "center", cex = 2.5) +
+  labs(x = "Grupo", y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+Observe que agora um ponto **passa a se destacar no grupo dos jovens**: uma pessoa com a pressão arterial de 140 mmHg, bem superior às outras pressões desse grupo. De fato, ao construirmos um boxplot esse ponto é identificado como um *outlier*:  
+  
+```{r, fig.width=4.5, echo=FALSE}
+ggplot(dados, aes(y = pressao, x = faixa_etaria)) +
+  geom_errorbar(stat = "boxplot", width = 0.3) +
+  geom_boxplot(fill = azul, outlier.shape = 1) +
+  labs(x = "Grupo", y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+Portanto, esse ponto é um *outlier* **bivariado** -- que só passa a ser considerado *outlier* quando consideramos **simultaneamente duas variáveis**: a pressão e a faixa etária.  
+  
+  
+#### Variável numérica x numérica
   
 >O que eu vou explicar a seguir é fortemente baseado nesses dois posts incríveis:  
 >
@@ -328,10 +400,11 @@ g1
   
 Essa amostra inclui pessoas com idades **entre 50 e 85 anos** e com pressões arteriais **entre 110 e 166 mmHg**. Suponha agora que incluímos na amostra uma pessoa com **64 anos** e **154 mmHg** de pressão arterial.  
   
-Não parece um *outlier*, certo? Tanto a idade quanto a pressão estão dentro do intervalo observado nos demais dados. Mas vamos visualizar o gráfico com a inclusão desse novo participante (em rosa):  
+Não parece um *outlier*, certo? Tanto a idade quanto a pressão estão dentro do intervalo observado nos demais dados.  
   
+De fato, quando avaliamos esse ponto (destacado em rosa) considerando apenas a pressão (gráfico à esquerda) ou apenas a idade (gráfico à direita), esse ponto não destoa dos demais. Portanto, esse ponto não pode ser considerado um *outlier* **univariado**:  
   
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.width=5}
 url2 <- "https://online.stat.psu.edu/stat462/sites/onlinecourses.science.psu.edu.stat462/files/data/influence2/index.txt"
 
 df2 <- read.table(url2, sep = '\t', header = TRUE, fileEncoding = "UTF-16LE")
@@ -342,6 +415,33 @@ df2 <- df2 |> mutate(cor = case_when((y > 35 & x < 5) ~ "rosa",
 df2$idade <- round(df2$x*3.5+50, 0)
 df2$pressao <- round(abs(df2$y)*50/45+110, 0)
 
+a <- ggplot(df2, aes(y = pressao, x = "", color = cor)) +
+  geom_point(show.legend = F, alpha = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_color_manual(values = c(azul, rosa)) +
+  labs(y = "Pressão arterial sistólica (mmHg)", x = NULL) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+
+b <- ggplot(df2, aes(y = idade, x = "", color = cor)) +
+  geom_point(show.legend = F, alpha = 0.5) +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  scale_color_manual(values = c(azul, rosa)) +
+  labs(y = "Idade (anos)", x = NULL) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+
+library(patchwork)
+
+a + b
+```
+
+  
+No entanto, veja o que acontece quando consideramos **simultaneamente** a idade e a pressão:  
+  
+```{r, echo=FALSE}
 mod <- lm(pressao ~ idade, data = df2)
 equacao <- paste0("Pressão = ", fstatix::arred(coef(mod)[1], digitos = 1),
                   " + ", fstatix::arred(coef(mod)[2], digitos = 1), " x Idade")
@@ -364,11 +464,11 @@ g2
 ```
   
   
-No gráfico de dispersão conseguimos perceber que essa nova pessoa (ponto em rosa) **destoa do padrão** das demais: trata-se de alguém com pressão arterial mais alta do que o esperado para a sua idade. Portanto, a pessoa em rosa é um *outlier* -- mas um ***outlier* bivariado**, que só passa a ser considerado *outlier* quando analisamos simultaneamente a idade e a pressão.  
+No gráfico de dispersão conseguimos perceber que essa nova pessoa (ponto em rosa) **destoa do padrão** das demais: trata-se de alguém com pressão arterial mais alta do que o padrão observado para a sua idade. Portanto, a pessoa em rosa é um *outlier* -- mas um ***outlier* bivariado**, que só passa a ser considerado *outlier* quando analisamos simultaneamente a idade e a pressão.  
   
-Nem todo *outlier* representa um **problema** no contexto da **regressão**. O problema aparece quando esse ponto é **influente** -- ou seja, quando influencia, modifica, a estimação da reta de regressão.  
+Nem todo *outlier* representa um **problema** no contexto da **regressão**. O problema aparece quando esse ponto é **influente** -- ou seja, quando influencia, modifica, as estimativas da reta de regressão.  
   
-Note que o *outlier* em rosa não modifica de forma significativa a estimação da reta: a reta estimada com ele (em preto, linha sólida) se assemelha muito à reta estimada sem ele (pontilhada).  
+Note que o *outlier* em rosa não modifica de forma significativa as estimativas da reta: a reta estimada com ele (em preto, linha sólida) se assemelha muito à reta estimada sem ele (pontilhada).  
 
 ```{r, echo=FALSE}
 ggplot(df2, aes(x = idade, y = pressao, color = cor)) +
@@ -429,7 +529,7 @@ g3
   
 Perceba que essa pessoa **não é um *outlier* bivariado**. Isso porque o ponto **segue a tendência linear** dos demais dados e não destoa do padrão observado. No entanto, trata-se de um **ponto de alavancagem**, com um valor de idade (eixo x) bem distante do restante da amostra.  
   
-Ok, mas o ponto de alavancagem é um **problema** para a **regressão**? Não necessariamente. Isso porque ele pode ser um ponto de alavancagem, mas não influenciar a estimação da reta -- ou seja, não ser um **ponto influente**. Note que no exemplo o ponto em rosa não modifica de forma significativa a reta de regressão: a reta estimada com ele (linha preta sólida) é muito semelhante à estimada sem ele (linha pontilhada).  
+Ok, mas o ponto de alavancagem é um **problema** para a **regressão**? Não necessariamente. Isso porque ele pode ser um ponto de alavancagem, mas não influenciar as estimativas da reta -- ou seja, não ser um **ponto influente**. Note que no exemplo o ponto em rosa não modifica de forma significativa a reta de regressão: a reta estimada com ele (linha preta sólida) é muito semelhante à estimada sem ele (linha pontilhada).  
   
 ```{r, echo=FALSE}
 ggplot(df3, aes(x = idade, y = pressao, color = cor)) +
@@ -452,7 +552,7 @@ ggplot(df3, aes(x = idade, y = pressao, color = cor)) +
   
 #### Caso 3: ponto influente
   
-Como já discutimos, um **ponto influente** é aquele que **modifica a estimação da reta** de regressão. Vamos voltar ao nosso exemplo e adicionar à amostra (em rosa) uma pessoa com idade de **96 anos** e pressão arterial de **127 mmHg**:  
+Como já discutimos, um **ponto influente** é aquele que **modifica as estimativas da reta** de regressão. Vamos voltar ao nosso exemplo e adicionar à amostra (em rosa) uma pessoa com idade de **96 anos** e pressão arterial de **127 mmHg**:  
   
 ```{r, echo=FALSE}
 url4 <- "https://online.stat.psu.edu/stat462/sites/onlinecourses.science.psu.edu.stat462/files/data/influence4/index.txt"
@@ -487,11 +587,11 @@ g4
 ```
   
 Perceba que esse ponto em rosa é:  
-
+  
 1. **Um *outlier* bivariado**, porque ele destoa do padrão linear dos demais pontos -- em outras palavras, trata-se de uma pessoa com pressão arterial inferior à esperada para a sua idade
 2. **Um ponto de alavancagem**, porque a sua idade (eixo x) está acima das idades do restante da amostra, que vão até 82 anos
   
-Uma vez que esse ponto é tanto um ponto de alavancagem quanto um *outlier* bivariado, ele influencia a estimação da reta, é um **ponto influente**. Perceba como a reta estimada com esse ponto (linha sólida em preto) **difere muito** da reta estimada quando ele é excluído (linha pontilhada):  
+Uma vez que esse ponto é tanto um ponto de alavancagem quanto um *outlier* bivariado, ele influencia as estimativas da reta, é um **ponto influente**. Perceba como a reta estimada com esse ponto (linha sólida em preto) **difere muito** da reta estimada quando ele é excluído (linha pontilhada):  
   
 ```{r, echo=FALSE}
 ggplot(df4, aes(x = idade, y = pressao, color = cor)) +
@@ -517,7 +617,7 @@ ggplot(df4, aes(x = idade, y = pressao, color = cor)) +
 Até aqui eu te falei que um ponto influente é aquele que é tanto um ponto de alavancagem quanto um *outlier* bivariado, certo? Mas podemos **expandir essa definição** para **cenários multivariados** (isso é, quando temos mais de duas variáveis no modelo).  
   
 De forma geral, um ponto influente é uma observação que apresenta, simultaneamente:  
-
+  
 1. **Alta alavancagem** -- ou seja, apresenta valores extremos nas variáveis explicativas (variáveis independentes)
 2. **Resíduo elevado** -- o que indica que esse ponto foge do padrão da relação descrita pelo modelo
   
@@ -527,7 +627,7 @@ Quando dizemos que um ponto tem **resíduo elevado**, não significa necessariam
   
 Uma medida que nos ajuda a identificar se um ponto é influente é a **distância de Cook**, um valor cujo cálculo considera o resíduo e a alavancagem de cada observação. A distância de Cook pode ser pensada como uma medida que indica o quanto os **coeficientes** estimados pelo modelo **mudariam**, em média, se uma observação específica fosse **removida** do conjunto de dados.  
   
-Para isso fazer mais sentido, vamos voltar à amostra representada no gráfico abaixo. Vimos que o ponto em rosa é um ponto influente, uma vez que a sua inclusão na amostra modifica a estimação da reta:  
+Para isso fazer mais sentido, vamos voltar à amostra representada no gráfico abaixo. Vimos que o ponto em rosa é um ponto influente, uma vez que a sua inclusão na amostra modifica as estimativas da reta:  
   
 ```{r, echo=FALSE}
 ggplot(df4, aes(x = idade, y = pressao, color = cor)) +
@@ -612,7 +712,108 @@ plot(mod, which = 5)
 ```
   
 >Caso queira mais detalhes sobre a interpretação deste gráfico, recomendo [esse post](https://fernandafperes.com.br/blog/graficos-diagnosticos-lm/) que detalha os gráficos diagnósticos para regressão.  
+  
+  
+#### Variável numérica x categórica
+  
+O exemplo acima envolve duas variáveis numéricas. Mas podemos também detectar um *outlier* bivariado ao considerarmos simultaneamente uma variável numérica e uma categórica.  
+  
+Vamos de novo partir para um exemplo. Veja as pressões arteriais abaixo. Perceba que as pressões variam bastante -- de 94 a 154 mmHg -- mas que nenhum ponto se destaca. Ou seja: **não** temos *outliers* **univariados**.  
+  
+```{r, fig.width=2.5, echo=FALSE}
+library(tibble)
 
+set.seed(4321)
+dados <- tibble(
+  faixa_etaria = c(rep("Jovem", 20),
+                   rep("Idoso", 20)),
+  pressao = c(
+    round(rnorm(n = 20, mean = 110, sd = 10), 0),
+    round(rnorm(n = 20, mean = 135, sd = 15), 0)
+  )
+)
+
+dados$pressao[20] <- 140
+
+
+ggplot(dados, aes(y = pressao, x = "")) +
+  ggbeeswarm::geom_beeswarm(color = azul, alpha = 0.5,
+                            method = "center", cex = 2.5) +
+  labs(x = NULL, y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+De fato, ao construirmos um boxplot com esses dados, nenhum ponto é considerado um *outlier*:  
+  
+```{r, fig.width=2.5, echo=FALSE}
+ggplot(dados, aes(y = pressao, x = "")) +
+  geom_errorbar(stat = "boxplot", width = 0.3) +
+  geom_boxplot(fill = azul) +
+  labs(x = NULL, y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+Ok, mas agora vou te dar mais uma informação: essa base de dados é formada por **dois grupos**, jovens e idosos. E eu quero avaliar a pressão arterial de acordo com o grupo. O que muda?  
+  
+```{r, fig.width=4.5, echo=FALSE}
+ggplot(dados, aes(y = pressao, x = faixa_etaria)) +
+  ggbeeswarm::geom_beeswarm(color = azul, alpha = 0.5,
+                            method = "center", cex = 2.5) +
+  labs(x = "Grupo", y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+Observe que agora um ponto **passa a se destacar no grupo dos jovens**: uma pessoa com a pressão arterial de 140 mmHg, bem superior às outras pressões desse grupo. De fato, ao construirmos um boxplot esse ponto é identificado como um *outlier*:  
+  
+```{r, fig.width=4.5, echo=FALSE}
+ggplot(dados, aes(y = pressao, x = faixa_etaria)) +
+  geom_errorbar(stat = "boxplot", width = 0.3) +
+  geom_boxplot(fill = azul, outlier.shape = 1) +
+  labs(x = "Grupo", y = "Pressão sistólica (mmHg)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"),
+        axis.ticks.x = element_blank())
+```
+  
+Portanto, esse ponto é um *outlier* **bivariado** -- que só passa a ser considerado *outlier* quando consideramos **simultaneamente duas variáveis**: a pressão e a faixa etária.  
+  
+  
+Se quisermos comparar estatisticamente esses grupos, a análise clássica a ser utilizada é o teste-t independente. No entanto, **o teste-t nada mais é do que um modelo linear**, como a regressão. A ANOVA, utilizada para comparar as médias de mais de dois grupos, é também um tipo de modelo linear. Isso significa que tudo o que discutimos para regressão se aplica aqui: para esse cenário também podemos calcular a **distância de Cook** para avaliar a **influência** desse *outlier* nas estimativas do modelo.  
+  
+Note que o **jovem** com **140 mmHg** de pressão arterial apresenta a maior distância de Cook -- mas ela está abaixo do ponto de corte sugerido de 0,5.  
+  
+```{r}
+mod <- lm(pressao ~ faixa_etaria, data = dados)
+
+tab_cook <- dados |> 
+  select(c(faixa_etaria, pressao)) |> 
+  rename("Faixa etária" = "faixa_etaria",
+         "Pressão arterial sistólica (mmHg)" = "pressao") |> 
+  mutate(`Distância de Cook` = cooks.distance(mod))
+
+tab_cook1 <- slice_max(tab_cook, order_by = `Distância de Cook`, n = 5) |> 
+  mutate(`Distância de Cook` = fstatix::arred(`Distância de Cook`))
+tab_cook2 <- slice_min(tab_cook, order_by = `Distância de Cook`, n = 5) |> 
+  mutate(`Distância de Cook` = fstatix::arred(`Distância de Cook`))
+
+linha_vazia <- tab_cook1 |>
+  filter(`Distância de Cook` == "0,054") |> 
+  mutate(across(everything(), \(x) x = "..."))
+
+tab_cook <- rbind(tab_cook1, linha_vazia, tab_cook2)
+
+tab_cook |>
+  flextable::regulartable() |>
+  flextable::align(align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::width(width = c(0.8, 1.5, 1.3))
+```
 
   
   
@@ -629,15 +830,15 @@ Já adianto que, **na maior parte dos casos**, *outliers* não devem ser simples
   
 O primeiro passo é entender que **tipo** de *outlier* é uma preocupação para você. Essa decisão depende da sua **pergunta experimental** e da análise estatística que será utilizada para respondê-la. Como assim?  
   
-Em **análises descritivas** ou em **testes de comparação de médias entre grupos**, faz sentido nos preocuparmos com ***outliers* univariados**, já que estamos olhando para o comportamento de cada variável isoladamente. Ah, nos casos em que a análise envolve grupos, a avaliação deve ser feita **dentro de cada grupo**, ok?  
+Em **análises descritivas**, faz sentido nos preocuparmos com ***outliers* univariados**, já que estamos olhando para o comportamento de cada variável isoladamente. Ah, nos casos em que a análise descritiva envolve grupos, a avaliação deve ser feita **dentro de cada grupo**, ok?  
   
-Por outro lado, em análises como **regressão**, remover *outliers* univariados **não faz sentido**. Um ponto pode ter um valor discrepante em uma variável e, ainda assim, não destoar do padrão dos dados. Vimos isso nos exemplos de <a href="#caso-1-outlier-bivariado">*outlier* bivariado</a> e <a href="#caso-2-ponto-de-alavancagem">ponto de alavancagem</a>.  
-Para esse tipo de análise, o foco não deve estar em *outliers* univariados, mas sim em <a href="#caso-3-ponto-influente">**pontos influentes**</a> -- isto é, observações que têm impacto relevante sobre a estimação do modelo.  
+Por outro lado, em análises inferenciais, como **regressão**, **teste-t**, **ANOVA**, remover *outliers* univariados **não faz sentido**. Um ponto pode ter um valor discrepante em uma variável e, ainda assim, não destoar do padrão dos dados. Vimos isso no exemplo de <a href="#caso-2-ponto-de-alavancagem">ponto de alavancagem</a>.  
+Para esse tipo de análise, o foco não deve estar em *outliers* univariados, mas sim em <a href="#caso-3-ponto-influente">**pontos influentes**</a> -- isto é, observações que têm impacto relevante sobre as estimativas do modelo. Ou seja, nesses cenários vamos avaliar a distância de Cook ou alguma outra medida de influência.  
   
   
 #### Passo 2: entender por que aquela observação é um *outlier*
   
-Identificado um possível *outlier*, o passo seguinte é avaliar por que aquela observação difere das demais:  
+Identificado um possível ponto discrepante (seja um *outlier* ou um ponto influente, a depender do seu objetivo), o passo seguinte é avaliar por que aquela observação difere das demais:  
   
 * É um **erro** de digitação ou de aferição?
 * É um valor **real**, mas raro?
@@ -647,14 +848,18 @@ Imagine que estamos estudando idades e encontramos um *outlier*: 350 anos. Trata
 1. Caso seja possível, o valor deve ser **corrigido** -- por exemplo, consultando a anotação original que foi digitada ou a fonte primária dos dados.
 2. Se a correção não for possível, a observação pode ser **excluída**, já que não representa um valor real do fenômeno estudado.  
   
->Caso você opte por remover *outliers* da sua amostra, essa decisão precisa estar explicitada no seu texto -- seja em um artigo, dissertação, TCC ou tese. É fundamental **justificar** essa escolha e informar **quantas observações** foram removidas. Esse nível de transparência é fundamental para a **avaliação crítica** e a **reprodutibilidade** dos resultados.  
+>Caso você opte por remover *outliers* da sua amostra, essa decisão deve estar descrita no seu texto -- seja em um artigo, dissertação, TCC ou tese. É fundamental **justificar** essa escolha e informar **quantas observações** foram removidas. Esse nível de transparência é fundamental para a **avaliação crítica** e a **reprodutibilidade** dos resultados.  
   
   
-Agora, pense em um cenário diferente: suponha que o *outlier* identificado corresponda a um valor **real** e **plausível**, ainda que raro. É o caso do aluno de 75 anos em uma turma de pré-vestibular, exemplo que abriu este post. Nesse caso, a lógica muda completamente.  
+Agora, pense em um cenário diferente: suponha que o *outlier* identificado corresponda a um valor **real** e **plausível**, ainda que raro. É o caso do aluno de 75 anos em uma turma de pré-vestibular, exemplo que abriu este post. Nesse caso, a lógica muda completamente. Quando o valor é **real**, **não devemos excluí-lo**.  
   
-Quando o valor é **real**, **não devemos excluí-lo**. Uma estratégia mais adequada é recorrer a **análises menos sensíveis** a esse valor extremo. No caso da **análise descritiva**, além da média -- que, como discutimos, é fortemente influenciada por *outliers* -- podemos reportar a mediana, uma medida robusta a eles. O mesmo raciocínio se aplica aos **testes estatísticos**. Testes clássicos de comparação de médias, especialmente em amostras pequenas, dependem fortemente da média e da variância e, por isso, podem ser bastante afetados por valores extremos. Nesses casos, uma possibilidade é recorrer a abordagens **robustas a *outliers***, como testes não-paramétricos ou modelos que assumem distribuições diferentes da normal, em vez de simplesmente remover observações válidas.  
+No caso de **análises descritivas**, uma estratégia mais adequada é complementar a análise com **medidas menos sensíveis** a esse valor extremo. Além da média -- que, como discutimos, é fortemente influenciada por *outliers* -- podemos reportar a mediana, uma medida robusta a eles. Da mesma forma, além do desvio-padrão -- uma medida derivada da média e, portanto, também sensível a valores extremos -- podemos calcular medidas de dispersão mais robustas, como a amplitude interquartil (AIQ).  
   
-Em análises de **regressão**, o foco deixa de ser o *outlier* em si e passa a ser a influência da observação. Uma estratégia possível é estimar o modelo **com e sem a observação potencialmente influente** e comparar os resultados. Se os dois modelos chegarem às **mesmas conclusões**, significa que aquela observação não exerceu uma influência relevante sobre a análise. Caso contrário, a divergência entre os modelos precisa ser devidamente **discutida e justificada**.  
+Quando pensamos em **testes estatísticos**, nossas opções são:  
+  
+* Utilizar testes mais **robustos** a valores extremos, como é o caso dos testes não-paramétricos
+* Utilizar testes mais adequados à **distribuição dos dados**, como os GLMs (Modelos Lineares Generalizados)
+* Fazer uma análise de sensibilidade: estimar o modelo **com e sem** a observação influente e, caso as conclusões sejam diferentes, discutir esse impacto no trabalho
   
   
 </br>

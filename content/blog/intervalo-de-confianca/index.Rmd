@@ -77,8 +77,68 @@ Dos 1000 intervalos de confiança calculados, espera-se que 95% deles (no caso, 
   
 Vejamos isso em um gráfico:  
   
-```{r, echo=FALSE, fig.align='center', out.width = '450px'}
-knitr::include_graphics("img4.png")
+```{r, echo=FALSE, fig.align='center', out.width = '450px', warning=FALSE, message=FALSE, fig.width=4.3, fig.height=3.6}
+library(tidyverse)
+
+ci_low <- function(media){
+  media - 1.96*(15/sqrt(200))
+}
+
+ci_up <- function(media){
+  media + 1.96*(15/sqrt(200))
+}
+
+set.seed(4321)
+alturas <- rnorm(n = 500000, mean = 35.5, sd = 15)
+pop <- as.data.frame(alturas)
+
+
+
+# Sorteio e armazenamento dos resultados
+
+res <- pop |> slice_sample(n = 200) |> 
+  summarise(media = mean(alturas),
+            cilow = ci_low(media),
+            ciup = ci_up(media),
+            x = 1) |> as.data.frame()
+
+df_res <- as.data.frame(res)
+
+# Estabelecendo a quantidade de amostras aleatórias a serem extraídas
+R <- 25
+
+set.seed(54321)
+
+# Sorteio
+
+for(i in 1:R){
+  
+  res <- pop %>% slice_sample(n = 200) %>% 
+    summarise(media = mean(alturas),
+              cilow = ci_low(media),
+              ciup = ci_up(media),
+              x = i) %>% as.data.frame()
+  
+  df_res[i,] <- res
+  
+}
+
+
+df_res <- df_res %>% mutate(cor = case_when(ciup > 35.5 & cilow > 35.5 ~ "#B5284B",
+                                            ciup < 35.5 & cilow < 35.5 ~ "#B5284B",
+                                            TRUE ~ "#2794A0"))
+
+
+ggplot(df_res, aes(y = media, x = x, color = cor)) +
+  geom_point(size = 1) +
+  geom_errorbar(aes(ymin = cilow, ymax = ciup), width = 0) +
+  geom_hline(aes(yintercept = 35.5), linetype = "dashed") +
+  coord_flip() +
+  labs(y = "Intenção de votos (%)", x = "Amostra") +
+  scale_color_identity() +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  theme_bw() +
+  theme(text = element_text(size = 10, family = "Nunito"))
 ```
   
 Os círculos representam a intenção de votos e as linhas horizontais representam o intervalo de confiança (IC) 95% de cada uma das amostras coletadas. Observe que, das 25 amostras coletadas, 95% delas, ou seja, 24 (em azul), incluem o parâmetro populacional (linha pontilhada, 35,5%) no seu intervalo de confiança. Já uma amostra (em rosa) não inclui.  
@@ -131,8 +191,66 @@ knitr::include_graphics("img6.png")
   
 Para isso fazer mais sentido, observe o gráfico abaixo, que já discutimos nesse post. Nesse gráfico, 95% das amostras contêm o parâmetro populacional no seu IC. Se quiséssemos que 99% das amostras o contivessem, precisaríamos ampliar o intervalo – em outras palavras, precisaríamos aumentar a margem de erro.  
 
-```{r, echo=FALSE, fig.align='center', out.width = '450px'}
-knitr::include_graphics("img4.png")
+```{r, echo=FALSE, fig.align='center', out.width = '450px', warning=FALSE, message=FALSE, fig.width=4.3, fig.height=3.6}
+ci_low <- function(media){
+  media - 1.96*(15/sqrt(200))
+}
+
+ci_up <- function(media){
+  media + 1.96*(15/sqrt(200))
+}
+
+set.seed(4321)
+alturas <- rnorm(n = 500000, mean = 35.5, sd = 15)
+pop <- as.data.frame(alturas)
+
+
+
+# Sorteio e armazenamento dos resultados
+
+res <- pop |> slice_sample(n = 200) |> 
+  summarise(media = mean(alturas),
+            cilow = ci_low(media),
+            ciup = ci_up(media),
+            x = 1) |> as.data.frame()
+
+df_res <- as.data.frame(res)
+
+# Estabelecendo a quantidade de amostras aleatórias a serem extraídas
+R <- 25
+
+set.seed(54321)
+
+# Sorteio
+
+for(i in 1:R){
+  
+  res <- pop %>% slice_sample(n = 200) %>% 
+    summarise(media = mean(alturas),
+              cilow = ci_low(media),
+              ciup = ci_up(media),
+              x = i) %>% as.data.frame()
+  
+  df_res[i,] <- res
+  
+}
+
+
+df_res <- df_res %>% mutate(cor = case_when(ciup > 35.5 & cilow > 35.5 ~ "#B5284B",
+                                            ciup < 35.5 & cilow < 35.5 ~ "#B5284B",
+                                            TRUE ~ "#2794A0"))
+
+
+ggplot(df_res, aes(y = media, x = x, color = cor)) +
+  geom_point(size = 1) +
+  geom_errorbar(aes(ymin = cilow, ymax = ciup), width = 0) +
+  geom_hline(aes(yintercept = 35.5), linetype = "dashed") +
+  coord_flip() +
+  labs(y = "Intenção de votos (%)", x = "Amostra") +
+  scale_color_identity() +
+  scale_y_continuous(labels = scales::number_format(decimal.mark = ",")) +
+  theme_bw() +
+  theme(text = element_text(size = 10, family = "Nunito"))
 ```
   
   

@@ -19,14 +19,14 @@ output:
 <h3>População x amostra</h3>
 <p>Chamamos de população o conjunto de todos os sujeitos experimentais que interessam ao pesquisador. Vamos usar como exemplo uma pesquisa eleitoral para o cargo de governador do estado da Bahia. Nesse caso, a população será composta por <strong>todos os eleitores desse estado</strong>. No entanto, uma pesquisa que incluísse todos os eleitores seria extremamente cara e demorada. A alternativa, portanto, é incluir na pesquisa eleitoral apenas uma parcela dos eleitores do estado da Bahia (ou seja, uma parcela da nossa população). Essa parcela corresponde à <strong>amostra</strong>.<br />
 Chamamos de amostra o subconjunto da população de que fato é estudado. A partir dos resultados obtidos em uma amostra, podemos chegar a conclusões sobre a população. Isso é chamado de <strong>inferência estatística</strong>. O processo de seleção da amostra a partir da população recebe o nome de <strong>amostragem</strong>.</p>
-<p><img src="img1.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img1.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>As informações extraídas da <strong>população</strong> – como média, desvio-padrão, proporções – são chamadas de <strong>parâmetros</strong> e são, em sua maioria, representadas por letras gregas. Já as informações provenientes de uma <strong>amostra</strong> recebem o nome de <strong>estatísticas</strong>, e são representadas por letras do nosso alfabeto, o romano.</p>
-<p><img src="img2.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img2.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="a-relação-entre-o-erro-estatístico-e-o-intervalo-de-confiança" class="section level3">
 <h3>A relação entre o erro estatístico e o intervalo de confiança</h3>
 <p>É importante entender que sempre que usamos amostras, estamos trabalhando com uma chance de erro. Esse erro é chamado de <strong>erro estatístico</strong>. Voltando ao exemplo da pesquisa eleitoral, imagine que uma determinada candidata tem 34% das intenções de votos na amostra que estudamos. É improvável que, ao perguntarmos a intenção de votos a toda a população, obtenhamos exatamente essa mesma porcentagem. Essa divergência entre as proporções será observada mesmo quando a amostra for selecionada adequadamente – sem erros ou má intenção. A vantagem é que, usando a estatística, conseguimos <strong>estimar esse erro</strong> quando estamos usando amostras aleatórias.</p>
-<p><img src="img3.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img3.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>Uma forma de estimação que considera esse erro é o <strong>intervalo de confiança</strong>. No caso da pesquisa eleitoral, por exemplo, poderíamos, a partir da intenção de votos obtida na amostra, calcular um intervalo dentro do qual é provável que a intenção de votos da população se encontre.<br />
 Estamos aqui usando um exemplo com proporção, mas o intervalo de confiança pode ser usado para estimar qualquer parâmetro de uma população a partir das estatísticas de uma amostra. Podemos calcular intervalos de confiança para médias, para tamanhos de efeito – como a razão de chances, o coeficiente de correlação –, entre muitas outras possibilidades.</p>
 </div>
@@ -63,7 +63,7 @@ Vamos imaginar que:</p>
 </ul>
 <p>Dos 1000 intervalos de confiança calculados, espera-se que 95% deles (no caso, 950 intervalos) contenham a intenção de votos da população, 35,5%.</p>
 <p>Vejamos isso em um gráfico:</p>
-<p><img src="img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>Os círculos representam a intenção de votos e as linhas horizontais representam o intervalo de confiança (IC) 95% de cada uma das amostras coletadas. Observe que, das 25 amostras coletadas, 95% delas, ou seja, 24 (em azul), incluem o parâmetro populacional (linha pontilhada, 35,5%) no seu intervalo de confiança. Já uma amostra (em rosa) não inclui.<br />
 Fizemos um gráfico com apenas 25 amostras para facilitar a visualização. Mas, se o gráfico incluísse 1000 amostras, esperaríamos a mesma proporção: das 1000 amostras, seria esperado que 50 delas não incluíssem a intenção de votos populacional no seu IC 95%. Uma <strong>limitação</strong> é que quando coletamos uma amostra, não temos como saber se ela é uma das 95% das amostras que contém o parâmetro populacional no seu IC ou não.</p>
 </div>
@@ -82,7 +82,7 @@ Limite superior: 34% + 2% = 36%
 <p>A forma de calcular o intervalo de confiança/ margem de erro depende de qual o parâmetro que pretendemos estimar: se é uma média, uma proporção, uma razão de chances, etc. Mas, todos esses cálculos têm em comum levarem em consideração o <strong>tamanho da amostra</strong> e o <strong>nível de confiança</strong>.<br />
 Quanto maior o tamanho da amostra, menor será a margem de erro. Ou ainda podemos pensar: quanto maior for a amostra, mais estreito será o intervalo de confiança.<br />
 É importante também entender que <strong>essa relação não é linear</strong>. Observe as simulações abaixo, realizadas com base na fórmula que vimos acima. Os cálculos da tabela abaixo consideram uma proporção de 50% e um nível de significância de 5%:</p>
-<p><img src="img5.png" width="350px" style="display: block; margin: auto;" /></p>
+<p><img src="img5.png" alt="" width="350px" style="display: block; margin: auto;" /></p>
 <blockquote>
 <p>Para esse cálculo, usamos a fórmula que já vimos acima:<br />
 <span class="math display">\[IC(1-\alpha) = \hat{p} \pm z_{\alpha/2} \times \sqrt\frac{\hat{p} \times (1-\hat{p})}{n}\]</span><br />
@@ -104,9 +104,9 @@ Portanto, a desconfiança tem sentido. Mas não pelo tamanho da amostra, e sim p
 <h3>A relação entre a margem de erro e o nível de confiança</h3>
 <p>Outro fator que influencia a margem de erro é o nível de confiança. Quanto maior for o nível de confiança, mais amplo será o intervalo de confiança. Ou ainda: maior será a margem de erro.<br />
 Observe as simulações abaixo, as quais consideraram uma proporção na população de 50% e mantêm constante um tamanho de amostra de 1000 sujeitos:</p>
-<p><img src="img6.png" width="350px" style="display: block; margin: auto;" /></p>
+<p><img src="img6.png" alt="" width="350px" style="display: block; margin: auto;" /></p>
 <p>Para isso fazer mais sentido, observe o gráfico abaixo, que já discutimos nesse post. Nesse gráfico, 95% das amostras contêm o parâmetro populacional no seu IC. Se quiséssemos que 99% das amostras o contivessem, precisaríamos ampliar o intervalo – em outras palavras, precisaríamos aumentar a margem de erro.</p>
-<p><img src="img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
 <h4>Como citar esse post, nas normas da ABNT</h4>
 <blockquote>

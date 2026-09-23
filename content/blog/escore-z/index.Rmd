@@ -418,7 +418,7 @@ ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
 Isso significa que apenas **1,4% das mulheres** da amostra apresentam alturas **iguais ou superiores** a 182 cm.  
   
 >Como eu cheguei a esse número mágico de 1,4%?  
->A gente cosnegue obter esse valor a partir de tabelas para a distribuição normal padrão, como [esta](https://www.ime.unicamp.br/~cnaber/tabela_normal.pdf). Mas você também pode calculá-la usando a seguinte formula em R:  
+>A gente consegue obter esse valor a partir de tabelas para a distribuição normal padrão, como [esta](https://www.ime.unicamp.br/~cnaber/tabela_normal.pdf). Mas você também pode calculá-la usando a seguinte formula em R:  
 >  
 >`1-pnorm(q = 2.2)`  
 >  
@@ -434,7 +434,7 @@ Isso significa que apenas **1,4% das mulheres** da amostra apresentam alturas **
   
 Sabia que os pontos de corte para classificar o IMC em crianças e adolescentes se baseia em escores-z? A tabela abaixo traz a classificação [de acordo com a OMS](https://www.who.int/toolkits/growth-reference-data-for-5to19-years/indicators/bmi-for-age):  
   
-```{r}
+```{r, echo=FALSE}
 tibble::tribble(
   ~`Escore-z`,      ~`Classificação`,
   "< -3",           "Magreza acentuada",
@@ -443,7 +443,10 @@ tibble::tribble(
   "> +1 e ≤ +2",    "Sobrepeso",
   "> +2",           "Obesidade"
 ) |> 
-  fstatix::format_tab()
+  flextable::regulartable() |>
+  flextable::align(j = -1, align = "center", part = "all") |>
+  flextable::bold(part = "header") |> 
+  flextable::autofit()
 ```
   
 O cálculo do escore-z para essa finalidade leva em consideração o sexo e a idade da criança. Além disso, o cálculo é um pouco diferente do escore-z usual, porque considera as características da distribuição do IMC para cada idade e sexo. A OMS utiliza o método LMS, que permite levar em consideração a assimetria da distribuição. Há algumas calculadoras que fazem esse cálculo, como [essa](https://www.bcm.edu/bodycomplab/BMIapp/BMI-calculator-kids.html). A interpretação do escore-z, no entanto, segue a mesma lógica: valores positivos indicam que o IMC está acima do centro da distribuição de referência para aquela idade e sexo, enquanto valores negativos indicam que está abaixo.     

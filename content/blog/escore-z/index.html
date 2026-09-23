@@ -1,0 +1,215 @@
+---
+title: "O que é um escore-z?"
+author: Fernanda Fiel Peres
+date: '2026-09-23'
+slug: [escore-z]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Você já ouviu falar em escore-z (ou *z-score*, em inglês), mas nunca entendeu exatamente o que ele significa? Neste post discutimos o que é o escore-z, como calculá-lo e como ele deve ser interpretado.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<link href="{{< blogdown/postref >}}index_files/tabwid/tabwid.css" rel="stylesheet" />
+<script src="{{< blogdown/postref >}}index_files/tabwid/tabwid.js"></script>
+
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+<p></br>
+</br></p>
+<div id="o-que-é-um-escore-z" class="section level3">
+<h3>O que é um escore-z?</h3>
+<p>O escore-z (<em>z-score</em>, em inglês) é uma forma de padronizar variáveis numéricas. Após a padronização, as variáveis transformadas passam a:</p>
+<ul>
+<li>Ser adimensionais – isto é, deixam de ter unidade de medida</li>
+<li>Ter média igual a zero</li>
+<li>Ter desvio-padrão igual a um</li>
+</ul>
+<p>Vamos entender isso melhor!</p>
+</div>
+<div id="como-é-calculado-um-escore-z" class="section level3">
+<h3>Como é calculado um escore-z?</h3>
+<p>O cálculo do escore-z tem como base a média e o <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">desvio-padrão</a> do conjunto de dados. Para calcular o escore-z de uma determinada observação (x), basta subtrairmos a média e dividirmos o resultado dessa subtração pelo desvio-padrão (DP):</p>
+<p><span class="math display">\[
+z = \frac{x - Média}{DP}
+\]</span></p>
+</div>
+<div id="um-exemplo-de-cálculo" class="section level3">
+<h3>Um exemplo de cálculo</h3>
+<p>Para que o cálculo do escore-z faça mais sentido, vamos partir para um <strong>exemplo</strong>. Imagine que temos uma amostra de mulheres que tiveram a sua altura, em cm, aferida. Ao calcularmos a média e o <a href="https://fernandafperes.com.br/blog/variancia-desvio-padrao/">desvio-padrão</a> para essa amostra, obtivemos:</p>
+<ul>
+<li><strong>Média</strong> = 160 cm</li>
+<li><strong>Desvio-padrão</strong> = 10 cm</li>
+</ul>
+<p>Substituindo esses valores na <strong>fórmula</strong> do escore-z, obtemos:</p>
+<p><span class="math display">\[
+z = \frac{x - Média}{DP}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p>Imagine agora que temos nessa amostra uma mulher com <strong>182 cm</strong> de altura. Qual será o <strong>escore-z</strong> para ela? Para descobrir, basta substituirmos o valor de x da fórmula pela altura observada:</p>
+<p><span class="math display">\[
+z = \frac{182 - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p><span class="math display">\[
+\require{cancel}
+z = \frac{22\,\text{cm}}{10\,\text{cm}} = \frac{22\,\cancel{\text{cm}}}{10\,\cancel{\text{cm}}} = 2,2
+\]</span></p>
+<p>O cálculo resulta em um <strong>escore-z de 2,2</strong>. E observe que esse valor não tem mais unidade de medida porque, ao dividirmos 22 cm por 10 cm, acabamos cancelando a unidade cm.</p>
+<p><br /></p>
+</div>
+<div id="como-interpretar-o-escore-z" class="section level3">
+<h3>Como interpretar o escore-z?</h3>
+<p>Aqui, de novo, eu vou partir para exemplos. Vamos seguir trabalhando com a amostra de mulheres cujas alturas apresentam os seguintes valores de média e desvio-padrão:</p>
+<ul>
+<li><strong>Média</strong> = 160 cm</li>
+<li><strong>Desvio-padrão</strong> = 10 cm</li>
+</ul>
+<div id="qual-seria-o-escore-z-para-uma-mulher-com-altura-média-160-cm" class="section level5">
+<h5>Qual seria o escore-z para uma mulher com altura média (160 cm)?</h5>
+<p>Para calcular esse escore-z, basta substituirmos o valor de x por 160:</p>
+<p><span class="math display">\[
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{160\,\text{cm} - 160\,\text{cm}}{10\,\text{cm}}
+\]</span></p>
+<p>Perceba que:</p>
+<ul>
+<li>Isso resulta em um numerador igual a zero (160 – 160 = 0)</li>
+<li>Ficamos com uma fração que divide cm por cm – essas unidades de medida se cancelam e o resultado, portanto, passa a ser adimensional, sem unidade de medida</li>
+</ul>
+<p><span class="math display">\[
+\require{cancel}
+z = \frac{0\,\text{cm}}{10\,\text{cm}} = \frac{0\,\cancel{\text{cm}}}{10\,\cancel{\text{cm}}} = 0
+\]</span></p>
+<p>Logo, uma mulher com altura <strong>igual à média</strong> da amostra terá um <strong>escore-z igual a zero</strong>.</p>
+<p></br></p>
+</div>
+<div id="qual-seria-o-escore-z-para-uma-mulher-com-altura-um-desvio-padrão-acima-da-média" class="section level5">
+<h5>Qual seria o escore-z para uma mulher com altura um desvio-padrão acima da média?</h5>
+<p>Uma mulher cuja altura esteja <strong>um desvio-padrão acima</strong> da média dessa amostra terá uma altura de 170 cm (160 cm + 10 cm). Para calcular o escore-z para ela, substituímos o x por 170:</p>
+<p><span class="math display">\[
+z = \frac{x - 160}{10} = \frac{170 - 160}{10}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{10}{10} = 1
+\]</span></p>
+<p>Portanto, uma mulher com altura 1 desvio-padrão acima da média da amostra terá <strong>escore-z igual a 1</strong>.</p>
+<p></br></p>
+</div>
+<div id="e-qual-seria-o-escore-z-para-uma-mulher-com-altura-um-desvio-padrão-abaixo-da-média" class="section level5">
+<h5>E qual seria o escore-z para uma mulher com altura um desvio-padrão abaixo da média?</h5>
+<p>Uma mulher cuja altura esteja <strong>um desvio-padrão abaixo</strong> da média dessa amostra terá uma altura de 150 cm (160 cm - 10 cm). Para calcular o escore-z para ela, substituímos o x por 150:</p>
+<p><span class="math display">\[
+z = \frac{x - 160}{10} = \frac{150 - 160}{10}
+\]</span></p>
+<p><span class="math display">\[
+z = \frac{-10}{10} = -1
+\]</span></p>
+<p>Portanto, uma mulher com altura 1 desvio-padrão abaixo da média da amostra terá <strong>escore-z igual a -1</strong>.</p>
+<p></br></p>
+</div>
+<div id="um-guia-de-como-interpretar-o-escore-z" class="section level4">
+<h4>Um guia de como interpretar o escore-z</h4>
+<p>Note que:</p>
+<ul>
+<li>As alturas iguais à média têm z = 0</li>
+<li>As alturas um desvio-padrão <strong>acima</strong> da média têm z = 1</li>
+<li>As alturas um desvio-padrão <strong>abaixo</strong> da média têm z = -1</li>
+</ul>
+<p>Isso é o mesmo que dizer que a variável padronizada pelo escore-z tem média igual a zero e desvio-padrão igual a 1. Também significa que qualquer escore-z indica quantos desvios-padrão um valor está acima ou abaixo da média da distribuição.</p>
+<p>Vamos voltar ao primeiro escore-z que calculamos: o para uma mulher com altura igual a 182 cm. Vimos que esse valor corresponde a um escore-z de <strong>2,2</strong>. Portanto, a nossa interpretação será: a altura dessa mulher está <strong>2,2 desvios-padrão acima da média</strong>. Perceba que concluímos que está <strong>acima</strong> porque o valor de z foi positivo.</p>
+<p>Por outro lado, suponha que calculamos o escore-z para uma outra mulher e obtivemos um valor de <strong>z = -1,5</strong>. A conclusão agora será de que essa mulher apresenta uma altura que é <strong>1,5 desvios-padrão abaixo da média</strong>.</p>
+<p></br></p>
+</div>
+</div>
+<div id="relação-entre-o-escore-z-e-a-curva-normal" class="section level3">
+<h3>Relação entre o escore-z e a curva normal</h3>
+<p>Até aqui, vimos que o escore-z nos diz quantos desvios-padrão um valor está acima ou abaixo da média. Mas uma outra pergunta que podemos querer responder é: o <strong>quão raro</strong> é alguém estar 2,2 desvios-padrão acima da média? Para responder a isso, precisamos saber como os dados de altura <strong>se distribuem</strong>.</p>
+<p>Em muitas situações, principalmente quando estamos lidando com medidas biológicas (como altura, pressão arterial), os dados tendem a seguir uma distribuição de frequências com formato aproximado de <strong>sino</strong>, que recebe o nome de “<strong>distribuição normal</strong>” ou “distribuição gaussiana”:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>A distribuição normal tem algumas propriedades conhecidas:</p>
+<ul>
+<li>O seu valor central (tracejado em cinza na figura) corresponde à média e coincide com a moda e a mediana</li>
+<li>A distribuição é simétrica em relação à média (note como os lados direito e esquerdo são iguais, apenas espelhados)</li>
+<li>Os valores próximos à média apresentam maior frequência (note que há um pico justamente na média)</li>
+<li>Conforme os valores se distanciam da média, vão se tornando mais raros</li>
+</ul>
+<p>Além disso, sabemos que, caso uma variável apresente uma distribuição normal, <strong>68,3% das observações</strong> estarão entre a média mais 1 desvio-padrão (DP) e a média menos 1 DP:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Outra informação importante: <strong>95,5% das observações</strong> estarão entre a média mais 2 desvios-padrão (DP) e a média menos 2 DP:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Vale dizer que é ainda mais <strong>famoso</strong> um outro ponto de corte: o <strong>1,96</strong>. Isso porque <strong>95% das observações</strong> estarão entre a média mais 1,96 desvios-padrão (DP) e a média menos 1,96 DP:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>E um último ponto de corte famoso é o referente a <strong>três</strong> desvios-padrão (DP): <strong>99,7% das observações</strong> estarão entre a média mais 3 DP e a média menos 3 DP:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<div id="ok-mas-o-que-isso-tudo-tem-a-ver-com-o-escore-z" class="section level4">
+<h4>Ok, mas o que isso tudo tem a ver com o escore-z?</h4>
+<p>Perceba que o escore-z é uma forma de representar os valores em desvios-padrão. Portanto, se uma variável – como a altura de mulheres – apresentar distribuição normal, isso significará que:</p>
+<ul>
+<li>68,3% das mulheres terão escores-z entre -1 e 1</li>
+<li>95% das mulheres vão apresentar escores-z entre -1,96 e 1,96</li>
+<li>99,7% das mulheres terão escores-z entre -3 e 3</li>
+</ul>
+<p>A figura abaixo mostra essa relação para o escore-z 1,96:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Podemos ainda pensar que <strong>apenas 5%</strong> da amostra apresenta valores <strong>fora da faixa [-1,96; 1,96]</strong>. Como a curva normal é simétrica, sabemos que:</p>
+<ul>
+<li>2,5% dos dados estarão acima de 1,96</li>
+<li>2,5% dos dados estarão abaixo de -1,96</li>
+</ul>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Ou seja: o escore-z nos ajuda a identificar o <strong>quão frequente ou rara</strong> é uma determinada altura. Vamos retormar o exemplo da mulher com <strong>182 cm</strong> de altura, supondo que essas alturas seguem a <strong>distribuição normal</strong>. Vimos que o escore-z para ela é de <strong>2,2</strong>. Como esse valor está <strong>acima de 1,96</strong>, sabemos que essa mulher está entre as 2,5% mais altas da amostra.</p>
+<p>Se quisermos ser ainda mais precisos, podemos calcular a probabilidade (área sob a curva) associada a esse escore-z:</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
+<p>Isso significa que apenas <strong>1,4% das mulheres</strong> da amostra apresentam alturas <strong>iguais ou superiores</strong> a 182 cm.</p>
+<blockquote>
+<p>Como eu cheguei a esse número mágico de 1,4%?<br />
+A gente cosnegue obter esse valor a partir de tabelas para a distribuição normal padrão, como <a href="https://www.ime.unicamp.br/~cnaber/tabela_normal.pdf">esta</a>. Mas você também pode calculá-la usando a seguinte formula em R:</p>
+<p><code>1-pnorm(q = 2.2)</code></p>
+<p>Isso vai resultar em 0,0139 que multiplicando por 100 fica 1,39%, o que eu arredondei para 1,4%.</p>
+</blockquote>
+<p></br></p>
+</div>
+</div>
+<div id="exemplos-de-aplicações" class="section level3">
+<h3>Exemplos de aplicações</h3>
+<div id="imc-em-crianças-e-adolescentes" class="section level4">
+<h4>IMC em crianças e adolescentes</h4>
+<p>Sabia que os pontos de corte para classificar o IMC em crianças e adolescentes se baseia em escores-z? A tabela abaixo traz a classificação <a href="https://www.who.int/toolkits/growth-reference-data-for-5to19-years/indicators/bmi-for-age">de acordo com a OMS</a>:</p>
+<pre class="r"><code>tibble::tribble(
+  ~`Escore-z`,      ~`Classificação`,
+  &quot;&lt; -3&quot;,           &quot;Magreza acentuada&quot;,
+  &quot;≥ -3 e &lt; -2&quot;,    &quot;Magreza&quot;,
+  &quot;≥ -2 e ≤ +1&quot;,    &quot;Eutrofia&quot;,
+  &quot;&gt; +1 e ≤ +2&quot;,    &quot;Sobrepeso&quot;,
+  &quot;&gt; +2&quot;,           &quot;Obesidade&quot;
+) |&gt; 
+  fstatix::format_tab()</code></pre>
+<div class="tabwid"><style>.cl-44f52dce{}.cl-44f10c3a{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44f10c44{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-44f30e22{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44f30e23{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44f30e2c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44f30e2d{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-44f3201a{width:1.018in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f32024{width:1.636in;background-color:transparent;vertical-align: bottom;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f32025{width:1.018in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f32026{width:1.636in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f3202e{width:1.018in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f3202f{width:1.636in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f32030{width:1.018in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f32038{width:1.636in;background-color:transparent;vertical-align: top;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f32039{width:1.018in;background-color:transparent;vertical-align: top;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-44f3203a{width:1.636in;background-color:transparent;vertical-align: top;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-44f52dce'>
+<caption style="display:table-caption;margin:0pt;text-align:center;border-bottom: 0.00pt solid transparent;border-top: 0.00pt solid transparent;border-left: 0.00pt solid transparent;border-right: 0.00pt solid transparent;padding-top:3pt;padding-bottom:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;"><span id="tab:unnamed-chunk-10">Table 1: </span><span></span></caption>
+<thead><tr style="overflow-wrap:break-word;"><th class="cl-44f3201a"><p class="cl-44f30e22"><span class="cl-44f10c3a">Escore-z</span></p></th><th class="cl-44f32024"><p class="cl-44f30e23"><span class="cl-44f10c3a">Classificação</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-44f32025"><p class="cl-44f30e2c"><span class="cl-44f10c44">&lt;</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">-3</span></p></td><td class="cl-44f32026"><p class="cl-44f30e2d"><span class="cl-44f10c44">Magreza</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">acentuada</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44f32025"><p class="cl-44f30e2c"><span class="cl-44f10c44">≥</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">-3</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">e</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">&lt;</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">-2</span></p></td><td class="cl-44f32026"><p class="cl-44f30e2d"><span class="cl-44f10c44">Magreza</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44f3202e"><p class="cl-44f30e2c"><span class="cl-44f10c44">≥</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">-2</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">e</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">≤</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">+1</span></p></td><td class="cl-44f3202f"><p class="cl-44f30e2d"><span class="cl-44f10c44">Eutrofia</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44f32030"><p class="cl-44f30e2c"><span class="cl-44f10c44">+1</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">e</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">≤</span><span class="cl-44f10c44"> </span><span class="cl-44f10c44">+2</span></p></td><td class="cl-44f32038"><p class="cl-44f30e2d"><span class="cl-44f10c44">Sobrepeso</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-44f32039"><p class="cl-44f30e2c"><span class="cl-44f10c44">+2</span></p></td><td class="cl-44f3203a"><p class="cl-44f30e2d"><span class="cl-44f10c44">Obesidade</span></p></td></tr></tbody></table></div>
+<p>O cálculo do escore-z para essa finalidade leva em consideração o sexo e a idade da criança. Além disso, o cálculo é um pouco diferente do escore-z usual, porque considera as características da distribuição do IMC para cada idade e sexo. A OMS utiliza o método LMS, que permite levar em consideração a assimetria da distribuição. Há algumas calculadoras que fazem esse cálculo, como <a href="https://www.bcm.edu/bodycomplab/BMIapp/BMI-calculator-kids.html">essa</a>. A interpretação do escore-z, no entanto, segue a mesma lógica: valores positivos indicam que o IMC está acima do centro da distribuição de referência para aquela idade e sexo, enquanto valores negativos indicam que está abaixo.</p>
+</div>
+<div id="avaliar-a-relação-entre-variáveis-em-escalas-diferentes" class="section level4">
+<h4>Avaliar a relação entre variáveis em escalas diferentes</h4>
+<p>Esses dias circulou pela internet <a href="https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH">este gráfico</a>, que analisava a relação entre o preço de hambúrgueres vendidos na cidade de São Paulo e suas avaliações. O gráfico traz uma faixa diagonal que, de acordo com o autor, corresponde à “zona de equivalência de valor”, a região “onde o preço é coerente com o valor entregue”.</p>
+<p>Mas, veja, criar uma faixa de equivalência não é uma tarefa simples. Por que? Porque o preço e a avaliação estão em unidades de medida diferentes: o primeiro em reais, o segundo em posição no ranking. Como lidar com esse dilema? Uma excelente alternativa é calcular o escore-z para as duas variáveis. Dessa forma, os valores para ambas passam a estar na escala de desvio-padrão. Eu discuto isso em detalhes <a href="https://fernandafperes.com.br/blog/grafico-hamburgueres/">nesse post</a>.</p>
+<hr />
+</div>
+</div>
+<div id="como-citar-esse-post-nas-normas-da-abnt" class="section level3">
+<h3>Como citar esse post, nas normas da ABNT</h3>
+<blockquote>
+<p>PERES, Fernanda F. <strong>O que é um escore-z?</strong>. Blog Fernanda Peres, São Paulo, 23 set. 2026. Disponível em: <a href="https://fernandafperes.com.br/blog/escore-z/" class="uri">https://fernandafperes.com.br/blog/escore-z/</a>.</p>
+</blockquote>
+<p><br /></p>
+</div>

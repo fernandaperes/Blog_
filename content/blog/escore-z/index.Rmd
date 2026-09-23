@@ -1,0 +1,495 @@
+---
+title: "O que é um escore-z?"
+author: Fernanda Fiel Peres
+date: '2026-09-23'
+slug: [escore-z]
+categories: []
+tags: ['Estatística teórica']
+comments: yes
+summary: 'Você já ouviu falar em escore-z (ou *z-score*, em inglês), mas nunca entendeu exatamente o que ele significa? Neste post discutimos o que é o escore-z, como calculá-lo e como ele deve ser interpretado.'
+output:
+  blogdown::html_page:
+    toc: false
+editor_options: 
+  chunk_output_type: console
+---
+
+<center>
+<font size='1'>Fonte da imagem: elaboração própria</font>
+</center>
+  
+</br>
+</br>
+  
+
+  
+```{r, include=FALSE}
+knitr::opts_chunk$set(fig.width = 4, fig.height = 3.3, cache = FALSE,
+                      fig.align = "center", warning = FALSE, message = FALSE)
+library(tidyverse)
+library(ggpubr)
+source("/Users/fernandafperes/Documents/Blog_/content/blog/render_toc.R")
+fstatix::paleta_f()
+```
+   
+   
+```{r toc, echo=FALSE}
+# render_toc("index.Rmd", toc_header_name = NULL, toc_depth = 2, base_level = 3)
+```
+   
+   
+   
+### O que é um escore-z?
+  
+O escore-z (*z-score*, em inglês) é uma forma de padronizar variáveis numéricas. Após a padronização, as variáveis transformadas passam a:  
+  
+* Ser adimensionais -- isto é, deixam de ter unidade de medida
+* Ter média igual a zero
+* Ter desvio-padrão igual a um
+  
+  
+Vamos entender isso melhor!
+  
+  
+
+### Como é calculado um escore-z?
+  
+O cálculo do escore-z tem como base a média e o [desvio-padrão](https://fernandafperes.com.br/blog/variancia-desvio-padrao/) do conjunto de dados. Para calcular o escore-z de uma determinada observação (x), basta subtrairmos a média e dividirmos o resultado dessa subtração pelo desvio-padrão (DP):  
+  
+$$
+z = \frac{x - Média}{DP}
+$$
+  
+  
+### Um exemplo de cálculo
+  
+Para que o cálculo do escore-z faça mais sentido, vamos partir para um **exemplo**. Imagine que temos uma amostra de mulheres que tiveram a sua altura, em cm, aferida. Ao calcularmos a média e o [desvio-padrão](https://fernandafperes.com.br/blog/variancia-desvio-padrao/) para essa amostra, obtivemos:  
+  
+* **Média** = 160 cm
+* **Desvio-padrão** = 10 cm
+  
+Substituindo esses valores na **fórmula** do escore-z, obtemos:  
+  
+$$
+z = \frac{x - Média}{DP}
+$$
+  
+$$
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+Imagine agora que temos nessa amostra uma mulher com **182 cm** de altura. Qual será o **escore-z** para ela? Para descobrir, basta substituirmos o valor de x da fórmula pela altura observada:  
+  
+$$
+z = \frac{182 - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+$$
+\require{cancel}
+z = \frac{22\,\text{cm}}{10\,\text{cm}} = \frac{22\,\cancel{\text{cm}}}{10\,\cancel{\text{cm}}} = 2,2
+$$
+  
+O cálculo resulta em um **escore-z de 2,2**. E observe que esse valor não tem mais unidade de medida porque, ao dividirmos 22 cm por 10 cm, acabamos cancelando a unidade cm.  
+
+  
+  
+<br />
+
+
+### Como interpretar o escore-z?
+  
+Aqui, de novo, eu vou partir para exemplos. Vamos seguir trabalhando com a amostra de mulheres cujas alturas apresentam os seguintes valores de média e desvio-padrão:  
+  
+* **Média** = 160 cm
+* **Desvio-padrão** = 10 cm  
+  
+  
+##### Qual seria o escore-z para uma mulher com altura média (160 cm)?
+  
+Para calcular esse escore-z, basta substituirmos o valor de x por 160:  
+  
+$$
+z = \frac{x - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+$$
+z = \frac{160\,\text{cm} - 160\,\text{cm}}{10\,\text{cm}}
+$$
+  
+Perceba que:  
+  
+* Isso resulta em um numerador igual a zero (160 -- 160 = 0)
+* Ficamos com uma fração que divide cm por cm -- essas unidades de medida se cancelam e o resultado, portanto, passa a ser adimensional, sem unidade de medida  
+  
+$$
+\require{cancel}
+z = \frac{0\,\text{cm}}{10\,\text{cm}} = \frac{0\,\cancel{\text{cm}}}{10\,\cancel{\text{cm}}} = 0
+$$
+  
+Logo, uma mulher com altura **igual à média** da amostra terá um **escore-z igual a zero**.  
+  
+</br>
+  
+##### Qual seria o escore-z para uma mulher com altura um desvio-padrão acima da média?  
+  
+Uma mulher cuja altura esteja **um desvio-padrão acima** da média dessa amostra terá uma altura de 170 cm (160 cm + 10 cm). Para calcular o escore-z para ela, substituímos o x por 170:  
+
+$$
+z = \frac{x - 160}{10} = \frac{170 - 160}{10}
+$$
+  
+$$
+z = \frac{10}{10} = 1
+$$
+  
+Portanto, uma mulher com altura 1 desvio-padrão acima da média da amostra terá **escore-z igual a 1**.  
+  
+</br>
+  
+##### E qual seria o escore-z para uma mulher com altura um desvio-padrão abaixo da média?  
+  
+Uma mulher cuja altura esteja **um desvio-padrão abaixo** da média dessa amostra terá uma altura de 150 cm (160 cm - 10 cm). Para calcular o escore-z para ela, substituímos o x por 150:  
+
+$$
+z = \frac{x - 160}{10} = \frac{150 - 160}{10}
+$$
+  
+$$
+z = \frac{-10}{10} = -1
+$$
+  
+Portanto, uma mulher com altura 1 desvio-padrão abaixo da média da amostra terá **escore-z igual a -1**.  
+  
+</br>
+  
+#### Um guia de como interpretar o escore-z
+  
+Note que:  
+  
+* As alturas iguais à média têm z = 0
+* As alturas um desvio-padrão **acima** da média têm z = 1
+* As alturas um desvio-padrão **abaixo** da média têm z = -1  
+  
+Isso é o mesmo que dizer que a variável padronizada pelo escore-z tem média igual a zero e desvio-padrão igual a 1. Também significa que qualquer escore-z indica quantos desvios-padrão um valor está acima ou abaixo da média da distribuição.  
+  
+Vamos voltar ao primeiro escore-z que calculamos: o para uma mulher com altura igual a 182 cm. Vimos que esse valor corresponde a um escore-z de **2,2**. Portanto, a nossa interpretação será: a altura dessa mulher está **2,2 desvios-padrão acima da média**. Perceba que concluímos que está **acima** porque o valor de z foi positivo.  
+  
+Por outro lado, suponha que calculamos o escore-z para uma outra mulher e obtivemos um valor de **z = -1,5**. A conclusão agora será de que essa mulher apresenta uma altura que é **1,5 desvios-padrão abaixo da média**.  
+  
+  
+</br>
+  
+### Relação entre o escore-z e a curva normal
+  
+Até aqui, vimos que o escore-z nos diz quantos desvios-padrão um valor está acima ou abaixo da média. Mas uma outra pergunta que podemos querer responder é: o **quão raro** é alguém estar 2,2 desvios-padrão acima da média? Para responder a isso, precisamos saber como os dados de altura **se distribuem**.  
+  
+Em muitas situações, principalmente quando estamos lidando com medidas biológicas (como altura, pressão arterial), os dados tendem a seguir uma distribuição de frequências com formato aproximado de **sino**, que recebe o nome de "**distribuição normal**" ou "distribuição gaussiana":  
+  
+```{r, echo=FALSE, fig.width=5}
+library(tidyverse)
+
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  # stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+  #               xlim = c(300, 427.8), geom = "area",
+  #               fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = "Altura (cm)", y = "Frequência (%)") +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito"))
+```
+  
+A distribuição normal tem algumas propriedades conhecidas:  
+  
+* O seu valor central (tracejado em cinza na figura) corresponde à média e coincide com a moda e a mediana
+* A distribuição é simétrica em relação à média (note como os lados direito e esquerdo são iguais, apenas espelhados)
+* Os valores próximos à média apresentam maior frequência (note que há um pico justamente na média)
+* Conforme os valores se distanciam da média, vão se tornando mais raros
+  
+  
+Além disso, sabemos que, caso uma variável apresente uma distribuição normal, **68,3% das observações** estarão entre a média mais 1 desvio-padrão (DP) e a média menos 1 DP:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+                xlim = c(150, 170), geom = "area",
+                fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 160, y = dnorm(160, mean = 160, sd = 10)/2,
+           geom = "label", label = "68,3%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = NULL, y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(150, 160, 170),
+                     labels = c("Média\n- 1DP",
+                                "Média",
+                                "Média\n+ 1DP")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+Outra informação importante: **95,5% das observações** estarão entre a média mais 2 desvios-padrão (DP) e a média menos 2 DP:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+                xlim = c(140, 180), geom = "area",
+                fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 160, y = dnorm(160, mean = 160, sd = 10)/2,
+           geom = "label", label = "95,5%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = NULL, y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(140, 160, 180),
+                     labels = c("Média\n- 2DP",
+                                "Média",
+                                "Média\n+ 2DP")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+  
+Vale dizer que é ainda mais **famoso** um outro ponto de corte: o **1,96**. Isso porque **95% das observações** estarão entre a média mais 1,96 desvios-padrão (DP) e a média menos 1,96 DP:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+                xlim = c(160-1.96*10, 160+1.96*10), geom = "area",
+                fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 160, y = dnorm(160, mean = 160, sd = 10)/2,
+           geom = "label", label = "95%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = NULL, y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(160-1.96*10, 160, 160+1.96*10),
+                     labels = c("Média\n- 1,96 DP",
+                                "Média",
+                                "Média\n+ 1,96 DP")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+  
+E um último ponto de corte famoso é o referente a **três** desvios-padrão (DP): **99,7% das observações** estarão entre a média mais 3 DP e a média menos 3 DP:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(120, 200)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 160, sd = 10),
+                xlim = c(130, 190), geom = "area",
+                fill = "grey85") +
+  annotate(x = 160, xend = 160, y = 0, yend = dnorm(160, mean = 160, sd = 10),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 160, y = dnorm(160, mean = 160, sd = 10)/2,
+           geom = "label", label = "99,7%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 160, sd = 10),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = NULL, y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(130, 160, 190),
+                     labels = c("Média\n- 3DP",
+                                "Média",
+                                "Média\n+ 3DP")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+  
+#### Ok, mas o que isso tudo tem a ver com o escore-z?
+  
+Perceba que o escore-z é uma forma de representar os valores em desvios-padrão. Portanto, se uma variável -- como a altura de mulheres -- apresentar distribuição normal, isso significará que:  
+  
+* 68,3% das mulheres terão escores-z entre -1 e 1
+* 95% das mulheres vão apresentar escores-z entre -1,96 e 1,96
+* 99,7% das mulheres terão escores-z entre -3 e 3
+  
+A figura abaixo mostra essa relação para o escore-z 1,96:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
+                xlim = c(-1.96, 1.96), geom = "area",
+                fill = "grey85") +
+  annotate(x = 0, xend = 0, y = 0, yend = dnorm(0, mean = 0, sd = 1),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 0, y = dnorm(0, mean = 0, sd = 1)/2,
+           geom = "label", label = "95%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = "z", y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(-1.96, 0, 1.96),
+                     labels = c("- 1,96",
+                                "0",
+                                "1,96")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+Podemos ainda pensar que **apenas 5%** da amostra apresenta valores **fora da faixa [-1,96; 1,96]**. Como a curva normal é simétrica, sabemos que:  
+  
+* 2,5% dos dados estarão acima de 1,96
+* 2,5% dos dados estarão abaixo de -1,96
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
+                xlim = c(1.96, 4), geom = "area",
+                fill = "grey85") +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
+                xlim = c(-4, -1.96), geom = "area",
+                fill = "grey85") +
+  annotate(x = 0, xend = 0, y = 0, yend = dnorm(0, mean = 0, sd = 1),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 3.3, y = 0.05,
+           geom = "label", label = "2,5%", size = 3.5,
+           family = "Nunito") +
+  annotate(x = -3.3, y = 0.05,
+           geom = "label", label = "2,5%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = "z", y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(-1.96, 0, 1.96),
+                     labels = c("- 1,96",
+                                "0",
+                                "1,96")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+  
+Ou seja: o escore-z nos ajuda a identificar o **quão frequente ou rara** é uma determinada altura. Vamos retormar o exemplo da mulher com **182 cm** de altura, supondo que essas alturas seguem a **distribuição normal**. Vimos que o escore-z para ela é de **2,2**. Como esse valor está **acima de 1,96**, sabemos que essa mulher está entre as 2,5% mais altas da amostra.  
+  
+Se quisermos ser ainda mais precisos, podemos calcular a probabilidade (área sob a curva) associada a esse escore-z:  
+  
+```{r, echo=FALSE, fig.width=5}
+ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
+                xlim = c(2.2, 4), geom = "area",
+                fill = "grey85") +
+  annotate(x = 0, xend = 0, y = 0, yend = dnorm(0, mean = 0, sd = 1),
+           geom = "segment", color = "grey50", linetype = "dashed",
+           linewidth = 0.4) +
+  annotate(x = 3.3, y = 0.05,
+           geom = "label", label = "1,4%", size = 3.5,
+           family = "Nunito") +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1),
+                color = "cadetblue") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05)),
+                     labels = scales::number_format(scale = 1e2)) +
+  labs(x = "z", y = "Frequência (%)") +
+  scale_x_continuous(breaks = c(0, 2.2),
+                     labels = c("0", "2,2")) +
+  theme_classic() +
+  theme(text = element_text(family = "Nunito", size = 12))
+```
+  
+Isso significa que apenas **1,4% das mulheres** da amostra apresentam alturas **iguais ou superiores** a 182 cm.  
+  
+>Como eu cheguei a esse número mágico de 1,4%?  
+>A gente cosnegue obter esse valor a partir de tabelas para a distribuição normal padrão, como [esta](https://www.ime.unicamp.br/~cnaber/tabela_normal.pdf). Mas você também pode calculá-la usando a seguinte formula em R:  
+>  
+>`1-pnorm(q = 2.2)`  
+>  
+>Isso vai resultar em 0,0139 que multiplicando por 100 fica 1,39%, o que eu arredondei para 1,4%.  
+>  
+  
+  
+</br>
+  
+### Exemplos de aplicações
+  
+#### IMC em crianças e adolescentes
+  
+Sabia que os pontos de corte para classificar o IMC em crianças e adolescentes se baseia em escores-z? A tabela abaixo traz a classificação [de acordo com a OMS](https://www.who.int/toolkits/growth-reference-data-for-5to19-years/indicators/bmi-for-age):  
+  
+```{r}
+tibble::tribble(
+  ~`Escore-z`,      ~`Classificação`,
+  "< -3",           "Magreza acentuada",
+  "≥ -3 e < -2",    "Magreza",
+  "≥ -2 e ≤ +1",    "Eutrofia",
+  "> +1 e ≤ +2",    "Sobrepeso",
+  "> +2",           "Obesidade"
+) |> 
+  fstatix::format_tab()
+```
+  
+O cálculo do escore-z para essa finalidade leva em consideração o sexo e a idade da criança. Além disso, o cálculo é um pouco diferente do escore-z usual, porque considera as características da distribuição do IMC para cada idade e sexo. A OMS utiliza o método LMS, que permite levar em consideração a assimetria da distribuição. Há algumas calculadoras que fazem esse cálculo, como [essa](https://www.bcm.edu/bodycomplab/BMIapp/BMI-calculator-kids.html). A interpretação do escore-z, no entanto, segue a mesma lógica: valores positivos indicam que o IMC está acima do centro da distribuição de referência para aquela idade e sexo, enquanto valores negativos indicam que está abaixo.     
+  
+  
+#### Avaliar a relação entre variáveis em escalas diferentes
+  
+Esses dias circulou pela internet [este gráfico](https://pt.linkedin.com/posts/wellington-kadooka_quantizpricingsolutions-pricing-rgm-activity-7396889999125753857-ZKWH), que analisava a relação entre o preço de hambúrgueres vendidos na cidade de São Paulo e suas avaliações. O gráfico traz uma faixa diagonal que, de acordo com o autor, corresponde à "zona de equivalência de valor", a região "onde o preço é coerente com o valor entregue".  
+  
+Mas, veja, criar uma faixa de equivalência não é uma tarefa simples. Por que? Porque o preço e a avaliação estão em unidades de medida diferentes: o primeiro em reais, o segundo em posição no ranking. Como lidar com esse dilema? Uma excelente alternativa é calcular o escore-z para as duas variáveis. Dessa forma, os valores para ambas passam a estar na escala de desvio-padrão. Eu discuto isso em detalhes [nesse post](https://fernandafperes.com.br/blog/grafico-hamburgueres/).  
+   
+   
+```{r, include=FALSE}
+# ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
+#   stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
+#                 xlim = c(1.5, 4), geom = "area",
+#                 fill = "grey85") +
+#   annotate(x = 0, xend = 0, y = 0, yend = dnorm(0, mean = 0, sd = 1),
+#            geom = "segment", color = "grey50", linetype = "dashed",
+#            linewidth = 0.4) +
+#   stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1),
+#                 color = "cadetblue", linewidth = 1.3) +
+#   labs(x = NULL, y = NULL) +
+#   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+#   scale_x_continuous(breaks = c(0, 1.5),
+#                      labels = c("μ",
+#                                 "z = 1,5")) +
+#   theme_classic() +
+#   theme(text = element_text(family = "Nunito", size = 14),
+#         axis.text.y = element_blank(),
+#         axis.ticks.y = element_blank())
+# 
+# ggsave("graf_cover.png", width = 4.3, height = 2.8, dpi = 400)
+```
+
+   
+   
+***
+
+### Como citar esse post, nas normas da ABNT
+  
+  
+> PERES, Fernanda F. **O que é um escore-z?**. Blog Fernanda Peres, São Paulo, 23 set. 2026. Disponível em: https://fernandafperes.com.br/blog/escore-z/.
+  
+  
+<br />
+
+
+

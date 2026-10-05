@@ -15,7 +15,7 @@ googleAnalytics = "G-ZBDS4LT6P0"
 [params]
   logo = "/images/favicon.ico"
   description = ""
-  customCSS = ["css/purebasic.css", "css/applause-button.css"]
+    customCSS = ["css/purebasic.css", "css/applause-button.css", "css/novo-visual.css"]
   customJS = ["js/highlight.pack.js", "js/applause-button.js"]
 
 

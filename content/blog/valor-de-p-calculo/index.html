@@ -9,6 +9,7 @@ summary: 'Como é calculado o valor de p em um teste estatístico? Qual a difere
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 
@@ -27,9 +28,9 @@ Nesse caso, como nosso objetivo é <strong>comparar as médias de dois grupos in
 </blockquote>
 <p>Vamos trabalhar aqui com dados hipotéticos e com grupos pequenos para facilitar o cálculo. O foco desse post é entender a teoria por trás dos testes de hipóteses.<br />
 Imagine que sorteamos uma amostra e obtivemos os seguintes valores de glicemia desses dois grupos, exercício físico (EF) e sedendários (SED):</p>
-<p><img src="Img1.png" width="200px" style="display: block; margin: auto;" /></p>
+<p><img src="Img1.png" alt="" width="200px" style="display: block; margin: auto;" /></p>
 <p>Podemos facilmente calcular e comparar as médias desses dois grupos:</p>
-<p><img src="Img2.png" width="285px" style="display: block; margin: auto;" /></p>
+<p><img src="Img2.png" alt="" width="285px" style="display: block; margin: auto;" /></p>
 <p>Note que há uma diferença de 11 mg/dl entre os grupos. Mas, essa diferença é <strong>estatisticamente significativa</strong>?<br />
 É importante entender que estamos trabalhando com uma <strong>amostra</strong> de pessoas. Logo, os valores de glicemia reais (da população) de pessoas que praticam exercícios e são sedentárias provavelmente serão diferentes dos que obtivemos aqui. Podemos, então, usar a inferência estatística para extrapolar esses resultados e avaliar se na população os valores de glicemia difeririam entre esses grupos. É aí que entram os testes estatísticos. Nesse caso, mais especificamente, o teste-t.</p>
 <blockquote>
@@ -48,7 +49,7 @@ E a hipótese alternativa? Bom, discutiremos mais a frente que há mais de uma p
 <div id="o-cálculo-do-valor-de-t" class="section level3">
 <h3>O cálculo do valor de t</h3>
 <p>O teste-t vai comparar as médias desses dois grupos, levando em consideração também os seus tamanhos e desvios-padrão. Os grupos apresentam um tamanho (n) de 6. Já o desvio-padrão pode ser calculadoEsse <a href="https://youtu.be/A-N-eEB1owQ">vídeo</a> explica como o cálculo do desvio-padrão é realizado, obtendo-se:</p>
-<p><img src="Img3.png" width="285px" style="display: block; margin: auto;" /></p>
+<p><img src="Img3.png" alt="" width="285px" style="display: block; margin: auto;" /></p>
 <p>Há algumas fórmulas para o cálculo do <strong>valor de t</strong>, do teste-t. A fórmula abaixo é uma das mais usadas, pois permite que os grupos apresentem variâncias e tamanhos diferentes:</p>
 <p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
 <p>Sendo A e B os dois grupos independentes, DP os seus desvios-padrão e n os seus tamanhos.<br />
@@ -70,12 +71,12 @@ Para isso usamos uma distribuição de probabilidade para valores de t, que <str
 É uma distribuição simétrica cujo <strong>centro é o t = 0</strong>. Analisando a fórmula do t, percebemos que o t = 0 é obtido quando as médias dos grupos A e B são idênticas (logo, média A - média B = 0). Portanto, uma vez que essa distribuição assume a hipótese nula como verdadeira, os valores mais prováveis serão os valores de t próximos a zero.</p>
 <p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
 <p>A distribuição t tem o seguinte formato:</p>
-<p><img src="Img5.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="Img5.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>A <strong>probabilidade de obtermos um determinado valor de t</strong>, ou um valor ainda mais extremo que aquele, <strong>considerando-se a hipótese nula verdadeira</strong>, é dado pela área sob a curva dessa distribuição. Note que essa probabilidade é o nosso famigerado valor de p.<br />
 Por mais extremo, devemos entender o seguinte: caso t seja positivo (como na figura abaixo), o valor de p corresponde à probabilidade de obtermos um valor de t igual àquele ou ainda superior; caso t seja negativo, o valor de p será a probabilidade de obtermos um valor de t igual àquele ou ainda menor (“mais negativo”).</p>
-<p><img src="Img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="Img4.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>Há ainda mais um fator que precisamos considerar antes de calcularmos o valor de p para o valor de t do nosso exemplo (t = -1,89). O formato da distribuição t – e, portanto, também as áreas sob a curva – variam de acordo com os graus de liberdade (gl). Portanto, o cálculo deve considerá-los.</p>
-<p><img src="Img6.png" width="380px" style="display: block; margin: auto;" /></p>
+<p><img src="Img6.png" alt="" width="380px" style="display: block; margin: auto;" /></p>
 <blockquote>
 <strong>O que são, afinal, os graus de liberdade?</strong><br />
 Está aí um dos conceitos de estatística mais difíceis de definir, na minha opinião. Uma explicação detalhada está fora do escopo desse post.<br />
@@ -89,7 +90,7 @@ gl = 10
 <p><br></p>
 </blockquote>
 <p>Agora, sim, podemos calcular o valor de p para o nosso exemplo. Esse valor corresponderá à área sob a curva a partir do valor de t calculado (t = -1,98) até o extremo mais próximo, o extremo negativo (esquerdo):</p>
-<p><img src="Img7.png" width="380px" style="display: block; margin: auto;" /></p>
+<p><img src="Img7.png" alt="" width="380px" style="display: block; margin: auto;" /></p>
 <p>Esse cálculo depende de integrais (já que trata-se de uma área sob uma curva). Mas, podemos usar uma função do Excel ou do R para calculá-lo rapidamente.</p>
 <p>No R usamos a função <code>pt</code> que recebe como argumentos o valor de t e os graus de liberdade:</p>
 <pre class="r"><code>pt(-1.89, 10)</code></pre>
@@ -154,12 +155,12 @@ De forma geral, eu recomendo a hipótese de <strong>diferença</strong> entre as
 <p><span class="math display">\[t = \frac{media_A - media_B}{\sqrt{\frac{(DP_A)^2}{n_A}+\frac{(DP_B)^2}{n_B}}}\]</span></p>
 <p>Note que o numerador da conta define o sinal do t. Esse numerador será <strong>positivo</strong> quando a média do grupo A for <strong>superior</strong> à do grupo B; por outro lado, esse numerador será <strong>negativo</strong> quando a média do grupo A for <strong>inferior</strong> à do grupo B.</p>
 <p>Voltando às hipóteses alternativas (H<sub>1</sub>), a primeira delas (média do grupo A <span class="math inline">\(\neq\)</span> média do grupo B) assume que t poderá ser tanto positivo quanto negativo. Já as outras assumem que o t será obrigatoriamente positivo ou obrigatoriamente negativo:</p>
-<p><img src="Img8.png" width="680px" style="display: block; margin: auto;" /></p>
+<p><img src="Img8.png" alt="" width="680px" style="display: block; margin: auto;" /></p>
 <p>Caso optemos pela primeira hipótese alternativa, estamos fazendo um teste bicaudal. Isso porque assumimos que o valor de p poderá considerar qualquer uma das caudas (extremidades) da distribuição t. Por outro lado, caso optemos por uma das duas últimas hipóteses, estaremos fazenrdo um teste unicaudal (cujo valor de p considerará apenas uma das caudas da distribuição).</p>
-<p><img src="Img9.png" width="830px" style="display: block; margin: auto;" /></p>
+<p><img src="Img9.png" alt="" width="830px" style="display: block; margin: auto;" /></p>
 <p>E a escolha do tipo de teste, se uni ou bicaudal, impacta o cálculo do valor de p.<br />
 Os testes <strong>unicaudais</strong> consideram a área de <strong>apenas um lado</strong> da distribuição, como mostra a figura abaixo. Já os testes <strong>bicaudais</strong> consideram os <strong>dois lados</strong> da distribuição no cálculo da área (ou seja, do valor de p). O valor de p será dado pela soma das áreas sob a curva de cada lado.</p>
-<p><img src="Img10.png" width="700px" style="display: block; margin: auto;" /></p>
+<p><img src="Img10.png" alt="" width="700px" style="display: block; margin: auto;" /></p>
 <p>Voltando ao nosso exemplo, vamos optar por um <strong>teste bicaudal</strong>. Portanto, para obter o valor de p para o nosso teste devemos multiplicar o valor calculado, que considerava apenas uma cauda, por dois:</p>
 <center>
 p = 0,044 <span class="math inline">\(\times\)</span> 2<br />

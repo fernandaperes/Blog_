@@ -10,6 +10,7 @@ summary: 'Já se perguntou qual a probabilidade do seu teste diagnóstico ser um
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 
@@ -17,7 +18,7 @@ output:
 <p>Imagine que você fez um teste rápido de HIV e o resultado deu positivo. Qual a probabilidade de você, de fato, ter uma infecção por HIV?</p>
 <p>Para analisar essa questão, precisamos antes entender que os testes diagnósticos podem falhar. Essas falhas são o que chamamos de falsos positivos e falsos negativos.
 Quando o teste tem um resultado positivo, mas na realidade o paciente não tem a doença/ condição, trata-se de um <strong>falso positivo</strong>. Já quando o teste apresenta um resultado negativo, mas na realidade o paciente tem a doença/ condição, temos em mãos um <strong>falso negativo</strong>. Podemos esquematizar todas as possibilidades da seguinte forma:</p>
-<p><img src="https://i.imgur.com/T9PrUaE.png" width="350px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/dpdVDHe.png" alt="" width="350px" style="display: block; margin: auto;" /></p>
 <p>Você pode estar se perguntando: mas como é definido se na realidade a pessoa tem ou não a doença? Isso é definido com base no método de diagnóstico considerado o “padrão-ouro”. O padrão-ouro sempre será o método com maior acurácia - ou seja, com menor taxa de falsos positivos e falsos negativos. Esse padrão-ouro pode ser um teste diagnóstico ou um critério clínico.
 Já que o padrão-ouro é o método mais acurado, por que não utilizá-lo? Bom, porque muitas vezes trata-se de um método que não é o mais adequado à prática clínica. Por exemplo, pode ser um método muito invasivo.</p>
 <p>Tendo entendido os conceitos de falso positivo (FP), falso negativo (FN), verdadeiro positivo (VP) e verdadeiro negativo (VN), conseguimos discutir a definição de: <strong>sensibilidade e especificidade.</strong></p>
@@ -57,7 +58,7 @@ Seguindo o mesmo raciocínio, um teste com alta especificidade, vai apresentar p
 <li>100.000 – 400 = 99600 mulheres sem HIV</li>
 </ul>
 <p>Vamos adicionar essas informações à tabela:</p>
-<p><img src="https://i.imgur.com/wD04YYl.png" width="300px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/C3BEAHA.png" alt="" width="300px" style="display: block; margin: auto;" /></p>
 <p>Agora vamos pensar: se todas essas mulheres fizessem o teste, quantas das 400 mulheres com HIV teriam um teste positivo?
 Podemos calcular a quantidade de verdadeiros positivos multiplicando o total de mulheres com a infecção pela sensibilidade do teste:</p>
 <p><span class="math display">\[
@@ -73,7 +74,7 @@ VP = 99,8\% \times 400
 VP = 399,2
 \]</span>
 Arredondando esse valor, isso significa que o teste será positivo em 399 dessas mulheres e, portanto, negativo em uma (um falso negativo).</p>
-<p><img src="https://i.imgur.com/gDwOjBF.png" width="300px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/4CNd1Ky.png" alt="" width="300px" style="display: block; margin: auto;" /></p>
 <p>Ok, e das 99600 mulheres sem HIV, quantas terão resultados corretos? Ou seja: verdadeiros negativos?
 Para esse cálculo, multiplicamos o total de mulheres sem infecção pela especificidade do teste:</p>
 <p><span class="math display">\[
@@ -90,7 +91,7 @@ VP = 99102
 \]</span>
 Ou seja, das 99600 mulheres não infectadas, 99102 terão um teste negativo, mas as outras 498 terão um teste positivo (ou seja, falsos positivos).
 Então, vamos atualizar a tabela para responder à pergunta inicial…</p>
-<p><img src="https://i.imgur.com/p5hZbLK.png" width="300px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/lwCKTPR.png" alt="" width="300px" style="display: block; margin: auto;" /></p>
 <p>Portanto, se uma mulher dessa população tem um resultado positivo, qual a probabilidade de ser um positivo verdadeiro (VPP)?
 Podemos calcular isso dividindo o total de positivos verdadeiros (399) pelo total de resultados positivos (897):</p>
 <p><span class="math display">\[
@@ -109,7 +110,7 @@ VPN = 99,99\%
 \]</span></p>
 <p>Portanto, existe uma probabilidade de 99,99% de que um resultado negativo nessa população seja um negativo verdadeiro. Bem mais confiável, né?</p>
 <p>E o menos intuitivo é que essas probabilidades <strong>variam de acordo com a prevalência da doença na população testada</strong>. Se fizermos o mesmo raciocínio, mas agora para uma mulher heterossexual que é usuária de droga injetável, os valores de VPP e VPN se alteram. Nessa população, estima-se que a prevalência de HIV seja de 5,9%. Logo, a tabela para 100 mil mulheres seria:</p>
-<p><img src="https://i.imgur.com/MB8zSs3.png" width="300px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/wtaqFJ3.png" alt="" width="300px" style="display: block; margin: auto;" /></p>
 <p>Realizando os mesmos cálculos que fizemos anteriormente:</p>
 <p><span class="math display">\[
 VPP = \frac{VP}{VP + FP} = \frac{5888}{6358} = 92,6\%

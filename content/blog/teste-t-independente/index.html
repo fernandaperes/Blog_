@@ -10,19 +10,13 @@ summary: 'O teste-t independente é um teste estatístico que permite comparar a
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Imagem por [vectorpocket / Freepik](http://www.freepik.com)"
 ---
 
 
 
-<center>
-<font size = '1'>
-<a href="http://www.freepik.com">Designed by vectorpocket / Freepik</a>
-</font>
-</center>
-<p><br><br />
-<br></p>
 <p>Há três principais tipos de testes-t: o teste-t para uma amostra, o teste-t para duas amostras independentes (ou apenas teste-t independente) e o teste-t para duas amostras pareadas (ou teste-t pareado).</p>
-<p><img src="https://i.imgur.com/Q4pGVqz.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/QjR13Rb.png" alt="" width="600px" style="display: block; margin: auto;" /></p>
 <p>Nesse post, falaremos sobre como fazer o teste-t independente, usando o software R.</p>
 <blockquote>
 Algumas informações importantes:<br />
@@ -125,7 +119,7 @@ Adicionamos também o atributo <code>stringsAsFactors = TRUE</code> para estabel
 H<sub>0</sub>: os dados seguem a distribuição normal
 H<sub>1</sub>: os dados <strong>não</strong> seguem a distribuição normal</p>
 <p>Como todos os valores de p foram superiores a 0,05, não vamos rejeitar a H<sub>0</sub> em nenhum dos grupos. Logo, vamos considerar que todos apresentam distribuição normal.</p>
-<p><img src="https://i.imgur.com/WUvW5Vv.png" width="350px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/sjDonyB.png" alt="" width="350px" style="display: block; margin: auto;" /></p>
 <p>O segundo pressuposto a ser checado é a homogeneidade de variâncias, que pode ser avaliada pelo teste de Levene (pacote <code>car</code>):</p>
 <p><strong>Para a nota de biologia:</strong></p>
 <pre class="r"><code>leveneTest(Nota_Biol ~ Posicao_Sala, data = dados, center = mean)</code></pre>
@@ -207,7 +201,7 @@ Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>
 <pre class="r"><code>dados %&gt;% group_by(Posicao_Sala) %&gt;% get_summary_stats(c(Nota_Biol, Nota_Hist), type = &quot;mean_sd&quot;)</code></pre>
 <pre><code>## # A tibble: 4 × 5
 ##   Posicao_Sala variable      n  mean    sd
-##   &lt;fct&gt;        &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##   &lt;fct&gt;        &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 ## 1 Frente       Nota_Biol    15  6.52  1.70
 ## 2 Frente       Nota_Hist    15  5.47  2.64
 ## 3 Fundos       Nota_Biol    17  3.98  1.42
@@ -224,7 +218,7 @@ Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>
   xlab(&quot;Posição na sala&quot;) +
   scale_y_continuous(limits=c(0,10), expand = c(0,0)) +
   theme_classic(base_size=12)</code></pre>
-<p><img src="https://i.imgur.com/ljEhLbf.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/Dtx7bOv.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p><strong>Gráfico de dispersão (dot-plot) para as notas de história</strong></p>
 <pre class="r"><code>ggplot(data = dados,
        mapping = aes(x = Posicao_Sala, y = Nota_Hist)) +
@@ -236,7 +230,7 @@ Nesse caso, o valor de p é: 7,136e-05. Isso equivale a: 7,136 x 10<sup>-5</sup>
   xlab(&quot;Posição na sala&quot;) +
   scale_y_continuous(limits=c(0,10), expand = c(0,0)) +
   theme_classic(base_size = 12)</code></pre>
-<p><img src="https://i.imgur.com/8q8kUvn.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/BY8Jm0M.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="descrevendo-os-resultados" class="section level3">

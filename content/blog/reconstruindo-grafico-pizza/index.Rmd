@@ -10,6 +10,7 @@ summary: 'O gráfico de setores -- popularmente conhecido como gráfico de pizza
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Imagem extraída da reportagem [Elenco atual do Flamengo passa dos 500 gols pelo clube](https://ge.globo.com/futebol/times/flamengo/noticia/2023/06/09/elenco-atual-do-flamengo-passa-dos-500-gols-pelo-clube-veja-numeros-dos-times-da-serie-a.ghtml) do G1"
 ---
 
  

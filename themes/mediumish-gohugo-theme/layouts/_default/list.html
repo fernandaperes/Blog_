@@ -6,16 +6,23 @@
     {{- partial "_shared/title.html" . -}}
     <div class="main-content">
 
-<div class="jumbotron fortags">
-        <div class="align-self-center text-center">
-			{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-			<a class="mt-1 mb-1" href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a>
-			{{ end }}
-		</div>
-		</div>
+        <!-- NOVO: caixa de busca -->
+        <div class="busca">
+            <input type="search" id="busca-input" placeholder="Buscar no blog..." aria-label="Buscar no blog" autocomplete="off">
+            <div id="busca-resultados" hidden></div>
+        </div>
 
-        <!-- Posts Index
-        ================================================== -->
+        <!-- NOVO: tudo dentro deste div some enquanto a pessoa busca -->
+        <div id="lista-posts">
+
+        <div class="jumbotron fortags">
+            <div class="align-self-center text-center">
+                {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                <a class="mt-1 mb-1" href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a>
+                {{ end }}
+            </div>
+        </div>
+
         <section class="recent-posts">
             <div class="section-title">
                 <h2><span>Todos os posts</span></h2>
@@ -28,8 +35,16 @@
             </div>
         </section>
         {{- partial "list-partials/pagination.html" $post_paginator -}}
+
+        </div>
+        <!-- fim do #lista-posts -->
+
     </div><br><br>
     {{- partial "_shared/alertbar.html" . -}}
+
+    <!-- NOVO: biblioteca de busca + nosso script -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0/dist/fuse.min.js"></script>
+    <script src="/js/busca.js"></script>
 {{ end }}
 
 {{ define "footer"}}

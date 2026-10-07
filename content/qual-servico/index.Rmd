@@ -5,63 +5,63 @@ type: "static"
 ---
 
 ```{r, include = F}
+# ---------- CONTROLES ----------
 agenda_aberta <- T
 razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
 # razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. A agenda para contratação dos serviços de análise dados ou consultoria ficará **fechada** durante esse período."
-# razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. Por esse motivo, a agenda para contratação dos serviços de análise dados ou consultoria está **fechada**."
-# razao_fechamento <- "Você já deve saber que muito em breve eu vou lançar um curso, né? Se não sabia, já fica aqui a informação! Para conseguir finalizar todos os detalhes do curso a tempo, a agenda para contratação dos serviços de análise dados ou consultoria está **temporariamente fechada**. Agradeço a compreensão! Em breve estou de volta!"
-reabertura <- "dia 16/06/2026"
+reabertura <- "dia 16/12/2026"
 
-inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")
-fim_aberta <- ifelse(isFALSE(agenda_aberta), "-->", "")
-inicio_fechada <- ifelse(isFALSE(agenda_aberta), "", "<!--")
-fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
+# Para onde vai o botão "Me avise quando reabrir":
+link_aviso <- "https://preview.mailerlite.io/forms/1073130/200519312899835849/share"
+
+# --------------------------------------------------
+
+negrito <- function(x) gsub("\\*\\*(.*?)\\*\\*", "<strong>\\1</strong>", x, perl = TRUE)
+
+titulo <- if (isTRUE(agenda_aberta)) {
+  "Oi! Posso te ajudar com o seu projeto de pesquisa."
+} else {
+  "Oi! Tudo bem?"
+}
+
+aviso <- if (isTRUE(agenda_aberta)) {
+  ""
+} else {
+  paste0(
+    '<div class="qs-aviso"><span class="qs-chip">Agenda fechada</span><p>',
+    negrito(razao_fechamento),
+    ' Caso possa esperar, a agenda será reaberta no ', reabertura, '.</p>',
+    '<a class="botao" href="', link_aviso,
+    '" target="_blank" rel="noopener">Me avise quando reabrir</a></div>'
+  )
+}
 ```
 
-
-<!-- Versão agenda aberta -->
-
-
-`r inicio_aberta`
-
-<center>
-Oi! Vou ficar feliz em te ajudar com o processo de análise dos seus dados!
-<br>
-Abaixo você encontra uma breve explicação dos **dois serviços** que eu ofereço:
-</center>
-
-<br><br>
-
-```{r, echo=F}
-htmltools::includeHTML("qual_cards.html")
-```
+<div class="qs-pagina">
+<header class="qs-topo">
+<h1>`r titulo`</h1>
+`r aviso`
+<p>Não sabe qual serviço escolher? Veja a diferença entre os dois:</p>
+</header>
+<div class="qs-comparativo">
+<article class="qs-col qs-b">
+<div><h2 class="qs-pill">Consultoria científica</h2></div>
+<div><span class="qs-rotulo">Para quem</span><h3>Uma conversa individual para destravar o seu projeto</h3><p>Para você que travou em alguma parte, está inseguro(a) com as análises ou ainda vai coletar os dados. Conversamos online sobre o seu projeto e as análises mais adequadas.</p></div>
+<div><span class="qs-rotulo">Valor</span><h3 class="qs-valor">R$ 250 por hora</h3><p class="qs-nota">Em geral, uma ou duas horas são suficientes.</p></div>
+<div><span class="qs-rotulo">Formato</span><p>Reunião online, por Google Meet.</p></div>
+<div><a class="botao botao-contorno" href="/servicos/#a-consultoria-cientifica">Mais informações</a></div>
+</article>
 
 
-
-`r fim_aberta`
-
-
-
-<!-- Versão agenda fechada -->
-
-`r inicio_fechada`
-  
-<center>
-Oi! Tudo bem?
-<br>
-`r razao_fechamento`<br>
-Caso possa esperar, a agenda será reaberta no `r reabertura`.<br>
-Abaixo você encontra uma breve explicação dos **dois serviços** que eu ofereço:
-</center>
-
-<br><br>
-
-<br><br>
-
-```{r, echo=F}
-htmltools::includeHTML("qual_cards.html")
-```
+<article class="qs-col qs-a">
+<div><h2 class="qs-pill">Análise de dados</h2></div>
+<div><span class="qs-rotulo">Para quem</span><h3>Eu analiso os seus dados e entrego um relatório pronto</h3><p>Para você que já coletou os dados e quer uma especialista cuidando da etapa de análise. Eu defino as análises adequadas, realizo todas no R e entrego um relatório completo, com uma reunião online para explicar a metodologia e os resultados.</p></div>
+<div><span class="qs-rotulo">Valor</span><h3 class="qs-valor">Orçamento</h3><p class="qs-nota">Valor conforme a extensão e a complexidade da análise.</p></div>
+<div><span class="qs-rotulo">Formato</span><p>Entrega do relatório completo + reunião de devolutiva online.</p></div>
+<div><a class="botao botao-contorno" href="/servicos/#a-analise-de-dados">Mais informações</a></div>
+</article>
 
 
-`r fim_fechada`
-
+</div>
+<p class="qs-duvida">Ainda em dúvida? Escreva para <a href="mailto:contato@fernandafperes.com.br?subject=Qual%20servi%C3%A7o">contato@fernandafperes.com.br</a> e eu te ajudo a escolher.</p>
+</div>

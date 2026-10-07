@@ -10,6 +10,7 @@ summary: 'O valor de p está entre os conceitos mais complexos de estatística -
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
   

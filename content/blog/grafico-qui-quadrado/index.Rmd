@@ -12,6 +12,7 @@ output:
     toc: false
 bibliography: references.bib
 csl: APA.csl
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 

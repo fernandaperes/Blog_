@@ -1,62 +1,23 @@
-<!-- Begin Menu Navigation
-================================================== -->
+{{/* Cabeçalho do site: logotipo + menu */}}
+<header class="site-cabecalho">
+  <div class="barra">
 
+    {{/* Logotipo, com link para a página inicial */}}
+    <a href="/"><img src="/images/logo-fernanda-peres.png" alt="Fernanda Peres | Estatística aplicada"></a>
 
+    {{/* Menu: um link para cada item de [[menu.main]] do config.toml */}}
+    <nav aria-label="Principal">
+      {{- $atual := .RelPermalink -}}
+      {{- range .Site.Menus.main }}
+        {{- $ativo := false -}}
+        {{- if eq .URL "/" -}}
+          {{- $ativo = eq $atual "/" -}}
+        {{- else -}}
+          {{- $ativo = hasPrefix $atual .URL -}}
+        {{- end }}
+        <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
-
-<div class = "logo">
-<a href="https://fernandafperes.com.br">
-<img class="navbar" src="/themes/mediumish-gohugo-theme/layouts/partials/_shared/head_files/logo.png" alt="" align="center" width="500px"/>
-</a>
-</div>
-
-</nav>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-white mediumnavigation nav-down">
-
-<div class = "social">
-
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Begin Menu -->
-        <div class="collapse navbar-collapse" id="navbarMediumish">
-            {{ $currentPage := . }}
-            <ul class="navbar-nav ml-auto">
-                {{ range .Site.Menus.main }}
-                <li class="nav-item {{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-                    <a class="nav-link" href="{{ .URL }}">{{ .Name | title }}</a>
-                </li>
-                {{ end }}
-            </ul>
-        </div>
-        <!-- End Menu -->
-    </div>
-
-
-<div class = "menu">
-
-    {{ with .Site.Params.social.github }}
-    <a target="_blank" rel="noopener noreferrer" href="https://github.com/{{.}}"><i class="fab fa-github social-icon" aria-hidden="true"></i></a>
-    {{ end }}
-    {{ with .Site.Params.social.linkedin }}
-    <a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/{{.}}"><i class="fab fa-linkedin social-icon" aria-hidden="true"></i></a>
-    {{ end }}
-    {{ with .Site.Params.social.instagram }}
-    <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/{{.}}"><i class="fab fa-instagram social-icon" aria-hidden="true"></i></a>
-    {{ end }}
-    {{ with .Site.Params.social.youtube }}
-    <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/{{.}}"><i class="fab fa-youtube social-icon" aria-hidden="true"></i></a>
-    {{ end }}
-    <font size="5px"><a href="mailto:contato@fernandafperes.com.br?subject=Consultoria" style="padding-left:8px;"><i class="fa fa-solid fa-envelope" aria-hidden="true"></i></a></font>
-
-
-</div>
-
-
-</nav>
-<!-- End Navigation
-================================================== -->
+  </div>
+</header>

@@ -10,15 +10,9 @@ summary: 'O teste-t independente é um teste estatístico que permite comparar a
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Imagem por [vectorpocket / Freepik](http://www.freepik.com)"
 ---
-<center>
-<font size = '1'>
-<a href="http://www.freepik.com">Designed by vectorpocket / Freepik</a>
-</font>
-</center>
 
-<br>  
-<br>
 
 ```{r, include=FALSE}
 knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)

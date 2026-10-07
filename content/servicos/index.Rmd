@@ -5,287 +5,193 @@ type: "static"
 ---
 
 ```{r, include = F}
-mostrar_faq <- T
+# ---------- CONTROLES (é só mudar aqui) ----------
 agenda_aberta <- T
 razao_fechamento <- "Dada a alta demanda, a agenda para consultorias e análises de dados está **temporariamente fechada**."
 # razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. A agenda para contratação dos serviços de análise dados ou consultoria ficará **fechada** durante esse período."
-# razao_fechamento <- "Estarei em recesso a partir do dia 21/12 e tirarei duas semanas de férias em janeiro. Por esse motivo, a agenda para contratação dos serviços de análise dados ou consultoria está **fechada**."
-# razao_fechamento <- "Você já deve saber que muito em breve eu vou lançar um curso, né? Se não sabia, já fica aqui a informação! Para conseguir finalizar todos os detalhes do curso a tempo, a agenda para contratação dos serviços de análise dados ou consultoria está **temporariamente fechada**. Agradeço a compreensão! Em breve estou de volta!"
-reabertura <- "dia 16/06/2026"
+# razao_fechamento <- "Estarei em recesso a partir do dia 20/12 e tirarei uma semana de férias em janeiro. Por esse motivo, a agenda para contratação dos serviços de análise dados ou consultoria está **fechada**."
+reabertura <- "dia 16/12/2026"
 
-inicio_aberta <- ifelse(isFALSE(agenda_aberta), "<!--", "")
-fim_aberta <- ifelse(isFALSE(agenda_aberta), "-->", "")
-inicio_fechada <- ifelse(isFALSE(agenda_aberta), "", "<!--")
-fim_fechada <- ifelse(isFALSE(agenda_aberta), "", "-->")
+# Para onde vai o botão "Me avise quando reabrir":
+link_aviso <- "https://preview.mailerlite.io/forms/1073130/200519312899835849/share"
 
-inicio_faq <- ifelse(isFALSE(mostrar_faq), "<!--", "")
-fim_faq <- ifelse(isFALSE(mostrar_faq), "-->", "")
+# --------------------------------------------------
+
+negrito <- function(x) gsub("\\*\\*(.*?)\\*\\*", "<strong>\\1</strong>", x, perl = TRUE)
+
+form_analise     <- "https://forms.gle/FaYCjcVZpToX7Wo5A"
+form_consultoria <- "https://forms.gle/1eAjTtdprsBMtwGo6"
+
+# o link do formulário só existe com a agenda aberta; fechada, vira só texto
+link_form <- function(url) {
+  if (isTRUE(agenda_aberta)) paste0('<a href="', url, '" target="_blank" rel="noopener">formulário</a>') else "formulário"
+}
+link_form_analise     <- link_form(form_analise)
+link_form_consultoria <- link_form(form_consultoria)
+
+if (isTRUE(agenda_aberta)) {
+  aviso <- ""
+  btn_analise     <- paste0('<div class="svc-acao"><a class="botao" href="', form_analise, '" target="_blank" rel="noopener">Quero um orçamento</a></div>')
+  btn_consultoria <- paste0('<div class="svc-acao"><a class="botao" href="', form_consultoria, '" target="_blank" rel="noopener">Quero agendar</a></div>')
+  cta_final <- paste0(
+    '<h3>Vamos conversar sobre o seu projeto?</h3>',
+    '<p>Conte o que você coletou e o que precisa decidir.<br>Eu respondo por e-mail com os próximos passos.</p>',
+    '<a class="botao" href="', form_analise, '" target="_blank" rel="noopener">Pedir orçamento de análise</a> ',
+    '<a class="botao botao-contorno" href="', form_consultoria, '" target="_blank" rel="noopener">Agendar consultoria</a>')
+} else {
+  aviso <- paste0(
+    '<div class="svc-aviso"><span class="svc-chip">Agenda fechada</span><p>Oi! Tudo bem? ',
+    negrito(razao_fechamento),
+    ' Caso possa esperar, a agenda será <strong>reaberta no ', reabertura,
+    '</strong>.</p></div>')
+  btn_fechado <- paste0(
+    '<div class="svc-acao"><span class="svc-status">Agenda fechada · Reabre no ', reabertura,
+    '</span><a class="botao" href="', link_aviso, '" target="_blank" rel="noopener">Me avise quando reabrir</a></div>')
+  btn_analise     <- btn_fechado
+  btn_consultoria <- btn_fechado
+  cta_final <- paste0(
+    '<h3>Agenda fechada por enquanto</h3><p>', negrito(razao_fechamento),
+    ' A agenda será <strong>reaberta no ', reabertura, '</strong>.</p>',
+    '<a class="botao" href="', link_aviso, '" target="_blank" rel="noopener">Me avise quando reabrir</a>')
+}
 ```
 
-
-<!-- Versão agenda aberta -->
-
-`r inicio_aberta`
-<div class = "servicos">
-
-<div class = "sobre row">
-  
-<div class = "servicos texto-headline">
-<br /><br />
-<center>
-<p>Como funcionam os serviços de consultoria científica e análise de dados?</p>
-</center>
-<br /><br />
+<div class="svc-pagina">
+<header class="svc-topo">
+<h1>Serviços</h1>
+<p>Duas formas de contar com a minha ajuda: analisando os seus dados ou conversando com você sobre o seu projeto. Nas duas, você sai entendendo o que foi feito e por quê.</p>
+`r aviso`
+</header>
+<ul class="home-numeros">
+<li><strong>+250</strong>análises de dados entregues</li>
+<li><strong>+500</strong>consultorias realizadas</li>
+<li><strong>+430</strong>pesquisadores já atendidos</li>
+<li><strong>Nota fiscal</strong>você pode usar verba de pesquisa para pagar os serviços</li>
+</ul>
+<section id="a-analise-de-dados" class="svc svc-a">
+<div class="svc-grade">
+<div class="svc-texto">
+<h2 class="svc-titulo">Análise de dados</h2>
+<h3>Eu analiso os seus dados e entrego um relatório pronto para o seu trabalho</h3>
+<p>Para você que já coletou os dados e quer uma especialista cuidando da etapa de análise do seu projeto de pesquisa.<br>Prefere participar da escolha das análises? Veja a <a href="#a-consultoria-cientifica">consultoria científica</a>.</p>
+<p class="svc-preco">Orçamento<small>O valor depende da extensão e da complexidade da análise. Pagamento por Pix, boleto ou cartão de crédito parcelado.</small></p>
+`r btn_analise`
 </div>
-
-<div class = "column5">
-
-#### A análise de dados {#a-analise-de-dados}
-
-##### Para quem é o serviço de análise de dados?
-Para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.  
-
-##### O que está incluído neste serviço?
-Ao contratar a análise, você me envia o seu banco, eu defino as análises mais adequadas aos seus dados e à sua pergunta experimental e realizo essas análises. Ao final, te entrego um relatório completo: com descrição detalhada da metodologia, dos resultados (descritos em textos, gráficos e tabelas) e com toda a bibliografia utilizada.  
-<br>
-Depois da entrega do relatório, temos uma reunião de devolutiva (online, via Google Meet), para que você possa tirar todas as suas dúvidas.  
-<br>
-Nesse serviço, as análises são realizadas **exclusivamente no software <a href="https://www.r-project.org/" target="_blank">R</a>**.  
-  
-##### Quanto custa esse serviço?
-O custo depende da extensão e complexidade da análise de dados.  
-Por isso, para te passar um orçamento, eu preciso de uma descrição detalhada: da sua pergunta experimental, de quais dados você coletou e de como está o seu banco de dados.  
-**Todo o processo de orçamento e planejamento das análises é feito por e-mail**.  
-<br>
-As **opções de pagamento** para esse serviço são: Pix, boleto bancário e cartão de crédito (com possibilidade de parcelamento).
-
-<br>
-
-<center>
-<a href="https://forms.gle/FaYCjcVZpToX7Wo5A" class="button" target="_blank">
-QUERO UM ORÇAMENTO PARA ANÁLISE DE DADOS
-</a>
-</center>
-
-<br>
-  
-##### Quem fará as análises?
-Todas as análises serão feitas por mim, Fernanda. Sou bacharel em biomedicina, especialista em estatística aplicada e mestre e doutora em ciências (**[acesso ao currículo completo](http://lattes.cnpq.br/7696717599003359)**). Sou também orientadora de cursos de graduação e especialização.  
-<br>
-Um diferencial do serviço é que ele será realizado por alguém com experiência na redação de TCC, dissertação, tese e artigos científicos. O relatório que você recebe na consultoria é redigido em uma linguagem adequada a esse tipo de documento e inclui todas as informações necessárias.  
-  
-##### Qual o prazo para entrega do relatório completo com a análise?
-Assim como o orçamento, o prazo de entrega vai **depender da complexidade da sua análise**.  
-Mas, a maior parte dos relatórios são entregues dentro de 15 dias.  
-Não deixe para a última hora. O momento ideal de contratar o serviço de consultoria é uns bons meses antes da sua qualificação/ defesa.  
-  
-
-</div>
-
-
-<div class = "column6">
-
-#### A consultoria científica {#a-consultoria-cientifica}
-
-##### Para quem é o serviço de consultoria científica?
-Esse serviço é para:  
-
-* Você, que ainda não coletou os seus dados e gostaria de conversar sobre o delineamento do seu experimento e sobre essa coleta  
-
-* Você, que já coletou os seus dados e quer discutir quais análises são adequadas a eles e como fazê-las/ reportá-las  
-
-* Você, que quer contratar um serviço de análise de dados, mas está com dificuldade em definir suas perguntas experimentais e variáveis de interesse  
-  
-<br>
-Se você gosta da forma como eu explico os conteúdos no YouTube, provavelmente vai gostar da consultoria.
-
-##### O que inclui o serviço de consultoria?
-A consultoria é realizada **online** (via Google Meet) e será estruturada de acordo com a sua necessidade.  
-Por exemplo, caso a sua demanda seja rodarmos as suas análises, vou te pedir para me enviar seus dados/ script com antecedência. Na reunião online, faremos as análises - que eu já terei rodado antes, ao montar a consultoria - e discutiremos seus resultados, soluções de possíveis problemas, e como descrevê-los no seu trabalho.  
-Uma hora consultoria rende muito, porque eu já chego no nosso encontro ao vivo com tudo bem estruturado. Para a maior parte dos alunos, uma ou duas horas são suficientes.
-Ah, para a parte de análise ao vivo, **as opções de programa estatístico são R, SPSS, JASP e Jamovi**, ok?
-
-##### Quanto custa esse serviço?
-O valor da hora de consultoria é **R$ 250**.  
-O pagamento desse valor pode ser realizado via Pix ou boleto bancário.
-
-##### Para quando eu consigo agendar a consultoria?
-A consultoria será agendada de acordo com a nossa disponibilidade (minha e sua). Então, não deixe para a última hora, porque pode levar mais de uma semana para conseguirmos uma data adequada.
-Ah, **vamos conversar por e-mail antes de fecharmos uma data**, porque eu preciso entender a sua demanda para conseguir estruturar a consultoria e também para avaliar se o tema está dentro da minha área de conhecimento.  
-  
-<br>
-
-<center>
-<a href="https://forms.gle/1eAjTtdprsBMtwGo6" class="button" target="_blank">
-QUERO AGENDAR UMA CONSULTORIA
-</a>
-</center>
-
-<br>
-  
-</div>
-
+<div class="svc-detalhes">
+<div class="home-cartao-img svc-img"><img class="img-parada" src="/static/sobre_files/video_relatorio_mockup_static.jpg" alt="Exemplo de relatório de análise de dados" loading="lazy"><img src="/static/sobre_files/video_relatorio_mockup_cropped.gif" alt="" loading="lazy"></div>
+<ul class="checks">
+<li><strong>Análises sob medida:</strong> eu defino as mais adequadas aos seus dados e à sua pergunta experimental.</li>
+<li><strong>Tudo feito no R, por mim:</strong> todas as análises são realizadas exclusivamente no software R.</li>
+<li><strong>Relatório completo:</strong> metodologia detalhada, resultados descritos em texto, gráficos e tabelas e contendo toda a bibliografia utilizada.</li>
+<li><strong>Reunião de devolutiva online:</strong> pelo Google Meet, eu explico o porquê de cada análise e como interpretar os resultados, e você tira todas as suas dúvidas.</li>
+</ul>
+<dl class="meta">
+<div><dt>Prazo</dt><dd>Depende da complexidade, mas a maior parte dos relatórios é entregue em até 15 dias após a contratação.</dd></div>
+<div><dt>Quando contratar</dt><dd>Alguns meses antes da qualificação ou da defesa.</dd></div>
+</dl>
 </div>
 </div>
-`r fim_aberta`
-
-
-
-
-
-<!-- Versão agenda fechada -->
-
-
-`r inicio_fechada`
-<div class = "sobre row">
-  
-<center>
-Oi! Tudo bem?<br>
-`r razao_fechamento`<br>
-Caso possa esperar, a agenda será **reaberta `r reabertura`**.<br>
-Abaixo você encontra a explicação do funcionamento dos dois serviços.<br>
-</center>
-
-<br>
-<br>
-
-<div class = "column5">
-
-#### A análise de dados {#a-analise-de-dados}
-
-##### Para quem é o serviço de análise de dados?
-Para você que já coletou os seus dados e quer contratar uma especialista para realizar a etapa de análise.  
-
-##### O que está incluído neste serviço?
-Ao contratar a análise, você me envia o seu banco, eu defino as análises mais adequadas aos seus dados e à sua pergunta experimental e realizo essas análises. Ao final, te entrego um relatório completo: com descrição detalhada da metodologia, dos resultados (descritos em textos, gráficos e tabelas) e com toda a bibliografia utilizada.  
-<br>
-Depois da entrega do relatório, temos uma reunião de devolutiva (online, via Google Meet), para que você possa tirar todas as suas dúvidas.  
-<br>
-Nesse serviço, as análises são realizadas **exclusivamente no software <a href="https://www.r-project.org/" target="_blank">R</a>**.  
-  
-##### Quanto custa esse serviço?
-O custo depende da extensão e complexidade da análise de dados.  
-Por isso, para te passar um orçamento, eu preciso de uma descrição detalhada: da sua pergunta experimental, de quais dados você coletou e de como está o seu banco de dados.  
-**Todo o processo de orçamento e planejamento das análises é feito por e-mail**.  
-<br>
-As **opções de pagamento** para esse serviço são: Pix, boleto bancário e cartão de crédito (com possibilidade de parcelamento).  
-<br>
-Quando a agenda está aberta, você encontra nessa página um link para um formulário para entrar em contato comigo solicitando o orçamento. A agenda **será reaberta no `r reabertura`**.  
-
-<br>
-  
-##### Quem fará as análises?
-Todas as análises serão feitas por mim, Fernanda. Sou bacharel em biomedicina, especialista em estatística aplicada e mestre e doutora em ciências (**[acesso ao currículo completo](http://lattes.cnpq.br/7696717599003359)**). Sou também orientadora de cursos de graduação e especialização.  
-<br>
-Um diferencial do serviço é que ele será realizado por alguém com experiência na redação de TCC, dissertação, tese e artigos científicos. O relatório que você recebe na consultoria é redigido em uma linguagem adequada a esse tipo de documento e inclui todas as informações necessárias.  
-  
-##### Qual o prazo para entrega do relatório completo com a análise?
-Assim como o orçamento, o prazo de entrega vai **depender da complexidade da sua análise**.  
-Mas, a maior parte dos relatórios são entregues dentro de 15 dias.  
-Não deixe para a última hora. O momento ideal de contratar o serviço de consultoria é uns bons meses antes da sua qualificação/ defesa.  
-  
-
+<div class="svc-passos">
+<h3>Como funciona a análise de dados</h3>
+<ol class="steps">
+<li><h4>Você descreve o projeto</h4><p>Pelo `r link_form_analise`: a sua pergunta experimental, os dados coletados e como está a organizada base.</p></li>
+<li><h4>Orçamento e plano</h4><p>Por e-mail, alinhamos as análises, o prazo e o valor do serviço.</p></li>
+<li><h4>Análise e relatório</h4><p>Você envia a base de dados; eu realizo as análises e entrego o relatório completo.</p></li>
+<li><h4>Devolutiva ao vivo</h4><p>Reunião online para eu explicar cada análise e você tirar todas as dúvidas.</p></li>
+</ol>
 </div>
-
-
-
-<div class = "column6">
-
-#### A consultoria científica {#a-consultoria-cientifica}
-
-##### Para quem é o serviço de consultoria científica?
-Esse serviço é para:  
-
-* Você, que ainda não coletou os seus dados e gostaria de conversar sobre o delineamento do seu experimento e sobre essa coleta  
-
-* Você, que já coletou os seus dados e quer discutir quais análises são adequadas a eles e como fazê-las/ reportá-las  
-
-* Você, que quer contratar um serviço de análise de dados, mas está com dificuldade em definir suas perguntas experimentais e variáveis de interesse  
-  
-<br>
-Se você gosta da forma como eu explico os conteúdos no YouTube, provavelmente vai gostar da consultoria.
-
-##### O que inclui o serviço de consultoria?
-A consultoria é realizada **online** (via Google Meet) e será estruturada de acordo com a sua necessidade.  
-Por exemplo, caso a sua demanda seja rodarmos as suas análises, vou te pedir para me enviar seus dados/ script com antecedência. Na reunião online, faremos as análises - que eu já terei rodado antes, ao montar a consultoria - e discutiremos seus resultados, soluções de possíveis problemas, e como descrevê-los no seu trabalho.  
-Uma hora consultoria rende muito, porque eu já chego no nosso encontro ao vivo com tudo bem estruturado. Para a maior parte dos alunos, uma ou duas horas são suficientes.
-Ah, para a parte de análise ao vivo, **as opções de programa estatístico são R, SPSS, JASP e Jamovi**, ok?
-
-##### Quanto custa esse serviço?
-O valor da hora de consultoria é **R$ 250**.  
-O pagamento desse valor pode ser realizado via Pix ou boleto bancário.
-
-##### Para quando eu consigo agendar a consultoria?
-A consultoria será agendada de acordo com a nossa disponibilidade (minha e sua). Então, não deixe para a última hora, porque pode levar mais de uma semana para conseguirmos uma data adequada.
-Ah, **vamos conversar por e-mail antes de fecharmos uma data**, porque eu preciso entender a sua demanda para conseguir estruturar a consultoria e também para avaliar se o tema está dentro da minha área de conhecimento.  
-<br>
-
-Quando a agenda está aberta, você encontra nessa página um link para um formulário para marcar a reunião de consultoria. A agenda **será reaberta no `r reabertura`**.  
-
-<br>
-  
+</section>
+<section id="a-consultoria-cientifica" class="svc svc-b">
+<div class="svc-grade">
+<div class="svc-texto">
+<h2 class="svc-titulo">Consultoria científica</h2>
+<h3>Uma conversa individual para destravar o seu projeto</h3>
+<p>Para você que ainda vai coletar os dados, travou em uma análise ou está com dificuldade em definir as perguntas experimentais e as variáveis de interesse. Se você gosta da forma como eu explico os conteúdos no YouTube, provavelmente vai gostar da consultoria.</p>
+<p class="svc-preco">R$ 250 por hora<small>Para a maior parte das demandas, uma ou duas horas são suficientes, porque eu chego à reunião com tudo estruturado. Pagamento por Pix ou boleto bancário.</small></p>
+`r btn_consultoria`
 </div>
-
+<div class="svc-detalhes">
+<div class="home-cartao-img svc-img"><img src="/static/sobre_files/mockup_consultoria.jpg" alt="Consultoria científica online" loading="lazy"></div>
+<ul class="checks">
+<li><strong>Planejamento do estudo:</strong> conversamos sobre o delineamento do experimento e a coleta de dados.</li>
+<li><strong>Escolha das análises:</strong> definimos as análises adequadas aos seus dados e discutimos como interpretá-las e reportá-las.</li>
+<li><strong>Análise dos seus dados:</strong> se essa for a demanda, você me envia os dados e/ ou o script com antecedência, e eu preparo um passo a passo das análises antes da nossa reunião.</li>
+<li><strong>Programas:</strong> R, JASP ou Jamovi.</li>
+</ul>
+<dl class="meta">
+<div><dt>Formato</dt><dd>Online, por Google Meet.</dd></div>
+<div><dt>Agendamento</dt><dd>Antes de fecharmos a data, conversamos por e-mail para eu entender a sua demanda e confirmar se a consultoria é adequada ao que você precisa. Esse processo pode levar mais de uma semana.</dd></div>
+</dl>
 </div>
-`r fim_fechada`
+</div>
+<div class="svc-passos">
+<h3>Como funciona a consultoria</h3>
+<ol class="steps">
+<li><h4>Você conta a sua demanda</h4><p>Pelo `r link_form_consultoria`, você explica o que gostaria de discutir na consultoria.</p></li>
+<li><h4>Você envia o material</h4><p>Se a consultoria envolver análise dos seus dados, você envia a base e/ ou o script junto com o formulário.</p></li>
+<li><h4>Estruturamos a consultoria</h4><p>Analiso o que você enviou, entendo o que você precisa e preparo a nossa reunião. Depois, combinamos a data por e-mail.</p></li>
+<li><h4>Reunião online</h4><p>Pelo Google Meet, trabalhamos na sua demanda: fazemos as análises quando necessário, discutimos os resultados e como descrevê-los no seu trabalho.</p></li>
+</ol>
+</div>
+</section>
 
 
-`r inicio_faq`
+<aside class="svc-curso">
+<div>
+<h3>Quer desenvolver autonomia para analisar os seus próprios dados?</h3>
+<p>No Análise de Dados para Pesquisadores, você aprende desde os fundamentos de estatística até modelos avançados, como GLMs, LMMs e GLMMs, sempre conectando teoria e prática no R. O foco não é só aprender a executar as análises, mas entender o raciocínio por trás delas e saber aplicá-las aos seus próprios dados, com o meu suporte ao longo do caminho.</p>
+</div>
+<a class="botao botao-contorno" href="https://curso.fernandafperes.com.br/">Conhecer o curso</a>
+</aside>
 
-<div class = "parentfaq">
 
-<div class = "faq">
+<section class="quem">
+<div>
+<img class="quem-foto" src="/static/sobre_files/author.jpg" alt="Fernanda Peres" loading="lazy">
+<h2>Quem faz as suas análises</h2>
+<p>Todas as análises são feitas por mim, Fernanda. Além de analisar dados, sou professora de Bioestatística e tenho experiência com TCCs, dissertações, teses e artigos científicos. Por isso, o relatório já sai com os resultados apresentados na linguagem e no formato que o seu trabalho precisa.</p>
+<a class="botao botao-contorno" href="/sobre/">Ver trajetória completa</a>
+</div>
+<ul class="lista-cv">
+<li><strong>Doutora e mestre em Farmacologia</strong><span class="inst">Universidade Federal de São Paulo (UNIFESP)</span></li>
+<li><strong>Especialista em Estatística Aplicada</strong><span class="inst">Universidade Cruzeiro do Sul</span></li>
+<li><strong>Bacharel em Ciências Biológicas, Modalidade Médica</strong><span class="inst">Universidade Federal de São Paulo (UNIFESP)</span></li>
+<li><strong>Professora de Bioestatística</strong><span class="inst">UNIFESP, desde 2022</span></li>
+</ul>
+</section>
 
-<br />
-<br />
-<br />
-  
-<center>
-<h4>Perguntas frequentes</h4>
-</center>
-  
+
+<section class="svc-faq">
+<h2>Perguntas frequentes</h2>
 <details>
 <summary>Você emite nota fiscal desses serviços?</summary>
-<font color="#8C8C8C">
-  
-Claro! Tanto para o serviço de consultoria quanto para o serviço de análise de dados são emitidas notas fiscais. Isso significa que você pode me pagar por esses serviços com verbas de pesquisa.
-</font>
+<p>Sim. Tanto para a consultoria quanto para a análise de dados são emitidas notas fiscais. Isso significa que você pode me pagar por esses serviços com verbas de pesquisa.</p>
 </details>
-
-<hr></hr>
-
 <details>
-<summary>Se você realizar a análise dos meus dados, você entra como co-autora do meu artigo?</summary>
-<font color="#8C8C8C">
-  
-Não! Apenas realizar a análise dos dados do artigo **não** é um critério de autoria. É somente uma prestação de serviço.
-</font>
+<summary>Se você realizar a análise dos meus dados, você entra como coautora do meu artigo?</summary>
+<p>Não. Apenas realizar a análise dos dados do artigo não é um critério de autoria. É uma prestação de serviço.</p>
 </details>
-
-<hr></hr>
-
 <details>
 <summary>Terceirizar a análise de dados do meu projeto é antiético?</summary>
-<font color="#8C8C8C">
-  
-Não. A análise de dados é uma etapa que pode ser terceirizada em um projeto de pesquisa, **dentro da legalidade e da ética**. Isso tanto é verdade que as agências de fomento permitem que se utilize verba de projetos para contratação desse serviço. Além disso, muitas universidades têm setores que realizam as análises estatísticas para os alunos.  
-  
-Mas, saiba que contratar alguém para analisar os dados do seu projeto não te exime de:  
-- **Colaborar** com o analista, explicando quais as suas perguntas experimentais e quais variáveis coletadas estão relacionadas a essas perguntas  
-- Se **responsabilizar** pela base de dados fornecida  
-- Entender **quais análises** foram feitas e **o porquê** foram feitas essas análises, e não outras  
-- **Interpretar** corretamente os resultados dessas análises  
-  
-É justamente para te ajudar com esses dois últimos pontos que em todos os meus serviços de análise de dados está incluída uma **reunião de devolutiva**. Nela eu te **explico o porquê** de cada análise e a **interpretação adequada** dos resultados.  
-  
-Caso tenha interesse, [neste post](https://www.instagram.com/p/Cy1CNviL_ty/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) eu discuto com mais detalhes essa questão. 
-</font>
+<p>Não. A análise de dados é uma etapa que pode ser terceirizada em um projeto de pesquisa, <strong>dentro da legalidade e da ética</strong>. As agências de fomento permitem o uso de verba de projetos para a contratação desse tipo de serviço, e muitas universidades têm setores que realizam análises estatísticas para seus alunos.</p>
+<p>Mas contratar alguém para analisar os dados do seu projeto não te exime de:</p>
+<ul>
+<li><strong>Colaborar</strong> com o analista, explicando quais são as suas perguntas experimentais e quais variáveis coletadas estão relacionadas a elas;</li>
+<li>Se <strong>responsabilizar</strong> pela base de dados fornecida;</li>
+<li>Entender <strong>quais análises</strong> foram feitas e <strong>por que</strong> elas foram escolhidas;</li>
+<li><strong>Interpretar</strong> corretamente os resultados dessas análises.</li>
+</ul>
+<p>É justamente para ajudar com esses dois últimos pontos que todos os meus serviços de análise de dados incluem uma <strong>reunião de devolutiva</strong>. Nela, eu explico o porquê de cada análise e a interpretação adequada dos resultados.</p>
+<p>Caso tenha interesse, <a href="https://www.instagram.com/p/Cy1CNviL_ty/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">neste post</a> discuto essa questão com mais detalhes.</p>
 </details>
+<details>
+<summary>Posso contratar a análise se ainda não sei quais análises devo fazer?</summary>
+<p>Sim. Você não precisa chegar sabendo qual análise estatística deve ser utilizada. A partir da sua pergunta experimental, do delineamento do estudo e dos dados coletados, eu defino as análises mais adequadas para responder à sua pergunta.</p>
+</details>
+</section>
 
-<br />
-
+<div class="cta-post">
+`r cta_final`
 </div>
 
 </div>
-
-`r fim_faq`

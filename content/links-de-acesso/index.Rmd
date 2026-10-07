@@ -5,52 +5,63 @@ type: "links-de-acesso"
 ---
 
 ```{r, include = F}
-mostrar_email <- F
+# ---------- CONTROLES (é só mudar aqui) ----------
+curso_aberto     <- F    # T = curso aberto (sobe para o 2º lugar, em destaque)
+reabertura_curso <- ""   # ex.: "em março de 2027". Vazio = "no próximo semestre"
+mostrar_email    <- F    # T = mostra o botão de e-mail
+# --------------------------------------------------
 
-inicio_email <- ifelse(isFALSE(mostrar_email), "<!--", "")
-fim_email <- ifelse(isFALSE(mostrar_email), "-->", "")
+icones <- list(
+  servicos = '<path d="M4 5h16v11H9l-5 4V5z"/>',
+  curso    = '<path d="M3 8l9-4 9 4-9 4-9-4z"/><path d="M7 10.5V15c0 1.5 2.2 3 5 3s5-1.5 5-3v-4.5"/>',
+  blog     = '<path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h8M8 17h5"/>',
+  youtube  = '<rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10 9.5v5l4.5-2.5-4.5-2.5z"/>',
+  email    = '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/>'
+)
+
+botao_link <- function(url, cor, ic, titulo, sub, destaque = FALSE) {
+  paste0(
+    '<li><a class="link-bio ', cor, if (destaque) ' link-destaque' else '',
+    '" href="', url, '"><i><svg viewBox="0 0 24 24" aria-hidden="true">', icones[[ic]],
+    '</svg></i><span class="link-texto"><strong>', titulo, '</strong><small>', sub,
+    '</small></span><em aria-hidden="true">›</em></a></li>'
+  )
+}
+
+sub_curso <- if (curso_aberto) {
+  "Análise de Dados para Pesquisadores · Inscrições abertas"
+} else {
+  paste0("Análise de Dados para Pesquisadores · Reabre ",
+         ifelse(reabertura_curso == "", "no próximo semestre", reabertura_curso))
+}
+
+li_servicos <- botao_link("https://fernandafperes.com.br/qual-servico/", "cor-roxo", "servicos",
+                          "Serviços", "Análise de dados e consultoria científica", TRUE)
+li_curso    <- botao_link("https://curso.fernandafperes.com.br/", "cor-azul", "curso",
+                          "Curso", sub_curso, curso_aberto)
+li_blog     <- botao_link("https://fernandafperes.com.br/blog/", "cor-rosa", "blog",
+                          "Blog", "Posts sobre estatística e R")
+li_youtube  <- botao_link("https://youtube.com/c/FernandaPeres/", "cor-amarelo", "youtube",
+                          "YouTube", "Vídeos no canal")
+li_email    <- botao_link("mailto:contato@fernandafperes.com.br?subject=Consultoria", "cor-azul", "email",
+                          "E-mail", "contato@fernandafperes.com.br")
+
+lista <- if (curso_aberto) {
+  c(li_servicos, li_curso, li_blog, li_youtube)
+} else {
+  c(li_servicos, li_blog, li_youtube, li_curso)
+}
+if (mostrar_email) lista <- c(lista, li_email)
+lista_links <- paste(lista, collapse = "\n")
 ```
 
-
-
-<div class="site-links">
-
-  <a href="https://curso.fernandafperes.com.br/">
-  <img width="300" src="images/cursov2.png" alt="" loading="lazy">
-  </a>
-  
-  
-  <a href="https://fernandafperes.com.br/qual-servico/">
-  <img width="300" src="images/consultoriasv2.png" alt="" loading="lazy">
-  </a>
-  
-  <a href="https://fernandafperes.com.br">
-  <img width="300" src="images/blogv2.png" alt="" loading="lazy">
-  </a>
-  
- 
-  <a href="https://youtube.com/c/FernandaPeres/">
-  <img width="300" src="images/youtubev2.png" alt="" loading="lazy">
-  </a>
-  
-
-
-<br><br>
-
-`r inicio_email`
-<center>
-<a href="mailto:contato@fernandafperes.com.br?subject=Consultoria"><i class="fa fa-solid fa-envelope fa-2x" aria-hidden="true"></i></a>
-
-</center>
-
-<br>
-`r fim_email`
-    
-  <a href="https://fernandafperes.com.br/">
-  fernandafperes.com.br
-  </a>
-
-<br><br>
-
+<div class="bio">
+<img class="bio-foto" src="/static/sobre_files/author.jpg" alt="Fernanda Peres">
+<h1>Fernanda Peres</h1>
+<p class="bio-sub">Estatística que você entende e consegue defender</p>
+<ul class="bio-links">
+`r lista_links`
+</ul>
+<a class="bio-site" href="https://fernandafperes.com.br/">fernandafperes.com.br</a>
 </div>
 

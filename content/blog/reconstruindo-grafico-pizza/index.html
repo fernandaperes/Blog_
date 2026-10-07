@@ -10,12 +10,13 @@ summary: 'O gráfico de setores -- popularmente conhecido como gráfico de pizza
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Imagem extraída da reportagem [Elenco atual do Flamengo passa dos 500 gols pelo clube](https://ge.globo.com/futebol/times/flamengo/noticia/2023/06/09/elenco-atual-do-flamengo-passa-dos-500-gols-pelo-clube-veja-numeros-dos-times-da-serie-a.ghtml) do G1"
 ---
 
 
 
 <p>Essa semana a <a href="https://instagram.com/proffernandamaciel">professora Fernanda Maciel</a> publicou em seu instagram o gráfico abaixo (que também ilustra o post), que aparecia em uma <a href="https://ge.globo.com/futebol/times/flamengo/noticia/2023/06/09/elenco-atual-do-flamengo-passa-dos-500-gols-pelo-clube-veja-numeros-dos-times-da-serie-a.ghtml">reportagem do Globo Esporte</a> sobre os gols marcados pela equipe atual do Flamengo.</p>
-<p><img src="g1.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="g1.png" alt="" width="600px" style="display: block; margin: auto;" /></p>
 <p>Antes de começarmos essa conversa, preciso te explicar que as pessoas que trabalham com análise de dados se dividem em dois grupos: 1) as que não gostam de gráficos de pizza e acham que sempre há uma forma mais adequada que essa de representar os dados; 2) as que defendem que há, sim, espaço para gráficos de pizza, contanto que eles sejam bem construídos. Eu confesso que faço parte do primeiro grupo, principalmente depois de ler o livro <strong>fantástico</strong> da Cole Nussbaumer Knaflic, o <a href="https://www.amazon.com.br/Storytelling-com-Dados-Visualiza%C3%A7%C3%A3o-Profissionais/dp/8550804681">Storytelling com dados</a>.</p>
 <p>Mas, com relação ao gráfico acima, te garanto que os dois grupos entram em um consenso: trata-se de um gráfico inadequado. Vamos nesse post discutir: em quais contextos faz sentido usar o gráfico de pizza e quais as alternativas a ele (vou reconstruir, em R, o gráfico do Globo Esporte).</p>
 <div id="como-construir-um-bom-gráfico-de-pizza" class="section level3">
@@ -33,13 +34,13 @@ output:
 <li>Há muitas fatias, o que torna difícil compará-las</li>
 <li>As cores das principais fatias são <strong>muito</strong> parecidas – eu duvido que você consiga diferenciar o vermelho-escuro do vermelho-não-tão-escuro, ou o preto do… outro preto</li>
 </ul>
-<p><img src="g1.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="g1.png" alt="" width="600px" style="display: block; margin: auto;" /></p>
 <p>E, sim, eu entendo que a proposta foi criar um gráfico com as cores do Flamengo. Mas, não funcionou. Perceba que a legenda é mais explicativa que o gráfico em si. Ou seja, o gráfico não está acrescentando informação, não tem utilidade.</p>
 <blockquote>
 <p>Ah, acho fundamental dizer que essa é uma crítica ao gráfico, com uma proposta de discutir boas práticas na confecção desse tipo de material. Não é uma crítica ao autor. Eu já fiz gráficos horríveis na vida, faz parte. A ideia é aprendermos, a proposta é que nossos gráficos de amanhã sejam melhores que os de hoje.</p>
 </blockquote>
 <p>Um gráfico de setores que atende a esses requisitos, por exemplo, é esse abaixo, criado com dados fictícios.</p>
-<p><img src="g3.png" width="250px" style="display: block; margin: auto;" /></p>
+<p><img src="g3.png" alt="" width="250px" style="display: block; margin: auto;" /></p>
 <p>Mas, ainda um gráfico de setores bem construído está aberto a críticas. Estudos indicam que ao ler um gráfico de setores, as pessoas focam nas áreas das fatias. No entanto, seres humanos são péssimos avaliadores de áreas. Em geral, temos dificuldade de comparar as áreas de fatias. Por isso, gráficos de barras seriam preferíveis – já que esse tipo de gráfico requer que analisemos o comprimento, algo que somos muito bons fazendo.</p>
 <p>A Cole, autora do Storytelling com dados, tem um ótimo blog sobre visualização de dados. Em um dos <a href="https://www.storytellingwithdata.com/blog/2020/5/14/what-is-a-pie-chart">posts</a> ela destrincha essas críticas ao gráfico de pizza (em inglês, <em>pie chart</em>). Recomendo também <a href="https://medium.com/@hypsypops/pie-chart-vs-donut-chart-showdown-in-the-ring-5d24fd86a9ce">esse texto</a> que compara os gráficos de pizza e os de donuts (que são, basicamente, os gráficos de pizza com um círculo branco no meio).</p>
 </div>
@@ -79,7 +80,7 @@ dados |&gt;
         plot.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;),
         panel.grid = element_blank(),
         axis.line.x = element_line(color = &quot;grey80&quot;))</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
 <p>Uma outra opção seria agrupar os jogadores com menos gols marcados (no exemplo, excolhi aqueles que marcaram 4 gols ou menos) e agrupá-los em uma categoria “Outros”, para dar destaque aos jogadores com mais gols.</p>
 <pre class="r"><code>dados |&gt;
   mutate(Jogador_unido = ifelse(Gols &lt;= 4, &quot;Outros&quot;, Jogador)) |&gt; 
@@ -106,18 +107,18 @@ dados |&gt;
         plot.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;),
         panel.grid = element_blank(),
         axis.line.x = element_line(color = &quot;grey80&quot;))</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
 <p>Inclusive, dá para deixar esse gráfico ainda melhor, destacando algumas categorias, investindo no storytelling com anotações… O pacote <code>ggplot2</code> e outros pacotes associados, como o <code>ggtext</code> nos dão essas possibilidades. Se tiver curiosidade, recomendo pesquisar por #TidyTuesday e ver os gráficos incríveis que as pessoas produzem, tudo no R :)</p>
 </div>
 <div id="uma-conversa-sobre-cores" class="section level3">
 <h3>Uma conversa sobre cores</h3>
 <p>Na <a href="https://ge.globo.com/futebol/times/flamengo/noticia/2023/06/09/elenco-atual-do-flamengo-passa-dos-500-gols-pelo-clube-veja-numeros-dos-times-da-serie-a.ghtml">mesma matéria</a>, há o gráfico de barras abaixo:</p>
-<p><img src="g2.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="g2.png" alt="" width="600px" style="display: block; margin: auto;" /></p>
 <p>Apesar de eu concordar com a escolha do gráfico de barras, eu discordo da escolha das cores. E, sim, eu entendi que a proposta foi construir barras com as cores dos times. Mas, perceba que não funcionou: as cores foram acabando e Corinthians virou amarelo, Santos virou verde…</p>
 <p>Mesmo que as cores não tivessem “acabado”, discute-se que em um bom gráfico as cores devem ter um propósito. Caso contrário, só confudem o leitor. Veja que a informação contida nesse gráfico não seria em nada modificada caso as barras fossem todas preenchidas com a mesma cor.</p>
 <p>Outra recomendação na construção de gráficos é não deixar os textos inclinados (como no gráfico acima). Isso dificulta a leitura. Quando o texto que acompanha as categorias é grande, a recomendação é deixar as barras na horizontal, o que torna a leitura mais fluida.</p>
 <p>Como eu reconstruiria o gráfico acima? Com barras na horizontal, todas na mesma cor. Decidi manter a cor do Flamengo, já que o gráfico se refere a gols marcados pelo Flamengo contra os outros times. Além disso, já que uma infomação visual sobre o time parece ser importante, eu adicionei os escudos do time junto ao nome deles. E, sim, tudo feito no R:</p>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" alt="" width="480" style="display: block; margin: auto;" /></p>
 <p>Ok, mas como fazer isso no R? Para isso, precisamos do pacote <code>ggtext</code>, que já na sua <a href="https://cran.r-project.org/web/packages/ggtext/readme/README.html">documentação</a> traz exemplos de como inserir imagens como rótulos das categorias.</p>
 <p>Para incluir os escudos no gráfico eu busquei por essas imagens em sites. No <a href="https://www.cbf.com.br/futebol-brasileiro/times/campeonato-brasileiro-serie-a/2023">site da CBF</a> há o escudo de todos os times. Ao clicar em um escudo com o botão direito do mouse você tem a opção “Copiar endereço da imagem”). E, pronto! Está copiado o endereço de que precisamos. Montei uma lista com todos eles, na ordem que apareciam no banco:</p>
 <pre class="r"><code>imagens &lt;- c(&quot;https://conteudo.cbf.com.br/cdn/imagens/escudos/00004pr.jpg&quot;,

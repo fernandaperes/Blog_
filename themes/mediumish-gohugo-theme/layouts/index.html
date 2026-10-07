@@ -1,180 +1,127 @@
-{{ define "header"}}
+{{ define "header" }}
     {{- partial "_shared/navbar.html" . -}}
 {{ end }}
 
 {{ define "main" }}
+{{ $posts := where site.RegularPages "Section" "blog" }}
+{{ $n := site.Data.numeros }}
 
+<div class="home">
 
-<div class="main-content">
-    <section class="recent-posts">
-            <div class="section-title2">
-                <h2><span>Serviços</span></h2>
-            </div>
-
-<div class="row listrecent">
-  
-  <div class="col-lg-4 col-md-6 mb-30px card-group">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="https://fernandafperes.com.br/servicos">
-                <img class="img-fluid" src="/static/sobre_files/mockup_consultoria.jpg">
-            </a>
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">Consultoria científica</h2>
-            <h4 class="card-text">
-              Está analisando os seus dados, mas <b>travou</b> em alguma parte ou bateu aquela <b>insegurança</b> quanto às análises?
-              <br>
-              A consultoria pode te ajudar! Eu e você faremos <b>reunião online</b> para discutir o seu projeto e as análises adequadas a ele — e, claro, discutiremos também como fazê-las.
-            </h4>
-        </div>
-        <div class="card-footer bg-white">
-              <center>
-                <a href="https://fernandafperes.com.br/servicos" class="buttonhome">
-                  Mais informações
-                </a>
-              </center>
-              <br>
-                <div class="clearfix"></div>
-        </div>
+  <!-- ============ BLOCO 1: ABERTURA (texto + post mais recente) ============ -->
+  <section class="home-abertura">
+    <div>
+      <h1>Estatística que você entende e consegue defender.</h1>
+      <p class="home-lead">No blog e no YouTube eu explico estatística aplicada sem complicar. No curso, você aprende a analisar os seus próprios dados. E, quando precisar de ajuda, eu te guio na análise dos seus dados ou realizo a análise para você, explicando cada decisão.</p>
+      <a class="botao" href="/blog/">Ler o blog</a>
+      <a class="botao botao-contorno" href="/servicos/">Ver serviços</a>
     </div>
-  </div>
-  
-  
-      <div class="col-lg-4 col-md-6 mb-30px card-group">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="https://fernandafperes.com.br/servicos">
-              <img class="img-fluid static" src="/static/sobre_files/video_relatorio_mockup_static.jpg"><img class="img-fluid active" src="/static/sobre_files/video_relatorio_mockup_cropped.gif">
-            </a>
-        </div>
-        <div class="card-body">
-            <h2 class="card-title">Análise de dados</h2>
-            <h4 class="card-text">
-              Quando você me contrata para o serviço de análise de dados, eu defino as <b>análises adequadas</b> ao seu objetivo e as executo.
-              Ao final, você recebe um relatório com a descrição da <b>metodologia utilizada</b> e com os <b>resultados</b> descritos em texto, gráficos e tabelas.
-            </h4>
-        </div>
-        <div class="card-footer bg-white">
-              <center>
-                <a href="https://fernandafperes.com.br/servicos" class="buttonhome">
-                  Mais informações
-                </a>
-              </center>
-              <br>
-                <div class="clearfix"></div>
-        </div>
-    </div>
-  </div>
 
-  
-  
-  <div class="col-lg-4 col-md-6 mb-30px card-group">
-    <div class="card h-100">
-        <div class="maxthumb">
-            <a href="https://curso.fernandafperes.com.br/">
-              <img class="img-fluid static" src="/static/sobre_files/video_curso_static.jpg"><img class="img-fluid active" src="/static/sobre_files/video_curso_cropped2.gif">
-            </a>
+    {{ if $posts }}
+      {{ with index $posts 0 }}
+      <a class="home-destaque" href="{{ .Permalink }}">
+        <div class="post-card-capa">
+          {{ $imagens := .Resources.ByType "image" }}
+          {{ with $imagens.GetMatch "*cover*" }}
+            {{ $recortar := false }}
+            {{/* só mede formatos que o Hugo sabe abrir (evita o erro de SVG/WebP) */}}
+            {{ if in (slice "jpeg" "png" "gif" "bmp" "tiff") .MediaType.SubType }}
+              {{ if gt .Height .Width }}{{ $recortar = true }}{{ end }}
+            {{ end }}
+            <img class="{{ if $recortar }}recortar{{ end }}" src="{{ .Permalink }}" alt="" loading="lazy">
+          {{ end }}
         </div>
-        <div class="card-body">
-            <h2 class="card-title">Curso Análise de Dados para Pesquisadores</h2>
-            <h4 class="card-text">
-              Um curso cuidadosamente planejado para te dar <b>autonomia e confiança</b> para analisar os seus próprios dados.
-              <br>
-              As aulas partem do <b>zero</b> e vão até <b>modelos avançados</b>, como GLMs (Modelos Lineares Generalizados). Tudo é ensinado no melhor software para análises acadêmicas da atualidade, o R!
-            </h4>
-        </div>
-        <div class="card-footer bg-white">
-              <center>
-                <a href="https://curso.fernandafperes.com.br/" class="buttonhome">
-                  Mais informações
-                </a>
-              </center>
-              <br>
-                <div class="clearfix"></div>
-        </div>
-    </div>
-  </div>
-  
-  
+        <span class="home-chip">Post mais recente</span>
+        <h3>{{ .Title }}</h3>
+        <p>{{ .Summary | plainify | htmlUnescape | truncate 130 }}</p>
+      </a>
+      {{ end }}
+    {{ end }}
+  </section>
+
+  <!-- ============ BLOCO 2: NÚMEROS ============ -->
+  <section>
+    <ul class="home-numeros">
+      <li><strong>{{ if ge $n.inscritos 1000 }}+{{ div $n.inscritos 1000 }} mil{{ else }}+{{ $n.inscritos }}{{ end }}</strong>inscritos no YouTube</li>
+      <li><strong>+{{ $n.analises }}</strong>análises de dados entregues</li>
+      <li><strong>+{{ $n.consultorias }}</strong>consultorias realizadas</li>
+      <li><strong>{{ sub now.Year $n.pesquisa_desde }} anos</strong>de experiência com pesquisa</li>
+    </ul>
+  </section>
+
+
+    <!-- ============ BLOCO 3: SERVIÇOS (3 cartões) ============ -->
+  <section>
+    <h2>Serviços</h2>
+    <div class="home-cartoes">
+
+      <div class="home-cartao">
+        <a class="home-cartao-img" href="/servicos/#a-consultoria-cientifica">
+          <img src="/static/sobre_files/mockup_consultoria.jpg" alt="Consultoria científica" loading="lazy">
+        </a>
+        <span class="home-para">Eu te guio, ao vivo</span>
+        <h3>Consultoria científica</h3>
+        <p>Uma conversa individual e online para definir o delineamento, escolher as análises adequadas e/ou discutir como reportar os resultados. Eu chego com tudo estruturado, então uma ou duas horas costumam bastar.</p>
+        <a class="botao botao-contorno botao-pequeno" href="/servicos/#a-consultoria-cientifica">Ver como funciona</a>
+      </div>
+
+      <div class="home-cartao">
+        <a class="home-cartao-img" href="/servicos/#a-analise-de-dados">
+          <img class="img-parada" src="/static/sobre_files/video_relatorio_mockup_static.jpg" alt="Exemplo de relatório de análise de dados" loading="lazy">
+          <img src="/static/sobre_files/video_relatorio_mockup_cropped.gif" alt="" loading="lazy">
+        </a>
+        <span class="home-para">Eu analiso e te explico</span>
+        <h3>Análise de dados</h3>
+        <p>Eu escolho as análises adequadas ao seu objetivo, executo tudo no R e entrego um relatório completo, com metodologia, resultados e referências. Depois, fazemos uma reunião online para eu te explicar o porquê de cada análise.</p>
+        <a class="botao botao-contorno botao-pequeno" href="/servicos/#a-analise-de-dados">Ver o que está incluído</a>
+      </div>
+
+      <div class="home-cartao">
+        <a class="home-cartao-img" href="https://curso.fernandafperes.com.br/">
+          <img class="img-parada" src="/static/sobre_files/video_curso_static.jpg" alt="Curso Análise de Dados para Pesquisadores" loading="lazy">
+          <img src="/static/sobre_files/video_curso_cropped2.gif" alt="" loading="lazy">
+        </a>
+        <span class="home-para">Eu te ensino, passo a passo</span>
+        <h3>Curso Análise de Dados para Pesquisadores</h3>
+        <p>Da base da estatística aos modelos avançados (como GLMs, LMMs e GLMMs), sempre conectando teoria e prática no R. Você aprende o raciocínio por trás das análises e como aplicá-las aos seus próprios dados.</p>
+        <a class="botao botao-contorno botao-pequeno" href="https://curso.fernandafperes.com.br/">Conhecer o curso</a>
+      </div>
+
     </div>
   </section>
-</div>
 
-
-
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-    <div class="main-content">
-        <section class="recent-posts">
-            <div class="section-title2">
-                <h2><span>Últimos posts do blog</span></h2>
-            </div>
-            <div class="row listrecent">
-                {{- range ( where site.RegularPages "Section" "blog" | first 3 ) }}
-                    {{- partial "list-partials/postbox.html" . -}}
-                {{end}}
-                
-            </div>
-        </section>
-
+  <!-- ============ BLOCO 4: MAIS POSTS ============ -->
+  <section>
+    <h2>Mais posts do blog</h2>
+    <div class="row">
+      {{ range first 3 (after 1 $posts) }}
+        {{ partial "list-partials/postbox.html" . }}
+      {{ end }}
     </div>
-    
-    <center>
-      <a href="https://fernandafperes.com.br/blog" class="buttonhome">
-      Ver todos os posts
-      </a>
-    </center>
+    <p class="home-centro"><a class="botao botao-contorno" href="/blog/">Ver todos os posts</a></p>
+  </section>
 
 
-
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-<div class="main-content">
-<section class="recent-posts">
-  
-<div class="sobre-home">
-  
-  <div class = "img-wrapper">
-    <img width="230" src="/static/sobre_files/author.jpg" alt="" loading="lazy">
-  </div>
-
-  <div class="textblock">
-
-    <h4>Oi, eu sou a Fernanda Peres</h4>
-    <p>Eu sou uma cientista apaixonada por dados. Há anos eu ajudo pesquisadores com a etapa de análise dos dados dos seus projetos.</p>
-
-     <a href="https://fernandafperes.com.br/sobre" class="buttonsobrehome">
-     Acesso ao currículo completo
-     </a>
-  
-  </div>
+  <!-- ============ BLOCO 5: SOBRE ============ -->
+  <section class="home-sobre">
+    <img src="/static/sobre_files/author.jpg" alt="Fernanda Peres" loading="lazy">
+    <div>
+      <h3>Oi, eu sou a Fernanda Peres</h3>
+      <p>Sou uma cientista apaixonada por dados. Há {{ sub now.Year $n.servicos_desde }} anos ajudo pesquisadores a analisarem e entenderem os dados dos seus projetos.</p>
+      <a class="botao" href="/sobre/">Acesso ao currículo completo</a>
+    </div>
+  </section>
 
 </div>
 
-</section>
-</div>
+{{ if isset .Site.Params.index "alertbar" }}
+  {{ if .Site.Params.index.alertbar }}
+    {{- partial "_shared/alertbar.html" . -}}
+  {{ end }}
+{{ end }}
 
-
-    {{ if isset .Site.Params.index "alertbar" }}
-    	{{ if .Site.Params.index.alertbar }}
-            {{- partial "_shared/alertbar.html" . -}}
-        {{ end }}
-    {{ end }}
-{{end}}
+{{ end }}
 
 {{ define "footer" }}
     {{- partial "_shared/footer.html" . -}}
-{{end}}
+{{ end }}

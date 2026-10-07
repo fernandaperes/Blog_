@@ -14,12 +14,9 @@ bibliography: references.bib
 csl: APA.csl
 editor_options: 
   chunk_output_type: console
+image_credit: "Freepik"
+image_credit_url: "https://www.freepik.com/"
 ---
-<center>
-<font size = '1'>
-Imagem de <a href="http://www.freepik.com">Freepik</a>
-</font>
-</center>
   
   
 ```{r, include=FALSE}

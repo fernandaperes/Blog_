@@ -10,6 +10,7 @@ summary: 'O valor de p está entre os conceitos mais complexos de estatística -
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 
@@ -29,7 +30,7 @@ Um raciocínio verossímil, porém inverídico.</p>
 </blockquote>
 <p>Ah, um aviso importante: eu não cunhei nenhuma dessas falácias. Todo o conteúdo discutido aqui é baseado no trabalho do Rex Kline<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> e em um curso de curta duração ministrado pelo Prof. Marcus Vinícius C. Baldo na reunião da SBNeC de 2018 <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <p>Um artigo publicado em 2019<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> investigou a forma como os principais livros-texto de introdução à psicologia explicam o conceito de valor de p. Os autores observaram que 89% desses livros traziam uma definição incorreta, fazendo uso de alguma falácia.</p>
-<p><img src="https://i.imgur.com/PzhsQrG.png" width="500px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/apHvqnO.png" alt="" width="500px" style="display: block; margin: auto;" /></p>
 <p>Sendo elas tão comuns - mesmo em materiais didáticos - é fundamental entendê-las.</p>
 <div id="o-que-o-valor-de-p-representa-afinal" class="section level3">
 <h3>O que o valor de p representa, afinal?</h3>
@@ -95,10 +96,10 @@ Bom, agora estamos falando de uma probabilidade bem baixa. De todos os falantes 
 <h4>Falácia 2. A falácia do erro do tipo I (<em>local type I error</em>)</h4>
 <p>Antes de explicar essa falácia, vale a pena lembrar o que é o erro do tipo I.<br />
 Tomamos a decisão de rejeitar ou não a H<sub>0</sub> ao compararmos o valor de p ao nível de significância (<span class="math inline">\(\alpha\)</span>):</p>
-<p><img src="https://i.imgur.com/vj1q0MP.png" width="400px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/UGXFhjY.png" alt="" width="400px" style="display: block; margin: auto;" /></p>
 <p>Tomamos essa decisão com base nos dados que temos à nossa disposição. Mas, sempre podemos estar cometendo um erro. Uma comparação que eu gosto é que essa tomada de decisão - rejeitar ou não a H<sub>0</sub> é semelhante ao trabalho de uma juíza. Com base nas informações disponíveis, a juíza tomará a decisão de inocentar ou condenar o réu. Mas, a juíza - assim como nós - não tem acesso à realidade, e pode cometer um de dois erros: inocentar uma pessoa culpada ou condenar uma pessoa inocente. E perceba que ela não tem como saber se a decisão tomada está coreta ou foi um erro.
 Nossos possíveis erros ao tomar a decisão de rejeitar ou não a H<sub>0</sub> podem ser resumidos como:</p>
-<p><img src="https://i.imgur.com/bz65zgB.png" width="480px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/KdBun96.png" alt="" width="480px" style="display: block; margin: auto;" /></p>
 <p>Ou seja, caso a gente rejeite a H<sub>0</sub>, mas na realidade a H<sub>0</sub> era verdadeira, estamos cometendo o chamado <strong>erro do tipo I</strong>. Caso a gente opte por não rejeitar a H<sub>0</sub>, mas na realidade a H<sub>0</sub> era falsa, estamos cometendo o erro denominado <strong>erro do tipo II</strong>.<br />
 Por sorte, ao contrário da juíza, nós temos como controlar a nossa probabilidade de erro. A probabilidade de cometermos um erro do tipo I é dada pelo nível de significância (<span class="math inline">\(\alpha\)</span>). Como normalmente é usado um valor de <span class="math inline">\(\alpha\)</span> de 5%, estamos aceitando uma probabilidade de 5% de cometermos esse erro (rejeitar a H<sub>0</sub> quando, na realidade, ela é verdadeira).</p>
 <p>Voltando à falácia, a falácia do erro do tipo I corresponde à seguinte interpretação:</p>
@@ -146,7 +147,7 @@ Você encontra uma ótima discussão sobre a replicabilidade do valor de p nesse
 <p>O que está errado com o raciocínio acima?<br />
 Primeiramente, é importante entender que o valor de p é de fato influenciado pela <strong>magnitude (tamanho) do efeito</strong>. No entanto, o <strong>tamanho da amostra</strong> também tem impacto sobre o valor de p. </p>
 <p>Vamos nos basear em um exemplo para isso fazer sentido. Imagine que queremos comparar as médias de glicemia de dois grupos: um composto por pessoas sedentárias e outro por pessoas que praticam exercícios físicos.</p>
-<p><img src="https://i.imgur.com/bTexzAq.png" width="280px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/5zWNhWH.png" alt="" width="280px" style="display: block; margin: auto;" /></p>
 <p>Observe que as médias de glicemia foram 104,5 mg/dl (para o grupo sedentário) e 99,3 mg/dl (para o grupo exercício físico). Logo, obtivemos uma diferença entre os grupos de 5,2 mg/dl.<br />
 Podemos testar se essa diferença é <strong>estatisticamente significativa</strong>. Vamos supor que obtivemos, em cada grupo, um desvio-padrão de 10 mg/dl. Uma vez que cada grupo era composto por 10 participantes, ao fazermos um teste estatístico - nesse caso, um teste-t independente - obtemos:</p>
 <center>
@@ -154,7 +155,7 @@ p = 0,26
 </center>
 <p>Ou seja, considerando um nível de significância (<span class="math inline">\(\alpha\)</span>) de 5%, não rejeitaríamos a H<sub>0</sub>. Ou ainda: não consideraríamos que as médias dos grupos são diferentes.</p>
 <p>Mas, e se ampliássemos a nossa amostra? Vamos agora considerar que cada grupo é composto por 50 pessoas (n total = 100). O que mudaria?</p>
-<p><img src="https://i.imgur.com/gybKG3D.png" width="280px" style="display: block; margin: auto;" /></p>
+<p><img src="https://i.imgur.com/o5VbLTJ.png" alt="" width="280px" style="display: block; margin: auto;" /></p>
 <p>Ainda que a diferença entre as médias seja a mesma, o valor de p seria muito diferente:</p>
 <center>
 p = 0,01

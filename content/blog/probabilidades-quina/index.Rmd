@@ -12,14 +12,8 @@ output:
     toc: false
 editor_options: 
   chunk_output_type: console
+image_caption: "Fonte da imagem: elaboração própria"
 ---
-
-<center>
-<font size='1'>Fonte da imagem: elaboração própria</font>
-</center>
-  
-</br>
-</br>
   
   
 ```{r, include=FALSE}

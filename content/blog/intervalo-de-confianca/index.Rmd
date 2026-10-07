@@ -10,6 +10,7 @@ summary: 'O que significa o intervalo de confiança? Qual a sua relação com a 
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
   

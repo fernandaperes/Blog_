@@ -1,81 +1,70 @@
-#' Render Table of Contents
-#' 
-#' A simple function to extract headers from an RMarkdown or Markdown document
-#' and build a table of contents. Returns a markdown list with links to the 
-#' headers using 
-#' [pandoc header identifiers](http://pandoc.org/MANUAL.html#header-identifiers).
-#' 
-#' WARNING: This function only works with hash-tag headers.
-#' 
-#' Because this function returns only the markdown list, the header for the
-#' Table of Contents itself must be manually included in the text. Use
-#' `toc_header_name` to exclude the table of contents header from the TOC, or
-#' set to `NULL` for it to be included.
-#' 
-#' @section Usage:
-#' Just drop in a chunk where you want the toc to appear (set `echo=FALSE`):
-#' 
-#'     # Table of Contents
-#' 
-#'     ```{r echo=FALSE}
-#'     render_toc("/path/to/the/file.Rmd")
-#'     ```
-#' 
-#' @param filename Name of RMarkdown or Markdown document
-#' @param toc_header_name The table of contents header name. If specified, any
-#'   header with this format will not be included in the TOC. Set to `NULL` to
-#'   include the TOC itself in the TOC (but why?).
-#' @param base_level Starting level of the lowest header level. Any headers 
-#'   prior to the first header at the base_level are dropped silently.
-#' @param toc_depth Maximum depth for TOC, relative to base_level. Default is
-#'   `toc_depth = 3`, which results in a TOC of at most 3 levels.
-render_toc <- function(
-    filename, 
-    toc_header_name = "Table of Contents",
-    base_level = NULL,
-    toc_depth = 3
-) {
-  x <- readLines(filename, warn = FALSE)
-  x <- paste(x, collapse = "\n")
-  x <- paste0("\n", x, "\n")
-  for (i in 5:3) {
+#' Gera um sumário (TOC) a partir dos títulos "#" de um .Rmd ou .md
+#' Os ids seguem a regra do Pandoc, que é a que o site usa:
+#'  minúsculas; só letras, números, "_", "-" e "."; espaço vira "-";
+#'  tira o que vier antes da primeira letra; repetidos ganham -1, -2...
+#'
+#' Uso (em um chunk com echo=FALSE):
+#'   render_toc("/caminho/do/arquivo.Rmd")
+
+slug_pandoc <- function(texto) {
+  s <- gsub("\\[([^]]*)\\]\\([^)]*\\)", "\\1", texto)     # [texto](link) -> texto
+  s <- gsub("[*`]", "", s)                                # negrito e código
+  # _itálico_ (mas não o "_" no meio de uma palavra, como escore_z)
+  s <- gsub("(^|[^[:alnum:]])_([^_]+)_($|[^[:alnum:]])", "\\1\\2\\3", s)
+  s <- tolower(s)
+  s <- gsub("[^[:alnum:]_. -]", "", s)                    # mantém _ - . e espaço
+  s <- gsub(" ", "-", s)                                  # cada espaço vira hífen
+  s <- sub("^[^[:alpha:]]+", "", s)                       # tira até a primeira letra
+  if (s == "") s <- "section"
+  s
+}
+
+render_toc <- function(filename,
+                       toc_header_name = "Table of Contents",
+                       base_level = NULL,
+                       toc_depth = 3) {
+  x <- readLines(filename, warn = FALSE, encoding = "UTF-8")
+  x <- paste0("\n", paste(x, collapse = "\n"), "\n")
+  x <- sub("(?s)^\\s*---\n.*?\n---\n", "\n", x, perl = TRUE)   # tira o front matter
+  for (i in 5:3) {                                            # tira os blocos de código
     regex_code_fence <- paste0("\n[`]{", i, "}.+?[`]{", i, "}\n")
-    x <- gsub(regex_code_fence, "", x)
+    x <- gsub(regex_code_fence, "\n", x)
   }
-  x <- strsplit(x, "\n")[[1]]
-  x <- x[grepl("^#+", x)]
-  if (!is.null(toc_header_name)) 
-    x <- x[!grepl(paste0("^#+ ", toc_header_name), x)]
-  if (is.null(base_level))
-    base_level <- min(sapply(gsub("(#+).+", "\\1", x), nchar))
-  start_at_base_level <- FALSE
-  x <- sapply(x, function(h) {
-    level <- nchar(gsub("(#+).+", "\\1", h)) - base_level
-    if (level < 0) {
-      stop("Cannot have negative header levels. Problematic header \"", h, '" ',
-           "was considered level ", level, ". Please adjust `base_level`.")
-    }
-    if (level > toc_depth - 1) return("")
-    if (!start_at_base_level && level == 0) start_at_base_level <<- TRUE
-    if (!start_at_base_level) return("")
-    if (grepl("\\{#.+\\}(\\s+)?$", h)) {
-      # has special header slug
-      header_text <- gsub("#+ (.+)\\s+?\\{.+$", "\\1", h)
-      header_slug <- gsub(".+\\{\\s?#([-_.a-zA-Z]+).+", "\\1", h)
-    } else {
-      header_text <- gsub("#+\\s+?", "", h)
-      header_text <- gsub("\\s+?\\{.+\\}\\s*$", "", header_text) # strip { .tabset ... }
-      header_text <- gsub("^[0-9]+[.)-]?\\s*", "", header_text)  # remove up to first alpha char
-      header_slug <- paste(strsplit(header_text, " ")[[1]], collapse="-")
-      header_slug <- header_slug |>
-        tolower() |>
-        gsub("[^[:alnum:]\\s-]", "", x = _) |>
-        gsub("\\s+", "-", x = _) |>
-        gsub("-+", "-", x = _) |>
-        gsub("^-|-$", "", x = _)
-    }
-    paste0(strrep(" ", level * 4), "- [", header_text, "](#", header_slug, ")")
-  })
-  x <- x[x != ""]
-  knitr::asis_output(paste(x, collapse = "\\\n"))
+  linhas <- strsplit(x, "\n")[[1]]
+  linhas <- linhas[grepl("^#+\\s", linhas)]
+  if (length(linhas) == 0) return(knitr::asis_output(""))
+  
+  nivel <- nchar(sub("^(#+).*", "\\1", linhas))
+  texto <- trimws(sub("^#+\\s+", "", linhas))
+  
+  # id escrito à mão: ## Título {#meu-id}
+  tem_id <- grepl("\\{[^}]*#[^ }]+[^}]*\\}\\s*$", texto)
+  id_manual <- ifelse(tem_id, sub(".*\\{[^}]*#([^ }]+)[^}]*\\}\\s*$", "\\1", texto), NA)
+  texto <- trimws(sub("\\s*\\{[^}]*\\}\\s*$", "", texto))
+  
+  # ids de TODOS os títulos, na ordem do documento (os repetidos ganham -1, -2...)
+  ids <- character(length(texto)); vistos <- character()
+  for (k in seq_along(texto)) {
+    id <- if (!is.na(id_manual[k])) id_manual[k] else slug_pandoc(texto[k])
+    n <- sum(vistos == id); vistos <- c(vistos, id)
+    ids[k] <- if (n > 0) paste0(id, "-", n) else id
+  }
+  
+  manter <- rep(TRUE, length(texto))
+  if (!is.null(toc_header_name))
+    manter <- manter & !grepl(paste0("^", toc_header_name), texto)
+  if (!any(manter)) return(knitr::asis_output(""))
+  if (is.null(base_level)) base_level <- min(nivel[manter])
+  rel <- nivel - base_level
+  if (any(rel[manter] < 0))
+    stop("Há títulos com nível menor que o base_level. Ajuste `base_level`.")
+  manter <- manter & rel <= toc_depth - 1
+  
+  # ignora o que vem antes do primeiro título do nível base
+  primeiro <- which(manter & rel == 0)[1]
+  if (is.na(primeiro)) return(knitr::asis_output(""))
+  manter <- manter & seq_along(texto) >= primeiro
+  
+  itens <- paste0(strrep(" ", rel[manter] * 4), "- [", texto[manter], "](#", ids[manter], ")")
+  knitr::asis_output(paste(itens, collapse = "\\\n"))
 }

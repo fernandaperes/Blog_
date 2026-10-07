@@ -1,0 +1,5 @@
+{{- $texto := replaceRE `(?s)<(pre|script|style|svg|noscript)\b.*?</(pre|script|style|svg|noscript)>` "" .Content -}}
+{{- $palavras := countwords (plainify $texto) -}}
+{{- $minutos := int (math.Ceil (div (float $palavras) 200)) -}}
+{{- if lt $minutos 1 }}{{ $minutos = 1 }}{{ end -}}
+<span class="tempo-leitura"><i class="far fa-clock" aria-hidden="true"></i>{{ $minutos }} min de leitura</span>

@@ -10,6 +10,7 @@ summary: 'Já se perguntou qual a probabilidade do seu teste diagnóstico ser um
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 ```{r, include=FALSE}

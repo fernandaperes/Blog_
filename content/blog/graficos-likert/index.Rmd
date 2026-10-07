@@ -14,6 +14,7 @@ bibliography: "references.bib"
 csl: "/Users/fernandafperes/Documents/Consultorias Científicas/Base para relatórios/ABNT.csl"
 editor_options: 
   chunk_output_type: console
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 ```{r, include=FALSE}

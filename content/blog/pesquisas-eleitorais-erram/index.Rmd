@@ -10,14 +10,9 @@ summary: 'Por que os resultados das eleições quase sempre discordam das pesqui
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Imagem adaptada de [Freepik](https://www.freepik.com/)"
 ---
-<center>
-<font size = '1'>
-Imagem adaptada de <a href="http://www.freepik.com">Freepik</a>
-</font>
-</center>
-  
-<br><br>
+
 
 ```{r, include=FALSE}
 # knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)

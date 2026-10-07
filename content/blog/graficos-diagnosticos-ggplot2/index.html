@@ -14,6 +14,7 @@ bibliography: "references.bib"
 csl: "/Users/fernandafperes/Documents/Consultorias Científicas/Base para relatórios/ABNT.csl"
 editor_options: 
   chunk_output_type: console
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 
@@ -51,7 +52,7 @@ mod &lt;- lm(fev ~ altura + idade, data = dados)
 # Gráficos diagnósticos
 par(mfrow = c(2,2))
 plot(mod)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="624" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" alt="" width="624" style="display: block; margin: auto;" /></p>
 <p><br /></p>
 </div>
 </div>
@@ -59,7 +60,7 @@ plot(mod)</code></pre>
 <h3>Gráfico 1: resíduos x valores ajustados</h3>
 <p>O primeiro gráfico mostra a relação entre os resíduos (eixo y) e os valores ajustados (eixo x). Além disso, ele traz: 1) uma linha pontilhada em zero e 2) uma linha de tendência destacada em vermelho.</p>
 <pre class="r"><code>plot(mod, which = 1)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" alt="" width="326.4" style="display: block; margin: auto;" /></p>
 <p>Esse é um gráfico simples de reproduzir. Obtemos os resíduos com a função <code>residuals()</code> e obtemos os valores ajustados com a função <code>fitted()</code>. Depois, plotamos cada um desses valores nos seus respectivos eixos. Vamos usar a camada <code>geom_point()</code> para criar o gráfico de dispersão. Perceba que eu deixei os pontos em cinza (<code>color = "grey60"</code>) e adicionei uma transparência (<code>alpha = 0.6</code>).</p>
 <p>O <code>theme_classic()</code> deixa o gráfico com fundo branco e eixos pretos, mas você pode optar por outro tema caso prefira, como <code>theme_minimal()</code> ou <code>theme_bw()</code>. As camadas <code>scale_x_continuous()</code> e <code>scale_y_continuous()</code> foram adicionadas para trocar o separador de decimal de ponto (padrão em inglês) para vírgula (padrão em português). A camada <code>labs()</code> renomeia os eixos.</p>
 <pre class="r"><code>dados |&gt; 
@@ -71,7 +72,7 @@ plot(mod)</code></pre>
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = &quot;Resíduos&quot;, x = &quot;Valores ajustados&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-5-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>Ficou faltando adicionar:</p>
 <ul>
 <li>A linha horizontal pontilhada em zero, que adicionaremos com a camada <code>geom_hline()</code>. O comando <code>linetype = "dashed"</code> define que ela será pontilhada. Eu a deixei em preto, mas você pode alterar a cor com o argumento <code>color</code>.</li>
@@ -88,7 +89,7 @@ plot(mod)</code></pre>
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = &quot;Resíduos&quot;, x = &quot;Valores ajustados&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>O gráfico já está bem bom! Mas note que a curva suavizada criada pelo <code>geom_smooth()</code> difere um pouco daquela que observamos no gráfico criado pela função <code>plot()</code>. Isso porque eles diferem quanto ao tipo de suavização utilizada. Para replicar a mesma suavização do <code>plot()</code>, temos que fazer algumas alterações nesse código. Para isso usei como base <a href="https://stackoverflow.com/questions/54072789/linear-model-diagnostics-smoothing-line-obtained-in-ggplot2-is-different-from-t">a seguinte resposta</a> do StackOverflow.</p>
 <pre class="r"><code># Criação de um data.frame com os valores da curva suavizada
 # A suavização é obtida com a função lowess()
@@ -105,14 +106,14 @@ dados |&gt;
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = &quot;Resíduos&quot;, x = &quot;Valores ajustados&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="384" style="display: block; margin: auto;" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-2.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" alt="" width="384" style="display: block; margin: auto;" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-2.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>Agora sim! Veja que o gráfico ficou idêntico ao do R base, exceto, claro, pela estética.</p>
 </div>
 <div id="gráfico-2-raiz-quadrada-do-valor-absoluto-dos-resíduos-padronizados-x-valores-ajustados" class="section level3">
 <h3>Gráfico 2: raiz quadrada do valor absoluto dos resíduos padronizados x valores ajustados</h3>
 <p>Esse gráfico é, pela função <code>plot()</code>, o gráfico 3. Mas vai ser o segundo gráfico que eu irei construir porque ele se assemelha muito ao que construímos anteriormente. O que muda é: ao invés de colocarmos os resíduos do eixo y, colocaremos <strong>a raiz quadrada do módulo dos resíduos padronizados</strong>.</p>
 <pre class="r"><code>plot(mod, which = 3)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.png" alt="" width="326.4" style="display: block; margin: auto;" /></p>
 <p>Vamos construir um gráfico praticamente idêntico ao que construímos anteriormente. Mas, vamos obter os resíduos padronizados (<code>rstandard(mod)</code>). Para obtermos o módulo desses valores, precisamos inseri-los na função <code>abs()</code>, ou seja, ficamos com: <code>abs(rstandard(mod))</code>. Por fim, para tirar a raiz quadrada, devemos usar a função <code>sqrt()</code>, o que resulta em: <code>sqrt(abs(rstandard(mod)))</code>.</p>
 <p>Nesse gráfico não há uma linha horizontal de referência, por isso excluímos a camada <code>geom_hline()</code>.</p>
 <pre class="r"><code>dados |&gt; 
@@ -125,7 +126,7 @@ dados |&gt;
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = bquote(sqrt(abs(&quot;Resíduos Padronizados&quot;))), x = &quot;Valores ajustados&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-10-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>De novo, está bem bom, mas a suavização utilizada não é idêntica à utilizada pela função <code>plot()</code>. Com as modificações abaixo, chegamos a um gráfico idêntico:</p>
 <pre class="r"><code>smoothed &lt;- as.data.frame(lowess(x = fitted(mod), y = sqrt(abs(rstandard(mod)))))
 
@@ -139,13 +140,13 @@ dados |&gt;
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = bquote(sqrt(abs(&quot;Resíduos Padronizados&quot;))), x = &quot;Valores ajustados&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="384" style="display: block; margin: auto;" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-2.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" alt="" width="384" style="display: block; margin: auto;" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-2.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 </div>
 <div id="gráfico-3-q-q-plot-para-os-resíduos" class="section level3">
 <h3>Gráfico 3: Q-Q plot para os resíduos</h3>
 <p>O Q-Q plot dos resíduos é, pela função <code>plot()</code>, o gráfico 2. Mas, como explicado, eu alterei a ordem para fins didáticos.</p>
 <pre class="r"><code>plot(mod, which = 2)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-13-1.png" alt="" width="326.4" style="display: block; margin: auto;" /></p>
 <p>Construir um Q-Q plot no ggplot2 é algo menos intuitivo, mas não muito complexo. Precisamos dos seguintes passos:</p>
 <ul>
 <li>Adicionar os resíduos padronizados (obtidos pela função <code>rstandard()</code>) como “sample” no <code>aes()</code>.</li>
@@ -164,14 +165,14 @@ dados |&gt;
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Quantis teóricos&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>“E tá pronto o sorvetinho!” (Ilt, Matheus, 2019)</p>
 </div>
 <div id="gráfico-4-resíduos-padronizados-x-alavancagem-distância-de-cook" class="section level3">
 <h3>Gráfico 4: resíduos padronizados x alavancagem + distância de Cook</h3>
 <p>Esse gráfico é pela função <code>plot()</code>, o gráfico 5. Ele mostra ao mesmo tempo os resíduos padronizados (eixo y), a alavancagem (eixo x) e a distância de Cook (representada por uma linha pontilhada). À semelhança do que vimos no gráfico 1, esse gráfico também inclui uma linha horizontal pontilhada no y = 0 e uma linha de tendência representada em vermelho.</p>
 <pre class="r"><code>plot(mod, which = 5)</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" width="326.4" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-15-1.png" alt="" width="326.4" style="display: block; margin: auto;" /></p>
 <p>Esse é um gráfico que por uns anos eu pensei “nossa, o trabalho de construir isso em ggplot2 não deve compensar o resultado”. Porque inserir as linhas de distância de Cook me parecia muito complexo. Mas aí, estudando um outro modelo – para o qual esse gráfico não é construído com a função <code>plot()</code> – eu decidi encarar o desafio de criá-lo em ggplot2. E foi mais simples do que eu imaginava.</p>
 <p>Vamos aos passos:</p>
 <ul>
@@ -207,7 +208,7 @@ ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
   scale_x_continuous(labels = scales::number_format(decimal.mark = &quot;,&quot;)) +
   labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Alavancagem&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-16-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>Você pode até estar pensando: “mas esse gráfico está diferente do que obtivemos com a função <code>plot()</code>!”. Então… Ele parece diferente mesmo. Isso porque o que obtivemos com a função <code>plot()</code> tem um eixo y que vai de -3 a 4. Já o eixo y do gráfico que criamos se estende para muito além disso. Portanto, para deixá-los equivalentes, vamos adicionar a camada <code>coord_cartesian()</code> para deixar o nosso gráfico com um eixo y de -3 a 4:</p>
 <pre class="r"><code>dados_graf &lt;- dados |&gt; 
   mutate(Residuals = rstandard(mod),
@@ -236,7 +237,7 @@ ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
   coord_cartesian(ylim = c(-3, 4)) +
   labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Alavancagem&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-17-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-17-1.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>Se você é detalhista você talvez tenha reparado que há ainda três diferenças entre o gráfico que criamos e aquele criado pela função <code>plot()</code>:</p>
 <ul>
 <li>O gráfico do <code>plot()</code> traz uma linha vertical em x = 0 e uma linha pontilhada para distância de Cook = 1.
@@ -285,7 +286,7 @@ ggplot(dados_graf, aes(y = Residuals, x = Leverage)) +
   coord_cartesian(ylim = c(-3, 4)) +
   labs(y = &quot;Resíduos padronizados&quot;, x = &quot;Alavancagem&quot;) +
   theme_classic()</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-1.png" width="384" style="display: block; margin: auto;" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-2.png" width="384" style="display: block; margin: auto;" /></p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-1.png" alt="" width="384" style="display: block; margin: auto;" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-19-2.png" alt="" width="384" style="display: block; margin: auto;" /></p>
 <p>Agora, sim, temos uma versão idêntica!</p>
 <div id="como-citar-esse-post-nas-normas-da-abnt" class="section level4">
 <h4>Como citar esse post, nas normas da ABNT</h4>

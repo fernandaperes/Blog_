@@ -10,16 +10,12 @@ summary: 'Uma discussão sobre valor de p, teste de hipóteses e nível de signi
 output:
   blogdown::html_page:
     toc: false
+image_credit: "Freepik"
+image_credit_url: "https://www.freepik.com/"
 ---
 
 
 
-<center>
-<font size = '1'>
-Imagem de <a href="http://www.freepik.com">Freepik</a>
-</font>
-</center>
-<p><br><br></p>
 <div id="uma-doutora-toma-chá" class="section level2">
 <h2>Uma doutora toma chá</h2>
 <div id="afinal-o-que-o-valor-de-p-essa-medida-tão-famosa-e-tão-controversa-indica" class="section level3">
@@ -34,9 +30,9 @@ A proposta desse post é explicar esses conceitos através da história da cria�
 <h3>O problema</h3>
 <p>Diz a lenda (e a biografia de Ronald Fisher) que, em uma tarde no final da década de 1920, três pesquisadores – dois homens e uma mulher – que trabalhavam na Estação experimental agrícola de Rothamsted, na Inglaterra, fizeram uma pausa para tomar chá. Como bons ingleses, esses três pesquisadores tomavam o seu chá com leite.</p>
 <p>Um dos homens adicionou leite à xícara, complementou-a com chá, mexeu o conteúdo e serviu-a à mulher. Ela educadamente recusou, dizendo que preferia quando o chá era adicionado antes do leite. Ele protestou, dizendo que a ordem não fazia diferença. Ela continuou insistindo que sentia diferença, e preferia quando o chá era adicionado antes.</p>
-<p><img src="img2.png" width="150px" style="display: block; margin: auto;" /></p>
+<p><img src="img2.png" alt="" width="150px" style="display: block; margin: auto;" /></p>
 <p>Se as pessoas envolvidas nessa história fossem outras, ela provavelmente teria acabado aqui. Mas, o homem em questão era Ronald Fisher, um estatístico e geneticista, que anos depois ganharia o título de Sir. Já a pesquisadora era Blanche Muriel Bristol, uma algologista que na época já possuía os títulos de mestre e doutora. Infelizmente, muitas informações sobre a Dra. Muriel se perderam com o tempo, mas sabe-se que uma espécie de alga recebeu o nome de C. <em>muriella</em> em homenagem a ela, indicando que ela contribuiu de forma significativa com a sua área.</p>
-<p><img src="img3.png" width="500px" style="display: block; margin: auto;" /></p>
+<p><img src="img3.png" alt="" width="500px" style="display: block; margin: auto;" /></p>
 <p>Ronald Fisher, sem acreditar que a Dra. Muriel seria capaz de diferenciar uma xícara com chá adicionado antes do leite de uma com o chá adicionado depois, propôs um experimento para testá-la.</p>
 </div>
 <div id="as-hipóteses" class="section level3">
@@ -47,15 +43,15 @@ A proposta desse post é explicar esses conceitos através da história da cria�
 <li><p>Hipótese 2: a Dra. Muriel, na realidade, <strong>era capaz de diferenciar</strong> as preparações.</p></li>
 </ul>
 <p>Para usar a terminologia que usamos hoje e facilitar o raciocínio, vamos chamar a primeira hipótese de “Hipótese nula (H<sub>0</sub>)” e a segunda hipótese, que se contrapõe à H<sub>0</sub> de “Hipótese alternativa (H<sub>1</sub>)”:</p>
-<p><img src="img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img4.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ok-mas-e-como-testá-la" class="section level3">
 <h3>Ok, mas… E como testá-la?</h3>
 <p>Fisher poderia apresentar à Dra. Muriel apenas uma xícara, e pedir para que ela identificasse se o chá havia sido colocado antes ou após o leite. Mas, nesse caso, a probabilidade de ela acertar – ainda que não fosse capaz de diferenciar as preparações – seria de 50%. A mesma probabilidade valeria para caso a Dra. Muriel fosse apresentada a duas xícaras, sabendo que havia uma de cada tipo de preparação.</p>
-<p><img src="img5.png" width="150px" style="display: block; margin: auto;" /></p>
+<p><img src="img5.png" alt="" width="150px" style="display: block; margin: auto;" /></p>
 <p>Fisher acabou propondo um experimento no qual 8 xícaras seriam apresentadas à Dra. Muriel: 4 com o chá adicionado antes e 4 com o chá adicionado depois do leite. A ordem de apresentação dessas xícaras seria determinada de forma verdadeiramente aleatória, definida por uma moeda, de forma que não fosse possível prevê-la.<br />
 Ao final, a Dra. Muriel – que tinha conhecimento de como o experimento havia sido delineado – teria que identificar quais quatro xícaras pertenciam a um mesmo tipo de preparação. Note que, se ela identificasse corretamente essas 4, isso significaria que ela acertou como foram preparadas todas as 8 xícaras.</p>
-<p><img src="img6.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="img6.png" alt="" width="600px" style="display: block; margin: auto;" /></p>
 <p>Com experimento sendo delineado dessa forma, a probabilidade de a Dra. Muriel selecionar corretamente as quatro xícaras seria de 1 em 70, o que corresponde a:
 <span class="math display">\[\frac{1}{70} \times 100 = 1,43\%\]</span></p>
 <blockquote>
@@ -66,7 +62,7 @@ Dentre todas essas combinações, há uma única que corresponde a acertar todas
 </blockquote>
 <p>Agora vem a grande questão: se a Dra. Muriel acertasse todas as xícaras, você acreditaria que ela tem a capacidade de diferenciar as preparações? Considere que a probabilidade de isso acontecer sem que ela tivesse essa capacidade é de apenas 1,43%. Eu acreditaria nela, imagino que você também.</p>
 <p>Mas, ainda que ela consiga diferenciar as preparações, é possível que ela erre uma das 4 xícaras selecionadas, concorda? Uma pode não ter sido mexida adequadamente, ou pode estar com uma proporção diferente de chá e leite…</p>
-<p><img src="img7.png" width="600px" style="display: block; margin: auto;" /></p>
+<p><img src="img7.png" alt="" width="600px" style="display: block; margin: auto;" /></p>
 <p>E nesse caso, você acreditaria nela? Vamos novamente calcular as probabilidades. A probabilidade de ela acertar pelo menos 3 xícaras (ou seja, acertar 3 ou acertar 4) é de 17 em 70, o que corresponde a:
 <span class="math display">\[\frac{17}{70} = 24,29%\]</span></p>
 <blockquote>

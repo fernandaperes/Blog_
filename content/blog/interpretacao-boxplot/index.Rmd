@@ -12,6 +12,7 @@ output:
     toc: false
 bibliography: references.bib
 csl: APA.csl
+image_caption: "Imagem adaptada do artigo de [Schenk & Steppan (2014)](http://fernandafperes.com.br/blog/interpretacao-boxplot/#ref-schenk2014too)"
 ---
 
 

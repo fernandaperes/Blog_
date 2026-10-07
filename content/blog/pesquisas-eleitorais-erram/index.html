@@ -10,16 +10,11 @@ summary: 'Por que os resultados das eleições quase sempre discordam das pesqui
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Imagem adaptada de [Freepik](https://www.freepik.com/)"
 ---
 
 
 
-<center>
-<font size = '1'>
-Imagem adaptada de <a href="http://www.freepik.com">Freepik</a>
-</font>
-</center>
-<p><br><br></p>
 <p>Eu estou escrevendo esse texto em agosto de 2024, poucos meses antes das eleições municipais. E estou deixando aqui a minha previsão: as pesquisas eleitorais vão “errar”, para além da margem de erro. Como todas as pesquisas eleitorais podem “errar”. E esse é um texto para discutirmos <strong>os porquês</strong>.</p>
 <blockquote>
 <p>Antes, algumas considerações. Eu não sou estatística. Caso você tenha caído nesse texto por acaso, deixa eu me apresentar: eu sou a Fernanda, bacharel em biomedicina, mestre e doutora em farmacologia e especialista em estatística aplicada. Você consegue informações mais detalhadas sobre a minha formação <a href="https://fernandafperes.com.br/sobre">aqui</a>. Desde 2017 eu produzo conteúdo sobre análise de dados e há alguns anos eu consumo conteúdo sobre a estatística por trás das pesquisas eleitorais. E confesso que eu demorei um bom tempo para entender tudo que eu pretendo discutir com você aqui. Ah, todos os conceitos e hipóteses discutidos aqui não são de minha autoria. No final do post, você encontra uma bibliografia consultada.</p>
@@ -60,17 +55,17 @@ Imagem adaptada de <a href="http://www.freepik.com">Freepik</a>
 <div id="tamanho-da-amostra-para-uma-margem-de-erro-de-2" class="section level4">
 <h4>Tamanho da amostra para uma margem de erro de 2%</h4>
 <p>Existe uma fórmula para definir esse tamanho ideal da amostra. Essa fórmula foi implementada por diversas calculadoras online, como <a href="http://estatistica.bauru.usp.br/calculoamostral/ta_ic_proporcao.php">esta</a> da USP de Bauru, que foi usada para elaborar este post. Para que a margem de erro seja 2%, a amostra deve incluir 2.401 pessoas:</p>
-<p><img src="img1.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img1.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 </div>
 <div id="tamanho-da-amostra-para-uma-margem-de-erro-de-3" class="section level4">
 <h4>Tamanho da amostra para uma margem de erro de 3%</h4>
 <p>Muitos institutos de pesquisa não têm verba suficiente para entrevistar 2.401 pessoas. O que esses institutos fazem é trabalhar com uma margem de erro maior, de 3%. Isso resulta em uma amostra de 1.068 pessoas a serem entrevistadas:</p>
-<p><img src="img2.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img2.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <div id="mas-é-impossível-que-2.401-pessoas-representem-quase-9-milhões-de-eleitores" class="section level5">
 <h5>Mas é impossível que 2.401 pessoas representem quase 9 milhões de eleitores!</h5>
 <p>Bom… Não é. Esse cálculo considera uma população infinita – o que é o equivalente a dizer que não importa o tamanho da população. Só precisamos considerar o tamanho da população no cálculo quando essa população é <strong>pequena</strong>. Nesses casos, há um ajuste para reduzir o tamanho da amostra.</p>
 <p>Por exemplo, imagine que estamos trabalhando com uma população de apenas 3.000 eleitores. Entrevistar 2.401 pessoas corresponde a entrevistar 80% dessa população, o que pode ser inviável. Nesses casos, ajustamos o cálculo para uma <strong>população finita</strong> de 3.000 pessoas, o que resulta em uma amostra de 1.334 pessoas a serem entrevistadas:</p>
-<p><img src="img3.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img3.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>Mas, antes de concluirmos que essas 2.401 pessoas representam perfeitamente os quase 9 milhões de eleitores da cidade, precisamos avaliar a resposta à segunda pergunta: como essa amostra será <strong>selecionada</strong>.</p>
 </div>
 </div>
@@ -78,7 +73,7 @@ Imagem adaptada de <a href="http://www.freepik.com">Freepik</a>
 <div id="como-selecionar-quem-irá-compor-amostra" class="section level2">
 <h2>Como selecionar quem irá compor amostra?</h2>
 <p>O processo de seleção da amostra recebe o nome de amostragem. Há várias técnicas de amostragem, que resultam em amostras mais ou menos representativas da população.</p>
-<p><img src="img4.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img4.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <div id="a-amostragem-aleatória-simples" class="section level4">
 <h4>A amostragem aleatória simples</h4>
 <p>Uma das principais formas de selecionar a amostra é por amostragem aleatória simples. Nesse tipo de amostragem, todos os elementos da população <strong>têm a mesma probabilidade de serem selecionados</strong>. Se pensarmos no contexto da pesquisa eleitoral, para selecionarmos uma amostra por essa técnica precisaríamos: 1) ter uma lista com todos os eleitores e seus contatos; 2) sortear 2.401 eleitores para responderem à pesquisa; 3) entrevistar todos os eleitores selecionados.</p>
@@ -130,7 +125,7 @@ Eu sou uma mulher com idade entre 25 a 34 anos e com nível superior – como vi
 <h2>A margem de erro e o intervalo de confiança</h2>
 <p>Eu tenho um post bem completo por aqui sobre <a href="https://fernandafperes.com.br/blog/intervalo-de-confianca/">intervalo de confiança</a>. Recomendo a leitura caso você queira se aprofundar no assunto. A seguir, discutiremos os pontos fundamentais para analisarmos criticamente as pesquisas eleitorais.</p>
 <p>Imagine que observamos que em uma amostra a intenção de votos para um determinado candidato foi de 34%. Será que obteremos essa mesma proporção ao perguntarmos a intenção de votos de toda a população?</p>
-<p><img src="img5.png" width="450px" style="display: block; margin: auto;" /></p>
+<p><img src="img5.png" alt="" width="450px" style="display: block; margin: auto;" /></p>
 <p>É bem provável que não, concorda? Essa divergência entre as proporções da amostra e da população será observada mesmo quando a amostra for selecionada adequadamente – sem erros ou má intenção. O intervalo de confiança é uma ferramenta para estimarmos, a partir da proporção obtida na amostra, um intervalo dentro do qual é provável que a proporção da população esteja.</p>
 <p>O intervalo de confiança está sempre associado a um nível de confiança. Esse nível de confiança é complementar ao nível de significância, que eu explico com mais detalhes <a href="https://fernandafperes.com.br/blog/doutora-toma-cha/">aqui</a> e <a href="https://fernandafperes.com.br/blog/valor-de-p-calculo/">aqui</a>. O padrão é utilizarmos um nível de significância de 5%. Portanto, o nível de confiança padrão será:</p>
 <center>
@@ -151,7 +146,7 @@ IC 95% = [31%; 37%]
 <p>É bem confuso, eu sei. Mas se a gente quer analisar criticamente as pesquisas eleitorais, é nossa obrigação entender esse conceito sem recorrer a falácias.</p>
 <p>Então, vamos imaginar um cenário. Imagine que a intenção de votos real, na <strong>população</strong>, de um determinado candidato é de <strong>31%</strong>. Se extraíssemos 100 amostras aleatórias dessa população, estimássemos a intenção de votos nessas amostras, e calculássemos o intervalo de confiança para cada uma delas, aproximadamente 95 dos intervalos de confiança conteriam o valor populacional (31%) nos seus intervalos de confiança.</p>
 <p>Vamos visualizar isso? Na figura abaixo temos essa simulação. Na população, a intenção de votos é 31% (linha vertical pontilhada). Extraímos, a partir dessa população, 50 amostras, dispostas no eixo vertical y. Para essas 50 amostras, foram calculadas as intenções de votos (representadas pelos pontos) e os intervalos de confiança (representados pelas barras de erros, linhas horizontais que se estendem a partir dos pontos). Perceba que apenas três dessas amostras (destacadas em rosa) não contêm o valor de 31% em seu intervalo de confiança, o que corresponde a aproximadamente 5% das amostras.</p>
-<p><img src="ic_95.png" width="550px" style="display: block; margin: auto;" /></p>
+<p><img src="ic_95.png" alt="" width="550px" style="display: block; margin: auto;" /></p>
 <p>Repito: entender intervalo de confiança não é simples. Mas a interpretação correta é essa.</p>
 <p>Vamos trazer essa explicação para o cenário da pesquisa eleitoral. Caso fizéssemos 100 pesquisas eleitorais com o mesmo delineamento e no mesmo momento, esperaríamos que 95 delas contivessem a intenção de votos real (da população) em seu intervalo de confiança 95%.</p>
 <p>Perceba que quando estamos estudando uma amostra, não temos como saber se ela é uma das amostras em azul (que contém o parâmetro populacional em seu intervalo de confiança) ou uma das rosas (que não o contém). Portanto, é possível – e consideravelmente provável – que a amostra que estamos estudando <strong>não contenha</strong> o valor populacional no seu intervalo de confiança. Ainda que ela tenha sido adequadamente selecionada.</p>

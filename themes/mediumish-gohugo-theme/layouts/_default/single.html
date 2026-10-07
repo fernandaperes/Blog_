@@ -11,7 +11,7 @@
             <div class="row">
                 <!-- Post Share -->
                 {{ if not .Params.hideshare }}
-                <div class="col-md-2 pl-0">
+                <div class="col-md-2 pl-0 coluna-share">
                     {{- partial "single-partials/share.html" . -}}
                     </div>
                     {{ end }}
@@ -42,12 +42,10 @@
 <center><span class="author-description">
     {{ dateFormat "2 Jan, 2006" .PublishDate }}
 
-<!--
-    <i class="far fa-clock clock"></i>
-    {{ .ReadingTime }} min de leitura
--->
+    {{ partial "tempo-leitura.html" . }}
     
     </span>
+    
 </center><br>
 {{ end }}
 
@@ -67,24 +65,42 @@
                     <!-- Post Featured Image -->
                     {{$images := .Resources.ByType "image"}}
                     {{with $images.GetMatch "*cover*" }}
-                        <center><img class="featured-image img-fluid" src="{{ .Permalink }}" alt="thumbnail for this post"></center>
+                        <center><img class="featured-image img-fluid" src="{{ .Permalink }}" alt="capa deste post"></center>
                     {{end}}
                     <!-- End Featured Image -->
-
+                  
+                  <!-- Cover Image Subtitle -->
+                  {{ if .Params.image_caption }}
+                      <div class="legenda-imagem">{{ .Params.image_caption | markdownify }}</div>
+                  {{ else if .Params.image_credit }}
+                      <div class="legenda-imagem"><p>Imagem de {{ if .Params.image_credit_url }}<a href="{{ .Params.image_credit_url }}" target="_blank" rel="noopener">{{ .Params.image_credit }}</a>{{ else }}{{ .Params.image_credit }}{{ end }}</p></div>
+                  {{ end }}
+                  <!-- End Cover Image Subtitle -->
 
                     <!-- Post Content -->
                     <div class="article-post">
                         {{ .Content}}
                     </div>
 
-<br><br><br>
+                    <script src="/js/copiar-codigo.js" defer></script>
+                    
+                    <!-- Chamada para os serviços -->
+                    {{ if not .Params.hidecta }}
+                    <div class="cta-post">
+                        <h3>Gostou do post?</h3>
+                        <p>Se quiser uma ajuda individual com a análise dos <mark>seus dados</mark>, conheça os <mark>serviços</mark> de análise de dados e consultoria científica.</p>
+                        <a class="botao" href="/servicos">Conhecer os serviços</a>
+                    </div>
+                    {{ end }}
+                    <!-- End chamada -->
+
                     <!-- Next and PrevPage inside current section -->
                     <div class="row PageNavigation d-flex justify-content-between font-weight-bold after-post">
                     {{with .NextInSection}}
-                        <a class="d-block col-md-6" href="{{.Permalink}}"> &laquo; {{.Title}}</a>
+                        <a class="d-block col-md-6" href="{{.Permalink}}"><small>&laquo; Próximo post</small><span>{{.Title}}</span></a>
                     {{end}}
                     {{with .PrevInSection}}
-                        <a class="d-block col-md-6 text-lg-right" href="{{.Permalink}}">{{.Title}} &raquo;</a>
+                        <a class="d-block col-md-6 text-lg-right" href="{{.Permalink}}"><small>Post anterior &raquo;</small><span>{{.Title}}</span></a>
                     {{end}}
                     <div class="clearfix"></div>
                     </div>

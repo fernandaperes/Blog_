@@ -12,23 +12,13 @@ output:
     toc: false
 editor_options: 
   chunk_output_type: console
+image_caption: |
+  Michelle Yeoh, vencedora do Oscar de Melhor atriz em 2023, aos 60 anos.
+
+  Crédito de cortesia: Imagem do [Executive Office of the President of USA](https://commons.wikimedia.org/) (domínio público), via Wikimedia Commons.
 ---
 
-<div class = "parentfaq">
-<div class = "faq">
-<center>
-<div style="font-size:1em; line-height:1.2;">
-*Michelle Yeoh, vencedora do Oscar de Melhor*  
-*atriz em 2023, aos 60 anos.* 
-</div>
-<div style="font-size:0.7em; line-height:1.2;">
-Crédito de cortesia: Imagem do Executive Office of the President  
-of USA (domínio público), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Michelle_Yeoh.jpg).
-</div>
-</center>
-</div></div>
-  
-<br><br>
+
   
 >Esse post foi escrito em 2025 e atualizado em 16 de março de 2026, para incluir as idades dos vencedores da edição do Oscar de 2026.  
   
@@ -73,7 +63,7 @@ Portanto, para avaliar as idades dos homens e mulheres ganhadores dos Oscars nas
   
 Isso tudo foi unido e devidamente processado -- por exemplo, as datas fornecidas pela base 2 não seguiam um padrão e tiveram que ser ajustadas.  
   
-<details>
+<details class = "codigo">
 <summary>Clique para ver o código de download e organização das bases</summary>
 ```{r, eval=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -278,8 +268,9 @@ dados |>
 ```
 <font size='2'>P25 = Percentil 25; P75 = Percentil 75.</font>
 
-<details>
+<details class="codigo">
 <summary>Clique para ver o código de que gerou a tabela acima</summary>
+
 ```{r, eval=FALSE, message=FALSE, warning=FALSE}
 dados |> 
   group_by(Categoria) |> 

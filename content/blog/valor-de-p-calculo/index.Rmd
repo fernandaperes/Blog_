@@ -9,6 +9,7 @@ summary: 'Como é calculado o valor de p em um teste estatístico? Qual a difere
 output:
   blogdown::html_page:
     toc: false
+image_caption: "Fonte da imagem: elaboração própria"
 ---
 
 

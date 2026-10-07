@@ -16,7 +16,7 @@ googleAnalytics = "G-ZBDS4LT6P0"
   logo = "/images/favicon.ico"
   description = ""
     customCSS = ["css/purebasic.css", "css/applause-button.css", "css/novo-visual.css"]
-  customJS = ["js/highlight.pack.js", "js/applause-button.js"]
+  customJS = ["js/highlight.pack.js", "js/applause-button.js", "js/busca.js"]
 
 
 [params.author]
@@ -78,12 +78,21 @@ Currently trying to get this blog running, still don't know what the blog will b
     description = "Curso"
 
 [[menu.main]]
-    name = "PÁGINA INICIAL"
+    name = "INÍCIO"
     identifier = "pagina-inicial"
     weight = 10
     url = "/"
+    
+[[menu.main]]
+    name = "EN"
+    identifier = "language"
+    weight = 5
+    url = "https://en.fernandafperes.com.br"
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+      
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

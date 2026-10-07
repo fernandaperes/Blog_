@@ -111,7 +111,7 @@ if (isTRUE(agenda_aberta)) {
 `r btn_consultoria`
 </div>
 <div class="svc-detalhes">
-<div class="home-cartao-img svc-img"><img src="/static/sobre_files/mockup_consultoria.jpg" alt="Consultoria científica online" loading="lazy"></div>
+<div class="home-cartao-img svc-img"><img class="img-parada" src="/static/sobre_files/video_consultoria_mockup_static.jpg" alt="Exemplo de consultoria online: videochamada com código em R" loading="lazy"><img src="/static/sobre_files/video_consultoria_mockup_cropped.gif" alt="" loading="lazy"></div>
 <ul class="checks">
 <li><strong>Planejamento do estudo:</strong> conversamos sobre o delineamento do experimento e a coleta de dados.</li>
 <li><strong>Escolha das análises:</strong> definimos as análises adequadas aos seus dados e discutimos como interpretá-las e reportá-las.</li>

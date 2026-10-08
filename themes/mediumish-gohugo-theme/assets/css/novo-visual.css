@@ -1184,3 +1184,49 @@ html { overflow-x: clip; }   /* segurança: nada empurra a página para os lados
     white-space: nowrap;
   }
 }
+
+
+@media (max-width: 640px) {
+
+  /* 1. Tira o EN do menu (ele é o primeiro item) */
+  html body .site-cabecalho nav a:first-child {
+    display: none;
+  }
+  
+  /* 2. Texto centralizado dentro do botão "Acesso ao currículo completo" */
+  html body .home-sobre .botao {
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* 3. Mais espaço entre os postboxes na home */
+  html body .card-group.mb-30px {
+    margin-bottom: 44px !important;
+  }
+
+  /* 5. Subtítulo de Serviços com linhas mais juntas */
+  html body .svc-pagina .svc-topo p {
+    line-height: 1.45;
+  }
+  
+}
+
+
+
+/* Tags do post: pílulas com espaço entre si, mesmo quando quebram de linha */
+html body .after-post-tags ul.tags {
+  margin: 0 auto;
+  padding: 0;
+}
+html body .after-post-tags ul.tags center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 8px;          /* vertical  horizontal */
+}
+html body .after-post-tags ul.tags li {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+

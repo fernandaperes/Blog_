@@ -1179,7 +1179,7 @@ html { overflow-x: clip; }   /* segurança: nada empurra a página para os lados
   html body .site-cabecalho nav a {
     margin: 0;
     padding: 6px clamp(5px, 1.8vw, 9px);
-    font-size: clamp(11px, 3.4vw, 14px);   /* encolhe junto com a tela */
+    font-size: clamp(12px, 3.9vw, 16px);   /* encolhe junto com a tela */
     letter-spacing: 0;
     white-space: nowrap;
   }
@@ -1213,20 +1213,32 @@ html { overflow-x: clip; }   /* segurança: nada empurra a página para os lados
 
 
 
-/* Tags do post: pílulas com espaço entre si, mesmo quando quebram de linha */
-html body .after-post-tags ul.tags {
+/* Tags do post: container que cresce + espaço entre as pílulas */
+html body .after-post-tags {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  margin-bottom: 28px;          /* espaço entre as tags e a imagem */
+}
+html body .after-post-tags ul.tags,
+html body .after-post-tags ul.tags center {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 10px !important;    /* vertical  horizontal */
+  width: 100%;
+  height: auto !important;
   margin: 0 auto;
   padding: 0;
 }
-html body .after-post-tags ul.tags center {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 8px;          /* vertical  horizontal */
-}
 html body .after-post-tags ul.tags li {
-  margin: 0;
-  padding: 0;
+  float: none !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html body .after-post-tags ul.tags li a {
   display: block;
+  margin: 0 !important;
 }
 

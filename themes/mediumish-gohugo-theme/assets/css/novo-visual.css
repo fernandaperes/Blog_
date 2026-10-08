@@ -1240,3 +1240,22 @@ html body .after-post-tags ul.tags li a {
   margin: 0 !important;
 }
 
+
+/* Links dentro do texto da home: mesma fonte e cor, só sublinhado */
+html body .home-lead a {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+  text-decoration: underline;
+  text-decoration-color: #c4c4cc;        /* sublinhado cinza-claro, discreto */
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color .2s, text-decoration-thickness .2s;
+}
+html body .home-lead a:hover,
+html body .home-lead a:focus-visible {
+  text-decoration-color: #2794A0;        /* sublinhado azul no hover */
+  text-decoration-thickness: 3px;
+}
+
+

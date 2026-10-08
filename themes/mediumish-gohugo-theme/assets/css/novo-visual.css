@@ -1158,3 +1158,29 @@ html body applause-button .count-container .count{
   word-break: keep-all !important;
 }
 
+
+/* ===== Celular: cabeçalho que cabe na tela ===== */
+html { overflow-x: clip; }   /* segurança: nada empurra a página para os lados */
+
+@media (max-width: 640px) {
+  html body .site-cabecalho .barra {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+  }
+  html body .site-cabecalho nav {
+    display: flex;
+    flex-wrap: wrap;            /* se ainda faltar espaço, desce para a 2ª linha, em vez de estourar */
+    justify-content: center;
+    width: 100%;
+    gap: 0;
+    margin: 0;
+  }
+  html body .site-cabecalho nav a {
+    margin: 0;
+    padding: 6px clamp(5px, 1.8vw, 9px);
+    font-size: clamp(11px, 3.4vw, 14px);   /* encolhe junto com a tela */
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+}

@@ -1149,4 +1149,12 @@ html body .author-description .tempo-leitura { font-size: 1em; }
 html body .author-description .tempo-leitura i { font-size: .85em; }
 
 
+html body applause-button .count-container{
+  width: max-content !important;
+  white-space: nowrap !important;
+}
+html body applause-button .count-container .count{
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
 

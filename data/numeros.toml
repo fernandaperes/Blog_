@@ -1,8 +1,9 @@
 # Edite aqui; a home e a página de serviços leem estes valores
 pesquisa_desde = 2010
 servicos_desde = 2017
-analises = 250
+analises = 260
 analises_clientes = 180
-consultorias = 500
+consultorias = 660
 consultorias_clientes = 290
-inscritos = 45000
+inscritos = 48000
+clientes_unicos = 440

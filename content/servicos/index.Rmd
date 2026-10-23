@@ -54,6 +54,18 @@ if (isTRUE(agenda_aberta)) {
     ' A agenda será <strong>reaberta no ', reabertura, '</strong>.</p>',
     '<a class="botao" href="', link_aviso, '" target="_blank" rel="noopener">Me avise quando reabrir</a>')
 }
+
+# Números: lidos de data/numeros.toml
+ler_numeros <- function(arq = "../../data/numeros.toml") {
+  l <- readLines(arq, warn = FALSE, encoding = "UTF-8")
+  l <- trimws(sub("#.*$", "", l))          # tira comentários
+  l <- l[grepl("^[A-Za-z_]+\\s*=", l)]     # só linhas "chave = valor"
+  k <- trimws(sub("=.*$", "", l))
+  v <- trimws(sub("^[^=]*=", "", l))
+  setNames(suppressWarnings(as.list(as.numeric(v))), k)
+}
+n <- ler_numeros()
+fmt <- function(x) format(x, big.mark = ".", decimal.mark = ",", scientific = FALSE, trim = TRUE)
 ```
 
 <div class="svc-pagina">
@@ -62,12 +74,14 @@ if (isTRUE(agenda_aberta)) {
 <p>Duas formas de contar com a minha ajuda: analisando os seus dados ou conversando com você sobre o seu projeto. Nas duas, você sai entendendo o que foi feito e por quê.</p>
 `r aviso`
 </header>
+
 <ul class="home-numeros">
-<li><strong>+250</strong>análises de dados entregues</li>
-<li><strong>+500</strong>consultorias realizadas</li>
-<li><strong>+430</strong>pesquisadores já atendidos</li>
+<li><strong>+`r fmt(n$analises)`</strong>análises de dados entregues</li>
+<li><strong>+`r fmt(n$consultorias)`</strong>consultorias realizadas</li>
+<li><strong>+`r fmt(n$clientes_unicos)`</strong>pesquisadores já atendidos</li>
 <li><strong>Nota fiscal</strong>você pode usar verba de pesquisa para pagar os serviços</li>
 </ul>
+
 <section id="a-analise-de-dados" class="svc svc-a">
 <div class="svc-grade">
 <div class="svc-texto">

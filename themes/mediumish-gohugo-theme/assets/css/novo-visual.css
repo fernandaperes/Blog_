@@ -1258,4 +1258,10 @@ html body .home-lead a:focus-visible {
   text-decoration-thickness: 3px;
 }
 
-
+html body .svc-pagina .checks li small {
+  display: block;
+  margin-top: 4px;
+  font-size: .8rem;
+  line-height: 0.9rem;
+  color: #71717a;
+}

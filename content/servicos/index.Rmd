@@ -130,7 +130,7 @@ fmt <- function(x) format(x, big.mark = ".", decimal.mark = ",", scientific = FA
 <li><strong>Planejamento do estudo:</strong> conversamos sobre o delineamento do experimento e a coleta de dados.</li>
 <li><strong>Escolha das análises:</strong> definimos as análises adequadas aos seus dados e discutimos como interpretá-las e reportá-las.</li>
 <li><strong>Análise dos seus dados:</strong> se essa for a demanda, você me envia os dados e/ ou o script com antecedência, e eu preparo um passo a passo das análises antes da nossa reunião.</li>
-<li><strong>Programas:</strong> R, JASP ou Jamovi.</li>
+<li><strong>Programas:</strong> R, JASP, Jamovi ou SPSS&#42;<br><small>&#42; Não tenho acesso ao SPSS, mas podemos usá-lo na consultoria desde que você tenha acesso ao programa e não se importe de compartilhar a sua tela durante a reunião.</small></li>
 </ul>
 <dl class="meta">
 <div><dt>Formato</dt><dd>Online, por Google Meet.</dd></div>

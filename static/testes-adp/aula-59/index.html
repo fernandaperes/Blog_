@@ -183,6 +183,9 @@ body{font-size:16px}
   // Domínios em que o teste pode ser aberto (vale para os subdomínios também).
   var DOMINIOS_PERMITIDOS = ["hotmart.com"];
   var LINK_FORA_DO_CURSO = "https://curso.fernandafperes.com.br/";
+  // Código que vai no link da aula, na Hotmart: .../testes-adp/aula-59/?acesso=CODIGO
+  // Se o link vazar, troque o código aqui e nos links das aulas.
+  var CODIGOS_DE_ACESSO = ["adp212e31f4"];
   // --------------------------------
 
   var LETRAS = "ABCDEFGHIJ";
@@ -206,7 +209,7 @@ body{font-size:16px}
     } catch (e) { return false; }
   }
 
-  // Quem chega pela Hotmart fica liberado neste navegador por DIAS_LIBERADO dias,
+  // Quem chega pelo link da aula fica liberado neste navegador por DIAS_LIBERADO dias,
   // para poder recarregar a página ou voltar ao teste depois.
   var DIAS_LIBERADO = 60;
   var CHAVE = "adp-acesso-testes";
@@ -226,7 +229,17 @@ body{font-size:16px}
     // No seu computador (arquivo aberto direto ou servidor local), sempre abre
     if (location.protocol === "file:" || h === "localhost" || h === "127.0.0.1") return true;
 
-    // 1. Chegou clicando num link dentro da Hotmart
+    // 1. Chegou pelo link da aula, com o código de acesso
+    var params = new URLSearchParams(location.search);
+    var codigo = params.get("acesso");
+    if (codigo !== null) {
+      params.delete("acesso");
+      var limpo = location.pathname + (params.toString() ? "?" + params.toString() : "") + location.hash;
+      try { history.replaceState(null, "", limpo); } catch (e) {}
+      if (CODIGOS_DE_ACESSO.indexOf(codigo) !== -1) { lembrarAcesso(); return true; }
+    }
+
+    // Chegou clicando num link dentro da Hotmart (se ela informar a origem)
     if (document.referrer && dominioPermitido(document.referrer)) { lembrarAcesso(); return true; }
 
     // 2. Está incorporado (iframe) na Hotmart

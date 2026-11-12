@@ -1,0 +1,4 @@
+# Testes do ADP: só podem ser incorporados pela Hotmart e não entram no Google
+/testes-adp/*
+  Content-Security-Policy: frame-ancestors https://hotmart.com https://*.hotmart.com
+  X-Robots-Tag: noindex, nofollow

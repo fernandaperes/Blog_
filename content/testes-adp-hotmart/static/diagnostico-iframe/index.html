@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<title>Diagnóstico do iframe</title>
+<style>body{font-family:system-ui,sans-serif;padding:20px;line-height:1.5}code{background:#f2f2f2;padding:2px 5px;border-radius:3px}</style>
+</head><body>
+<h2>Diagnóstico do iframe</h2>
+<p>Dentro de um iframe? <strong id="a"></strong></p>
+<p>Domínios por fora (ancestorOrigins): <code id="b"></code></p>
+<p>Referrer: <code id="c"></code></p>
+<p>Navegador: <code id="d"></code></p>
+<script>
+var em; try { em = window.self !== window.top; } catch (e) { em = true; }
+document.getElementById("a").textContent = em ? "sim" : "não";
+document.getElementById("b").textContent = location.ancestorOrigins ? Array.prototype.join.call(location.ancestorOrigins, " · ") || "(vazio)" : "(navegador não informa)";
+document.getElementById("c").textContent = document.referrer || "(vazio)";
+document.getElementById("d").textContent = navigator.userAgent;
+</script>
+</body></html>

@@ -22,6 +22,28 @@ negrito <- function(x) gsub("\\*\\*(.*?)\\*\\*", "<strong>\\1</strong>", x, perl
 form_analise     <- "https://forms.gle/FaYCjcVZpToX7Wo5A"
 form_consultoria <- "https://forms.gle/1eAjTtdprsBMtwGo6"
 
+# E-mail como alternativa ao formulário (para quem não tem ou não quer usar conta Google).
+# O link já abre o e-mail com assunto e um roteiro preenchidos.
+mailto <- function(assunto, corpo) {
+  paste0("mailto:contato@fernandafperes.com.br?subject=", utils::URLencode(assunto, reserved = TRUE),
+         "&body=", utils::URLencode(corpo, reserved = TRUE))
+}
+email_analise <- mailto("Orçamento de análise de dados", paste(
+  "Oi, Fernanda!", "", "Gostaria de um orçamento para análise de dados.", "",
+  "O que quero descobrir com a minha pesquisa:", "", "",
+  "Meu prazo (defesa, qualificação, submissão):", "", "",
+  "(Se puder, anexe a base de dados e o projeto.)", sep = "\n"))
+email_consultoria <- mailto("Consultoria", paste(
+  "Oi, Fernanda!", "", "Gostaria de agendar uma consultoria.", "",
+  "O que eu gostaria de discutir:", "", "",
+  "(Se a consultoria envolver dados ou um script, anexe-os a este e-mail.)", sep = "\n"))
+
+# Textos embaixo dos botões: sempre em duas linhas (o <br> define onde a linha quebra)
+alt_analise <- paste0('<p class="svc-alternativa">Leva cerca de 3 minutos. Não tem conta Google<br>',
+                      'ou prefere não entrar com ela? <a href="', email_analise, '">Me escreva por e-mail</a>.</p>')
+alt_consultoria <- paste0('<p class="svc-alternativa">Não tem conta Google ou prefere não entrar com ela?<br>',
+                          '<a href="', email_consultoria, '">Me escreva por e-mail</a>.</p>')
+
 # o link do formulário só existe com a agenda aberta; fechada, vira só texto
 link_form <- function(url) {
   if (isTRUE(agenda_aberta)) paste0('<a href="', url, '" target="_blank" rel="noopener">formulário</a>') else "formulário"
@@ -31,13 +53,14 @@ link_form_consultoria <- link_form(form_consultoria)
 
 if (isTRUE(agenda_aberta)) {
   aviso <- ""
-  btn_analise     <- paste0('<div class="svc-acao"><a class="botao" href="', form_analise, '" target="_blank" rel="noopener">Quero um orçamento</a></div>')
-  btn_consultoria <- paste0('<div class="svc-acao"><a class="botao" href="', form_consultoria, '" target="_blank" rel="noopener">Quero agendar</a></div>')
+  btn_analise     <- paste0('<div class="svc-acao svc-acao-ps"><a class="botao" href="', form_analise, '" target="_blank" rel="noopener">Quero um orçamento</a>', alt_analise, '</div>')
+  btn_consultoria <- paste0('<div class="svc-acao svc-acao-ps"><a class="botao" href="', form_consultoria, '" target="_blank" rel="noopener">Quero agendar</a>', alt_consultoria, '</div>')
   cta_final <- paste0(
     '<h3>Vamos conversar sobre o seu projeto?</h3>',
     '<p>Conte o que você coletou e o que precisa decidir.<br>Eu respondo por e-mail com os próximos passos.</p>',
     '<a class="botao" href="', form_analise, '" target="_blank" rel="noopener">Pedir orçamento de análise</a> ',
-    '<a class="botao botao-contorno" href="', form_consultoria, '" target="_blank" rel="noopener">Agendar consultoria</a>')
+    '<a class="botao botao-contorno" href="', form_consultoria, '" target="_blank" rel="noopener">Agendar consultoria</a>',
+    '<p class="cta-email">Prefere e-mail? Escreva para <a href="mailto:contato@fernandafperes.com.br">contato@fernandafperes.com.br</a>.</p>')
 } else {
   aviso <- paste0(
     '<div class="svc-aviso"><span class="svc-chip">Agenda fechada</span><p>Oi! Tudo bem? ',
@@ -108,9 +131,9 @@ fmt <- function(x) format(x, big.mark = ".", decimal.mark = ",", scientific = FA
 <div class="svc-passos">
 <h3>Como funciona a análise de dados</h3>
 <ol class="steps">
-<li><h4>Você descreve o projeto</h4><p>Pelo `r link_form_analise`: a sua pergunta experimental, os dados coletados e como está organizada a base.</p></li>
-<li><h4>Orçamento e plano</h4><p>Por e-mail, alinhamos as análises, o prazo e o valor do serviço.</p></li>
-<li><h4>Análise e relatório</h4><p>Você envia a base de dados; eu realizo as análises e entrego o relatório completo.</p></li>
+<li><h4>Você descreve o projeto</h4><p>Pelo `r link_form_analise`: a sua pergunta experimental e os dados coletados. Se puder, já envie a base de dados.</p></li>
+<li><h4>Planejamento e orçamento</h4><p>Eu analiso a sua base e te envio por e-mail o planejamento das análises, o prazo e o valor.</p></li>
+<li><h4>Análise e relatório</h4><p>Você aprova e faz o pagamento; eu realizo as análises e entrego o relatório completo.</p></li>
 <li><h4>Devolutiva ao vivo</h4><p>Reunião online para eu explicar cada análise e você tirar todas as dúvidas.</p></li>
 </ol>
 </div>

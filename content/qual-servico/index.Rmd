@@ -46,7 +46,7 @@ aviso <- if (isTRUE(agenda_aberta)) {
 <div class="qs-comparativo">
 <article class="qs-col qs-b">
 <div><h2 class="qs-pill">Consultoria científica</h2></div>
-<div><span class="qs-rotulo">Para quem</span><h3>Uma conversa individual para destravar o seu projeto</h3><p>Para você que travou em alguma parte, está inseguro(a) com as análises ou ainda vai coletar os dados. Conversamos online sobre o seu projeto e as análises mais adequadas.</p></div>
+<div><span class="qs-rotulo">Para quem</span><h3>Uma conversa individual para destravar o seu projeto</h3><p>Em qualquer etapa da pesquisa: antes da coleta, no meio de uma análise que travou, com um script que você não sabe se está certo, diante de pareceres de revisores ou na preparação para a banca. Conversamos online sobre o seu projeto e as análises mais adequadas.</p></div>
 <div><span class="qs-rotulo">Valor</span><h3 class="qs-valor">R$ 250 por hora</h3><p class="qs-nota">Em geral, uma ou duas horas são suficientes.</p></div>
 <div><span class="qs-rotulo">Formato</span><p>Reunião online, por Google Meet.</p></div>
 <div><a class="botao botao-contorno" href="/servicos/#a-consultoria-cientifica">Mais informações</a></div>

@@ -1265,3 +1265,28 @@ html body .svc-pagina .checks li small {
   line-height: 0.9rem;
   color: #71717a;
 }
+
+
+/* ===== Serviços: alternativa por e-mail ao formulário ===== */
+/* Texto embaixo do botão, em duas linhas, alinhado à esquerda (como um "P.S.") */
+html body .svc-pagina .svc-acao-ps {
+  display: grid;
+  justify-items: start;        /* botão e texto alinhados à esquerda, cada um com a sua largura */
+  gap: 10px;
+}
+html body .svc-pagina .svc-acao-ps .botao {
+  white-space: nowrap;         /* o botão nunca quebra linha */
+  text-align: center;
+}
+html body .svc-pagina .svc-acao-ps .svc-alternativa {
+  width: max-content;          /* passa da largura do botão o quanto precisar para caber em duas linhas */
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  text-align: left;
+  color: #71717a;
+}
+/* celular: se as duas linhas não couberem na tela, o texto volta a quebrar normalmente */
+@media (max-width: 520px) {
+  html body .svc-pagina .svc-acao-ps .svc-alternativa { width: auto; max-width: calc(100vw - 40px); }
+}

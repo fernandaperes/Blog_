@@ -1290,3 +1290,16 @@ html body .svc-pagina .svc-acao-ps .svc-alternativa {
 @media (max-width: 520px) {
   html body .svc-pagina .svc-acao-ps .svc-alternativa { width: auto; max-width: calc(100vw - 40px); }
 }
+
+/* Caixa azul do fim: linha "Prefere e-mail?" com link branco */
+html body .svc-pagina .cta-post .cta-email {
+  margin: 18px auto 0;
+  font-size: 14px;
+  color: #e3f3f5;
+}
+html body .svc-pagina .cta-post .cta-email a:not(.botao),
+html body .svc-pagina .cta-post .cta-email a:not(.botao):hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

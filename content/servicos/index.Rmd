@@ -41,7 +41,7 @@ email_consultoria <- mailto("Consultoria", paste(
 # Textos embaixo dos botões: sempre em duas linhas (o <br> define onde a linha quebra)
 alt_analise <- paste0('<p class="svc-alternativa">Leva cerca de 3 minutos. Não tem conta Google<br>',
                       'ou prefere não entrar com ela? <a href="', email_analise, '">Me escreva por e-mail</a>.</p>')
-alt_consultoria <- paste0('<p class="svc-alternativa">Não tem conta Google ou prefere não entrar com ela?<br>',
+alt_consultoria <- paste0('<p class="svc-alternativa">Leva cerca de 2 minutos. Não tem conta Google ou prefere não entrar com ela?<br>',
                           '<a href="', email_consultoria, '">Me escreva por e-mail</a>.</p>')
 
 # o link do formulário só existe com a agenda aberta; fechada, vira só texto
@@ -196,7 +196,7 @@ fmt <- function(x) format(x, big.mark = ".", decimal.mark = ",", scientific = FA
 <li><strong>Doutora e mestre em Farmacologia</strong><span class="inst">Universidade Federal de São Paulo (UNIFESP)</span></li>
 <li><strong>Especialista em Estatística Aplicada</strong><span class="inst">Universidade Cruzeiro do Sul</span></li>
 <li><strong>Bacharel em Ciências Biológicas, Modalidade Médica</strong><span class="inst">Universidade Federal de São Paulo (UNIFESP)</span></li>
-<li><strong>Professora de Bioestatística</strong><span class="inst">UNIFESP, desde 2022</span></li>
+<li><strong>Professora de Bioestatística do curso de Especialização em Fisiopatologia</strong><span class="inst">Universidade Federal de São Paulo (UNIFESP)</span></li>
 </ul>
 </section>
 
